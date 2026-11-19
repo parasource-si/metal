@@ -134,15 +134,15 @@
   ],
   "sources": [
     {
-      "label": "dusk bot docs: connected apps and sends",
+      "label": "Metal docs: connected apps and sends",
       "url": "/docs/files-and-apps"
     },
     {
-      "label": "dusk bot docs: allow and deny",
+      "label": "Metal docs: allow and deny",
       "url": "/docs/computer"
     },
     {
-      "label": "dusk bot docs: routines",
+      "label": "Metal docs: routines",
       "url": "/docs/routines"
     }
   ],

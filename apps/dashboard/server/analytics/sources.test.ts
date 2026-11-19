@@ -29,8 +29,8 @@ describe("traffic sources", () => {
     ["whatsapp.com", "WhatsApp", "social"], ["wa.me", "WhatsApp", "social"],
     ["team.slack.com", "Slack", "social"], ["lobste.rs", "Lobsters", "social"],
     ["news.ycombinator.com", "Hacker News", "social"], ["github.com", "GitHub", "referral"],
-    ["dusk.bot", "dusk bot", "referral"], ["app.dusk.bot", "dusk bot", "referral"],
-    ["nested.app.dusk.bot", "dusk bot", "referral"], ["mail.google.com", "Gmail", "email"],
+    ["dusk.bot", "Metal", "referral"], ["app.dusk.bot", "Metal", "referral"],
+    ["nested.app.dusk.bot", "Metal", "referral"], ["mail.google.com", "Gmail", "email"],
     ["outlook.live.com", "Outlook", "email"],
   ])("classifies %s", (referrer, source, channel) => {
     expect(classify({ referrer })).toEqual({ source, channel });

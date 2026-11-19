@@ -461,7 +461,7 @@ export function controlResultSucceeded(command: string, result: unknown): boolea
 
 /** pnpm swallows Ctrl-C; a launcher that owns processes must get the signal itself. */
 function requireForegroundTerminal(command: string): void {
-  if (process.env.npm_lifecycle_event === "control:dusk") {
+  if (["control:metal", "control:dusk"].includes(process.env.npm_lifecycle_event ?? "")) {
     throw new ControlDuskError(
       `${command} must own the terminal directly so Ctrl-C can clean up its children`,
       `run \`node --experimental-strip-types scripts/control-dusk.ts ${command}\``,

@@ -114,7 +114,7 @@ test("back from paying, having come from the app: the page says you're all set a
   const { BillingPage } = await import("./Billing");
   await mount(createElement(BillingPage));
   expect(document.querySelector("[data-all-set] h1")?.textContent).toBe("you're all set");
-  expect(document.body.textContent).toContain("go back to dusk bot.");
+  expect(document.body.textContent).toContain("go back to Metal.");
   expect(document.querySelector<HTMLAnchorElement>("[data-open-app-link]")?.getAttribute("href")).toBe("duskbot://cloud");
   await act(async () => button(/^see your plan$/)!.click());
   expect(document.querySelector("[data-all-set]")).toBeNull();

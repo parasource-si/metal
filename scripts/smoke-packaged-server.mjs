@@ -266,7 +266,7 @@ if (listening) {
     const doctor = await runCli(["doctor", "--json"]);
     const bots = await runCli(["bots", "--json"]);
     const vps = await runCli(["vps", "--help"]);
-    headlessReport = { doctor: { code: doctor.code, body: JSON.parse(doctor.stdout), stderr: doctor.stderr }, bots: { code: bots.code, body: JSON.parse(bots.stdout) }, vps: { code: vps.code, help: vps.stdout.includes("duskbot vps logs") } };
+    headlessReport = { doctor: { code: doctor.code, body: JSON.parse(doctor.stdout), stderr: doctor.stderr }, bots: { code: bots.code, body: JSON.parse(bots.stdout) }, vps: { code: vps.code, help: vps.stdout.includes("metal vps logs") } };
   } catch (error) {
     headlessReport = { error: String((error && error.message) || error) };
   }
@@ -478,7 +478,7 @@ if (!backupReport?.ok) {
 console.log(`packaged server started with no node_modules in reach (port ${port}) ✓`);
 console.log(`all ${count} spawned proxy paths resolve inside the packaged server dir ✓`);
 console.log("packaged MCP stdio server reached the API and flushed its final frames ✓");
-console.log("packaged duskbot doctor, bots and VPS help answered from the bundle ✓");
+console.log("packaged metal doctor, bots and VPS help answered from the bundle ✓");
 console.log("packaged backup worker exported an encrypted archive ✓");
 if (launcherReport) console.log("packaged container launcher ran the server as its child and stopped it cleanly ✓");
 if (desktopEntryReport) console.log(`packaged desktop entry started the server twice on its compile cache (${desktopEntryReport.starts[0].cached.length} entries) ✓`);

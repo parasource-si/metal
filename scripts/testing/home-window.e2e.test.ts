@@ -71,7 +71,7 @@ const freePort = () => new Promise<number>((resolve, reject) => {
       })()`);
       expect(seen.shadow, `${viewport.width}px: the window's markup is in place`).toBe(true);
       expect(seen.sheet, `${viewport.width}px: the app's styles applied`).toBe(true);
-      expect(seen.pill).toBe("dusk bot");
+      expect(seen.pill).toBe("Metal");
       for (const part of ["win", "host", "pillBox", "bubble", "composer"] as const) {
         expect(seen[part]?.shown, `${viewport.width}px: ${part} is shown`).toBe(true);
         expect(seen[part]?.w, `${viewport.width}px: ${part} has width`).toBeGreaterThan(20);

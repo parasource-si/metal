@@ -1,4 +1,4 @@
-# Self-hosting the dusk bot server
+# Self-hosting the Metal server
 
 Run the harness server on an always-on Linux box (a VPS, a home server, a
 Mac mini in a closet) and pair browsers, the desktop app, or phones with it.
@@ -14,7 +14,7 @@ The npm CLI supports a managed public tunnel, Tailscale, or your own proxy.
 > session. If several people use one server, read
 > [Loopback trust](#loopback-trust-owner-or-service) below.
 
-Step by step, for a server you do not have yet: [Deploy dusk bot on a
+Step by step, for a server you do not have yet: [Deploy Metal on a
 VPS](deploy-vps.md) walks through the three ways in (public address, own
 domain, Tailscale), signing engines in, pairing, keeping it running,
 updating and backups. This page is the reference behind it.
@@ -23,7 +23,7 @@ updating and backups. This page is the reference behind it.
 
 The app's **add a place > your own server** sheet gives one line to paste on a
 fresh Ubuntu 20.04+ or Debian 11+ server (as root, or a user with sudo). It
-installs dusk bot as a systemd service, links it to the app through
+installs Metal as a systemd service, links it to the app through
 link.dusk.bot (which also carries its live progress), and sets up the way you
 picked. Nothing is typed back into the app: no address, no code, no password.
 Cloudflare is the recommended way and the first one the sheet offers.
@@ -50,7 +50,7 @@ The longer form an older app shows still works the same way:
 | `--cloudflare` | nothing | Installs `cloudflared` from Cloudflare's apt repository and runs a quick tunnel (`*.trycloudflare.com`, no account or sign-in) as `duskbot-cloudflared.service`. Its name changes when the tunnel restarts; the link agent tells the app the new one inside the sealed tunnel and the app follows it. When the link service hands the server a tunnel of its own, that one runs instead. |
 | relay (no option) | nothing | Links through the private relay. Nothing inbound is opened. |
 | `--tailscale` | Tailscale on the computer you use | Installs Tailscale if missing, prints the sign-in link (also shown in the app), then runs `tailscale serve` for HTTPS; if HTTPS is off for the tailnet it prints the one admin link that turns it on, and carries on by itself once it is on. Without `/dev/net/tun` it uses Tailscale's userspace networking. `--tailscale-key KEY` (or `DUSK_TAILSCALE_KEY`) signs in with an auth key instead. |
-| `--ssh` | SSH on port 22 | Links through the relay; the app then talks over the server's own sshd with a restricted key, the relay only as a backup. It also prints `ssh -N -L 8790:127.0.0.1:8799 <user>@<ip>` for opening dusk bot in a browser on your computer. |
+| `--ssh` | SSH on port 22 | Links through the relay; the app then talks over the server's own sshd with a restricted key, the relay only as a backup. It also prints `ssh -N -L 8790:127.0.0.1:8799 <user>@<ip>` for opening Metal in a browser on your computer. |
 
 The line no longer takes `--domain`, `--direct` or `--cloudflare-token`: an old
 line with one of them prints a short note and sets up a Cloudflare tunnel
@@ -66,14 +66,14 @@ through the relay. Running the install again with `--repair` and another way mov
 the server to it; the app follows. The line is single use and expires after 30
 minutes; [the link service](../apps/link-service/README.md) has the details.
 
-The line also puts `duskbot` on the server's PATH for every login (a small
+The line also puts `metal` on the server's PATH for every login (a small
 `/usr/local/bin/duskbot` that runs the server account's own build as that
-account), so `duskbot pair --label desktop` there makes a code for another
+account), so `metal pair --label desktop` there makes a code for another
 computer. A server installed before this has it after its next update; until
 then run `sudo -u dusk /home/dusk/.local/bin/duskbot pair --label desktop`.
 
-Already running dusk bot? The sheet's last choice takes what
-`duskbot pair --label desktop` (or `npx duskbot pair --label desktop`, for a
+Already running Metal? The sheet's last choice takes what
+`metal pair --label desktop` (or `metal pair --label desktop`, for a
 server started with npx) prints on it: paste the whole output into the first
 field and the app picks the server's public pairing link out of it. With no
 public address it prints only a code; then enter the address and that code.
@@ -95,7 +95,7 @@ Runs fully on a server:
 - text-to-speech (with a key), the web UI (the server serves it itself)
 
 - a browser for bots, once the engine is installed on the server
-  (`npx duskbot browser install`, or nothing to do in the Docker image,
+  (`metal browser install`, or nothing to do in the Docker image,
   which ships it): each bot gets its own isolated, persistent session.
   Watching it live from the app is the next step.
   It reaches the public internet and the dev servers a bot starts itself,
@@ -111,7 +111,7 @@ Desktop-only for now (needs the Mac/Linux app):
 On any machine with Node 24 or newer (a VPS, a Mac mini, a Raspberry Pi):
 
 ```sh
-npx duskbot start
+metal start
 ```
 
 First launch asks you to choose AI access, connect an account or API key,
@@ -123,8 +123,8 @@ explains the choices, key storage, and how to run setup again safely.
 It then starts the server and keeps your data in `~/.duskbot`. If you
 choose phone access, it prints a pairing link and QR code only after checking
 the HTTPS connection. Choosing **Skip for now** keeps the workspace local-only
-and creates no pairing invitation. Use `npx duskbot setup` to configure without starting, or
-`npx duskbot serve` to start non-interactively with your existing config
+and creates no pairing invitation. Use `metal setup` to configure without starting, or
+`metal serve` to start non-interactively with your existing config
 (for services and scripts).
 
 The npm package does not include engine CLIs (`claude`, `codex`, …); setup
@@ -136,19 +136,19 @@ directories, not all under `.duskbot`.
 For a Linux service, the [VPS guide](deploy-vps.md#before-you-start) shows the
 account setup, engine installation, and browser dependency installation.
 After installing browser libraries as administrator, also run
-`npx duskbot browser install` as the service user so that user's browser
+`metal browser install` as the service user so that user's browser
 is present. Three ways to make the server reachable from elsewhere:
 
 - **On your Tailscale network, no domain needed:**
-  `npx duskbot serve --tailscale`. Tailscale terminates HTTPS with its
+  `metal serve --tailscale`. Tailscale terminates HTTPS with its
   own certificate and the link uses this machine's MagicDNS name, so only
   devices on your tailnet can reach it. Needs Tailscale signed in and HTTPS
   certificates enabled for the tailnet (admin console → DNS).
 - **A public address, no domain, no proxy, no open port:**
 
   ```sh
-  npx duskbot login          # once: an emailed code signs this machine in
-  npx duskbot serve --tunnel
+  metal login          # once: an emailed code signs this machine in
+  metal serve --tunnel
   ```
 
   `login` reserves an address like `https://c-….cloud.dusk.bot` for this
@@ -160,13 +160,13 @@ is present. Three ways to make the server reachable from elsewhere:
   the server treats as "through a proxy", never as the owner. That listener
   also gzips JSON replies of 1 KB or more when the client accepts gzip, since
   the hop to Cloudflare runs on this machine's upload uncompressed; the
-  loopback port never compresses. `npx duskbot logout` releases the
+  loopback port never compresses. `metal logout` releases the
   address. The account credentials live in
   `~/.duskbot/tunnel-account.json` (mode 0600).
 - **Your own domain, still one command:**
 
   ```sh
-  npx duskbot serve --domain maus.example.com
+  metal serve --domain maus.example.com
   ```
 
   Point the domain's A record at this machine and open ports 80 and 443.
@@ -175,13 +175,13 @@ is present. Three ways to make the server reachable from elsewhere:
   and renews the certificate from Let's Encrypt. On Linux, binding ports 80
   and 443 as a normal user needs one privilege grant; when Caddy reports the
   refusal, `serve` prints the exact `setcap` command to run once.
-- **Behind your own proxy or domain:** `npx duskbot serve --public-url
+- **Behind your own proxy or domain:** `metal serve --public-url
   https://maus.example.com`, with the proxy rules from "Putting a proxy in
   front".
 
-Later: `npx duskbot pair --label "Kitchen iPad"` for another device
+Later: `metal pair --label "Kitchen iPad"` for another device
 (`--client` for one that may chat but not change settings), and
-`npx duskbot sessions` to see or revoke them. `duskbot serve` is a
+`metal sessions` to see or revoke them. `metal serve` is a
 plain foreground process. For unattended use, follow the
 [systemd example](deploy-vps.md#keep-it-running), which installs a chosen
 release and runs its binary directly. Restarting that service does not
@@ -190,14 +190,14 @@ implicitly download a new release.
 ## Connect ChatGPT from the browser
 
 A browser paired with Full access can connect an installed Codex CLI without opening a
-terminal: **Settings → Engines → Codex → Connect ChatGPT**. dusk bot starts
+terminal: **Settings → Engines → Codex → Connect ChatGPT**. Metal starts
 `codex login --device-auth` on the server and shows a one-time code. Choose
 **Open ChatGPT sign-in**, enter the code on OpenAI's page, and complete sign-in
-with your own account. dusk bot checks for completion and refreshes the model list.
+with your own account. Metal checks for completion and refreshes the model list.
 You can cancel or request a fresh code after it expires.
 
 The server still needs Codex installed and runs it as the same operating-system
-user as dusk bot. Your password never goes through dusk bot; Codex stores its credentials
+user as Metal. Your password never goes through Metal; Codex stores its credentials
 on the server. Treat server access and backups as sensitive. Device-code login
 may need enabling in ChatGPT security settings or by your workspace admin; see
 [OpenAI's headless authentication guide](https://learn.chatgpt.com/docs/auth#login-on-headless-devices).
@@ -206,7 +206,7 @@ other providers retain their existing sign-in methods.
 
 Once connected, Settings shows the account email when Codex can report it.
 To switch accounts, open **Manage account and sign-in** under that line
-and choose **Sign out of ChatGPT**: dusk bot runs `codex logout` on the server as
+and choose **Sign out of ChatGPT**: Metal runs `codex logout` on the server as
 the same user and confirms with `codex login status`. New ChatGPT tasks need
 a connected account. Stop running Codex tasks before switching: sign-out does
 not cancel work already in progress. API-key logins are not removed by this
@@ -217,11 +217,11 @@ pulled away; finish or cancel it first.
 
 Give a self-hosted server its own domain when you start it:
 
-- `duskbot serve --domain bots.yourcompany.com` runs a pinned Caddy beside the
+- `metal serve --domain bots.yourcompany.com` runs a pinned Caddy beside the
   server, which gets the certificate itself. Point the domain's DNS **A** record
   at the server's public IPv4 and open ports 80 and 443.
 - Behind a reverse proxy of your own, start it with
-  `duskbot serve --public-url https://bots.yourcompany.com`. Keep dusk bot on
+  `metal serve --public-url https://bots.yourcompany.com`. Keep Metal on
   loopback, forward the original Host and proxy headers, and keep event streams
   unbuffered; the [supplied Caddyfile](../deploy/Caddyfile) is the reference.
 
@@ -239,16 +239,15 @@ relay. The image sets that range as `DUSK_SCREEN_DIRECT_PORTS` and the compose
 file publishes it; with it closed, screens still work over the relay.
 
 ```sh
-git clone https://github.com/DuskBotAI/duskbot && cd duskbot/deploy
+git clone https://github.com/parasource-si/metal && cd metal/deploy
 cp .env.example .env            # set DOMAIN
-docker compose pull dusk && docker compose up -d
+docker compose up -d --build
 ```
 
-That uses the image published for each release
-(`ghcr.io/duskbotai/duskbot`, tagged `v…` and `latest`, for amd64 and
-arm64, with Claude Code and Codex installed). Set `DUSK_IMAGE` in `.env` to
-pin a version. To build from your checkout instead, with the engines
-`ENGINES` lists: `docker compose up -d --build`.
+That builds the server with the engines listed in ENGINES. Once Metal images
+are published, pull ghcr.io/parasource-si/metal with docker compose pull dusk
+and start it with docker compose up -d. Set DUSK_IMAGE in .env to pin a version
+or digest.
 
 Then sign the engine CLIs in **inside the container** (their logins live on
 the `data` volume, so they survive restarts and image upgrades) and mint a
@@ -256,7 +255,7 @@ pairing code for your first device:
 
 ```sh
 docker compose exec dusk claude                       # each CLI you listed in ENGINES
-docker compose exec dusk node dist-server/duskbot.js pair # prints a code, a link and a QR
+docker compose exec dusk node dist-server/metal.js pair # prints a code, a link and a QR
 ```
 
 Open the link (`https://<DOMAIN>/pair#code=…`) in a browser and it is
@@ -298,7 +297,7 @@ Requirements: Node 24+, pnpm, and at least one agent CLI installed and
 signed in on the server.
 
 ```sh
-git clone https://github.com/DuskBotAI/duskbot && cd duskbot
+git clone https://github.com/parasource-si/metal && cd metal
 pnpm install
 
 # choose where data lives and start the server
@@ -309,16 +308,16 @@ DUSK_DATA_DIR="$HOME/.duskbot" DUSK_PORT=8799 \
 For something durable, let the CLI write the service for you:
 
 ```sh
-npx duskbot service install --domain maus.example.com   # or --tunnel, --tailscale, or nothing
+metal service install --domain maus.example.com   # or --tunnel, --tailscale, or nothing
 ```
 
 It renders a systemd unit (Linux) or a launchd agent (macOS) that runs the
-same `duskbot serve …` with your options, restarts it if it stops, and,
+same `metal serve …` with your options, restarts it if it stops, and,
 for `--domain`, grants the unit the capability to bind ports 80 and 443
 without root. The file is written next to your data and the two commands
 that install and start it are printed (they need `sudo` on Linux).
-`duskbot service uninstall` prints the reverse. Install the package
-permanently first (`npm install -g duskbot`): a service must not point
+`metal service uninstall` prints the reverse. Install the package
+permanently first (`npm install -g ./metal-private.tgz`): a service must not point
 at an `npx` cache that npm may prune.
 
 Engine CLIs read their logins from the service user's home: sign them in
@@ -329,10 +328,10 @@ rely on routines running unattended.
 
 Engines whose installer is an npm package (Claude Code, Codex, OpenCode,
 MiniMax, pi) can be installed and updated from **Settings → Engines** when
-npm is on the server's PATH. dusk bot runs `npm install -g` as its own user into
+npm is on the server's PATH. Metal runs `npm install -g` as its own user into
 `<data dir>/tools/npm`, so nothing needs sudo and nothing touches a global
 prefix; that folder goes ahead of everything else on the engines' PATH, so
-the copy dusk bot installed is the one bots run. The package name comes from the
+the copy Metal installed is the one bots run. The package name comes from the
 engine's own install descriptor, never from the browser. Engines installed
 by a `curl | bash` script still need the command on the server.
 
@@ -364,7 +363,7 @@ Like `opencode` in a terminal, it reads provider keys from its environment
 (`ANTHROPIC_API_KEY`, `OPENAI_API_KEY`, `GEMINI_API_KEY`, `GOOGLE_API_KEY`,
 `KIMI_API_KEY`, `MOONSHOT_API_KEY`, `MINIMAX_API_KEY`) and offers those
 providers' models, billed to that key. It does so only where the server's
-environment is one person's own: never on dusk cloud, an organisation-managed desktop, or a server whose sign-in list
+environment is one person's own: never on Dusk Cloud, an organisation-managed desktop, or a server whose sign-in list
 lets other people in (users, more than one admin, or a whole domain).
 Providers added with `opencode auth login` work everywhere.
 
@@ -393,10 +392,10 @@ Pair once, then use the server from any browser on any machine that can
 reach it. On the server:
 
 ```sh
-duskbot pair                             # the app's one-line install
-npx duskbot pair                         # npm install
-pnpm dusk pair                                # from a checkout
-docker compose exec dusk node dist-server/duskbot.js pair   # Docker
+metal pair                             # the app's one-line install
+metal pair                         # npm install
+pnpm metal pair                                # from a checkout
+docker compose exec dusk node dist-server/metal.js pair   # Docker
 ```
 
 It prints a 12-character code (single use, five minutes) and, when the
@@ -411,7 +410,7 @@ From the **desktop app**, use the server dropdown above Search → **Connect
 to a server…**, or **Settings → Servers**. Enter the server's
 HTTPS address or full pairing link, with an optional name. Custom domains and
 Cloudflare tunnel addresses work; Tailscale is not required. Generate a fresh
-link for each device: `duskbot pair --label "My desktop"` (with `npx` in front on an npm install) creates an
+link for each device: `metal pair --label "My desktop"` (with `npx` in front on an npm install) creates an
 owner link without the phone wizard; add `--client` for chat-only access.
 A code already used by your phone cannot also pair your desktop.
 
@@ -464,7 +463,7 @@ To move by hand instead, export a backup from this computer in **Settings →
 Backups → Export backup**, then import it on the server in **Settings → Backups
 → Import backup**. API keys, engine sign-ins and paired devices stay where they
 are on both sides; routines arrive paused. An older desktop app's **Copy this
-computer here** is answered with "Update dusk bot to bring your bots here by
+computer here** is answered with "Update Metal to bring your bots here by
 itself."
 
 Only conversations you start yourself on that server can use what you share;
@@ -504,7 +503,7 @@ address of its own:
 
 ```sh
 ssh -N -L 8790:127.0.0.1:8799 you@your-server
-# then run `npx duskbot pair` on the server and type its code at http://127.0.0.1:8790/pair
+# then run `metal pair` on the server and type its code at http://127.0.0.1:8790/pair
 ```
 
 Port 8790 on this side keeps clear of the desktop app's own server on 8799.
@@ -524,7 +523,7 @@ server, even when it runs on the same machine. Programs are unaffected: the
 CLI, scripts, `curl` and the companion send neither header.
 
 So the first time you open the web UI in a browser on the server's own
-machine, it shows the sign-in page. `duskbot serve` and `duskbot pair`
+machine, it shows the sign-in page. `metal serve` and `metal pair`
 print a link for it:
 
 ```
@@ -532,7 +531,7 @@ this computer: http://127.0.0.1:8799/pair#code=XXXX-XXXX-XXXX
 ```
 
 Open it and choose **Connect** (or type the code on the sign-in page); the browser
-keeps its session cookie from then on. `duskbot` (the guided start) prints
+keeps its session cookie from then on. `metal` (the guided start) prints
 the same link when it opens the browser. The desktop app is unaffected:
 its window adds the app's own per-launch owner header to every request and
 WebSocket it sends to its server, and no other Electron session may reach the
@@ -561,7 +560,7 @@ local requests: service trust (DUSK_LOOPBACK_TRUST); without a session, loopback
 | Trust | Default for | A session-less loopback request may |
 |---|---|---|
 | `owner` | a self-hosted server, the desktop app | do everything, as today |
-| `service` | dusk cloud; any server with `DUSK_LOOPBACK_TRUST=service` | read health, who-am-I, the bot list, a thread's messages and a bot's picture; open a thread; send through the guarded route; watch and stop its exact request; withdraw a queued line; **decline** a card; use the bots' own capability routes (`/api/internal/*`, which check their own per-turn token) |
+| `service` | Dusk Cloud; any server with `DUSK_LOOPBACK_TRUST=service` | read health, who-am-I, the bot list, a thread's messages and a bot's picture; open a thread; send through the guarded route; watch and stop its exact request; withdraw a queued line; **decline** a card; use the bots' own capability routes (`/api/internal/*`, which check their own per-turn token) |
 
 Under `service`, everything else from loopback needs a real session and
 answers 403: settings and keys (`/api/config`), instances, MCP servers,
@@ -572,17 +571,17 @@ approving or answering any card. Email sign-in and paired sessions keep their ow
 Set `DUSK_LOOPBACK_TRUST=service` on a self-hosted server people share (with
 an email sign-in list, say). `DUSK_LOOPBACK_TRUST=owner` grants local callers owner access. Any other value
 means `service`. The desktop app ignores the setting: its local changes
-already need the app's own per-launch capability. dusk cloud ignores
+already need the app's own per-launch capability. Dusk Cloud ignores
 it too and is always `service` (docs/cloud-pro.md).
 
 With `service` on a self-hosted server:
 
-- `duskbot serve` still prints the first pairing code. It hands the
+- `metal serve` still prints the first pairing code. It hands the
   server it starts a one-off secret over the server's stdin (never its
   environment, which every engine inherits), and that secret opens the
   pairing route for that CLI alone. Pass `--no-pair` to skip the code; if
   the server refuses one anyway, `serve` says why and keeps running.
-- `duskbot pair` and `duskbot sessions`, run later from another
+- `metal pair` and `metal sessions`, run later from another
   terminal, are refused like any other admin change and say so. Pair from
   Settings → Remote access while signed in as an admin, or let people sign
   in with their email (`duskbot access add you@example.com`, which edits
@@ -622,25 +621,25 @@ npm package, the same thing from the command line, with the server running
 or not, no restart needed:
 
 ```sh
-npx duskbot access add her@yourcompany.com
-npx duskbot access add freelancer@example.com --chat-only
-npx duskbot access list
+metal access add her@yourcompany.com
+metal access add freelancer@example.com --chat-only
+metal access list
 ```
 
 An entry is an address or `@domain` (everyone at that domain). Admins get
-the same access as a pairing code from `duskbot serve`; users get the
-chat-only scope, the same as `duskbot pair --client`. The same lists live
+the same access as a pairing code from `metal serve`; users get the
+chat-only scope, the same as `metal pair --client`. The same lists live
 in `config.json` under `signIn.admins` and `signIn.members` and can be changed
 through the settings API without a restart; the environment variables win
 when set, which is how a container or a service unit is bootstrapped.
 
-The code itself comes from `dusk.bot`, the dusk bot
+The code itself comes from `dusk.bot`, the Metal
 account service, so your server needs no email credentials. Your server asks
 it to send the code, checks the answer, and then issues its own session
 cookie: the browser only ever talks to your server, and who is welcome is
 decided only by your allow-list. Wrong codes count against the same lockout
 as pairing codes. Sessions from a sign-in show the email in
-`duskbot sessions` and can be revoked the same way.
+`metal sessions` and can be revoked the same way.
 
 ### Inviting people
 
@@ -653,7 +652,7 @@ Roles change with one click; removing someone stops new sign-ins.
 
 ### Who may answer a card
 
-Approval cards are the provider's own (see the approval modes); dusk bot
+Approval cards are the provider's own (see the approval modes); Metal
 adds none. On a workspace several people share, an email sign-in list that
 names users narrows only whose answer counts, and only when the card can
 be traced to a person:
@@ -781,7 +780,7 @@ is the reference implementation.
 
 In a paired admin browser, as in the desktop app, **Take control** turns the
 Computer panel's picture into the live desktop for Local VMs and your own VPS,
-through the same address as dusk bot; **Full screen** fills the window with
+through the same address as Metal; **Full screen** fills the window with
 the same session. Shared, per-bot and pool Local VMs connect through their
 managed container's loopback port. VPS desktops connect
 through an SSH tunnel opened by the server. Neither needs an additional public
@@ -817,22 +816,22 @@ creates a one-time code with a QR right in the browser, and lists every
 paired device with a sign-out button. Nobody needs the command line.
 
 The iOS app pairs with a server the same way a laptop does: scan the QR
-code that `duskbot serve` (or `duskbot pair`) prints, paste the
+code that `metal serve` (or `metal pair`) prints, paste the
 whole `https://host/pair#code=…` link into the address field on the pairing
 screen, or type the address and then the code. The phone gets a session of
-its own, listed and revocable with `duskbot sessions`. What it may do is
-the code's scope: a code from `duskbot pair` carries `admin` and the app
-shows everything; a code from `duskbot pair --client` (also what the
+its own, listed and revocable with `metal sessions`. What it may do is
+the code's scope: a code from `metal pair` carries `admin` and the app
+shows everything; a code from `metal pair --client` (also what the
 guided phone setup mints) can chat, approve and read, and the app hides
 creating bots and sections, changing models, generating avatars, connecting
 apps and cloud desktops — those stay with the owner. A server reinstalled at
 the same address has a new identity; the app then asks to pair again rather
 than present the old session to it.
 
-Both native apps pair this way. `duskbot pair --phone android` prints the
+Both native apps pair this way. `metal pair --phone android` prints the
 app-scheme QR that Android's scanner needs, and the iOS app accepts either
 that QR or the web link. Pass `--phone` whenever nothing is watching the
-terminal, such as `docker compose exec dusk node dist-server/duskbot.js
+terminal, such as `docker compose exec dusk node dist-server/metal.js
 pair --phone android --public-url https://your-domain`, since a scripted run
 never reaches the question the interactive command asks. Nothing extra to install, and the phone becomes a
 session like any other.
@@ -840,7 +839,7 @@ session like any other.
 Older way, still supported, and only useful on a LAN or a tailnet: run the
 companion sidecar next to the harness and pair by its own QR. It advertises
 on your private networks (Tailscale-aware) and issues its own per-device
-credentials, which are **not** `duskbot sessions` and are revoked from
+credentials, which are **not** `metal sessions` and are revoked from
 its own page at the `127.0.0.1:8811/#token=…` link it prints. It also serves phones over cleartext HTTP
 on port 8810, so do not expose it from a public server. It ships only in a
 git checkout: neither the npm package nor the Docker image contains it.
@@ -936,7 +935,7 @@ unless its status still says signed out.
 
 ### Which engine a new bot uses
 
-A saved default model (Settings, `duskbot setup`, or the New Bot
+A saved default model (Settings, `metal setup`, or the New Bot
 defaults) always wins. Without one, new bots get the first engine that can
 run, in this order: a Claude account, a ChatGPT plan, Gemini, Grok, then the
 rest in the order of `instances`; OpenCode running only Zen's free no-login
@@ -1053,7 +1052,7 @@ shutdown): settings
 sessions, webhooks, MCP servers, engines and keys, bots created, deleted or
 given different permissions, and who can see a bot.
 Each row names who acted — the session's email or device label, `This
-computer` for the owner, `Command line` for `duskbot` commands such as
+computer` for the owner, `Command line` for `metal` commands such as
 `duskbot access add` — and the values before and after. Values are
 redacted: anything under a key that names a credential, every value in a
 headers or environment map, the value after a flag such as `--api-key` or
@@ -1212,7 +1211,7 @@ settings do not change it.
 
 For the npm service, [install the chosen new version](deploy-vps.md#update)
 as the service user while the server is stopped, then start it again.
-For a foreground invocation, `npx --yes duskbot@X.Y.Z serve --tunnel`
+For a foreground invocation, `metal@X.Y.Z serve --tunnel`
 selects a particular published release; replace `X.Y.Z` with that version.
 
 ```sh

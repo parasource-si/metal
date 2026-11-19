@@ -43,4 +43,4 @@ Allow: /
 Disallow: /explore/
 Disallow: /api/
 
-Sitemap: https://dusk.bot/sitemap.xml
+Sitemap: http://localhost:3103/sitemap.xml

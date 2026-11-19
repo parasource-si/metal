@@ -7,7 +7,7 @@ import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { launchVerificationServer, type VerificationServer } from "../scripts/control-dusk.ts";
 import { removeTempDir } from "./testing/cleanup.ts";
 
-const ENTRY = join(import.meta.dirname, "duskbot.ts");
+const ENTRY = join(import.meta.dirname, "metal.ts");
 
 interface Ran { code: number | null; stdout: string; stderr: string }
 

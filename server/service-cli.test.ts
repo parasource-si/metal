@@ -6,7 +6,7 @@ import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import { runServiceCommand, serviceServeArgs } from "./service-cli.ts";
 import { removeTempDir } from "./testing/cleanup.ts";
 
-describe("duskbot service", () => {
+describe("metal service", () => {
   let dir: string;
   const out: string[] = [];
   const err: string[] = [];
@@ -35,7 +35,7 @@ describe("duskbot service", () => {
     out.length = 0;
     const refused = runServiceCommand({ action: "install", dataDir: join(dir, "x"), port: 8799, script: "/home/maus/.npm/_npx/deadbeef/node_modules/duskbot/cli.js", node: "/usr/bin/node", platform: "linux" }, io);
     expect(refused).toBe(1);
-    expect(err.join("\n")).toMatch(/duskbot-private\.tgz/);
+    expect(err.join("\n")).toMatch(/metal-private\.tgz/);
     expect(existsSync(join(dir, "x", "duskbot.service"))).toBe(false);
   });
 
@@ -59,7 +59,7 @@ describe("duskbot service", () => {
     expect(plist).toContain("<string>/usr/bin/node</string>");
     expect(plist).not.toContain("ELECTRON_RUN_AS_NODE");
     expect(plist).toContain(`<string>${sentinelOut}</string>`);
-    expect(out.join("\n")).toContain("duskbot sentinel --check-install");
+    expect(out.join("\n")).toContain("metal sentinel --check-install");
     expect(existsSync(dataDir)).toBe(false);
     expect(out.join("\n")).toContain("launchctl bootstrap gui/$(id -u) /Users/maus/Library/LaunchAgents/bot.dusk.sentinel.plist");
     expect(out.join("\n")).toContain(`issues: ${join(sentinelOut, "issues.jsonl")}`);
@@ -77,7 +77,7 @@ describe("duskbot service", () => {
 
     // Windows gets a schtasks line, with the platform's own folder as --out
     expect(runServiceCommand({ ...base, sentinelOut: undefined, platform: "win32", dataDir: "C:\\Users\\maus\\.duskbot", home: "C:\\Users\\maus", env: {} }, io)).toBe(1);
-    expect(err.join("\n")).toContain('schtasks /Create /SC MINUTE /MO 2 /TN "dusk bot Sentinel" /TR "\\"/usr/bin/node\\" \\"/usr/lib/node_modules/duskbot/cli.js\\" \\"sentinel\\"');
+    expect(err.join("\n")).toContain('schtasks /Create /SC MINUTE /MO 2 /TN "Metal Sentinel" /TR "\\"/usr/bin/node\\" \\"/usr/lib/node_modules/duskbot/cli.js\\" \\"sentinel\\"');
     expect(err.join("\n")).toContain("\\\"--out\\\" \\\"C:\\Users\\maus\\AppData\\Local\\duskbot-sentinel\\\"");
   });
 

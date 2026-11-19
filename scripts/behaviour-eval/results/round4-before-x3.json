@@ -2024,7 +2024,7 @@
       ],
       "state": "completed",
       "ms": 6917,
-      "output": "On it, creating your new spending bot now.\n---\nDone, I've asked dusk bot to create the Ledger bot for you."
+      "output": "On it, creating your new spending bot now.\n---\nDone, I've asked Metal to create the Ledger bot for you."
     },
     {
       "model": "gemini-3.1-flash-lite",

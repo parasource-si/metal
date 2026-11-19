@@ -1,35 +1,13 @@
-import { readFileSync } from "node:fs";
-import { join } from "node:path";
-import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
+import { PRODUCT_NAME } from "../lib/brand";
 import { locales } from "./index";
 
-const ROOT = join(fileURLToPath(new URL(".", import.meta.url)), "..", "..");
-
-/** The two lines that send the person to System Settings, which lists the app by its bundle name, "Dusk Bot". */
-const SETTINGS_NAME = new Set(["composer.dictation.micFailed", "computer.problem.localMac"]);
-
-/** Words people read outside the locale packs: the OS prompt, the site's titles and the Linux installer's lines. */
-const SHOWN = [
-  "src/lib/user-presence.ts", "apps/site/public/app/index.html", "apps/site/public/dev/index.html",
-  "apps/site/public/landing/pages.js", "apps/site/public/landing/waitlist.js", "build/linux-after-install.sh", "build/linux-after-remove.sh",
-];
-// a path or the bundle itself (Dusk Bot.app, Logs/Dusk Bot), and comments, keep the bundle's name
-const NOT_SHOWN = /^\s*(?:#|\/\/|\/?\*)|Dusk Bot\.app|\/Dusk Bot\b/;
-
-describe("the name is dusk bot, lowercase", () => {
-  it("in every locale, except where it names the app as System Settings lists it", () => {
+describe("Metal product branding", () => {
+  it("uses the Metal name across locale packs", () => {
+    expect(PRODUCT_NAME).toBe("Metal");
     const offending = Object.entries(locales).flatMap(([code, pack]) => Object.entries(pack)
-      .filter(([key, value]) => /dusk bot/i.test(value ?? "") && /Dusk Bot|Dusk bot|dusk Bot/.test(value!) && !SETTINGS_NAME.has(key))
+      .filter(([, value]) => /(?<![\w@./-])dusk[ -]?bot(?!\w|\.[A-Za-z]|:| speech)/i.test(value ?? ""))
       .map(([key]) => `${code}:${key}`));
-    expect(offending).toEqual([]);
-  });
-
-  it("in the OS prompt, the site's titles and the installer's lines", () => {
-    const offending = SHOWN.flatMap((file) => readFileSync(join(ROOT, file), "utf8").split("\n")
-      .map((line, index) => [line, index + 1] as const)
-      .filter(([line]) => /Dusk Bot/.test(line) && !NOT_SHOWN.test(line))
-      .map(([, at]) => `${file}:${at}`));
     expect(offending).toEqual([]);
   });
 });

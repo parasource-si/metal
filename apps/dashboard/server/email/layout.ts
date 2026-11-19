@@ -240,7 +240,7 @@ ${darkCss}</style>
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" class="bg" bgcolor="${C.page}" style="background:${C.page}"><tr><td align="center" style="padding:0">
 <!--[if mso]><table role="presentation" width="560" cellpadding="0" cellspacing="0" border="0"><tr><td><![endif]-->
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:560px"><tr><td class="px" style="padding:36px 28px 44px">
-${T(`<tr><td class="ink" style="font-family:${SANS};font-size:15px;line-height:20px;font-weight:600;letter-spacing:-0.02em;color:${C.ink}">dusk bot</td><td align="right" class="muted" style="font-family:${MONO};font-size:12px;line-height:18px;color:${C.muted}">${esc(email.tag)}</td></tr>`, "margin:0 0 30px")}
+${T(`<tr><td class="ink" style="font-family:${SANS};font-size:15px;line-height:20px;font-weight:600;letter-spacing:-0.02em;color:${C.ink}">Metal</td><td align="right" class="muted" style="font-family:${MONO};font-size:12px;line-height:18px;color:${C.muted}">${esc(email.tag)}</td></tr>`, "margin:0 0 30px")}
 ${hero(email)}
 ${email.status ? statusPill(email.status) : ""}
 ${email.blocks.map(block => blockHtml(cfg, block, email.accent)).join("\n")}
@@ -255,6 +255,6 @@ ${cfg.address ? `<p style="margin:8px 0 0">${esc(cfg.address)}</p>` : ""}
 </td></tr></table>
 </body></html>`;
   const footer = [email.reason, ...links.map(([label, href]) => `${label}: ${href}`), ...(cfg.address ? [cfg.address] : [])].join("\n");
-  const text = [...(email.status ? [`[ ${email.status[0]} ]`] : []), ...email.blocks.map(blockText), "--", `dusk bot\n${footer}`].join("\n\n");
+  const text = [...(email.status ? [`[ ${email.status[0]} ]`] : []), ...email.blocks.map(blockText), "--", `Metal\n${footer}`].join("\n\n");
   return { subject: email.subject, html, text, ...(email.transactional ? { transactional: true } : {}) };
 }

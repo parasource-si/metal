@@ -4,7 +4,7 @@
   "title": "AI employees: useful jobs, real costs and limits",
   "nav": "ai employees",
   "h1": "ai employees you can give a clear job",
-  "description": "Choose useful jobs for AI employees, compare dusk bot, Sintra and Lindy costs, and learn what to hand to a bot and what still needs a person.",
+  "description": "Choose useful jobs for AI employees, compare Metal, Sintra and Lindy costs, and learn what to hand to a bot and what still needs a person.",
   "keyword": "ai employees",
   "keywords": [
     "ai employee",
@@ -150,15 +150,15 @@
   ],
   "sources": [
     {
-      "label": "dusk bot docs: bot jobs and models",
+      "label": "Metal docs: bot jobs and models",
       "url": "/docs/bots"
     },
     {
-      "label": "dusk bot docs: personal use, work licenses and billing",
+      "label": "Metal docs: personal use, work licenses and billing",
       "url": "/docs/account-and-billing"
     },
     {
-      "label": "dusk bot pricing",
+      "label": "Metal pricing",
       "url": "/pricing"
     },
     {
@@ -172,11 +172,11 @@
       "checked": "2026-11-12"
     },
     {
-      "label": "dusk bot docs: routines",
+      "label": "Metal docs: routines",
       "url": "/docs/routines"
     },
     {
-      "label": "dusk bot docs: app access and sending",
+      "label": "Metal docs: app access and sending",
       "url": "/docs/files-and-apps"
     }
   ],

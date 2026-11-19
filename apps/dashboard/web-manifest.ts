@@ -22,7 +22,7 @@ export function webManifest(iconDir: string, base: string): Plugin {
       this.emitFile({
         type: "asset",
         fileName: "manifest.webmanifest",
-        source: JSON.stringify({ id: base, name: "dusk bot", short_name: "dusk bot", start_url: base, scope: base, display: "standalone", background_color: "#ffffff", theme_color: "#ffffff", icons }, null, 2),
+        source: JSON.stringify({ id: base, name: "Metal", short_name: "Metal", start_url: base, scope: base, display: "standalone", background_color: "#ffffff", theme_color: "#ffffff", icons }, null, 2),
       });
     },
   };

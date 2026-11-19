@@ -1,4 +1,4 @@
-// What dusk bot's MCP plumbing sees of an MCP App. Only the innermost dusk bot component on a server's path (the gate,
+// What Metal's MCP plumbing sees of an MCP App. Only the innermost Metal component on a server's path (the gate,
 // the remote proxy or the Chat Completions client) observes it, so a call is reported once. A report never
 // delays or alters what is relayed to the engine. This module runs inside spawned proxies: it imports
 // nothing heavy.

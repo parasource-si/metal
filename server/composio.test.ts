@@ -807,7 +807,7 @@ describe.sequential("Composio Sessions", () => {
       expect((await prepareProjectSession("ak_test", { userId: "duskbot_mine" }, undefined, true)).userId).toBe("duskbot_mine");
     });
 
-    it("never takes over another dusk bot user, and finds the dashboard's default user", async () => {
+    it("never takes over another Metal user, and finds the dashboard's default user", async () => {
       connectedAccountsOverride = [{ id: "ca_github_mate", user_id: "duskbot_teammate", status: "ACTIVE", toolkit: { slug: "github" } }];
       expect((await prepareProjectSession("ak_test", { userId: "duskbot_mine" }, undefined, true)).userId).toBe("duskbot_mine");
       // Composio may leave user_id out of the list (the field is deprecated): "default" is then asked for by name

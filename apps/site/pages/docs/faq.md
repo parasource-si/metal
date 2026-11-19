@@ -8,7 +8,7 @@ art: s-books
 
 ## the basics
 
-### what is dusk bot?
+### what is Metal?
 
 an app where you keep a small team of ai bots and text them like teammates. each has a name, a job, a memory and, if you want, a computer of its own. [getting started](/docs/getting-started) takes about two minutes.
 
@@ -32,9 +32,9 @@ the one you already have: claude, chatgpt, gemini, grok and others. or an api ke
 
 ### do i need a paid ai plan?
 
-you need some ai: a subscription, an api key or a local model. dusk bot doesn't come with one, and ai usage is billed by your provider.
+you need some ai: a subscription, an api key or a local model. Metal doesn't come with one, and ai usage is billed by your provider.
 
-### does dusk bot see what i say to my bots?
+### does Metal see what i say to my bots?
 
 no. it goes straight from the machine your bots run on to your ai provider. see [privacy](/docs/privacy-and-data).
 
@@ -58,7 +58,7 @@ yes, between your computer, a cloud and a server, with their chats, memory and r
 
 ## the project
 
-### is dusk bot open source?
+### is Metal open source?
 
 no. it's source-available under the polyform noncommercial license: free for personal and other noncommercial use, and you can change it and pass it on for noncommercial purposes as long as the license and its required notice go with it. work use needs a separate license. see the [license](/license).
 

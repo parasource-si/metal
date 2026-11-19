@@ -18,7 +18,7 @@ describe("the Linux install folder", () => {
   it("is what the package scripts and checks expect", () => {
     for (const file of ["../build/linux-after-install.sh", "../build/linux-after-remove.sh", "../build/linux-dusk-browser.apparmor"]) {
       const text = readFileSync(new URL(file, import.meta.url), "utf8");
-      expect(text, file).not.toMatch(/\/opt\/Dusk Bot/);
+      expect(text, file).not.toMatch(/\/opt\/Metal/);
       expect(text, file).toContain("/opt/dusk-bot");
     }
   });

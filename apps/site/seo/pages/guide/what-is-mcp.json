@@ -4,7 +4,7 @@
   "title": "What is MCP? Connections for AI apps in plain English",
   "nav": "what is mcp",
   "h1": "what is mcp, and why would a bot need it?",
-  "description": "A plain-English explanation of Model Context Protocol, what an MCP server connects, and the trust checks to make before adding one in dusk bot.",
+  "description": "A plain-English explanation of Model Context Protocol, what an MCP server connects, and the trust checks to make before adding one in Metal.",
   "keyword": "what is mcp",
   "keywords": [
     "mcp for non developers",
@@ -48,7 +48,7 @@
       "md": "**start with the file or service you keep going back to.** name the task, then see whether your app already reaches that material. an existing connection may be enough.\n\nif you need a server, read its available tools. does it read the folder you need? does it offer the action your task calls for? choose by the job instead of adding every connection on the list.\n\nreading a folder and changing a workspace are different jobs. keep that distinction in your request."
     },
     {
-      "h": "the two routes in dusk bot",
+      "h": "the two routes in Metal",
       "md": "**for a supported app, start in connected apps.** dusk uses composio there. sign in and choose which bots may use the app, with read-only or read-and-write access.[^4]\n\nfor a trusted mcp server, open plugins, then mcp servers.[^4] that is a separate route with the server’s own access. connected-app controls do not automatically apply to it.\n\n[claude connectors](/guides/claude-connectors) explains how anthropic’s connections also differ from dusk’s sign-in."
     },
     {
@@ -95,7 +95,7 @@
       "checked": "2026-11-12"
     },
     {
-      "label": "dusk bot docs: files and apps",
+      "label": "Metal docs: files and apps",
       "url": "/docs/files-and-apps"
     }
   ],

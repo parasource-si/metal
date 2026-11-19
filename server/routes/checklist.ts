@@ -106,7 +106,7 @@ export function createChecklistRoutes(deps: ChecklistDeps) {
         return refuse(`pause needs minutes: a whole number from ${PAUSE_MIN_MINUTES} to ${PAUSE_MAX_MINUTES}.`);
       }
       deps.pause(ctx.threadId, now() + minutes * 60_000);
-      return void ctx.json(ctx.res, 200, { text: `Paused at ${progressLine(current)}. End your turn now with one short line saying you paused for the site's limit; dusk bot carries on with the ${counts(current).open} open item(s) in about ${minutes} minute${minutes === 1 ? "" : "s"}. Do not wait or retry in this turn.` });
+      return void ctx.json(ctx.res, 200, { text: `Paused at ${progressLine(current)}. End your turn now with one short line saying you paused for the site's limit; Metal carries on with the ${counts(current).open} open item(s) in about ${minutes} minute${minutes === 1 ? "" : "s"}. Do not wait or retry in this turn.` });
     }
 
     return refuse("action is one of start, done, skip, status, pause.");

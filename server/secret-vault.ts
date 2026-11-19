@@ -1,6 +1,6 @@
-// Values a person typed into a bot's card for a secret dusk bot does not keep itself.
+// Values a person typed into a bot's card for a secret Metal does not keep itself.
 // Security: a `ref` value stays in this process's memory, behind a one-use reference bound to the asking bot and
-// conversation that only dusk bot's own tools accept. A `file` value goes to an owner-only file in a private folder
+// conversation that only Metal's own tools accept. A `file` value goes to an owner-only file in a private folder
 // of that bot's own workspace (or the Local VM workspace its turn runs in); nothing that syncs, backs up, moves, links,
 // attaches, publishes or uploads workspace files carries that folder (inSecretFolder): only a move to the person's own
 // Cloud carries a card's file, sealed for that Cloud's server, into the same bot's folder there (vault-move.ts). Neither value is ever logged,
@@ -68,12 +68,12 @@ function refText(ref: string, reason: "unknown" | "used" | "expired" | "owner"):
     case "owner":
       return `${ref} was given to another bot or conversation. Ask the person here with request_credential.`;
     default:
-      return `${ref} is not a secretRef dusk bot holds: it is mistyped, or dusk bot restarted before it was used. Ask again with request_credential.`;
+      return `${ref} is not a secretRef Metal holds: it is mistyped, or Metal restarted before it was used. Ask again with request_credential.`;
   }
 }
 
 export const NOT_A_REF_TEXT =
-  "That is a secret file for your own commands, not a secretRef: it is deleted after 24 hours, and dusk bot's tools take only a secretRef. Ask again with request_credential and delivery ref.";
+  "That is a secret file for your own commands, not a secretRef: it is deleted after 24 hours, and Metal's tools take only a secretRef. Ask again with request_credential and delivery ref.";
 
 export class SecretVault {
   private readonly refs = new Map<string, RefEntry>();

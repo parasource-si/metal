@@ -4,8 +4,8 @@
   "title": "Salesforce AI assistant for deal reviews and lead checks",
   "nav": "salesforce",
   "h1": "a salesforce assistant that checks the record first",
-  "description": "Review Salesforce opportunities, leads and follow-up tasks with dusk bot. Copy bounded routines and see where read-only access stops record changes.",
-  "answer": "**find the deal with no next step on monday, before it slips at quarter end.** a dusk bot can search salesforce opportunities, leads and follow-up tasks with read-only access. get the owner, close date and missing next step together in chat. creating tasks or changing deals needs write access. start with the review; let the owner answer the gap.",
+  "description": "Review Salesforce opportunities, leads and follow-up tasks with Metal. Copy bounded routines and see where read-only access stops record changes.",
+  "answer": "**find the deal with no next step on monday, before it slips at quarter end.** a Metal bot can search salesforce opportunities, leads and follow-up tasks with read-only access. get the owner, close date and missing next step together in chat. creating tasks or changing deals needs write access. start with the review; let the owner answer the gap.",
   "tags": [
     "crm",
     "pipeline",
@@ -122,15 +122,15 @@
   ],
   "sources": [
     {
-      "label": "dusk bot docs: files and apps",
+      "label": "Metal docs: files and apps",
       "url": "/docs/files-and-apps"
     },
     {
-      "label": "dusk bot docs: routines",
+      "label": "Metal docs: routines",
       "url": "/docs/routines"
     },
     {
-      "label": "dusk bot docs: approval and sending",
+      "label": "Metal docs: approval and sending",
       "url": "/docs/computer"
     }
   ],

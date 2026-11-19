@@ -8,8 +8,8 @@ describe("friendlyError", () => {
     ["a stale lazy chunk", new TypeError("Failed to fetch dynamically imported module: http://127.0.0.1:5199/node_modules/.vite/deps/@hpke_core.js?v=1"), "The app updated. Reload to continue."],
     ["Safari's stale chunk", new TypeError("Importing a module script failed."), "The app updated. Reload to continue."],
     ["Firefox's stale chunk", "error loading dynamically imported module: https://app.dusk.bot/assets/x-1.js", "The app updated. Reload to continue."],
-    ["a fetch that never answered", new TypeError("Failed to fetch"), "Couldn't reach dusk bot. Check that it's running, then try again."],
-    ["Firefox's fetch failure", new TypeError("NetworkError when attempting to fetch resource."), "Couldn't reach dusk bot. Check that it's running, then try again."],
+    ["a fetch that never answered", new TypeError("Failed to fetch"), "Couldn't reach Metal. Check that it's running, then try again."],
+    ["Firefox's fetch failure", new TypeError("NetworkError when attempting to fetch resource."), "Couldn't reach Metal. Check that it's running, then try again."],
     ["a refused connection", new Error("connect ECONNREFUSED 127.0.0.1:8799"), "The connection dropped. Try again."],
     ["a timeout", new DOMException("signal timed out", "TimeoutError"), "That took too long. Try again."],
     ["an abort", new DOMException("The operation was aborted.", "AbortError"), "That took too long. Try again."],
@@ -46,7 +46,7 @@ describe("friendlyError", () => {
     expect(friendlyError(new TypeError("x.y is not a function"), "Could not save the skill.")).toBe("Could not save the skill.");
     expect(friendlyError(null, "Could not save the skill.")).toBe("Could not save the skill.");
     // a kind with its own advice beats the generic stand-in
-    expect(friendlyError(new TypeError("Failed to fetch"), "Could not save the skill.")).toBe("Couldn't reach dusk bot. Check that it's running, then try again.");
+    expect(friendlyError(new TypeError("Failed to fetch"), "Could not save the skill.")).toBe("Couldn't reach Metal. Check that it's running, then try again.");
   });
 
   it("never lets an address, a code file or a stack through", () => {

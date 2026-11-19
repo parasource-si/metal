@@ -17,11 +17,11 @@ the channel composer.
 Create two fixture bots with `new-bot`, then:
 
 ```sh
-pnpm control:dusk new-channel --name Review --members BOT_A_ID,BOT_B_ID --url http://127.0.0.1:PORT
+pnpm control:metal new-channel --name Review --members BOT_A_ID,BOT_B_ID --url http://127.0.0.1:PORT
 # Copy channel.id from the JSON above as CHANNEL_ID.
-pnpm control:dusk send-channel --channel CHANNEL_ID --text "Reply once" --url http://127.0.0.1:PORT
-pnpm control:dusk wait --channel CHANNEL_ID --timeout 60 --url http://127.0.0.1:PORT
-pnpm control:dusk messages --channel CHANNEL_ID --limit 20 --url http://127.0.0.1:PORT
+pnpm control:metal send-channel --channel CHANNEL_ID --text "Reply once" --url http://127.0.0.1:PORT
+pnpm control:metal wait --channel CHANNEL_ID --timeout 60 --url http://127.0.0.1:PORT
+pnpm control:metal messages --channel CHANNEL_ID --limit 20 --url http://127.0.0.1:PORT
 ```
 
 Capture the returned channel ID from `new-channel`. The wait result must be

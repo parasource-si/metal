@@ -300,7 +300,7 @@ describe("connected-apps broker boundaries", () => {
       .toEqual({ toolkit: "gmail", alias: "third", callback_url: `https://dusk.bot/connectors?connect=${state}` });
   });
 
-  it("sends a sign-in back only to dusk bot's own apps page", () => {
+  it("sends a sign-in back only to the configured account apps page", () => {
     const state = "a".repeat(40);
     expect(brokerCallback(`https://dusk.bot/connectors?connect=${state}`)).toBe(`https://dusk.bot/connectors?connect=${state}`);
     expect(brokerCallback(`https://preview.dusk.bot/account/connectors?connect=${state}`)).toBe(`https://preview.dusk.bot/account/connectors?connect=${state}`);

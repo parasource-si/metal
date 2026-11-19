@@ -35,7 +35,7 @@ export function gatedLocalComputer(
     args: ["--experimental-strip-types", SPAWNED_PROXIES.localComputer],
     env: {
       ...connection.env,
-      // Packaged, execPath is Electron: without this the MCP client relaunches dusk bot instead of the headless gate.
+      // Packaged, execPath is Electron: without this the MCP client relaunches Metal instead of the headless gate.
       ELECTRON_RUN_AS_NODE: "1",
       DUSK_CUA_COMMAND: connection.command,
       DUSK_CUA_ARGS: JSON.stringify(connection.args),

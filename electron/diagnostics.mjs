@@ -273,7 +273,7 @@ export function buildDiagnosticsReport({
   now = new Date().toISOString(),
 } = {}) {
   const lines = [];
-  lines.push("dusk bot diagnostics");
+  lines.push("Metal diagnostics");
   lines.push(`Generated: ${now}`);
   lines.push("");
   lines.push("## App");

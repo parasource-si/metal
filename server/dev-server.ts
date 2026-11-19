@@ -7,7 +7,7 @@ import { fileURLToPath } from "node:url";
 import { DESKTOP_COMPUTER_GRANT, desktopComputer } from "./desktop-computer.ts";
 
 process.env.DUSK_DEV_TRUST_LOCAL_BROWSER ??= "1";
-// one-click sign-ins to dusk bot's own OAuth apps, with the clients a release would bake in (names only in the log)
+// one-click sign-ins to configured OAuth apps, with the clients a release would bake in (names only in the log)
 const { loadDevNativeClients } = await import("./dev-native-clients.ts");
 const nativeClients = loadDevNativeClients();
 if (nativeClients) console.log(`[dev] ${nativeClients} own OAuth client values read from the secrets file`);

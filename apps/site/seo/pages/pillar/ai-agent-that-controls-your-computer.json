@@ -4,7 +4,7 @@
   "title": "An AI agent that uses a computer: how to start",
   "nav": "a bot's computer",
   "h1": "an ai agent that controls a computer for you",
-  "description": "Give a dusk bot its own desktop, watch it work and take the mouse when needed. A practical first task, platform limits and the approval settings explained.",
+  "description": "Give a Metal bot its own desktop, watch it work and take the mouse when needed. A practical first task, platform limits and the approval settings explained.",
   "keyword": "ai that can control my computer",
   "keywords": [
     "ai agent to control my pc",
@@ -13,7 +13,7 @@
     "computer use ai agent",
     "ai agent for windows"
   ],
-  "answer": "**hand over the clicking and keep the mouse within reach.** a dusk bot can work through its own browser and desktop on cloud or your server. open screen to watch, take control for a step that needs you, then hand it back. on a mac, you can choose your own screen too. try a public-page lookup first.",
+  "answer": "**hand over the clicking and keep the mouse within reach.** a Metal bot can work through its own browser and desktop on cloud or your server. open screen to watch, take control for a step that needs you, then hand it back. on a mac, you can choose your own screen too. try a public-page lookup first.",
   "updated": "2026-11-12",
   "review": {
     "status": "approved",
@@ -132,27 +132,27 @@
   ],
   "sources": [
     {
-      "label": "dusk bot docs: desktop control and approval levels",
+      "label": "Metal docs: desktop control and approval levels",
       "url": "/docs/computer"
     },
     {
-      "label": "dusk bot docs: supported operating systems and ai sign-in",
+      "label": "Metal docs: supported operating systems and ai sign-in",
       "url": "/docs/getting-started"
     },
     {
-      "label": "dusk bot docs: creating and steering a bot",
+      "label": "Metal docs: creating and steering a bot",
       "url": "/docs/bots"
     },
     {
-      "label": "dusk bot docs: attached files and connected apps",
+      "label": "Metal docs: attached files and connected apps",
       "url": "/docs/files-and-apps"
     },
     {
-      "label": "dusk bot docs: cloud computers",
+      "label": "Metal docs: cloud computers",
       "url": "/docs/dusk-cloud"
     },
     {
-      "label": "dusk bot docs: scheduled jobs",
+      "label": "Metal docs: scheduled jobs",
       "url": "/docs/routines"
     }
   ],

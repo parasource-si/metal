@@ -609,7 +609,7 @@ export function openResult({ id, priv, pub, vpsPub, sealed }) {
     && (value.mode === "relay" || (typeof value.origin === "string" && /^https:\/\/[a-z0-9.-]+$/.test(value.origin)
       // tailscale and cloudflare hold their own certificates and change their keys: those addresses alone go unpinned
       && (typeof value.spki === "string" || (value.spki === null && UNPINNED_VIAS.has(value.via)))));
-  if (!ok) throw new Error("The server's answer was not one this app understands. Update dusk bot and try again.");
+  if (!ok) throw new Error("The server's answer was not one this app understands. Update Metal and try again.");
   return { ...value, name: typeof value.name === "string" && value.name.trim() ? value.name.trim().slice(0, 60) : "My server" };
 }
 

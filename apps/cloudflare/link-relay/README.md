@@ -1,4 +1,4 @@
-# dusk bot link relay (Cloudflare Workers + Durable Objects)
+# Metal link relay (Cloudflare Workers + Durable Objects)
 
 Carries the bytes between a person's own server and their app when neither direct path works, so the link service
 on our own box (`apps/link-service`, link.dusk.bot) is no longer the data path. Pairing, setup status and install

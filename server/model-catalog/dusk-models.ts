@@ -239,7 +239,7 @@ export class DuskModelCatalog {
     }
     try {
       const response = await (this.options.fetch ?? fetch)(url, {
-        headers: { accept: "application/json", "user-agent": "dusk bot" },
+        headers: { accept: "application/json", "user-agent": "Metal" },
         // Only the address above, never one it redirects to.
         redirect: "error",
         signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),

@@ -145,7 +145,7 @@ function fixture(options: Options = {}) {
   const card = () => chat.at(-1)?.card;
   const respond = (behavior: "allow" | "deny") => cards.respond({ botId: BOT, threadId: THREAD, requestId: card()!.requestId!, behavior }, true);
   const later = (ms: number) => { clock += ms; };
-  /** A fresh request service over the same chat, as after dusk bot restarts. */
+  /** A fresh request service over the same chat, as after Metal restarts. */
   const restart = () => { cards = service(); };
   return { cfg, config, mcpOAuth, deps, sender, call, post, stored, ref, listedOn, decided, lines, dataDir, setBusy, chat, card, respond, answers, decisions, later, signIns, restart };
 }
@@ -834,7 +834,7 @@ describe("internal mcp_server route, below Full access", () => {
     for (const full of [true, false]) {
       const { post, signIns, lines, decided } = fixture({ full, servers: { linear } });
       expect(await post({ action: "sign_in", name: "linear" })).toEqual({ status: 202, body: {
-        text: "A Sign in card for linear is now visible to the person. End this turn and wait; dusk bot resumes you when they finish.",
+        text: "A Sign in card for linear is now visible to the person. End this turn and wait; Metal resumes you when they finish.",
       } });
       expect(signIns).toEqual([{ name: "linear", url: linear.url }]);
       expect(lines).toEqual(["Asked to sign in to MCP server linear"]);
@@ -878,7 +878,7 @@ describe("internal mcp_server route, below Full access", () => {
   });
 });
 
-describe("a card answered after dusk bot restarts", () => {
+describe("a card answered after Metal restarts", () => {
   it("Turn on applies and resumes the bot with the test result", async () => {
     const probe = probeWith({ ok: true, tools: [{ name: "list_issues" }] });
     const { post, respond, restart, stored, card, answers } = fixture({ full: false, servers: { linear: { ...linear, enabled: false } } });
@@ -922,8 +922,8 @@ describe("a card answered after dusk bot restarts", () => {
     await respond("allow");
     expect(stored("notes")).toMatchObject({ args: ["-y", "notes-mcp"], env: { NOTES_TOKEN: "saved-token" } });
     expect(probe).not.toHaveBeenCalled();
-    expect(card()).toMatchObject({ expired: true, held: "dusk bot restarted, so this request expired.", mcpRequest: { result: { state: "expired" } } });
-    expect(answers[0]).toContain("dusk bot restarted, so this request expired. Ask again if you still need it.");
+    expect(card()).toMatchObject({ expired: true, held: "Metal restarted, so this request expired.", mcpRequest: { result: { state: "expired" } } });
+    expect(answers[0]).toContain("Metal restarted, so this request expired. Ask again if you still need it.");
     for (const sent of [fresh, "sk-live-9", "fresh-token", "saved-token"]) expect(JSON.stringify(chat), sent).not.toContain(sent);
   });
 

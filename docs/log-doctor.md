@@ -16,7 +16,7 @@ node scripts/log-doctor.mjs --remote --json > /tmp/groups.json
 | Source | What |
 |---|---|
 | this computer | `server.log`, `desktop-crashes.log` and the trail (`trail*.jsonl`) in the app's logs folder (`--dir` to point elsewhere) |
-| `--oracle` | `journalctl` for `duskbot`, `duskbot-link`, `omb-docker-gate`, `dusk-link-node` (`ssh oracle`) |
+| `--oracle` | `journalctl` for `metal`, `duskbot-link`, `omb-docker-gate`, `dusk-link-node` (`ssh oracle`) |
 | `--contabo` | prozessor's logs for `dusk-account`, `dusk-account-prod`, `omb-link`, `dusk-preview`, `dusk-landing`, nginx `error.log`, and nginx's 5xx answers (`ssh contabo`) |
 
 From the trail it keeps only what went wrong: answers of 400 and up, requests slower than 3 s (except streams and long

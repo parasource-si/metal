@@ -1,4 +1,4 @@
-// Cline owns its saved provider/model configuration; no static dusk bot catalog switches providers.
+// Cline owns its saved provider/model configuration; no static Metal catalog switches providers.
 import { mkdtempSync, readFileSync, renameSync, rmSync, statSync, writeFileSync } from "node:fs";
 import { homedir, tmpdir } from "node:os";
 import { join } from "node:path";

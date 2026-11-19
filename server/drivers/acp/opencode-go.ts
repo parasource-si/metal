@@ -252,7 +252,7 @@ function runGit(directory: string, args: string[]): Promise<void> {
   const env = Object.fromEntries(Object.entries(process.env).filter(([key]) => !key.startsWith("GIT_")));
   return new Promise((resolveRun, rejectRun) => {
     execFile("git", [
-      "-c", "user.name=dusk bot", "-c", "user.email=model-discovery@dusk.invalid",
+      "-c", "user.name=Metal", "-c", "user.email=model-discovery@dusk.invalid",
       "-c", "commit.gpgsign=false", "-c", `core.hooksPath=${join(directory, ".git", "no-hooks")}`,
       ...args,
     ], { cwd: directory, env: { ...env, GIT_TERMINAL_PROMPT: "0" }, timeout: 10_000, windowsHide: true }, (error) => {
@@ -274,7 +274,7 @@ function discoveryDirectory(): Promise<string> {
     if (!existsSync(marker)) {
       try {
         await runGit(directory, ["init", "-q"]);
-        await runGit(directory, ["commit", "-q", "--allow-empty", "--no-verify", "-m", "dusk bot model discovery"]);
+        await runGit(directory, ["commit", "-q", "--allow-empty", "--no-verify", "-m", "Metal model discovery"]);
         writeFileSync(marker, "OpenCode files this folder's sessions under its own project.\n");
       } catch {}
     }
@@ -667,7 +667,7 @@ export function duskOwnsWorkingFolder(cwd: string): boolean {
     withinFolder(cwd, root) && resolvePath(cwd) !== resolvePath(root));
 }
 
-/** dusk bot folders an OpenCode bot may use without an approval card: attachments and its own shared folder.
+/** Metal folders an OpenCode bot may use without an approval card: attachments and its own shared folder.
  * Never one at or above the working folder: OpenCode reads opencode.json, .opencode/ and AGENTS.md from
  * every folder above it, so a planted file would configure later conversations. Known risk: the folder
  * rule covers writes too, so a bot can change or delete files in the attachments folder. */

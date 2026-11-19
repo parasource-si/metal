@@ -1,8 +1,11 @@
-# Dusk's MongoDB
+# MongoDB
 
-New server-side Dusk data goes to Dusk's own MongoDB, reached through
-`MONGODB_URI` (database `MONGODB_DB`, normally `dusk`). Do not add new JSON
-state files for operator data; add a collection instead.
+Metal uses the MongoDB instance configured through `MONGODB_URI` and
+`MONGODB_DB` for hosted operator data. Add a collection for new operator data.
+
+## Upstream Dusk deployment
+
+The hostnames, databases and services below describe the original Dusk deployment.
 
 - Where: the Contabo VPS (169.58.211.160), a dedicated `mongod-dusk` systemd
   service on `127.0.0.1:29018` (loopback only, auth on). It is separate from
@@ -54,7 +57,7 @@ claim a success). Tests and local fixtures keep JSON files in the data folder.
 | `sessions` | web and app sessions (token hashes only) | `id` | `tokenHash` unique, `accountId`, `expiresAt` |
 | `workspaces`, `workspace_accounts` | linked workspaces and their latest report | `id` | `ownerAccountId`, `publicKey` |
 | `billing_*` | customers, checkouts, subscriptions, licenses, invoices, credits, webhook events, feedback, closures, refunds, provider cancels, ledger (immutable money and subscription moments) | `id` (customers: `accountId`) | `accountId`; `providerPaymentId` unique; `(reason, ref)` unique; `providerSubscriptionId` unique when set; ledger `key` unique, `(accountId, at)`, `at` |
-| `clouds` | dusk cloud records with the managed lifecycle | `id` | `accountId`, `status` |
+| `clouds` | Dusk Cloud records with the managed lifecycle | `id` | `accountId`, `status` |
 | `pages`, `slack_edge_regs`, `slack_edge_events` | published pages, Slack wake edge | `id` / `cloudId` | |
 | `stores` | each module's small fields (queues, counters, provider start ledger, sweep) | module name | |
 | `managed_audit` | append-only lifecycle audit, ids and codes only | | `(cloudId, at)`, `at` |

@@ -1,4 +1,4 @@
-# dusk bot mobile
+# Metal mobile
 
 The iOS and Android app: Capacitor around the React app, with the phone layer in `src/mobile/`.
 

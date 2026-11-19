@@ -75,7 +75,7 @@ function makeDerived(overrides: Partial<ReturnType<typeof useBotSettingsDerived>
     browserAllowed: true,
     browserEnabled: false,
     browserSelectable: false,
-    browserDisabledReason: "The built-in browser needs the dusk bot desktop app",
+    browserDisabledReason: "The built-in browser needs the Metal desktop app",
     sectionName: "general",
     currentChief: undefined,
     botRoutines: [],

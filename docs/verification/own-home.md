@@ -10,8 +10,8 @@ node --test electron/own-home-main.node-test.mjs electron/one-home-main.node-tes
 ```
 
 `scripts/testing/own-home-fixture.ts` starts this computer's server as the
-desktop app starts it, and servers of the person's own (`duskbot serve`,
-nothing of dusk cloud), each paired as a pairing link pairs it, with main's
+desktop app starts it, and servers of the person's own (`metal serve`,
+nothing of Dusk Cloud), each paired as a pairing link pairs it, with main's
 own wiring for the move (`electron/own-home-main.mjs`) between them. Its
 requests carry the pairing's session as the window's would. Temp homes and a
 synthetic Claude CLI; no network.
@@ -39,8 +39,8 @@ under way, Make … my home is refused on My Cloud, a team's Cloud, a server not
 signed in or too old; every pass goes over the window's sign-in to that server
 only and never signs it out; while a server of the
 person's own is chosen no move to My Cloud starts; the frozen screen names the
-server and never asks for a dusk cloud sign-in; and connected apps through
-dusk bot's service stay on this computer (a final, plain reason) when the server
+server and never asks for a Dusk Cloud sign-in; and connected apps through
+Metal's service stay on this computer (a final, plain reason) when the server
 has no such service, so the move's check still passes.
 
 ## Bots in two places, noticed

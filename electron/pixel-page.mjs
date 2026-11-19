@@ -1,4 +1,4 @@
-// the page a browser or a window shows when it hands someone back to the dusk bot app: a pixel sky, a bot on a speech
+// the page a browser or a window shows when it hands someone back to the Metal app: a pixel sky, a bot on a speech
 // card. no script, no fetched asset (callers use default-src 'none' with inline styles), so all art is inline svg.
 // apps/link-service/src/handoff-page.mjs is a byte-identical copy: that service deploys alone, with no other files.
 

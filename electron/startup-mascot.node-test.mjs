@@ -9,9 +9,9 @@ test("the splash is the crew on their line, one empty spot per step, in the them
   assert.deepEqual(CREW, ["goo", "kit", "pip", "mochi", "boxo"]);
   assert.equal(CREW.length, STEPS.length, "one mascot per startup step");
   assert.match(light, /<canvas class="scene" width="480" height="300" aria-hidden="true">/);
-  assert.match(light, /<p class="brand">dusk bot<\/p>/);
-  assert.match(light, /role="status">Opening dusk bot</);
-  assert.match(light, /role="progressbar" aria-valuenow="0"[^>]*aria-valuetext="0 of 5 here" aria-label="Opening dusk bot"><b class="here">0 of 5<\/b> here/);
+  assert.match(light, /<p class="brand">Metal<\/p>/);
+  assert.match(light, /role="status">Opening Metal</);
+  assert.match(light, /role="progressbar" aria-valuenow="0"[^>]*aria-valuetext="0 of 5 here" aria-label="Opening Metal"><b class="here">0 of 5<\/b> here/);
   assert.match(light, /"name":"kit","color":"#1b1b1f","eyeColor":"#ffffff"/, "kit in ink on light");
   assert.match(dark, /"name":"kit","color":"#f2f3f5","eyeColor":"#1b1b1f"/);
   assert.match(light, /"name":"goo","color":"#f75e51"/);

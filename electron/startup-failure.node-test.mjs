@@ -3,7 +3,7 @@ import test from "node:test";
 import { STARTUP_TRY_AGAIN, startupFailureWords } from "./startup-screen.mjs";
 
 test("the startup card says a plain sentence of ours as it is", () => {
-  assert.equal(startupFailureWords(new Error("Another copy of dusk bot is already open.")), "Another copy of dusk bot is already open.");
+  assert.equal(startupFailureWords(new Error("Another copy of Metal is already open.")), "Another copy of Metal is already open.");
 });
 
 test("the startup card says one line of what to do for a raw error, which stays in the log", () => {

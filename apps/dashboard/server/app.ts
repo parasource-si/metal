@@ -264,7 +264,7 @@ export function createDashboardApp(options: DashboardAppOptions) {
     if (!to) return;
     const message = render(emailCfg, { subject, preheader: text.slice(0, 120), tag: "dusk cloud", say: "a note about your cloud",
       accent: "sky", blocks: [{ t: "h1", text: subject.toLowerCase() }, { t: "p", text }],
-      reason: "you got this because you have a dusk bot account. it's about your account, so it can't be turned off." });
+      reason: "you got this because you have a Metal account. it's about your account, so it can't be turned off." });
     void mailer.send({ to, ...message }).catch(() => console.warn("clouds: a notice email failed"));
   };
   const ownIncidents = options.incidents ? null : createIncidents({ env: options.admin?.environment ?? "development", store: memoryIncidentStore(), to: () => [], mailers: [],
@@ -971,7 +971,7 @@ export function createDashboardApp(options: DashboardAppOptions) {
         workspaces: state.workspaces.filter(ws => ws.ownerAccountId === owner.id).map(ws => ({ ...summary(ws), report: ws.report })),
         ...billing.exportAccount(owner.id) };
       res.writeHead(200, { "content-type": "application/json; charset=utf-8", "cache-control": "no-store",
-        "content-disposition": `attachment; filename="dusk-bot-account-${new Date(now()).toISOString().slice(0, 10)}.json"` });
+        "content-disposition": `attachment; filename="metal-account-${new Date(now()).toISOString().slice(0, 10)}.json"` });
       res.end(JSON.stringify(data, null, 2));
       return;
     }
@@ -1050,7 +1050,7 @@ export function createDashboardApp(options: DashboardAppOptions) {
           if (queue.filter(item => item.kind.startsWith("app.") && (item.status === "queued" || item.status === "sent")).length >= 5) fail(429, "rate_limited", "Too many app sign-ins at once. Try again in a minute.");
           if (now() - (seen.get(ws.id) ?? -Infinity) > APP_COMMAND_ONLINE_MS) fail(409, "workspace_offline", ws.kind === "vps"
             ? "This cloud is asleep or not answering. Wake it from clouds, then try again."
-            : "Your computer is asleep. Connect from the dusk bot app on it, or use dusk cloud.");
+            : "Your computer is asleep. Connect from the Metal app on it, or use dusk cloud.");
         }
         const command: StoredCommand = { id: `cmd_${random(16)}`, workspaceId: ws.id, kind, target, issuedAt: now(), expiresAt: now() + COMMAND_TTL_MS,
           purgeAt: now() + 2 * COMMAND_TTL_MS, status: "queued", message: null, doneAt: null };

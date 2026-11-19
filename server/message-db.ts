@@ -112,7 +112,7 @@ export function describeMissingFts5(error: unknown): Error | null {
   const message = error instanceof Error ? error.message : String(error);
   if (!/no such module:\s*fts5/i.test(message)) return null;
   return new Error(
-    `dusk bot needs SQLite with FTS5, which is built into Node 24 and newer (and into the app). ` +
+    `Metal needs SQLite with FTS5, which is built into Node 24 and newer (and into the app). ` +
     `This Node (${process.version}) has none: install Node 24 or newer. (${message})`,
   );
 }

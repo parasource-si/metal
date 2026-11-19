@@ -45,13 +45,13 @@ export function incidentEmail(cfg: EmailConfig, input: { kind: IncidentMailKind;
         { t: "p", small: true, text: "this is the last email about this one." },
         { t: "button", label: "open admin ops", href: input.panelUrl.replace(/\/admin\/health$/, "/admin/ops") },
       ],
-      reason: "you got this because your address is in DUSK_ALERT_EMAILS (or DUSK_ADMIN_EMAILS) for this dusk bot service.",
+      reason: "you got this because your address is in DUSK_ALERT_EMAILS (or DUSK_ADMIN_EMAILS) for this Metal service.",
     });
   }
   const first = incidents[0]!;
   const subject = input.test ? `${prefix}test alert: this is what a problem looks like`
     : kind === "new" ? `${prefix}something's wrong: ${first.name}${first.route ? ` on ${first.route}` : ` (${SOURCE_LABEL[first.source] ?? first.source})`}${incidents.length > 1 ? ` and ${incidents.length - 1} more` : ""}`
-    : `${prefix}${plural(incidents.length, "problem")} not emailed yet on dusk bot`;
+    : `${prefix}${plural(incidents.length, "problem")} not emailed yet on Metal`;
   const heading = input.test ? "test alert" : kind === "new" ? "something's wrong" : "problems you haven't heard about";
   const intro = input.test ? `this is a test from the ${input.env} account service. a real one looks just like this.`
     : kind === "new" ? `${incidents.length === 1 ? "a new problem showed up" : `${incidents.length} new problems showed up`} on ${input.env}. you won't get another email about ${incidents.length === 1 ? "it" : "them"}: repeats only add to the count on the health page, until ${incidents.length === 1 ? "it stays" : "they stay"} quiet for 7 days.`
@@ -71,6 +71,6 @@ export function incidentEmail(cfg: EmailConfig, input: { kind: IncidentMailKind;
       { t: "button", label: "open admin health", href: input.panelUrl },
       { t: "p", small: true, text: "to mute one problem, post {\"hours\": 24} to /v1/admin/incidents/<id>/mute while signed in as an admin. DUSK_ALERTS=off stops these emails." },
     ],
-    reason: "you got this because your address is in DUSK_ALERT_EMAILS (or DUSK_ADMIN_EMAILS) for this dusk bot service.",
+    reason: "you got this because your address is in DUSK_ALERT_EMAILS (or DUSK_ADMIN_EMAILS) for this Metal service.",
   });
 }

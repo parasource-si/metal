@@ -15,7 +15,7 @@ import { keepFirefoxProfileBeforeRemove, keepInstalledAppsBeforeRemove } from ".
 
 export type LocalVmUpdateNeed = "image" | "recreate";
 
-/** A desktop dusk bot made, or a durable folder left by one, that this release cannot run without updating. */
+/** A desktop Metal made, or a durable folder left by one, that this release cannot run without updating. */
 export function localVmUpdateNeed(status: ContainerComputerStatus, workspaceExists: boolean): LocalVmUpdateNeed | null {
   if (!status.runtime || !status.daemonUp) return null;
   if (status.container === "missing") return workspaceExists && !status.image && status.create_supported ? "image" : null;
@@ -23,7 +23,7 @@ export function localVmUpdateNeed(status: ContainerComputerStatus, workspaceExis
   return status.image ? "recreate" : "image";
 }
 
-/** A VPS desktop dusk bot made whose image this release no longer runs, whether or not it updates by itself. */
+/** A VPS desktop Metal made whose image this release no longer runs, whether or not it updates by itself. */
 export function vpsDesktopOutdated(status: {
   configured?: boolean; daemonUp?: boolean; container?: string; managed?: boolean; imageMatches?: boolean;
 } | null | undefined): boolean {

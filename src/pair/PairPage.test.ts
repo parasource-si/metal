@@ -30,7 +30,7 @@ it("opening My Cloud from the app needs no click and no code to type", async () 
   vi.stubGlobal("window", { duskDesktop: { workspaces: {} } });
   f.pair.mockResolvedValue({ ok: true });
   const html = render(code);
-  expect(html).toContain("Connecting to this dusk bot…");
+  expect(html).toContain("Connecting to this Metal…");
   expect(html.toLowerCase()).not.toContain("pairing code"); expect(html).not.toContain("<form");
   f.effects[0](); await flush();
   expect(f.pair).toHaveBeenCalledExactlyOnceWith(expect.objectContaining({ code }));
@@ -53,7 +53,7 @@ it("a browser keeps the code in the form for the person to confirm", () => {
 
 it("My Cloud says where its connection starts, never 'the code shown on the server'", () => {
   const cloud = pairIntro({ mode: "code", sent: false, email: "", cloudHome: true });
-  expect(cloud).toContain(`choose ${en["cloudHome.connect"]} in the dusk bot app`);
+  expect(cloud).toContain(`choose ${en["cloudHome.connect"]} in the Metal app`);
   expect(cloud).toContain(`Settings → ${en["settings.section.cloudAccount"]}`);
   expect(cloud).toContain("on your plan page");
   expect(cloud).not.toContain("shown on the server");
@@ -66,7 +66,7 @@ it("a team's Cloud is called by the team's name, a person's own Cloud My Cloud",
   expect(pairTitle(descriptor({ cloudHome: true, cloudTeam: true }), "code")).toBe("Acme Labs");
   expect(pairTitle(descriptor({ cloudHome: true }), "code")).toBe("My cloud");
   expect(pairTitle(descriptor({}), "email")).toBe("Sign in to Acme Labs");
-  expect(pairTitle(null, "code")).toBe("Connect to this dusk bot");
+  expect(pairTitle(null, "code")).toBe("Connect to this Metal");
 });
 
 it("in an iPhone tab, says to add the page to the Home Screen before entering the code, since that copy keeps its own sign-in", () => {

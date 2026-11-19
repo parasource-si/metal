@@ -19,7 +19,7 @@ describe("requireUserPresence", () => {
   it("falls back to a confirm on an older desktop app without the check", async () => {
     const confirm = vi.fn(async () => true);
     expect(await requireUserPresence("show a code", { confirm })).toBe(true);
-    expect(confirm).toHaveBeenCalledWith("dusk bot wants to show a code. Continue?");
+    expect(confirm).toHaveBeenCalledWith("Metal wants to show a code. Continue?");
     const pageConfirm = vi.fn(() => false);
     expect(await requireUserPresence("show a code", {}, pageConfirm)).toBe(false);
     expect(pageConfirm).toHaveBeenCalledOnce();

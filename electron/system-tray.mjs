@@ -20,11 +20,11 @@ export function createSystemTray({ Tray, Menu, nativeImage, resourcesDir, platfo
     win.focus();
     return true;
   };
-  tray.setToolTip("dusk bot");
+  tray.setToolTip("Metal");
   tray.setContextMenu(Menu.buildFromTemplate([
-    { label: "Open dusk bot", click: show },
+    { label: "Open Metal", click: show },
     { type: "separator" },
-    { label: "Quit dusk bot", click: onQuit },
+    { label: "Quit Metal", click: onQuit },
   ]));
   tray.on("click", show);
   tray.on("double-click", show);

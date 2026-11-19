@@ -22,7 +22,7 @@ const CATALOG_PAGE = 30;
 
 // the app opens on this app's page in whichever place it has open, so the toast names the workspace it is meant for
 const openConnect = (app: { id: string; label: string }, ws?: { name: string } | null) =>
-  openApp(appLink.connect(app.id), `opening ${app.label} in dusk bot. connect it there${ws ? ` with ${ws.name} open` : ""}.`);
+  openApp(appLink.connect(app.id), `opening ${app.label} in Metal. connect it there${ws ? ` with ${ws.name} open` : ""}.`);
 
 function ConnectAction({ app, flow, onConnect }: { app: DashApp; flow: AppFlow | undefined; onConnect(): void }) {
   if (flow?.phase === "waking") return <Button size="sm" disabled aria-label={`waking ${flow.workspaceName} to connect ${app.label}`}>waking</Button>;
@@ -91,7 +91,7 @@ function Row({ row, flow, onAuth, menu }: { row: ConnectorRow; flow: AppFlow | u
   );
 }
 
-/** every app dusk bot can connect, searchable and by category */
+/** every app Metal can connect, searchable and by category */
 function Catalog({ apps, connected, query, flowFor, onConnect }: { apps: DashApp[] | null; connected: string[]; query: string; onConnect(app: DashApp): void; flowFor(app: DashApp): AppFlow | undefined }) {
   const [category, setCategory] = useState<Category | null>(null);
   const pill = usePill();
@@ -217,7 +217,7 @@ export function ConnectorsPage() {
   return (
     <div className="min-w-0">
       <ConnectPill flows={flows} onDismiss={dismiss} />
-      <PageHeader title="apps" sub={workspace ? `connect an app and your bots on ${workspace.name} can use it.` : "connect an app in the dusk bot app and your bots can use it."} />
+      <PageHeader title="apps" sub={workspace ? `connect an app and your bots on ${workspace.name} can use it.` : "connect an app in the Metal app and your bots can use it."} />
       {workspace && reach(workspace).away && <p role="status" className="-mt-4 mb-6 text-14 text-ink-3">{reach(workspace).away}</p>}
 
       <div className="flex flex-wrap items-center justify-end gap-3">

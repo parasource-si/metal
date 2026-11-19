@@ -18,7 +18,7 @@ result picked by a marker in its prompt (`FAKE_CLAUDE_MARKER_REPLIES`).
 
 Expected:
 
-- Dusk, hidden from the sidebar for the whole scenario, has no routine until
+- Metal, hidden from the sidebar for the whole scenario, has no routine until
   the one suggestion card in its chat (`setupSuggestion: { kind: "watch" }`) is
   answered Turn it on through `POST /api/watch/suggestion`. Then it has the
   one routine, "Keep an eye on my day", daily at 08:00, with checks,
@@ -32,13 +32,13 @@ Expected:
   defused. It runs at `--permission-mode default`, and its system prompt has no
   recent work. Only Gmail and Calendar reads reach the service, and none names
   an account.
-- The 10-minute reminder and the prep card appear in Dusk's chat, and the
+- The 10-minute reminder and the prep card appear in Metal's chat, and the
   brief lands there as a plain bot message (no widget): the intro, "Quick
   heads-up, one thing needs you:" with Ada's email linked to its Gmail thread,
   and today's meeting line. Its notification names that chat. The brief is
   edited in place, not posted twice.
 - The same mail again is nothing new: there is no second turn.
-- A reply to the brief reaches Dusk's turn with the brief quoted as
+- A reply to the brief reaches Metal's turn with the brief quoted as
   untrusted content, and the brief is still one message.
 - A Gmail error is a failed check, never "nothing new": the routine shows
   `checkTrouble` and the brief says to reconnect Gmail.
@@ -48,10 +48,10 @@ Expected:
   draft to a stranger, draft twice and read. Only one reply draft to the
   thread's sender and the read reach the service. No card is shown, and the
   refusals are in the decision log. The run mounts only `agents`, `composio`
-  and dusk bot's answerer, and Gmail's answer reaches it as records. A later
+  and Metal's answerer, and Gmail's answer reaches it as records. A later
   ordinary turn's conversation search does not find the run.
 
-## Dusk as the owner
+## Metal as the owner
 
 ```sh
 pnpm exec vitest run server/host/proactive-dusk.test.ts
@@ -61,27 +61,27 @@ Each step starts the store, the routines and the proactive side from the files
 on disk, as a restart does, with a stand-in for connected apps and no model.
 Expected:
 
-- A new install's Dusk is its Chief and gets the one watch once it is turned
-  on. On an install where Dusk came after the Chief, the watch is suggested and
+- A new install's Metal is its Chief and gets the one watch once it is turned
+  on. On an install where Metal came after the Chief, the watch is suggested and
   made on Dusk.
-- An existing install's watch moves from the Chief to Dusk once: same id,
+- An existing install's watch moves from the Chief to Metal once: same id,
   paused if it was paused, the edited instructions, the checks' state file
-  unchanged, the day's run count kept. The brief's home becomes Dusk's chat,
+  unchanged, the day's run count kept. The brief's home becomes Metal's chat,
   its intro shows again, and the Chief keeps its past card. Starting again
   changes nothing, and a routine the person puts back on the Chief stays there.
   A `watch.json` from before the handover still hands over once.
 - A restart after the routine moved but before the brief and `watch.json`
   followed finishes the handover with no second watch.
-- With a watch already on Dusk, the Chief's is kept and Dusk's own is
+- With a watch already on Metal, the Chief's is kept and Metal's own is
   paused; a paused watch stays paused and nothing else is left on. A queued run
   holds the handover until it ends. A frozen computer hands nothing over.
-- Dusk hidden from the sidebar gets the brief message, its notification, the
+- Metal hidden from the sidebar gets the brief message, its notification, the
   first-open answer and the add-a-key card; today's earlier brief stays in the
   Chief's chat.
 - On a Team Cloud there is no watch and nothing is handed over, and a member's
-  Dusk is never the proactive bot, so its briefing routine reads nothing.
-- A move to My Cloud leaves an untouched Dusk behind while its watch is
-  exactly as the server made it, and carries Dusk with the watch once the
+  Metal is never the proactive bot, so its briefing routine reads nothing.
+- A move to My Cloud leaves an untouched Metal behind while its watch is
+  exactly as the server made it, and carries Metal with the watch once the
   person changed it, even when nobody opened Dusk. A send that carries no
   routines is unchanged. On My Cloud the arrived watch is the only one on, and
   My Cloud's own is paused.
@@ -117,7 +117,7 @@ cap, busy bots, and Run now. The others:
 2. Serve the renderer against it:
    `DUSK_PORT=<fixture port> pnpm exec vite --port 19872 --strictPort`.
 3. Open `http://127.0.0.1:19872/` in a headless Chromium. Finish the welcome,
-   then open Dusk's chat and its bot panel's routine controls. In the chat,
+   then open Metal's chat and its bot panel's routine controls. In the chat,
    the cards are `[data-widget]` elements.
 
 Not verified this way: a real Google account. The Composio slugs and answer

@@ -3,7 +3,7 @@
 // its variables stood for; the server is added for the whole team through the panel's own routes. A member's turn on
 // the synthetic Claude CLI then lists and calls its tool, and neither value reaches the engine's environment, the logs or
 // anything a route answers. The bot box is Linux-only, so here the engine's MCP config holds the headers, inside the env
-// of dusk bot's own proxy that is the gateway's client.
+// of Metal's own proxy that is the gateway's client.
 import { randomBytes } from "node:crypto";
 import { existsSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
@@ -95,7 +95,7 @@ it("adds the pasted command for the whole team, tests it through the gateway and
 
 type Engine = { env: Record<string, string>; argv: string[]; mcpConfig: { mcpServers: Record<string, unknown> } };
 
-/** A remote server reaches the engine as dusk bot's own proxy, the upstream (headers and all) in its env in the 0600 MCP config. */
+/** A remote server reaches the engine as Metal's own proxy, the upstream (headers and all) in its env in the 0600 MCP config. */
 function upstream(engine: Engine, name: string): unknown {
   const entry = engine.mcpConfig.mcpServers[name] as { args?: string[]; env?: Record<string, string> };
   expect(entry.args?.join(" ")).toContain("mcp-remote-proxy");

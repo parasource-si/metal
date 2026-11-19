@@ -1,4 +1,4 @@
-/** Completes "dusk bot wants to …" in the OS prompt. */
+/** Completes "Metal wants to …" in the OS prompt. */
 export const PAIRING_PRESENCE_REASON = "show a code that links a phone";
 
 type PresenceBridge = {
@@ -23,7 +23,7 @@ export async function requireUserPresence(
   if (!bridge) return true;
   try {
     if (typeof bridge.requireUserPresence === "function") return (await bridge.requireUserPresence(reason)) === true;
-    const message = `dusk bot wants to ${reason}. Continue?`;
+    const message = `Metal wants to ${reason}. Continue?`;
     if (typeof bridge.confirm === "function") return (await bridge.confirm(message)) === true;
     return pageConfirm(message) === true;
   } catch {

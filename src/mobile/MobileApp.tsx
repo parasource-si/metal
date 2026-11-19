@@ -76,7 +76,7 @@ function Shell() {
   }, [platform, startTurnActivity]));
   useOutbox();
   useEffect(() => { const root = rootRef.current; return root ? installPress(root) : undefined; }, []);
-  // a bot's reply someone finds harmful or wrong goes to a person at dusk bot, with the reply in the mail they send
+  // a bot's reply someone finds harmful or wrong goes to a person at Metal, with the reply in the mail they send
   useEffect(() => installAiReport(({ text, messageId }) => {
     void platform.openExternal(supportMail(t("mobile.report.subject"), t("mobile.report.body", { text: text.slice(0, 1500), id: messageId })));
   }), [platform]);

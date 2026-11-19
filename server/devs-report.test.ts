@@ -41,7 +41,7 @@ describe("a @devs report's redaction", () => {
   });
 
   it("masks the server's own secret values wherever they appear, whatever their shape", () => {
-    const secrets = environmentSecrets({ DUSK_OPENAI_API_KEY: HELD, COMPOSIO_API_KEY: "short", DUSK_DATA_DIR: "/Users/ada/dusk bot" });
+    const secrets = environmentSecrets({ DUSK_OPENAI_API_KEY: HELD, COMPOSIO_API_KEY: "short", DUSK_DATA_DIR: "/Users/ada/Metal" });
     expect(secrets).toEqual([HELD]);
     expect(redactReportText(`upstream said ${HELD}!`, secrets)).toBe(`upstream said «redacted ${HELD.length} chars»!`);
   });

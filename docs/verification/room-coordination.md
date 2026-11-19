@@ -19,7 +19,7 @@ At the next start (the runtime's restart policy, `server/runtime/runtime.ts` `op
   cut review, "Resumed with … results after a restart, reviewing"), and a
   direct requester's chat shows "Mira was cut off by a restart; resuming".
 - Never a second automatic run. A restart that cuts that rerun too ends it,
-  failed: "Interrupted by another dusk bot restart after resuming once; not
+  failed: "Interrupted by another Metal restart after resuming once; not
   resumed again. Some of its steps may already have taken effect." The
   requester gets that result like any other; a Chief's own review ended that
   way says so in the Chief's conversation.
@@ -41,13 +41,13 @@ At the next start (the runtime's restart policy, `server/runtime/runtime.ts` `op
   started, "Stopped before it resumed", and a rerun already running, like any
   teammate mid-turn.
 - A routine run still going at a restart fails, as before, and its
-  teammates' work ends with it, "dusk bot restarted while this routine was
+  teammates' work ends with it, "Metal restarted while this routine was
   running": none of it runs again, so no result lands after the person was
   told the routine failed.
 - On a quit or update, shutdown dispatches nothing more and leaves the turns
   it tears down cut for the next start, so a quit ends where a crash does,
   whatever the engine. Each conversation with a turn still running gets
-  "error: turn interrupted — dusk bot restarted", as a provider reload's
+  "error: turn interrupted — Metal restarted", as a provider reload's
   does, and nothing more (no unread mark, no notification), unless the next
   start goes on with that turn: a cut teammate turn, or a requester's turn
   that had sent work, says what happened when it resumes instead (a failed
@@ -511,7 +511,7 @@ Two isolated `gpt-5.6-sol` trials used temporary work folders and real tools:
   `/tmp/dusk-live-team-0913.MwRY2k/nested-gpt-5.6-sol-1789253398198/result.json`.
 
 The first run also exposed a model-quality limitation: Patch claimed Nora had
-verified its work without a corresponding dusk bot handoff. Clive correctly treated
+verified its work without a corresponding Metal handoff. Clive correctly treated
 that claim as insufficient and requested an actual independent check. Prompts
 now explicitly require real coordination receipts for named-bot participation;
 this is guidance, not a guarantee that every model report is truthful. The

@@ -31,10 +31,10 @@ export function agentInfo(said) {
  */
 export function linkCompat(info, name = "your server") {
   const how = info.caps.includes("self-update") ? "It updates itself when nobody is using it." : "Run its setup line on the server again.";
-  if (APP_LINK_PROTOCOL < info.minApp) return { update: "app", message: `Update dusk bot on this Mac to keep using ${name}.` };
+  if (APP_LINK_PROTOCOL < info.minApp) return { update: "app", message: `Update Metal on this Mac to keep using ${name}.` };
   if (info.protocol < MIN_AGENT_PROTOCOL) return { update: "agent", message: `Update the link on ${name}: it is older than this app works with. ${how}` };
-  if (info.server && info.protocol < info.server.minAgent) return { update: "agent", message: `Update the link on ${name}: dusk bot there needs a newer one. ${how}` };
-  if (info.server && info.server.protocol < info.minServer) return { update: "server", message: `Update dusk bot on ${name}: its link is newer than it works with.` };
+  if (info.server && info.protocol < info.server.minAgent) return { update: "agent", message: `Update the link on ${name}: Metal there needs a newer one. ${how}` };
+  if (info.server && info.server.protocol < info.minServer) return { update: "server", message: `Update Metal on ${name}: its link is newer than it works with.` };
   return { update: null, message: null };
 }
 

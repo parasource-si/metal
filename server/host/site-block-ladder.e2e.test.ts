@@ -1,4 +1,4 @@
-// dusk bot's recovery from bot walls on real Chrome. Fixture pages mimic each kind of wall; every connection goes through
+// Metal's recovery from bot walls on real Chrome. Fixture pages mimic each kind of wall; every connection goes through
 // a SOCKS stand-in for the route a bot computer's browser takes, which sends a host to the "datacenter" listener or, once
 // that host is routed home (what computer-egress.ts routeSite does with the PAC), to the "home" listener. The bot's
 // request (request_sign_in with human_check) runs the real request flow and ladder against the real page.

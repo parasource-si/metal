@@ -190,6 +190,8 @@ describe("createPartsDownloader", () => {
     const github = "https://github.com/DuskBotAI/duskbot-releases/releases/download/v0.2.20/DuskBot-0.2.20-browser-darwin-arm64.zip";
     const mirror = "https://dusk.bot/releases/0.2.20/DuskBot-0.2.20-browser-darwin-arm64.zip";
     expect(partSources(github)).toEqual([github, mirror]);
+    const metal = "https://github.com/parasource-si/metal/releases/download/v0.2.20/Metal-0.2.20-browser-darwin-arm64.zip";
+    expect(partSources(metal)).toEqual([metal]);
     expect(partSources("https://example.test/part.zip")).toEqual(["https://example.test/part.zip"]);
     const cut = Math.floor(zip.length / 2);
     const asked: Array<[string, string | null]> = [];

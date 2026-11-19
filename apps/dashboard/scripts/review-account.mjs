@@ -199,7 +199,7 @@ try {
   const homeCall = (path, init = {}) => call(home.origin, path, { ...init, token: home.token });
   const wired = await wireDemoAi(homeCall, { botId, ai });
   log(wired.wired ? `the demo bot answers through ${wired.model} on ${wired.provider}${wired.added ? " (engine added)" : ""}${wired.pointed ? " (bot switched to it)" : ""}` : `warning: ${wired.reason}`);
-  // every other bot on the cloud (its own pinned dusk bot) answers through the same AI, so any chat the reviewer opens replies
+  // every other bot on the cloud (its own pinned Metal) answers through the same AI, so any chat the reviewer opens replies
   if (wired.wired) {
     for (const other of must(await homeCall("/api/bots?messages=0"), "the bot list").bots ?? []) {
       if (other.id === botId) continue;

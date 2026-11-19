@@ -278,7 +278,7 @@ export interface RoutineManagerOptions {
 }
 
 const CATCH_UP_MS = 12 * 60 * 60_000, WAKE_HORIZON_MS = 60 * 60_000;
-export const ROUTINE_RESTARTED = "dusk bot restarted while this routine was running";
+export const ROUTINE_RESTARTED = "Metal restarted while this routine was running";
 const MAX_RUNS = 2_000;
 function cloneRoutine(routine: Routine): Routine {
   return {

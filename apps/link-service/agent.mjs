@@ -994,7 +994,7 @@ function localOnce(method, path, body) {
         resolve({ status: res.statusCode ?? 0, body: parsed });
       });
     });
-    req.on("timeout", () => req.destroy(new Error("The dusk bot server here did not answer")));
+    req.on("timeout", () => req.destroy(new Error("The Metal server here did not answer")));
     req.on("error", reject);
     req.end(payload ?? undefined);
   });
@@ -1081,10 +1081,10 @@ async function link() {
   if (claimed.status !== 200) throw new Error(claimed.body?.error ?? `the link service answered ${claimed.status}`);
   const appPub = claimed.body.appPub;
   const [pairing, environment] = await Promise.all([
-    local("POST", "/api/auth/pairing", { label: claimed.body.label || "dusk bot app" }),
+    local("POST", "/api/auth/pairing", { label: claimed.body.label || "Metal app" }),
     local("GET", "/.well-known/duskbot/environment"),
   ]);
-  if (pairing.status !== 200 || typeof pairing.body?.code !== "string") throw new Error(`The dusk bot server here would not make a pairing code (${pairing.status})`);
+  if (pairing.status !== 200 || typeof pairing.body?.code !== "string") throw new Error(`The Metal server here would not make a pairing code (${pairing.status})`);
   const via = ADDRESS_VIAS.has(process.env.LINK_VIA ?? "") ? process.env.LINK_VIA : mode;
   const origin = mode === "direct" ? `https://${env("LINK_HOST")}` : null;
   // tailscale and cloudflare hold their own certificates and change their keys, so those addresses go unpinned
@@ -1486,8 +1486,8 @@ export async function control(op, data, context = {}) {
   if (op === "direct-off") { if (context.id) setDirectKey(context.id, null); return { ok: true }; }
   if (op === "pair") {
     // a fresh one-time code for the app's own sign-in here, when its session lapsed (sessions end after 180 days)
-    const answer = await local("POST", "/api/auth/pairing", { label: typeof data?.label === "string" ? data.label.slice(0, 60) : "dusk bot app" });
-    if (answer.status !== 200 || typeof answer.body?.code !== "string") throw new Error("The dusk bot server here would not make a pairing code");
+    const answer = await local("POST", "/api/auth/pairing", { label: typeof data?.label === "string" ? data.label.slice(0, 60) : "Metal app" });
+    if (answer.status !== 200 || typeof answer.body?.code !== "string") throw new Error("The Metal server here would not make a pairing code");
     return { code: answer.body.code };
   }
   if (op === "claude-token") {
@@ -1511,7 +1511,7 @@ export async function control(op, data, context = {}) {
     const answer = op === "freeze"
       ? await local("POST", "/api/move/freeze", typeof data?.place === "string" ? { place: data.place.slice(0, 120) } : {})
       : await local("DELETE", "/api/move/freeze", undefined);
-    if (answer.status !== 200) throw new Error(answer.body?.error ?? `The dusk bot server here answered ${answer.status}`);
+    if (answer.status !== 200) throw new Error(answer.body?.error ?? `The Metal server here answered ${answer.status}`);
     return { ok: true };
   }
   throw new Error("unknown request");
@@ -2116,7 +2116,7 @@ export function createEgressProxy({
 // ---- end egress ----
 
 /**
- * what the app's frames ask of this server, over either path: requests and websockets to Dusk Bot, control ops to this
+ * what the app's frames ask of this server, over either path: requests and websockets to Metal, control ops to this
  * agent. `sink` takes the replies: push(frame), bytes(r, chunk) (false: pause), onDrain(resume), discard(r).
  */
 /** a stream's sender says how many bytes it sent so far after this many more, or this long, so a gap shows */
@@ -2215,7 +2215,7 @@ export function createServing({ server = SERVER, sink, stopped = () => false, co
       res.on("end", () => { if (pending.delete(frame.r)) emit(endOf(frame.r)); else sent.delete(frame.r); });
       res.on("error", () => { sent.delete(frame.r); if (pending.delete(frame.r)) emit({ t: "err", r: frame.r, message: "reply cut off" }); });
     }); } catch { emit({ t: "err", r: frame.r, message: "That request could not be sent." }); return; }
-    req.on("error", () => { if (pending.delete(frame.r)) emit({ t: "err", r: frame.r, message: "The dusk bot server did not answer" }); });
+    req.on("error", () => { if (pending.delete(frame.r)) emit({ t: "err", r: frame.r, message: "The Metal server did not answer" }); });
     // bytes the app sent before the handshake was answered wait for the socket
     const early = [];
     let earlyBytes = 0;

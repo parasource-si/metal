@@ -1,4 +1,4 @@
-// a fake dusk bot server and a fake app talk through the relay under `wrangler dev` (the real workerd runtime), using
+// a fake Metal server and a fake app talk through the relay under `wrangler dev` (the real workerd runtime), using
 // the real clients: agent.mjs createCloudRelay + createDirectHub on the server end, the app's tunnel proxy with the
 // cloud connector on the other. RELAY_E2E=1 runs it (it starts wrangler and takes about two minutes).
 import { spawn } from "node:child_process";
@@ -87,7 +87,7 @@ run("the cloud relay end to end under wrangler dev", () => {
     persist = mkdtempSync(join(tmpdir(), "dusk-relay-e2e-"));
     url = `http://127.0.0.1:${port}`;
     relay = await startRelay({ port, persist, vars: { GRANT_KEYS: GRANT_KEY, OPS_TOKEN } });
-    // the fake dusk bot server the agent forwards to
+    // the fake Metal server the agent forwards to
     server = createServer((req, res) => {
       if (req.url === "/hello") { res.writeHead(200, { "content-type": "text/plain" }); res.end(`hi ${req.headers["x-forwarded-for"] ? "remote" : "local"}`); return; }
       if (req.url === "/echo") { const parts = []; req.on("data", (c) => parts.push(c)); req.on("end", () => { res.writeHead(200); res.end(`got ${Buffer.concat(parts).length}`); }); return; }

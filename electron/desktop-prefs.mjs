@@ -90,7 +90,7 @@ export function createDesktopPrefs({ read, write, frameByDefault = true }) {
       return true;
     },
     /** crash and error reports, only ever sent by a build that names where to (electron/error-report.mjs); they follow
-     * the one "help improve dusk bot" switch, unset counting as on */
+     * the one "help improve Metal" switch, unset counting as on */
     errorReports: () => current().analytics !== false,
     talkShortcut: () => current().talkShortcut ?? false,
     setTalkShortcut(enabled) { save({ ...current(), talkShortcut: enabled === true }); },

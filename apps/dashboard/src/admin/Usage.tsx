@@ -216,7 +216,7 @@ function Stat({ label: title, value, note }: { label: string; value: string; not
   );
 }
 
-/** what people use dusk bot for: categories, apps, engines, routines, failures, frustration and where to look first */
+/** what people use Metal for: categories, apps, engines, routines, failures, frustration and where to look first */
 export function UsageSection({ range }: { range: Range }) {
   const { data, error, loading, reload } = useAdmin<UsageAnswer>(`/usage?from=${range.from}&to=${range.to}`, 120_000);
   const [detail, setDetail] = useState<Detail | null>(null);

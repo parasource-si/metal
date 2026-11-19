@@ -52,7 +52,7 @@ export async function removeViaConnect(spec: RemoteMcpSpec, slug: string): Promi
   const signal = AbortSignal.timeout(30_000);
   const client = new RemoteMcpClient(spec, { maxBytes: MAX_REMOTE_MCP_BYTES });
   try {
-    await client.initialize("dusk bot", signal);
+    await client.initialize("Metal", signal);
     const action = removeActionOf(await client.request("tools/list", {}, signal));
     if (!action) return false;
     const result = await client.request("tools/call", { name: "COMPOSIO_MANAGE_CONNECTIONS", arguments: { toolkits: [{ name: slug, action }] } }, signal);
@@ -126,7 +126,7 @@ export function createCloudComposioConnect(deps: CloudComposioConnectDeps) {
         if (answer.status === "started") {
           const url = trustedLink(answer.url);
           if (url) return { url };
-          throw new CloudConnectError("Composio sent back a sign-in page dusk bot does not trust.", 502);
+          throw new CloudConnectError("Composio sent back a sign-in page Metal does not trust.", 502);
         }
         if (answer.status === "connected") throw new CloudConnectError(`${slug} is connected already.`);
         if (answer.status === "failed") throw new CloudConnectError(answer.message, 502);

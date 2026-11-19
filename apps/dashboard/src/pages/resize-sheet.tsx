@@ -16,7 +16,7 @@ type Quote = { state: "loading" } | { state: "ready"; offer: ChangeOffer } | { s
 
 function plainError(e: unknown): string {
   if (e instanceof ApiError && e.code === "price_changed") return "the price just changed. check the new amount and try again.";
-  if (e instanceof ApiError && e.code === "offline") return "can't reach dusk bot. check your connection and try again.";
+  if (e instanceof ApiError && e.code === "offline") return "can't reach Metal. check your connection and try again.";
   return (e as Error).message || "that didn't go through. try again.";
 }
 

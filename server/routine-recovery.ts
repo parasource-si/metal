@@ -70,11 +70,11 @@ const OWNER_ACTION: Record<Exclude<RoutineOwnerCause, "setup">, string> = {
   usage_limit: "This bot's AI reached its usage limit. Its routines work again once it resets, or choose another AI for this bot now.",
 };
 const RETRY_WHY: Record<Exclude<RoutineRetryCause, "usage_limit">, string> = {
-  stalled: "the AI stalled", restarted: "dusk bot restarted while it ran", rate_limited: "a rate limit", provider: "a temporary error",
+  stalled: "the AI stalled", restarted: "Metal restarted while it ran", rate_limited: "a rate limit", provider: "a temporary error",
   failed: "a failure",
 };
 const FIRST_START: Record<RoutineRetryCause, string> = {
-  stalled: "stopped when its AI stalled", restarted: "was cut off when dusk bot restarted", rate_limited: "was stopped by a rate limit",
+  stalled: "stopped when its AI stalled", restarted: "was cut off when Metal restarted", rate_limited: "was stopped by a rate limit",
   provider: "failed on a temporary AI error", usage_limit: "was refused by the AI's usage limit", failed: "failed",
 };
 
@@ -159,7 +159,7 @@ export function requeueForLimit(run: RoutineRun, failure: string, now: number, r
 
 /** The second start's own line, so a run that already did part of its work does not do it twice. */
 export function retryNote(cause: RoutineRetryCause): string {
-  return `[dusk bot: this run's first start ${FIRST_START[cause]} before it finished. If it already did part of the work, ` +
+  return `[Metal: this run's first start ${FIRST_START[cause]} before it finished. If it already did part of the work, ` +
     "check what it did (files, messages sent, anything started) so nothing is done twice; then finish the routine.]";
 }
 

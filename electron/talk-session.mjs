@@ -4,13 +4,13 @@ import { TalkServerError } from "./talk-server.mjs";
 export const TALK_TIMING = Object.freeze({ replyHideMs: 12_000, noticeHideMs: 4_000, stillWorkingMs: 120_000, hoverRecheckMs: 500, maxListenMs: 60_000 });
 
 export const TALK_TEXT = Object.freeze({
-  busy: "Voice is in use in dusk bot",
-  serverDown: "Open dusk bot to talk",
+  busy: "Voice is in use in Metal",
+  serverDown: "Open Metal to talk",
   starting: "The app is still starting. Try again in a moment.",
   noDusk: "Set up your helper first, then try again.",
   moved: "Your bots live on dusk cloud now: talk to them there",
   permission: "Talking needs Microphone + Speech Recognition access in System Settings → Privacy & Security.",
-  micOff: "Turn on the microphone for dusk bot in System Settings → Privacy & Security.",
+  micOff: "Turn on the microphone for Metal in System Settings → Privacy & Security.",
   dictationOff: "Turn on Dictation in System Settings → Keyboard, then try again.",
   unavailable: "Talking couldn't start. Try again.",
   failed: "Your helper couldn't take that · Open chat",

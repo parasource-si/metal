@@ -185,7 +185,7 @@ export interface OpsAccountsAnswer {
   rows: OpsAccountRow[];
 }
 
-// GET /v1/admin/ops/sharing: the desktop app's "help improve dusk bot" switch (server/admin/sharing.ts)
+// GET /v1/admin/ops/sharing: the desktop app's "help improve Metal" switch (server/admin/sharing.ts)
 export type SharingPlace = "settings" | "first_run";
 export interface OpsSharingWindow { days: 7 | 30; enables: number; disables: number; byPlace: Record<SharingPlace, { enables: number; disables: number }> }
 export interface OpsSharingAnswer { v: 1; now: number; optedIn: number; optedOut: number; outShare: number | null; windows: OpsSharingWindow[] }

@@ -52,7 +52,7 @@ describe("ready-made bots", () => {
   it("have their own names, never a mascot body's, the helper's or another template's", () => {
     const names = READY_BOTS.map((bot) => bot.name.toLowerCase());
     expect(new Set(names).size).toBe(names.length);
-    const taken = [...Object.values(DUSK_BODY_NAMES), "dusk", "dusk bot", "mausbot"].map((name) => name.toLowerCase());
+    const taken = [...Object.values(DUSK_BODY_NAMES), "dusk", "Metal", "mausbot"].map((name) => name.toLowerCase());
     for (const name of names) expect(taken, name).not.toContain(name);
   });
 

@@ -1,4 +1,4 @@
-# Dusk bot desktop: a small dark Linux desktop for a workspace or bot, driven by Cua Driver and viewed through noVNC.
+# Metal desktop: a small dark Linux desktop for a workspace or bot, driven by Cua Driver and viewed through noVNC.
 # Multi-arch (linux/amd64, linux/arm64). Build: deploy/bot-desktop/build.sh
 ARG DEBIAN=debian:trixie-slim
 
@@ -110,8 +110,8 @@ ARG BOT_DESKTOP_VERSION=6
 LABEL com.openmausbot.bot-desktop="${BOT_DESKTOP_VERSION}" \
       com.openmausbot.cua-driver="${CUA_DRIVER_VERSION}" \
       org.opencontainers.image.title="dusk-desktop" \
-      org.opencontainers.image.description="dusk bot computer: a sandboxed dark Linux desktop" \
-      org.opencontainers.image.source="https://github.com/DuskBotAI/duskbot"
+      org.opencontainers.image.description="Metal computer: a sandboxed dark Linux desktop" \
+      org.opencontainers.image.source="https://github.com/parasource-si/metal"
 
 ENV HOME=/home/cua USER=cua DISPLAY=:1 XDG_RUNTIME_DIR=/run/user/1000 XDG_CONFIG_HOME=/home/cua/.config \
     XCURSOR_THEME=omb-hidden XCURSOR_SIZE=24 NO_AT_BRIDGE=0 \

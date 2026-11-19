@@ -4,7 +4,7 @@
   "title": "Excel AI assistant for workbooks, tables and .xlsx files",
   "nav": "excel",
   "h1": "an excel bot for the workbook you actually mean",
-  "description": "Get budget versus actual before the meeting. Connect a OneDrive workbook or drop an .xlsx into dusk bot for range, table and chart work.",
+  "description": "Get budget versus actual before the meeting. Connect a OneDrive workbook or drop an .xlsx into Metal for range, table and chart work.",
   "keyword": "claude excel",
   "keywords": [
     "chatgpt excel",
@@ -134,15 +134,15 @@
   ],
   "sources": [
     {
-      "label": "dusk bot docs: files and connected apps",
+      "label": "Metal docs: files and connected apps",
       "url": "/docs/files-and-apps"
     },
     {
-      "label": "dusk bot docs: computer approvals",
+      "label": "Metal docs: computer approvals",
       "url": "/docs/computer"
     },
     {
-      "label": "dusk bot docs: scheduled routines",
+      "label": "Metal docs: scheduled routines",
       "url": "/docs/routines"
     }
   ],

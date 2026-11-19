@@ -85,7 +85,7 @@ export function cloudState(cloud) {
     : status === "setting_up" ? "setup" : null;
 }
 
-/** A dusk bot release as the Admin names it ("0.1.130"), or null: anything else is no version at all. */
+/** A Metal release as the Admin names it ("0.1.130"), or null: anything else is no version at all. */
 export const releaseVersion = value => (typeof value === "string" && VERSION.test(value) ? value : null);
 
 /** Whether `version` is an older release than `latest`, compared number by number; false when either isn't plain

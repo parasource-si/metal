@@ -186,7 +186,7 @@ it("on My Cloud's page, All moved is a slim line, never a sheet over the cloud's
   expect(calls).toEqual(["dismiss:one-home"]);
 });
 
-it("a fresh first run's move (dusk bot and its welcome chat, nothing of the person's own) says no All moved, here or on the cloud's page", async () => {
+it("a fresh first run's move (Metal and its welcome chat, nothing of the person's own) says no All moved, here or on the cloud's page", async () => {
   current = { ...BASE, move: { phase: "done", phone: false, counts: { bots: 1, skills: 0, logins: 0, onePassword: false, chats: 1, routines: 0 } } };
   await render(createElement(CloudMoveOffer, { cloudHome: true }));
   expect(sheet()).toBeNull();

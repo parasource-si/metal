@@ -4,7 +4,7 @@
   "title": "Gmail AI assistant: Claude, ChatGPT or Gemini in your inbox",
   "nav": "gmail",
   "h1": "a gmail assistant that sorts, drafts and briefs you",
-  "description": "Connect Gmail to a bot in dusk bot running on Claude, ChatGPT or Gemini. What it can really do in your inbox, what it asks first, and three routines to copy.",
+  "description": "Connect Gmail to a bot in Metal running on Claude, ChatGPT or Gemini. What it can really do in your inbox, what it asks first, and three routines to copy.",
   "keyword": "claude gmail",
   "keywords": [
     "chatgpt gmail",
@@ -16,7 +16,7 @@
   "updated": "2026-11-12",
   "review": {
     "status": "approved",
-    "by": "lead agent, against dusk bot docs and the composio gmail catalog",
+    "by": "lead agent, against Metal docs and the composio gmail catalog",
     "at": "2026-11-12"
   },
   "tags": [
@@ -83,7 +83,7 @@
         "use": "clear out what you told it to clear; tell it to check with you first"
       }
     ],
-    "setup": "**more than one inbox? fine.** connect each gmail account with a label like `work` or `personal`, then tell the bot which one you mean. up to five accounts per app.\n\non [dusk cloud](/docs/dusk-cloud) the connection is included. on your own computer it goes through dusk bot's own connection service, so there's no key to set up."
+    "setup": "**more than one inbox? fine.** connect each gmail account with a label like `work` or `personal`, then tell the bot which one you mean. up to five accounts per app.\n\non [dusk cloud](/docs/dusk-cloud) the connection is included. on your own computer it goes through Metal's own connection service, so there's no key to set up."
   },
   "routines_intro": "**send one of these and it runs from then on.** change the times and the words. that's the whole setup.",
   "routines": [
@@ -106,18 +106,18 @@
       "output": "labelled emails and a table in your chat"
     }
   ],
-  "asks": "**reading and drafting just happen. sending waits for you.** anything that leaves your outbox (send, reply, forward) stops at a card with **Allow** and **Deny**, in the app, on your phone or in a call.\n\n- want it to send a few on its own? set a daily amount, per bot.\n- careful with **Full access**: a bot there with no sending rule can send up to 25 a day without asking. give it **Ask every time**.\n- want it hands-off entirely? allow gmail for that bot as read only. dusk bot blocks every change before it reaches google.\n\nyour google password never reaches a bot. you sign in on google's own page, composio holds the connection, and **Disconnect** removes it there too.",
+  "asks": "**reading and drafting just happen. sending waits for you.** anything that leaves your outbox (send, reply, forward) stops at a card with **Allow** and **Deny**, in the app, on your phone or in a call.\n\n- want it to send a few on its own? set a daily amount, per bot.\n- careful with **Full access**: a bot there with no sending rule can send up to 25 a day without asking. give it **Ask every time**.\n- want it hands-off entirely? allow gmail for that bot as read only. Metal blocks every change before it reaches google.\n\nyour google password never reaches a bot. you sign in on google's own page, composio holds the connection, and **Disconnect** removes it there too.",
   "cannot": [
     "set filters, your vacation reply, imap, pop, forwarding or send-as. the standard connection doesn't get those google permissions. the bot tells you instead of retrying. your own composio project can add them.",
-    "work while your laptop sleeps. on your own computer, routines pause when it's asleep or dusk bot is closed. a run missed by less than 12 hours runs once when you're back. dusk cloud doesn't sleep.",
+    "work while your laptop sleeps. on your own computer, routines pause when it's asleep or Metal is closed. a run missed by less than 12 hours runs once when you're back. dusk cloud doesn't sleep.",
     "jump the second mail lands. gmail is checked about every 15 minutes, so \"when an email arrives\" can take that long.",
-    "read more than five gmail accounts, or one you connected somewhere else. connect each one from dusk bot.",
+    "read more than five gmail accounts, or one you connected somewhere else. connect each one from Metal.",
     "unsend. once you tap allow, it's gone, same as when you send it yourself."
   ],
   "sections": [
     {
       "h": "which ai does the work",
-      "md": "**any of them. you choose per bot.** dusk bot has no model of its own. sign in to claude, chatgpt, gemini or grok, use an api key, or run a model on your own machine.\n\nso \"claude for gmail\" and \"chatgpt for gmail\" are the same setup here. connect gmail once, pick the ai in the bot's model picker, swap any time. chats and memory stay put.\n\nwhat you say to the bot goes from your machine to that ai, on your plan with them. not through us."
+      "md": "**any of them. you choose per bot.** Metal has no model of its own. sign in to claude, chatgpt, gemini or grok, use an api key, or run a model on your own machine.\n\nso \"claude for gmail\" and \"chatgpt for gmail\" are the same setup here. connect gmail once, pick the ai in the bot's model picker, swap any time. chats and memory stay put.\n\nwhat you say to the bot goes from your machine to that ai, on your plan with them. not through us."
     },
     {
       "h": "teach it how you write",
@@ -134,8 +134,8 @@
       "a": "not unless you let it. sending asks first by default. you can set a daily amount a bot may send on its own, per bot, and change it back at any time."
     },
     {
-      "q": "does dusk bot see my email?",
-      "a": "the bot reads it to do the job, on the machine your bots run on, and the text goes to the ai you picked. dusk bot's account never sees your messages. see [privacy and your data](/docs/privacy-and-data)."
+      "q": "does Metal see my email?",
+      "a": "the bot reads it to do the job, on the machine your bots run on, and the text goes to the ai you picked. Metal's account never sees your messages. see [privacy and your data](/docs/privacy-and-data)."
     },
     {
       "q": "what does it cost?",
@@ -144,19 +144,19 @@
   ],
   "sources": [
     {
-      "label": "dusk bot docs: files and apps",
+      "label": "Metal docs: files and apps",
       "url": "/docs/files-and-apps"
     },
     {
-      "label": "dusk bot docs: routines",
+      "label": "Metal docs: routines",
       "url": "/docs/routines"
     },
     {
-      "label": "dusk bot docs: a bot's computer, asking first",
+      "label": "Metal docs: a bot's computer, asking first",
       "url": "/docs/computer"
     },
     {
-      "label": "dusk bot docs: privacy and your data",
+      "label": "Metal docs: privacy and your data",
       "url": "/docs/privacy-and-data"
     }
   ],

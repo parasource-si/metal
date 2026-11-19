@@ -84,7 +84,7 @@ describe("local account service", () => {
     const started = await start(" OWNER@EXAMPLE.TEST ");
     expect(started).toMatchObject({ expiresIn: 600, resendAfter: 30, signupOpen: true });
     expect(started.attempt).toMatch(/^[A-Za-z0-9_-]{43}$/);
-    expect(mailer.outbox[0]).toMatchObject({ to: email, subject: `${code()} is your dusk bot code` });
+    expect(mailer.outbox[0]).toMatchObject({ to: email, subject: `${code()} is your Metal code` });
     expect(mailer.outbox[0].text).toContain("works for 10 minutes.");
     expect(mailer.outbox[0].html).toContain(code());
     const first = await body<WebSignInAnswer>(call("/v1/auth/verify", { attempt: started.attempt, code: code() }));
@@ -631,7 +631,7 @@ describe("local account service", () => {
     const first = await login(); time += 30_000;
     const recovered = await body<EmailStartAnswer>(call("/v1/auth/start", { email, recover: true }));
     const mail = mailer.outbox.at(-1)!;
-    expect(mail).toMatchObject({ to: email, subject: expect.stringMatching(/^\d{8} is your dusk bot code$/) });
+    expect(mail).toMatchObject({ to: email, subject: expect.stringMatching(/^\d{8} is your Metal code$/) });
     expect(mail.text).toContain("this account signs in with an emailed code.");
     const link = new URL(/^sign in: (\S+)$/m.exec(mail.text)![1]!), secret = new URLSearchParams(link.hash.slice(1));
     // the code in the fragment: never sent to a server, so never in a log. the attempt (nothing without the code) rides in

@@ -34,7 +34,7 @@ export const THEMES = Object.freeze({
 
 /** What each launch milestone (a startup trace mark) tells the person, in order. The first shows as the card opens. */
 export const STEPS = Object.freeze([
-  ["opening", "Opening dusk bot"],
+  ["opening", "Opening Metal"],
   ["credentials", "Unlocking your sign-ins"],
   ["server", "Starting your bots"],
   ["window", "Opening your workspace"],
@@ -120,7 +120,7 @@ export function startupDark({ systemDark, saved }) {
 export function startupScreenHtml({ dark = false, expectedMs = PACE.firstRunMs } = {}) {
   const t = dark ? THEMES.dark : THEMES.light;
   const crew = CREW.map(name => ({ name, color: CREW_COLORS[name] ?? t.ink, eyeColor: CREW_COLORS[name] ? "#ffffff" : t.kitEyes, ...SPRITES[name] }));
-  return `<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="${dark ? "dark" : "light"}"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; font-src data:; style-src 'unsafe-inline'; script-src 'unsafe-inline'"><title>dusk bot</title><style>
+  return `<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="${dark ? "dark" : "light"}"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; font-src data:; style-src 'unsafe-inline'; script-src 'unsafe-inline'"><title>Metal</title><style>
   @font-face{font-family:"General Sans";src:url("${font}") format("woff2");font-weight:200 700}
   :root{--bg:${t.bg};--ink:${t.ink};--soft:${t.soft};--track:${t.track};--hover:${t.hover};--ease-out:cubic-bezier(.23,1,.32,1)}
   *{box-sizing:border-box}
@@ -152,11 +152,11 @@ export function startupScreenHtml({ dark = false, expectedMs = PACE.firstRunMs }
   @media(prefers-reduced-motion:reduce){.scene,.txt{transition:none}}
   </style></head><body>
   <canvas class="scene" width="${W}" height="${H}" aria-hidden="true"></canvas>
-  <p class="brand">dusk bot</p>
+  <p class="brand">Metal</p>
   <button class="close" aria-label="Close" data-act="close"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
   <main class="txt">
   <p class="line" role="status">${STEPS[0][1]}</p>
-  <div class="meta" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-valuetext="0 of ${CREW.length} here" aria-label="Opening dusk bot"><b class="here">0 of ${CREW.length}</b> here<span class="pct">0%</span></div>
+  <div class="meta" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-valuetext="0 of ${CREW.length} here" aria-label="Opening Metal"><b class="here">0 of ${CREW.length}</b> here<span class="pct">0%</span></div>
   <p class="detail"></p>
   <div class="actions"><button class="go" data-act="retry">Try again</button><button class="stop" data-act="quit">Quit</button></div>
   </main><script>${pageScript({ crew, ghost: t.ghost, shadow: t.shadow, track: t.track, expectedMs })}</script></body></html>`;
@@ -337,7 +337,7 @@ export function createStartupScreen({
     width: W, height: H, resizable: false, maximizable: false,
     fullscreenable: false, frame: false,
     backgroundColor: dark ? THEMES.dark.bg : THEMES.light.bg, show: false, icon: iconPath,
-    title: "dusk bot", autoHideMenuBar: true,
+    title: "Metal", autoHideMenuBar: true,
     webPreferences: {
       contextIsolation: true, sandbox: true, nodeIntegration: false,
       preload: fileURLToPath(new URL("./startup-screen-preload.cjs", import.meta.url)),

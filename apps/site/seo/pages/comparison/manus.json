@@ -1,9 +1,9 @@
 {
   "path": "/vs/manus",
-  "title": "Manus vs dusk bot: finished tasks and recurring roles",
+  "title": "Manus vs Metal: finished tasks and recurring roles",
   "nav": "manus",
-  "h1": "manus vs dusk bot: a task service or bots you keep",
-  "description": "Compare Manus credits, cloud tasks and automation limits with dusk bot roles and separate AI billing, without guessing a cost per task.",
+  "h1": "manus vs Metal: a task service or bots you keep",
+  "description": "Compare Manus credits, cloud tasks and automation limits with Metal roles and separate AI billing, without guessing a cost per task.",
   "answer": "**want a finished deck or a colleague for the next brief too?** manus produces research, websites and slides in its cloud computers.[^1] dusk bots keep lasting jobs, chats and memory. manus bundles models into credit plans; dusk separates hosting from your ai bill.[^2][^5] choose the handoff you want, then try the same small brief before paying for more.",
   "tags": [
     "manus",
@@ -46,7 +46,7 @@
     "intro": "**$20 buys different things here.** these are monthly usd figures as of 12 november 2026. manus credits cover work inside its service; dusk cloud buys the machine, with ai billed separately.",
     "cols": [
       "Manus",
-      "dusk bot"
+      "Metal"
     ],
     "rows": [
       {
@@ -120,7 +120,7 @@
       }
     ]
   },
-  "method": "**we make dusk bot. we haven't run the same brief through both.** this compares manus's product and pricing as of 12 november 2026 with dusk docs.\n\nwe cannot price an identical report in manus credits or name a winner for research accuracy and finished files.",
+  "method": "**Metal is based on Dusk Bot. we haven't run the same brief through both.** this compares manus's product and pricing as of 12 november 2026 with dusk docs.\n\nwe cannot price an identical report in manus credits or name a winner for research accuracy and finished files.",
   "sections": [
     {
       "h": "a finished task or a lasting role",
@@ -166,35 +166,35 @@
       "checked": "2026-11-12"
     },
     {
-      "label": "dusk bot: lasting jobs and model changes",
+      "label": "Metal: lasting jobs and model changes",
       "url": "/docs/bots"
     },
     {
-      "label": "dusk bot: personal use and ai billing",
+      "label": "Metal: personal use and ai billing",
       "url": "/docs/account-and-billing"
     },
     {
-      "label": "dusk bot: setup and model options",
+      "label": "Metal: setup and model options",
       "url": "/docs/getting-started"
     },
     {
-      "label": "dusk bot: current phone interface",
+      "label": "Metal: current phone interface",
       "url": "/docs/phone"
     },
     {
-      "label": "dusk bot: hosting prices",
+      "label": "Metal: hosting prices",
       "url": "/docs/dusk-cloud"
     },
     {
-      "label": "dusk bot: schedule controls",
+      "label": "Metal: schedule controls",
       "url": "/docs/routines"
     },
     {
-      "label": "dusk bot: saved notes and memory switch",
+      "label": "Metal: saved notes and memory switch",
       "url": "/docs/memory"
     },
     {
-      "label": "dusk bot: work licensing",
+      "label": "Metal: work licensing",
       "url": "/docs/faq"
     },
     {
@@ -204,7 +204,7 @@
     }
   ],
   "type": "comparison",
-  "keyword": "manus vs dusk bot",
+  "keyword": "manus vs Metal",
   "keywords": [
     "manus ai vs chatgpt",
     "openclaw vs manus"
@@ -253,11 +253,11 @@
       ],
       [
         "a bot that keeps its job and editable memory",
-        "dusk bot"
+        "Metal"
       ],
       [
         "to choose the ai and host separately",
-        "dusk bot"
+        "Metal"
       ]
     ]
   },

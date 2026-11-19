@@ -1,6 +1,6 @@
 const TOKEN = /^[0-9a-f]{64}$/;
 
-/** dusk bot's own connected-apps service (apps/cloudflare/composio-broker). Closed to new installations: dusk bot pays
+/** Metal's own connected-apps service (apps/cloudflare/composio-broker). Closed to new installations: Metal pays
  * nothing per tool call, so apps connect with the person's own accounts and keys. Used only when named explicitly. */
 export const DEFAULT_MANAGED_COMPOSIO_BROKER_URL = "https://composio.dusk.bot";
 

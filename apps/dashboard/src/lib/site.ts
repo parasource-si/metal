@@ -1,8 +1,8 @@
 declare const __DUSK_SITE_URL__: string | undefined;
 
 /** where the marketing site lives: DUSK_SITE_URL at build, so a preview app can point at a preview site */
-export const SITE_URL = (typeof __DUSK_SITE_URL__ === "string" && __DUSK_SITE_URL__ ? __DUSK_SITE_URL__ : "https://dusk.bot").replace(/\/+$/, "");
-export const SITE_NAME = SITE_URL.replace(/^https?:\/\//, "");
+export const SITE_URL = (typeof __DUSK_SITE_URL__ === "string" && __DUSK_SITE_URL__ ? __DUSK_SITE_URL__ : "").replace(/\/+$/, "");
+export const SITE_NAME = SITE_URL.replace(/^https?:\/\//, "") || "Metal";
 export const siteUrl = (path = "/") => `${SITE_URL}${path.startsWith("/") ? path : `/${path}`}`;
 
 export type PlanIntent = { plan: "starter" | "pro"; interval: "month" | "year" | null };

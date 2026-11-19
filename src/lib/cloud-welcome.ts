@@ -28,7 +28,7 @@ function store(key: string, value: string | null): void {
     else globalThis.localStorage?.removeItem(key);
   } catch {}
 }
-/** The query the desktop app adds when it opens the person's own Cloud: they met dusk bot on that computer, so the Cloud's
+/** The query the desktop app adds when it opens the person's own Cloud: they met Metal on that computer, so the Cloud's
  * own welcome ends before it shows (saved to the Cloud's record like one ended here). Only ever ends a welcome. */
 export const WELCOMED_QUERY = "welcomed";
 function welcomedByTheApp(): boolean {

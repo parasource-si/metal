@@ -97,7 +97,7 @@ export function TeamPage() {
     {team.cloud && <section className="mt-10" aria-labelledby="team-cloud-title">
       <SectionTitle id="team-cloud-title">the team's cloud</SectionTitle>
       <p className="text-14 text-ink-3">{team.cloud.joinable
-        ? `everyone in ${team.name} opens it from the dusk bot app, signed in with the email they joined with. removing someone signs them out of it at once.`
+        ? `everyone in ${team.name} opens it from the Metal app, signed in with the email they joined with. removing someone signs them out of it at once.`
         : "it was made before it became a team cloud, so members can't open it yet. your own access, its size and your seats are all set."}</p>
     </section>}
     <Modal open={removing !== null} onClose={() => busy === null && setRemoving(null)} title={`remove ${removing?.email ?? ""}?`} footer={<><Button disabled={busy !== null} onClick={() => setRemoving(null)}>cancel</Button><Button variant="danger" disabled={busy !== null} onClick={() => removing && void act("remove", () => teamApi.remove(removing.email), `${removing.email} removed`).then(() => setRemoving(null))}>{busy === "remove" ? "removing" : "remove"}</Button></>}>

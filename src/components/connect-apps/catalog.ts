@@ -45,7 +45,7 @@ const CATEGORY_WORDS: ReadonlyArray<[Category, RegExp]> = [
   ["productivity", /productiv|file|document|storage|project|task|note|office|automation|workflow|spreadsheet|form|survey|signature|time tracking|bookmark|collaborat|human resources|\bhr\b|recruit|contact|product management/],
 ];
 
-/** The Grok category a dusk bot catalog category belongs to, or null when none fits. */
+/** The Grok category a Metal catalog category belongs to, or null when none fits. */
 export function grokCategory(name: string): Category | null {
   const normalized = name.trim().toLowerCase().replace(/&/g, " and ");
   return CATEGORY_WORDS.find(([, words]) => words.test(normalized))?.[0] ?? null;
@@ -58,11 +58,11 @@ export function grokCategories(names: readonly string[] | undefined): Category[]
 }
 
 /** composio: an aggregator's catalog app. remote: the vendor's own hosted MCP server, signed in with dynamic client
- * registration. native, hosted, logins: dusk bot's own cards. token: connected with the person's own token or a device
+ * registration. native, hosted, logins: Metal's own cards. token: connected with the person's own token or a device
  * code. custom: an MCP server the person added by its URL. */
 export type AppKind = "composio" | "remote" | "native" | "hosted" | "logins" | "token" | "custom";
 
-/** Apps from a provider's catalog, as opposed to dusk bot's own cards. */
+/** Apps from a provider's catalog, as opposed to Metal's own cards. */
 export const fromCatalog = (entry: Pick<AppEntry, "kind">): boolean => entry.kind === "composio" || entry.kind === "remote";
 
 export interface AppIcon {
@@ -126,7 +126,7 @@ const byPopularity = (list: AppEntry[]) => list
   .sort((a, b) => a.rank - b.rank || a.index - b.index)
   .map(({ entry }) => entry);
 
-/** dusk bot's own apps lead their category, then the catalog's popular apps, then the rest in its order. */
+/** Metal's own apps lead their category, then the catalog's popular apps, then the rest in its order. */
 export function inCategory(entries: readonly AppEntry[], category: string): AppEntry[] {
   const members = entries.filter((entry) => entry.categories.includes(category as Category));
   return [...members.filter((entry) => !fromCatalog(entry)), ...byPopularity(members.filter(fromCatalog))];

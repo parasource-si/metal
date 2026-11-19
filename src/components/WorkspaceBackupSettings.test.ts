@@ -108,7 +108,7 @@ describe("Settings full backups", () => {
     void save(dialogs()[0]!); await flush();
     expect(JSON.parse(fixture.api.mock.calls[3][1].body)).toEqual({ id: "stage-id", confirmation: "REPLACE" });
     expect(storage.get("dusk-pending-workspace-restore")).toBe("stage-id");
-    expect(render().html).toContain("Fully quit dusk bot");
+    expect(render().html).toContain("Fully quit Metal");
   });
 
   it("does not offer a replacement after failed password validation", async () => {
@@ -146,7 +146,7 @@ describe("Settings full backups", () => {
     fixture.api.mockResolvedValueOnce({ busy: true, pendingRestore: true });
     expect(render(true).html).not.toContain("Continue without restoring drafts");
     fixture.effects[0](); await flush();
-    expect(render(true).html).toContain("Fully quit dusk bot");
+    expect(render(true).html).toContain("Fully quit Metal");
     expect(render(true).html).not.toContain("Continue without restoring drafts");
     expect(fixture.api).toHaveBeenCalledOnce(); expect(storage.get("dusk-drafts")).toBe("old");
     fixture.values = [];
@@ -180,7 +180,7 @@ describe("Settings full backups", () => {
     storage.set("dusk-pending-workspace-restore", "stage-id");
     render("restart").nodes.find(node => node.type === "button")!.props.onClick!(); await flush();
     const view = render("restart");
-    expect(view.html).toContain("Could not restart dusk bot");
+    expect(view.html).toContain("Could not restart Metal");
     expect(view.nodes.find(node => node.type === "button")!.props.disabled).toBe(false);
     expect(storage.get("dusk-pending-workspace-restore")).toBe("stage-id");
     expect(window.location.reload).not.toHaveBeenCalled();

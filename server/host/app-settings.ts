@@ -45,7 +45,7 @@ export function createAppSettings(deps: AppSettingsDeps) {
       const saved = sync.setUi(pref, wanted, now());
       if (!saved.ok) return ctx.json(ctx.res, 409, { error: `${setting} was changed on another screen a moment ago; list it again before changing it.` });
       deps.changed();
-      return ctx.json(ctx.res, 200, { text: `Set ${setting} to ${wanted}. Every open dusk bot screen of the person's picks it up now; tell them in one line.` });
+      return ctx.json(ctx.res, 200, { text: `Set ${setting} to ${wanted}. Every open Metal screen of the person's picks it up now; tell them in one line.` });
     },
   };
 }

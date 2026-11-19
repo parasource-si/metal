@@ -154,7 +154,7 @@ async function probeRemoteMcpServer(
     ? new RemoteMcpClient({ ...server, url: options.via.url, headers: {} }, { maxBytes: MAX_REMOTE_MCP_BYTES, fetch: options.via.fetch })
     : new RemoteMcpClient(server, { maxBytes: MAX_REMOTE_MCP_BYTES });
   try {
-    await client.initialize("dusk bot", combined, options.extension ? { extensions: { [APP_EXTENSION_KEY]: UI_EXTENSION } } : {});
+    await client.initialize("Metal", combined, options.extension ? { extensions: { [APP_EXTENSION_KEY]: UI_EXTENSION } } : {});
     const result = await client.request("tools/list", {}, combined);
     const tools = result && typeof result === "object" ? (result as { tools?: unknown }).tools : undefined;
     if (!Array.isArray(tools)) return { ok: false, error: "The server did not return a valid MCP tools list." };
@@ -189,9 +189,9 @@ async function probeRemoteMcpServer(
   }
 }
 
-const INITIALIZE = { protocolVersion: "2025-06-18", capabilities: {}, clientInfo: { name: "dusk bot", version: "probe" } };
+const INITIALIZE = { protocolVersion: "2025-06-18", capabilities: {}, clientInfo: { name: "Metal", version: "probe" } };
 
-/** Always reaped, never inherits dusk bot credentials. */
+/** Always reaped, never inherits Metal credentials. */
 function probeStdioMcpServer(
   server: StoredStdioMcpServer,
   timeoutMs: number,

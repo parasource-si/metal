@@ -4,7 +4,7 @@
   "title": "Claude Code for non-developers: a small first task",
   "nav": "claude code for non-developers",
   "h1": "claude code for non-developers: start with one folder",
-  "description": "Try Claude Code on a few files you understand. Write a clear first request, check the result, and compare dusk bot with Claude’s own Cowork experience.",
+  "description": "Try Claude Code on a few files you understand. Write a clear first request, check the result, and compare Metal with Claude’s own Cowork experience.",
   "keyword": "claude code for non developers",
   "keywords": [
     "claude code for non programmers",
@@ -81,7 +81,7 @@
   ],
   "sources": [
     {
-      "label": "dusk bot docs: getting started",
+      "label": "Metal docs: getting started",
       "url": "/docs/getting-started"
     },
     {
@@ -95,23 +95,23 @@
       "checked": "2026-11-12"
     },
     {
-      "label": "dusk bot docs: bots",
+      "label": "Metal docs: bots",
       "url": "/docs/bots"
     },
     {
-      "label": "dusk bot docs: files and apps",
+      "label": "Metal docs: files and apps",
       "url": "/docs/files-and-apps"
     },
     {
-      "label": "dusk bot docs: a bot computer and approvals",
+      "label": "Metal docs: a bot computer and approvals",
       "url": "/docs/computer"
     },
     {
-      "label": "dusk bot docs: memory",
+      "label": "Metal docs: memory",
       "url": "/docs/memory"
     },
     {
-      "label": "dusk bot docs: official ai apps and sign-in",
+      "label": "Metal docs: official ai apps and sign-in",
       "url": "/docs/your-own-server"
     }
   ],

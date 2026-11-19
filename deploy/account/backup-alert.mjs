@@ -34,7 +34,7 @@ export function message(kind, set, { log = "", downFor = 0, host = "the contabo 
     accent: failed ? "pink" : "lime", status: failed ? ["failed", "bad"] : ["working", "ok"],
     blocks: [{ t: "h1", text: subject }, { t: "p", text: intro }, { t: "facts", rows: [["set", set], ["host", host]] },
       ...(failed ? [{ t: "label", text: "see what happened" }, { t: "cmd", text: command }, ...(log ? [{ t: "label", text: "last lines" }, { t: "log", text: log }] : [])] : [])],
-    reason: "owner alert for dusk bot backups. one email per incident." });
+    reason: "owner alert for Metal backups. one email per incident." });
   const text = (failed ? [intro, `see: ${command}`, ...(log ? ["last lines:", log] : [])] : [intro]).join("\n\n");
   return { subject, text, html: `<pre style="font-family:ui-monospace,monospace;white-space:pre-wrap">${text.replace(/[&<>]/g, ch => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" })[ch])}</pre>` };
 }

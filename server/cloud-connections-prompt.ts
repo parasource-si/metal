@@ -68,13 +68,13 @@ export function createConnectionPrompt(sources: ConnectionPromptSources, origin:
     const apps = connected(granted.filter((slug) => SLUG.test(slug))).filter(([, on]) => !on).map(([slug]) => toolkitName(slug.toUpperCase()));
     if (local) {
       return [
-        toConnect.length ? ` Signed out right now: the MCP server${toConnect.length > 1 ? "s" : ""} ${toConnect.join(", ")}. When a task needs one, tell the person in one line to sign in to it in dusk bot's Apps; do not try its tools until then.` : "",
+        toConnect.length ? ` Signed out right now: the MCP server${toConnect.length > 1 ? "s" : ""} ${toConnect.join(", ")}. When a task needs one, tell the person in one line to sign in to it in Metal's Apps; do not try its tools until then.` : "",
         apps.length ? ` Assigned to this bot but not connected right now: ${apps.join(", ")}. Do not offer or try their tools; when a task needs one, call COMPOSIO_MANAGE_CONNECTIONS for it, which shows the person a card to connect it, and end the turn.` : "",
       ].join("");
     }
     const from = sources.movedFrom?.() ?? null;
     return [
-      from ? ` You moved to My Cloud from the person's computer ${from}, with everything in dusk bot. What lives outside dusk bot stayed on ${from}: its other folders and files, passkeys, the person's own browser sessions and apps, Local VM disks and model servers on its home network. When a task needs one, use ${from} if it is lent to My Cloud and online; otherwise say in plain words that it stayed there.` : "",
+      from ? ` You moved to My Cloud from the person's computer ${from}, with everything in Metal. What lives outside Metal stayed on ${from}: its other folders and files, passkeys, the person's own browser sessions and apps, Local VM disks and model servers on its home network. When a task needs one, use ${from} if it is lent to My Cloud and online; otherwise say in plain words that it stayed there.` : "",
       toConnect.length ? ` Not connected on My Cloud yet: ${toConnect.join("; ")}. When a task needs one, say in plain words that it needs the person once on My Cloud and give its link; do not try another way.` : "",
       apps.length ? ` Assigned to this bot but not connected on My Cloud yet: ${apps.join(", ")}. When a task needs one, call COMPOSIO_MANAGE_CONNECTIONS for it, which shows the person a card to connect it, and end the turn.` : "",
       ...[...elsewhere].map(([computer, names]) => ` Runs only on the person's computer ${computer}, not on My Cloud: ${names.join("; ")}. It worked there before the bots moved here. If a task needs one, tell the person in plain words that it stayed on ${computer} and why, not that it was never set up, and do not write your own replacement.`),

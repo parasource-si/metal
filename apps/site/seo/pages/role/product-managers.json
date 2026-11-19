@@ -113,15 +113,15 @@
   ],
   "sources": [
     {
-      "label": "dusk bot docs: connected apps and permissions",
+      "label": "Metal docs: connected apps and permissions",
       "url": "/docs/files-and-apps"
     },
     {
-      "label": "dusk bot docs: routines",
+      "label": "Metal docs: routines",
       "url": "/docs/routines"
     },
     {
-      "label": "dusk bot docs: account and billing",
+      "label": "Metal docs: account and billing",
       "url": "/docs/account-and-billing"
     },
     {
@@ -140,7 +140,7 @@
       "checked": "2026-11-12"
     },
     {
-      "label": "dusk bot docs: permissions and sends",
+      "label": "Metal docs: permissions and sends",
       "url": "/docs/computer"
     }
   ],

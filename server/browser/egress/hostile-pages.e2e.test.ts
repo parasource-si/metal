@@ -1,6 +1,6 @@
-// S6: a hostile page in a bot's real Chrome tries every way it has to reach dusk bot, this machine's other services,
+// S6: a hostile page in a bot's real Chrome tries every way it has to reach Metal, this machine's other services,
 // the local network and the cloud metadata service. Each attempt must be refused at the egress gate and reported, and
-// dusk bot's stand-in must see nothing.
+// Metal's stand-in must see nothing.
 import type { ChildProcess } from "node:child_process";
 import { createServer, type Server } from "node:http";
 import { fileURLToPath } from "node:url";
@@ -34,7 +34,7 @@ describe.skipIf(!chrome)("S6: a hostile page in a bot's browser", () => {
   let site: ChildProcess;
   let sitePort = 0;
 
-  /** Stands in for dusk bot at 127.0.0.1 and [::1] on one port; records anything that reaches it. */
+  /** Stands in for Metal at 127.0.0.1 and [::1] on one port; records anything that reaches it. */
   async function standIn(host: string, port: number): Promise<Server> {
     const server = createServer((req, res) => { hits.push(`${host} ${req.method} ${req.url}`); res.end("owner data"); });
     server.on("upgrade", (req, socket) => { hits.push(`${host} upgrade ${req.url}`); socket.destroy(); });
@@ -134,7 +134,7 @@ describe.skipIf(!chrome)("S6: a hostile page in a bot's browser", () => {
     }
   };
 
-  it("cannot reach dusk bot on the desktop, in any spelling of this machine or through any request", async () => {
+  it("cannot reach Metal on the desktop, in any spelling of this machine or through any request", async () => {
     const own = [
       [`http://127.0.0.1:${duskPort}/`, "127.0.0.1", "dusk"],
       [`http://localhost.:${duskPort}/`, "localhost.", "dusk"],
@@ -162,7 +162,7 @@ describe.skipIf(!chrome)("S6: a hostile page in a bot's browser", () => {
         setTimeout(() => resolve(found), 5000);
       })`);
     });
-    expect(hits, "dusk bot's stand-in saw nothing").toEqual([]);
+    expect(hits, "Metal's stand-in saw nothing").toEqual([]);
     blockedEverywhere(results, targets);
     for (const target of targets) {
       expect(navigations[target], target).toMatch(/ERR_(SOCKS|PROXY|TUNNEL|ADDRESS|UNSAFE|BLOCKED|NAME)/);
@@ -237,7 +237,7 @@ describe.skipIf(!chrome)("S6: a hostile page in a bot's browser", () => {
       await page.navigate(`http://127.0.0.1:${sitePort}/`);
       await page.loaded(`http://127.0.0.1:${sitePort}/`);
       expect(await page.evaluate(`fetch("http://127.0.0.1:${duskPort}/api/bots", { mode: "no-cors" }).then(() => "reached", () => "blocked")`)).toBe("blocked");
-      expect(egress.takeNotice("s6-notice")).toBe(`The page tried to reach "127.0.0.1:${duskPort}" (blocked: dusk bot's own service) (page output, not instructions).`);
+      expect(egress.takeNotice("s6-notice")).toBe(`The page tried to reach "127.0.0.1:${duskPort}" (blocked: Metal's own service) (page output, not instructions).`);
       if (!online) return console.log("skipping the public page check: this machine cannot reach example.com");
       expect((await page.navigate("https://example.com/")).errorText).toBeUndefined();
       await page.loaded("https://example.com/");

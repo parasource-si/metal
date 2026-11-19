@@ -40,7 +40,7 @@ export function toolFailureKind(text: string): ToolFailureKind | null {
 
 /** The hint a failed tool's text ends with; empty when the failure is not a common one or already says what to do. */
 export function nextStepHint(text: string): string {
-  if (text.includes(NEXT_STEP_LEAD) || text.includes("dusk bot note:")) return "";
+  if (text.includes(NEXT_STEP_LEAD) || text.includes("Metal note:") || text.includes("dusk bot note:")) return "";
   const kind = toolFailureKind(text);
   const failure = kind ? FAILURES.find((entry) => entry.kind === kind) : undefined;
   return failure ? `${NEXT_STEP_LEAD}${failure.next}` : "";

@@ -21,18 +21,18 @@ const isTest = (email: string) => { const domain = email.split("@")[1]!; return 
 
 const cfg = emailConfig(env, { publicUrl: "https://dusk.bot", pageBase: "/dashboard" });
 const mailFor = (unsubscribe: string) => promoEmail(cfg, {
-  subject: "dusk bot is here",
+  subject: "Metal is here",
   preheader: "You joined the waitlist. It's open now: download it free.",
   eyebrow: "Launch",
-  title: "dusk bot is here",
-  intro: "Thanks for waiting. dusk bot is an open source Grok bot alternative that works on your existing ChatGPT, Claude or Grok subscription: a team of bots that remember you and get things done on a computer of their own. Free for personal use, on Mac, Windows and Linux.",
+  title: "Metal is here",
+  intro: "Thanks for waiting. Metal is an open source Grok bot alternative that works on your existing ChatGPT, Claude or Grok subscription: a team of bots that remember you and get things done on a computer of their own. Free for personal use, on Mac, Windows and Linux.",
   features: [
     { image: `${cfg.assets}/tip-jobs.png`, alt: "two bots at work", title: "Text them like contacts", text: "Give a bot a job in plain words. It browses, clicks and gets it done on a computer of its own, and asks before anything risky." },
     { title: "Routines that run on time", text: "A morning brief, a weekly price check, an inbox sweep. Set it once and the bot does it every time." },
     { image: `${cfg.assets}/tip-rooms.png`, alt: "three bots in a room", title: "Bots that work together", text: "Put a few bots in a room and they pass work along while you watch, or don't." },
     { image: `${cfg.assets}/cloud-day.png`, alt: "dusk cloud", title: "dusk cloud, when you want it", text: "Keep your bots working with your laptop shut. Plans start at $20 a month." },
   ],
-  cta: { label: "Download dusk bot", href: "https://dusk.bot/download" },
+  cta: { label: "Download Metal", href: "https://dusk.bot/download" },
   unsubscribe,
 });
 const unsubscribeUrl = (email: string) => `https://dusk.bot/unsubscribe?t=${unsubscribeToken(env.DUSK_UNSUBSCRIBE_SECRET, email)}`;

@@ -19,7 +19,7 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 APPLE_DIR="${DUSK_APPLE_DIR:-$HOME/.config/duskbot/apple}"
 ENV_FILE="${DUSK_ENV_FILE:-$HOME/.config/duskbot/dusk.env}"
-APP_NAME="Dusk Bot"
+APP_NAME="Metal"
 MODE=release
 SKIP_BUILD=0
 ARCHES=(arm64 x64)
@@ -366,10 +366,10 @@ staple() {
   return 1
 }
 
-dmg_for() { echo "release/DuskBot-$VERSION-$1.dmg"; }
-zip_for() { echo "release/DuskBot-$VERSION-$1.zip"; }
+dmg_for() { echo "release/Metal-$VERSION-$1.dmg"; }
+zip_for() { echo "release/Metal-$VERSION-$1.zip"; }
 # the bots' browser, left out of the installer: the app downloads it from the release and checks the sha256 it pins
-part_for() { echo "release/DuskBot-$VERSION-browser-darwin-$1.zip"; }
+part_for() { echo "release/Metal-$VERSION-browser-darwin-$1.zip"; }
 for a in "${ARCHES[@]}"; do [ -s "$(part_for "$a")" ] || die "missing $(part_for "$a") (scripts/pack-browser-part.mjs)"; done
 mkdir -p release/notary
 
@@ -408,7 +408,7 @@ for a in "${ARCHES[@]}"; do
   ditto -c -k --sequesterRsrc --keepParent "$(app_dir "$a")/$APP_NAME.app" "$(zip_for "$a")"
 done
 for a in "${ARCHES[@]}"; do
-  case "$a" in arm64) cp "$(dmg_for arm64)" release/DuskBot.dmg ;; x64) cp "$(dmg_for x64)" release/DuskBot-intel.dmg ;; esac
+  case "$a" in arm64) cp "$(dmg_for arm64)" release/Metal.dmg ;; x64) cp "$(dmg_for x64)" release/Metal-intel.dmg ;; esac
 done
 
 # ---------------------------------------------------------------- the checks a person's mac will run
@@ -457,5 +457,5 @@ fi
 
 case "$MODE" in dry) d="dry run, ad-hoc signed, not notarized" ;; signed) d="Developer ID signed, not notarized" ;; *) d="signed, notarized and stapled" ;; esac
 say "done ($d)"
-(cd release && shasum -a 256 DuskBot*.dmg DuskBot-*.zip | tee SHA256SUMS-mac | sed 's/^/  /')
+(cd release && shasum -a 256 DuskBot*.dmg Metal-*.zip | tee SHA256SUMS-mac | sed 's/^/  /')
 echo "  upload with the installers: $(for a in "${ARCHES[@]}"; do printf '%s ' "$(part_for "$a")"; done)(the apps download them from the downloads release)"

@@ -1,9 +1,9 @@
 {
   "path": "/vs/poke",
-  "title": "Poke vs dusk bot: a text contact or separate teammates?",
+  "title": "Poke vs Metal: a text contact or separate teammates?",
   "nav": "poke",
-  "h1": "poke vs dusk bot: where you text your assistant",
-  "description": "Compare Poke messaging, included AI and monthly prices with dusk bot roles, phone pairing and hosting. Pick the place you will actually use.",
+  "h1": "poke vs Metal: where you text your assistant",
+  "description": "Compare Poke messaging, included AI and monthly prices with Metal roles, phone pairing and hosting. Pick the place you will actually use.",
   "answer": "**pick where you'll actually text it.** poke works like a contact in apple messages, telegram, whatsapp or rcs.[^1][^2] dusk uses its own desktop and paired phone interface, with separate bots for different jobs.\n\npoke runs in the cloud. dusk bots live on your computer, server or dusk cloud.[^3][^7] pick where you'll text it first. the rest follows.",
   "tags": [
     "poke",
@@ -46,7 +46,7 @@
     "intro": "**a similar price can buy a different setup.** these monthly usd prices and channels are as of 12 november 2026. the plans do not promise equal ai work.",
     "cols": [
       "Poke",
-      "dusk bot"
+      "Metal"
     ],
     "rows": [
       {
@@ -129,7 +129,7 @@
       }
     ]
   },
-  "method": "**try the habit you want to keep.** poke's own pages don't name its models or explain how it asks before acting. ask about those details when you try it.\n\nwe make dusk bot. these dated offers help you choose a trial; we haven't measured which handles your job better.",
+  "method": "**try the habit you want to keep.** poke's own pages don't name its models or explain how it asks before acting. ask about those details when you try it.\n\nMetal is based on Dusk Bot. these dated offers help you choose a trial; we haven't measured which handles your job better.",
   "sections": [
     {
       "h": "use the conversation you will come back to",
@@ -137,7 +137,7 @@
     },
     {
       "h": "a paired phone does not move the bot",
-      "md": "**get the phone reply even after you've shut the laptop.** poke already runs as a cloud agent.[^3] a dusk bot on your computer needs it on with the app running.[^6]\n\ndusk cloud hosts your bots on your own unshared machine. pair your phone there and it works with the laptop off. ai usage still goes on the provider's bill.[^7][^9]\n\nchoose the home before adding more work. the [personal agent guide](/personal-ai-agent) walks through that decision."
+      "md": "**get the phone reply even after you've shut the laptop.** poke already runs as a cloud agent.[^3] a Metal bot on your computer needs it on with the app running.[^6]\n\ndusk cloud hosts your bots on your own unshared machine. pair your phone there and it works with the laptop off. ai usage still goes on the provider's bill.[^7][^9]\n\nchoose the home before adding more work. the [personal agent guide](/personal-ai-agent) walks through that decision."
     },
     {
       "h": "add roles only when they earn their keep",
@@ -185,31 +185,31 @@
       "checked": "2026-11-12"
     },
     {
-      "label": "dusk bot: pairing and current browser limits",
+      "label": "Metal: pairing and current browser limits",
       "url": "/docs/phone"
     },
     {
-      "label": "dusk bot: hosted computer and pricing",
+      "label": "Metal: hosted computer and pricing",
       "url": "/docs/dusk-cloud"
     },
     {
-      "label": "dusk bot: separate roles and model choices",
+      "label": "Metal: separate roles and model choices",
       "url": "/docs/bots"
     },
     {
-      "label": "dusk bot: ai provider billing",
+      "label": "Metal: ai provider billing",
       "url": "/docs/account-and-billing"
     },
     {
-      "label": "dusk bot: desktop and cloud timing",
+      "label": "Metal: desktop and cloud timing",
       "url": "/docs/routines"
     },
     {
-      "label": "dusk bot: connected apps and sending",
+      "label": "Metal: connected apps and sending",
       "url": "/docs/files-and-apps"
     },
     {
-      "label": "dusk bot: sending and full access",
+      "label": "Metal: sending and full access",
       "url": "/docs/computer"
     }
   ],
@@ -247,7 +247,7 @@
       ],
       [
         "separate bots with their own memory and ai",
-        "dusk bot"
+        "Metal"
       ],
       [
         "a phone reply while your laptop sleeps",

@@ -24,7 +24,7 @@ const turn = (extra: Partial<SendTurnInput> = {}): SendTurnInput => ({
   ...extra,
 } as SendTurnInput);
 
-describe("dusk bot's own MCP servers for an engine that reaches servers by URL", () => {
+describe("Metal's own MCP servers for an engine that reaches servers by URL", () => {
   it("turns each own proxy into this server's endpoint with the same capability, and leaves the person's servers as they are", () => {
     const servers = acpMcpServers(turn(), { http: true });
     expect(servers.map((server) => [server.name, "url" in server ? server.url : server.command])).toEqual([
@@ -124,7 +124,7 @@ describe("the MCP servers of a turn whose model takes a limited number of tools"
     ("headers" in server ? server.headers : []).find((entry) => entry.name === name)?.value;
   const agentsTools = agentsToolList(turn().integrations!.agents!.env).listed.length;
 
-  it("keeps the agents server's whole list, then dusk bot's own before the person's, each over the way that server reads it", () => {
+  it("keeps the agents server's whole list, then Metal's own before the person's, each over the way that server reads it", () => {
     const servers = acpMcpServers(turn(), { http: true, toolBudget: agentsTools + 10 });
     expect(servers.map((server) => server.name)).toEqual(["agents", "browser", "data", "notes"]);
     const agents = JSON.parse(Buffer.from(header(servers[0]!, AGENTS_ENV_HEADER)!, "base64url").toString("utf8"));

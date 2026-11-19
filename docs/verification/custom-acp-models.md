@@ -71,7 +71,7 @@ bot still used `agent-default`. All four synthetic provider identities were
 visible in the picker. These screenshots show the implemented feature against
 the offline fixture; they are not screenshots of installed provider accounts.
 
-These checks do not establish a packaged desktop launch. The isolated E2E establishes dusk bot persistence
+These checks do not establish a packaged desktop launch. The isolated E2E establishes Metal persistence
 and actual ACP transport against a fake agent; acceptance by an installed
 provider must be reported separately, with the exact model ID and supported
 options advertised by that provider. A failing or skipped provider check is

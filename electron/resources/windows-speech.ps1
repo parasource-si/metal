@@ -1,4 +1,4 @@
-# Built-in Windows speech-to-text for dusk bot, the Windows twin of speech-helper.swift.
+# Built-in Windows speech-to-text for Metal, the Windows twin of speech-helper.swift.
 # Windows PowerShell 5.1 and System.Speech ship with Windows: nothing to install.
 # Streams NDJSON lines (UTF-8, LF) to stdout:
 #   {"partial":true,"text":"..."}                       while recognizing (whole session so far)

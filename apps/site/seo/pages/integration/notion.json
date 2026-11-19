@@ -4,7 +4,7 @@
   "title": "Notion AI agent for page upkeep and clearer project notes",
   "nav": "notion",
   "h1": "a notion bot that keeps the next step easy to find",
-  "description": "Find the missing owner or next step before the project meeting. Give a dusk bot focused Notion routines for gap reports, decision notes and page upkeep.",
+  "description": "Find the missing owner or next step before the project meeting. Give a Metal bot focused Notion routines for gap reports, decision notes and page upkeep.",
   "keyword": "claude notion",
   "keywords": [
     "claude notion integration",
@@ -13,7 +13,7 @@
     "ai bot for notion",
     "notion mcp"
   ],
-  "answer": "**find out who owns the next step before the project meeting.** connect notion to a dusk bot and ask for incomplete records. it can find pages, read text and update allowed entries. choose the ai you want. start with the gap report here, then decide which page or database fields it may change.",
+  "answer": "**find out who owns the next step before the project meeting.** connect notion to a Metal bot and ask for incomplete records. it can find pages, read text and update allowed entries. choose the ai you want. start with the gap report here, then decide which page or database fields it may change.",
   "updated": "2026-11-12",
   "review": {
     "status": "approved",
@@ -137,19 +137,19 @@
   ],
   "sources": [
     {
-      "label": "dusk bot docs: files and apps",
+      "label": "Metal docs: files and apps",
       "url": "/docs/files-and-apps"
     },
     {
-      "label": "dusk bot docs: routines",
+      "label": "Metal docs: routines",
       "url": "/docs/routines"
     },
     {
-      "label": "dusk bot docs: bot memory",
+      "label": "Metal docs: bot memory",
       "url": "/docs/memory"
     },
     {
-      "label": "dusk bot docs: app permissions",
+      "label": "Metal docs: app permissions",
       "url": "/docs/computer"
     }
   ],

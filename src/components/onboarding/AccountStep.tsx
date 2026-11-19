@@ -1,4 +1,4 @@
-// Signing in to a dusk bot account, as one step of the first run: Google (and any other provider the account service
+// Signing in to a Dusk account, as one step of the first run: Google (and any other provider the account service
 // offers) in the browser, or an emailed one-time code. The attempt and the token stay in main (funnel-account.ts).
 import { useEffect, useId, useRef, useState, type FormEvent, type ReactElement } from "react";
 import { phoneAppEnabled } from "@/lib/feature-flags";
@@ -226,7 +226,7 @@ export function AccountStep({ account, known, onDone, onSkip }: {
           {t("funnel.account.skip")}
         </button>
       )}
-      <StepFrame art={<StepArt art="key" />} title={t("funnel.account.title")} sub={t(sent ? "funnel.account.codeSub" : phoneAppEnabled() ? "funnel.account.sub" : "funnel.account.subNoPhone", { email: sent?.email ?? "" })}
+      <StepFrame art={<StepArt art="key" />} title={t("funnel.account.title", { app: "Dusk" })} sub={t(sent ? "funnel.account.codeSub" : phoneAppEnabled() ? "funnel.account.sub" : "funnel.account.subNoPhone", { email: sent?.email ?? "" })}
 >
         <div className="flex w-full max-w-[320px] flex-col gap-3">
           {!sent && providers.length > 0 && (

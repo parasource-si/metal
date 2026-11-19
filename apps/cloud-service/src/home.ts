@@ -102,7 +102,7 @@ export function homeSetupScript(options: { releaseKeys: readonly ReleaseKey[]; r
   const node = `node-v${HOME_NODE.version}-linux-x64`;
   const caddy = `caddy_${HOME_CADDY.version}_linux_amd64.tar.gz`;
   const unit = `[Unit]
-Description=dusk bot My Cloud home
+Description=Metal My Cloud home
 After=network-online.target omb-docker-gate.service
 Wants=network-online.target
 ConditionPathExists=${APP}/dist-server/cloud-home-start.js
@@ -126,7 +126,7 @@ OOMPolicy=continue
 WantedBy=multi-user.target
 `;
   const gate = `[Unit]
-Description=dusk bot docker gate for bot computers
+Description=Metal docker gate for bot computers
 After=docker.service
 Requires=docker.service
 StartLimitIntervalSec=0
@@ -155,7 +155,7 @@ WantedBy=multi-user.target docker.service
   // the bot computers' image, made ready by root beside the gate (which never builds): a failed try is tried again a
   // minute later, at low priority so the home answers while it builds
   const desktopImage = `[Unit]
-Description=dusk bot bot computer image
+Description=Metal bot computer image
 After=docker.service network-online.target
 Wants=network-online.target
 Requires=docker.service
@@ -184,7 +184,7 @@ echo "$(( $(awk '/MemTotal/ {print $2}' /proc/meminfo) / 2 ))K" > /sys/block/zra
 mkswap /dev/zram0 >/dev/null && swapon -p 100 /dev/zram0
 `;
   const zramUnit = `[Unit]
-Description=dusk bot compressed swap
+Description=Metal compressed swap
 
 [Service]
 Type=oneshot
@@ -195,7 +195,7 @@ ExecStart=${BIN}/omb-zram
 WantedBy=multi-user.target
 `;
   const botsSlice = `[Unit]
-Description=Dusk bot computers
+Description=Metal computers
 
 [Slice]
 MemoryHigh=65%

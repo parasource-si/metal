@@ -178,13 +178,13 @@ export function randomShort() {
 export function bootstrapScript(base, token, way) {
   const args = way ? ` -s -- --${way}` : "";
   return `#!/bin/sh
-# dusk bot: gets the installer for this setup, then runs it
+# Metal: gets the installer for this setup, then runs it
 dusk_install() {
   for f in "" -4 "" -4 ""; do
     if s=$(curl -fsSL --connect-timeout 15 -m 120 $f ${base}/i/${token}); then printf '%s\\n' "$s" | sh${args}; exit $?; fi
     sleep 2
   done
-  echo "dusk bot could not be downloaded. check the internet and paste the line again." >&2
+  echo "Metal could not be downloaded. check the internet and paste the line again." >&2
   exit 1
 }
 dusk_install
@@ -1116,7 +1116,7 @@ export function createLinkService({ base, dataDir = null, scriptPath, uninstallP
       let acct = null, byAccount = null;
       if (grantKeys) {
         const verdict = verifyLinkGrant(body?.grant, { keys: grantKeys, now: now() });
-        if (!verdict.ok) return fail(res, 401, "Sign in to your dusk bot account in the app to link a server.", "account_required");
+        if (!verdict.ok) return fail(res, 401, "Sign in to your Metal account in the app to link a server.", "account_required");
         acct = verdict.acct;
         if (accountTunnels(acct) >= limits.tunnelsPerAccount) return fail(res, 409, `This account already has ${limits.tunnelsPerAccount} linked servers. Remove one in the app to link another.`, "tunnel_limit");
         byAccount = (created.get(`acct:${acct}`) ?? []).filter((at) => t - at < 3_600_000);

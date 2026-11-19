@@ -1,10 +1,13 @@
 // The notes file NOTES_PROMPT asks for (shared/assistant-notes.ts), read back: front matter naming the format, a setup
-// block the other AI wrote for dusk bot, then sections by heading. Verbatim text sits between ~~~ (or ```) fences so a
+// block the other AI wrote for Metal, then sections by heading. Verbatim text sits between ~~~ (or ```) fences so a
 // heading inside someone's instructions stays part of them. Each file (or part of a split one) becomes one document in
 // the same shape as the JSON notes, so everything after reading is shared. Pure text: the renderer and tests read it.
 
 /** The last line of a whole file; a file without it was cut off. */
-export const NOTES_END = "END OF DUSK BOT NOTES";
+export const NOTES_END = "END OF METAL NOTES";
+export const NOTES_SETUP = "SETUP INSTRUCTIONS FOR METAL";
+const LEGACY_NOTES_END = "END OF DUSK BOT NOTES";
+const SETUP_HEADINGS = [NOTES_SETUP.toLowerCase(), "setup instructions for dusk bot"];
 
 interface Section { level: number; title: string; body: string[]; children: Section[] }
 
@@ -199,7 +202,7 @@ function document(front: Record<string, string>, lines: string[]): Record<string
     if (owner) (owner.routines as unknown[]).push(one);
     return !owner;
   });
-  const setup = at("setup instructions for dusk bot");
+  const setup = at(...SETUP_HEADINGS);
   return {
     format: front.format, version: Number(front.version) || undefined, from: front.from ?? "",
     about_me: about,
@@ -215,7 +218,7 @@ function document(front: Record<string, string>, lines: string[]): Record<string
 }
 
 const KNOWN_TOP = new Set([
-  "setup instructions for dusk bot", "about me", "about the user", "about you", "contacts", "people", "how i like answers", "custom instructions",
+  ...SETUP_HEADINGS, "about me", "about the user", "about you", "contacts", "people", "how i like answers", "custom instructions",
   "instructions", "personalization", "memories", "saved memories", "open threads", "to dos", "todos", "routines", "recurring tasks",
   "scheduled tasks", "connected apps", "apps", "skills", "skills and tools", "bots", "assistants", "custom gpts", "agents",
 ]);
@@ -246,7 +249,10 @@ export function markdownNotes(source: string, format: string): { documents: Arra
   const documents = found.map((part, index) => {
     const end = found[index + 1]?.start ?? lines.length;
     let body = lines.slice(part.body, end);
-    const last = body.findIndex((line) => line.trim().replace(/[*_`]/g, "") === NOTES_END);
+    const last = body.findIndex((line) => {
+      const marker = line.trim().replace(/[*_`]/g, "");
+      return marker === NOTES_END || marker === LEGACY_NOTES_END;
+    });
     if (last >= 0) {
       ended = true;
       body = body.slice(0, last);

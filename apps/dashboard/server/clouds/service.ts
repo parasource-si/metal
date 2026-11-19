@@ -139,7 +139,7 @@ export function createCloudsService(options: CloudsServiceOptions): CloudsServic
   function requireCloud(id: string) { const cloud = get(id); if (!cloud) throw new CloudError(404, "not_found"); return cloud; }
   async function pairCloud(c: StoredCloud, member?: TeamMemberClaim) {
     if (c.status !== "running" || !c.origin || c.suspended !== null || c.ended || c.destroyAt !== null && c.destroyAt <= now()) throw new CloudError(409, "unavailable");
-    const claims = c.team && member ? { label: "dusk bot app (Team Cloud)", team: c.team, member } : { label: "dusk bot app (Cloud)" };
+    const claims = c.team && member ? { label: "Metal app (Team Cloud)", team: c.team, member } : { label: "Metal app (Cloud)" };
     const result = await (c.backend ? options.managedHome ?? home : home).pair(c.origin, sealer.unseal(c.bootstrapSecret), { ...claims, ttlSeconds: 300 });
     // the cloud's link public key: the app checks its cloud's sealed Mac jobs against it (docs/cloud-uses-mac.md)
     return { origin: c.origin, code: result.code, expiresAt: result.expiresAt, ...(c.linkPublicKey ? { linkKey: c.linkPublicKey } : {}) };

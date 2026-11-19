@@ -82,7 +82,7 @@ export interface GrokSkill { name: string; description: string; instructions: st
 export interface GrokRoutine {
   name: string; instruction: string; trigger: string; cron: string; when: string; timeZone: string;
   paused: boolean; skills: string[]; details: string;
-  /** A schedule already in dusk bot's shape (another app's own routine file), used when it is valid. */
+  /** A schedule already in Metal's shape (another app's own routine file), used when it is valid. */
   schedule?: PackageRoutineSchedule;
 }
 export interface GrokApp { name: string; mcpUrl: string; transport: string; headerNames: string[] }
@@ -91,7 +91,7 @@ export interface GrokBot {
   memories: string[]; userFacts: string[]; skills: GrokSkill[]; routines: GrokRoutine[]; apps: GrokApp[];
   /** Memory files read from another app's folder, by seed path (MEMORY.md, memory/<topic>.md). */
   memoryFiles?: Record<string, string>;
-  /** A colour it already had, when it is one of dusk bot's. */
+  /** A colour it already had, when it is one of Metal's. */
   color?: string;
   /** Passages for the bot's engine to condense into notes after the move (daily logs), never kept as they are. */
   distill?: string[];
@@ -561,7 +561,7 @@ export function grokMovePlan(bot: GrokBot, options: { timeZone?: string; takenSe
       category: "Imported",
       author: { name: from.name },
       license: "See source",
-      outcomes: [clip(`${name} runs in dusk bot with your own engine and apps.`, 240)],
+      outcomes: [clip(`${name} runs in Metal with your own engine and apps.`, 240)],
       setupMinutes: 5,
       requirements: { apps: [], capabilities: [] },
       team: { name: clip(name, 60) },

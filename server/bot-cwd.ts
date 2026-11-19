@@ -37,7 +37,7 @@ export function validateBotCwd(input: unknown): CwdValidation {
   }
   if (!stat.isDirectory()) return { ok: false, error: `that path is not a folder: ${cwd}` };
   if (isSystemFolder(cwd)) return { ok: false, error: "Pick a project folder, not a whole disk or system folder: a bot working there could change files your computer needs." };
-  if (foreignDataDir(cwd, DATA_DIR)) return { ok: false, error: "that folder belongs to another dusk bot workspace" };
+  if (foreignDataDir(cwd, DATA_DIR)) return { ok: false, error: "that folder belongs to another Metal workspace" };
   return { ok: true, cwd };
 }
 
@@ -49,7 +49,7 @@ export function folderToFollow(bot: { id: string; cwd?: string }, threadId: stri
   return isOwnThreadFolder(threadCwd, bot.id, threadId) && !pickedFolderLost(bot.cwd, opts.dataDir) ? bot.cwd : undefined;
 }
 
-/** A conversation's folder a teammate may be sent to: one that still exists, outside dusk bot's own data (a bot's private workspace). */
+/** A conversation's folder a teammate may be sent to: one that still exists, outside Metal's own data (a bot's private workspace). */
 export function sharedProjectFolder(cwd: string | null | undefined, dataDir: string): string | undefined {
   const checked = cwd ? validateBotCwd(cwd) : undefined;
   if (!checked?.ok || !checked.cwd) return undefined;

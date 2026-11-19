@@ -119,7 +119,7 @@ test('a scene refuses kit pieces that do not exist', () => {
   assert.throws(() => scene({ path: '/x', kind: 'guide', h1: 'x', art: { logo: 'nope' } }, kit), /no mark/);
 });
 
-test('composio pages: reads and changes by dusk bot\'s own rule', () => {
+test('composio pages: reads and changes by Metal\'s own rule', () => {
   assert.equal(isRead('GMAIL_FETCH_EMAILS', 'gmail'), true);
   assert.equal(isRead('GMAIL_SEND_EMAIL', 'gmail'), false);
   assert.equal(isRead('GMAIL_SETTINGS_GET_IMAP', 'gmail'), false);

@@ -1,4 +1,4 @@
-// POST /api/bots/:id/helper-followup (routes/bot-messages.ts): Dusk's follow-up after its first look around, written
+// POST /api/bots/:id/helper-followup (routes/bot-messages.ts): Metal's follow-up after its first look around, written
 // once under its intro as a real bot message. Its client says what it saw (an AI, the apps); the counts are the server's.
 import { z } from "zod";
 
@@ -17,7 +17,7 @@ export const helperFollowupBody = z.object({
   apps: z.array(appName).max(20).default([]),
 });
 
-/** Only Dusk's own person writes its follow-up: on a Team Cloud the member it belongs to, else the place's owner. */
+/** Only Metal's own person writes its follow-up: on a Team Cloud the member it belongs to, else the place's owner. */
 export function mayFollowUp(bot: BotRecord, auth: RequestAuth): boolean {
   const person = defaultBotPerson(bot);
   if (!person) return auth.scopes.includes("admin");
@@ -30,7 +30,7 @@ function seenBy(bot: BotRecord, person: string): boolean {
   return typeof visibility === "object" && visibility.people.some((email) => email.trim().toLowerCase() === person);
 }
 
-/** What Dusk found: what its client saw, with the person's other bots and the routines they run counted here. */
+/** What Metal found: what its client saw, with the person's other bots and the routines they run counted here. */
 export function followupFacts(
   maus: BotRecord,
   seen: { ai: HelperFollowupFacts["ai"]; apps: readonly string[] },
@@ -50,8 +50,8 @@ export function followupFacts(
   };
 }
 
-/** The follow-up to append to `transcript`, or the one already there: a conversation gets one, under Dusk's intro.
- * `skip`: the person's first line after the intro already gave Dusk a job, so a "here's what I found" would only
+/** The follow-up to append to `transcript`, or the one already there: a conversation gets one, under Metal's intro.
+ * `skip`: the person's first line after the intro already gave Metal a job, so a "here's what I found" would only
  * land between their ask and its answer. */
 export function helperFollowup(transcript: readonly Message[], facts: () => HelperFollowupFacts):
   { existing: Message } | { append: Omit<Message, "id" | "at"> } | { skip: true } | null {

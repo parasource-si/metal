@@ -81,15 +81,15 @@
   ],
   "sources": [
     {
-      "label": "dusk bot docs: getting started and the ai",
+      "label": "Metal docs: getting started and the ai",
       "url": "/docs/getting-started"
     },
     {
-      "label": "dusk bot docs: files and apps",
+      "label": "Metal docs: files and apps",
       "url": "/docs/files-and-apps"
     },
     {
-      "label": "dusk bot docs: routines",
+      "label": "Metal docs: routines",
       "url": "/docs/routines"
     }
   ],

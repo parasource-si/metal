@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Model Context Protocol (MCP) server for dusk bot over JSON-RPC 2.0 stdio,
+// Model Context Protocol (MCP) server for Metal over JSON-RPC 2.0 stdio,
 // for external agents (Hermes, Claude Desktop, Cursor, etc.).
 import { isOwnAppId } from "../electron/legacy-names.mjs";
 import readline from "node:readline";
@@ -11,16 +11,16 @@ export function validateBaseUrl(url: string): string {
   try {
     parsed = new URL(trimmed);
   } catch {
-    throw new Error(`Invalid dusk bot URL: '${url}'`);
+    throw new Error(`Invalid Metal URL: '${url}'`);
   }
   if (parsed.protocol !== "http:" && parsed.protocol !== "https:") {
-    throw new Error("dusk bot URL must use http:// or https://");
+    throw new Error("Metal URL must use http:// or https://");
   }
   if (parsed.username || parsed.password) {
-    throw new Error("dusk bot URL must not contain credentials; use DUSK_TOKEN instead");
+    throw new Error("Metal URL must not contain credentials; use DUSK_TOKEN instead");
   }
   if ((parsed.pathname !== "/" && parsed.pathname !== "") || parsed.search || parsed.hash) {
-    throw new Error("dusk bot URL must be an origin without a path, query, or fragment");
+    throw new Error("Metal URL must be an origin without a path, query, or fragment");
   }
   const hostname = parsed.hostname.toLowerCase().replace(/^\[|\]$/g, "");
   const isLoopback = hostname === "127.0.0.1" || hostname === "localhost" || hostname === "::1";
@@ -78,16 +78,16 @@ async function fetchJson(url: string, options: RequestInit = {}): Promise<any> {
     const text = await response.text().catch(() => "");
     if (response.status === 403 && !new Headers(headers).has("Authorization")) {
       throw new DuskBotApiError(403,
-        "dusk bot refused this write because the installed desktop app requires a paired session token. " +
+        "Metal refused this write because the installed desktop app requires a paired session token. " +
         "Set DUSK_TOKEN as described in docs/mcp-server.md.",
       );
     }
-    throw new DuskBotApiError(response.status, `dusk bot API error (${response.status}): ${text || response.statusText}`);
+    throw new DuskBotApiError(response.status, `Metal API error (${response.status}): ${text || response.statusText}`);
   }
   try {
     return await response.json();
   } catch {
-    throw new Error(`dusk bot API returned a non-JSON response from ${url}`);
+    throw new Error(`Metal API returned a non-JSON response from ${url}`);
   }
 }
 
@@ -100,7 +100,7 @@ export async function probeBaseUrls(candidates: string[]): Promise<string> {
         signal: AbortSignal.timeout(Math.min(requestTimeoutMs(), 2_000)),
       });
       if (!isOwnAppId(health?.app)) {
-        failures.push(`${candidate} answered, but it was not dusk bot`);
+        failures.push(`${candidate} answered, but it was not Metal`);
         continue;
       }
       return candidate;
@@ -108,7 +108,7 @@ export async function probeBaseUrls(candidates: string[]): Promise<string> {
       failures.push(`${candidate}: ${error instanceof Error ? error.message : String(error)}`);
     }
   }
-  throw new Error(`Could not find a running dusk bot server. ${failures.join("; ")}`);
+  throw new Error(`Could not find a running Metal server. ${failures.join("; ")}`);
 }
 
 export async function resolveBaseUrl(): Promise<string> {
@@ -157,7 +157,7 @@ const AGENT_ACTION = { readOnlyHint: false, destructiveHint: true, idempotentHin
 export const TOOLS: McpToolDefinition[] = [
   {
     name: "get_system_health",
-    description: "Check whether the dusk bot server is reachable.",
+    description: "Check whether the Metal server is reachable.",
     inputSchema: {
       type: "object",
       properties: {},
@@ -565,7 +565,7 @@ function optionalStringArg(
 
 function idArg(args: Record<string, unknown>, key: string): string {
   const value = stringArg(args, key);
-  if (!/^[\w-]+$/.test(value)) throw new ToolInputError(`${key} is not a valid dusk bot ID`);
+  if (!/^[\w-]+$/.test(value)) throw new ToolInputError(`${key} is not a valid Metal ID`);
   return value;
 }
 
@@ -782,7 +782,7 @@ export async function waitForJob(
     const job: Record<string, any> = await fetcher(`/api/threads/${encodeURIComponent(threadId)}/job?${params.toString()}`,
       options.signal ? { signal: options.signal } : {}).catch((error: unknown) => { // a server without the route; a gone conversation is itself
       throw error instanceof DuskBotApiError && error.status === 404 && !/no such conversation/.test(error.message)
-        ? new DuskBotApiError(404, "This dusk bot server cannot report a conversation's job (GET /api/threads/:id/job); update it, then wait again.") : error;
+        ? new DuskBotApiError(404, "This Metal server cannot report a conversation's job (GET /api/threads/:id/job); update it, then wait again.") : error;
     });
     since = Number(job.since);
     if (job.version !== version) options.onProgress?.(job);
@@ -806,7 +806,7 @@ export async function handleToolCall(
   switch (name) {
     case "get_system_health": {
       const res = await fetcher("/api/health");
-      if (!isOwnAppId(res?.app)) throw new Error("The configured endpoint is not a dusk bot server");
+      if (!isOwnAppId(res?.app)) throw new Error("The configured endpoint is not a Metal server");
       return {
         status: "connected",
         endpoint: discoveredBaseUrl ?? DUSK_BASE_URL,
@@ -877,7 +877,7 @@ export async function handleToolCall(
         }),
       });
       if (!isRecord(created?.bot) || typeof created.bot.id !== "string") {
-        throw new Error("dusk bot did not return the created bot");
+        throw new Error("Metal did not return the created bot");
       }
       return { success: true, bot: projectBot(created.bot) };
     }
@@ -895,7 +895,7 @@ export async function handleToolCall(
         body: JSON.stringify(patch),
       });
       if (!isRecord(result?.bot)) {
-        throw new Error("dusk bot did not return the updated bot");
+        throw new Error("Metal did not return the updated bot");
       }
       return { success: true, bot: projectBot(result.bot) };
     }
@@ -964,7 +964,7 @@ export async function handleToolCall(
         }),
       });
       if (!isRecord(created?.group) || typeof created.group.id !== "string") {
-        throw new Error("dusk bot did not return the created channel");
+        throw new Error("Metal did not return the created channel");
       }
       return { success: true, channel: projectChannel(created.group) };
     }
@@ -988,7 +988,7 @@ export async function handleToolCall(
         body: JSON.stringify(patch),
       });
       if (!isRecord(result?.group)) {
-        throw new Error("dusk bot did not return the updated channel");
+        throw new Error("Metal did not return the updated channel");
       }
       return { success: true, channel: projectChannel(result.group) };
     }
@@ -999,7 +999,7 @@ export async function handleToolCall(
       const route = taskRoute(args.target_type, targetId);
       const result = await fetcher(route, { method: "POST", body: JSON.stringify(title ? { title } : {}) });
       if (!isRecord(result?.task) || typeof result.task.threadId !== "string") {
-        throw new Error("dusk bot did not return the created task");
+        throw new Error("Metal did not return the created task");
       }
       const activeTaskId = result.bot?.threadId ?? result.group?.threadId ?? result.task?.threadId;
       return {
@@ -1037,7 +1037,7 @@ export async function handleToolCall(
         body: JSON.stringify({ title }),
       });
       if (!isRecord(result?.task)) {
-        throw new Error("dusk bot did not return the renamed task");
+        throw new Error("Metal did not return the renamed task");
       }
       return {
         success: true,
@@ -1110,7 +1110,7 @@ export async function handleToolCall(
           method: "PATCH",
           body: JSON.stringify({ modelSelection: selection, requireAvailableModel: true }),
         });
-        if (!isRecord(res?.task)) throw new Error("dusk bot did not return the updated task");
+        if (!isRecord(res?.task)) throw new Error("Metal did not return the updated task");
         return { success: true, botId, task: projectTask(res.task, bot.threadId) };
       }
       if (bot.busy) throw new Error("Interrupt the bot or let it finish before changing its model");
@@ -1284,7 +1284,7 @@ export async function processMcpMessage(
           name: "duskbot-mcp",
           version: "1.1.0",
         },
-        instructions: "Use bounded read tools before mutating the dusk bot team. Approval grants, deletion, and computer lifecycle are intentionally unavailable.",
+        instructions: "Use bounded read tools before mutating the Metal team. Approval grants, deletion, and computer lifecycle are intentionally unavailable.",
       });
     }
 
@@ -1369,9 +1369,9 @@ export async function processMcpMessage(
 }
 
 /** Serve MCP on this process's stdin and stdout until stdin closes (then
- * resolves): what `pnpm mcp`, dist-server/mcp-server.js and `duskbot mcp` run. */
+ * resolves): what `pnpm mcp`, dist-server/mcp-server.js and `metal mcp` run. */
 export function runStdio(): Promise<void> {
-  log("dusk bot MCP server running on stdio");
+  log("Metal MCP server running on stdio");
   const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout,

@@ -72,7 +72,7 @@ function parseHostedWorkspaceLink(input) {
   }
 }
 
-/** `origin` is this app's own server: what `duskbot pair` prints as "this computer" on a server without a public
+/** `origin` is this app's own server: what `metal pair` prints as "this computer" on a server without a public
  * address names port 8799 there, which here is this app, so it is never added as another place. */
 function isThisAppsServer(origin, port) {
   try {
@@ -95,12 +95,12 @@ function workspaceSummary(state) {
 /** Native identity must not depend on a hosted renderer's version/title. `homeOrigin`: My Cloud once it is the person's
  * home: alone, it is simply the app; with a team or another place besides, the window names the place it shows. */
 function workspaceWindowTitle(state, companion, homeOrigin = null) {
-  if (companion) return `dusk bot · Connected to: ${companion.serverName} (${new URL(companion.endpoint).host})`;
+  if (companion) return `Metal · Connected to: ${companion.serverName} (${new URL(companion.endpoint).host})`;
   const active = activeEnvironment(state);
-  if (listedPlace(active)) return `dusk bot · ${active.name}`;
-  if (active && active.kind !== "local" && active.origin !== homeOrigin) return `dusk bot · Hosted: ${active.name} (${new URL(active.origin).host})`;
-  if (active && homeOrigin && active.origin === homeOrigin && otherPlaces(state, homeOrigin) > 0) return `dusk bot · ${active.name}`;
-  return "dusk bot";
+  if (listedPlace(active)) return `Metal · ${active.name}`;
+  if (active && active.kind !== "local" && active.origin !== homeOrigin) return `Metal · Hosted: ${active.name} (${new URL(active.origin).host})`;
+  if (active && homeOrigin && active.origin === homeOrigin && otherPlaces(state, homeOrigin) > 0) return `Metal · ${active.name}`;
+  return "Metal";
 }
 
 /** Switching is a main-process action; a cloud page must not navigate itself onto the local bridge. */

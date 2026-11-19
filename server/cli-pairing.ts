@@ -1,4 +1,4 @@
-// What `duskbot serve` and `duskbot pair` print for a pairing code. A browser on this computer is no longer the
+// What `metal serve` and `metal pair` print for a pairing code. A browser on this computer is no longer the
 // owner just by being here, so it signs in once with the link printed for it.
 import qrcode from "qrcode-terminal";
 
@@ -29,7 +29,7 @@ export function pairingBlock(input: {
     lines.push(qrToString(target));
     lines.push("");
     if (scanInvite) {
-      lines.push(`Scan that in the dusk bot app. For a browser instead, open the web`);
+      lines.push(`Scan that in the Metal app. For a browser instead, open the web`);
       lines.push(`address above and type the code.`);
     } else if (input.phone === "android") {
       lines.push(`That QR opens the web app. The Android app needs the phone-app link,`);
@@ -37,7 +37,7 @@ export function pairingBlock(input: {
       lines.push(`DUSK_PUBLIC_URL, or open the web address above and type the code.`);
     } else if (input.inviteUrl) {
       lines.push(`Scan that with Camera for the browser, or paste the phone-app link`);
-      lines.push(`above into the dusk bot app.`);
+      lines.push(`above into the Metal app.`);
     }
   }
   return lines.join("\n");
@@ -48,7 +48,7 @@ export function browserSignInLines(localUrl: string, code: string, expiresAt: nu
   return [
     "Sign in from a browser on this computer with this link (single use, until",
     `${new Date(expiresAt).toLocaleTimeString()}): ${localUrl}`,
-    `or type the code ${code} on the sign-in page. Later: duskbot pair`,
+    `or type the code ${code} on the sign-in page. Later: metal pair`,
   ].join("\n");
 }
 

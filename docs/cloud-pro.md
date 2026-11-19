@@ -1,22 +1,22 @@
-# dusk cloud: the home machine
+# Dusk Cloud: the home machine
 
-dusk cloud (the Starter, Pro and Max plans) gives one person an always-on
-dusk bot server of their own (a plan may instead sleep when idle: see
+Dusk Cloud (the Starter, Pro and Max plans) gives one person an always-on
+Metal server of their own (a plan may instead sleep when idle: see
 [Sleeping homes](#sleeping-homes-the-power-read-and-the-sleep-handshake)). The plans differ in machine size, disk and
 included allowances; everything on this page applies to all of them. Each
 customer gets one Fly app with one `home` machine that is always on, a volume
 at `/data`, and TLS at `https://<app>.fly.dev`. The desktop app, the phone and
 the web are windows onto it. Local use of the app is unchanged and free.
-Customers read its name as **dusk cloud** wherever they meet it (the
-app, the Admin's pages, emails); "dusk cloud" is this page's shorthand, and
-the app itself is still dusk bot.
+Customers read its name as **Dusk Cloud** wherever they meet it (the
+app, the Admin's pages, emails); "Dusk Cloud" is this page's shorthand, and
+the app itself is still Metal.
 
-dusk cloud includes no AI usage. The person signs in on their machine with their
+Dusk Cloud includes no AI usage. The person signs in on their machine with their
 own Claude or ChatGPT subscription, or an API key, through the same sign-in
-flows as any dusk bot server. Nothing on a Cloud home is routed to a
+flows as any Metal server. Nothing on a Cloud home is routed to a
 platform model gateway.
 
-This page is the dusk bot half of a contract with three parties:
+This page is the Metal half of a contract with three parties:
 
 - **the home machine**: this repository's `cloud-home` image (`deploy/docker/Dockerfile`);
 - **the Admin** (dusk-cloud, `docs/consumer-cloud.md` there): provisions
@@ -30,7 +30,7 @@ Contract version: `1` (`cloudContractVersion` on the wire).
 ## What the person sees
 
 1. They subscribe on the Cloud site. The Admin creates the Fly app and machine.
-2. They open the desktop app, go to **Settings → dusk cloud** and sign in (the
+2. They open the desktop app, go to **Settings → Dusk Cloud** and sign in (the
    existing device sign-in). A **Your Cloud** card says **Setting up** until
    the machine is up.
 3. When it is ready, the machine appears under **Servers** as **My Cloud**, and
@@ -60,7 +60,7 @@ Contract version: `1` (`cloudContractVersion` on the wire).
       A backup file is imported from Settings → Backups, as on any server.
    2. **Connect your AI**: the engine sign-in's own tiles and sign-in panel
       (below), with **Connected** on one that can run: Claude recommended
-      first, ChatGPT, Gemini or an API key under **Other ways**. dusk bot
+      first, ChatGPT, Gemini or an API key under **Other ways**. Metal
       provides no AI usage; with nothing connected, **Skip for now** moves on.
    3. **Files and apps**, optional: **Share folders** opens Settings → Dusk
       Cloud in this computer's window, one click from Files (a browser is told
@@ -139,7 +139,7 @@ sign-in instead of the welcome flow, which describes the person's own computer
 1. Get the phone app: the menu under your name → **Get the phone app** (App
    Store for iPhone, APK for Android).
 2. The same menu → **Connect your phone · to your Cloud (always on)**, or
-   **Settings → dusk cloud → Use My Cloud on your phone**. The Cloud opens in
+   **Settings → Dusk Cloud → Use My Cloud on your phone**. The Cloud opens in
    the app window at its phone pairing.
 3. **Create pairing code**, and scan the QR code with the phone app.
 
@@ -163,7 +163,7 @@ How it fits together (`src/lib/phone-pairing.ts`):
   `?desktop-settings=phone` (on `/pair` too, which carries it on once paired).
   The Cloud's page opens Settings on its phone pairing. It never makes a code
   by itself. Before the Cloud is Ready, or if opening it failed, the card
-  lists the two steps instead. On the Cloud itself, Settings → dusk cloud
+  lists the two steps instead. On the Cloud itself, Settings → Dusk Cloud
   offers the same button and opens the pairing directly.
 
 ### Only your own devices
@@ -417,7 +417,7 @@ says "sign in again on your computer". A check that names no machine for the
 account ends it (a stopped machine named without its address does not). A
 call placed while a saved sign-in is still restoring, in the first seconds
 after launch, waits for it (at most 5 seconds) rather than being refused.
-Signing out of dusk cloud takes it away at once, and so do another
+Signing out of Dusk Cloud takes it away at once, and so do another
 account, companion client mode and restarting the app before a check succeeds
 (the last verified Cloud is kept in memory only); every other server's page
 stays refused. In a web browser, the browser asks for the microphone for
@@ -460,7 +460,7 @@ decides everything from its own verified state (`electron/cloud-entry.mjs`).
    that arrives before the app is ready). If the window already shows
    **My Cloud**, coming forward is all it does.
 2. Otherwise the window returns to this computer (a hosted server that was
-   showing stays saved under **Servers**) and opens **Settings → dusk cloud**.
+   showing stays saved under **Servers**) and opens **Settings → Dusk Cloud**.
    Before that view acts, the app gives a saved Cloud sign-in up to five
    seconds to finish restoring, so it is never mistaken for signed out.
 3. Opened this way, the view acts on its own, with no confirmation:
@@ -478,11 +478,11 @@ sign-out in that view starts nothing) and one automatic connection per link.
 A failed connection shows the card's error; clicking the link again retries.
 Closing Settings or choosing another section ends it. While it is open, the
 first-run welcome waits, as it does for Organization settings. A normal visit
-to **Settings → dusk cloud** never signs in or connects by itself.
+to **Settings → Dusk Cloud** never signs in or connects by itself.
 
 The link does nothing in development builds, and in companion client mode it
 explains that the app must be disconnected from the other computer first.
-The `duskbot` scheme belongs to the installed app: on macOS through the
+The `metal` scheme belongs to the installed app: on macOS through the
 app bundle, on Linux through the `.deb`'s desktop entry, and on Windows (and
 for an AppImage) once the installed app has started at least once, since it
 registers itself at startup. Before that, or if the app is not installed, the
@@ -638,7 +638,7 @@ refuses to start if Node, itself, the server's entry point, Caddy or its
 config (or any folder above them) is not root's, is writable by others, or
 is on the volume. Only the `/data` volume is `maus`'s.
 
-`HOME=/data`, so `~/.claude`, `~/.codex`, `~/.grok` and dusk bot's own
+`HOME=/data`, so `~/.claude`, `~/.codex`, `~/.grok` and Metal's own
 data (`CLOUD_HOME.data` in `electron/legacy-names.mjs`) persist on the volume.
 
 ### Memory
@@ -719,7 +719,7 @@ provider outage. So on a Cloud home (`server/engine-memory.ts`):
   server is -800 and Caddy -900, so the health check is the last to go, and
   the root supervisor that restarts them is -1000, never picked. When memory
   runs out the kernel takes a bot's process, never the workspace.
-- **OpenCode reaches dusk bot's own tools over HTTP.** The agents,
+- **OpenCode reaches Metal's own tools over HTTP.** The agents,
   browser, computer, Data and Email servers are endpoints of this server
   (`/api/internal/mcp-http/<name>`, `server/routes/own-mcp-http.ts`) with the
   turn's capability in the Authorization header, instead of a Node proxy
@@ -800,7 +800,7 @@ never echoes a secret.
 
 ### No model gateway
 
-dusk cloud includes no AI, so the contract has no model gateway. The person's own engines are the only way to a model.
+Dusk Cloud includes no AI, so the contract has no model gateway. The person's own engines are the only way to a model.
 
 ### Included voice and decisions
 
@@ -871,7 +871,7 @@ on the Admin, which checks the subscription, the monthly caps on every request.
   engine, so a process running as the same user that may trace it (the
   kernel's ptrace policy, `kernel.yama.ptrace_scope`, decides) could read
   them there. That is why a guest's turn gets no shell (above); the complete
-  fix is engines under a user of their own. A relay token is only this customer's own dusk cloud
+  fix is engines under a user of their own. A relay token is only this customer's own Dusk Cloud
   allowance: it works only through the Admin, only on this machine's cloud
   computers, voice and decisions, and only up to the monthly caps.
 - A refusal from the cloud desktop or voice relay (for example, the month's cloud
@@ -891,7 +891,7 @@ on the Admin, which checks the subscription, the monthly caps on every request.
 ### Included connected apps
 
 Connected apps (Gmail, Outlook, Slack, LinkedIn, Calendly and the rest of the
-catalog) come with the plan through dusk bot's managed connection service,
+catalog) come with the plan through Metal's managed connection service,
 the same one the packaged desktop app uses. The Admin sets nothing for it: at
 every start the server registers the Cloud's own installation if it has none,
 keeps the token owner-only in `connected-apps-installation.json` under `CLOUD_HOME.data` in `electron/legacy-names.mjs`
@@ -928,7 +928,7 @@ x-dusk-cloud-timestamp: 1790000000
 x-dusk-cloud-nonce: <base64url, 16–128 characters>
 x-dusk-cloud-signature: v1=<base64url HMAC-SHA256(DUSK_CLOUD_BOOTSTRAP_SECRET, canonical)>
 
-{"label":"dusk bot app (Cloud)","ttlSeconds":300}
+{"label":"Metal app (Cloud)","ttlSeconds":300}
 ```
 
 where `canonical` is
@@ -1282,7 +1282,7 @@ notice queue (below), on this computer's page and on My Cloud's own page.
 Customers couldn't find how to cancel: the plan card only said **Manage in
 your browser**. Now, while the session's `renewal` says this account pays for a
 plan that runs, the plan card in Settings (Usage & billing → Plan in Simple
-mode, dusk cloud in Advanced) and on the Cloud's own page in home mode
+mode, Dusk Cloud in Advanced) and on the Cloud's own page in home mode
 (`CloudPlanOnCloud`) shows **Cancel trial** during a free trial and **Cancel
 plan** otherwise (`src/components/CloudCancelPlan.tsx`). Someone in a team's
 Cloud never sees it: the Admin sends no `renewal` for a Cloud they don't pay
@@ -1291,7 +1291,7 @@ for.
 Its sheet asks "Before you go: what's the main reason?" with one-tap chips
 (Missing a feature, Too expensive, Hard to set up, Didn't work as I expected,
 Not using it right now, Something else; tap again to let one go), two optional
-boxes ("What did you expect dusk bot to do?", "What could we have done
+boxes ("What did you expect Metal to do?", "What could we have done
 better?"), and **Keep my
 plan** and **Cancel my trial** / **Cancel my plan**. Cancelling never needs an
 answer. The page sends only the survey's words: `cloudAccount.cancelPlan` on
@@ -1341,7 +1341,7 @@ for a later launch.
    slides from the account the app already holds (its plan, its trial, its
    teams and its Clouds list):
    - **No Cloud plan** (signed out, or signed in with none): **Meet the new
-     dusk cloud**, the Cloud website's Home pictured in the skin's light or
+     Dusk Cloud**, the Cloud website's Home pictured in the skin's light or
      dark, then **Team**.
    - **A Cloud plan of one's own**, in no team: the Team slide only.
    - **In a team** (any role, a Team or Business plan, or a team's Cloud in the
@@ -1368,10 +1368,10 @@ for a later launch.
    unless focus has moved on. `whats_new` ([docs/analytics.md](analytics.md))
    counts each slide seen and each step.
 2. **The card after the update** (`CloudTrialIntro`, id `cloud-trial-intro-v1`):
-   dusk cloud's free trial for someone signed out or with no plan who
+   Dusk Cloud's free trial for someone signed out or with no plan who
    has used the app before this launch, only while the Admin offers a trial
    (it waits for one), and never on a desktop whose first-run welcome
-   showed its dusk cloud step. Its numbers are the Admin's: the trial's
+   showed its Dusk Cloud step. Its numbers are the Admin's: the trial's
    days, the lowest monthly price and money-back. At most
    once a calendar day, on at most three days (one for someone who closed the
    earlier Pro card), kept in browser storage and the workspace's hint record;
@@ -1413,15 +1413,15 @@ restoring or connecting.
 
 In the Server menu, **My Cloud** goes through the same connection as
 **Open My Cloud** (no pairing code to type); when it cannot, the app
-opens **Settings → dusk cloud**, which says the next step. In the desktop app a
+opens **Settings → Dusk Cloud**, which says the next step. In the desktop app a
 `/pair#code=` link connects without a second click; a browser still asks. On a
 Cloud home the pairing page says where its connection starts (the environment
 descriptor's `capabilities.cloudHome`).
 
-On the person's own Cloud, open in the app's window, **Settings → dusk cloud**
+On the person's own Cloud, open in the app's window, **Settings → Dusk Cloud**
 shows the plan read only (`cloud-plan:*`: its name and whether it is active,
 **Manage in your browser** and **Switch to this computer**). It is listed only
-on a dusk bot Cloud home (`config.cloudHome`), never on another server open in the
+on a Metal Cloud home (`config.cloudHome`), never on another server open in the
 window. Main answers it for the Cloud this account verified, or last verified
 while a check is failing or the sign-in has ended (`myCloudOrigin`, the rule
 the Cloud's microphone uses too), so that page says
@@ -1476,7 +1476,7 @@ page alike (`duskDesktop.cloudPlan`), so the meter reads the same on both (`src/
   month at this level: it comes back when one reaches 100%, and next month. Never shown in a browser, without a paid plan,
   or on a Team Cloud unless the plan whose usage it is is that team's (only the person who pays for a team sees its usage;
   its members never do).
-- **Settings → General → dusk cloud usage**, while there is a paid plan: every allowance with its meter, when they
+- **Settings → General → Dusk Cloud usage**, while there is a paid plan: every allowance with its meter, when they
   start over, and Upgrade to the next plan (the others as links), "You're on the top plan" on Max, or "To change your
   team's plan, write to us" on a team's plan.
 - **Upgrade, one tap and a confirm.** Upgrade asks main for a preview (`duskDesktop.cloudPlan.upgradePreview(plan, source)`,
@@ -1517,10 +1517,10 @@ only.
 
 ## Add a Cloud
 
-The one way to buy dusk cloud in the app, the same for every way in:
+The one way to buy Dusk Cloud in the app, the same for every way in:
 What's new, the card after the update, **Show me how**, **Add a
 Cloud…** in the server menu (the sidebar's and the menu bar's Server menu),
-Settings (the Cloud card in General, and dusk cloud), and the routine
+Settings (the Cloud card in General, and Dusk Cloud), and the routine
 screen's note.
 
 - **The menu item.** Main adds **Add a Cloud…** under the saved servers only
@@ -1543,7 +1543,7 @@ screen's note.
   the menu is.
 - **The dialog** (`components/CloudAddDialog.tsx`, one state→view function,
   `lib/cloud-plan` `cloudAddView`) covers the buying journey only: the offer
-  (the night card: dusk cloud's name and one line over a linocut night sky
+  (the night card: Dusk Cloud's name and one line over a linocut night sky
   where the three bots ride a cloud while this computer's laptop sleeps, with
   Compare plans in the card; then one card
   per plan the Admin sells, side by side on a wide sheet and stacked in a
@@ -1576,7 +1576,7 @@ screen's note.
   checkout already being prepared), the offer says why. A screen reader
   hears each card's button with its plan's name, and each new step takes
   focus at its heading. A payment problem, an ended sign-in or a Cloud that can't
-  be reached go to Settings → dusk cloud instead.
+  be reached go to Settings → Dusk Cloud instead.
 - **Checkout runs in the default browser, never the app.** Signed in, main
   asks the Admin for this account's checkout (`POST /api/cloud/desktop/checkout`
   with the plan and where it was opened) and opens the address only when it is
@@ -1639,7 +1639,7 @@ itself, and from then on opens the Cloud as its only home
 thing by id over one owner session (`electron/cloud-send.mjs`), checks that it
 all arrived, and freezes this computer's copy so nothing runs in two places
 (`server/move-freeze.ts`). An older desktop's Copy this computer here gets
-`410` with "Update dusk bot to bring your bots here by itself."
+`410` with "Update Metal to bring your bots here by itself."
 (`server/cloud-move-http.ts`); a backup file still restores from Settings →
 Backups. [docs/verification/cloud-send.md](verification/cloud-send.md) has the
 tests.

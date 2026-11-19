@@ -165,7 +165,7 @@ export function gmailSearchQuery(filter: AppTriggerFilter | undefined): string {
   ].filter(Boolean).join(" ");
 }
 
-/** Whether Composio filters this app's events itself from the plain filter (its config), or dusk bot does on arrival. */
+/** Whether Composio filters this app's events itself from the plain filter (its config), or Metal does on arrival. */
 export function filtersAtSource(app: string): boolean {
   return app === GMAIL_APP;
 }

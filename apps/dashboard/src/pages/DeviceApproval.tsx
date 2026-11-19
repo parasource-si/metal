@@ -16,7 +16,7 @@ export const SERVER_LINK_SOURCE = "server_link";
 
 type Device = { fresh?: boolean; created?: true; device: { name: string; platform: string }; userCode: string; expiresAt: number; intent?: { kind: string; source?: string }; next?: string };
 
-/** the app's own link: it brings dusk bot forward (the app already signed itself in, so coming back is optional) */
+/** the app's own link: it brings Metal forward (the app already signed itself in, so coming back is optional) */
 export const APP_LINK = "duskbot://open";
 /** tries the app's link once; a browser without the app installed simply stays here */
 /** opens the app straight away, with no click: a top-level navigation to its link, which browsers hand to the app and
@@ -92,9 +92,9 @@ export function DeviceApprovalPage() {
         ) : state === "approved" ? (
           <>
             <h1 className="text-20 font-medium text-ink">you're signed in</h1>
-            <p className="mt-1.5 text-14 leading-[1.55] text-ink-3">{found.device.name} signs itself in, there's nothing else to do here. open dusk bot when you like, or close this tab.</p>
+            <p className="mt-1.5 text-14 leading-[1.55] text-ink-3">{found.device.name} signs itself in, there's nothing else to do here. open Metal when you like, or close this tab.</p>
             <div className="mt-6 flex flex-wrap gap-2">
-              <a href={APP_LINK} data-back-to-app="" className="press hover-btn inline-flex h-10 items-center rounded-full bg-ink px-4.5 text-14 font-medium text-bg">open dusk bot</a>
+              <a href={APP_LINK} data-back-to-app="" className="press hover-btn inline-flex h-10 items-center rounded-full bg-ink px-4.5 text-14 font-medium text-bg">open Metal</a>
             </div>
           </>
         ) : state === "denied" ? (

@@ -78,7 +78,7 @@ describe("what a bot on the person's own computer is told about connections that
     const source = sources({ linear: "needs-sign-in", jira: "signed-in" }, { gmail: false, slack: true });
     const prompt = createConnectionPrompt(source, null);
     const bot = { connectorTools: { gmail: { tools: "*" as const }, slack: { tools: "*" as const } } };
-    expect(prompt(bot)).toBe(" Signed out right now: the MCP server linear. When a task needs one, tell the person in one line to sign in to it in dusk bot's Apps; do not try its tools until then.");
+    expect(prompt(bot)).toBe(" Signed out right now: the MCP server linear. When a task needs one, tell the person in one line to sign in to it in Metal's Apps; do not try its tools until then.");
     await vi.waitFor(() => expect(source.reads).toEqual([["gmail", "slack"]]));
     await new Promise((resolve) => setTimeout(resolve, 0));
     expect(prompt(bot)).toContain(" Assigned to this bot but not connected right now: Gmail. Do not offer or try their tools;");

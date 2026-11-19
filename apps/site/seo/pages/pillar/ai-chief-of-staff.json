@@ -93,19 +93,19 @@
   ],
   "sources": [
     {
-      "label": "dusk bot docs: leader groups and separate permissions",
+      "label": "Metal docs: leader groups and separate permissions",
       "url": "/docs/group-chats"
     },
     {
-      "label": "dusk bot docs: bot jobs and attached context",
+      "label": "Metal docs: bot jobs and attached context",
       "url": "/docs/bots"
     },
     {
-      "label": "dusk bot docs: routines and missed runs",
+      "label": "Metal docs: routines and missed runs",
       "url": "/docs/routines"
     },
     {
-      "label": "dusk bot docs: app access and sends",
+      "label": "Metal docs: app access and sends",
       "url": "/docs/files-and-apps"
     },
     {

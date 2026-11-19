@@ -4,7 +4,7 @@
 # partial release. That keeps release credentials and publication authority
 # in the unified release workflow while making every release candidate
 # reproducible from an exact ref. Attach the resulting files to the matching
-# canonical dusk bot release after the smoke test passes.
+# canonical Metal release after the smoke test passes.
 name: Package Ubuntu
 
 on:
@@ -93,20 +93,20 @@ jobs:
         run: |
           set -euo pipefail
           version="$(node -p "require('./package.json').version")"
-          appimage="release/DuskBot-${version}-x86_64.AppImage"
-          deb="release/DuskBot-${version}-amd64.deb"
+          appimage="release/Metal-${version}-x86_64.AppImage"
+          deb="release/Metal-${version}-amd64.deb"
           test -f "$appimage"
           test -f "$deb"
-          cp "$appimage" release/DuskBot.AppImage
-          cp "$deb" release/DuskBot-amd64.deb
-          chmod 0755 release/DuskBot.AppImage
+          cp "$appimage" release/Metal.AppImage
+          cp "$deb" release/Metal-amd64.deb
+          chmod 0755 release/Metal.AppImage
           (
             cd release
             sha256sum \
               "$(basename "$appimage")" \
               "$(basename "$deb")" \
-              DuskBot.AppImage \
-              DuskBot-amd64.deb > SHA256SUMS-ubuntu-x64.txt
+              Metal.AppImage \
+              Metal-amd64.deb > SHA256SUMS-ubuntu-x64.txt
           )
           echo "artifact-name=duskbot-ubuntu-${version}-x64" >> "$GITHUB_OUTPUT"
           echo "version: $version"
@@ -127,10 +127,10 @@ jobs:
         with:
           name: ${{ steps.release.outputs.artifact-name }}
           path: |
-            release/DuskBot-*-amd64.deb
-            release/DuskBot-*-x86_64.AppImage
-            release/DuskBot-amd64.deb
-            release/DuskBot.AppImage
+            release/Metal-*-amd64.deb
+            release/Metal-*-x86_64.AppImage
+            release/Metal-amd64.deb
+            release/Metal.AppImage
             release/SHA256SUMS-ubuntu-x64.txt
           if-no-files-found: error
           retention-days: 14

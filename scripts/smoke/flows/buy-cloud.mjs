@@ -18,13 +18,13 @@ const myCloud = () => flow.evaluate(`window.duskDesktop.cloudAccount.state().the
 await runFlow(flow, async () => {
   await flow.step("launch", "a fresh app starts at the account gate", async () => {
     await flow.launch();
-    await flow.waitText(/sign in to dusk bot/i, "the account gate", { timeout: 120_000 });
+    await flow.waitText(/sign in to Metal/i, "the account gate", { timeout: 120_000 });
   }, { critical: true });
 
   await flow.step("sign-in", "signs in with an emailed code", () => flow.signInAtGate(), { critical: true });
 
   await flow.step("plans", "dusk cloud opens the plans", async () => {
-    await flow.waitText(/meet dusk bot|where should your bots live/i, "the welcome", { timeout: 60_000 });
+    await flow.waitText(/meet Metal|where should your bots live/i, "the welcome", { timeout: 60_000 });
     await flow.click("get started", { timeout: 10_000 }).catch(() => {});
     await flow.waitText(/where should your bots live/i, "where should your bots live");
     await flow.click("dusk cloud", { contains: true });

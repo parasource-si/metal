@@ -27,7 +27,7 @@ afterEach(async () => {
   if (server) { server.closeAllConnections(); await new Promise((resolve) => server!.close(resolve)); server = null; }
 });
 
-/** the dusk bot server behind the agent: /slow answers after 2 s */
+/** the Metal server behind the agent: /slow answers after 2 s */
 async function app() {
   const seen: Array<{ method: string; url: string; body: number }> = [];
   server = createServer((req, res) => {

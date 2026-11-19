@@ -1,6 +1,6 @@
 <header class="phead wrap dl-hero">
   <div class="dl-lead">
-    <h1>download dusk bot</h1>
+    <h1>download Metal</h1>
     <p class="lede">open it, sign in to the ai you already use, and your first bot is working a couple of minutes later. free for personal use, no account needed.</p>
     <div class="dl-main" data-dl-page>
 {{#released}}
@@ -10,8 +10,8 @@
       </div>
       <p class="dl-note" data-dl-note>apple silicon · version {{version}}</p>
       <div class="dl-phone" data-dl-phone hidden>
-        <a class="btn dark" href="{{ios-link}}" data-dl-ios><span class="dl-os">{{os apple}}</span>get it on the app store</a>
-        <a class="btn dark" href="{{dl android}}" data-dl-android hidden download><span class="dl-os">{{os android mono}}</span>download for android</a>
+        <a class="btn dark" href="{{ios-link}}" data-dl-ios><span class="dl-os">{{os apple}}</span>upstream Dusk Bot on the app store</a>
+        {{#androidReady}}<a class="btn dark" href="{{dl android}}" data-dl-android hidden download><span class="dl-os">{{os android mono}}</span>download for android</a>{{/androidReady}}
         <p class="dl-note"><span data-dl-ios>for iphone. </span>the full app runs on your computer, so send yourself the link for later.</p>
         <form class="dl-mail" data-dl-mail>
           <label class="vh" for="dl-mail-to">your email</label>
@@ -23,8 +23,8 @@
       </div>
 {{/released}}
 {{^released}}
-      <a class="btn dark" href="/waitlist?source=download">join the waitlist</a>
-      <p class="notice">downloads open with the first public release. join the waitlist and we'll let you in early, or write to <a href="mailto:hello@dusk.bot">hello@dusk.bot</a>.</p>
+      <a class="btn dark" href="https://github.com/parasource-si/metal/releases">Metal releases on GitHub</a>
+      <p class="notice">Metal installers will appear on GitHub when published. You can <a href="https://github.com/parasource-si/metal#run-from-source">build Metal from source</a>.</p>
 {{/released}}
     </div>
   </div>
@@ -44,9 +44,9 @@
     <li id="windows" data-key="windows" data-note="windows 10 and 11"><span class="dl-ico">{{os windows}}</span><span class="dl-name"><b>windows</b><span>x64</span></span><span class="dl-type">installer .exe</span><span class="dl-size">{{size windows}}</span><a class="btn" href="{{dl windows}}" download>download</a></li>
     <li id="linux" data-key="linux-deb" data-note="ubuntu 24.04"><span class="dl-ico">{{os linux}}</span><span class="dl-name"><b>linux</b><span>x64</span></span><span class="dl-type">.deb</span><span class="dl-size">{{size linux-deb}}</span><a class="btn" href="{{dl linux-deb}}" download>download</a></li>
     <li data-key="linux-appimage"><span class="dl-ico">{{os linux}}</span><span class="dl-name"><b>linux</b><span>x64</span></span><span class="dl-type">.appimage</span><span class="dl-size">{{size linux-appimage}}</span><a class="btn" href="{{dl linux-appimage}}" download>download</a></li>
-    <li id="android" data-key="android"><span class="dl-ico">{{os android}}</span><span class="dl-name"><b>android</b><span>phone app</span></span><span class="dl-type">.apk</span><span class="dl-size">{{size android}}</span><a class="btn" href="{{dl android}}" download>download</a></li>
+{{#androidReady}}    <li id="android" data-key="android"><span class="dl-ico">{{os android}}</span><span class="dl-name"><b>android</b><span>phone app</span></span><span class="dl-type">.apk</span><span class="dl-size">{{size android}}</span><a class="btn" href="{{dl android}}" download>download</a></li>{{/androidReady}}
   </ul>
-  <p class="dl-fine">mac builds are signed and notarized by apple. windows builds aren't code-signed yet, so if windows says it protected your pc, click more info, then run anyway.</p>
+  {{#macNotarized}}<p class="dl-fine">mac builds are signed and notarized by apple.</p>{{/macNotarized}}
 </section>
 {{/released}}
 

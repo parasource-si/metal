@@ -50,15 +50,15 @@ a browser it did not launch.
 
 ```sh
 H=/tmp/duskbot-verify-data-XXXXXX/ui.json
-pnpm control:dusk ui flag --ui $H --set features.showToolCalls=true --dry-run
-pnpm control:dusk ui flag --ui $H --set features.showToolCalls=true
-pnpm control:dusk ui snapshot --ui $H --interactive
-pnpm control:dusk ui type --ui $H --name "Message Pepper" --text hello
-pnpm control:dusk ui press --ui $H --keys Enter
-pnpm control:dusk ui wait-settle --ui $H --timeout 60
-pnpm control:dusk ui snapshot --ui $H
-pnpm control:dusk ui click --ui $H --name "Save as skill"
-pnpm control:dusk ui eval --ui $H --js "document.querySelector('textarea[aria-label=\"Message Pepper\"]').value"
+pnpm control:metal ui flag --ui $H --set features.showToolCalls=true --dry-run
+pnpm control:metal ui flag --ui $H --set features.showToolCalls=true
+pnpm control:metal ui snapshot --ui $H --interactive
+pnpm control:metal ui type --ui $H --name "Message Pepper" --text hello
+pnpm control:metal ui press --ui $H --keys Enter
+pnpm control:metal ui wait-settle --ui $H --timeout 60
+pnpm control:metal ui snapshot --ui $H
+pnpm control:metal ui click --ui $H --name "Save as skill"
+pnpm control:metal ui eval --ui $H --js "document.querySelector('textarea[aria-label=\"Message Pepper\"]').value"
 ```
 
 `snapshot` returns the accessibility tree with `@eN` refs and a `refs` table
@@ -81,9 +81,9 @@ too, so read the transcript landmark, not the whole tree.
 ## Evidence
 
 ```sh
-pnpm control:dusk ui screenshot --ui $H --out .dusk-scratch/verify-evidence/chat-ui.png
-pnpm control:dusk ui console --ui $H
-pnpm control:dusk ui eval --ui $H --js "document.title"
+pnpm control:metal ui screenshot --ui $H --out .dusk-scratch/verify-evidence/chat-ui.png
+pnpm control:metal ui console --ui $H
+pnpm control:metal ui eval --ui $H --js "document.title"
 ```
 
 Keep the `wait-settle` JSON, both snapshots, the screenshot and the printed

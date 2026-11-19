@@ -149,7 +149,7 @@ describe("CI concurrency", () => {
   });
 
   // regression: no packaging step had the clients, so every release shipped with each one-click sign-in off
-  it("bakes dusk bot's own OAuth clients into every release package", async () => {
+  it("bakes Metal's own OAuth clients into every release package", async () => {
     const release = parse(readFileSync(new URL("../.github/workflows/release.yml", import.meta.url), "utf8"));
     const { NATIVE_CLIENT_ENVS } = await import("../shared/native-connectors.ts");
     const packaging = Object.values(release.jobs as Record<string, { steps?: Array<{ run?: string; env?: Record<string, string> }> }>)

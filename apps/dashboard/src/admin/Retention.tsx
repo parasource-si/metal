@@ -23,7 +23,7 @@ export function RetentionPage({ tabs }: { tabs?: ReactNode }) {
   const { data, error, loading, reload } = useAdmin<RetentionAnswer>("/retention");
   return (
     <>
-      <AdminHeader title="retention" sub="who comes back after signing up, and who uses dusk bot most" tabs={tabs} />
+      <AdminHeader title="retention" sub="who comes back after signing up, and who uses Metal most" tabs={tabs} />
       {error && <Failed error={error} retry={reload} />}
       {!data && loading && <Loading />}
       {data && (

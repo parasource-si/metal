@@ -28,7 +28,7 @@ beforeAll(async () => {
   relayServer = createServer((req, res) => { largestPost = Math.max(largestPost, Number(req.headers["content-length"] ?? 0)); void service.handler(req, res); });
   base = `http://127.0.0.1:${await listen(relayServer)}`;
   seen = [];
-  // stands in for Dusk Bot on the vps
+  // stands in for Metal on the vps
   fakeServer = createServer((req, res) => {
     const chunks = [];
     req.on("data", (chunk) => chunks.push(chunk));
@@ -170,7 +170,7 @@ describe("setup sessions", () => {
     expect(streamed.lines.join("").length).toBeLessThanOrEqual(16 * 1024);
     expect(streamed.lines.at(-1)).toMatch(/^Get:59 /);
 
-    // the agent's own `link` command, with this suite's fake Dusk Bot as the server
+    // the agent's own `link` command, with this suite's fake Metal as the server
     const home = mkdtempSync(join(dir, "home-"));
     await run(process.execPath, [join(root, "agent.mjs"), "link"], {
       env: { ...process.env, HOME: home, LINK_BASE: base, LINK_ID: made.id, LINK_TOKEN: vpsToken, LINK_MODE: "relay", LINK_NAME: "oracle-arm", LINK_SERVER_PORT: String(fakePort) },

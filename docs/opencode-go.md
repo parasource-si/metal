@@ -1,6 +1,6 @@
 # OpenCode
 
-OpenCode is an optional dusk bot engine. dusk bot runs the maintained
+OpenCode is an optional Metal engine. Metal runs the maintained
 OpenCode CLI through its ACP stdio interface, so sessions, streaming, coding
 tools, permission requests, MCP integrations, resume, and cancellation use the
 same runtime as the other ACP engines.
@@ -10,10 +10,10 @@ same runtime as the other ACP engines.
 1. Install the official CLI using the
    [OpenCode installation guide](https://opencode.ai/docs/).
 2. Connect the providers you want in the OpenCode app, run
-   `opencode auth login`, or save the provider's key in dusk bot under
-   Settings → API keys → **Keys for other OpenCode providers**. On a dusk bot
+   `opencode auth login`, or save the provider's key in Metal under
+   Settings → API keys → **Keys for other OpenCode providers**. On a Metal
    Cloud, which has no terminal, save the key there.
-3. Restart dusk bot. It reuses OpenCode's existing connections and model
+3. Restart Metal. It reuses OpenCode's existing connections and model
    configuration automatically.
 
 For OpenRouter, Fireworks AI, DeepSeek, Cline or your own provider, see
@@ -35,13 +35,13 @@ kept in the server's own config, and is passed only to the OpenCode process;
 saving one reloads the engines, so OpenCode lists that provider's models
 straight away. On a Cloud, a hosted team or an organization's desktop,
 OpenCode still never reads provider keys from the server's own environment;
-the keys saved here are the exception. Names dusk bot keeps for itself
+the keys saved here are the exception. Names Metal keeps for itself
 (`OPENCODE_*`, `DUSK_*`, and the keys it saves for other engines, such as
 `XAI_API_KEY`) are refused, and up to 20 keys can be saved.
 
-dusk bot does not copy or rewrite `auth.json`. The OpenCode CLI remains the
+Metal does not copy or rewrite `auth.json`. The OpenCode CLI remains the
 owner of provider authentication, and the same Zen or Go connection used by
-the OpenCode desktop/TUI is used by dusk bot.
+the OpenCode desktop/TUI is used by Metal.
 
 ## Models
 
@@ -71,7 +71,7 @@ limit, so picking a different one does not buy more free turns.
 
 Some models take a limited number of tools per request (OpenCode Zen's free
 models refuse more than 128). When a model refuses a turn for that,
-dusk bot retries it once with each MCP server listing only its share of
+Metal retries it once with each MCP server listing only its share of
 what OpenCode's own tools leave, keeps doing so for that model until it
 restarts, and logs how many tools each server left out.
 

@@ -14,7 +14,7 @@ import { Art, type ArtName } from "./ui/Art";
 import { MausAvatar } from "./Avatar";
 import { mdPrimaryCls } from "./ui/GrokDialog";
 
-const DOWNLOAD_PAGE = "https://dusk.bot/download";
+const DOWNLOAD_PAGE = "https://github.com/parasource-si/metal/releases";
 
 function ownBridge() {
   return window.duskDesktop?.remoteClient?.active === true ? undefined : window.duskDesktop?.appUpdate;

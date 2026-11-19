@@ -4,14 +4,14 @@
 // default), which on a 1M-token model is nearly always: every model call pays for every connected
 // app's schemas, and a session writes them into the prompt cache again and again. Claude Code
 // 2.1.312 defers by default when nothing is set, but holds a resumed conversation that ran without
-// ToolSearch to the old way ("ENABLE_TOOL_SEARCH=true overrides this"), and dusk bot resumes every
+// ToolSearch to the old way ("ENABLE_TOOL_SEARCH=true overrides this"), and Metal resumes every
 // thread. So a turn runs with ENABLE_TOOL_SEARCH=true unless the person chose otherwise.
 //
 // The value goes in the turn's private --settings file. Claude Code applies a settings file's `env`
 // over its own process environment, so a value in the project's or the person's .claude settings
 // would beat one set on the process; settings passed with --settings beat both.
 //
-// dusk bot's own small servers stay loaded (`alwaysLoad` in claude.ts): `dusk` (approvals and
+// Metal's own small servers stay loaded (`alwaysLoad` in claude.ts): `dusk` (approvals and
 // questions) and `agents`, plus the browser when the turn plans to browse. Of `agents` only the hot
 // tools load up front (BRIDGE_HOT_TOOL_NAMES); the rest (routines, widgets, pages, threads, skills...)
 // carry `_meta["anthropic/alwaysLoad"]: false` and are found through tool search like any other.
@@ -20,7 +20,7 @@ import { homedir } from "node:os";
 import { basename, dirname, join, resolve } from "node:path";
 
 /** Appended to a Claude turn's system prompt when tool search is on and the agents server is mounted. */
-export const AGENTS_DEFERRED_NOTE = "Some of your dusk bot tools (mcp__agents__*, such as trigger for routines, show_widget, start_thread, skill_manage) are not loaded up front: find one through tool search by its name, then call it as usual.";
+export const AGENTS_DEFERRED_NOTE = "Some of your Metal tools (mcp__agents__*, such as trigger for routines, show_widget, start_thread, skill_manage) are not loaded up front: find one through tool search by its name, then call it as usual.";
 
 /** Only a regular file this small is read: a FIFO would hold the server's one thread. */
 const FILE_MAX_BYTES = 1024 * 1024;

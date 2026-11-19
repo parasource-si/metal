@@ -4,7 +4,7 @@
   "title": "OpenClaw setup without a terminal: what changes?",
   "nav": "openclaw setup",
   "h1": "openclaw setup without the terminal",
-  "description": "Compare OpenClaw's desktop installers with dusk bot: the steps before your first reply, where each runs, and what you still need to look after.",
+  "description": "Compare OpenClaw's desktop installers with Metal: the steps before your first reply, where each runs, and what you still need to look after.",
   "keyword": "openclaw setup",
   "keywords": [
     "openclaw install",
@@ -12,7 +12,7 @@
     "openclaw too complicated",
     "non technical openclaw"
   ],
-  "answer": "**get to your first reply without opening a terminal.** openclaw's desktop apps install the pieces for you.[^1] you still choose an ai and keep its computer running.[^2] dusk bot offers named bots and optional hosting later.[^3][^4] try the app and sign-in first, then decide who handles upkeep. we haven't timed first replies in either.",
+  "answer": "**get to your first reply without opening a terminal.** openclaw's desktop apps install the pieces for you.[^1] you still choose an ai and keep its computer running.[^2] Metal offers named bots and optional hosting later.[^3][^4] try the app and sign-in first, then decide who handles upkeep. we haven't timed first replies in either.",
   "updated": "2026-11-12",
   "review": {
     "status": "approved",
@@ -61,7 +61,7 @@
     "intro": "**the desktop installer gets you past the terminal.** the machine still needs upkeep. these setup paths reflect sources checked 12 november 2026. openclaw's time estimate is its own; we haven't timed it.",
     "cols": [
       "openclaw",
-      "dusk bot"
+      "Metal"
     ],
     "rows": [
       {
@@ -146,7 +146,7 @@
       }
     ]
   },
-  "method": "**this is a map of the setup, not a race.** we make dusk bot. we read the outside sources on 12 november 2026.\n\nwe did not install both on identical computers or time the same first task. openclaw's five-minute estimate belongs to its docs. a quick install says nothing about answer quality.",
+  "method": "**this is a map of the setup, not a race.** Metal is based on Dusk Bot. we read the outside sources on 12 november 2026.\n\nwe did not install both on identical computers or time the same first task. openclaw's five-minute estimate belongs to its docs. a quick install says nothing about answer quality.",
   "sections": [
     {
       "h": "get one reply before connecting your working life",
@@ -187,7 +187,7 @@
       "checked": "2026-11-12"
     },
     {
-      "label": "dusk bot getting started",
+      "label": "Metal getting started",
       "url": "/docs/getting-started"
     },
     {
@@ -200,7 +200,7 @@
       "checked": "2026-11-12"
     },
     {
-      "label": "dusk bot jobs and model choices",
+      "label": "Metal jobs and model choices",
       "url": "/docs/bots"
     },
     {
@@ -209,7 +209,7 @@
       "checked": "2026-11-12"
     },
     {
-      "label": "dusk bot on your own server",
+      "label": "Metal on your own server",
       "url": "/docs/your-own-server"
     },
     {

@@ -70,10 +70,10 @@ Then, with the printed handle:
 
 ```sh
 H=/tmp/duskbot-verify-data-XXXXXX/ui.json
-pnpm control:dusk ui type --ui $H --name "Message Pepper" --text "Draft an email to Sam about Friday."
-pnpm control:dusk ui press --ui $H --keys Enter
-pnpm control:dusk ui wait-settle --ui $H --timeout 60
-pnpm control:dusk ui snapshot --ui $H --interactive
+pnpm control:metal ui type --ui $H --name "Message Pepper" --text "Draft an email to Sam about Friday."
+pnpm control:metal ui press --ui $H --keys Enter
+pnpm control:metal ui wait-settle --ui $H --timeout 60
+pnpm control:metal ui snapshot --ui $H --interactive
 ```
 
 The question's action row holds **Add reaction**; the snapshot lists one per
@@ -82,12 +82,12 @@ keyboard focus; hover it first with `ui eval` (a `pointerenter` with
 `pointerType: "mouse"` on its `[data-message-row]`), then:
 
 ```sh
-pnpm control:dusk ui click --ui $H --ref @eN
-pnpm control:dusk ui screenshot --ui $H --out .dusk-scratch/verify-evidence/reactions-open.png
-pnpm control:dusk ui click --ui $H --name "Thumbs up: yes, go ahead"
-pnpm control:dusk ui wait-settle --ui $H --timeout 60
-pnpm control:dusk ui snapshot --ui $H
-pnpm control:dusk ui console --ui $H
+pnpm control:metal ui click --ui $H --ref @eN
+pnpm control:metal ui screenshot --ui $H --out .dusk-scratch/verify-evidence/reactions-open.png
+pnpm control:metal ui click --ui $H --name "Thumbs up: yes, go ahead"
+pnpm control:metal ui wait-settle --ui $H --timeout 60
+pnpm control:metal ui snapshot --ui $H
+pnpm control:metal ui console --ui $H
 ```
 
 Expected: the open row is a toolbar named `Reactions` with six toggle buttons,

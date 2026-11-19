@@ -46,7 +46,7 @@ describe("connecting an app on a dusk cloud with no Composio key", () => {
     expect(c.state.signIns).toBe(0);
   });
 
-  it("says why when Composio cannot hand back a page dusk bot trusts", async () => {
+  it("says why when Composio cannot hand back a page Metal trusts", async () => {
     const c = cloud({ "add:gmail": { status: "started", url: "https://evil.example/link" }, "add:slack": { status: "connected" }, "add:notion": { status: "failed", message: "Toolkit is not available." } });
     c.state.signedIn = true;
     await expect(c.connect.connect("gmail")).rejects.toMatchObject({ status: 502 });

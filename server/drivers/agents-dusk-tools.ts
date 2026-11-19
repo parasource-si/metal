@@ -1,6 +1,6 @@
-// Dusk's notification tools: read the unread notifications, then mark finished work read. The catalog shows them
-// only to a Dusk; the internal route (server/routes/dusk-notifications.ts) refuses every other bot regardless.
-// The guidance lives in their results, so the descriptions that ride every Dusk turn stay short.
+// Metal's notification tools: read the unread notifications, then mark finished work read. The catalog shows them
+// only to a Metal; the internal route (server/routes/dusk-notifications.ts) refuses every other bot regardless.
+// The guidance lives in their results, so the descriptions that ride every Metal turn stay short.
 import type { ToolCallContext, ToolCallResult } from "./agents-call.ts";
 import type { Json } from "./agents-client.ts";
 import { agentToolAnnotations } from "../agent-tool-policy.ts";

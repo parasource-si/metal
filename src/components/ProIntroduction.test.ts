@@ -51,7 +51,7 @@ const press = (label: string, Component = ProSettingsCard) => {
 it("for someone who may buy: what Cloud does, the Admin's lowest price and money-back; Start free trial and Compare plans both open the sheet, never the website", async () => {
   const html = await card(signedOut);
   for (const text of ["dusk cloud", "Keeps your bots and routines running, even when this computer is off.", "dusk cloud plans from $15/month + tax where applicable.",
-    "14-day money-back on every plan.", "dusk bot on this computer stays free for noncommercial use.", "Compare plans", "Start free trial", "Sign in to your cloud plan"]) expect(html).toContain(text);
+    "14-day money-back on every plan.", "Metal on this computer stays free for noncommercial use.", "Compare plans", "Start free trial", "Sign in to your cloud plan"]) expect(html).toContain(text);
   for (const gone of [LEGACY.envPrefixes[0].slice(0, -1), "$89", "launch price", "New features first", "Get Pro", `${LEGACY.product} Pro`, `${LEGACY.product} Cloud`, "dusk bot Pro", "dusk bot Cloud"]) expect(html).not.toContain(gone);
   press("Start free trial");
   expect(f.dispatch).toHaveBeenCalledWith({ type: "openCloudAdd", source: "app_settings" });

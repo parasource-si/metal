@@ -278,7 +278,7 @@ export function patternBytes(length) {
 }
 
 /**
- * stands in for dusk bot on the server: what the agent needs to link, a json ping, a live event stream, a big download,
+ * stands in for Metal on the server: what the agent needs to link, a json ping, a live event stream, a big download,
  * an upload that answers its hash, a websocket echo. `restart()` drops it for a moment like a server upgrade does.
  */
 export async function createBotServer({ port: wanted = 0 } = {}) {

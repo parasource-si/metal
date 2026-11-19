@@ -62,7 +62,7 @@ function watch(el: Element, bot: PixelBot, reach: number) {
   };
 }
 
-/** a pixel dusk bot: still at rest with blinks, lively while busy; it stops off screen and rests under reduced motion */
+/** a pixel Metal: still at rest with blinks, lively while busy; it stops off screen and rests under reduced motion */
 export const Mascot = forwardRef<MascotHandle, MascotProps>(function Mascot({ color = "blue", body, size = 28, state = "idle", label, still = false, track = false, gaze = null, tappable = false, className }, ref) {
   const el = useRef<HTMLSpanElement>(null);
   const bot = useRef<PixelBot | null>(null);

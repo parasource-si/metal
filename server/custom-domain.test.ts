@@ -141,7 +141,7 @@ describe("domain verification", () => {
     expect(request.mock.calls[0]![1]).toEqual(address);
   });
 
-  it("rejects another dusk bot server", async () => {
+  it("rejects another Metal server", async () => {
     const { verifier, request } = fixture();
     request.mockResolvedValueOnce({ environmentId: "another-server" });
     await expect(verifier.verify("bots.company.com")).rejects.toThrow("does not point to this");
@@ -244,7 +244,7 @@ describe("HTTPS transport", () => {
     for (const [url, options] of httpsRequestMock.mock.calls as [URL, RequestOptions][]) {
       expect(url.hostname).toBe("bots.company.com");
       expect(options).toMatchObject({ method: "GET", agent: false, rejectUnauthorized: true });
-      expect(options.headers).toEqual({ Accept: "application/json", "User-Agent": "DuskBot-domain-check" });
+      expect(options.headers).toEqual({ Accept: "application/json", "User-Agent": "Metal-domain-check" });
       const callback = vi.fn();
       options.lookup!("bots.company.com", { all: false }, callback);
       expect(callback).toHaveBeenCalledWith(null, "8.8.8.8", 4);
@@ -272,6 +272,6 @@ describe("HTTPS transport", () => {
   it("rejects HTML and malformed JSON without returning their contents", async () => {
     const verifier = createCustomDomainVerifier({ environmentId, lookup: async () => [publicAddress] });
     responder = () => ({ status: 200, body: "<html>private error page</html>" });
-    await expect(verifier.verify("bots.company.com")).rejects.toThrow("did not return dusk bot data");
+    await expect(verifier.verify("bots.company.com")).rejects.toThrow("did not return Metal data");
   });
 });

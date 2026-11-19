@@ -93,11 +93,11 @@ export function leakedToolSyntax(text: string): boolean {
   return HARMONY_CALL.test(text);
 }
 
-export const CORRECTIVE_ROUND = "[dusk bot: a tool call in this turn failed (its result is marked ok:false). Re-run the failed operations with corrected inputs where possible, check the results, then give your one final answer: what worked, what did not and what the person can do about it. Do not report results you did not get.]";
+export const CORRECTIVE_ROUND = "[Metal: a tool call in this turn failed (its result is marked ok:false). Re-run the failed operations with corrected inputs where possible, check the results, then give your one final answer: what worked, what did not and what the person can do about it. Do not report results you did not get.]";
 /** rounds a local model gets to fix a failed tool call before its answer stands */
 export const LOCAL_CORRECTIVE_ROUNDS = 2;
 
-export const REASONING_AGAIN = "[dusk bot: your last reply was your own working notes about the request, not an answer, so the person did not see it. Do the work with your tools if it needs them, then answer the person directly in plain words.]";
+export const REASONING_AGAIN = "[Metal: your last reply was your own working notes about the request, not an answer, so the person did not see it. Do the work with your tools if it needs them, then answer the person directly in plain words.]";
 
 // gpt-oss's analysis channel passed on as the reply: it talks about "the user" and its instructions in the third person
 const REASONING_OPENER = /^(?:we need to|we should|we must|we have to|we can(?:not|'t)?|let's (?:respond|answer|reply|craft|produce|check|see)|the user (?:wants|asks|is asking|said|says|requests|asked)|user (?:wants|asks|says)|according to (?:the )?(?:guidelines|instructions|system|developer|policy)|the (?:system|developer) (?:prompt|message|instructions))\b/i;

@@ -11,7 +11,7 @@
     "ai to manage my calendar",
     "ai agent to manage my calendar"
   ],
-  "answer": "**tomorrow is wall-to-wall meetings. find that out before tomorrow.** connect google calendar and have a dusk bot bring you the busy stretches, free slots and options for the week. choose the ai behind it. start with suggestions in chat and read-only access, so you can decide where to make room before touching anyone’s appointment.",
+  "answer": "**tomorrow is wall-to-wall meetings. find that out before tomorrow.** connect google calendar and have a Metal bot bring you the busy stretches, free slots and options for the week. choose the ai behind it. start with suggestions in chat and read-only access, so you can decide where to make room before touching anyone’s appointment.",
   "updated": "2026-11-12",
   "review": {
     "status": "approved",
@@ -135,19 +135,19 @@
   ],
   "sources": [
     {
-      "label": "dusk bot docs: connected calendars",
+      "label": "Metal docs: connected calendars",
       "url": "/docs/files-and-apps"
     },
     {
-      "label": "dusk bot docs: schedules and time zones",
+      "label": "Metal docs: schedules and time zones",
       "url": "/docs/routines"
     },
     {
-      "label": "dusk bot docs: troubleshooting",
+      "label": "Metal docs: troubleshooting",
       "url": "/docs/troubleshooting"
     },
     {
-      "label": "dusk bot docs: permissions",
+      "label": "Metal docs: permissions",
       "url": "/docs/computer"
     }
   ],

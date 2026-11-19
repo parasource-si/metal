@@ -56,7 +56,7 @@ export function HandoffPage() {
       <SkyEmpty title={`continue as ${step.email}?`} className="w-full max-w-[520px]" action={<>
         <Button variant="primary" onClick={() => void redeem({ confirm: true, ...(other ? { replace: true } : {}) })}>continue</Button>
         <Button onClick={() => { forgetHandoff(); go("/sign-in"); }}>not you? sign in</Button>
-      </>}>{other ? `this browser is signed in as ${account?.email ?? "another account"}.` : "the dusk bot app opened this page for that account."}</SkyEmpty>
+      </>}>{other ? `this browser is signed in as ${account?.email ?? "another account"}.` : "the Metal app opened this page for that account."}</SkyEmpty>
     );
   } else if (step.kind === "expired") {
     body = <SkyEmpty title="that link has expired" className="w-full max-w-[520px]" action={<ButtonLink to="/sign-in" variant="primary">sign in</ButtonLink>}>open it again from the app, or sign in here.</SkyEmpty>;

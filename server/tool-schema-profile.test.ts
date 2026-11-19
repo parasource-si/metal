@@ -161,7 +161,7 @@ describe("which turns carry a schema profile", () => {
   });
 });
 
-describe("dusk bot's own tools", () => {
+describe("Metal's own tools", () => {
   const catalogs: Array<[string, ReadonlyArray<{ name: string; inputSchema: unknown }>]> = [
     ["agents (full)", fullAgents.tools], ["agents (bridged)", bridgedAgents.tools], ["browser", BROWSER_TOOLS],
     ["data", DATA_TOOLS],

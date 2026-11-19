@@ -507,7 +507,7 @@ describe("PiDriver turns (fake CLI)", () => {
     expect(second.message).toBe("second");
     const third = await send("third", "Memory: moved to Toronto.", first.cursor);
     expect(third.message)
-      .toBe("Context from dusk bot updated since this conversation started; it replaces any earlier copy:\n\nMemory: moved to Toronto.\n\nthird");
+      .toBe("Context from Metal updated since this conversation started; it replaces any earlier copy:\n\nMemory: moved to Toronto.\n\nthird");
   });
 
   it("re-establishes the full prompt after pi compaction summarizes the session", async () => {
@@ -724,7 +724,7 @@ describe("PiDriver turns (fake CLI)", () => {
     const done = await recorder.until((e) => e.type === "turn.completed" && e.turnId === turnId);
     expect(done).toMatchObject({ ok: false, stopReason: "failed" });
     expect(recorder.events.filter((e) => e.type === "runtime.error" && e.turnId === turnId), "the chat says why, once").toEqual([
-      expect.objectContaining({ message: "pi exited 1 before it answered: dusk bot Pi MCP configuration could not be read" }),
+      expect.objectContaining({ message: "pi exited 1 before it answered: Metal Pi MCP configuration could not be read" }),
     ]);
     expect(instance.adapter.hasSession("t-exit")).toBe(false);
   });

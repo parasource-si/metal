@@ -7,8 +7,8 @@ import { createServer } from "node:http";
 const PAGE = (title, body) => `<!doctype html><meta charset="utf-8"><title>${title}</title>`
   + `<body style="font:15px system-ui;display:grid;place-items:center;height:100vh;margin:0;background:#f6f5f2;color:#222">`
   + `<div style="text-align:center"><p style="font-size:18px;margin:0 0 6px">${title}</p><p style="margin:0;color:#666">${body}</p></div>`;
-const DONE = PAGE("You're signed in", "You can close this tab and go back to dusk bot.");
-const FAILED = PAGE("Sign-in did not finish", "Go back to dusk bot to try again.");
+const DONE = PAGE("You're signed in", "You can close this tab and go back to Metal.");
+const FAILED = PAGE("Sign-in did not finish", "Go back to Metal to try again.");
 
 export function validLoopback(port, path) {
   return Number.isInteger(port) && port >= 1024 && port <= 65535 && typeof path === "string" && /^\/[\w\-./]{0,200}$/.test(path) && !path.includes("..");

@@ -67,7 +67,7 @@ export const KNOWN_SOURCES: KnownSource[] = [
   { name: "WhatsApp", domain: "whatsapp.com", channel: "social", match: /^((.*\.)?(whatsapp\.com|wa\.me)|whatsapp)$/ },
   { name: "Slack", domain: "slack.com", channel: "social", match: /^((.*\.)?slack\.com|slack)$/ },
   { name: "Lobsters", domain: "lobste.rs", channel: "social", match: /^(lobste\.rs|lobsters)$/ },
-  { name: "dusk bot", domain: "dusk.bot", channel: "referral", match: /^(.*\.)?dusk\.bot$/ },
+  { name: "Metal", domain: "dusk.bot", channel: "referral", match: /^(.*\.)?dusk\.bot$/ },
 ];
 
 const PAID_MEDIUM = /^(cpc|ppc|cpm|paid|paid[_-]?social|paidsearch|ads?|display|retargeting|sponsored)$/i;

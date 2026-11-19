@@ -24,7 +24,7 @@ describe("connectorCardText", () => {
     expect(connectorCardDescription("Notion", undefined, "de")).toBe("Verbinde Notion, damit der Bot weitermachen kann");
     expect(connectorCardDescription("Notion", undefined, undefined)).toBe("Connect Notion so the bot can continue");
     expect(signInCardText("Biber", "github.com", "de"))
-      .toBe("Biber braucht deine Anmeldung bei github.com. Öffne diese Unterhaltung in dusk bot, melde dich an und drücke dann auf „fertig“.");
-    expect(signInCardText("Biber", "github.com")).toBe("Biber needs you to sign in to github.com. Open this conversation in dusk bot to sign in, then press done.");
+      .toBe("Biber braucht deine Anmeldung bei github.com. Öffne diese Unterhaltung in Metal, melde dich an und drücke dann auf „fertig“.");
+    expect(signInCardText("Biber", "github.com")).toBe("Biber needs you to sign in to github.com. Open this conversation in Metal to sign in, then press done.");
   });
 });

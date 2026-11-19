@@ -1,4 +1,4 @@
-# Developing dusk bot
+# Developing Metal
 
 Thanks for wanting to help — community PRs have already shipped in this repo, and more are welcome.
 This file tells you how to get a working dev setup, what the codebase expects from a change, and what
@@ -23,7 +23,7 @@ and logged in. macOS is the primary release platform and Ubuntu 24.04 x64 is the
 the harness server itself is portable Node and the test suite runs on macOS, Linux, and Windows.
 
 ```sh
-git clone https://github.com/DuskBotAI/duskbot && cd duskbot
+git clone https://github.com/parasource-si/metal && cd metal
 pnpm install
 
 pnpm dev:server    # harness server → 127.0.0.1:8799
@@ -60,12 +60,12 @@ fail-closed Wayland CUA smoke,
 and produces one release artifact containing:
 
 - the versioned `.deb` and AppImage;
-- stable `DuskBot-amd64.deb` and `DuskBot.AppImage` copies used by the latest-download links;
+- stable `Metal-amd64.deb` and `Metal.AppImage` copies used by the latest-download links;
 - `SHA256SUMS-ubuntu-x64.txt` covering both versioned and stable names.
 
 Before publishing, confirm that `package.json` has the release version and dispatch the workflow against the same
 commit used for the other platforms. Attach all five Ubuntu files to the matching release in the separate
-[dusk bot releases](https://github.com/DuskBotAI/duskbot/releases). Then verify the checksum
+[Metal releases](https://github.com/parasource-si/metal/releases). Then verify the checksum
 file and install the `.deb` plus launch the AppImage in a clean Ubuntu 24.04 x86_64 GNOME environment. Never combine
 packages built from different commits under one version.
 
@@ -243,7 +243,7 @@ commit used as the comparison base, the head branch, and the checks run after th
 Fork maintainers own the binaries and update channels they publish. Before distributing a fork,
 review the application name and identifiers, signing configuration, update metadata, and every
 `electron-builder` publish target. Never upload fork artifacts or update metadata to the official
-dusk bot release repository, and never change the upstream publish target in a feature PR unless
+Metal release repository, and never change the upstream publish target in a feature PR unless
 that release migration was explicitly agreed with the maintainer.
 
 An upstream PR should contain only the portable product change. Keep local build paths, account

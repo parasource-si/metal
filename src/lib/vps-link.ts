@@ -88,7 +88,7 @@ export interface VpsBackup {
   summary: { bots: number; chats: number; skills: number; routines: number } | null;
   reason: "before-move" | "before-restore" | "manual" | "from-server";
 }
-/** `uninstall`: the line to paste on the server to take dusk bot off it (older apps leave it out). `bring`: on this
+/** `uninstall`: the line to paste on the server to take Metal off it (older apps leave it out). `bring`: on this
  * computer, the servers saved by hand whose bots may come here (moveBack with the id); `blocked` says why none may now. */
 export interface VpsWhere {
   place: "mac" | "vps";

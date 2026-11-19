@@ -22,7 +22,7 @@ export const CHECKPOINTS_DIR = join(DATA_DIR, "checkpoints");
 const COMMIT_HASH = /^[0-9a-f]{40}$/;
 
 // What a checkpoint never carries, so a digest never lists it; categories follow Roo-Code's checkpoint excludes.
-const EXCLUDES = `# dusk bot checkpoint excludes, never snapshotted
+const EXCLUDES = `# Metal checkpoint excludes, never snapshotted
 .git/
 .svn/
 .hg/
@@ -191,9 +191,9 @@ function gitEnv(shadow: string, cwd: string): NodeJS.ProcessEnv {
   env.GIT_WORK_TREE = resolve(cwd);
   env.GIT_CONFIG_GLOBAL = join(shadow, "gitconfig");
   env.GIT_CONFIG_SYSTEM = join(shadow, "gitconfig_empty");
-  env.GIT_AUTHOR_NAME = "dusk bot Checkpoint";
+  env.GIT_AUTHOR_NAME = "Metal Checkpoint";
   env.GIT_AUTHOR_EMAIL = "checkpoint@duskbot.local";
-  env.GIT_COMMITTER_NAME = "dusk bot Checkpoint";
+  env.GIT_COMMITTER_NAME = "Metal Checkpoint";
   env.GIT_COMMITTER_EMAIL = "checkpoint@duskbot.local";
   return env;
 }

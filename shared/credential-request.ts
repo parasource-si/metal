@@ -136,7 +136,7 @@ export type CredentialConfig = {
   onePassword?: { connected?: boolean };
 };
 
-/** A secret dusk bot does not keep itself: the bot names it, and gets a one-use reference or a private file. */
+/** A secret Metal does not keep itself: the bot names it, and gets a one-use reference or a private file. */
 export const CUSTOM_SECRET_TARGET = "customSecret";
 /** request_credential's credential_id for a website login: a card the person types it into, filled by fill_login. */
 export const LOGIN_CREDENTIAL = "login";

@@ -10,7 +10,7 @@ export interface ExperienceSignal { id: string; at: number; name: string; props:
 const MAX_QUEUE = 500, MAX_TAKE = 200;
 
 /** experience signals waiting for the desktop app to take them (GET /api/dashboard/experience); memory only, oldest dropped
- * past the cap, nothing kept while "help improve dusk bot" is off */
+ * past the cap, nothing kept while "help improve Metal" is off */
 export function createExperienceOutbox(options: { enabled: () => boolean; now?: () => number }) {
   const now = options.now ?? Date.now;
   let queue: ExperienceSignal[] = [];

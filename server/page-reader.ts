@@ -5,7 +5,7 @@ import { fetchPublicPage, type PageFetchOptions } from "./wait-probes.ts";
 
 export const READ_PAGE_MAX_BYTES = 2 * 1024 * 1024;
 export const READ_PAGE_TIMEOUT_MS = 15_000;
-const USER_AGENT = "Mozilla/5.0 (compatible; dusk bot page reader)";
+const USER_AGENT = "Mozilla/5.0 (compatible; Metal page reader)";
 
 const NAMED: Record<string, string> = {
   amp: "&", lt: "<", gt: ">", quot: "\"", apos: "'", nbsp: " ", ndash: "\u2013", mdash: "\u2014", hellip: "\u2026",

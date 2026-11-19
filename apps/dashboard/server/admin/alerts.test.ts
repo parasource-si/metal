@@ -45,10 +45,10 @@ describe("admin alerts", () => {
     const { mailer, sink, alerts } = setup("digest,spike", time);
     for (let v = 0; v < 25; v++) await sink.insert({ id: `e${v}`, name: "site_view", at: time.now - 10 * 60_000, accountId: null, props: { path: "/" }, ctx: { visitor: `visitor-${v}`, session: `session-${v}`, pv: `pv-${v}` } });
     await alerts.tick(); await alerts.tick();
-    expect(mailer.outbox.map(mail => mail.subject)).toEqual(["traffic spike: 25 visitors in the last hour", "dusk bot yesterday: 0 visitors, 3 signups"]);
+    expect(mailer.outbox.map(mail => mail.subject)).toEqual(["traffic spike: 25 visitors in the last hour", "Metal yesterday: 0 visitors, 3 signups"]);
     time.now += DAY + HOUR;
     await alerts.tick();
-    expect(mailer.outbox.filter(mail => mail.subject.startsWith("dusk bot yesterday"))).toHaveLength(2);
+    expect(mailer.outbox.filter(mail => mail.subject.startsWith("Metal yesterday"))).toHaveLength(2);
     alerts.close();
   });
   it("sends one email per money incident: failures, disputes, refunds, big churn and each MRR milestone once", async () => {

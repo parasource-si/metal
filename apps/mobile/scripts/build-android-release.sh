@@ -31,7 +31,7 @@ fi
 
 cd "$repo"
 echo "== web bundle"
-pnpm --filter @duskbot/mobile build
+pnpm --filter @metal/mobile build
 echo "== release gate"
 node apps/mobile/scripts/release-gate.mjs
 echo "== cap sync android"

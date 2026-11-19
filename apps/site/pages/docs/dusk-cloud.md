@@ -1,12 +1,12 @@
 ---
-title: dusk cloud
-description: a computer we host for your bots, so they keep working with your laptop shut. the way we recommend once bots are part of your day.
+title: Dusk Cloud
+description: hosted computers from the upstream Dusk Bot service.
 section: start
 order: 2
 art: s-cloud
 ---
 
-on your own computer, your bots stop when it sleeps. dusk cloud gives them a computer of their own that we look after, so routines run at 3am, long jobs finish while you are out, and your phone always has someone to talk to.
+on your own computer, your bots stop when it sleeps. Dusk Cloud, operated by Dusk Bot, gives them a hosted computer, so routines run at 3am, long jobs finish while you are out, and your phone always has someone to talk to.
 
 ## why it's the one we recommend
 
@@ -50,7 +50,7 @@ after that the app is a window onto your cloud. you use it exactly the same way.
 | --- | --- | --- | --- |
 | **cost** | free | plus or pro | free, plus the server |
 | **works with the laptop shut** | no | yes | yes |
-| **who looks after it** | you | we do | you |
+| **who looks after it** | you | Dusk Bot | you |
 
 start on your computer, move to the cloud when you want bots that never sleep. you can keep both and switch from the menu at the top of the sidebar. running a server yourself is covered in [your own server](/docs/your-own-server), and [where do ai agents run when your laptop is closed](/agents-when-laptop-closed) puts all the options side by side.
 

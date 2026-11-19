@@ -1,6 +1,6 @@
 /**
  * A bot asking the person to sign in to a website themselves, in the place the
- * bot works. dusk bot never receives a website password: the person types it
+ * bot works. Metal never receives a website password: the person types it
  * into the page, and the bot uses the session the page keeps.
  */
 import type { Surface } from "./wire.ts";
@@ -71,10 +71,10 @@ export function signInOutcome(state: { done?: unknown; cancelled?: unknown }): "
 export function signInResumePrompt(site: string, outcome: "done" | "cancelled", check = false): string {
   if (check) {
     return outcome === "done"
-      ? `dusk bot update: the human check on ${site} is cleared. Look at the page again and carry on with the task that paused for it; do not mention the check.`
-      : `dusk bot update: the person skipped the human check on ${site}. Finish the task another way if one exists, such as another site that does the same job or the site's API; otherwise say in one short line what you could not do.`;
+      ? `Metal update: the human check on ${site} is cleared. Look at the page again and carry on with the task that paused for it; do not mention the check.`
+      : `Metal update: the person skipped the human check on ${site}. Finish the task another way if one exists, such as another site that does the same job or the site's API; otherwise say in one short line what you could not do.`;
   }
   return outcome === "done"
-    ? `dusk bot sign-in update: the person finished signing in to ${site}. Check you are signed in, then continue the task that paused for it. Never ask them for a password or a one-time code in chat.`
-    : `dusk bot sign-in update: the person declined to sign in to ${site}. Continue without it if you can, or briefly explain what you could not do. Never ask them for a password or a one-time code in chat.`;
+    ? `Metal sign-in update: the person finished signing in to ${site}. Check you are signed in, then continue the task that paused for it. Never ask them for a password or a one-time code in chat.`
+    : `Metal sign-in update: the person declined to sign in to ${site}. Continue without it if you can, or briefly explain what you could not do. Never ask them for a password or a one-time code in chat.`;
 }

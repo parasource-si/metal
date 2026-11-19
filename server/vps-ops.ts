@@ -23,8 +23,8 @@ export interface VpsOpsOptions {
   help?: boolean;
 }
 
-export const VPS_OPS_USAGE = `duskbot vps status|doctor [--port N] [--data-dir DIR] [--json]
-duskbot vps logs [--service server|link|fence] [--lines 100] [--json]
+export const VPS_OPS_USAGE = `metal vps status|doctor [--port N] [--data-dir DIR] [--json]
+metal vps logs [--service server|link|fence] [--lines 100] [--json]
 
 Read-only operations on this Linux VPS, including when the server is stopped.
 status  check local HTTP health, systemd services, managed computers and host resources
@@ -68,7 +68,7 @@ export function parseVpsOpsArgs(
         const lines = value();
         if (!/^\d+$/.test(lines) || Number(lines) < 1 || Number(lines) > 500) throw new Error("--lines must be 1-500");
         options.lines = Number(lines);
-      } else return { error: `unknown argument "${arg}"; see duskbot vps --help` };
+      } else return { error: `unknown argument "${arg}"; see metal vps --help` };
     } catch (error) {
       return { error: error instanceof Error ? error.message : "invalid arguments" };
     }
@@ -214,10 +214,10 @@ export async function collectVpsOpsStatus(options: VpsOpsOptions, dependencies: 
   ]);
   const healthy = http.ready && server.state === "active" && computers.available && ["active", "not-installed"].includes(link.state) && ["active", "not-installed"].includes(fence.state);
   const hints: string[] = [];
-  if (!http.ready) hints.push("The local server is not answering. Inspect: duskbot vps logs --service server");
+  if (!http.ready) hints.push("The local server is not answering. Inspect: metal vps logs --service server");
   if (server.state !== "active") hints.push("The server service is not active or cannot be inspected. Check your installed service and this account's permissions.");
-  if (!["active", "not-installed"].includes(link.state)) hints.push("The outbound link is not active or cannot be inspected. Inspect: duskbot vps logs --service link");
-  if (!["active", "not-installed"].includes(fence.state)) hints.push("The computer network fence is not active or cannot be inspected. Inspect: duskbot vps logs --service fence");
+  if (!["active", "not-installed"].includes(link.state)) hints.push("The outbound link is not active or cannot be inspected. Inspect: metal vps logs --service link");
+  if (!["active", "not-installed"].includes(fence.state)) hints.push("The computer network fence is not active or cannot be inspected. Inspect: metal vps logs --service fence");
   if (!computers.available) hints.push("Local Docker could not be inspected. Check that Docker is installed and this account may reach its socket (on a VPS install, the duskbot docker gate).");
   if (host.diskBytes && host.diskBytes.free < 1024 ** 3) hints.push("Less than 1 GiB is available on the data filesystem.");
   return { healthy, http, services: { server, link, fence }, computers, host, hints };
@@ -245,7 +245,7 @@ export async function runVpsOps(
 ): Promise<number> {
   if (options.help) { io.log(VPS_OPS_USAGE); return 0; }
   if ((dependencies.platform ?? process.platform) !== "linux") {
-    io.error("vps operations run on the Linux VPS; use duskbot doctor for a remote workspace");
+    io.error("vps operations run on the Linux VPS; use metal doctor for a remote workspace");
     return 1;
   }
   if (options.action === "logs") {

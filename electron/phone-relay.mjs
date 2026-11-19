@@ -231,7 +231,7 @@ export function createPhoneRelay(deps) {
       } catch (error) {
         backoff();
         log(`phone relay: no tunnel (${error?.code ?? error?.message ?? error})`);
-        set({ status: "error", code: error?.code ?? "unreachable", message: error instanceof RelaySetupError ? error.message : "dusk bot could not reach its relay." });
+        set({ status: "error", code: error?.code ?? "unreachable", message: error instanceof RelaySetupError ? error.message : "Metal could not reach its relay." });
         return;
       }
       if (scope() !== at) { await retire(tunnel); return; }
@@ -241,7 +241,7 @@ export function createPhoneRelay(deps) {
         await retire(tunnel);
         backoff();
         log(`phone relay: the tunnel could not be saved (${error?.message ?? error})`);
-        set({ status: "error", code: "save_failed", message: "dusk bot could not save its relay settings." });
+        set({ status: "error", code: "save_failed", message: "Metal could not save its relay settings." });
         return;
       }
       saved = { ...saved, tunnel };

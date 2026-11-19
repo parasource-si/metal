@@ -22,11 +22,11 @@ test("this app and the agent shipped with it work together, and each names what 
   assert.ok(APP_LINK_PROTOCOL >= LINK_MIN_APP && LINK_PROTOCOL >= MIN_AGENT_PROTOCOL);
   const fine = agentInfo({ protocol: LINK_PROTOCOL, minApp: LINK_MIN_APP, minServer: 1, agent: AGENT_VERSION, caps: [...AGENT_CAPS], server: { version: "9.0.0", protocol: 1, minAgent: 1 } });
   assert.deepEqual(linkCompat(fine, "box"), { update: null, message: null });
-  assert.deepEqual(linkCompat({ ...fine, minApp: APP_LINK_PROTOCOL + 1 }, "box"), { update: "app", message: "Update dusk bot on this Mac to keep using box." });
+  assert.deepEqual(linkCompat({ ...fine, minApp: APP_LINK_PROTOCOL + 1 }, "box"), { update: "app", message: "Update Metal on this Mac to keep using box." });
   assert.equal(linkCompat({ ...fine, protocol: MIN_AGENT_PROTOCOL - 1 }, "box").update, "agent");
   assert.match(linkCompat({ ...fine, caps: [], server: { version: "10.0.0", protocol: 3, minAgent: LINK_PROTOCOL + 1 } }, "box").message, /Run its setup line on the server again\.$/, "an agent that cannot update itself says how");
-  assert.deepEqual(linkCompat({ ...fine, server: { version: "10.0.0", protocol: 3, minAgent: LINK_PROTOCOL + 1 } }, "box"), { update: "agent", message: "Update the link on box: dusk bot there needs a newer one. It updates itself when nobody is using it." });
-  assert.deepEqual(linkCompat({ ...fine, minServer: 2 }, "box"), { update: "server", message: "Update dusk bot on box: its link is newer than it works with." });
+  assert.deepEqual(linkCompat({ ...fine, server: { version: "10.0.0", protocol: 3, minAgent: LINK_PROTOCOL + 1 } }, "box"), { update: "agent", message: "Update the link on box: Metal there needs a newer one. It updates itself when nobody is using it." });
+  assert.deepEqual(linkCompat({ ...fine, minServer: 2 }, "box"), { update: "server", message: "Update Metal on box: its link is newer than it works with." });
   const old = agentInfo(null);
   assert.equal(old.legacy, true);
   assert.deepEqual(linkCompat(old, "box").update, null, "an agent from before the handshake still works");
@@ -82,7 +82,7 @@ test("the app shows one sentence for a server that needs updating, and nothing f
   const newer = make({ protocol: 9, minApp: APP_LINK_PROTOCOL + 1, agent: "9.0.0", caps: [], server: { version: "9.9.9", protocol: 9, minAgent: 9 } });
   await newer.link.resume();
   await until(() => newer.link.view().compat);
-  assert.deepEqual(newer.link.view().compat, { update: "app", message: "Update dusk bot on this Mac to keep using box.", agent: "9.0.0", server: "9.9.9", protocol: 9, legacy: false });
+  assert.deepEqual(newer.link.view().compat, { update: "app", message: "Update Metal on this Mac to keep using box.", agent: "9.0.0", server: "9.9.9", protocol: 9, legacy: false });
   assert.ok(newer.views.some((view) => view.compat?.update === "app"), "the page heard about it");
   await newer.link.close();
   const older = make(new Error("unknown request"));

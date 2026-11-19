@@ -82,7 +82,7 @@ export async function openClient(flags: Flags, deps: ClientDeps, mutating: boole
     baseUrl = `http://127.0.0.1:${port}`;
   } else {
     if (mutating && deps.requireExplicitForMutations) {
-      throw usageError("mutating commands require an explicit dusk bot instance", "start `control-dusk launch`, then pass its URL with --url");
+      throw usageError("mutating commands require an explicit Metal instance", "start `pnpm control:metal launch`, then pass its URL with --url");
     }
     if (token) {
       throw usageError("a token needs a named server, so it is never sent while looking for one",
@@ -91,8 +91,8 @@ export async function openClient(flags: Flags, deps: ClientDeps, mutating: boole
     try {
       baseUrl = await mcp.probeBaseUrls(DISCOVERY_PORTS.map((port) => `http://127.0.0.1:${port}`));
     } catch {
-      throw new HeadlessError(`no dusk bot server answered on 127.0.0.1 ports ${DISCOVERY_PORTS.join(", ")}`, EXIT.unreachable,
-        "start one with `duskbot serve`, or name one with --url or DUSK_URL");
+      throw new HeadlessError(`no Metal server answered on 127.0.0.1 ports ${DISCOVERY_PORTS.join(", ")}`, EXIT.unreachable,
+        "start one with `metal serve`, or name one with --url or DUSK_URL");
     }
   }
   const request = deps.request ?? mcp.request;
@@ -119,7 +119,7 @@ export async function openClient(flags: Flags, deps: ClientDeps, mutating: boole
 }
 
 export function serverWords(message: string): string {
-  const body = /^dusk bot API error \(\d+\): ([\s\S]*)$/i.exec(message)?.[1];
+  const body = /^(?:Metal|dusk bot) API error \(\d+\): ([\s\S]*)$/i.exec(message)?.[1];
   if (body === undefined) return message;
   try {
     const said = (JSON.parse(body) as { error?: unknown }).error;
@@ -137,21 +137,21 @@ export async function explain(error: unknown, baseUrl?: string): Promise<Headles
   const status = typeof (error as { status?: unknown })?.status === "number" ? (error as { status: number }).status : undefined;
   if (status === 401) {
     return new HeadlessError("this server needs a credential and did not accept the one given", EXIT.unreachable,
-      "get one with `duskbot connect URL --out FILE`, then pass --token-file FILE or set DUSK_TOKEN");
+      "get one with `metal connect URL --out FILE`, then pass --token-file FILE or set DUSK_TOKEN");
   }
   if (status === 403) {
     return new HeadlessError(`not allowed: ${message}`, EXIT.unreachable,
-      "this needs a paired session with the right scope: `duskbot connect` mints one on this computer");
+      "this needs a paired session with the right scope: `metal connect` mints one on this computer");
   }
   if (status === 404 && /^no such (bot|channel|conversation|task|message)\b/i.test(message)) {
-    return usageError(message, "duskbot bots and duskbot channels list the ids");
+    return usageError(message, "metal bots and metal channels list the ids");
   }
-  if (/cannot report a conversation's job/.test(message)) return new HeadlessError(message, EXIT.unreachable, "update dusk bot on the server");
+  if (/cannot report a conversation's job/.test(message)) return new HeadlessError(message, EXIT.unreachable, "update Metal on the server");
   const cause = (error as { cause?: { code?: unknown } })?.cause?.code;
   if ((error instanceof TypeError && /fetch failed/i.test(message)) || cause === "ECONNREFUSED" || cause === "ENOTFOUND"
     || (error instanceof Error && (error.name === "TimeoutError" || /timed out|aborted due to timeout/i.test(message)))) {
-    return new HeadlessError(`cannot reach dusk bot${baseUrl ? ` at ${baseUrl}` : ""}`, EXIT.unreachable,
-      "check the server is running and the address is right (duskbot doctor)");
+    return new HeadlessError(`cannot reach Metal${baseUrl ? ` at ${baseUrl}` : ""}`, EXIT.unreachable,
+      "check the server is running and the address is right (metal doctor)");
   }
   if (error instanceof Error && error.name === "AbortError") return new HeadlessError("stopped", EXIT.interrupted);
   return new HeadlessError(message, EXIT.failed);
@@ -164,7 +164,7 @@ export async function readJob(client: HeadlessClient, threadId: string, query: R
     const status = (error as { status?: number }).status;
     const message = error instanceof Error ? error.message : String(error);
     if (status === 404 && !/no such conversation/.test(message)) {
-      throw new HeadlessError("this dusk bot server cannot report a conversation's job", EXIT.unreachable, "update dusk bot on the server");
+      throw new HeadlessError("this Metal server cannot report a conversation's job", EXIT.unreachable, "update Metal on the server");
     }
     throw error;
   }

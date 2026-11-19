@@ -67,8 +67,8 @@ describe("fix first, from what the site and apps show now", () => {
       site(20 * DAY, "h1", "/", { goal: "rage_click", section: "hero", label: "meet_dusk_bot" }),
     ];
     const report = productReport({ from: 0, to, events, funnel });
-    expect(report.site.rage).toEqual([{ key: "meet dusk bot in the hero section of /", count: 2, people: 2 }]);
-    expect(report.improve.find(row => row.area === "site")?.title).toBe('rage clicks on "meet dusk bot in the hero section of /"');
+    expect(report.site.rage).toEqual([{ key: "meet Metal in the hero section of /", count: 2, people: 2 }]);
+    expect(report.improve.find(row => row.area === "site")?.title).toBe('rage clicks on "meet Metal in the hero section of /"');
   });
 
   it("counts an account that set up in the desktop app as onboarded, not lost at the web welcome", () => {

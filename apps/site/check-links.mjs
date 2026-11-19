@@ -95,7 +95,7 @@ for (const file of pages.filter((f) => f.endsWith('.html'))) {
 }
 
 // structured data: every block parses, says what it is, and has what google needs for its type, with absolute addresses
-const abs = (u) => typeof u === 'string' && /^https:\/\/[^/]+\//.test(u);
+const abs = (u) => typeof u === 'string' && /^(?:https:\/\/[^/]+|http:\/\/(?:localhost|127\.0\.0\.1)(?::\d+)?)\//.test(u);
 const isoDay = (d) => typeof d === 'string' && /^\d{4}-\d{2}-\d{2}/.test(d);
 let blocks = 0;
 for (const file of pages.filter((f) => f.endsWith('.html'))) {
@@ -140,8 +140,8 @@ for (const file of pages.filter((f) => f.endsWith('.html') && !servedElsewhere(a
   if (!images.length || widths.length !== images.length || heights.length !== images.length || alts.length !== images.length) { problems.push(`${at}: each og:image needs its width, height and alt`); continue; }
   images.forEach((url, i) => {
     cards++;
-    const p = url.replace(/^https:\/\/[^/]+/, ''), f = fileFor(p);
-    if (!url.startsWith('https://') || !f) return problems.push(`${at}: og:image ${url} is not on the site`);
+    const p = abs(url) ? new URL(url).pathname : '', f = p && fileFor(p);
+    if (!f) return problems.push(`${at}: og:image ${url} is not on the site`);
     const b = fs.readFileSync(f), size = jpegSize(b);
     if (!size || `${size[0]}x${size[1]}` !== `${widths[i]}x${heights[i]}`) problems.push(`${at}: og:image ${p} is ${size?.join('x')}, the tags say ${widths[i]}x${heights[i]}`);
     if (b.length > 150 * 1024) problems.push(`${at}: og:image ${p} is ${Math.round(b.length / 1024)} kb, over 150`);

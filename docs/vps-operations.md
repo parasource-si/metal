@@ -4,12 +4,12 @@ The private server build includes a small operations CLI. Run it over SSH on
 the Linux VPS from the account that installed or operates the server:
 
 ```sh
-duskbot vps status
-duskbot vps doctor
-duskbot vps logs
-duskbot vps logs --service link --lines 200
-duskbot vps logs --service fence --lines 50
-duskbot vps doctor --json
+metal vps status
+metal vps doctor
+metal vps logs
+metal vps logs --service link --lines 200
+metal vps logs --service fence --lines 50
+metal vps doctor --json
 ```
 
 If the installer used its default `dusk` account, its executable is
@@ -38,14 +38,14 @@ health; an active link process does not prove that the remote relay or a
 particular desktop client's network is reachable.
 
 For bot and conversation operations against a running workspace, use the
-existing `duskbot doctor`, `bots`, `messages`, `run`, `wait`, and `events`
+existing `metal doctor`, `bots`, `messages`, `run`, `wait`, and `events`
 commands documented in [the headless CLI](headless-cli.md).
 
 App and server upgrades are operator-managed for this private fork. The
 desktop does not initialize an update provider, query release feeds, or install
 downloaded updates on quit or while idle. The server's update check returns no
 release offer or public npm install command. Packaging has no publish target;
-project and release links point to `DuskBotAI/duskbot`.
+project and release links point to `parasource-si/metal`.
 
 Install a reviewed private build before restarting the services you intend to
 update.
@@ -54,7 +54,7 @@ Verification uses temporary homes and a disposable fake-engine server:
 
 ```sh
 pnpm exec vitest run server/vps-ops.test.ts server/vps-ops.e2e.test.ts
-node --experimental-strip-types server/duskbot.ts vps --help
+node --experimental-strip-types server/metal.ts vps --help
 pnpm exec vitest run server/update-check.test.ts server/update-check.e2e.test.ts
 ```
 

@@ -78,7 +78,7 @@ async function call<T>(path: string, init?: { method?: string; body?: unknown; s
     });
   } catch (error) {
     if ((error as Error).name === "AbortError") throw error;
-    throw new ApiError("can't reach dusk bot. check your connection.", 0, "offline");
+    throw new ApiError("can't reach Metal. check your connection.", 0, "offline");
   }
   let unread: unknown = null;
   const data = (await res.json().catch((error: unknown) => { unread = error; return null; })) as (T & { error?: string; code?: string; blockers?: DeletionBlocker[] }) | null;
@@ -148,7 +148,7 @@ export const api = {
     let res: Response;
     try {
       res = await fetch("/v1/auth/handoff", { method: "POST", credentials: "same-origin", headers: { accept: "application/json", "content-type": "application/json" }, body: JSON.stringify({ token, ...(confirm ? { confirm } : {}), ...(replace ? { replace } : {}) }) });
-    } catch { throw new ApiError("can't reach dusk bot. check your connection.", 0, "offline"); }
+    } catch { throw new ApiError("can't reach Metal. check your connection.", 0, "offline"); }
     const data = (await res.json().catch(() => null)) as (HandoffAnswer & { error?: string; code?: string; email?: string }) | null;
     if (res.status === 409 && (data?.code === "confirm" || data?.code === "other_account") && typeof data.email === "string") return { ask: data.code, email: data.email };
     if (!res.ok || !data) throw new ApiError(lowercase(data?.error) ?? "something went wrong on our side. try again.", res.status, data?.code ?? null);
@@ -206,7 +206,7 @@ export const api = {
     const answer = await send<WireCheckoutAnswer>("/v1/billing/checkout", "POST", { kind: "cart", source: req.source, cart: cartFromSelection(req.selection, await catalog()) });
     return { url: answer.checkoutUrl, id: answer.checkoutId };
   },
-  /** a card-only page for the plan's payment method; dusk bot never opens the provider's customer portal */
+  /** a card-only page for the plan's payment method; Metal never opens the provider's customer portal */
   updateCard: () => send<{ url: string }>(`${subscriptionPath()}/card`, "POST"),
   /** what a plan change does, before anything is applied: today's charge, the next one and when */
   changeCharge: async (selection: Selection): Promise<ChangeOffer> => {

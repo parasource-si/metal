@@ -211,7 +211,7 @@ describe("computerPrompt", () => {
   it("distinguishes background window control from foreground desktop input", () => {
     const prompt = computerPrompt("local");
     expect(prompt).toContain("background delivery");
-    expect(prompt).toContain("do not bring dusk bot");
+    expect(prompt).toContain("do not bring Metal");
     expect(prompt).toContain("dedicated browser tools");
     expect(prompt).toContain("keeping the user's intended browser profile/account");
     expect(prompt).toContain("Do not silently retry a background refusal");
@@ -273,7 +273,7 @@ describe("computerPrompt", () => {
   });
 
   it("prefers a saved login through fill_login, which submits the form, before asking the person", () => {
-    expect(SIGN_IN_PROMPT).toContain("When you have a saved login for the site, open its login page in your browser, or in Chromium on your own VPS desktop, and call fill_login there: dusk bot types the password and any one-time code (when the login has a 2FA key) itself and submits the form");
+    expect(SIGN_IN_PROMPT).toContain("When you have a saved login for the site, open its login page in your browser, or in Chromium on your own VPS desktop, and call fill_login there: Metal types the password and any one-time code (when the login has a 2FA key) itself and submits the form");
     expect(SIGN_IN_PROMPT.indexOf("fill_login")).toBeLessThan(SIGN_IN_PROMPT.indexOf("call request_sign_in"));
     // with no saved login the bot asks for one on the sealed card, then fills it; it never sends the person to Browser
     expect(SIGN_IN_PROMPT).toContain("With no saved login for the site, call request_credential with credential_id \"login\"");
@@ -392,7 +392,7 @@ describe("composioSystemPrompt", () => {
 describe("cloudHomePrompt", () => {
   it("says the bot runs in the cloud, offers what works there, and never asks for a place that cannot exist", () => {
     const text = cloudHomePrompt();
-    expect(text).toMatch(/^ You run on the user's My Cloud, their always-on dusk bot in the cloud, not on their own computer\./);
+    expect(text).toMatch(/^ You run on the user's My Cloud, their always-on Metal in the cloud, not on their own computer\./);
     expect(text.startsWith(` You run on ${CLOUD_HOME_PLACE}.`)).toBe(true);
     expect(text).toContain("Offer what works here: the built-in browser and their connected VPS computer. Their VPS computer is a sandboxed desktop on their own server.");
     expect(text).not.toMatch(/\bDUSK\b|\b\x42oat\b|\bbox\b/);

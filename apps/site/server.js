@@ -199,11 +199,11 @@ function unsubscribePage(title, text) {
   const section = `<section class="lost wrap">\n  <h1>${htmlEsc(title)}</h1>\n  <p>${htmlEsc(text)}</p>\n  <p class="actions"><a class="btn dark" href="/">go home</a></p>\n</section>`;
   if (shell) {
     const page = fs.readFileSync(shell, 'utf8');
-    const out = page.replace(/<title>[^<]*<\/title>/, `<title>${htmlEsc(title)} / dusk bot</title>`)
+    const out = page.replace(/<title>[^<]*<\/title>/, `<title>${htmlEsc(title)} / Metal</title>`)
       .replace(/<section class="lost wrap">[\s\S]*?<\/section>/, section);
     if (out !== page) return out;
   }
-  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex"><title>${htmlEsc(title)} / dusk bot</title><link rel="stylesheet" href="/site.css"></head><body><main id="main" class="inner">${section}</main></body></html>`;
+  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex"><title>${htmlEsc(title)} / Metal</title><link rel="stylesheet" href="/site.css"></head><body><main id="main" class="inner">${section}</main></body></html>`;
 }
 async function unsubscribe(req, res) {
   const post = req.method === 'POST';
@@ -217,12 +217,12 @@ async function unsubscribe(req, res) {
   const email = emailFromToken(UNSUB_SECRET, new URL(req.url || '/', 'http://x').searchParams.get('t'));
   const invalid = () => answer(400, "This unsubscribe link doesn't work.", "It may have been cut short. Open it again from the email, or write to hello@dusk.bot and we'll take you off the list.");
   if (!email) return invalid();
-  if (req.method === 'HEAD') return answer(200, "You're unsubscribed from dusk bot news.", '');
+  if (req.method === 'HEAD') return answer(200, "You're unsubscribed from Metal news.", '');
   try {
     const { found } = await store.unsubscribe(email);
     if (!found) return invalid();
     console.log('unsubscribe: one entry marked');
-    answer(200, "You're unsubscribed from dusk bot news.", "We won't send you any more news emails.");
+    answer(200, "You're unsubscribed from Metal news.", "We won't send you any more news emails.");
   } catch (err) {
     console.error(`unsubscribe: could not save (${err.code || err.name})`);
     answer(500, "We couldn't do that just now.", 'Try the link again in a minute, or write to hello@dusk.bot.');
@@ -278,7 +278,7 @@ const server = http.createServer((req, res) => {
     return res.end('User-agent: *\nDisallow: /\n');
   }
   if (serveMirrored(req, res, urlPath) || serveVoiceModel(req, res, urlPath)) return;
-  // curl -fsSL https://dusk.bot/install-mac | sh: the mac installer has a short address
+  // the mac installer has a short address
   let file = resolveFile(urlPath === '/install-mac' ? '/install-mac.sh' : urlPath), status = 200;
   // a page has one address, without the slash at its end
   if (file && urlPath.length > 1 && urlPath.endsWith('/') && file.endsWith('index.html')) {
@@ -326,5 +326,5 @@ const server = http.createServer((req, res) => {
   res.end(req.method === 'HEAD' ? undefined : body);
 });
 
-server.listen(port, '127.0.0.1', () => console.log(`dusk ${site} on 127.0.0.1:${port}`));
+server.listen(port, '127.0.0.1', () => console.log(`Metal ${site} on 127.0.0.1:${port}`));
 for (const sig of ['SIGTERM', 'SIGINT']) process.on(sig, () => server.close(() => process.exit(0)));

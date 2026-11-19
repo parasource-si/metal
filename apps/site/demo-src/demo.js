@@ -14,7 +14,7 @@ function start() {
   host.dataset.live = '1';
   const $ = (s, el = root) => el.querySelector(s);
   const $$ = (s, el = root) => [...el.querySelectorAll(s)];
-  // pieces kept as edits to dusk bot's (build.mjs diff): rebuilt once, on first use
+  // pieces kept as edits to Metal's (build.mjs diff): rebuilt once, on first use
   const first = data.bots[BOTS[0].key];
   const patch = (base, ops) => {
     const a = base.match(/<[^>]+>|[^<]+/g) ?? [];

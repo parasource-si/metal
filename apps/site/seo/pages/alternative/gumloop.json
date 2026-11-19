@@ -4,7 +4,7 @@
   "title": "Gumloop alternatives: a builder or a bot you text?",
   "nav": "gumloop",
   "h1": "gumloop alternatives when you want to give a job in a message",
-  "description": "Compare Gumloop with dusk bot on browser work, credits, model choice and setup, with dated sources and reasons to choose either.",
+  "description": "Compare Gumloop with Metal on browser work, credits, model choice and setup, with dated sources and reasons to choose either.",
   "keyword": "gumloop alternative",
   "keywords": [
     "gumloop vs n8n",
@@ -58,7 +58,7 @@
     "intro": "**put the handoff beside the bill.** prices as of 12 november 2026. compare fees and credits before paying; the table covers features, not measured reply quality.",
     "cols": [
       "Gumloop",
-      "dusk bot"
+      "Metal"
     ],
     "rows": [
       {
@@ -143,7 +143,7 @@
       }
     ]
   },
-  "method": "**we make dusk bot. we haven't raced it against gumloop.** this comparison uses gumloop's homepage and pricing as of 12 november 2026, alongside dusk docs.\n\nwe have no matching-job measurements for speed, accuracy or cost per result. try your own small job before moving a workflow.",
+  "method": "**Metal is based on Dusk Bot. we haven't raced it against gumloop.** this comparison uses gumloop's homepage and pricing as of 12 november 2026, alongside dusk docs.\n\nwe have no matching-job measurements for speed, accuracy or cost per result. try your own small job before moving a workflow.",
   "sections": [
     {
       "h": "chat and browser work are already there",
@@ -184,31 +184,31 @@
       "checked": "2026-11-12"
     },
     {
-      "label": "dusk bot: getting started",
+      "label": "Metal: getting started",
       "url": "/docs/getting-started"
     },
     {
-      "label": "dusk bot: a bot's computer",
+      "label": "Metal: a bot's computer",
       "url": "/docs/computer"
     },
     {
-      "label": "dusk bot: dusk cloud",
+      "label": "Metal: dusk cloud",
       "url": "/docs/dusk-cloud"
     },
     {
-      "label": "dusk bot: account and billing",
+      "label": "Metal: account and billing",
       "url": "/docs/account-and-billing"
     },
     {
-      "label": "dusk bot: phone",
+      "label": "Metal: phone",
       "url": "/docs/phone"
     },
     {
-      "label": "dusk bot: files and apps",
+      "label": "Metal: files and apps",
       "url": "/docs/files-and-apps"
     },
     {
-      "label": "dusk bot: routines",
+      "label": "Metal: routines",
       "url": "/docs/routines"
     },
     {
@@ -217,18 +217,18 @@
       "checked": "2026-11-12"
     },
     {
-      "label": "dusk bot: bots",
+      "label": "Metal: bots",
       "url": "/docs/bots"
     },
     {
-      "label": "dusk bot: work license",
+      "label": "Metal: work license",
       "url": "/docs/faq"
     }
   ],
   "quick": {
     "steps": [
       "pick one folder with five files you know",
-      "ask a dusk bot for the file list and one line about each",
+      "ask a Metal bot for the file list and one line about each",
       "read its output beside the files, then inspect the usage charge"
     ]
   },
@@ -262,11 +262,11 @@
       ],
       [
         "named bots with separate jobs and your choice of ai",
-        "dusk bot"
+        "Metal"
       ],
       [
         "personal work on your own machine",
-        "dusk bot"
+        "Metal"
       ]
     ]
   },

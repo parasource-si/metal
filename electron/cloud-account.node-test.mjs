@@ -305,7 +305,7 @@ test("what this person may buy: the session's own offer when signed in, else the
   const asked = () => f.requests.filter(row => row.route === "/api/public/config");
   assert.equal(await f.client.offer(), null); assert.equal(asked().length, 1);
   assert.equal(await f.client.offer(), null); assert.equal(asked().length, 1, "a failed ask counts for 30 seconds");
-  f.now += 30_000; f.publicConfig = { status: 200, body: { name: "dusk bot", surface: "cloud", plans: plans(), trial: { days: 7, holdDays: 3 }, refundDays: 14 } };
+  f.now += 30_000; f.publicConfig = { status: 200, body: { name: "Metal", surface: "cloud", plans: plans(), trial: { days: 7, holdDays: 3 }, refundDays: 14 } };
   const [first, second] = await Promise.all([f.client.offer(), f.client.offer()]);
   assert.deepEqual(first.plans.map(plan => [plan.tier, plan.amount, plan.trialDays]), [["starter", 1500, 7], ["pro", 4900, 7]]);
   assert.deepEqual([first.recommended, first.refundDays], ["pro", 14]);

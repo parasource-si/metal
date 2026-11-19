@@ -112,7 +112,7 @@ describe("sites with thin pages", () => {
 
   it("reads a tweet from the public embed's JSON", () => {
     const meta = readTweet(JSON.parse(fixture("tweet.json")), new URL("https://cdn.syndication.twimg.com/"));
-    expect(meta.title).toBe("dusk bot (@duskbot)");
+    expect(meta.title).toBe("Metal (@duskbot)");
     expect(meta.description).toBe("Shipping link previews today. Hover any link in chat.");
     expect(meta.image).toEqual({ url: "https://pbs.twimg.com/ext_tw_video_thumb/1/pu/img/poster.jpg", width: 1280, height: 720 });
     expect(meta.video).toBe(true);

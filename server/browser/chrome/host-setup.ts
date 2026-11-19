@@ -1,10 +1,10 @@
 // Ported from T3 Code's apps/server/src/preview/PreviewBrowserHost.ts,
 // Copyright 2026 T3 Tools Inc., used under the MIT License
 // (third_party/t3-code/LICENSE). Modified: plain TypeScript instead of Effect,
-// dusk bot's command and environment names, and an AppArmor profile pinned to one
+// Metal's command and environment names, and an AppArmor profile pinned to one
 // exact executable instead of a wildcard path.
 //
-// dusk bot never turns Chrome's sandbox off by itself on a host. A host that cannot
+// Metal never turns Chrome's sandbox off by itself on a host. A host that cannot
 // give it one gets the setup command instead, and only an operator's explicit
 // DUSK_BROWSER_SANDBOX=0 launches without it. The computer container image (also
 // run on a VPS) is the exception: it drops capabilities, so its Chrome runs
@@ -14,7 +14,7 @@ import { execFile } from "node:child_process";
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { isAbsolute } from "node:path";
 
-export const SETUP_COMMAND = "sudo duskbot browser setup";
+export const SETUP_COMMAND = "sudo metal browser setup";
 
 /** What Chrome prints before aborting when it cannot sandbox itself. */
 export const NO_SANDBOX_SIGNATURE = "No usable sandbox";
@@ -37,7 +37,7 @@ export function appArmorProfile(executable: string): string {
   if (!isAbsolute(executable) || /[\s\p{Cc}*?[\]{}"'\\^]/u.test(executable.replaceAll(" ", "")) || !executable.startsWith("/opt/")) {
     throw new Error(`The browser's AppArmor exemption is only for a root-owned path under /opt, not ${executable}.`);
   }
-  return `# Written by \`duskbot browser setup\`: lets dusk bot's Chrome use its sandbox.
+  return `# Written by \`metal browser setup\`: lets Metal's Chrome use its sandbox.
 abi <abi/4.0>,
 include <tunables/global>
 
@@ -123,10 +123,10 @@ export interface HostSetupDeps {
   error(line: string): void;
 }
 
-/** `sudo duskbot browser setup`: what the host needs for the browser, the command the browser's own errors name. */
+/** `sudo metal browser setup`: what the host needs for the browser, the command the browser's own errors name. */
 export async function setUpBrowserHost(deps: HostSetupDeps): Promise<number> {
   if (deps.platform !== "linux") {
-    deps.log("nothing to set up on this host; run `duskbot browser install` to get the browser");
+    deps.log("nothing to set up on this host; run `metal browser install` to get the browser");
     return 0;
   }
   if (!deps.isRoot()) {
@@ -154,7 +154,7 @@ export async function setUpBrowserHost(deps: HostSetupDeps): Promise<number> {
   return 0;
 }
 
-/** `duskbot browser setup` on this machine: its real root check, files and apparmor_parser. */
+/** `metal browser setup` on this machine: its real root check, files and apparmor_parser. */
 export function setUpThisHost(installLibraries: () => Promise<number>, io: Pick<HostSetupDeps, "log" | "error">): Promise<number> {
   return setUpBrowserHost({
     platform: process.platform,

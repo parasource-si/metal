@@ -1,9 +1,9 @@
 {
   "about": [
-    "Shared contract between dusk bot (server/decider/relay.ts) and the dusk-cloud Admin's decision relay.",
-    "dusk bot sends POST <DUSK_CLOUD_DECIDER_URL>/v1/systemone with Authorization: Bearer <DUSK_CLOUD_DECIDER_TOKEN>, the header below naming the seam, and `body` as the JSON body (Jev's System One shape).",
-    "The relay accepts a request only when the named seam's shape check passes; `accepts` is that verdict. dusk bot never sends one it would refuse (tests check both sides agree).",
-    "An oversize request is answered 413; dusk bot reads that as too large, says so plainly and never retries it.",
+    "Shared contract between Metal (server/decider/relay.ts) and the dusk-cloud Admin's decision relay.",
+    "Metal sends POST <DUSK_CLOUD_DECIDER_URL>/v1/systemone with Authorization: Bearer <DUSK_CLOUD_DECIDER_TOKEN>, the header below naming the seam, and `body` as the JSON body (Jev's System One shape).",
+    "The relay accepts a request only when the named seam's shape check passes; `accepts` is that verdict. Metal never sends one it would refuse (tests check both sides agree).",
+    "An oversize request is answered 413; Metal reads that as too large, says so plainly and never retries it.",
     "Regenerate from the real request builders when a seam changes, and copy this file to the Admin."
   ],
   "header": "x-dusk-seam",
@@ -23,7 +23,7 @@
   "seams": {
     "keyCheck": {
       "state": {
-        "purpose": "dusk bot is checking that a decision-model key works."
+        "purpose": "Metal is checking that a decision-model key works."
       },
       "question": "Is this a connection check?"
     },
@@ -74,7 +74,7 @@
       "accepts": true,
       "body": {
         "state": {
-          "purpose": "dusk bot is checking that a decision-model key works."
+          "purpose": "Metal is checking that a decision-model key works."
         },
         "model": "jev-latest",
         "questions": {

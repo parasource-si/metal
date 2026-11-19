@@ -4,7 +4,7 @@
   "title": "Relevance AI alternatives for people who do not build agents",
   "nav": "relevance ai",
   "h1": "relevance ai alternatives for a smaller job",
-  "description": "Compare Relevance AI with dusk bot, including the conflicting pricing pages, workforce setup and when a smaller team of bots fits better.",
+  "description": "Compare Relevance AI with Metal, including the conflicting pricing pages, workforce setup and when a smaller team of bots fits better.",
   "keyword": "relevance ai alternatives",
   "keywords": [
     "relevance ai pricing",
@@ -59,7 +59,7 @@
     "intro": "**get a quote before you build the budget.** as of 12 november 2026, relevance ai's marketing and docs list different plans. ask which docs prices a new account can actually buy.",
     "cols": [
       "Relevance AI",
-      "dusk bot"
+      "Metal"
     ],
     "rows": [
       {
@@ -144,7 +144,7 @@
       }
     ]
   },
-  "method": "**use the offer to choose a trial, then judge the work.** we make dusk bot. we compared relevance ai's own pages on 12 november 2026.\n\nits pages disagree about plans. we show both. we did not run matching jobs or test a deployment with its sales team.",
+  "method": "**use the offer to choose a trial, then judge the work.** Metal is based on Dusk Bot. we compared relevance ai's own pages on 12 november 2026.\n\nits pages disagree about plans. we show both. we did not run matching jobs or test a deployment with its sales team.",
   "sections": [
     {
       "h": "get the plan in writing",
@@ -200,31 +200,31 @@
       "checked": "2026-11-12"
     },
     {
-      "label": "dusk bot: bots",
+      "label": "Metal: bots",
       "url": "/docs/bots"
     },
     {
-      "label": "dusk bot: dusk cloud",
+      "label": "Metal: dusk cloud",
       "url": "/docs/dusk-cloud"
     },
     {
-      "label": "dusk bot: billing",
+      "label": "Metal: billing",
       "url": "/docs/account-and-billing"
     },
     {
-      "label": "dusk bot: files and apps",
+      "label": "Metal: files and apps",
       "url": "/docs/files-and-apps"
     },
     {
-      "label": "dusk bot: group chats",
+      "label": "Metal: group chats",
       "url": "/docs/group-chats"
     },
     {
-      "label": "dusk bot: memory",
+      "label": "Metal: memory",
       "url": "/docs/memory"
     },
     {
-      "label": "dusk bot: permissions and sends",
+      "label": "Metal: permissions and sends",
       "url": "/docs/computer"
     }
   ],
@@ -265,7 +265,7 @@
       ],
       [
         "one bot you can name and brief yourself",
-        "dusk bot"
+        "Metal"
       ],
       [
         "a large native and pipedream app catalogue",
@@ -273,7 +273,7 @@
       ],
       [
         "separate bots with optional group memory",
-        "dusk bot"
+        "Metal"
       ]
     ]
   },

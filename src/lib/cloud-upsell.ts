@@ -8,7 +8,7 @@ import { buyOfferAllowed, type CloudPlanView, type CloudSource } from "./cloud-p
 type Usage = { turns: number } | null | undefined;
 type BotFacts = { hidden?: boolean; movedTo?: unknown; tasks?: ReadonlyArray<{ usage?: Usage }> };
 
-/** what this computer knows about how much someone uses dusk bot: their bots, the turns they and their rooms had, routines */
+/** what this computer knows about how much someone uses Metal: their bots, the turns they and their rooms had, routines */
 export function investedFacts(state: {
   bots: readonly BotFacts[]; groups: ReadonlyArray<{ usage?: Usage }>; routines?: readonly unknown[];
 }): InvestedFacts {

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Sets up and deploys the connected-apps broker (apps/cloudflare/composio-broker) on dusk bot's own cloudflare account at
+# Sets up and deploys the connected-apps broker (apps/cloudflare/composio-broker) on Metal's own cloudflare account at
 # https://composio.dusk.bot. Safe to run again: it creates only what is missing.
 #
 # Reads ~/.config/duskbot/dusk.env (falls back to cloudflare.env for the cloudflare names):

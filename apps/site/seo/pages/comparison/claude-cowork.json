@@ -1,9 +1,9 @@
 {
   "path": "/vs/claude-cowork",
-  "title": "Claude Cowork vs dusk bot: tasks or a bot team?",
+  "title": "Claude Cowork vs Metal: tasks or a bot team?",
   "nav": "claude cowork",
-  "h1": "claude cowork vs dusk bot: files, schedules and bot teams",
-  "description": "Cowork is becoming part of Claude. Compare its file tasks and cloud schedules with dusk bot, including the limits of local routines.",
+  "h1": "claude cowork vs Metal: files, schedules and bot teams",
+  "description": "Cowork is becoming part of Claude. Compare its file tasks and cloud schedules with Metal, including the limits of local routines.",
   "answer": "**choose between handing claude a task and keeping a team of named bots.** cowork is becoming part of claude as of 12 november 2026.[^1] dusk gives each bot its own job, memory and ai choice. both schedule work. new cowork tasks on pro, max and ultra run in the cloud, so laptop sleep is no longer the deciding difference.[^2]",
   "tags": [
     "claude",
@@ -46,7 +46,7 @@
     "intro": "**both can schedule work; the daily arrangement differs.** details are as of 12 november 2026. the claude column includes its move to cloud tasks.",
     "cols": [
       "claude cowork",
-      "dusk bot"
+      "Metal"
     ],
     "rows": [
       {
@@ -120,7 +120,7 @@
       }
     ]
   },
-  "method": "**compare the work you will repeat, then try it with your own files.** we publish dusk bot. we did not run identical tasks in both apps.\n\nanthropic's sources were checked on 12 november 2026. newer cloud-task help supersedes older desktop sleep advice. the table names the affected plans so you can match them to yours.",
+  "method": "**compare the work you will repeat, then try it with your own files.** we publish Metal. we did not run identical tasks in both apps.\n\nanthropic's sources were checked on 12 november 2026. newer cloud-task help supersedes older desktop sleep advice. the table names the affected plans so you can match them to yours.",
   "sections": [
     {
       "h": "start with the work, not the chat box",
@@ -176,27 +176,27 @@
       "checked": "2026-11-12"
     },
     {
-      "label": "dusk bot: jobs and ai choices",
+      "label": "Metal: jobs and ai choices",
       "url": "/docs/bots"
     },
     {
-      "label": "dusk bot: files and app permissions",
+      "label": "Metal: files and app permissions",
       "url": "/docs/files-and-apps"
     },
     {
-      "label": "dusk bot: when routines run",
+      "label": "Metal: when routines run",
       "url": "/docs/routines"
     },
     {
-      "label": "dusk bot: hosted computers",
+      "label": "Metal: hosted computers",
       "url": "/docs/dusk-cloud"
     },
     {
-      "label": "dusk bot: shared threads",
+      "label": "Metal: shared threads",
       "url": "/docs/group-chats"
     },
     {
-      "label": "dusk bot: personal and work use",
+      "label": "Metal: personal and work use",
       "url": "/docs/account-and-billing"
     },
     {
@@ -205,7 +205,7 @@
       "checked": "2026-11-12"
     },
     {
-      "label": "dusk bot: command and file approvals",
+      "label": "Metal: command and file approvals",
       "url": "/docs/computer"
     }
   ],

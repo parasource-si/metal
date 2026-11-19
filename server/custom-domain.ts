@@ -102,12 +102,12 @@ function requestJson(url: URL, address: LookupAddress, signal: AbortSignal): Pro
     };
     const request = httpsRequest(url, {
       method: "GET", agent: false, lookup, signal, rejectUnauthorized: true,
-      headers: { Accept: "application/json", "User-Agent": "DuskBot-domain-check" },
+      headers: { Accept: "application/json", "User-Agent": "Metal-domain-check" },
     }, (response) => {
       // Node's HTTPS client does not follow Location redirects.
       if (response.statusCode !== 200) {
         response.destroy();
-        reject(new CustomDomainError("The domain did not return the dusk bot verification page. Check your reverse proxy; redirects are not supported."));
+        reject(new CustomDomainError("The domain did not return the Metal verification page. Check your reverse proxy; redirects are not supported."));
         return;
       }
       const chunks: Buffer[] = [];
@@ -117,14 +117,14 @@ function requestJson(url: URL, address: LookupAddress, signal: AbortSignal): Pro
         size += chunk.length;
         if (size > MAX_RESPONSE_BYTES) {
           response.destroy();
-          reject(new CustomDomainError("The domain returned an unexpected response. Check that it points to dusk bot."));
+          reject(new CustomDomainError("The domain returned an unexpected response. Check that it points to Metal."));
           return;
         }
         chunks.push(chunk);
       });
       response.on("end", () => {
         try { resolve(JSON.parse(Buffer.concat(chunks).toString("utf8"))); }
-        catch { reject(new CustomDomainError("The domain did not return dusk bot data. Check that it points to this server.")); }
+        catch { reject(new CustomDomainError("The domain did not return Metal data. Check that it points to this server.")); }
       });
     });
     request.on("error", reject);
@@ -168,7 +168,7 @@ export function createCustomDomainVerifier(dependencies: CustomDomainDependencie
         const descriptor = await withAbort(request(new URL(DESCRIPTOR_PATH, origin), address, controller.signal), controller.signal);
         if (!descriptor || typeof descriptor !== "object"
           || Reflect.get(descriptor, "environmentId") !== dependencies.environmentId) {
-          throw new CustomDomainError("This domain does not point to this dusk bot server. Check its DNS and reverse proxy configuration.");
+          throw new CustomDomainError("This domain does not point to this Metal server. Check its DNS and reverse proxy configuration.");
         }
         active = {
           token: randomBytes(32).toString("hex"), proof: randomBytes(32).toString("hex"),
@@ -177,7 +177,7 @@ export function createCustomDomainVerifier(dependencies: CustomDomainDependencie
         const proof = await withAbort(request(new URL(`${CUSTOM_DOMAIN_CHALLENGE_PATH}${active.token}`, origin), address, controller.signal), controller.signal);
         if (!proof || typeof proof !== "object" || Reflect.get(proof, "environmentId") !== dependencies.environmentId
           || Reflect.get(proof, "proof") !== active.proof) {
-          throw new CustomDomainError("The domain could not prove it reaches this server. Forward all dusk bot routes through your reverse proxy and try again.");
+          throw new CustomDomainError("The domain could not prove it reaches this server. Forward all Metal routes through your reverse proxy and try again.");
         }
         return { origin, verifiedAt: new Date().toISOString() };
       } catch (error) {

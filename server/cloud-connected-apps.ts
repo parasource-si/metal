@@ -1,4 +1,4 @@
-// A Cloud home's own installation on dusk bot's connected-apps service, which its plan includes. The server registers
+// A Cloud home's own installation on Metal's connected-apps service, which its plan includes. The server registers
 // it the way the desktop app registers itself (electron/managed-composio.mjs), keeps the token in a 0600 file on the
 // volume that no backup carries, and hands it to the one managed path (composio.setManagedBrokerAccess). A Composio
 // project key the owner saves still wins: composio.connectionMode checks it first.
@@ -189,7 +189,7 @@ export function startCloudConnectedApps(options: CloudConnectedAppsOptions): Clo
 
 let cloudHome: CloudConnectedApps | null = null;
 /** The connected-apps service a Cloud home and a Team Cloud's members register with: only an explicit
- * DUSK_COMPOSIO_BROKER_URL. dusk bot's own service is closed (dusk bot pays nothing per tool call), so "" by default:
+ * DUSK_COMPOSIO_BROKER_URL. Metal's own service is closed (Metal pays nothing per tool call), so "" by default:
  * a Cloud connects apps with the person's own accounts and keys, like the desktop app. */
 export const cloudConnectedAppsBrokerUrl = (): string => managedComposioBrokerUrl(process.env.DUSK_COMPOSIO_BROKER_URL, false);
 

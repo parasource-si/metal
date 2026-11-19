@@ -16,7 +16,7 @@
   "updated": "2026-11-12",
   "review": {
     "status": "approved",
-    "by": "lead agent, against dusk bot docs",
+    "by": "lead agent, against Metal docs",
     "at": "2026-11-12"
   },
   "tags": [
@@ -61,7 +61,7 @@
     },
     {
       "h": "morning or as mail arrives",
-      "md": "**pick a time, or pick a trigger.** a scheduled routine runs when you say. an event routine starts on new mail, like \"whenever someone at @acme.com writes, draft a reply\".\n\ngmail is checked about every 15 minutes, so \"as it arrives\" means within 15.\n\non your own computer it only runs while the laptop's awake and dusk bot is open. want triage done before you wake? put the bot on [dusk cloud](/docs/dusk-cloud)."
+      "md": "**pick a time, or pick a trigger.** a scheduled routine runs when you say. an event routine starts on new mail, like \"whenever someone at @acme.com writes, draft a reply\".\n\ngmail is checked about every 15 minutes, so \"as it arrives\" means within 15.\n\non your own computer it only runs while the laptop's awake and Metal is open. want triage done before you wake? put the bot on [dusk cloud](/docs/dusk-cloud)."
     },
     {
       "h": "where it gets it wrong",
@@ -91,19 +91,19 @@
   ],
   "sources": [
     {
-      "label": "dusk bot docs: routines",
+      "label": "Metal docs: routines",
       "url": "/docs/routines"
     },
     {
-      "label": "dusk bot docs: files and apps",
+      "label": "Metal docs: files and apps",
       "url": "/docs/files-and-apps"
     },
     {
-      "label": "dusk bot docs: tips for using bots",
+      "label": "Metal docs: tips for using bots",
       "url": "/docs/tips"
     },
     {
-      "label": "dusk bot docs: a bot's computer, asking first",
+      "label": "Metal docs: a bot's computer, asking first",
       "url": "/docs/computer"
     }
   ],

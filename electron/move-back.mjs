@@ -82,7 +82,7 @@ export function createMoveBack(deps) {
     if (blocked === "own-bots") throw new Error(`This computer has bots of its own, so bots from ${place.name} can't replace them. Move or remove the bots here first.`);
     if (blocked === "moved") throw new Error("This computer's bots moved somewhere else. Bring them back from there first.");
     if (blocked === "moving") throw new Error("Your bots are moving right now. Try again once that's done.");
-    if (blocked === "unknown") throw new Error("dusk bot on this computer did not answer. Try again in a moment.");
+    if (blocked === "unknown") throw new Error("Metal on this computer did not answer. Try again in a moment.");
     return { id: place.id, origin: place.origin, name: place.name };
   }
 
@@ -99,7 +99,7 @@ export function createMoveBack(deps) {
         try { await deps.serverCall(from, "POST", "/api/move/freeze", { place }); }
         catch (error) {
           if (error?.status === 409) throw new Error(`A bot on ${from.name} is still working. Try again once it's done.`);
-          if (error?.status === 403) throw new Error(`Update dusk bot on ${from.name} first, then try again.`);
+          if (error?.status === 403) throw new Error(`Update Metal on ${from.name} first, then try again.`);
           throw error;
         }
       },

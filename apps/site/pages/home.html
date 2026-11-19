@@ -1,8 +1,9 @@
 <section class="hero">
   <a class="tag avail" href="#everywhere" data-mk-reveal><span class="avail-on">available on</span><span>{{os apple}}macos</span><i></i><span>{{os windows mono}}windows</span><i></i><span>{{os linux mono}}linux</span></a>
-  <h1 data-mk-reveal>meet {{bot kit violet h-mark}} dusk bot</h1>
+  <h1 data-mk-reveal>meet {{bot kit violet h-mark}} Metal</h1>
   <p class="lede" data-mk-reveal>your own crew of ai helpers, on the <span class="ms"><a class="m m-chatgpt" href="/docs/getting-started#sign-in-to-your-ai">{{logo chatgpt}}chatgpt</a>, <a class="m m-claude" href="/docs/getting-started#sign-in-to-your-ai">{{logo claude}}claude</a>, <a class="m m-gemini" href="/docs/getting-started#sign-in-to-your-ai">{{logo gemini}}gemini</a> or <a class="m m-grok" href="/docs/getting-started#sign-in-to-your-ai">{{logo grok}}grok</a></span> you already use. each has its own computer and memory, so it gets real work&nbsp;done.</p>
   <div class="actions" data-mk-reveal>
+{{#released}}
     <div class="split" data-dl>
       <a class="btn dark split-main" href="{{dl mac-arm64}}" download><span class="dl-os">{{os apple}}</span><span class="dl-label">download for free</span></a><button class="btn dark split-more" type="button" aria-label="other downloads" aria-expanded="false" aria-controls="dl-menu">{{i chevron-down}}</button>
       <ul class="dl-menu" id="dl-menu" hidden>
@@ -14,7 +15,11 @@
         <li><a href="/download#all" data-key="all"><span class="os"></span><b>all downloads</b><small></small></a></li>
       </ul>
     </div>
-    <a class="btn cloud-cta" href="https://github.com/DuskBotAI/duskbot" target="_blank" rel="noopener" data-mk-press>star on github</a>
+{{/released}}
+{{^released}}
+    <a class="btn dark" href="/download" data-mk-press>get Metal</a>
+{{/released}}
+    <a class="btn cloud-cta" href="https://github.com/parasource-si/metal" target="_blank" rel="noopener" data-mk-press>star on github</a>
   </div>
   <p class="hint" data-mk-reveal>free for personal use. add your own models.</p>
 </section>
@@ -25,7 +30,7 @@
     <div class="win-wrap">
     <div class="peek" aria-hidden="true">{{bot circle blue}}{{bot hex orange}}{{bot star green}}</div>
     <div class="win">
-      <div class="win-bar"><span class="lights"><i></i><i></i><i></i></span><span class="win-title">dusk bot</span><span class="win-note">a live demo. click around.</span></div>
+      <div class="win-bar"><span class="lights"><i></i><i></i><i></i></span><span class="win-title">Metal</span><span class="win-note">a live demo. click around.</span></div>
       <div class="win-body">{{include home-window}}</div>
     </div>
     </div>
@@ -47,7 +52,7 @@
 </div>
 
 <section class="wrap say">
-  <h2 class="vh">what dusk bot is</h2>
+  <h2 class="vh">what Metal is</h2>
   <p class="statement" data-mk-reveal>text a bot <span class="inl-bots">{{bot circle blue}}{{bot hex orange}}{{bot star green}}</span> what you need. it does the work on its own computer <img class="stk" data-sticker src="/art/s-computer.webp" alt="" width="520" height="599" loading="lazy" draggable="false"> and remembers how you like things done <img class="stk flat" data-sticker src="/art/s-notebook.webp" alt="" width="520" height="378" loading="lazy" draggable="false">.</p>
 </section>
 
@@ -176,13 +181,13 @@
 </section>
 
 <section class="free" id="free">
-  <h2 class="free-over" data-mk-reveal>for personal use, dusk bot is <span class="zero" role="img" aria-label="free" data-mk-reveal="scale"></span></h2>
+  <h2 class="free-over" data-mk-reveal>for personal use, Metal is <span class="zero" role="img" aria-label="free" data-mk-reveal="scale"></span></h2>
   <ul data-mk-reveal><li>$0, forever</li><li>every feature, no trial timer</li><li>runs on your own computer</li></ul>
 </section>
 
 <section class="wrap pricing" id="pricing">
   <div class="head split">
-    <h2 data-mk-reveal>start free. add dusk cloud to keep it always available.</h2>
+    <h2 data-mk-reveal>start free with Metal. add upstream Dusk Cloud to keep bots available.</h2>
     <div class="seg" role="group" aria-label="billing period" data-bill>
       <span class="seg-ind" aria-hidden="true"></span>
       <button type="button" aria-pressed="true" data-period="m">monthly</button>
@@ -225,14 +230,14 @@
     <article class="plan">
       <img class="plan-art" src="/art/p-peaks.webp" alt="" width="800" height="354" loading="lazy">
       <h3>pro</h3>
-      <p class="why">for heavy workloads, and for work.</p>
+      <p class="why">for heavier workloads on Dusk Cloud.</p>
       <p class="plan-price"><span class="amt">$<span data-m="50" data-y="500">50</span></span><span class="per" data-m="a month" data-y="a year. two months free.">a month</span></p>
       <a class="btn light" href="{{app /signup?plan=pro}}" data-mk-press data-dusk-value="pro">get started</a>
       <ul class="has">
         <li>{{i check}}everything in plus</li>
         <li>{{i check}}4 vcpu, 8 gb ram, 60 gb disk</li>
         <li>{{i check}}always available, priority wake</li>
-        <li>{{i check}}a work license for one person</li>
+        <li>{{i check}}a Dusk Bot work license for one person</li>
       </ul>
     </article>
 
@@ -269,8 +274,8 @@
   <div class="ev-scene" data-mk-reveal="clip">
     <img class="ev-bg" src="/art/every-meadow.webp" alt="" width="1536" height="1024" loading="lazy"><i class="ev-cloud ev-c1"></i><i class="ev-cloud ev-c2"></i>
     <div class="ev-devs" data-ev>
-      <figure class="ev-dev ev-laptop"><span class="ev-frame"><span class="ev-body"><span class="ev-scr"><span class="ev-app ev-win" aria-hidden="true"><span class="ev-side"><span class="on">{{bot heart pink ev-j}}<b>Juno</b></span><span>{{bot circle blue}}<b>Nova</b></span><span>{{bot hex orange}}<b>Rivet</b></span></span><span class="ev-main"><b class="ev-top">Juno</b><span class="ev-msg ev-me">Anything urgent?</span><span class="ev-said">{{bot heart pink ev-j}}<span class="ev-msg">3 emails need you. The rest are filed.</span></span><span class="ev-input">Message Juno</span></span></span></span></span><span class="ev-deck"><span class="ev-keys" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><i class="ev-pad"></i></span><i class="ev-lip"></i></span><figcaption><a class="ev-tag" href="/download" aria-label="get dusk bot for mac">{{os apple}}<span>mac</span></a></figcaption></figure>
-      <figure class="ev-dev ev-monitor"><span class="ev-frame"><span class="ev-body"><span class="ev-scr"><span class="ev-app ev-win" aria-hidden="true"><span class="ev-side"><span class="on">{{bot heart pink ev-j}}<b>Juno</b></span><span>{{bot circle blue}}<b>Nova</b></span><span>{{bot hex orange}}<b>Rivet</b></span></span><span class="ev-main"><b class="ev-top">Juno</b><span class="ev-msg ev-me">Anything urgent?</span><span class="ev-said">{{bot heart pink ev-j}}<span class="ev-msg">3 emails need you. The rest are filed.</span></span><span class="ev-input">Message Juno</span></span></span></span></span><i class="ev-neck"></i><i class="ev-foot"></i></span><figcaption><a class="ev-tag" href="/download" aria-label="get dusk bot for windows and linux">{{os windows}}{{os linux}}<span>windows and linux</span></a></figcaption></figure>
+      <figure class="ev-dev ev-laptop"><span class="ev-frame"><span class="ev-body"><span class="ev-scr"><span class="ev-app ev-win" aria-hidden="true"><span class="ev-side"><span class="on">{{bot heart pink ev-j}}<b>Juno</b></span><span>{{bot circle blue}}<b>Nova</b></span><span>{{bot hex orange}}<b>Rivet</b></span></span><span class="ev-main"><b class="ev-top">Juno</b><span class="ev-msg ev-me">Anything urgent?</span><span class="ev-said">{{bot heart pink ev-j}}<span class="ev-msg">3 emails need you. The rest are filed.</span></span><span class="ev-input">Message Juno</span></span></span></span></span><span class="ev-deck"><span class="ev-keys" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><i class="ev-pad"></i></span><i class="ev-lip"></i></span><figcaption><a class="ev-tag" href="/download" aria-label="get Metal for mac">{{os apple}}<span>mac</span></a></figcaption></figure>
+      <figure class="ev-dev ev-monitor"><span class="ev-frame"><span class="ev-body"><span class="ev-scr"><span class="ev-app ev-win" aria-hidden="true"><span class="ev-side"><span class="on">{{bot heart pink ev-j}}<b>Juno</b></span><span>{{bot circle blue}}<b>Nova</b></span><span>{{bot hex orange}}<b>Rivet</b></span></span><span class="ev-main"><b class="ev-top">Juno</b><span class="ev-msg ev-me">Anything urgent?</span><span class="ev-said">{{bot heart pink ev-j}}<span class="ev-msg">3 emails need you. The rest are filed.</span></span><span class="ev-input">Message Juno</span></span></span></span></span><i class="ev-neck"></i><i class="ev-foot"></i></span><figcaption><a class="ev-tag" href="/download" aria-label="get Metal for windows and linux">{{os windows}}{{os linux}}<span>windows and linux</span></a></figcaption></figure>
     </div>
   </div>
 </section>
@@ -282,8 +287,8 @@
     <button class="listener" type="button" aria-label="say hi to the bot" data-own>{{bot kit violet}}</button>
   </div>
   <div class="qs">
-    <details data-mk-accordion data-mk-spring="0.16 0" name="faq"><summary>is dusk bot really free?{{i plus}}</summary><p>yes, for personal use. the app runs on your computer with every feature. you only pay for dusk cloud or a work license.</p></details>
-    <details data-mk-accordion data-mk-spring="0.16 0" name="faq"><summary>what is dusk cloud?{{i plus}}</summary><p>a computer we host for your bots. your bots keep working when your laptop is off: routines run on time, day and night. nothing to set up, and each bot can have its own screen that you can watch.</p></details>
+    <details data-mk-accordion data-mk-spring="0.16 0" name="faq"><summary>is Metal really free?{{i plus}}</summary><p>yes, for personal use. the app runs on your computer with every feature. Dusk Cloud is an optional paid service from Dusk Bot. commercial use of Metal requires a separate license.</p></details>
+    <details data-mk-accordion data-mk-spring="0.16 0" name="faq"><summary>what is dusk cloud?{{i plus}}</summary><p>a computer hosted by Dusk Bot for your bots. your bots keep working when your laptop is off: routines run on time, day and night. nothing to set up, and each bot can have its own screen that you can watch.</p></details>
     <details data-mk-accordion data-mk-spring="0.16 0" name="faq"><summary>which ai does it use?{{i plus}}</summary><p>the ones you already have. sign in with claude, chatgpt, gemini, grok and others, or add an api key. replies go straight from your machine to them, on your plan.</p></details>
     <details data-mk-accordion data-mk-spring="0.16 0" name="faq"><summary>which apps can a bot use?{{i plus}}</summary><p>60+ to start: gmail, google calendar, slack, notion, github, linear, figma, stripe and more. you connect an app once and pick which bots may use it. you can also add any mcp server yourself.</p></details>
     <details data-mk-accordion data-mk-spring="0.16 0" name="faq"><summary>where does my data go?{{i plus}}</summary><p>on your computer, nowhere: bots, chats, files and memory stay on your disk. on dusk cloud they live on your own private cloud computer, and only you and your bots use it.</p></details>

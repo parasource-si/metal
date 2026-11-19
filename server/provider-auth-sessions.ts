@@ -102,7 +102,7 @@ export class ProviderAuthSessions {
       this.tell(instance.instanceId, null, "failed", error);
       if (error instanceof BoxFenceError) {
         console.warn(`provider sign-in: the bot box refused ${error.path} for ${instance.instanceId}`);
-        throw failure("This AI's sign-in could not start on this server: its bot box would not let the AI use its own folder. Update dusk bot on this server, then try again.", 500);
+        throw failure("This AI's sign-in could not start on this server: its bot box would not let the AI use its own folder. Update Metal on this server, then try again.", 500);
       }
       throw error;
     } finally {

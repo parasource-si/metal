@@ -5,8 +5,8 @@ export function offerRestart({ dialog, app }) {
   return dialog.showMessageBox({
     type: "error",
     message: "The bot server stopped",
-    detail: "Restart dusk bot to bring it back.",
-    buttons: ["Restart dusk bot", "Not now"],
+    detail: "Restart Metal to bring it back.",
+    buttons: ["Restart Metal", "Not now"],
     defaultId: 0,
     cancelId: 1,
   }).then(({ response }) => {

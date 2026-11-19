@@ -19,7 +19,7 @@ import { createMoveBack } from "./move-back.mjs";
  * adds the way after the closing `| sh`. (`sh -c "$(curl …)"` is out: the installer is near Linux's 128 KB limit for
  * one argument; printf is a builtin, so it has no such limit.) */
 export function installLine(base, token) {
-  return `(for f in "" -4 "" -4 ""; do s=$(curl -fsSL $f ${base}/i/${token}) && { printf '%s\\n' "$s"; exit; }; sleep 2; done; echo 'echo "dusk bot could not be downloaded. check the internet and paste the line again." >&2; exit 1') | sh`;
+  return `(for f in "" -4 "" -4 ""; do s=$(curl -fsSL $f ${base}/i/${token}) && { printf '%s\\n' "$s"; exit; }; sleep 2; done; echo 'echo "Metal could not be downloaded. check the internet and paste the line again." >&2; exit 1') | sh`;
 }
 
 /** a short line's address as the link service gave it (`https://dusk.bot/s/<code>`), or null for anything else */
@@ -125,8 +125,8 @@ const plain = (error, fallback) => {
  * }} deps
  */
 /** The welcome record a server gets when this Mac moves everything to it, or null when it needs none. The person met
- *  dusk bot here: a finished welcome is kept as it was, and one still under way (they chose their own server from the
- *  welcome itself) counts as met, so the server never starts over at "meet dusk bot" and asks where the bots live. */
+ *  Metal here: a finished welcome is kept as it was, and one still under way (they chose their own server from the
+ *  welcome itself) counts as met, so the server never starts over at "meet Metal" and asks where the bots live. */
 export function welcomeForServer(mine, theirs, now) {
   if (theirs?.completedAt) return null;
   const hints = Array.isArray(mine?.hintsSeen) ? { hintsSeen: mine.hintsSeen } : {};
@@ -1086,7 +1086,7 @@ export function createVpsLink(deps) {
   async function local(method, route, body) {
     const response = await localRequest(route, { method, ...(body === undefined ? {} : { headers: { "content-type": "application/json" }, body: JSON.stringify(body) }) });
     const parsed = await response.json().catch(() => ({}));
-    if (!response.ok) throw Object.assign(new Error(typeof parsed?.error === "string" ? parsed.error : "dusk bot on this Mac did not answer."), { status: response.status });
+    if (!response.ok) throw Object.assign(new Error(typeof parsed?.error === "string" ? parsed.error : "Metal on this Mac did not answer."), { status: response.status });
     return parsed;
   }
 
@@ -1206,7 +1206,7 @@ export function createVpsLink(deps) {
     return view();
   }
 
-  /** the person met dusk bot on this Mac: the server keeps that, so it never opens on the welcome a second time */
+  /** the person met Metal on this Mac: the server keeps that, so it never opens on the welcome a second time */
   async function carryWelcome(link) {
     try {
       const mine = (await local("GET", "/api/config"))?.onboarding;
@@ -1295,7 +1295,7 @@ export function createVpsLink(deps) {
     return view();
   }
 
-  /** the line that takes dusk bot off the server again (apps/link-service/uninstall.sh), from the service it was linked through */
+  /** the line that takes Metal off the server again (apps/link-service/uninstall.sh), from the service it was linked through */
   function uninstallLine() { return `curl -fsSL ${currentLink()?.base ?? base}/uninstall | sh`; }
 
   function where() {

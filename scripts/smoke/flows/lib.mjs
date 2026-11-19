@@ -100,7 +100,7 @@ export function createFlow({ name, title, root, out, profile, email, env = {} })
     opened(since = 0) { return flow.app.events().filter((event) => event.kind === "open-external" && event.at >= since).map((event) => event.url); },
     /** the account gate, as a new person meets it: email, the emailed code, in */
     async signInAtGate() {
-      await flow.waitText(/sign in to dusk bot/i, "the account gate", { timeout: 120_000 });
+      await flow.waitText(/sign in to Metal/i, "the account gate", { timeout: 120_000 });
       await flow.evaluate(`document.querySelector("input[type=email], input")?.focus(); true`);
       await flow.type(email);
       const since = Date.now();
@@ -112,7 +112,7 @@ export function createFlow({ name, title, root, out, profile, email, env = {} })
       facts.codeSeconds = Math.round((Date.now() - since) / 1000);
       await flow.evaluate(`document.querySelector("input")?.focus(); true`);
       await flow.type(code);
-      await flow.waitFor(`!/sign in to dusk bot/i.test(document.body.innerText)`, "the gate to let the person in", 30_000);
+      await flow.waitFor(`!/sign in to Metal/i.test(document.body.innerText)`, "the gate to let the person in", 30_000);
       return `${email}, code arrived in ${facts.codeSeconds}s`;
     },
     /** sends "reply with just ok" in the open chat; "reply:<text>", or "said:<text>" when the bot answered with a problem */

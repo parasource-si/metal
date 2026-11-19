@@ -128,9 +128,9 @@ export async function deliver(cfg, message, fetcher = fetch) {
   const senders = [];
   if (cfg.brevo) senders.push(() => fetcher("https://api.brevo.com/v3/smtp/email", { method: "POST", signal: AbortSignal.timeout(20_000),
     headers: { "api-key": cfg.brevo, "content-type": "application/json", accept: "application/json" },
-    body: JSON.stringify({ sender: { name: "dusk bot", email: address }, to: cfg.to.map(email => ({ email })), subject: message.subject, textContent: message.text, htmlContent: message.html }) }));
+    body: JSON.stringify({ sender: { name: "Metal", email: address }, to: cfg.to.map(email => ({ email })), subject: message.subject, textContent: message.text, htmlContent: message.html }) }));
   if (cfg.resend) senders.push(() => fetcher("https://api.resend.com/emails", { method: "POST", signal: AbortSignal.timeout(20_000),
-    headers: { authorization: `Bearer ${cfg.resend}`, "content-type": "application/json" }, body: JSON.stringify({ from: `dusk bot <${address}>`, to: cfg.to, subject: message.subject, text: message.text, html: message.html }) }));
+    headers: { authorization: `Bearer ${cfg.resend}`, "content-type": "application/json" }, body: JSON.stringify({ from: `Metal <${address}>`, to: cfg.to, subject: message.subject, text: message.text, html: message.html }) }));
   for (const [index, send] of senders.entries()) {
     try {
       const response = await send();

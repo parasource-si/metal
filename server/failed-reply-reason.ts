@@ -13,7 +13,7 @@ const BY_USAGE: Partial<Record<UsageReason, FailedReplyReason>> = {
 
 export function failedReplyReason(message: string, event: { setup?: boolean; claudeUpdate?: boolean; stalled?: boolean; limit?: string; limitResetsAt?: number; errorCode?: string }): FailedReplyReason | undefined {
   if (event.claudeUpdate) return undefined;
-  // Claude Code 2.1.295: a session it can no longer open, after dusk bot already rebuilt it once from the chat
+  // Claude Code 2.1.295: a session it can no longer open, after Metal already rebuilt it once from the chat
   if (/\bNo conversation found with session ID\b/i.test(message)) return "session_lost";
   if (isServerLine("server.freeModel.noReply", message) || isServerLine("server.freeModel.limit", message)) return "no_ai";
   const kind = engineFailureKind(message);

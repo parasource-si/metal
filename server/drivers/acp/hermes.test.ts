@@ -16,7 +16,7 @@ import {
   hermesConfiguredModel,
 } from "./hermes.ts";
 
-describe("Hermes dusk bot screenshot compatibility binding", () => {
+describe("Hermes Metal screenshot compatibility binding", () => {
   it("binds the exact leaf model for an injected local picker model", () => {
     const env = {
       [HERMES_DUSK_SCREENSHOT_COMPAT]: undefined,

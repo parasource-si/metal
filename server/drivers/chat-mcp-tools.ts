@@ -51,7 +51,7 @@ export interface ChatToolSession {
   trimmed: TrimmedChatMcpServer[];
   budget: ToolBudget;
   validate(name: string, args: unknown): void;
-  /** Directory reads and dusk bot's own agents server need no card; call_tool shows the tool it runs. */
+  /** Directory reads and Metal's own agents server need no card; call_tool shows the tool it runs. */
   view(name: string, args: Record<string, unknown>): ChatToolCallView;
   /** Scheduling only: explicitly read-only calls may overlap. This never changes approval or scope checks. */
   parallel(name: string, args: Record<string, unknown>): boolean;
@@ -274,7 +274,7 @@ export class ChatMcpClient extends McpPeer {
 
 type Answer = (frame: Record<string, unknown>) => Promise<unknown>;
 
-/** dusk bot's own agents or harness server for a built-in mount, answered in this process by the code its stdio proxy
+/** Metal's own agents or harness server for a built-in mount, answered in this process by the code its stdio proxy
  * runs, with the environment that proxy would get; the endpoints behind it check the turn's token as they do the proxy's.
  * `stop` ends the harness requests still in flight, as ending the proxy's process does. */
 export function ownServerAnswer(server: Server): ((stop: AbortSignal) => Answer) | undefined {
@@ -357,7 +357,7 @@ function frameLimit(computerUse: boolean): number {
   return computerUse ? 32 * 1024 * 1024 : FRAME_BYTES;
 }
 
-/** A built-in mount of dusk bot's own server is answered in this process; anything else runs as its own child. */
+/** A built-in mount of Metal's own server is answered in this process; anything else runs as its own child. */
 function openPeer(server: Server, computerUse: boolean, builtIn: boolean): McpPeer {
   const own = builtIn ? ownServerAnswer(server) : undefined;
   if (own) return new InProcessMcpClient(own, frameLimit(computerUse));

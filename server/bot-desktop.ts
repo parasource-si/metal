@@ -356,7 +356,7 @@ async function prepareBotDesktop(run: DockerRun, imageId: string | null, onProgr
         Options?: Record<string, string> | null;
       };
       if (network.Labels?.[BOT_DESKTOP_NETWORK_LABEL] !== "1" || network.Options?.["com.docker.network.bridge.name"] !== BOT_DESKTOP_BRIDGE) {
-        throw Object.assign(new Error(`The VPS has a Docker network named ${BOT_DESKTOP_NETWORK} that dusk bot did not create`), { status: 409 });
+        throw Object.assign(new Error(`The VPS has a Docker network named ${BOT_DESKTOP_NETWORK} that Metal did not create`), { status: 409 });
       }
     } catch (error) {
       if (!missing(error)) throw error;

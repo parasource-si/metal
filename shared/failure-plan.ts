@@ -1,13 +1,13 @@
-// what a failed reply turns into for a person: what dusk bot tries by itself first, then one sentence and one button.
+// what a failed reply turns into for a person: what Metal tries by itself first, then one sentence and one button.
 // the desktop words these in the reader's language; `line` is the English a phone shows above the real cause.
 import type { FailedReplyReason } from "./failed-turn.ts";
 
 /** Every way a reply can be lost, as the apps tell them apart: the server's reasons, plus what a client reads from the
- * row itself (`place`: the bot's computer or browser could not be used; `blocker`: dusk bot stopped a browser run that
+ * row itself (`place`: the bot's computer or browser could not be used; `blocker`: Metal stopped a browser run that
  * kept failing; `no_answer`: the AI never replied; `other`: none of these). */
 export type FailureKind = FailedReplyReason | "claude_update" | "place" | "restart_interrupted" | "no_answer" | "blocker" | "other";
 
-/** What dusk bot does on its own before a card is shown: `retry`, the same AI again after a short wait; `backup`, the
+/** What Metal does on its own before a card is shown: `retry`, the same AI again after a short wait; `backup`, the
  * backup AI the person picked for the bot; `wait`, the turn holds until the AI's limit resets and carries on. */
 export type FailureHeal = "retry" | "backup" | "wait";
 
@@ -53,7 +53,7 @@ export const FAILURE_PLANS: Readonly<Record<FailureKind, FailurePlan>> = {
   cli_exit: { heal: [], action: "retry", instead: "switch_ai", line: "Your AI stopped before it could reply. Try again." },
   claude_update: { heal: [], action: "update_engine", line: "Claude Code needs an update for this model. Update it to keep going." },
   place: { heal: [], action: "place", instead: "retry", line: "Your bot couldn't use its computer. Try again in a minute." },
-  restart_interrupted: { heal: [], action: "retry", line: "dusk bot restarted while this was running. Some steps may already be done." },
+  restart_interrupted: { heal: [], action: "retry", line: "Metal restarted while this was running. Some steps may already be done." },
   no_answer: { heal: [], action: "retry", instead: "switch_ai", line: "Your AI didn't answer. Try again, or switch this bot to another AI." },
   blocker: { heal: [], action: "take_over", line: "Your bot stopped so it doesn't keep repeating the same step." },
   other: { heal: [], action: "retry", instead: "switch_ai", line: "Your bot couldn't finish this reply. Try again." },

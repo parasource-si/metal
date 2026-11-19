@@ -16,7 +16,7 @@
   "updated": "2026-11-12",
   "review": {
     "status": "approved",
-    "by": "lead agent, against dusk bot docs",
+    "by": "lead agent, against Metal docs",
     "at": "2026-11-12"
   },
   "tags": [
@@ -45,7 +45,7 @@
   "og_line": "four places a bot can live, and what each costs.",
   "table": {
     "h": "the four options side by side",
-    "intro": "**dusk bot's own prices only.** a spare machine and a rented server cost whatever you or your host charge. every option still uses your own ai plan.",
+    "intro": "**Metal's own prices only.** a spare machine and a rented server cost whatever you or your host charge. every option still uses your own ai plan.",
     "cols": [
       "",
       "your laptop",
@@ -68,7 +68,7 @@
         ]
       },
       {
-        "label": "dusk bot's charge",
+        "label": "Metal's charge",
         "cells": [
           "free for personal use",
           "free for personal use",
@@ -135,7 +135,7 @@
   "sections": [
     {
       "h": "why your laptop can't be the home",
-      "md": "**an agent is just a program. programs stop when the computer sleeps.**\n\nin dusk bot you feel it two ways:\n\n- routines don't run while the laptop sleeps or the app is closed. missed by less than 12 hours? it runs once when you're back. longer than that, it's skipped.\n- your phone can't reach the bots until the laptop wakes up.\n\n**Settings**, **Remote access**, **Keep this computer awake** helps at your desk. it can't help in a backpack."
+      "md": "**an agent is just a program. programs stop when the computer sleeps.**\n\nin Metal you feel it two ways:\n\n- routines don't run while the laptop sleeps or the app is closed. missed by less than 12 hours? it runs once when you're back. longer than that, it's skipped.\n- your phone can't reach the bots until the laptop wakes up.\n\n**Settings**, **Remote access**, **Keep this computer awake** helps at your desk. it can't help in a backpack."
     },
     {
       "h": "a spare computer at home",
@@ -143,7 +143,7 @@
     },
     {
       "h": "a server you rent",
-      "md": "**great if you like servers. a lost weekend if you don't.** [your own server](/docs/your-own-server) is free in dusk bot. you pay the host.\n\n- ubuntu 22.04 or 24.04, 2 gb of memory or more\n- paste one line, wait about ten minutes\n- no ports, no domain; the app and server talk through a sealed relay\n\nupdates, backups and the bill are yours. use a fresh server, never one holding things you wouldn't hand a bot."
+      "md": "**great if you like servers. a lost weekend if you don't.** [your own server](/docs/your-own-server) is free in Metal. you pay the host.\n\n- ubuntu 22.04 or 24.04, 2 gb of memory or more\n- paste one line, wait about ten minutes\n- no ports, no domain; the app and server talk through a sealed relay\n\nupdates, backups and the bill are yours. use a fresh server, never one holding things you wouldn't hand a bot."
     },
     {
       "h": "dusk cloud",
@@ -169,32 +169,32 @@
     },
     {
       "q": "is it cheaper to run it on my own server?",
-      "a": "dusk bot charges nothing for it, so you pay only your hosting company. it's cheaper if your time looking after a server costs you nothing. the [always-on cost calculator](/tools/always-on-cost) puts the numbers side by side."
+      "a": "Metal charges nothing for it, so you pay only your hosting company. it's cheaper if your time looking after a server costs you nothing. the [always-on cost calculator](/tools/always-on-cost) puts the numbers side by side."
     }
   ],
   "sources": [
     {
-      "label": "dusk bot docs: routines, your computer has to be on",
+      "label": "Metal docs: routines, your computer has to be on",
       "url": "/docs/routines"
     },
     {
-      "label": "dusk bot docs: dusk cloud, where bots can live",
+      "label": "Metal docs: dusk cloud, where bots can live",
       "url": "/docs/dusk-cloud"
     },
     {
-      "label": "dusk bot pricing",
+      "label": "Metal pricing",
       "url": "/pricing"
     },
     {
-      "label": "dusk bot docs: your own server",
+      "label": "Metal docs: your own server",
       "url": "/docs/your-own-server"
     },
     {
-      "label": "dusk bot docs: the phone app",
+      "label": "Metal docs: the phone app",
       "url": "/docs/phone"
     },
     {
-      "label": "dusk bot docs: a bot's computer",
+      "label": "Metal docs: a bot's computer",
       "url": "/docs/computer"
     }
   ],

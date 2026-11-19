@@ -1,5 +1,5 @@
 // "Add your VPS" end to end on loopback, with the real link service, the real agent (its `link` and `tunnel` commands in
-// their own processes and home folder) and a fake dusk bot on each side: command, live steps, the sealed result, the
+// their own processes and home folder) and a fake Metal on each side: command, live steps, the sealed result, the
 // app signed in through the tunnel, AI sign-ins sent from this mac, and the move with its backup first.
 import { execFile, execFileSync, spawn } from "node:child_process";
 import { generateKeyPairSync, sign } from "node:crypto";
@@ -66,7 +66,7 @@ beforeAll(async () => {
   service = createLinkService({ base: "http://placeholder", dataDir: null, scriptPath: fileURLToPath(new URL("../apps/link-service/install.sh", import.meta.url)), agentPath, trustProxy: false, grantKeys });
   relayServer = createServer((req, res) => void service.handler(req, res));
   base = `http://127.0.0.1:${await listen(relayServer)}`;
-  // dusk bot on the vps
+  // Metal on the vps
   vpsServer = createServer((req, res) => {
     const chunks = [];
     req.on("data", (chunk) => chunks.push(chunk));
@@ -163,7 +163,7 @@ const post = (route, token, body) => fetch(`${base}${route}`, { method: "POST", 
 describe("Add your VPS", () => {
   it("needs this computer signed in to a dusk account to make a command", async () => {
     const { link } = controller({ local: localServer(), ownHome: { start: async () => {}, view: () => null, away: () => false, home: () => null, chosen: () => null }, store: memoryStore(), grant: async () => null });
-    await expect(link.start()).rejects.toThrow("Sign in to your dusk bot account in the app to link a server.");
+    await expect(link.start()).rejects.toThrow("Sign in to your Dusk account in the app to link a server.");
     expect(link.view().stage).not.toBe("command");
     await link.close();
   });
@@ -237,7 +237,7 @@ describe("Add your VPS", () => {
     expect(claude.phase).toBe("waiting");
     await until(async () => (await link.signInStatus("claude", claude.flowId)).phase === "succeeded");
     expect(readFileSync(join(home, ".config", "duskbot", "engines.env"), "utf8")).toBe(`CLAUDE_CODE_OAUTH_TOKEN=sk-ant-oat01-${"a".repeat(40)}\n`);
-    // no credential ever reached dusk bot's own http api on the server
+    // no credential ever reached Metal's own http api on the server
     expect(vpsSeen.some((entry) => entry.body.includes("codex-on-the-mac") || entry.body.includes("sk-ant-oat01"))).toBe(false);
 
     expect(await link.preview()).toEqual({
@@ -258,7 +258,7 @@ describe("Add your VPS", () => {
     const moved = await until(() => link.view().stage === "moved" && link.view());
     expect(moved.move).toMatchObject({ step: "done", status: "done" });
     expect(local.calls.filter((call) => call === "POST /api/move/forget")).toHaveLength(1);
-    // the person met dusk bot on this mac: the server does not open on the welcome again
+    // the person met Metal on this mac: the server does not open on the welcome again
     expect(vpsSeen.filter((seen) => seen.url === "/api/config" && seen.method === "PUT").map((seen) => JSON.parse(seen.body)))
       .toEqual([{ onboarding: { completedAt: "2026-11-14T06:00:00.000Z", version: 1, hintsSeen: ["met-chief-v1"] } }]);
 
@@ -411,7 +411,7 @@ describe("the install line", () => {
       const started = Date.now();
       const result = await sh(shell, `${installLine("http://127.0.0.1:9", "abcdefghij-abcdefghijklmnopqrstuvwxyz")} -s -- --cloudflare`);
       expect(result.code, shell).toBe(1);
-      expect(result.stderr, shell).toContain("dusk bot could not be downloaded. check the internet and paste the line again.");
+      expect(result.stderr, shell).toContain("Metal could not be downloaded. check the internet and paste the line again.");
       expect(result.stderr.match(/curl: \(7\)/g), shell).toHaveLength(5);
       expect(Date.now() - started, shell).toBeGreaterThanOrEqual(8000);
     }

@@ -47,5 +47,5 @@ export function awayLine(ws: { name: string; kind: string }, cloud?: CloudDeskto
     if (cloud.status === "error") return `${ws.name} needs attention. open dusk cloud to see why.`;
     return `${ws.name} is turned off. turn it on in dusk cloud, then try again.`;
   }
-  return ws.kind === "vps" ? `${ws.name} is not answering. check that dusk bot is running there, then try again.` : `${ws.name} is asleep. open dusk bot on it, then try again.`;
+  return ws.kind === "vps" ? `${ws.name} is not answering. check that Metal is running there, then try again.` : `${ws.name} is asleep. open Metal on it, then try again.`;
 }

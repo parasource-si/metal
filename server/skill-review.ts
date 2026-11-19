@@ -1,5 +1,5 @@
 // The idea of a background skill review after a reply comes from Hermes Agent (MIT, Copyright (c) 2025 Nous Research);
-// the code and the prompt here are dusk bot's own.
+// the code and the prompt here are Metal's own.
 import { mkdirSync, readFileSync } from "node:fs";
 import { dirname } from "node:path";
 

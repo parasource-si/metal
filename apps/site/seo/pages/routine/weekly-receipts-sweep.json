@@ -84,11 +84,11 @@
   ],
   "sources": [
     {
-      "label": "dusk bot docs: routines",
+      "label": "Metal docs: routines",
       "url": "/docs/routines"
     },
     {
-      "label": "dusk bot docs: connected app permissions",
+      "label": "Metal docs: connected app permissions",
       "url": "/docs/files-and-apps"
     },
     {

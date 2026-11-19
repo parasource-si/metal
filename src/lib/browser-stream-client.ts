@@ -1,7 +1,7 @@
 // Adapted from pingdotgg/t3code@00cdceb1 packages/client-runtime/src/preview/serverBrowserStream.ts, MIT License,
 // Copyright (c) 2026 T3 Tools Inc. (full text in third_party/t3-code/LICENSE); modified: dusk bot's routes and
 // access, a viewer that may operate sizes the page while it only watches, a larger frame cap is sent in place and a
-// reconnect opens with the newest size and cap, dusk bot's own messages are passed on, and an app that decodes H.264
+// reconnect opens with the newest size and cap, Metal's own messages are passed on, and an app that decodes H.264
 // asks for video (src/lib/h264-decoder.ts).
 
 import { openStreamSocket } from "./direct-socket";
@@ -240,7 +240,7 @@ export interface PreviewStreamEvents {
   readonly onPopup?: (tabId: string) => void;
   /** The page opened a file picker (`null` once answered or replaced). */
   readonly onFileChooser?: (chooser: PreviewStreamFileChooser | null) => void;
-  /** dusk bot's own messages: tabs, nav, selectPopup, cursor, authPrompt, starting, notice, asleep, awake. */
+  /** Metal's own messages: tabs, nav, selectPopup, cursor, authPrompt, starting, notice, asleep, awake. */
   readonly onMessage?: (message: Readonly<Record<string, unknown>>) => void;
   /** Input sent while disconnected is dropped. */
   readonly onConnectedChange: (connected: boolean) => void;

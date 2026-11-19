@@ -19,7 +19,7 @@ export default defineConfig({
   publicDir: false,
   plugins: [react(), tailwindcss(), licenseFiles(here("../..")), webManifest(here("./icons"), base)],
   resolve: { alias: { "@": here("../../src") } },
-  define: { __APP_VERSION__: JSON.stringify("dashboard"), __DUSK_SITE_URL__: JSON.stringify(process.env.DUSK_SITE_URL || "https://dusk.bot") },
+  define: { __APP_VERSION__: JSON.stringify("dashboard"), __DUSK_SITE_URL__: JSON.stringify(process.env.DUSK_SITE_URL || "") },
   build: { outDir: here("./dist"), emptyOutDir: true,
     // the admin panel's own chunks sit in assets/admin, which the service hands only to an admin (server/app.ts)
     rollupOptions: { output: { chunkFileNames: (chunk) => chunk.moduleIds.length > 0 && chunk.moduleIds.every((id) => id.includes("/src/admin/")) ? "assets/admin/[name]-[hash].js" : "assets/[name]-[hash].js" } } },

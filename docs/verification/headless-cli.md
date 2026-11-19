@@ -1,7 +1,7 @@
 # The headless command line
 
 Use an isolated fixture, never the live app or workspace. The end-to-end test
-runs the published `duskbot` entry as a child process against its own
+runs the published `metal` entry as a child process against its own
 fake-engine server (ports 19975-19999): a team file makes a Chief, two
 teammates and a room, and a second apply sends no write; `run --wait job`
 waits until the Chief and both teammates are done, and the export holds the
@@ -22,14 +22,14 @@ By hand, against a fixture (`DUSK_TEST_PORTS` keeps it in a range):
 
 ```sh
 DUSK_TEST_PORTS=19975-19999 node --experimental-strip-types scripts/control-dusk.ts launch
-pnpm control:dusk doctor --url http://127.0.0.1:PORT
-pnpm control:dusk team apply team.yaml --dry-run --url http://127.0.0.1:PORT
-pnpm control:dusk team apply team.yaml --url http://127.0.0.1:PORT
-pnpm control:dusk run --bot ID --text "Say hello" --url http://127.0.0.1:PORT
-pnpm control:dusk export --thread THREAD_ID --out /tmp/dusk-export --url http://127.0.0.1:PORT
+pnpm control:metal doctor --url http://127.0.0.1:PORT
+pnpm control:metal team apply team.yaml --dry-run --url http://127.0.0.1:PORT
+pnpm control:metal team apply team.yaml --url http://127.0.0.1:PORT
+pnpm control:metal run --bot ID --text "Say hello" --url http://127.0.0.1:PORT
+pnpm control:metal export --thread THREAD_ID --out /tmp/dusk-export --url http://127.0.0.1:PORT
 ```
 
-`control-dusk` runs the same verbs as `duskbot` (docs/headless-cli.md) and
+`control-dusk` runs the same verbs as `metal` (docs/headless-cli.md) and
 prints each JSON result; a verb that changes something needs the explicit
 `--url`. The job a wait watches is the server's own read,
 `GET /api/threads/:id/job`; keep its JSON with the run's result as evidence.

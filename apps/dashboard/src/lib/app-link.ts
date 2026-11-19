@@ -25,6 +25,6 @@ export function openApp(link: string, then?: string) {
   setTimeout(() => {
     window.removeEventListener("blur", leave);
     document.removeEventListener("visibilitychange", leave);
-    if (!left && document.hasFocus()) toast(`dusk bot did not open. get it at ${DOWNLOAD_URL.replace("https://", "")}, then try again.`, "bad");
+    if (!left && document.hasFocus()) toast(`Metal did not open. get it at ${DOWNLOAD_URL.replace("https://", "")}, then try again.`, "bad");
   }, GIVE_UP_MS);
 }

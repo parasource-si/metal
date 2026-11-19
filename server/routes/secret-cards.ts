@@ -28,7 +28,7 @@ export interface SecretAnswerContext {
 
 /** Stricter than an ordinary card: only the conversation's own person, never another member or an admin on their behalf. */
 export function secretAnswerRefusal(auth: RequestAuth, context: SecretAnswerContext): string | null {
-  if (auth.kind === "loopback") return auth.trust === "service" ? "A local service cannot enter a secret. Enter it in dusk bot." : null;
+  if (auth.kind === "loopback") return auth.trust === "service" ? "A local service cannot enter a secret. Enter it in Metal." : null;
   const admin = auth.scopes.includes("admin");
   if (context.personalCloud) return admin ? null : "Only the owner of this Cloud can enter this secret.";
   if (!context.shared) return null;

@@ -12,7 +12,7 @@ http on loopback: the TLS front (nginx on Contabo, Caddy on Oracle) is extra and
 | Own server, desktop closed | 2 streamed reads (tunnel, phone hub) | a server (`maxServers`) |
 | Own server, desktop open (any screen) | 3 streamed reads and a hello every 15 s | also in use (`maxConnected`) |
 | Someone watching a screen or downloading over the relay | posts at the stream's rate | also busy (`maxTunnels`) |
-| Mac only, dusk cloud | nothing (phones reach a Mac by Cloudflare tunnel, LAN or tailnet; clouds by the edge) | - |
+| Mac only, Dusk Cloud | nothing (phones reach a Mac by Cloudflare tunnel, LAN or tailnet; clouds by the edge) | - |
 
 Direct paths (ssh, 443, WebRTC) take the bytes off the relay, not the reads or the hello.
 
@@ -40,7 +40,7 @@ sockets; memory and file handles are never the limit (3000 servers: 350 MB, 6000
 
 ## 2000 heavy users
 
-Assumed: half have their own server (1000), a quarter dusk cloud, a quarter only a Mac; at peak half the server
+Assumed: half have their own server (1000), a quarter Dusk Cloud, a quarter only a Mac; at peak half the server
 owners have the desktop open and a tenth watch a screen; the direct path works for 80%; screens at 0.6 Mbit/s
 (H.264 browsing). Worst case: all 2000 on own servers, every desktop open, 30% watching at 1.5 Mbit/s, direct
 working for only 70%.

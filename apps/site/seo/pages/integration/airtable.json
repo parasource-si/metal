@@ -4,7 +4,7 @@
   "title": "Airtable AI assistant for record checks and intake work",
   "nav": "airtable",
   "h1": "an airtable assistant that learns the table before writing",
-  "description": "Review Airtable records, inspect fields and prepare intake work with dusk bot. Copy three routines and see why record edits need explicit limits.",
+  "description": "Review Airtable records, inspect fields and prepare intake work with Metal. Copy three routines and see why record edits need explicit limits.",
   "answer": "**find the missing owner before the launch stalls.** an airtable bot can inspect your base, list records and open a row before handing you the gaps. name the base and table, then start read only. when the reports are right, you can allow intake rows, attachment uploads or corrections under rules you choose.",
   "tags": [
     "records",
@@ -123,15 +123,15 @@
   ],
   "sources": [
     {
-      "label": "dusk bot docs: files and apps",
+      "label": "Metal docs: files and apps",
       "url": "/docs/files-and-apps"
     },
     {
-      "label": "dusk bot docs: routines",
+      "label": "Metal docs: routines",
       "url": "/docs/routines"
     },
     {
-      "label": "dusk bot docs: permissions and sending",
+      "label": "Metal docs: permissions and sending",
       "url": "/docs/computer"
     }
   ],

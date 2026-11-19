@@ -36,10 +36,10 @@ export const DOWNLOAD_FAIL_REASONS = ["network", "checksum", "http", "disk", "un
 /** where a signal may come from: the apps (as an app_action), the workspace (in its usage report), or either ("any": the
  * experience signals, which a desktop's workspace hands to its app and a cloud's rides its report) */
 export const SIGNALS = {
-  /** once per app start: the setup a person runs dusk bot in, and the local hour; at most 8 keys, the app action limit */
+  /** once per app start: the setup a person runs Metal in, and the local hour; at most 8 keys, the app action limit */
   env: { source: "app", props: { os: oneOf("darwin", "win32", "linux", "ios", "android", "other"), arch: oneOf("x64", "arm64", "other"), locale: oneOf(...LOCALES),
     screen: oneOf(...SCREEN_BUCKETS), theme: oneOf("light", "dark"), skin: codeName, notifications: oneOf("granted", "denied", "default", "unsupported"), hour: between(0, 23) } },
-  /** a step of the first run's dusk bot account sign-in: via is the browser handoff, an emailed code or a magic link;
+  /** a step of the first run's Dusk account sign-in: via is the browser handoff, an emailed code or a magic link;
    * "back" is the website sending the person back to the app (link: the app as it was, or the cloud sheet) */
   account_sign_in: { source: "app", props: { step: oneOf(...ACCOUNT_SIGN_IN_STEPS), method: oneOf(...ACCOUNT_SIGN_IN_METHODS), via: oneOf("browser", "code", "link"),
     code: oneOf(...ACCOUNT_SIGN_IN_ERRORS), link: oneOf("open", "cloud") } },

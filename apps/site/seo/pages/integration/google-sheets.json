@@ -4,13 +4,13 @@
   "title": "Google Sheets AI assistant for rows, ranges and reports",
   "nav": "google sheets",
   "h1": "a google sheets bot with a clear range to work in",
-  "description": "Connect Google Sheets to dusk bot for row checks, table updates and charts. Copy focused routines that name their input range and write boundary.",
+  "description": "Connect Google Sheets to Metal for row checks, table updates and charts. Copy focused routines that name their input range and write boundary.",
   "keyword": "claude google sheets",
   "keywords": [
     "google sheets mcp",
     "chatgpt google sheets"
   ],
-  "answer": "**find the stock that needs ordering before someone sells the last unit.** connect google sheets to a dusk bot, choose your ai and name the file, tab and cells. it can read rows, update values and make charts. get the first report in chat. when you want edits, add an ask-first instruction; cell changes do not automatically wait for approval.",
+  "answer": "**find the stock that needs ordering before someone sells the last unit.** connect google sheets to a Metal bot, choose your ai and name the file, tab and cells. it can read rows, update values and make charts. get the first report in chat. when you want edits, add an ask-first instruction; cell changes do not automatically wait for approval.",
   "updated": "2026-11-12",
   "review": {
     "status": "approved",
@@ -134,15 +134,15 @@
   ],
   "sources": [
     {
-      "label": "dusk bot docs: files and apps",
+      "label": "Metal docs: files and apps",
       "url": "/docs/files-and-apps"
     },
     {
-      "label": "dusk bot docs: routines and missed runs",
+      "label": "Metal docs: routines and missed runs",
       "url": "/docs/routines"
     },
     {
-      "label": "dusk bot docs: a bot's computer",
+      "label": "Metal docs: a bot's computer",
       "url": "/docs/computer"
     }
   ],

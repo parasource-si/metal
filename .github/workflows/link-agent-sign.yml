@@ -35,7 +35,7 @@ jobs:
       - name: Commit the signature when it changed
         run: |
           git diff --quiet -- apps/link-service/agent.mjs.sig && exit 0
-          git config user.name "dusk bot release"
+          git config user.name "Metal release"
           git config user.email "release@dusk.bot"
           git add apps/link-service/agent.mjs.sig
           git commit -m "link agent: signature for $(grep -oE '^export const AGENT_VERSION = "[^"]+"' apps/link-service/agent.mjs | cut -d'"' -f2)"

@@ -1,9 +1,9 @@
 {
   "path": "/vs/lindy",
-  "title": "Lindy vs dusk bot: team credits or separate bots?",
+  "title": "Lindy vs Metal: team credits or separate bots?",
   "nav": "lindy",
-  "h1": "lindy vs dusk bot: shared work, credits and control",
-  "description": "Compare Lindy’s active-user pricing, pooled credits and scheduled routines with dusk bot’s separate bot roles, permissions and hosting costs.",
+  "h1": "lindy vs Metal: shared work, credits and control",
+  "description": "Compare Lindy’s active-user pricing, pooled credits and scheduled routines with Metal’s separate bot roles, permissions and hosting costs.",
   "answer": "**lindy puts the helper where your team already talks. dusk gives each job its own home.** lindy handles email, meetings, leads and reports through tools such as slack and email.[^1] its team plan pools credits and charges per active user. dusk separates bot jobs, memory and ai choices, with ai usage and hosting billed separately.[^2][^5]",
   "tags": [
     "lindy",
@@ -46,7 +46,7 @@
     "intro": "**price the routine your team will actually run.** monthly usd prices are as of 12 november 2026. lindy pools credits; how far they go depends on the work.",
     "cols": [
       "lindy",
-      "dusk bot"
+      "Metal"
     ],
     "rows": [
       {
@@ -132,7 +132,7 @@
       }
     ]
   },
-  "method": "**run the weekly report before betting the team’s workflow on it.** we make dusk bot. this compares the billing and features listed on 12 november 2026. we did not run matching tasks or measure credit use.\n\nlindy’s integration count comes from lindy. we did not test every workflow or verify compliance claims. use the table to choose your trial and look at the actual output before committing.",
+  "method": "**run the weekly report before betting the team’s workflow on it.** Metal is based on Dusk Bot. this compares the billing and features listed on 12 november 2026. we did not run matching tasks or measure credit use.\n\nlindy’s integration count comes from lindy. we did not test every workflow or verify compliance claims. use the table to choose your trial and look at the actual output before committing.",
   "sections": [
     {
       "h": "try the approval on a job with consequences",
@@ -170,35 +170,35 @@
       "checked": "2026-11-12"
     },
     {
-      "label": "dusk bot: distinct jobs and ai choices",
+      "label": "Metal: distinct jobs and ai choices",
       "url": "/docs/bots"
     },
     {
-      "label": "dusk bot: billing and personal use",
+      "label": "Metal: billing and personal use",
       "url": "/docs/account-and-billing"
     },
     {
-      "label": "dusk bot: team hosting",
+      "label": "Metal: team hosting",
       "url": "/docs/dusk-cloud"
     },
     {
-      "label": "dusk bot: phone access",
+      "label": "Metal: phone access",
       "url": "/docs/phone"
     },
     {
-      "label": "dusk bot: recurring work",
+      "label": "Metal: recurring work",
       "url": "/docs/routines"
     },
     {
-      "label": "dusk bot: attachments and app permissions",
+      "label": "Metal: attachments and app permissions",
       "url": "/docs/files-and-apps"
     },
     {
-      "label": "dusk bot: file and command approvals",
+      "label": "Metal: file and command approvals",
       "url": "/docs/computer"
     },
     {
-      "label": "dusk bot: work license",
+      "label": "Metal: work license",
       "url": "/docs/faq"
     }
   ],
@@ -220,7 +220,7 @@
       "choose one weekly team job",
       "list who will use the assistant",
       "read lindy’s active-user rule and the trial expiry",
-      "compare that job with a dusk bot draft you can inspect"
+      "compare that job with a Metal bot draft you can inspect"
     ]
   },
   "decide": {

@@ -127,15 +127,15 @@ export function parseSideDecision(raw: string): SideDecision | null {
 
 /** The note the running turn reads with the person's words when they steer it. */
 export function steerNote(reply: string): string {
-  return `[dusk bot: you already answered this message in the chat with ${JSON.stringify(reply)}. Take it into the work you are doing now; do not reply to it on its own.]`;
+  return `[Metal: you already answered this message in the chat with ${JSON.stringify(reply)}. Take it into the work you are doing now; do not reply to it on its own.]`;
 }
 
 /** The note a continuation reads when the running turn could not take the message mid-turn. */
 export function continuationNote(reply: string): string {
-  return `[dusk bot: the person sent this while your last turn was running and you answered in the chat with ${JSON.stringify(reply)}. Take it into the task you were working on: carry on with what is left of it, and if that part is already done, adjust the result to fit.]`;
+  return `[Metal: the person sent this while your last turn was running and you answered in the chat with ${JSON.stringify(reply)}. Take it into the task you were working on: carry on with what is left of it, and if that part is already done, adjust the result to fit.]`;
 }
 
 /** The note the new turn reads after the person redirected the running one. */
 export function redirectNote(reply: string): string {
-  return `[dusk bot: the person asked you to drop what you were doing for this, so that task was stopped. You answered in the chat with ${JSON.stringify(reply)}. Do this now.]`;
+  return `[Metal: the person asked you to drop what you were doing for this, so that task was stopped. You answered in the chat with ${JSON.stringify(reply)}. Do this now.]`;
 }

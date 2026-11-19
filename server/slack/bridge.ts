@@ -33,9 +33,9 @@ type Pending = {
   botId: string; threadId: string; channel: string; replyTs: string; eventTs: string; sendId: string;
   startedAt: number; notifiedInput: boolean;
 };
-const START_FAILED = "I couldn't start on that. Check dusk bot for details.";
-const TURN_FAILED = "I couldn't finish that. Check dusk bot for details.";
-const NEEDS_INPUT = "I need you in dusk bot to continue: an approval or a question is waiting there.";
+const START_FAILED = "I couldn't start on that. Check Metal for details.";
+const TURN_FAILED = "I couldn't finish that. Check Metal for details.";
+const NEEDS_INPUT = "I need you in Metal to continue: an approval or a question is waiting there.";
 const record = (value: unknown): Record<string, unknown> => value !== null && typeof value === "object" && !Array.isArray(value) ? value as Record<string, unknown> : {};
 const string = (value: unknown): string => typeof value === "string" ? value : "";
 /** Security: text from Slack people never carries the app's own markup (an attachment tag would point the bot at another

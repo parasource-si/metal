@@ -141,7 +141,7 @@ function localBrowserTrust(env: NodeJS.ProcessEnv, fromSource: boolean, trust: L
   return { trusted: true, warning: `${LOCAL_BROWSER_TRUST}=1: browsers on this machine act as the owner (development only)` };
 }
 
-export const BROWSER_SIGN_IN = "unauthorized: this browser is not signed in. Open the sign-in link that duskbot serve or duskbot pair prints on this computer, or pair it with a code from Settings → Remote access";
+export const BROWSER_SIGN_IN = "unauthorized: this browser is not signed in. Open the sign-in link that metal serve or metal pair prints on this computer, or pair it with a code from Settings → Remote access";
 
 export function isAllowedOrigin(origin: string | undefined | null): boolean {
   if (!origin) return true; // non-browser clients (CLIs, curl, tests) send none
@@ -469,7 +469,7 @@ export const CLIENT_ALLOW: ReadonlyArray<{ methods: readonly string[]; path: Reg
   { methods: ["POST"], path: /^\/api\/bots\/[\w-]+\/bot-api\/new-key$/ },
   // asking to chat with a team bot one can view: the handler puts a card in the inbox of whoever can let them in
   { methods: ["POST"], path: /^\/api\/bots\/[\w-]+\/access-request$/ },
-  // Give feedback: anyone signed in here may write to the dusk bot team; the handler sends only their own address
+  // Give feedback: anyone signed in here may write to the Dusk team; the handler sends only their own address
   { methods: ["POST"], path: /^\/api\/feedback$/ },
 ];
 
@@ -553,7 +553,7 @@ export interface ResolveOptions {
   companionMutationToken?: string;
   /** Absent is `owner`; ignored while loopbackMutationToken is in force. */
   loopbackTrust?: LoopbackTrust;
-  /** Under `service`: a per-launch secret from `duskbot serve` over stdin (never env, which other children read); it opens only pairing codes. */
+  /** Under `service`: a per-launch secret from `metal serve` over stdin (never env, which other children read); it opens only pairing codes. */
   cliOwnerToken?: string;
   /** resolveLoopbackTrust's `localBrowsers`: a development server lets this machine's browsers use loopback trust. */
   trustLocalBrowser?: boolean;

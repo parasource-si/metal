@@ -1,4 +1,4 @@
-// What dusk bot does by itself when a page shows a bot check or a bot block, before anyone is asked: wait it out (most
+// What Metal does by itself when a page shows a bot check or a bot block, before anyone is asked: wait it out (most
 // "Verifying..." pages clear in a normal browser), reload once, then send that one site through the person's own
 // connection when their computer is linked and online. One ladder for every site and every kind of wall; it only reads
 // and reloads, and never clicks, answers or hides anything (no captcha solving, no stealth).
@@ -28,7 +28,7 @@ export function wallState(page: HumanCheckPage): WallState {
 }
 
 export interface LadderDeps {
-  /** The page as it is now, or null when it cannot be read (between documents, or a place dusk bot cannot read). */
+  /** The page as it is now, or null when it cannot be read (between documents, or a place Metal cannot read). */
   read(): Promise<HumanCheckPage | null>;
   reload(): Promise<unknown>;
   /** Sends this site out through the person's own connection; false when that cannot happen now (off, offline, no link). */
@@ -39,7 +39,7 @@ export interface LadderDeps {
 
 export type LadderResult =
   | { outcome: "cleared"; via: "wait" | "home"; waitedMs: number }
-  /** dusk bot sees no check or block on the page. */
+  /** Metal sees no check or block on the page. */
   | { outcome: "none" }
   | { outcome: "unreadable" }
   | { outcome: "check" | "blocked"; homeTried: boolean; waitedMs: number };

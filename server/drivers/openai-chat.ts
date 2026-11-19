@@ -196,7 +196,7 @@ function replayDelivered(
   return { content, matched: found.map(({ record }) => record), volatile };
 }
 
-const UNREADABLE_CALL = "[dusk bot: your last tool call could not be read, so nothing ran. Call the tool again using only the tools you were given, with valid JSON arguments.]";
+const UNREADABLE_CALL = "[Metal: your last tool call could not be read, so nothing ran. Call the tool again using only the tools you were given, with valid JSON arguments.]";
 
 const TEXT_ONLY_ATTACHMENT_NOTE = "[The person attached image(s), but this model cannot see images. Say so if the request depends on them.]";
 const TEXT_ONLY_SCREENSHOT_NOTE = "[Screenshot not shown: this model cannot see images. Read the page with a snapshot or a text tool instead.]";

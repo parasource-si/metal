@@ -201,7 +201,7 @@ async function main(): Promise<void> {
     preview = await mountPreview(fixture, {
       entry: "/scripts/testing/threads-preview.tsx",
       route: "/__threads.html",
-      title: "Isolated dusk bot Chat",
+      title: "Isolated Metal Chat",
       logLevel: "warn",
     });
     const session = { home: fixture.info.dataDir, session: `dusk-voice-${new URL(fixture.info.url).port}`, chrome };

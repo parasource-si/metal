@@ -22,7 +22,7 @@ const STEPS = [
   { name: "typecheck", cmd: "pnpm", args: ["typecheck"] },
   { name: "check-electron", cmd: "pnpm", args: ["check:electron"] },
   { name: "typecheck-dashboard", cmd: "pnpm", args: ["typecheck:dashboard"] },
-  { name: "typecheck-mobile", cmd: "pnpm", args: ["--filter", "@duskbot/mobile", "typecheck"] },
+  { name: "typecheck-mobile", cmd: "pnpm", args: ["--filter", "@metal/mobile", "typecheck"] },
   { name: "vitest-dashboard", cmd: "pnpm", args: ["exec", "vitest", "run", "--config", "apps/dashboard/vite.config.ts", "--root", ".", "--exclude", "apps/dashboard/src/data/{connector-rows,live,place,plan-total,usage-math}.test.ts", "apps/dashboard/src"] },
   { name: "node-test-dashboard", cmd: "node", args: ["--test", ...DASHBOARD_NODE] },
   { name: "vitest", cmd: "pnpm", args: ["exec", "vitest", "run"], env: { DUSK_VITEST_WORKERS: workers } },

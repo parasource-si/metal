@@ -23,10 +23,10 @@ export function scopeHint(slugs: readonly string[]): string {
   const app = slug ? appName(slug) : null;
   const scope = slug ? requiredScope(slug) : null;
   const permission = scope ? `the ${scope} permission` : "the permission this action needs";
-  return `dusk bot note: ${app ?? "The app"} refused this because the connected account has not granted ${permission}. ` +
+  return `Metal note: ${app ?? "The app"} refused this because the connected account has not granted ${permission}. ` +
     `Reconnecting will not add it: the default Composio connection never asks for it. ` +
     `To allow it, the person creates their own ${app ? `${app} ` : ""}auth config in their Composio project that includes ${permission}, ` +
-    `then reconnects ${app ?? "the app"} under Connected apps; dusk bot uses that config automatically. ` +
+    `then reconnects ${app ?? "the app"} under Connected apps; Metal uses that config automatically. ` +
     `Tell the person this. Do not retry this call.`;
 }
 
@@ -119,7 +119,7 @@ const UNSUPPORTED = /\bnot supported\b|\bunsupported (?:operation|action|method|
 
 export function browserFallbackHint(slugs: readonly string[]): string {
   const app = slugs[0] ? appName(slugs[0]) : "This app";
-  return `dusk bot note: the ${app} connection cannot do this. Do this step in your browser instead, on ${app}'s website with the same account, rather than refusing. If it asks to sign in, ask the person to sign in there once.`;
+  return `Metal note: the ${app} connection cannot do this. Do this step in your browser instead, on ${app}'s website with the same account, rather than refusing. If it asks to sign in, ask the person to sign in there once.`;
 }
 
 /** A connector call that failed because the app's API cannot do it points the bot at its browser, where it can. */

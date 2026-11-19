@@ -13,7 +13,7 @@ const FIELD_LABEL: Record<TokenField["key"], LocaleKey> = {
   token: "tokenApps.field.token", key: "tokenApps.field.key", email: "tokenApps.field.email", site: "tokenApps.field.site", shop: "tokenApps.field.shop",
 };
 
-/** One app connected with the person's own token or a sign-in to dusk bot's own app: its accounts, then a guide.
+/** One app connected with the person's own token or a sign-in to Metal's own app: its accounts, then a guide.
  * `preferToken` picks the token steps over a ready sign-in; the page's other ways switch it. */
 export function TokenCard({ app, tokens, replacing: startReplacing, preferToken = false }: { app: TokenAppId; tokens: TokenApps; replacing?: string; preferToken?: boolean }) {
   const spec = tokenApp(app)!;

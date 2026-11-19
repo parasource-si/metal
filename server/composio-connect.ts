@@ -111,7 +111,7 @@ export async function manageAppConnection(spec: RemoteMcpSpec, slug: string, sig
   const bound = signal ? AbortSignal.any([signal, AbortSignal.timeout(CALL_MS)]) : AbortSignal.timeout(CALL_MS);
   const client = new RemoteMcpClient(spec, { maxBytes: MAX_REMOTE_MCP_BYTES });
   try {
-    await client.initialize("dusk bot", bound);
+    await client.initialize("Metal", bound);
     const now = readAppAccounts(await call(client, slug, "list", bound), slug);
     if (action === "list" || now.status === "connected" || now.status === "failed") return now;
     return readAppConnection(await call(client, slug, "add", bound), slug);

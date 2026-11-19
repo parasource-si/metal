@@ -12,9 +12,9 @@ export type AboutYouFacts = {
 };
 
 const WHERE: Record<AboutYouFacts["home"], string> = {
-  mac: "the person's Mac, inside the dusk bot desktop app",
-  windows: "the person's Windows PC, inside the dusk bot desktop app",
-  computer: "the person's own computer, inside the dusk bot desktop app",
+  mac: "the person's Mac, inside the Metal desktop app",
+  windows: "the person's Windows PC, inside the Metal desktop app",
+  computer: "the person's own computer, inside the Metal desktop app",
   server: "a server the person runs themselves",
   cloud: "dusk cloud, the person's always-on home in the cloud, not on their own computer",
   "team-cloud": "dusk cloud, your team's shared always-on home, not on anyone's own computer",
@@ -30,7 +30,7 @@ const COMPUTER: Record<ComputerPromptKind, string> = {
 /** Standing facts about the bot itself, so a question about its features is answered from here and never from the engine's vendor. */
 export function aboutYouPrompt(facts: AboutYouFacts): string {
   const lines = [
-    `About you: you are ${facts.name}, a dusk bot. dusk bot is the app you live in; you are not ChatGPT, Claude, Codex or any vendor's assistant, and the model that powers you is only your engine.`,
+    `About you: you are ${facts.name}, a Metal bot. Metal is the app you live in; you are not ChatGPT, Claude, Codex or any vendor's assistant, and the model that powers you is only your engine.`,
     `You are running on ${WHERE[facts.home]}.`,
   ];
   const memory = facts.memory;

@@ -197,7 +197,7 @@ const __APP_VERSION__: string;
       vpsCloudMove?: import("../lib/vps-cloud-move").VpsCloudMoveBridge;
       /** This computer's page only: Add your VPS, its install, sign-in, move, and the Transfer pane (electron/vps-link.mjs). */
       vpsLink?: import("../lib/vps-link").VpsLinkBridge;
-      /** The bot panel's Start fresh: deletes everything this person has with dusk bot (electron/start-fresh.mjs). Absent on an older app. */
+      /** The bot panel's Start fresh: deletes everything this person has with Metal (electron/start-fresh.mjs). Absent on an older app. */
       startFresh?: {
         available(): Promise<boolean>;
         preview(): Promise<import("../../electron/start-fresh.mjs").StartFreshView>;
@@ -335,7 +335,7 @@ const __APP_VERSION__: string;
       };
       confirm(message: string): Promise<boolean>;
       /** Touch ID, Windows Hello or polkit, else an in-app confirm; true only when the person passed. Absent in older
-       * desktop builds. `reason` completes "dusk bot wants to …". */
+       * desktop builds. `reason` completes "Metal wants to …". */
       requireUserPresence?(reason: string): Promise<boolean>;
       getCapabilities(): Promise<DesktopCapabilities>;
       onCapabilitiesChanged(cb: (capabilities: DesktopCapabilities) => void): () => void;

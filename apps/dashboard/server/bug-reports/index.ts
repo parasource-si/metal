@@ -150,7 +150,7 @@ export function createBugReports(options: BugReportsOptions) {
           ...(report.images ? [["images", String(report.images)] as [string, string]] : [])] },
         { t: "log", text: report.description.slice(0, 2_000) },
         { t: "button", label: "open bug reports", href: mail.panelUrl }],
-      reason: "you got this because your address gets the dusk bot alert emails. one email per report, never a repeat." });
+      reason: "you got this because your address gets the Metal alert emails. one email per report, never a repeat." });
     for (const mailer of mail.mailers) {
       try { await Promise.all(mail.to().map(to => mailer.send({ to, subject, text: body, html }))); return; } catch { /* the next mailer */ }
     }

@@ -89,7 +89,7 @@ describe("the native-app encoding of a pairing window", () => {
   });
 });
 
-describe("a browser sign-in window (a dusk bot Cloud page's \"Use in your browser\")", () => {
+describe("a browser sign-in window (a Metal Cloud page's \"Use in your browser\")", () => {
   it("is redeemed only by a browser sign-in, only by its credential, and only once", () => {
     const { code, credential } = registry.openPairing({ scopes: ["admin", "client"], label: "Web browser", browser: true });
     expect(registry.exchange({ code: credential, label: "", source: "10.0.0.5" }).ok).toBe(false);
@@ -558,7 +558,7 @@ describe("stream tickets", () => {
   });
 });
 
-describe("admin scope only (a dusk bot Cloud home is personal: server/cloud-owner.ts)", () => {
+describe("admin scope only (a Metal Cloud home is personal: server/cloud-owner.ts)", () => {
   const PERSONAL = "My Cloud is personal: only your own devices can connect.";
   it("opens, redeems, issues and accepts nothing without admin scope; the owner's devices are unaffected", () => {
     // Made before the rule applies (as a stored session is at boot).

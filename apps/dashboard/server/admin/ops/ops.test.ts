@@ -194,7 +194,7 @@ describe("ops alerts into incidents", () => {
     const router = createMailRouter({ providers: { resend: { async send() {} }, brevo: { async send() {} } }, caps: { resend: { daily: 5, monthly: 3_000 }, brevo: { daily: 300, monthly: 10_000 } },
       usage, now: () => time, log: line => log.push(line) });
     const f = fixture({}, () => router.usage());
-    const code = { to: "person@example.test", subject: "01234567 is your dusk bot code", text: "t", html: "<p>t</p>", transactional: true };
+    const code = { to: "person@example.test", subject: "01234567 is your Metal code", text: "t", html: "<p>t</p>", transactional: true };
     for (let i = 0; i < 4; i++) await router.send(code);
     await router.send({ ...code, transactional: false });
     await f.ops.evaluate();

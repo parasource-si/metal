@@ -15,7 +15,7 @@
   "updated": "2026-11-12",
   "review": {
     "status": "approved",
-    "by": "lead agent, against dusk bot docs",
+    "by": "lead agent, against Metal docs",
     "at": "2026-11-12"
   },
   "tags": [
@@ -51,11 +51,11 @@
   ],
   "sources": [
     {
-      "label": "dusk bot docs: routines",
+      "label": "Metal docs: routines",
       "url": "/docs/routines"
     },
     {
-      "label": "dusk bot docs: dusk cloud",
+      "label": "Metal docs: dusk cloud",
       "url": "/docs/dusk-cloud"
     }
   ],

@@ -448,7 +448,7 @@ try {
   requireFile(scalableIcon);
   const desktop = readFileSync(desktopFile, "utf8");
   for (const expected of [
-    "Name=dusk bot",
+    "Name=Metal",
     "Exec=/opt/dusk-bot/duskbot %U",
     "Icon=duskbot",
     "StartupWMClass=bot.dusk.app",

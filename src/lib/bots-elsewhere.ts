@@ -112,7 +112,7 @@ export function dismissPlace(key: string): void {
   try { localStorage.setItem(DISMISSED, JSON.stringify([...dismissedPlaces().filter((entry) => entry !== key), key].slice(-20))); } catch { /* storage full or off */ }
 }
 
-/** The dev button's stand-in: a fresh install whose account already set up dusk bot on a VPS. */
+/** The dev button's stand-in: a fresh install whose account already set up Metal on a VPS. */
 export const SIMULATED_FRESH_INSTALL: ElsewhereView = { places: [], known: { kind: "server", name: "My VPS" } };
 
 /** Dev builds, or any build with localStorage "dusk-dev-tools" set to "1"; never a test preview, which renders the app as it

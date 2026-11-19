@@ -9,11 +9,11 @@ import type { BotRecord, Message, Store } from "./store.ts";
 export type DefaultBotStore = Pick<Store, "bots" | "bot" | "createBot" | "patchBot" | "appendMessage" | "messagesFor" | "createTask" | "setChiefOfStaff">;
 export type LegacyNameStore = Pick<Store, "bots" | "patchBot" | "patchTask" | "messagesFor" | "patchMessage">;
 
-/** Where each place (key "") and Team Cloud member (their email) is recorded as having had its Dusk, so one that is
+/** Where each place (key "") and Team Cloud member (their email) is recorded as having had its Metal, so one that is
  * gone is never made twice. */
 const LEDGER = "default-bot.json";
 
-/** The colour a new install gave its Dusk before Chrome, which an adopted Dusk trades for Chrome. */
+/** The colour a new install gave its Metal before Chrome, which an adopted Metal trades for Chrome. */
 const STARTER_COLOR = "silver";
 
 export const HELPER_ASKS = ["What are my bots up to?", "Set up a bot for my inbox", "Make me a morning routine", "How do I connect my email?"];
@@ -33,7 +33,7 @@ export function ownsDefaultBot(bot: BotRecord | null | undefined, email: string 
   return Boolean(email && bot?.defaultBot && defaultBotPerson(bot) === email.trim().toLowerCase());
 }
 
-/** The English intro: who Dusk is, what it does here, and that it is looking around (its follow-up comes after, from
+/** The English intro: who Metal is, what it does here, and that it is looking around (its follow-up comes after, from
  * helper-followup.ts). Clients that know `helperIntro` say it in the viewer's own language. */
 export function helperIntroMessage(bot: Pick<BotRecord, "name" | "chiefOfStaff">, team?: string | null): Omit<Message, "id" | "at"> {
   const title = bot.chiefOfStaff ? `Hey! I'm ${bot.name}. I'm new here.` : `Hi! I'm ${bot.name}, your helper for everything here.`;
@@ -66,7 +66,7 @@ function remember(dataDir: string, person: string, botId: string): void {
   writeFileAtomic(join(dataDir, LEDGER), JSON.stringify({ v: 1, places: { ...places, [person]: botId } }), { mode: 0o600 });
 }
 
-/** A member who left: should they join again, they are given a Dusk of their own again. */
+/** A member who left: should they join again, they are given a Metal of their own again. */
 export function forgetDefaultBot(dataDir: string, person: string): void {
   const places = ledger(dataDir);
   if (!person || !Object.hasOwn(places, person)) return;
@@ -74,8 +74,8 @@ export function forgetDefaultBot(dataDir: string, person: string): void {
   writeFileAtomic(join(dataDir, LEDGER), JSON.stringify({ v: 1, places }), { mode: 0o600 });
 }
 
-/** A new install's own Dusk from before it was marked: the place's oldest bot, still live, outside any department,
- * not installed from a package, and still named dusk bot (or an earlier name) or still in the colour a new install gave it. */
+/** A new install's own Metal from before it was marked: the place's oldest bot, still live, outside any department,
+ * not installed from a package, and still named Metal (or an earlier name) or still in the colour a new install gave it. */
 export function seededDusk(bots: readonly BotRecord[], legacy = false): BotRecord | undefined {
   const oldest = bots.reduce<BotRecord | undefined>((first, bot) => !first || bot.createdAt < first.createdAt ? bot : first, undefined);
   if (!oldest || oldest.hidden || oldest.movedTo || oldest.section?.trim() || oldest.installedPackage) return undefined;
@@ -91,7 +91,7 @@ function introduce(store: DefaultBotStore, bot: BotRecord, team?: string | null)
   if (threadId) store.appendMessage(threadId, helperIntroMessage(bot, team));
 }
 
-/** A new Dusk, with its intro as its first message. On a Team Cloud it is its member's alone. */
+/** A new Metal, with its intro as its first message. On a Team Cloud it is its member's alone. */
 export function createDefaultBot(store: DefaultBotStore, options: { person?: string; team?: string | null; chief?: (id: string) => void } = {}): BotRecord {
   const person = options.person?.trim().toLowerCase() ?? "";
   const taken = new Set(person ? [] : store.bots.map((bot) => bot.name.trim().toLowerCase()));
@@ -107,13 +107,13 @@ export function createDefaultBot(store: DefaultBotStore, options: { person?: str
 }
 
 /** The helper's earlier names, oldest first. */
-export const LEGACY_DEFAULT_BOT_NAMES = ["MausBot", "Dusk"] as const;
+export const LEGACY_DEFAULT_BOT_NAMES = ["MausBot", "Dusk", "dusk bot", "DuskBot", "Dusk Bot"] as const;
 export const LEGACY_DEFAULT_BOT_NAME = LEGACY_DEFAULT_BOT_NAMES[0];
 
 const legacyName = (bot: Pick<BotRecord, "name">): string | undefined => LEGACY_DEFAULT_BOT_NAMES.find((name) => bot.name.trim() === name);
 const legacyNamed = (bot: Pick<BotRecord, "name">): boolean => legacyName(bot) !== undefined;
 
-/** Every helper still called by an earlier name becomes dusk bot, and its seeded intro (and the task that holds it) says so. Runs
+/** Every helper still called by an earlier name becomes Metal, and its seeded intro (and the task that holds it) says so. Runs
  * at every start, on any place, frozen or not, so a copy the island or the dock still reads never shows the old
  * name. A bot someone renamed keeps its name; only an intro still naming the old name is rewritten. */
 export function renameLegacyDefaultBots(store: LegacyNameStore): number {
@@ -139,9 +139,9 @@ export function renameLegacyDefaultBots(store: LegacyNameStore): number {
   return renamed;
 }
 
-/** Makes sure this place (no `person`) or this Team Cloud member has had its Dusk once: the one it has, the new
- * install's own adopted, or a new one. A Dusk that is gone is never made again. Two marked ones keep the oldest. A
- * place with no Chief of Staff at all gets Dusk as its Chief, so someone keeps an eye on the day; one that has a
+/** Makes sure this place (no `person`) or this Team Cloud member has had its Metal once: the one it has, the new
+ * install's own adopted, or a new one. A Metal that is gone is never made again. Two marked ones keep the oldest. A
+ * place with no Chief of Staff at all gets Metal as its Chief, so someone keeps an eye on the day; one that has a
  * Chief keeps it. */
 
 export function ensureDefaultBot(store: DefaultBotStore, options: { dataDir: string; person?: string; team?: string | null }): BotRecord | null {
@@ -168,7 +168,7 @@ export function ensureDefaultBot(store: DefaultBotStore, options: { dataDir: str
   return bot;
 }
 
-/** A move brought this place's Dusk from another computer: it becomes the one Dusk here, and the one this place
+/** A move brought this place's Metal from another computer: it becomes the one Metal here, and the one this place
  * had becomes an ordinary bot (retireUnusedStarter archives it when nobody used it). */
 export function takeArrivingDefaultBot(store: Pick<Store, "bots" | "patchBot">, id: string): void {
   const arriving = store.bots.find((bot) => bot.id === id);
@@ -179,8 +179,8 @@ export function takeArrivingDefaultBot(store: Pick<Store, "bots" | "patchBot">, 
   if (!arriving.defaultBot || defaultBotPerson(arriving)) store.patchBot(id, { defaultBot: {} });
 }
 
-/** After a bot arrives by a move: the Dusk this place made for itself (by id, from the ledger), once it is neither
- * the Dusk nor the Chief and nobody has used it, is archived, so the move leaves one Dusk and nothing of the
+/** After a bot arrives by a move: the Metal this place made for itself (by id, from the ledger), once it is neither
+ * the Metal nor the Chief and nobody has used it, is archived, so the move leaves one Metal and nothing of the
  * person's is lost. */
 export function retireUnusedStarter(store: Pick<Store, "bot" | "patchBot" | "messagesFor">, dataDir: string): void {
   const own = ledger(dataDir)[""];

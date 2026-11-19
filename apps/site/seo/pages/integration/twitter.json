@@ -4,7 +4,7 @@
   "title": "X AI assistant for mentions, source lists and post drafts",
   "nav": "x (twitter)",
   "h1": "an x assistant that brings the conversation to you",
-  "description": "Use dusk bot with X for mention reviews, source lists and post preparation. See the custom connection requirement and what needs approval.",
+  "description": "Use Metal with X for mention reviews, source lists and post preparation. See the custom connection requirement and what needs approval.",
   "answer": "**get the product questions buried in your mentions brought to your chat.** dusk's twitter toolkit can collect mentions, read list posts and prepare replies. it needs your own composio project key and sign-in setup; there's no managed sign-in. keep research read only once connected. the bot brings you questions worth answering, and you review public posts before they go out.",
   "tags": [
     "social",
@@ -31,7 +31,7 @@
   "app": {
     "name": "X",
     "toolkit": "twitter",
-    "intro": "**choose whose posts matter before asking for a reply.**\n\na focused source list is easier to review than an open-ended feed. say what kind of question deserves your attention. the bot can gather source posts before suggesting a reply in your dusk bot chat.",
+    "intro": "**choose whose posts matter before asking for a reply.**\n\na focused source list is easier to review than an open-ended feed. say what kind of question deserves your attention. the bot can gather source posts before suggesting a reply in your Metal chat.",
     "highlight": [
       {
         "slug": "TWITTER_GET_USER_BY_ID",
@@ -100,7 +100,7 @@
   ],
   "faq": [
     {
-      "q": "can claude automate twitter through dusk bot?",
+      "q": "can claude automate twitter through Metal?",
       "a": "**yes, after the custom connection works.** a bot using your chosen ai can call the listed actions. connected apps still calls it twitter. setup comes before scheduling."
     },
     {
@@ -114,15 +114,15 @@
   ],
   "sources": [
     {
-      "label": "dusk bot docs: files and apps",
+      "label": "Metal docs: files and apps",
       "url": "/docs/files-and-apps"
     },
     {
-      "label": "dusk bot docs: routines",
+      "label": "Metal docs: routines",
       "url": "/docs/routines"
     },
     {
-      "label": "dusk bot docs: sending and permissions",
+      "label": "Metal docs: sending and permissions",
       "url": "/docs/computer"
     }
   ],

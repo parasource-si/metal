@@ -4,13 +4,13 @@
   "title": "Figma AI assistant for comments, components and handoffs",
   "nav": "figma",
   "h1": "a figma bot that gathers the handoff details",
-  "description": "Connect Figma to dusk bot to review comments, inspect components and gather file context. Three handoff routines with honest limits on design editing.",
+  "description": "Connect Figma to Metal to review comments, inspect components and gather file context. Three handoff routines with honest limits on design editing.",
   "keyword": "claude figma",
   "keywords": [
     "figma ai agent",
     "figma mcp"
   ],
-  "answer": "**the handoff shouldn't start with a hunt through comments.** a dusk bot can read figma files, comments, components and variables. ask for the decisions still open or a handoff inventory, using the ai you choose. it gathers the context. it can't redraw every screen or turn the design into a finished product for you.",
+  "answer": "**the handoff shouldn't start with a hunt through comments.** a Metal bot can read figma files, comments, components and variables. ask for the decisions still open or a handoff inventory, using the ai you choose. it gathers the context. it can't redraw every screen or turn the design into a finished product for you.",
   "updated": "2026-11-12",
   "review": {
     "status": "approved",
@@ -121,7 +121,7 @@
   "faq": [
     {
       "q": "can claude read my figma file?",
-      "a": "**yes, through a dusk bot's figma connection.** choose claude or another ai, connect the account and allow that bot. give it the specific file or frame."
+      "a": "**yes, through a Metal bot's figma connection.** choose claude or another ai, connect the account and allow that bot. give it the specific file or frame."
     },
     {
       "q": "can it turn my design into a finished app?",
@@ -134,15 +134,15 @@
   ],
   "sources": [
     {
-      "label": "dusk bot docs: apps and action limits",
+      "label": "Metal docs: apps and action limits",
       "url": "/docs/files-and-apps"
     },
     {
-      "label": "dusk bot docs: scheduled reviews",
+      "label": "Metal docs: scheduled reviews",
       "url": "/docs/routines"
     },
     {
-      "label": "dusk bot docs: comments and approvals",
+      "label": "Metal docs: comments and approvals",
       "url": "/docs/computer"
     }
   ],

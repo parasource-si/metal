@@ -42,7 +42,7 @@
   "sections": [
     {
       "h": "what the advertised prices cover",
-      "md": "**compare the bundle before comparing the number.** these prices are as of 12 november 2026. billing is monthly unless shown otherwise. the allowances measure different work.[^1][^2][^3][^4][^5][^6]\n\n| product | paid starting example | what else you pay for |\n| --- | --- | --- |\n| dusk bot | cloud plus $20 a month | personal desktop use is free; hosting and ai costs stay separate |\n| openclaw | software is free | model usage and any hosting are yours to pay |\n| hermes / nous portal | plus $20 a month | software is free; paid portal plans include a cloud agent |\n| manus | pro $20 a month | 4,000 monthly credits; max $200 has 40,000, then pay as you go |\n| poke | pro $19 a month | ultra $199 adds pay-as-you-go usage beyond credits |\n| n8n | cloud starter €20 a month, billed annually | 2,500 workflow executions; community self-hosting is free |\n\nn8n showed euros. keep that currency when comparing. manus credits, n8n executions and a provider's text usage aren't interchangeable units. a matching sticker price doesn't promise a matching result."
+      "md": "**compare the bundle before comparing the number.** these prices are as of 12 november 2026. billing is monthly unless shown otherwise. the allowances measure different work.[^1][^2][^3][^4][^5][^6]\n\n| product | paid starting example | what else you pay for |\n| --- | --- | --- |\n| Metal | cloud plus $20 a month | personal desktop use is free; hosting and ai costs stay separate |\n| openclaw | software is free | model usage and any hosting are yours to pay |\n| hermes / nous portal | plus $20 a month | software is free; paid portal plans include a cloud agent |\n| manus | pro $20 a month | 4,000 monthly credits; max $200 has 40,000, then pay as you go |\n| poke | pro $19 a month | ultra $199 adds pay-as-you-go usage beyond credits |\n| n8n | cloud starter €20 a month, billed annually | 2,500 workflow executions; community self-hosting is free |\n\nn8n showed euros. keep that currency when comparing. manus credits, n8n executions and a provider's text usage aren't interchangeable units. a matching sticker price doesn't promise a matching result."
     },
     {
       "h": "the dusk bill and the ai bill",
@@ -77,7 +77,7 @@
   ],
   "sources": [
     {
-      "label": "dusk bot: cloud pricing",
+      "label": "Metal: cloud pricing",
       "url": "/docs/dusk-cloud"
     },
     {
@@ -106,7 +106,7 @@
       "checked": "2026-11-12"
     },
     {
-      "label": "dusk bot: licensing",
+      "label": "Metal: licensing",
       "url": "/docs/faq"
     },
     {
@@ -135,7 +135,7 @@
       "checked": "2026-11-12"
     },
     {
-      "label": "dusk bot: personal use and ai billing",
+      "label": "Metal: personal use and ai billing",
       "url": "/docs/account-and-billing"
     }
   ],

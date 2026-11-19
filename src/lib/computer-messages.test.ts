@@ -18,7 +18,7 @@ describe("computer problems in the panel", () => {
 
   it("keeps the server's own short sentences", () => {
     for (const plain of [
-      "The dusk bot VPS container is stopped",
+      "The Metal VPS container is stopped",
       "Docker over SSH could not reach the VPS; check the SSH alias and Docker on the VPS",
       "This computer couldn't be set up yet. It tries again by itself; try again in a few minutes.",
     ]) {

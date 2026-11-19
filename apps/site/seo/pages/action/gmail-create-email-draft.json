@@ -16,7 +16,7 @@
   "updated": "2026-11-12",
   "review": {
     "status": "approved",
-    "by": "lead agent, against dusk bot docs and the composio gmail catalog",
+    "by": "lead agent, against Metal docs and the composio gmail catalog",
     "at": "2026-11-12"
   },
   "tags": [
@@ -88,15 +88,15 @@
   ],
   "sources": [
     {
-      "label": "dusk bot docs: files and apps",
+      "label": "Metal docs: files and apps",
       "url": "/docs/files-and-apps"
     },
     {
-      "label": "dusk bot docs: memory",
+      "label": "Metal docs: memory",
       "url": "/docs/memory"
     },
     {
-      "label": "dusk bot docs: a bot's computer, asking first",
+      "label": "Metal docs: a bot's computer, asking first",
       "url": "/docs/computer"
     }
   ],

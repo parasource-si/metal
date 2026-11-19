@@ -63,9 +63,9 @@ For the same by hand:
 
 ```sh
 node --experimental-strip-types scripts/control-dusk.ts launch
-pnpm control:dusk new-bot --name Probe --url http://127.0.0.1:PORT
-pnpm control:dusk send --bot BOT_ID --text "hello" --url http://127.0.0.1:PORT
-pnpm control:dusk wait --bot BOT_ID --timeout 30 --url http://127.0.0.1:PORT
+pnpm control:metal new-bot --name Probe --url http://127.0.0.1:PORT
+pnpm control:metal send --bot BOT_ID --text "hello" --url http://127.0.0.1:PORT
+pnpm control:metal wait --bot BOT_ID --timeout 30 --url http://127.0.0.1:PORT
 cat DATA_DIR/usage/$(date -u +%Y-%m).jsonl
 ```
 
@@ -84,7 +84,7 @@ teammate that calls two agents tools, then reads `GET /api/usage/traces` and
 `GET /api/usage/traces/:id`: one root, the teammate's turn and the Chief's resumed
 turn nested under the first, each tool timed by the server, and totals that add
 up. The unit tests cover nesting, timing, a tool still open at the end of its
-turn, dusk bot receipts against engine events, Codex's thread totals, old untimed
+turn, Metal receipts against engine events, Codex's thread totals, old untimed
 rows, groups, a parent loop, 2,000 tool calls in one turn and a 500-span trace
 read from disk.
 

@@ -1,6 +1,6 @@
 // A move to the person's own Cloud carries this computer's connections, end to end: this computer's server and a Cloud
 // home (scripts/testing/cloud-send-fixture.ts), main's own functions between them (electron/cloud-connections.mjs) over
-// the private port and the owner session, dusk bot's connected-apps service with a fake Composio behind it, a fake
+// the private port and the owner session, Metal's connected-apps service with a fake Composio behind it, a fake
 // sign-in server for an MCP server's own account. Disposable homes; no network.
 import { openMcpOAuthFile } from "./mcp-oauth-store.ts";
 import { createHash, randomBytes } from "node:crypto";

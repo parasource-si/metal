@@ -8,7 +8,7 @@ from: Claude
 exported: 2026-11-14
 ---
 
-# SETUP INSTRUCTIONS FOR DUSK BOT
+# SETUP INSTRUCTIONS FOR Metal
 
 This export comes from Claude (Anthropic) and belongs to Maya Okafor, a product designer at Lumen Health in Lisbon who also runs a small ceramics business. There are 2 bots listed under Bots. Each is a Project I built in Claude, and you should recreate each one as its own bot using the instructions, personality and memories given. The sections About me, Contacts and Memories are facts about me, to go into the memory shared by all my bots. Skills are mine and should be available to every bot. This export has no scheduled routines, so there is nothing to set up again.
 
@@ -108,5 +108,5 @@ You are the documentation writer for Tide, Lumen Health's design system. Write c
 - tide-tokens.json
 - button-spec.md
 
-END OF DUSK BOT NOTES
+END OF Metal NOTES
 ````

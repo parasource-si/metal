@@ -4,7 +4,7 @@
   "title": "ChatGPT agent alternatives now that Work has replaced it",
   "nav": "chatgpt agent",
   "h1": "chatgpt agent is gone: compare work with a team of bots",
-  "description": "ChatGPT Work replaced agent mode. Compare the current option with dusk bot on local work, models, phone access and shared usage limits.",
+  "description": "ChatGPT Work replaced agent mode. Compare the current option with Metal on local work, models, phone access and shared usage limits.",
   "keyword": "chatgpt agent alternative",
   "keywords": [
     "chatgpt agent review",
@@ -56,11 +56,11 @@
     ]
   },
   "compare": {
-    "h": "the current comparison: work and dusk bot",
+    "h": "the current comparison: work and Metal",
     "intro": "**compare today's work, not yesterday's agent caps.** status and prices are as of 12 november 2026. old agent message limits aren't work allowances.",
     "cols": [
       "ChatGPT Work",
-      "dusk bot"
+      "Metal"
     ],
     "rows": [
       {
@@ -147,7 +147,7 @@
       }
     ]
   },
-  "method": "**here's what you're buying in each app.** we make dusk bot. we compared openai's pages checked on 12 november 2026 with our own docs.\n\nthese are feature and price comparisons; we didn't run matching tasks. work has its own usage rules, so retired agent message caps don't belong in the budget.",
+  "method": "**here's what you're buying in each app.** Metal is based on Dusk Bot. we compared openai's pages checked on 12 november 2026 with our own docs.\n\nthese are feature and price comparisons; we didn't run matching tasks. work has its own usage rules, so retired agent message caps don't belong in the budget.",
   "sections": [
     {
       "h": "your old agent guide might be the problem",
@@ -208,35 +208,35 @@
       "checked": "2026-11-12"
     },
     {
-      "label": "dusk bot: getting started",
+      "label": "Metal: getting started",
       "url": "/docs/getting-started"
     },
     {
-      "label": "dusk bot: dusk cloud",
+      "label": "Metal: dusk cloud",
       "url": "/docs/dusk-cloud"
     },
     {
-      "label": "dusk bot: bots",
+      "label": "Metal: bots",
       "url": "/docs/bots"
     },
     {
-      "label": "dusk bot: account and billing",
+      "label": "Metal: account and billing",
       "url": "/docs/account-and-billing"
     },
     {
-      "label": "dusk bot: phone",
+      "label": "Metal: phone",
       "url": "/docs/phone"
     },
     {
-      "label": "dusk bot: files and apps",
+      "label": "Metal: files and apps",
       "url": "/docs/files-and-apps"
     },
     {
-      "label": "dusk bot: group chats",
+      "label": "Metal: group chats",
       "url": "/docs/group-chats"
     },
     {
-      "label": "dusk bot: routines",
+      "label": "Metal: routines",
       "url": "/docs/routines"
     }
   ],

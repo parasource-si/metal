@@ -82,11 +82,11 @@
   ],
   "sources": [
     {
-      "label": "dusk bot docs: event routines and run history",
+      "label": "Metal docs: event routines and run history",
       "url": "/docs/routines"
     },
     {
-      "label": "dusk bot docs: app permissions",
+      "label": "Metal docs: app permissions",
       "url": "/docs/files-and-apps"
     },
     {

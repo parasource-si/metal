@@ -4,7 +4,7 @@
   "title": "Outlook AI assistant for meeting mail and follow-ups",
   "nav": "outlook",
   "h1": "an outlook bot for the mail around your meetings",
-  "description": "Use dusk bot with Outlook to prepare meeting context, find promised replies and review folders. See the actual actions and where approvals apply.",
+  "description": "Use Metal with Outlook to prepare meeting context, find promised replies and review folders. See the actual actions and where approvals apply.",
   "keyword": "claude outlook",
   "keywords": [
     "outlook mcp",
@@ -134,19 +134,19 @@
   ],
   "sources": [
     {
-      "label": "dusk bot docs: connected accounts",
+      "label": "Metal docs: connected accounts",
       "url": "/docs/files-and-apps"
     },
     {
-      "label": "dusk bot docs: routines",
+      "label": "Metal docs: routines",
       "url": "/docs/routines"
     },
     {
-      "label": "dusk bot docs: sending permission",
+      "label": "Metal docs: sending permission",
       "url": "/docs/computer"
     },
     {
-      "label": "dusk bot docs: phone pairing",
+      "label": "Metal docs: phone pairing",
       "url": "/docs/phone"
     }
   ],

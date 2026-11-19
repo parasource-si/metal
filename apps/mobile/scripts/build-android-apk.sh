@@ -37,7 +37,7 @@ out_dir="${DUSK_ANDROID_APK_OUT:-$HOME/Desktop/dusk-android}"
 
 cd "$repo"
 echo "== web bundle"
-pnpm --filter @duskbot/mobile build
+pnpm --filter @metal/mobile build
 echo "== release gate"
 node apps/mobile/scripts/release-gate.mjs
 echo "== cap sync android"
@@ -56,7 +56,7 @@ done
 [ -n "$built" ] || { echo "error: gradle finished but no apk in $built_dir" >&2; exit 1; }
 
 mkdir -p "$out_dir"
-apk="$out_dir/dusk-bot-$DUSK_ANDROID_VERSION_NAME.apk"
+apk="$out_dir/Metal-$DUSK_ANDROID_VERSION_NAME.apk"
 work=$(mktemp -d)
 trap 'rm -rf "$work"' EXIT
 aligned="$work/aligned.apk"

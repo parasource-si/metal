@@ -130,7 +130,7 @@ function claudeTurn(cwd: string, argv: string[]): Promise<string[]> {
   });
 }
 
-/** The real Claude Code CLI, launched the way dusk bot launches it (project settings only, only the given MCP servers),
+/** The real Claude Code CLI, launched the way Metal launches it (project settings only, only the given MCP servers),
  * with its built-in tools off and the case's mocked tools, its own Bash and file tools included, as its one MCP server. */
 async function playClaude(c: Case): Promise<Trace> {
   const cwd = mkdtempSync(join(tmpdir(), "task-fidelity-"));

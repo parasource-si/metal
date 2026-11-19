@@ -49,7 +49,7 @@ describe("pairing devices from a hosted server's settings", () => {
     expect(pairingBlockedReason({ kind: "unauthenticated", error: "pair" })).toBeNull();
     const html = renderToStaticMarkup(createElement(ServerPairingCard, { initialSession: chatOnly }));
     expect(html).toContain("data-server-pairing-chat-only");
-    expect(html).toContain("duskbot pair");
+    expect(html).toContain("metal pair");
     expect(html).not.toContain("Create pairing code");
     const admin = renderToStaticMarkup(createElement(ServerPairingCard, { initialSession: { ...chatOnly, scopes: ["admin", "client"] } }));
     expect(admin).toContain("Create pairing code");
@@ -61,7 +61,7 @@ describe("pairing devices from a hosted server's settings", () => {
     expect(html).not.toContain("data-phone-pairing-action");
   });
 
-  it("on a dusk bot Cloud home, which is personal, offers no chat-only choice, lists only the owner's devices, and says why in one line", () => {
+  it("on a dusk cloud home, which is personal, offers no chat-only choice, lists only the owner's devices, and says why in one line", () => {
     const admin = { kind: "session" as const, id: "s", label: "Mac", scopes: ["admin", "client"], expiresAt: 1 };
     const cloud = renderToStaticMarkup(createElement(ServerPairingCard, { initialSession: admin, cloudHome: true }));
     expect(cloud).toContain("Create pairing code");

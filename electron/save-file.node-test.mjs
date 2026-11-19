@@ -272,7 +272,7 @@ describe("openLogsFolder", () => {
   it("opens exactly main's own logs folder, making it first, and says where it is when the system cannot open it", async () => {
     const root = fs.mkdtempSync(path.join(os.tmpdir(), "dusk-logs-folder-"));
     try {
-      const folder = path.join(root, "dusk bot", "logs");
+      const folder = path.join(root, "Metal", "logs");
       const opened = [];
       assert.deepEqual(await openLogsFolder(folder, { open: async (target) => { opened.push(target); return ""; } }), { folder, opened: true });
       assert.deepEqual(opened, [folder]);

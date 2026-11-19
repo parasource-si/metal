@@ -4,7 +4,7 @@
   "title": "Claude Code from your phone: remote control or bot chat",
   "nav": "claude code from your phone",
   "h1": "claude code from your phone: three ways in",
-  "description": "Compare Claude Remote Control, cloud sessions and a dusk bot you text, with pairing steps and a clear account of what must stay on.",
+  "description": "Compare Claude Remote Control, cloud sessions and a Metal bot you text, with pairing steps and a clear account of what must stay on.",
   "keyword": "claude code mobile",
   "keywords": [
     "claude code on phone",
@@ -70,7 +70,7 @@
       {
         "label": "dusk paired with your computer",
         "cells": [
-          "the computer running dusk bot",
+          "the computer running Metal",
           "a chat with your bot while that computer is on and dusk is running"
         ],
         "src": [
@@ -102,7 +102,7 @@
     },
     {
       "h": "dusk gives the work a named bot",
-      "md": "**text the same teammate tomorrow, with its memory intact.** a dusk bot has a name, a job, its own chats and memory, and the ai you choose.[^4]\n\nchoose claude code and dusk runs that official command-line app where the bot lives. you complete the sign-in yourself.[^6]\n\nkeep planning and document review as separate jobs, with different memories or ais. changing a bot's ai keeps its chats, files and memory.[^4]\n\nchoose dusk for continuing work with a teammate you text. use remote control to reach a particular session."
+      "md": "**text the same teammate tomorrow, with its memory intact.** a Metal bot has a name, a job, its own chats and memory, and the ai you choose.[^4]\n\nchoose claude code and dusk runs that official command-line app where the bot lives. you complete the sign-in yourself.[^6]\n\nkeep planning and document review as separate jobs, with different memories or ais. changing a bot's ai keeps its chats, files and memory.[^4]\n\nchoose dusk for continuing work with a teammate you text. use remote control to reach a particular session."
     },
     {
       "h": "phone access does not change provider terms",
@@ -143,19 +143,19 @@
       "checked": "2026-11-12"
     },
     {
-      "label": "dusk bot: phone pairing",
+      "label": "Metal: phone pairing",
       "url": "/docs/phone"
     },
     {
-      "label": "dusk bot: bots",
+      "label": "Metal: bots",
       "url": "/docs/bots"
     },
     {
-      "label": "dusk bot: dusk cloud",
+      "label": "Metal: dusk cloud",
       "url": "/docs/dusk-cloud"
     },
     {
-      "label": "dusk bot: getting started",
+      "label": "Metal: getting started",
       "url": "/docs/getting-started"
     },
     {
@@ -164,7 +164,7 @@
       "checked": "2026-11-12"
     },
     {
-      "label": "dusk bot: computer and approvals",
+      "label": "Metal: computer and approvals",
       "url": "/docs/computer"
     }
   ],

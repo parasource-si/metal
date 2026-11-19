@@ -5,7 +5,7 @@ const NAME = /^[a-z][a-z0-9_]{0,39}$/;
 
 /** Takes this computer's experience signals from the local server (GET /api/dashboard/experience) and hands each to the
  * product events as an app_action with its own time. Only while the page sends its own events (usage analytics on); the
- * server keeps none while "help improve dusk bot" is off. */
+ * server keeps none while "help improve Metal" is off. */
 export function createExperienceRelay({ localRequest, events, setTimer = setTimeout, clearTimer = clearTimeout }) {
   let timer = null, closed = false, running = null;
 

@@ -4,7 +4,7 @@
   "title": "Shopify AI assistant for stock and fulfilment reviews",
   "nav": "shopify",
   "h1": "a shopify assistant for stock and fulfilment exceptions",
-  "description": "Review Shopify stock, draft orders and fulfilment work with dusk bot. See the custom sign-in requirement and routines that leave store records unchanged.",
+  "description": "Review Shopify stock, draft orders and fulfilment work with Metal. See the custom sign-in requirement and routines that leave store records unchanged.",
   "answer": "**see the stock shortage before you promise the order.** the bot can read shopify orders, location inventory and draft orders, then bring you a short exception list. start with the specific read actions. connecting shopify takes your own composio project key and sign-in setup; there is no managed sign-in here. add store writes only when the review gives you a reason.",
   "tags": [
     "ecommerce",
@@ -123,15 +123,15 @@
   ],
   "sources": [
     {
-      "label": "dusk bot docs: files and apps",
+      "label": "Metal docs: files and apps",
       "url": "/docs/files-and-apps"
     },
     {
-      "label": "dusk bot docs: routines",
+      "label": "Metal docs: routines",
       "url": "/docs/routines"
     },
     {
-      "label": "dusk bot docs: permissions and sends",
+      "label": "Metal docs: permissions and sends",
       "url": "/docs/computer"
     }
   ],

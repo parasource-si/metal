@@ -4,8 +4,8 @@
   "title": "WhatsApp Business AI assistant for replies and reminders",
   "nav": "whatsapp",
   "h1": "a whatsapp business bot for replies and reminders",
-  "description": "Get WhatsApp Business templates and customer reply drafts ready with a dusk bot. Review message status and business details from the connected account.",
-  "answer": "**get customer replies ready before the support handover.** a dusk bot can inspect available whatsapp business history, read template status and prepare replies here. start read only while you review the results.[^3] this uses whatsapp business, so personal chats stay outside it. to text your own bots from a phone, use dusk's separate phone connection.",
+  "description": "Get WhatsApp Business templates and customer reply drafts ready with a Metal bot. Review message status and business details from the connected account.",
+  "answer": "**get customer replies ready before the support handover.** a Metal bot can inspect available whatsapp business history, read template status and prepare replies here. start read only while you review the results.[^3] this uses whatsapp business, so personal chats stay outside it. to text your own bots from a phone, use dusk's separate phone connection.",
   "tags": [
     "business-messaging",
     "customer-support",
@@ -122,19 +122,19 @@
   ],
   "sources": [
     {
-      "label": "dusk bot docs: files and apps",
+      "label": "Metal docs: files and apps",
       "url": "/docs/files-and-apps"
     },
     {
-      "label": "dusk bot docs: routines",
+      "label": "Metal docs: routines",
       "url": "/docs/routines"
     },
     {
-      "label": "dusk bot docs: approval and sending",
+      "label": "Metal docs: approval and sending",
       "url": "/docs/computer"
     },
     {
-      "label": "dusk bot docs: phone",
+      "label": "Metal docs: phone",
       "url": "/docs/phone"
     }
   ],

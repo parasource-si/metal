@@ -202,7 +202,7 @@ export function ranOf(report: UsageReport, from?: { kind?: string; version?: str
 
 export function createUsage(options: {
   store: UsageStore; now?: () => number;
-  /** the account turned "help improve dusk bot" off */
+  /** the account turned "help improve Metal" off */
   optedOut(accountId: string): boolean;
   /** a frustration group seen for the first time ever */
   newProblem?(group: { key: string; example: string | null; count: number }): void;

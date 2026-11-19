@@ -23,6 +23,7 @@ test('the site server streams a mirrored release file, whole or from a byte, and
   mkdirSync(join(mirror, '1.2.3'));
   const bytes = Buffer.from('0123456789abcdef');
   writeFileSync(join(mirror, '1.2.3', 'DuskBot-1.2.3-arm64.zip'), bytes);
+  writeFileSync(join(mirror, '1.2.3', 'Metal-1.2.3-arm64.zip'), bytes);
   writeFileSync(join(mirror, '1.2.3', 'secret.txt'), 'no');
   const port = 20000 + Math.floor(Math.random() * 20000);
   const server = spawn(process.execPath, ['server.js', 'landing'], { cwd: new URL('.', import.meta.url), env: { ...process.env, PORT: String(port), DUSK_RELEASE_MIRROR: mirror, MONGODB_URI: '' }, stdio: ['ignore', 'pipe', 'inherit'] });
@@ -30,7 +31,7 @@ test('the site server streams a mirrored release file, whole or from a byte, and
   await new Promise((resolve) => server.stdout.once('data', resolve));
   const base = `http://127.0.0.1:${port}/releases/1.2.3`;
 
-  const whole = await fetch(`${base}/DuskBot-1.2.3-arm64.zip`);
+  const whole = await fetch(`${base}/Metal-1.2.3-arm64.zip`);
   assert.equal(whole.status, 200);
   assert.equal(whole.headers.get('accept-ranges'), 'bytes');
   assert.match(whole.headers.get('cache-control'), /immutable/);

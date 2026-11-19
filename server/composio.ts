@@ -841,7 +841,7 @@ export async function prepareConnectionAuthConfigs(
 
 /** connecting an app from the dashboard on a computer with no Composio project key and no managed service: its own app
  *  connects it (Composio Connect, a sign-in in the browser on that computer); a dusk cloud uses cloud-composio-connect.ts */
-export const NO_APPS_SERVICE = "Connect this app from the dusk bot app on this computer, under apps. It signs in to your own Composio there.";
+export const NO_APPS_SERVICE = "Connect this app from the Metal app on this computer, under apps. It signs in to your own Composio there.";
 
 /** `callbackUrl`: where Composio sends the browser once the sign-in ends (status=success|failed appended); the answer says
  *  `returnsHere` only when the way used honours it */

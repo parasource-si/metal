@@ -115,7 +115,7 @@ export function lookForGrokBot(machine: SetupMachine, options: { downloads?: boo
   return { files: options.downloads === false ? [] : readExportFiles(machine), bots: rosterBots(machine) };
 }
 
-/** The notes another AI saved for dusk bot (NOTES_PROMPT asks for dusk-bot-notes.md in Downloads, an earlier prompt for
+/** The notes another AI saved for Metal (NOTES_PROMPT asks for dusk-bot-notes.md in Downloads, an earlier prompt for
  * .json; a browser numbers a second copy "dusk-bot-notes (1).md", and an app that can only save text may add .txt).
  * Only real files of that name, changed after `since`, at most NOTES_FILE_MAX bytes each; nothing else in Downloads is
  * opened. */

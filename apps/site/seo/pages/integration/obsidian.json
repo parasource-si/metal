@@ -4,13 +4,13 @@
   "title": "Obsidian AI assistant for a local markdown vault",
   "nav": "obsidian",
   "h1": "an obsidian helper that works with your note files",
-  "description": "Give a local bot in dusk bot your Obsidian vault as its project folder. Review markdown notes, plan changes and open the bot’s own memory in Obsidian.",
+  "description": "Give a local bot in Metal your Obsidian vault as its project folder. Review markdown notes, plan changes and open the bot’s own memory in Obsidian.",
   "keyword": "claude obsidian",
   "keywords": [
     "obsidian mcp",
     "claude obsidian vault"
   ],
-  "answer": "**your unanswered questions are scattered across notes you keep reopening.** give a local dusk bot the obsidian vault as its project folder and ask it to bring those questions together, with filenames. it works with markdown files, so there is no obsidian sign-in. the bot’s own memory opens in obsidian too, separately from your project vault.",
+  "answer": "**your unanswered questions are scattered across notes you keep reopening.** give a local Metal the obsidian vault as its project folder and ask it to bring those questions together, with filenames. it works with markdown files, so there is no obsidian sign-in. the bot’s own memory opens in obsidian too, separately from your project vault.",
   "updated": "2026-11-12",
   "review": {
     "status": "approved",
@@ -84,7 +84,7 @@
   "faq": [
     {
       "q": "can claude read my obsidian vault?",
-      "a": "**yes, through files you choose.** a dusk bot using your chosen ai can read a local project vault. name the notes and request no changes for a reading job."
+      "a": "**yes, through files you choose.** a Metal bot using your chosen ai can read a local project vault. name the notes and request no changes for a reading job."
     },
     {
       "q": "do i need an obsidian mcp server?",
@@ -97,31 +97,31 @@
   ],
   "sources": [
     {
-      "label": "dusk bot docs: files and project folders",
+      "label": "Metal docs: files and project folders",
       "url": "/docs/files-and-apps"
     },
     {
-      "label": "dusk bot docs: memory files",
+      "label": "Metal docs: memory files",
       "url": "/docs/memory"
     },
     {
-      "label": "dusk bot docs: file approval levels",
+      "label": "Metal docs: file approval levels",
       "url": "/docs/computer"
     },
     {
-      "label": "dusk bot docs: routines",
+      "label": "Metal docs: routines",
       "url": "/docs/routines"
     },
     {
-      "label": "dusk bot docs: privacy",
+      "label": "Metal docs: privacy",
       "url": "/docs/privacy-and-data"
     },
     {
-      "label": "dusk bot docs: local models",
+      "label": "Metal docs: local models",
       "url": "/docs/getting-started"
     },
     {
-      "label": "dusk bot docs: shared cloud folders",
+      "label": "Metal docs: shared cloud folders",
       "url": "/docs/dusk-cloud"
     }
   ],

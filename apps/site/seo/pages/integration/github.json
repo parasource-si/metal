@@ -4,7 +4,7 @@
   "title": "GitHub AI assistant for issues, pull requests and releases",
   "nav": "github",
   "h1": "a github bot that reads the work before you weigh in",
-  "description": "Give a bot in dusk bot a GitHub repo to follow. Get issue triage, pull request context and release notes, with clear limits on what it can change.",
+  "description": "Give a bot in Metal a GitHub repo to follow. Get issue triage, pull request context and release notes, with clear limits on what it can change.",
   "keyword": "claude github",
   "keywords": [
     "chatgpt github",
@@ -12,7 +12,7 @@
     "github ai agent",
     "github mcp"
   ],
-  "answer": "**walk into standup knowing why the pull request stalled.** connect github to a dusk bot for issue context, changed files and release outlines. choose claude, chatgpt or another ai. a read-only bot brings the findings here. add labels, assignments or comments later, once you want it to act on the queue as well as read it.",
+  "answer": "**walk into standup knowing why the pull request stalled.** connect github to a Metal bot for issue context, changed files and release outlines. choose claude, chatgpt or another ai. a read-only bot brings the findings here. add labels, assignments or comments later, once you want it to act on the queue as well as read it.",
   "updated": "2026-11-12",
   "review": {
     "status": "approved",
@@ -136,19 +136,19 @@
   ],
   "sources": [
     {
-      "label": "dusk bot docs: files and apps",
+      "label": "Metal docs: files and apps",
       "url": "/docs/files-and-apps"
     },
     {
-      "label": "dusk bot docs: routines",
+      "label": "Metal docs: routines",
       "url": "/docs/routines"
     },
     {
-      "label": "dusk bot docs: permissions and sends",
+      "label": "Metal docs: permissions and sends",
       "url": "/docs/computer"
     },
     {
-      "label": "dusk bot docs: bots",
+      "label": "Metal docs: bots",
       "url": "/docs/bots"
     }
   ],

@@ -168,7 +168,7 @@ describe("the automatic sweep", () => {
     expect(existsSync(system)).toBe(true);
   });
 
-  it("never follows a link out of dusk bot's own folder", async () => {
+  it("never follows a link out of Metal's own folder", async () => {
     const dataDir = tempRoot("links");
     const outside = tempRoot("outside");
     const precious = unpackFolder(outside, hexName(0x2222));
@@ -182,7 +182,7 @@ describe("the automatic sweep", () => {
     expect(existsSync(join(precious, "google3", "payload.bin"))).toBe(true);
   });
 
-  it("never follows a linked tmp folder out of dusk bot's own folder", async () => {
+  it("never follows a linked tmp folder out of Metal's own folder", async () => {
     const dataDir = tempRoot("linked-tmp");
     const outside = tempRoot("outside-tmp");
     const precious = unpackFolder(join(outside, "agy", antigravityTempDir(dataDir, "work").slice(-12)), hexName(0x2222));

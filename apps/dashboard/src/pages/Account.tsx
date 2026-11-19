@@ -117,7 +117,7 @@ export function AccountPage() {
         const Icon = device.kind === "desktop" ? Monitor : device.kind === "phone" ? Smartphone : Globe;
         return <li key={device.id} className="py-3"><div className="flex flex-wrap items-center gap-3"><Icon {...ICON} className="shrink-0 text-ink-3" aria-hidden /><div className="min-w-0 flex-1"><p className="truncate text-14 text-ink">{device.label}</p><p className="text-13 text-ink-3">{[device.platform, device.current ? "active now" : `last active ${ago(device.lastSeenAt, now)}`].filter(Boolean).join(" · ")}</p></div>{device.current ? <span className="text-13 text-ink-3">this device</span> : <Button size="sm" variant="ghost" className="-me-3.5" disabled={busy !== null} onClick={() => void revoke(device.id)}>{busy === `device-${device.id}` ? "revoking" : "revoke"}</Button>}</div>{deviceError?.id === device.id && <p role="alert" className="mt-2 text-13 text-bad">{deviceError.message}</p>}</li>;
       })}</ul> : <p className="text-14 text-ink-3">no devices reported yet.</p>}
-      <p data-phone-app="" className="mt-4 text-13 text-ink-3">{PHONE_APP} <a href={IOS_APP_URL} target="_blank" rel="noreferrer" className="text-link">get it on the app store</a></p>
+      <p data-phone-app="" className="mt-4 text-13 text-ink-3">{PHONE_APP} <a href={IOS_APP_URL} target="_blank" rel="noreferrer" className="text-link">upstream Dusk Bot on the App Store</a></p>
       <Button variant="ghost" className="-ms-4 mt-4" disabled={busy !== null} onClick={() => { setConfirmError(null); setConfirm("signout"); }}>sign out everywhere</Button>
     </section>
     <section className="mt-10" aria-labelledby="notifications-title">
@@ -155,7 +155,7 @@ export function AccountPage() {
   </div>;
 }
 
-/** the one "help improve dusk bot" switch, on unless turned off here */
+/** the one "help improve Metal" switch, on unless turned off here */
 function DataSharing() {
   const [state, setState] = useState<{ optOut: boolean } | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -164,7 +164,7 @@ function DataSharing() {
     setError(null);
     try { setState(await api.setDataSharing({ optOut: !on })); } catch { setError("could not save that. try again."); }
   };
-  const label = "help improve dusk bot";
+  const label = "help improve Metal";
   return (
     <section className="mt-10" aria-labelledby="data-sharing-title">
       <SectionTitle id="data-sharing-title">privacy</SectionTitle>

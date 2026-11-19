@@ -50,9 +50,9 @@ test("a failed wake says why instead of spinning", async () => {
 test("a failing detail read shows the error with retry at once", async () => {
   const { NumbersPending } = await import("./numbers-pending");
   const retry = vi.fn();
-  const host = await render(createElement(NumbersPending, { cloud: { ...resting, resting: undefined }, error: "could not reach dusk bot.", retry }));
+  const host = await render(createElement(NumbersPending, { cloud: { ...resting, resting: undefined }, error: "could not reach Metal.", retry }));
   expect(host.querySelector(".skeleton")).toBeNull();
-  expect(host.textContent).toContain("could not reach dusk bot.");
+  expect(host.textContent).toContain("could not reach Metal.");
   await act(async () => { button(host, "retry")!.click(); });
   expect(retry).toHaveBeenCalled();
 });

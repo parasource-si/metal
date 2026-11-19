@@ -1,7 +1,7 @@
 import { globSync } from "node:fs";
 import path from "node:path";
 
-// Most e2e files drive dusk bot's own logic through a real server and fake engines, which is the same on every OS, so CI
+// Most e2e files drive Metal's own logic through a real server and fake engines, which is the same on every OS, so CI
 // runs them on Linux only. The files below also run on the Windows and macOS shards, which set DUSK_VITEST_E2E=host:
 // each one either has a test that never runs on Linux or depends on how the OS treats paths, processes or Chrome.
 export const E2E = /\.e2e\.test\.[cm]?[jt]s$/;

@@ -83,7 +83,7 @@ export interface SettingsSyncDeps {
   config(): AppConfig;
   /** Saves a settings patch as Settings would, with every check and effect a save has. */
   saveConfig(patch: Record<string, unknown>): Promise<Applied>;
-  /** "Help improve dusk bot". */
+  /** "Help improve Metal". */
   usageSignals?: { get(): boolean; set(enabled: boolean): void };
   /** Which account each app uses by default, when it has more than one. */
   appAccounts?: { defaults(): Record<string, string>; set(slug: string, accountId: string | null): void };

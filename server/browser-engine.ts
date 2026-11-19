@@ -283,7 +283,7 @@ export async function prepareBrowserSessionState(
 }
 
 export type BrowserEngineStatus =
-  /** `managed`: the engine dusk bot installed (bundled or pinned), not one named by DUSK_AGENT_BROWSER_PATH or found on PATH. */
+  /** `managed`: the engine Metal installed (bundled or pinned), not one named by DUSK_AGENT_BROWSER_PATH or found on PATH. */
   | { kind: "ready"; binaryPath: string; version: string; managed: boolean; warning?: string }
   | { kind: "unavailable"; reason: string; installable: boolean };
 
@@ -556,7 +556,7 @@ export function browserEngineStatus(options: BrowserLookupOptions = {}): Browser
     return { kind: "ready", binaryPath, version, managed, ...(warning ? { warning } : {}) };
   }
   if (bundle && (options.exists ?? existsSync)(bundle.directory)) {
-    return { kind: "unavailable", reason: "The desktop browser bundle is incomplete. Reinstall or update dusk bot to repair it.", installable: false };
+    return { kind: "unavailable", reason: "The desktop browser bundle is incomplete. Reinstall or update Metal to repair it.", installable: false };
   }
   if (browserPartPending(options.env ?? process.env)) {
     return { kind: "unavailable", reason: "The built-in browser is still downloading. It will be ready in a moment.", installable: true };
@@ -598,7 +598,7 @@ export function agentBrowserIntegration(input: {
   /** The person's own Chrome: agent-browser auto-connects (DevToolsActivePort, then ports 9222/9229) or uses `cdpUrl`, which
    * comes only from workspace config, never the ambient environment. */
   attach?: { cdpUrl?: string };
-  /** The Chrome dusk bot prepared for the engine to start (server/browser/chrome/launcher.ts); unused when attaching. */
+  /** The Chrome Metal prepared for the engine to start (server/browser/chrome/launcher.ts); unused when attaching. */
   launcher?: Record<string, string>;
   dataDir?: string;
 }): { command: string; args: string[]; env: Record<string, string> } {
@@ -617,7 +617,7 @@ export function agentBrowserIntegration(input: {
   // Headless on a displayless Linux host; an explicit AGENT_BROWSER_HEADED=0 also brings back headless a daemon that kept a headed launch config.
   const displayless = (input.platform ?? process.platform) === "linux" && !sourceEnv.DISPLAY && !sourceEnv.WAYLAND_DISPLAY;
   if (input.attach) {
-    // The person's Chrome keeps its own sign-ins: restoring or saving would copy cookies between it and dusk bot's store.
+    // The person's Chrome keeps its own sign-ins: restoring or saving would copy cookies between it and Metal's store.
     if (input.attach.cdpUrl) env.AGENT_BROWSER_CDP = input.attach.cdpUrl;
     else env.AGENT_BROWSER_AUTO_CONNECT = "1";
     env.AGENT_BROWSER_RESTORE_SAVE = "never";

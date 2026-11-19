@@ -105,11 +105,11 @@ describe("platformLabel", () => {
 describe("outward links", () => {
   it("sends Help Center to the docs the website also links to", () => {
     expect(HELP_CENTER_URL).toBe(DOCS_URL);
-    expect(DOCS_URL).toBe("https://dusk.bot/docs");
+    expect(DOCS_URL).toBe("https://github.com/parasource-si/metal/tree/main/docs");
   });
 
-  it("sends Send Feedback to the Discord community", () => {
-    expect(FEEDBACK_URL).toBe("https://discord.gg/9Wb8MEpXRs");
+  it("sends Send Feedback to the Metal issue tracker", () => {
+    expect(FEEDBACK_URL).toBe("https://github.com/parasource-si/metal/issues");
   });
 });
 
@@ -173,7 +173,7 @@ describe("the phone entries", () => {
 
   it("never offers the iOS-only entry it replaced", () => {
     for (const target of ["computer", "server"] as const) {
-      expect(items(target, null).list.map((item) => item.label)).not.toContain("Get dusk bot for iOS");
+      expect(items(target, null).list.map((item) => item.label)).not.toContain("Get Metal for iOS");
     }
   });
 
@@ -267,7 +267,7 @@ describe("profileMenuItems", () => {
     phone: [{ key: "phone-app", label: "Get the phone app", onSelect: noop }],
     usage: true,
     update: null,
-    account: "dusk bot Cloud",
+    account: "dusk cloud",
     onUsage: noop, onSettings: noop, onShortcuts: noop, onAbout: noop, onHelp: noop, onFeedback: noop, onAccount: noop,
     ...patch,
   });
@@ -277,7 +277,7 @@ describe("profileMenuItems", () => {
     expect(items.map((item) => item.key)).toEqual(["usage", "phone-app", "support", "feedback", "settings", "account"]);
     expect(items.filter((item) => item.separatorBefore).map((item) => item.key)).toEqual(["account"]);
     expect(items.find((item) => item.key === "support")!.submenu!.map((item) => item.key)).toEqual(["help", "shortcuts", "about"]);
-    expect(items.find((item) => item.key === "account")!.label).toBe("dusk bot Cloud");
+    expect(items.find((item) => item.key === "account")!.label).toBe("dusk cloud");
   });
 
   it("ends Support with start fresh in a developer build, never over the chat", async () => {
@@ -350,7 +350,7 @@ describe("Simple mode's account menu", () => {
   });
 
   it("raises an update that is ready or failed to its own top row with a pill, and keeps it out of support", () => {
-    const update = { key: "update", label: "Restart to update to dusk bot 0.2.0", subtitle: "notes", attention: true, onSelect: noop };
+    const update = { key: "update", label: "Restart to update to Metal 0.2.0", subtitle: "notes", attention: true, onSelect: noop };
     const items = build({ update, updateTop: { label: "update ready", action: "restart" } });
     expect(groups(items)[0]).toEqual(["update"]);
     expect(items[0]).toMatchObject({ label: "update ready", subtitle: undefined, attention: false });
@@ -420,7 +420,7 @@ describe("Simple mode's account menu", () => {
 
   it("puts the move's row first, in its own group, above a raised update", () => {
     const move = [{ key: "cloud-move", label: "Try moving to dusk cloud again", title: "My Cloud did not answer.", onSelect: noop }];
-    const update = { key: "update", label: "dusk bot 0.2.0 ready, restart", onSelect: noop };
+    const update = { key: "update", label: "Metal 0.2.0 ready, restart", onSelect: noop };
     expect(groups(build({ move }))).toEqual([
       ["cloud-move"],
       ["usage", "phone-app", "support", "feedback", "settings"],

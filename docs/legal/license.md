@@ -1,8 +1,8 @@
-## dusk bot license
+## Metal license
 
 Effective date: 12 November 2026. Last updated: 15 November 2026.
 
-dusk bot is source-available under the [PolyForm Noncommercial License 1.0.0](https://polyformproject.org/licenses/noncommercial/1.0.0). Source-available does not mean open source. You must follow the applicable license before using the software. This page is a summary. The full license text controls over this summary.
+Metal is source-available under the [PolyForm Noncommercial License 1.0.0](https://polyformproject.org/licenses/noncommercial/1.0.0). Source-available does not mean open source. You must follow the applicable license before using the software. This page is a summary. The full license text controls over this summary.
 
 Read the repository's [LICENSE](../../LICENSE) and [licensing guide](../LICENSING.md) for the exact terms and the distinction between this work and its upstream code. Your agreement for services does not expand the rights granted by the software license.
 
@@ -22,24 +22,17 @@ Commercial use needs a separate commercial license. Access to the source, an acc
 
 ## Commercial licensing
 
-Using dusk bot at or for a business needs a work license. You can add one on its own from the billing page of your account (from $12 a month for one person), or get one with a paid plan:
-
-- **Pro** includes a work license for one person for as long as the plan is active. It covers that person using the app at or for a business, on their own computer, their own server or their dusk cloud desktop.
-- **Team** license: $30 a month covers 2 seats, and each extra team member is $20 a month, up to 50. It includes a work license for each member, and you can add it yourself from the billing page of your account. The Team plan is $119 a month: the Team license with 2 seats ($30) and a dedicated dusk cloud machine with 8 vCPU, 16 GB RAM and a 160 GB disk ($89).
-
-Current prices are on the pricing page at dusk.bot/pricing. A work license from a plan ends when the plan ends. It grants the right to use the software for commercial purposes only. It does not grant rights to modify, distribute or sublicense the software.
-
-If you need more than that, such as more seats, modification or distribution rights, or different terms, email hello@dusk.bot with your company name, use case and number of seats, and describe the rights you need. Those licenses are agreed in writing case by case. Your permitted commercial use depends on that separate agreement.
+The [upstream license page](https://dusk.bot/license) lists the original copyright holder's commercial licensing contact. Any commercial use depends on the terms of a separate license.
 
 ## Required notice
 
-The repository's LICENSE starts with a Required Notice. It names the copyright holder and states that commercial use requires a separate license, with a link to this page. Anyone who gets a copy of any part of the software from you must also get that notice and the license terms or their URL, as the license requires.
+The repository's LICENSE starts with a Required Notice. It names the copyright holder and links to the upstream license page. Anyone who gets a copy of any part of the software from you must also get that notice and the license terms or their URL, as the license requires.
 
 Read the full license for its conditions, patent provisions, violation rules and warranty and liability terms. This summary does not replace any of them.
 
 ## Upstream and third-party notices
 
-Original code derived from OpenMausBot remains under Apache-2.0. You can find that license and its notices in [third_party/openmausbot](../../third_party/openmausbot). The work as a whole and changes made in this fork are covered by PolyForm Noncommercial, as the repository's licensing guide explains. Separate rights in upstream code do not relicense the entire dusk bot work.
+Original code derived from OpenMausBot remains under Apache-2.0. You can find that license and its notices in [third_party/openmausbot](../../third_party/openmausbot). The work as a whole and changes made in this fork are covered by PolyForm Noncommercial, as the repository's licensing guide explains. Separate rights in upstream code do not relicense the entire Metal work.
 
 Bundled third-party components keep their own licenses. Their notices are shipped in the app's licenses folder. Read those notices for each component's conditions. The OpenMausBot and MausBot names and mascot are trademarks of Supamaus Software Private Limited. Neither software license grants trademark rights.
 

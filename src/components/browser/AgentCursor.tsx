@@ -1,6 +1,6 @@
 // Adapted from pingdotgg/t3code@00cdceb1 apps/web/src/components/preview/AgentBrowserCursor.tsx (AgentCursorMark) and
 // agentBrowserCursorLogic.ts, MIT License, Copyright (c) 2026 T3 Tools Inc. (full text in third_party/t3-code/LICENSE);
-// modified: dusk bot's colours; glides on springs (x softer than y, so a long move arcs a little), one ring per click.
+// modified: Metal's colours; glides on springs (x softer than y, so a long move arcs a little), one ring per click.
 import { MousePointer2 } from "../../icons";
 import { useEffect, useState } from "react";
 import { motion } from "motion/react";

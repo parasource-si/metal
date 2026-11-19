@@ -78,7 +78,7 @@ export function createSlackProvisioner(deps: ProvisionDeps) {
         if (record.manifestHash !== hash) {
           await call("apps.manifest.update", configToken, { app_id: record.appId, manifest });
         }
-        record = patch(bot.id, { manifestHash: hash, redirectUri: redirectUrl, handle: (bot.name.trim() || "dusk bot").slice(0, 80) });
+        record = patch(bot.id, { manifestHash: hash, redirectUri: redirectUrl, handle: (bot.name.trim() || "Metal").slice(0, 80) });
       } else {
         const response = createSchema.safeParse(await call("apps.manifest.create", configToken, { manifest }));
         if (!response.success) throw new SlackApiError("bad_response");
@@ -87,7 +87,7 @@ export function createSlackProvisioner(deps: ProvisionDeps) {
           botId: bot.id, appId: app_id, teamId: workspace.teamId, clientId: credentials.client_id,
           clientSecret: credentials.client_secret, signingSecret: credentials.signing_secret,
           redirectUri: redirectUrl, manifestHash: hash, createdAt: now(),
-          handle: (bot.name.trim() || "dusk bot").slice(0, 80),
+          handle: (bot.name.trim() || "Metal").slice(0, 80),
         };
         store.putBot(record);
       }
@@ -117,7 +117,7 @@ export function createSlackProvisioner(deps: ProvisionDeps) {
       const result = response.data;
       if (result.app_id !== record.appId) throw new SlackApiError("wrong_app");
       if (result.team.id !== record.teamId) throw new SlackApiError("wrong_team");
-      let handle = record.handle || "dusk bot";
+      let handle = record.handle || "Metal";
       try {
         const user = z.object({ user: z.object({
           name: z.string().max(200).optional(), profile: z.object({ display_name: z.string().max(200).optional() }).optional(),

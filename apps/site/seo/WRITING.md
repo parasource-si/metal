@@ -18,7 +18,7 @@ the record carries what is this page's own. Read one finished exemplar of the sa
 ## fields every record has
 
 - `path`: the address, exactly as planned (seo/planned.json). `type`: the folder name.
-- `title`: the browser tab and search result title, 30 to 65 characters, sentence case, unique. No " · Dusk Bot" needed.
+- `title`: the browser tab and search result title, 30 to 65 characters, sentence case, unique. No " · Metal" needed.
 - `nav`: the short name in sidebars and breadcrumbs, lowercase.
 - `h1`: lowercase, like the site's headings, unique. Phrase it the way people search when that reads naturally.
 - `description`: 70 to 160 characters, unique, sentence case. Says what the page gives the reader.
@@ -31,7 +31,7 @@ the record carries what is this page's own. Read one finished exemplar of the sa
 - `og_line`: under 50 characters, lowercase, ends with a full stop; shown on the share card under the h1.
 - `sections`: `[{ "h": "lowercase heading", "md": "markdown" }]`. Markdown: paragraphs, `- lists`, `1. lists`, `**bold**`, `` `code` ``, `[words](/address)`, `| tables |`, `> note:` callouts, and `[^3]` to cite source 3.
 - `faq`: 2 to 4 `{ "q", "a" }` taken from how people actually ask (the plan's keywords, the Reddit phrasing in omb-ref/seo-research/03-keywords-competitors.md section 3). Plain content; there is no FAQ markup.
-- `sources`: `[{ "label", "url", "checked" }]`. Dusk Bot docs as `/docs/...` with no date. Every outside source needs `checked`. Integration pages get their Composio source added by the build; do not add it yourself.
+- `sources`: `[{ "label", "url", "checked" }]`. Metal docs as `/docs/...` with no date. Every outside source needs `checked`. Integration pages get their Composio source added by the build; do not add it yourself.
 
 ## voice (owner, 12 november 2026: "be more human and genuine, hit hard")
 
@@ -43,7 +43,7 @@ the build then holds it to the lint below.
 - **Short and active.** Sentences average under 17 words. Paragraphs stay under 60 words. "The bot files it", not
   "it is filed by the bot". "You", not "the user".
 - **Real pain, real trade-offs.** The laptop that dies at 2am. The morning brief that never came. The weekend lost to
-  VPS updates. Say when dusk bot is the wrong pick, and say it plainly.
+  VPS updates. Say when Metal is the wrong pick, and say it plainly.
 - **Opinions where they're honest.** "Most people overpay here." "Start with one bot, not five." "Don't hand it your
   bank yet." A little wit is fine; jokes that cost clarity are not.
 - **Make it scannable.** Bullets for lists. A tiny table for comparisons. Any maths goes in a `text` code block, one
@@ -75,7 +75,7 @@ Use the ones that are true for the page; leave the rest out. Each is a record fi
 
 ## facts
 
-- About Dusk Bot, use only `seo/facts/dusk.md`. If a claim is not there, leave it out.
+- About Metal, use only `seo/facts/dusk.md`. If a claim is not there, leave it out.
 - About an app's actions, use only `seo/facts/connectors/<toolkit>.json` (highlight action slugs that exist there).
 - About competitors, use only `seo/facts/competitors.json`, citing the `source_url` of each fact you use with its `checked` date. Skip facts marked low confidence or unknown. Say "as of 12 november 2026" where a price or status could change.
 - About AI vendors' own features and terms, use only `seo/facts/vendors.json` the same way.
@@ -83,7 +83,7 @@ Use the ones that are true for the page; leave the rest out. Each is a record fi
 
 ## claims the build refuses
 
-Never imply that an AI vendor endorses, approves or partners with Dusk Bot, and never call any AI free or unlimited (the
+Never imply that an AI vendor endorses, approves or partners with Metal, and never call any AI free or unlimited (the
 list is `SUBSCRIPTION` in `seo/quality.mjs`). Plain wording about using the AI subscription you already have is fine
 (owner, 2026-11-12). Pages about vendor terms state what the vendor's own page says, dated and linked, and tell people to
 check their provider's current terms.

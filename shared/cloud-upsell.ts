@@ -1,4 +1,4 @@
-// when someone is clearly invested in dusk bot, and the one place each dusk cloud upsell is counted from.
+// when someone is clearly invested in Metal, and the one place each dusk cloud upsell is counted from.
 // the app, the phone and the dashboard all read these, so a threshold changes in one place.
 
 /** owner approved: any one of these means a person is invested */

@@ -1,10 +1,10 @@
 # Bot checks and bot blocks
 
-What dusk bot does when a site puts up a wall: a Cloudflare "Just a moment" or "Performing security verification /
+What Metal does when a site puts up a wall: a Cloudflare "Just a moment" or "Performing security verification /
 Verifying..." page, a Turnstile, reCAPTCHA or hCaptcha, a PerimeterX or Akamai "press and hold", a DataDome page, an
 "unusual traffic" page, "access denied", a bare 403 or 429, or a "sign in to confirm you're not a bot" wall.
 
-The hard line: dusk bot never defeats bot detection. No clicking a check box to pass as a person, no solving services,
+The hard line: Metal never defeats bot detection. No clicking a check box to pass as a person, no solving services,
 no stealth patches that hide automation, no fingerprint spoofing. The recovery below only reads the page, reloads it and
 changes the network route.
 
@@ -49,7 +49,7 @@ first, then their tunnel, then our relay. Per-site routing reuses it unchanged:
 - Offline: the policy is removed and the site is back on the server's network by itself; it returns when the app says
   hello again. Streams that go over the relay count toward the account's relay fair use, as the relay already meters
   them.
-- dusk cloud homes have no link agent and no direct, tunnel or relay path: the app reaches them over their own https.
+- Dusk Cloud homes have no link agent and no direct, tunnel or relay path: the app reaches them over their own https.
   So the app keeps one websocket to My Cloud (`/api/computer/egress/link`, `electron/home-egress-link.mjs`, using its
   existing session cookie) only while the home is awake, never dialling a sleeping one awake, and hands it to the same
   egress endpoint. The home (`server/home-egress-link.ts`) carries those streams for the built-in browser's gate
@@ -83,7 +83,7 @@ Why it is not built yet:
   proxy, so the egress path cannot add headers without breaking TLS. An extension would be a second browser codebase
   to keep working.
 - **Registration needs a live public product.** Cloudflare reviews a submission and can revoke verified status for every
-  bot an organization runs after violations. dusk bot is an intermediary agent (each action comes from a different
+  bot an organization runs after violations. Metal is an intermediary agent (each action comes from a different
   person), so we would answer for every user's traffic. Before launch there is nothing to register.
 - **It does not guarantee a pass.** Each site decides what verified agents may do, and many block AI agents by policy.
 

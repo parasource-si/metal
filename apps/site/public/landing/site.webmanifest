@@ -1,6 +1,6 @@
 {
-  "name": "dusk bot",
-  "short_name": "dusk bot",
+  "name": "Metal",
+  "short_name": "Metal",
   "description": "Your own team of AI bots, in a chat app.",
   "start_url": "/",
   "display": "browser",

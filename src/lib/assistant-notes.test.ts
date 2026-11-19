@@ -151,7 +151,7 @@ describe("bringing notes in", () => {
       "---", "format: dusk-bot-notes", "version: 3", "from: Gemini", "---", "",
       "# Routines", "## Morning brief", "- Cron: 0 8 * * 1-5", "- Time zone: Europe/Lisbon", "~~~text", "Summarize my inbox.", "~~~",
       "## Someday", "- Schedule: whenever it rains", "~~~text", "Tell me to take an umbrella.", "~~~",
-      "# Skills", "## Tone check", "- When to use: before I send an email", "~~~text", "Flag anything curt.", "~~~", "", "END OF DUSK BOT NOTES",
+      "# Skills", "## Tone check", "- When to use: before I send an email", "~~~text", "Flag anything curt.", "~~~", "", "END OF METAL NOTES",
     ].join("\n");
     const context = { bots: [], aboutMe: "", team: false, firstBotId: "dusk", dispatch: vi.fn() };
     const outcome = await importNotes(md, context);
@@ -180,7 +180,7 @@ describe("bringing notes in", () => {
       .toEqual({ names: ["claude-notes.json"], text: notes() });
     expect(await notesInFiles([file("readme.md", "plain")])).toBeNull();
     // the file the prompt asks for now: markdown with front matter, dropped or picked into any chat
-    const md = "---\nformat: dusk-bot-notes\nversion: 3\nfrom: Grok\n---\n\n# Memories\n- Likes tea\n\nEND OF DUSK BOT NOTES\n";
+    const md = "---\nformat: dusk-bot-notes\nversion: 3\nfrom: Grok\n---\n\n# Memories\n- Likes tea\n\nEND OF METAL NOTES\n";
     expect(looksLikeNotes(md)).toBe(true);
     expect(await notesInFiles([file("notes.md", "# my notes\n- nothing here"), file("dusk-bot-notes.md", md)])).toEqual({ names: ["dusk-bot-notes.md"], text: md });
   });

@@ -1,6 +1,6 @@
 // Add a place, without leaving where the person is: dusk cloud (the buying sheet), or a server of their own, linked by one
 // line (with the way it should be reached on the end) with its progress and anything it needs from the person shown live,
-// or a dusk bot already running somewhere, by its address and code.
+// or a Metal already running somewhere, by its address and code.
 import { useCallback, useEffect, useRef, useState, type FormEvent } from "react";
 import { Building2, ChevronRight, Loader2, UserRound } from "../icons";
 import type { RailAddChoices } from "../../electron/cloud-rail.mjs";
@@ -23,8 +23,8 @@ import "../styles/place-setup.css";
 
 /** The ways a server of one's own connects besides the plain relay line, in the order they are offered (Cloudflare first,
  * then the relay's plain line between it and the rest). Each but the last is the same one line with a way on the end
- * (apps/link-service/install.sh): it installs dusk bot, sets up the way, shows here what only the person can do (a
- * sign-in) and links by itself. The last connects to a dusk bot that is already running somewhere, by its address and
+ * (apps/link-service/install.sh): it installs Metal, sets up the way, shows here what only the person can do (a
+ * sign-in) and links by itself. The last connects to a Metal that is already running somewhere, by its address and
  * pairing code. */
 export const WAYS = [
   { key: "cloudflare", title: "placeSetup.way.cloudflare", sub: "placeSetup.way.cloudflareSub", flag: "--cloudflare", last: "placeSetup.steps.cloudflare" },
@@ -288,7 +288,7 @@ export function WaySetup({ way, title, onBack, onClose }: { way: Way; title?: st
   return <AddressSetup way={way} title={title} onBack={onBack} onClose={onClose} />;
 }
 
-/** A dusk bot already running somewhere: connected by the link `duskbot pair` prints, or by its address and code. */
+/** A Metal already running somewhere: connected by the link `metal pair` prints, or by its address and code. */
 function AddressSetup({ way, title, onBack, onClose }: { way: Extract<Way, { key: "address" }>; title?: string; onBack?: () => void; onClose: () => void }) {
   const [address, setAddress] = useState("");
   const [code, setCode] = useState("");

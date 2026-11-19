@@ -1,9 +1,9 @@
 # Bring Your Own VPS
 
-dusk bot can turn a Linux server you already own into a bot's computer. The agent process stays on your
+Metal can turn a Linux server you already own into a bot's computer. The agent process stays on your
 machine; Docker's own SSH transport reaches the daemon on the VPS, and each bot gets one managed, hardened
 bot desktop container there — a Linux desktop it can see and control. SSH is the only credential involved and the
-only surface exposed: dusk bot never opens a public port on the VPS, never stores your SSH key or
+only surface exposed: Metal never opens a public port on the VPS, never stores your SSH key or
 passphrase, and never runs an agent remotely.
 
 ## What works
@@ -38,7 +38,7 @@ not one that also holds things you would not hand to the agent.
 
 ## The required SSH config alias
 
-dusk bot connects only through a named alias in your `~/.ssh/config` — you type the alias into
+Metal connects only through a named alias in your `~/.ssh/config` — you type the alias into
 Settings → API keys, nothing else. Every bot action becomes a `docker exec` over SSH, so the app
 supplies connection sharing and fail-fast timeouts itself: it runs each VPS command through its own
 `ssh_config` (under `~/.duskbot/ssh/`) that includes your file first and fills in `ControlMaster`,
@@ -85,7 +85,7 @@ is back. (Changing the default alias still waits until its server can be listed.
 `~/.ssh/config`, host key already verified by hand, is all it takes. The field is in a saved bot's settings; a new
 bot starts on the default server.
 
-**Host key first, by hand.** Connect once manually before pointing dusk bot at the alias:
+**Host key first, by hand.** Connect once manually before pointing Metal at the alias:
 
 ```sh
 ssh my-vps true
@@ -96,12 +96,12 @@ host is unknown simply fails until you have done this once.
 
 ## Security
 
-- **No public ports.** The managed container is created with no published ports, and dusk bot refuses to
+- **No public ports.** The managed container is created with no published ports, and Metal refuses to
   use a container that publishes any — the check runs before every attach, not just at creation. Live view
   reaches the container's private bridge address through SSH and is loopback-only on your computer.
-- **Firewall the VPS to SSH only**, ideally from your IP. Nothing dusk bot does needs any other inbound
+- **Firewall the VPS to SSH only**, ideally from your IP. Nothing Metal does needs any other inbound
   port open, so anything else open is pure attack surface.
-- **Nothing sensitive is stored.** The only thing dusk bot persists is the alias name itself
+- **Nothing sensitive is stored.** The only thing Metal persists is the alias name itself
   (`~/.duskbot/config.json`, plus a bot's own alias in `bots.json` when it has one); keys, passphrases,
   and agent state stay with SSH. Aliases are also kept out of the settings and bot records that paired phones
   and members of a shared workspace receive — they get configured-or-not, never the name. An SSH or Docker
@@ -142,7 +142,7 @@ A bot can never take its own VPS down:
 - **Start** only wakes an existing stopped container; it never creates one.
 - **Sleep** stops the container. The VPS stops spending CPU on it; the filesystem stays put.
 - **Remove** is yours, done by hand when a bot no longer needs the server:
-  `docker -H ssh://my-vps rm -f <container>`. dusk bot never deletes a container on its own.
+  `docker -H ssh://my-vps rm -f <container>`. Metal never deletes a container on its own.
 
 What survives what: sleep/start preserves the container's filesystem; removal — including the recreate that
 follows an image upgrade, since a container pinned to an old image is refused rather than reused — wipes

@@ -1,5 +1,5 @@
 // the phone's whole way to its server, in node: the real link service as the relay, the real link agent (its tunnel and
-// its phone hub) in front of a stand-in dusk bot server, and the phone's own transport (relay.ts + direct.ts) with
+// its phone hub) in front of a stand-in Metal server, and the phone's own transport (relay.ts + direct.ts) with
 // node-datachannel's RTCPeerConnection standing in for the webview's. signaling rides the phone's sealed relay channel,
 // requests ride the data channel, and a cut channel sends what is safe to send again over the relay.
 // DUSK_PHONE_CHAOS=<seconds> runs a longer chaos run; it prints the split either way.

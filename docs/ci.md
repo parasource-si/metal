@@ -115,7 +115,7 @@ meet another file's. Four files share the runner's CPU, so test and hook
 timeouts double there, as on Windows (`server/testing/host-timeout.ts`).
 
 **Which files run where.** Linux runs every file. Most e2e files drive
-dusk bot's own logic through a real server and fake engines, which is the same on
+Metal's own logic through a real server and fake engines, which is the same on
 every OS, and they were 70% of a Windows shard's time, so only Linux runs
 them: the Windows and macOS shards set `DUSK_VITEST_E2E=host`, and
 `vite.config.ts` then leaves out every e2e file not listed in
@@ -386,7 +386,7 @@ per merge group, the main lane, and the same `CI` check name.
 
 GitHub offers the queue only to repositories an organization owns ("Pull
 request merge queues are available in any public repository owned by an
-organization", GitHub's docs, October 2026). `DuskBotAI/duskbot` is
+organization", GitHub's docs, October 2026). `parasource-si/metal` is
 owned by a user account, so the rule below appears only after the repository
 moves to an organization (such as `SupaMaus`). Then:
 
@@ -416,7 +416,7 @@ default branch):
 The same rule through the API, keeping the ruleset's existing check:
 
 ```sh
-gh api -X PUT repos/<org>/dusk bot/rulesets/<main-ci-gate id> --input - <<'JSON'
+gh api -X PUT repos/<org>/Metal/rulesets/<main-ci-gate id> --input - <<'JSON'
 {"rules": [
   {"type": "required_status_checks", "parameters": {"required_status_checks": [{"context": "CI", "integration_id": 15368}],
     "strict_required_status_checks_policy": false, "do_not_enforce_on_create": false}},

@@ -4,7 +4,7 @@
   "title": "Lindy AI alternatives: pooled credits or separate AI?",
   "nav": "lindy",
   "h1": "lindy ai alternatives for a smaller team of bots",
-  "description": "Compare Lindy's active-user pricing, pooled credits and integrations with dusk bot's separate AI billing, personal desktop option and hosted plans.",
+  "description": "Compare Lindy's active-user pricing, pooled credits and integrations with Metal's separate AI billing, personal desktop option and hosted plans.",
   "keyword": "lindy ai alternatives",
   "keywords": [
     "lindy ai alternative",
@@ -60,7 +60,7 @@
     "intro": "**count active people before comparing the headline price.** figures are as of 12 november 2026. lindy pools credits across the team; dusk bills ai separately and needs a license for work.",
     "cols": [
       "Lindy",
-      "dusk bot"
+      "Metal"
     ],
     "rows": [
       {
@@ -155,7 +155,7 @@
       }
     ]
   },
-  "method": "**we compared the offers, not finished-task performance.** we make dusk bot. we read lindy’s homepage and pricing on 12 november 2026 alongside dusk’s docs.\n\nwe did not run identical jobs or measure success. each product counts integrations its own way. lindy’s page uses inconsistent plan names, so we left computer-use features out of the tier comparison.",
+  "method": "**we compared the offers, not finished-task performance.** Metal is based on Dusk Bot. we read lindy’s homepage and pricing on 12 november 2026 alongside dusk’s docs.\n\nwe did not run identical jobs or measure success. each product counts integrations its own way. lindy’s page uses inconsistent plan names, so we left computer-use features out of the tier comparison.",
   "sections": [
     {
       "h": "try the tool your team cannot work without",
@@ -180,7 +180,7 @@
       "a": "**lindy lists email, meetings, leads and reports.** pick one slice you can judge before handing over a broader role.[^1]"
     },
     {
-      "q": "is dusk bot cheaper than lindy for work?",
+      "q": "is Metal cheaper than lindy for work?",
       "a": "**you need the whole bill to answer that.** lindy charges for active users and credits. dusk needs work licensing, separate ai usage and optional hosting. free personal use is the wrong business comparison.[^2][^3][^4]"
     }
   ],
@@ -228,7 +228,7 @@
       "url": "/docs/routines"
     },
     {
-      "label": "dusk bot: sending and full access",
+      "label": "Metal: sending and full access",
       "url": "/docs/computer"
     }
   ],

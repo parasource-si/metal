@@ -50,7 +50,7 @@ export function WorkspaceGate({ children }: { children: (detail: WorkspaceDetail
   if (!detail.report) {
     return (
       <SkyEmpty title={`waiting for ${workspace.name}`}>
-        it is connected but has not reported yet. keep dusk bot running there; the first report usually lands within a few seconds.
+        it is connected but has not reported yet. keep Metal running there; the first report usually lands within a few seconds.
       </SkyEmpty>
     );
   }

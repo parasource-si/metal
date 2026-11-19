@@ -18,9 +18,9 @@ afterAll(() => vi.unstubAllGlobals());
 describe("Mac local computer status", () => {
   it("shows the recorded Accessibility failure and its matching recovery actions", () => {
     const markup = renderToStaticMarkup(createElement(MacLocalControl));
-    expect(markup).toContain("Accessibility is required for dusk bot");
+    expect(markup).toContain("Accessibility is required for Metal");
     expect(markup).toContain("Open Accessibility settings");
-    expect(markup).toContain("relaunch dusk bot");
+    expect(markup).toContain("relaunch Metal");
     expect(markup).not.toContain("Open Screen Recording settings");
     expect(markup, "the driver detail shows inline, not folded").not.toContain("<details");
   });
@@ -28,9 +28,9 @@ describe("Mac local computer status", () => {
   it("does not turn a missing reason into a claimed permission diagnosis", () => {
     fixture.localComputer = { available: false, status: "unavailable" } as DesktopCapabilities["localComputer"];
     const markup = renderToStaticMarkup(createElement(MacLocalControl));
-    expect(markup).toContain("To use this Mac, turn on Accessibility and Screen Recording for dusk bot in System Settings, then retry.");
+    expect(markup).toContain("To use this Mac, turn on Accessibility and Screen Recording for Metal in System Settings, then retry.");
     expect(markup).not.toContain("Accessibility is required");
-    expect(markup).not.toContain("relaunch dusk bot</button>");
+    expect(markup).not.toContain("relaunch Metal</button>");
   });
 
   it("does not offer host repair actions to a remote renderer", () => {

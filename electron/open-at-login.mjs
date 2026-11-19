@@ -12,7 +12,7 @@ const CHOSEN_NAME = "dusk bot at login";
 const quoted = (value) => `"${value.replace(/["`$\\]/g, (match) => `\\${match}`)}"`;
 
 export function autostartEntry(exec, { lending = true } = {}) {
-  return ["[Desktop Entry]", "Type=Application", "Name=dusk bot", `Exec=${quoted(exec)} ${HIDDEN_ARG}`, "NoDisplay=true",
+  return ["[Desktop Entry]", "Type=Application", "Name=Metal", `Exec=${quoted(exec)} ${HIDDEN_ARG}`, "NoDisplay=true",
     "X-GNOME-Autostart-enabled=true", ...(lending ? [MARK] : []), ""].join("\n");
 }
 

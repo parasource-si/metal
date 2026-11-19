@@ -184,7 +184,7 @@ type Answer = { status: number; location?: string; headers: IncomingHttpHeaders;
 
 const fail = (error: string, refused = false): Failure => ({ ok: false, refused, error });
 
-function requestOnce(url: URL, address: { address: string; family: number }, signal: AbortSignal, maxBytes: number, userAgent = "DuskBot-wait"): Promise<Answer> {
+function requestOnce(url: URL, address: { address: string; family: number }, signal: AbortSignal, maxBytes: number, userAgent = "Metal-wait"): Promise<Answer> {
   return new Promise((resolve, reject) => {
     const pinned: LookupFunction = (_host, lookupOptions, callback) => {
       if (lookupOptions.all) callback(null, [address]);

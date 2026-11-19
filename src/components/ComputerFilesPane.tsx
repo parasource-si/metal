@@ -15,14 +15,14 @@ export function automaticSystemFile(path: string, cwd?: string | null): boolean 
   const parts = normalized.split("/");
   if (parts.some((part) => [".git", ".cache", ".npm", ".pnpm-store", ".venv", "node_modules", "__pycache__", ".browser-profiles", ".ssh", ".DS_Store", ".Trash", ".duskbot", ".dusk", ".Xauthority", ".ICEauthority", ".xsession-errors"].includes(part))) return true;
   if (/(?:^|\/)\.local\/(?:state|share|lib)(?:\/|$)/.test(normalized)) return true;
-  if (/(?:^|\/)\.config\/(?:chromium|openbox|tint2|Thunar|xfce4|dusk bot)(?:\/|$)/i.test(normalized)) return true;
+  if (/(?:^|\/)\.config\/(?:chromium|openbox|tint2|Thunar|xfce4|dusk[ -]?bot|Metal(?: dev)?)(?:\/|$)/i.test(normalized)) return true;
   const folder = cwd?.replace(/\\/g, "/").replace(/\/+$/, "");
   const windows = /^[a-z]:\//i.test(normalized);
   const inWorkspace = folder && (windows ? normalized.toLowerCase().startsWith(`${folder.toLowerCase()}/`) : normalized.startsWith(`${folder}/`));
   if (inWorkspace) return false;
   return /^\/(?:bin|sbin|usr|etc|proc|sys|dev|run|boot|lib|lib64|var|System|Library)(?:\/|$)/.test(normalized)
     || /^[a-z]:\/(?:Windows|Program Files(?: \(x86\))?|ProgramData)(?:\/|$)/i.test(normalized)
-    || /\/(?:Library\/(?:Caches|Application Support\/Dusk Bot)|AppData\/(?:Local|Roaming)\/Dusk Bot)(?:\/|$)/i.test(normalized);
+    || /\/(?:Library\/(?:Caches|Application Support\/(?:Dusk[ -]?Bot|Metal(?: dev)?))|AppData\/(?:Local|Roaming)\/(?:Dusk[ -]?Bot|Metal(?: dev)?))(?:\/|$)/i.test(normalized);
 }
 
 export function recentChangedFiles(bot: Bot, limit = MAX_FILES, showSystemFiles = false): string[] {

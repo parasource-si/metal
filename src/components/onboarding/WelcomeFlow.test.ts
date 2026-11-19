@@ -1,5 +1,5 @@
 // @vitest-environment happy-dom
-// The first run as a funnel: the welcome, an AI, a dusk bot account, where the bots live,
+// The first run as a funnel: the welcome, an AI, a Dusk account, where the bots live,
 // what other AI apps here hold and the prompt for AIs online, the phone while its app is offered, then Dusk's chat;
 // on dusk cloud, the Cloud being made. What each step shows, where it goes, and what it saves.
 import { act, createElement, StrictMode } from "react";
@@ -145,7 +145,7 @@ describe("the welcome", () => {
   it("opens on the welcome with nothing else to decide, and asks nothing about sharing off the desktop app", async () => {
     await show();
     expect(step()).toBe("welcome");
-    expect(title()).toBe("Meet dusk bot");
+    expect(title()).toBe("Meet Metal");
     await press("Get started");
     expect(step()).toBe("ai");
     expect(document.body.querySelector("[data-help-improve]"), "Settings has the switch; the run here has no place step").toBeNull();
@@ -289,8 +289,8 @@ describe("on the desktop app", () => {
     vi.stubEnv("VITE_DUSK_PHONE_APP", "0");
     desktop({ platform: "linux" });
     await show();
-    expect(step(), "Meet dusk bot comes first").toBe("welcome");
-    expect(title()).toBe("Meet dusk bot");
+    expect(step(), "Meet Metal comes first").toBe("welcome");
+    expect(title()).toBe("Meet Metal");
     await press("Get started");
     expect(step()).toBe("place");
     expect(title()).toBe("Where should your bots live?");
@@ -598,7 +598,7 @@ describe("on the desktop app", () => {
     await show();
     await press("Get started");
     expect(step(), "the account comes before where bots live").toBe("account");
-    expect(title()).toBe("Create your dusk bot account");
+    expect(title()).toBe("Create your Dusk account");
     await press("Skip for now");
     expect(step()).toBe("place");
     await press("Back");
@@ -677,7 +677,7 @@ describe("on the desktop app", () => {
     expect(step(), "the hello comes first").toBe("welcome");
     await press("Get started");
     expect(step()).toBe("account");
-    expect(title()).toBe("Create your dusk bot account");
+    expect(title()).toBe("Create your Dusk account");
     expect(text(), "no phone in the pitch while its app is hidden").toContain("Already have one? Sign in the same way.");
     expect(text(), "no price claim in the pitch").not.toContain("Free.");
     expect(button("Continue with Google")).toBeDefined();
@@ -789,7 +789,7 @@ describe("the bring step: what this computer holds, then the prompt", () => {
     expect(document.body.querySelector("[data-bring-find], [data-bring-hero], [data-bring-more]"), "no rows when nothing is here").toBeNull();
     expect(prompt()).toEqual(STEPS);
     expect(document.body.querySelector("[data-bring-prompt] h2")?.className, "no label over the prompt alone").toContain("sr-only");
-    expect(document.body.querySelector("[data-bring-prompt] pre")?.textContent, "the prompt asks for the notes file").toContain("dusk-bot-notes");
+    expect(document.body.querySelector("[data-bring-prompt] pre")?.textContent, "the prompt asks for the notes file").toContain("metal-notes.md");
     expect(document.body.querySelectorAll("[data-primary]"), "Continue is the one primary action").toHaveLength(1);
     await press("Continue");
     expect(f.onDone).toHaveBeenCalledOnce();
@@ -812,7 +812,7 @@ describe("the bring step: what this computer holds, then the prompt", () => {
     await show({ initialBeat: "bring" });
     expect(notesWaiting()).toBeNull();
     await press("Copy the prompt");
-    expect(writeText).toHaveBeenCalledWith(expect.stringContaining("dusk-bot-notes.md"));
+    expect(writeText).toHaveBeenCalledWith(expect.stringContaining("metal-notes.md"));
     expect(document.body.querySelector("[data-bring-copied]")?.textContent).toBe("Copied. Paste it into that AI, then paste or drop its file into any bot here.");
     expect(button("Copied"), "the button says it too").toBeTruthy();
     expect(notesWaiting(), "the waiting line above the first bot's message box").not.toBeNull();

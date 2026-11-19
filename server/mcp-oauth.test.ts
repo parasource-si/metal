@@ -147,7 +147,7 @@ describe("McpOAuthManager sign-in", () => {
     await expect(manager.start("docs", mcp.url)).rejects.toMatchObject({ code: "no-registration" });
   });
 
-  it("signs in with dusk bot's client metadata document where a server registers nobody but takes one", async () => {
+  it("signs in with Metal's client metadata document where a server registers nobody but takes one", async () => {
     await setup({ noRegistration: true, metadataDocument: true });
     const status = await manager.start("docs", mcp.url);
     const authorize = new URL(status.authorizationUrl!);
@@ -156,7 +156,7 @@ describe("McpOAuthManager sign-in", () => {
     manager.cancel("docs");
   });
 
-  it("falls back to the metadata document when a server refuses to register dusk bot", async () => {
+  it("falls back to the metadata document when a server refuses to register Metal", async () => {
     await setup({ refuseRedirect: () => true, metadataDocument: true });
     const status = await manager.start("docs", mcp.url);
     expect(new URL(status.authorizationUrl!).searchParams.get("client_id")).toBe(MCP_CLIENT_ID);
@@ -687,7 +687,7 @@ describe("McpOAuthManager with a failing onSettled", () => {
     const started = await manager.start("docs", mcp.url);
     const page = await approve(started);
     expect(page.status).toBe(200);
-    expect(await page.text()).toBe("Signed in. You can close this tab and return to dusk bot.");
+    expect(await page.text()).toBe("Signed in. You can close this tab and return to Metal.");
     expect(manager.authState("docs", mcp.url)).toBe("signed-in");
     await manager.start("docs", mcp.url);
     await expect.poll(() => heard).toEqual(["succeeded", "expired"]);
@@ -705,7 +705,7 @@ describe("McpOAuthManager callback page", () => {
     expect(page.headers.get("content-security-policy")).toContain("default-src 'none'");
     const html = await page.text();
     expect(html).toContain("<h1>you&#39;re signed in!</h1>");
-    expect(html).toContain("Signed in. You can close this tab and return to dusk bot.");
+    expect(html).toContain("Signed in. You can close this tab and return to Metal.");
     expect(html).not.toMatch(/<script\b/i);
   });
 });
@@ -735,7 +735,7 @@ describe("McpOAuthManager sign-in from a browser on another computer", () => {
     const callback = await returnAddress(started);
     expect(callback.origin + callback.pathname).toBe("https://cloud.example/mcp-oauth/callback");
     const page = await manager.publicCallback("cloud.example", callback.search);
-    expect(page).toEqual({ status: 200, text: "Signed in. You can close this tab and return to dusk bot." });
+    expect(page).toEqual({ status: 200, text: "Signed in. You can close this tab and return to Metal." });
     expect(manager.status("docs", started.flowId, "alice")?.phase).toBe("succeeded");
     expect(oauth.isValid(`Bearer ${await manager.accessToken("docs", mcp.url)}`)).toBe(true);
 
@@ -752,7 +752,7 @@ describe("McpOAuthManager sign-in from a browser on another computer", () => {
     const forged = new URLSearchParams(callback.search);
     forged.set("state", "forged");
     for (const [host, search] of [["cloud.example", `?${forged}`], ["attacker.example", callback.search], [undefined, callback.search], ["cloud.example", ""]] as const) {
-      expect(await manager.publicCallback(host, search)).toEqual({ status: 400, text: "Invalid sign-in callback. Return to dusk bot and try again." });
+      expect(await manager.publicCallback(host, search)).toEqual({ status: 400, text: "Invalid sign-in callback. Return to Metal and try again." });
     }
     expect(manager.status("docs", started.flowId, "alice")?.phase).toBe("waiting");
     expect(oauth.counts.token).toBe(0);
@@ -909,7 +909,7 @@ describe("MCP OAuth through the local proxy", () => {
   });
 });
 
-describe("dusk bot's client metadata document", () => {
+describe("Metal's client metadata document", () => {
   it("names itself as its own client id and lists only the fixed loopback redirect", () => {
     expect(MCP_CLIENT_METADATA.client_id).toBe(MCP_CLIENT_ID);
     expect(MCP_CLIENT_METADATA.redirect_uris).toEqual([MCP_CLIENT_METADATA_REDIRECT]);

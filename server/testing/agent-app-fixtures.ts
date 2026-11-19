@@ -272,7 +272,7 @@ Search first, then answer with a link for every claim.
   ];
 }
 
-/** dusk bot's older folder, kept beside the new one: bots.json, workspaces and routines.json, with chats in messages.db. */
+/** Metal's older folder, kept beside the new one: bots.json, workspaces and routines.json, with chats in messages.db. */
 export function plantOpenMausBot(home: string): string[] {
   const put = putter(home);
   put(".openmausbot/bots.json", JSON.stringify([

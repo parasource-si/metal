@@ -1,4 +1,4 @@
-// Only a turn-scoped capability crosses into the agent process; engine commands, session names and provider credentials stay in dusk bot.
+// Only a turn-scoped capability crosses into the agent process; engine commands, session names and provider credentials stay in Metal.
 import { pathToFileURL } from "node:url";
 
 import { failure, harnessMcpRequest, MAX_INPUT_BYTES, MAX_OUTPUT_BYTES, parseHarnessMcpKind, type HarnessMcpKind, type RpcId } from "./harness-mcp-request.ts";

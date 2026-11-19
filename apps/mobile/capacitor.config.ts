@@ -3,7 +3,7 @@ import type { KeyboardResize } from "@capacitor/keyboard";
 
 const config: CapacitorConfig = {
   appId: "bot.dusk.mobile",
-  appName: "dusk bot",
+  appName: "Metal",
   webDir: "dist",
   // the native bridge logs plugin results in debug builds, which would put pairing secrets and tokens in device logs
   loggingBehavior: "none",

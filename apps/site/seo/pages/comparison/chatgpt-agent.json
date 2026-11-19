@@ -1,9 +1,9 @@
 {
   "path": "/vs/chatgpt-agent",
-  "title": "ChatGPT agent is now Work: compare it with dusk bot",
+  "title": "ChatGPT agent is now Work: compare it with Metal",
   "nav": "chatgpt work",
-  "h1": "chatgpt agent is gone: chatgpt work vs dusk bot",
-  "description": "ChatGPT agent has been replaced by Work. Compare current hosting, shared Codex usage, task limits and bot roles with dusk bot.",
+  "h1": "chatgpt agent is gone: chatgpt work vs Metal",
+  "description": "ChatGPT agent has been replaced by Work. Compare current hosting, shared Codex usage, task limits and bot roles with Metal.",
   "answer": "**pick the app that makes your next handoff easier.** as of 12 november 2026, openai says agent is no longer available.[^1] work replaces it for longer tasks and finished deliverables. web and phone run in the cloud; desktop can work locally too.[^2] dusk gives named bots their own memory and ai choices. compare the roles you need and the usage bills.",
   "tags": [
     "chatgpt",
@@ -46,7 +46,7 @@
     "intro": "**work and dusk give your tasks different homes and usage bills.** these rows reflect 12 november 2026. agent mode has retired; its old message quotas don't describe work's allowances.",
     "cols": [
       "ChatGPT Work",
-      "dusk bot"
+      "Metal"
     ],
     "rows": [
       {
@@ -118,7 +118,7 @@
       }
     ]
   },
-  "method": "**use the rows to choose a setup, then try your own task.** we make dusk bot. openai's help and pricing pages were checked on 12 november 2026; dusk claims come from our docs.\n\nwe didn't run matching tasks. active-task caps count saved schedules. shared usage limits still govern how much work can finish.",
+  "method": "**use the rows to choose a setup, then try your own task.** Metal is based on Dusk Bot. openai's help and pricing pages were checked on 12 november 2026; dusk claims come from our docs.\n\nwe didn't run matching tasks. active-task caps count saved schedules. shared usage limits still govern how much work can finish.",
   "sections": [
     {
       "h": "put the task where its files live",
@@ -170,19 +170,19 @@
       "checked": "2026-11-12"
     },
     {
-      "label": "dusk bot: ai choices and first run",
+      "label": "Metal: ai choices and first run",
       "url": "/docs/getting-started"
     },
     {
-      "label": "dusk bot: where bots live",
+      "label": "Metal: where bots live",
       "url": "/docs/dusk-cloud"
     },
     {
-      "label": "dusk bot: ai billing",
+      "label": "Metal: ai billing",
       "url": "/docs/account-and-billing"
     },
     {
-      "label": "dusk bot: desktop routine timing",
+      "label": "Metal: desktop routine timing",
       "url": "/docs/routines"
     },
     {
@@ -191,15 +191,15 @@
       "checked": "2026-11-12"
     },
     {
-      "label": "dusk bot: bot jobs and ai limits",
+      "label": "Metal: bot jobs and ai limits",
       "url": "/docs/bots"
     },
     {
-      "label": "dusk bot: read-only access and sends",
+      "label": "Metal: read-only access and sends",
       "url": "/docs/files-and-apps"
     },
     {
-      "label": "dusk bot: permissions and sends",
+      "label": "Metal: permissions and sends",
       "url": "/docs/computer"
     }
   ],
@@ -220,7 +220,7 @@
     "steps": [
       "pick one short document handoff",
       "try work with the notes attached",
-      "try a dusk bot with the same notes",
+      "try a Metal bot with the same notes",
       "compare missing facts and corrections, not just polish"
     ]
   },
@@ -247,7 +247,7 @@
       ],
       [
         "different ai choices for separate jobs",
-        "dusk bot"
+        "Metal"
       ],
       [
         "cloud on a phone and local desktop work",
@@ -255,7 +255,7 @@
       ],
       [
         "separate planning and review bots",
-        "dusk bot roles"
+        "Metal roles"
       ]
     ]
   },

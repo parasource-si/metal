@@ -18,7 +18,7 @@ const ONLINE: { key: string; tile: string; mark: (size: number) => ReactNode }[]
   { key: "grok", tile: "bg-[#141416]", mark: (size) => <GrokMark size={size} className="fill-[#fafafa]" /> },
 ];
 
-/** Your other AI apps on the left, in their own colours, dusk bot's mascot on the right as the welcome shows it. */
+/** Your other AI apps on the left, in their own colours, Metal's mascot on the right as the welcome shows it. */
 function BringScene() {
   return (
     <div data-bring-scene="" className="relative flex h-16 w-[248px] items-center justify-between">

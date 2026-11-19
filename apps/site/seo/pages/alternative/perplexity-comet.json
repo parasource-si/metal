@@ -4,7 +4,7 @@
   "title": "Perplexity Comet alternatives: browser or bot computer?",
   "nav": "perplexity comet",
   "h1": "perplexity comet alternatives beyond your browser",
-  "description": "Compare Comet with dusk bot: a browser assistant versus a bot with its own computer, including free-plan limits and a dated safety disclosure.",
+  "description": "Compare Comet with Metal: a browser assistant versus a bot with its own computer, including free-plan limits and a dated safety disclosure.",
   "keyword": "perplexity comet alternative",
   "keywords": [
     "perplexity comet review",
@@ -59,7 +59,7 @@
     "intro": "**budget for the assistant you need after the download.** as of 12 november 2026, comet’s free plan leaves browser agent queries out. we did no browser-speed or task-success test.",
     "cols": [
       "perplexity comet",
-      "dusk bot"
+      "Metal"
     ],
     "rows": [
       {
@@ -145,7 +145,7 @@
       }
     ]
   },
-  "method": "**use this comparison to choose where you want the work to happen.** we make dusk bot. perplexity’s plan and product details are from 12 november 2026; brave’s safety disclosure has its own date.\n\nwe did not run matching tasks, time either browser or retest the vulnerability. plan access and working arrangements are what we can compare here.",
+  "method": "**use this comparison to choose where you want the work to happen.** Metal is based on Dusk Bot. perplexity’s plan and product details are from 12 november 2026; brave’s safety disclosure has its own date.\n\nwe did not run matching tasks, time either browser or retest the vulnerability. plan access and working arrangements are what we can compare here.",
   "sections": [
     {
       "h": "which browser do you want it working in?",
@@ -174,7 +174,7 @@
       "a": "**keep the first job to reading public pages.** brave disclosed a prompt-injection flaw on 20 august 2025.[^13] we have not retested it; its current fix status remains unverified here."
     },
     {
-      "q": "can a dusk bot use a browser separate from mine?",
+      "q": "can a Metal bot use a browser separate from mine?",
       "a": "**yes, on its own computer.** dusk cloud gives each bot a desktop. your own server can host a private desktop too. watch with screen and take control when needed. your mac screen is a separate choice.[^6]"
     }
   ],
@@ -200,35 +200,35 @@
       "checked": "2026-11-12"
     },
     {
-      "label": "dusk bot: getting started",
+      "label": "Metal: getting started",
       "url": "/docs/getting-started"
     },
     {
-      "label": "dusk bot: computer",
+      "label": "Metal: computer",
       "url": "/docs/computer"
     },
     {
-      "label": "dusk bot: phone",
+      "label": "Metal: phone",
       "url": "/docs/phone"
     },
     {
-      "label": "dusk bot: billing",
+      "label": "Metal: billing",
       "url": "/docs/account-and-billing"
     },
     {
-      "label": "dusk bot: dusk cloud",
+      "label": "Metal: dusk cloud",
       "url": "/docs/dusk-cloud"
     },
     {
-      "label": "dusk bot: files and apps",
+      "label": "Metal: files and apps",
       "url": "/docs/files-and-apps"
     },
     {
-      "label": "dusk bot: memory",
+      "label": "Metal: memory",
       "url": "/docs/memory"
     },
     {
-      "label": "dusk bot: routines",
+      "label": "Metal: routines",
       "url": "/docs/routines"
     },
     {

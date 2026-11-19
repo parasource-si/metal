@@ -803,7 +803,7 @@ export function Composer({
   const handlePaste = (e: React.ClipboardEvent<HTMLTextAreaElement>) => {
     const copiedFiles = Array.from(e.clipboardData.files ?? []);
     if (copiedFiles.some((file) => /\.(?:json|md|txt)$/i.test(file.name))) {
-      // a file copied in Finder, such as the dusk-bot-notes.md another AI made
+      // a file copied in Finder, such as the metal-notes.md another AI made
       e.preventDefault();
       void pickFiles(copiedFiles);
       return;
@@ -842,7 +842,7 @@ export function Composer({
       return;
     }
     const pasted = e.clipboardData.getData("text/plain");
-    // notes another AI wrote for dusk bot come in, wherever they are pasted, instead of being sent
+    // notes another AI wrote for Metal come in, wherever they are pasted, instead of being sent
     if (looksLikeNotes(pasted)) {
       e.preventDefault();
       takeNotes(pasted, undefined, "paste", group ? null : bot?.id);

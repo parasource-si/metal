@@ -30,7 +30,7 @@ stopped half way? paste the same line again; it picks up where it left off. line
 
 ## another computer
 
-on the server, run `duskbot pair --label desktop`. in the app on the other computer, choose **add a cloud or your own server**, then **already running dusk bot?**, and paste everything it printed. a server set up before this command existed gets it with its next update; until then use `sudo -u dusk /home/dusk/.local/bin/duskbot pair --label desktop`.
+on the server, run `metal pair --label desktop`. in the app on the other computer, choose **add a cloud or your own server**, then **already running Metal?**, and paste everything it printed. a server set up before this command existed gets it with its next update; until then use `sudo -u dusk /home/dusk/.local/bin/duskbot pair --label desktop`.
 
 if it prints only a code and no link, the server has no address of its own (it's linked through the private relay). then make a line in the other computer's app and paste it on the server instead: the server moves its link to that computer, and the first one stops reaching it.
 

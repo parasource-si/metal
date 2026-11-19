@@ -160,14 +160,14 @@ node --experimental-strip-types server/testing/fake-openai-live.ts
 DUSK_OPENAI_LIVE_URL=http://127.0.0.1:FAKE_PORT DUSK_OPENAI_LIVE_KEY=sk-fake \
   node --experimental-strip-types scripts/control-dusk.ts ui launch
 # terminal 3, with the url, botId and ui handle it prints
-pnpm control:dusk messages --bot BOT_ID --url http://127.0.0.1:PORT
+pnpm control:metal messages --bot BOT_ID --url http://127.0.0.1:PORT
 curl -s -X POST http://127.0.0.1:PORT/api/live/session -H 'content-type: application/json' \
   -d '{"botId":"BOT_ID","sdp":"v=0\r\no=- 1 1 IN IP4 127.0.0.1\r\n","client":"desktop"}'
 curl -s http://127.0.0.1:PORT/api/live/call
 curl -s -X POST http://127.0.0.1:PORT/api/live/call/end -H 'content-type: application/json' \
   -d '{"callId":"CALL_ID"}'
-pnpm control:dusk ui wait-settle --ui /tmp/duskbot-verify-data-XXXXXX/ui.json --timeout 60
-pnpm control:dusk ui snapshot --ui /tmp/duskbot-verify-data-XXXXXX/ui.json
+pnpm control:metal ui wait-settle --ui /tmp/duskbot-verify-data-XXXXXX/ui.json --timeout 60
+pnpm control:metal ui snapshot --ui /tmp/duskbot-verify-data-XXXXXX/ui.json
 curl -s "http://127.0.0.1:PORT/api/threads/THREAD_ID/messages?limit=20"
 ```
 
@@ -182,7 +182,7 @@ no `title`, because nothing was asked; and the snapshot's transcript has
 
 ## Gotchas
 
-- `pnpm control:dusk messages` projects a fixed set of fields: it shows the
+- `pnpm control:metal messages` projects a fixed set of fields: it shows the
   row's `kind` and its text, but not `via`, `callId` or `call`. Read the last
   command above for those.
 - Only generated thread titles name a call (`features.llmThreadTitles`; see

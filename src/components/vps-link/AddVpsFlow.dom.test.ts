@@ -380,7 +380,7 @@ describe("VPS install output", () => {
     const view: VpsLinkView = { ...EMPTY_VIEW, stage: "installing", steps: [{ id: "app", status: "running" }] };
     await act(async () => { root.render(createElement(InstallScreen, { view, onRetry: () => {} })); });
     await act(async () => { await vi.advanceTimersByTimeAsync(10_000); });
-    expect(document.querySelector("[data-vps-term]")?.textContent).toBe("Installing dusk bot · Working…");
+    expect(document.querySelector("[data-vps-term]")?.textContent).toBe("Installing Metal · Working…");
     expect(text()).not.toContain("duskbot@latest");
     expect(text()).not.toContain("reading package lists");
   });
@@ -396,7 +396,7 @@ describe("VPS install output", () => {
     await act(async () => { root.render(createElement(InstallScreen, { view: older, onRetry: () => {} })); });
     expect(document.querySelector("[data-vps-term]")?.textContent).toContain("$ install /tmp/verified-build");
     expect(document.querySelector("[data-vps-term]")?.textContent).toContain("SHA256 verified");
-    expect(document.querySelector("[data-vps-term]")?.textContent).toContain("Installing dusk bot · Done");
+    expect(document.querySelector("[data-vps-term]")?.textContent).toContain("Installing Metal · Done");
   });
 
   // since e35ca4cf3 the install is one percentage of the whole, never bytes; the move keeps an indeterminate bar
@@ -450,7 +450,7 @@ describe("Settings > Transfer", () => {
     expect(fake.bridge.moveBack).toHaveBeenCalledTimes(1);
   });
 
-  it("shows the line that takes dusk bot off the server, only when asked", async () => {
+  it("shows the line that takes Metal off the server, only when asked", async () => {
     const fake = fakeBridge();
     const UNINSTALL = "curl -fsSL https://link.dusk.bot/uninstall | sh";
     fake.bridge.where.mockImplementation(async () => ({ place: "vps" as const, server: SERVER, uninstall: UNINSTALL }));

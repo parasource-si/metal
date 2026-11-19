@@ -362,7 +362,7 @@ describe("a searched MCP catalog", () => {
 });
 
 describe("approvals that follow the other engines", () => {
-  it("runs dusk bot's own agents tools without a card, while a configured server's tool still asks", async () => {
+  it("runs Metal's own agents tools without a card, while a configured server's tool still asks", async () => {
     const f = await fixture((_body, response, round) => {
       if (round === 1) sse(response, [chunk({ tool_calls: [toolCall("agents_write", '{"name":"peer","value":"sent"}', "call_agents")] }, "tool_calls")]);
       else if (round === 2) sse(response, [chunk({ tool_calls: [toolCall("audit_write", '{"name":"receipt","value":"done"}', "call_audit")] }, "tool_calls")]);
@@ -1325,7 +1325,7 @@ describe("structured tool execution boundaries", () => {
     expect((limited as { limitResetsAt?: number }).limitResetsAt).toBeGreaterThanOrEqual(before + 120_000);
     expect(f.effects()).toHaveLength(1);
     f.recorder.events.length = 0;
-    await f.start({ approvalMode: "full", text: "[dusk bot: your previous turn here was cut off because Fixture's usage limit was reached. The limit has reset. Carry on.]" });
+    await f.start({ approvalMode: "full", text: "[Metal: your previous turn here was cut off because Fixture's usage limit was reached. The limit has reset. Carry on.]" });
     expect(await f.completed()).toMatchObject({ ok: true });
     expect(f.effects()).toHaveLength(1);
     const resumed = f.requests[2]!.messages;

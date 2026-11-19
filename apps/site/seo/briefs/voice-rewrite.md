@@ -1,6 +1,6 @@
 You are rewriting existing SEO page records for dusk.bot in a new voice and adding useful blocks. An editor wrote the exemplars by hand and will reject anything that reads like a manual or like AI filler.
 
-READ FIRST, fully: seo/WRITING.md (especially "voice" and "blocks that make a page useful"); seo/facts/dusk.md (the ONLY Dusk Bot claims allowed); and the hand-written exemplar for each page's type:
+READ FIRST, fully: seo/WRITING.md (especially "voice" and "blocks that make a page useful"); seo/facts/dusk.md (the ONLY Metal claims allowed); and the hand-written exemplar for each page's type:
 - pillar: seo/pages/pillar/agents-when-laptop-closed.json
 - guide: seo/pages/guide/is-it-safe-to-let-ai-control-your-computer.json
 - alternative, comparison: seo/pages/alternative/openclaw.json

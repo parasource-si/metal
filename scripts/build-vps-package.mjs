@@ -63,6 +63,8 @@ run(process.execPath, [join(root, "scripts", "build-npm-package.mjs")]);
 const npmDir = join(root, "release", "npm");
 const manifestPath = join(npmDir, "package.json");
 const pkg = JSON.parse(readFileSync(manifestPath, "utf8"));
+// Existing VPS installers upgrade this npm package in place and read its fixed install path.
+pkg.name = "duskbot";
 pkg.private = true;
 const kitFiles = quiet("git", ["ls-files", "deploy/bot-desktop", "shared/bot-desktop.ts"]).split("\n").filter(Boolean);
 for (const file of kitFiles.filter((path) => path.startsWith("deploy/bot-desktop/"))) {

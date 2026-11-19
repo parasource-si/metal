@@ -71,7 +71,7 @@ describe("Start fresh", () => {
     expect($("[role=alertdialog]")).toBeNull();
     act(() => openStartFresh());
     await settle();
-    expect($("[role=alertdialog]")?.textContent).toContain("This resets dusk bot on this computer and can't be undone");
+    expect($("[role=alertdialog]")?.textContent).toContain("This resets Metal on this computer and can't be undone");
     act(() => root.unmount());
     root = createRoot(host);
     (window as { duskDesktop?: unknown }).duskDesktop = {};
@@ -85,7 +85,7 @@ describe("Start fresh", () => {
     const bridge = fakeBridge();
     act(() => root.render(createElement(StartFreshDialog, { bridge: bridge as never, onClose: vi.fn() })));
     await settle();
-    expect($("[role=alertdialog]")?.textContent).toContain("This resets dusk bot on this computer and can't be undone");
+    expect($("[role=alertdialog]")?.textContent).toContain("This resets Metal on this computer and can't be undone");
     const confirm = () => $<HTMLButtonElement>("[data-start-fresh-confirm]")!;
     expect(confirm().disabled).toBe(true);
     type("start fres");
@@ -105,7 +105,7 @@ describe("Start fresh", () => {
     act(() => root.render(createElement(StartFreshDialog, { bridge: fakeBridge() as never, onClose: vi.fn() })));
     await settle();
     const text = $("[role=alertdialog]")!.textContent!;
-    expect(text).toContain("Your dusk bot account, your plan or trial, your dusk cloud and your servers stay as they are");
+    expect(text).toContain("Your Dusk account, your plan or trial, your dusk cloud and your servers stay as they are");
     expect(text).not.toMatch(/cancel(s|led)? (your|the|its) plan|destroy/i);
     act(() => $<HTMLButtonElement>("[data-start-fresh-delete-account]")!.click());
     expect(openPage).toHaveBeenCalledWith("account");

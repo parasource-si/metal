@@ -101,8 +101,8 @@ export interface SecretCardsDeps {
 /** What the bot is told when the person answered a login card; never a value. */
 export function loginCardUpdateText(site: string, outcome: "provided" | "dismissed", kept?: "vault" | "once"): string {
   return outcome === "provided"
-    ? `dusk bot login update: the person typed their login for ${site} on the secure card${kept === "vault" ? " and saved it to their Vault, so next time no card is needed" : ", for this task only (not saved)"}. Open ${site}'s login page where you work (your browser, or Chromium on your own VPS desktop) and call fill_login: dusk bot types it and submits it, and you never see the password. Then check you are signed in and continue the task that paused for it. Never ask for the password in chat.`
-    : `dusk bot login update: the person declined to give their login for ${site}. If they would rather sign in themselves, call request_sign_in; otherwise say in one line what you cannot do without it. Do not ask for it in chat.`;
+    ? `Metal login update: the person typed their login for ${site} on the secure card${kept === "vault" ? " and saved it to their Vault, so next time no card is needed" : ", for this task only (not saved)"}. Open ${site}'s login page where you work (your browser, or Chromium on your own VPS desktop) and call fill_login: Metal types it and submits it, and you never see the password. Then check you are signed in and continue the task that paused for it. Never ask for the password in chat.`
+    : `Metal login update: the person declined to give their login for ${site}. If they would rather sign in themselves, call request_sign_in; otherwise say in one line what you cannot do without it. Do not ask for it in chat.`;
 }
 
 export type SecretCards = ReturnType<typeof createSecretCards>;
@@ -116,15 +116,15 @@ const FAILED_MAX = 600;
 export type LoginRejection = { site: string; host: string; change: "removed" | "removedTotp" | "flagged" | "forgotten" };
 
 const credentialUpdateText = (label: string, outcome: "provided" | "dismissed"): string => outcome === "provided"
-  ? `dusk bot credential update: the user securely provided ${label}. Continue the task that paused for it. You do not receive the secret and must not ask them to paste it into chat.`
-  : `dusk bot credential update: the user declined to provide ${label}. Continue without it if possible, or briefly explain the limitation. Do not ask them to paste it into chat.`;
+  ? `Metal credential update: the user securely provided ${label}. Continue the task that paused for it. You do not receive the secret and must not ask them to paste it into chat.`
+  : `Metal credential update: the user declined to provide ${label}. Continue without it if possible, or briefly explain the limitation. Do not ask them to paste it into chat.`;
 
 /** What the bot is told a saved custom secret is, and how to use it without ever seeing or showing the value. */
 export function savedSecretText(label: string, saved: SavedSecret | null, fromVault = false): string {
-  if (!saved) return `The person saved ${label}, but it expired or dusk bot restarted before you used it. Ask again with request_credential if you still need it.`;
+  if (!saved) return `The person saved ${label}, but it expired or Metal restarted before you used it. Ask again with request_credential if you still need it.`;
   const who = fromVault ? `${label} is saved in the person's Vault, so no card was needed. It is` : `The person saved ${label}`;
   if ("ref" in saved) {
-    return `${who}${fromVault ? " here" : ""} as ${saved.ref}. Put it in an mcp_server env, header or oauth.clientSecret value, alone or inside text such as "Bearer ${saved.ref}": dusk bot swaps in the value. It works once, only for you in this conversation, for an hour, and you never see the value.`;
+    return `${who}${fromVault ? " here" : ""} as ${saved.ref}. Put it in an mcp_server env, header or oauth.clientSecret value, alone or inside text such as "Bearer ${saved.ref}": Metal swaps in the value. It works once, only for you in this conversation, for an hour, and you never see the value.`;
   }
   return `${who} ${fromVault ? "in" : "to"} the file ${saved.file}. Read it only inside a command, such as TOKEN="$(cat '${saved.file}')"; never print, echo, log or copy it anywhere else. It is deleted after 24 hours.`;
 }
@@ -145,8 +145,8 @@ function vmFileHome(botId: string, vm: string): SecretFileHome | null {
 /** What the bot hears when the mailbox card settles; it never hears the password. */
 function emailUpdateText(secret: SecretRequestCardData, outcome: "provided" | "dismissed"): string {
   return outcome === "provided"
-    ? `dusk bot secret update: the person connected the mailbox ${secret.address ?? "they typed"}. The email tools (EMAIL_LIST_MESSAGES, EMAIL_READ_MESSAGE, EMAIL_SEND_MESSAGE and others) are ready. Continue the task that paused for it.`
-    : "dusk bot secret update: the person chose not to connect a mailbox. Say briefly what you cannot do without it, and do not ask for the password in chat.";
+    ? `Metal secret update: the person connected the mailbox ${secret.address ?? "they typed"}. The email tools (EMAIL_LIST_MESSAGES, EMAIL_READ_MESSAGE, EMAIL_SEND_MESSAGE and others) are ready. Continue the task that paused for it.`
+    : "Metal secret update: the person chose not to connect a mailbox. Say briefly what you cannot do without it, and do not ask for the password in chat.";
 }
 
 const SERVER_FIELDS = ["imapHost", "imapPort", "smtpHost", "smtpPort", "username"] as const;
@@ -165,10 +165,10 @@ function customRequest(body: Record<string, unknown>): { label: string; reason: 
     : "";
   const label = text(body.label, CUSTOM_SECRET_LABEL_MAX);
   const reason = text(body.reason, CUSTOM_SECRET_REASON_MAX);
-  if (!label) return { error: "request_credential needs credential_id for a key dusk bot keeps, or label for any other secret." };
+  if (!label) return { error: "request_credential needs credential_id for a key Metal keeps, or label for any other secret." };
   if (!reason) return { error: "request_credential needs reason: one short line on what the secret is for and where the person finds it." };
   if (!SECRET_DELIVERIES.includes(body.delivery as SecretDelivery)) {
-    return { error: "request_credential needs delivery: ref for dusk bot's own tools such as mcp_server, or file for your own commands." };
+    return { error: "request_credential needs delivery: ref for Metal's own tools such as mcp_server, or file for your own commands." };
   }
   return { label, reason, placeholder: text(body.placeholder, CUSTOM_SECRET_LABEL_MAX), delivery: body.delivery as SecretDelivery };
 }
@@ -198,8 +198,8 @@ export function createSecretCards(deps: SecretCardsDeps) {
     if (secret.delivery === "login") return loginCardUpdateText(secret.site ?? secret.label, outcome, secret.kept);
     if (secret.delivery === "email") return emailUpdateText(secret, outcome);
     return outcome === "provided"
-      ? `dusk bot secret update: ${savedSecretText(secret.label, vault.savedFor(messageId))}${secret.kept === "vault" ? " It is also saved in the person's Vault: next time, request_credential with the same label gets it without a card." : ""} Continue the task that paused for it.`
-      : `dusk bot secret update: the person declined to provide ${secret.label}. Continue without it if you can, or say briefly what you cannot do. Do not ask for it in chat.`;
+      ? `Metal secret update: ${savedSecretText(secret.label, vault.savedFor(messageId))}${secret.kept === "vault" ? " It is also saved in the person's Vault: next time, request_credential with the same label gets it without a card." : ""} Continue the task that paused for it.`
+      : `Metal secret update: the person declined to provide ${secret.label}. Continue without it if you can, or say briefly what you cannot do. Do not ask for it in chat.`;
   }
 
   function sweepBases(): string[] {
@@ -429,7 +429,7 @@ export function createSecretCards(deps: SecretCardsDeps) {
       }
       if (opened !== null) {
         if (current.secret.stopped) throw new PhoneSecretError("This request stopped with its task", 409);
-        if (current.secret.delivery === "login") throw new PhoneSecretError("Type this login in dusk bot on your computer.", 409);
+        if (current.secret.delivery === "login") throw new PhoneSecretError("Type this login in Metal on your computer.", 409);
         if (current.secret.delivery === "email") {
           if (!current.secret.address || !deps.email) throw new PhoneSecretError("Type your email address and password on your computer.", 409);
           const answer = await deps.email.connect({ address: current.secret.address, password: opened });
@@ -579,18 +579,18 @@ export function createSecretCards(deps: SecretCardsDeps) {
   function loginRejected(botId: string, threadId: string, rejection: LoginRejection | null): string | null {
     if (!rejection) return null;
     if (rejection.change === "forgotten") {
-      return ` The site said this login is wrong, so dusk bot dropped it. If you still need it, call request_credential login for ${rejection.site}.`;
+      return ` The site said this login is wrong, so Metal dropped it. If you still need it, call request_credential login for ${rejection.site}.`;
     }
     const owner = connectorThread(botId, threadId);
     const language = deps.threadLanguage?.(threadId);
     const key = rejection.change === "removed" ? "server.vault.loginRemoved" : rejection.change === "removedTotp" ? "server.vault.totpRemoved" : "server.vault.loginCheck";
     const what = rejection.change === "flagged"
-      ? "It may be wrong, so dusk bot marked it for the person to check in Settings"
-      : rejection.change === "removedTotp" ? "The site refused the code from its saved 2FA key, so dusk bot removed that key from the Vault"
-        : "The site said this login is wrong, so dusk bot removed it from the Vault";
+      ? "It may be wrong, so Metal marked it for the person to check in Settings"
+      : rejection.change === "removedTotp" ? "The site refused the code from its saved 2FA key, so Metal removed that key from the Vault"
+        : "The site said this login is wrong, so Metal removed it from the Vault";
     if (!owner || !deps.logins) return ` ${what}. Tell the person in one short line; do not call fill_login with it again.`;
     appendLoginCard(owner.bot, threadId, Boolean(owner.group), rejection.site, rejection.host, serverLine(language, key, { site: rejection.site }));
-    return ` ${what} and showed the person a login card to add it again, which says so. Do not repeat it or call fill_login again now: end your turn; dusk bot resumes you when they answer.`;
+    return ` ${what} and showed the person a login card to add it again, which says so. Do not repeat it or call fill_login again now: end your turn; Metal resumes you when they answer.`;
   }
 
   /** A login card's answer: `value` is the sealed JSON of its password and 2FA key, opened for this card only. Kept before
@@ -621,7 +621,7 @@ export function createSecretCards(deps: SecretCardsDeps) {
     return { status: 200, body: currentSecretState(botId, threadId, message.id) ?? { provided: true, resumed: false } };
   }
 
-  /** A secret dusk bot does not keep: the same bot asking again for one already saved here gets it back, and a newer
+  /** A secret Metal does not keep: the same bot asking again for one already saved here gets it back, and a newer
    * card replaces its pending one with the same name. */
   function requestCustomSecret(from: BotRecord, threadId: string, room: boolean, body: Record<string, unknown>): { status: number; body: Record<string, unknown> } {
     const asked = customRequest(body);
@@ -732,7 +732,7 @@ export function createSecretCards(deps: SecretCardsDeps) {
       console.warn(`secret card: could not hand over a pasted secret: ${error instanceof Error ? error.name : "error"}`);
       return null;
     }
-    const lead = `dusk bot took ${asked.label} from the person's own message, so no card was needed${vaulted ? ", and saved it to their Vault" : ""}. Never repeat, quote or confirm the value in a reply.`;
+    const lead = `Metal took ${asked.label} from the person's own message, so no card was needed${vaulted ? ", and saved it to their Vault" : ""}. Never repeat, quote or confirm the value in a reply.`;
     return { status: 200, body: { label: asked.label, fromMessage: true, ...(vaulted ? { vault: "saved" } : {}), text: `${lead} ${savedSecretText(asked.label, saved)}` } };
   }
 

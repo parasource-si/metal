@@ -30,7 +30,7 @@ async function browserHalf(since, label) {
 await runFlow(flow, async () => {
   await flow.step("launch", "a fresh app, not signed in, gets into the app", async () => {
     await flow.launch();
-    await flow.waitText(/meet dusk bot|where should your bots live/i, "the welcome", { timeout: 120_000 });
+    await flow.waitText(/meet Metal|where should your bots live/i, "the welcome", { timeout: 120_000 });
     // past the welcome without an account: the welcome is not what this flow checks (and it is being redesigned)
     await flow.evaluate(`fetch("/api/config", { method: "PUT", headers: { "content-type": "application/json" }, body: JSON.stringify({ onboarding: { completedAt: new Date().toISOString(), version: 1 } }) }).then((r) => r.status)`);
     await flow.evaluate(`location.reload(); true`).catch(() => {});

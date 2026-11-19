@@ -24,7 +24,7 @@ describe("tool failure next steps", () => {
     const hinted = withNextStep("ENOENT: no such file");
     expect(hinted).toMatch(new RegExp(`^ENOENT: no such file\\n\\n${NEXT_STEP_LEAD}`));
     expect(withNextStep(hinted)).toBe(hinted);
-    expect(nextStepHint("dusk bot note: Gmail is signed out. 401")).toBe("");
+    expect(nextStepHint("Metal note: Gmail is signed out. 401")).toBe("");
     expect(withNextStep("Invalid arguments")).toBe("Invalid arguments");
   });
 

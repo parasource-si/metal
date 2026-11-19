@@ -1,4 +1,4 @@
-// Codex's approval parameters per named mode. Ask and Auto run in dusk bot's own permission profile: Codex's legacy
+// Codex's approval parameters per named mode. Ask and Auto run in Metal's own permission profile: Codex's legacy
 // workspace-write sandbox reads the whole disk (codex-cli 0.167).
 import { isAbsolute } from "node:path";
 
@@ -34,7 +34,7 @@ export function assertProfileApplied(params: CodexApprovalParams, session: unkno
 export interface CodexApprovalParams {
   thread: Record<string, unknown>;
   turn: Record<string, unknown>;
-  /** The thread `config` layer the named profile is defined in, when dusk bot defines it. */
+  /** The thread `config` layer the named profile is defined in, when Metal defines it. */
   config?: Record<string, unknown>;
   /** Legacy settings for an older app-server that rejects the named-profile field. */
   fallback?: Omit<CodexApprovalParams, "fallback">;
@@ -42,7 +42,7 @@ export interface CodexApprovalParams {
 
 /** Codex persists these on its native thread, so they are explicit on start, resume and every turn.
  * Codex has no narrower "edits only" sandbox, so a stray Edits value asks. With a read scope, Ask and Auto run in
- * dusk bot's own permission profile, which also hides the scope's paths from reads; Codex's legacy
+ * Metal's own permission profile, which also hides the scope's paths from reads; Codex's legacy
  * workspace-write sandbox reads the whole disk. */
 export function namedApprovalParams(mode: Exclude<ApprovalMode, "custom">, scope?: EngineReadScope, codexConfig?: unknown): CodexApprovalParams {
   if (mode === "full") {

@@ -115,7 +115,7 @@ export type RoutineAccess = "read-and-draft";
 /** Where a routine's results go. `brief`: they become rows of the main agent's brief, not chat lines of their own. */
 export type RoutineDelivery = "brief";
 
-/** Why dusk bot paused a routine by itself, after its owner left: no AI of theirs is signed in here any more, they
+/** Why Metal paused a routine by itself, after its owner left: no AI of theirs is signed in here any more, they
  * removed every connected app and server, or the plan was cancelled. It turns back on once that changes. */
 export type RoutineHoldCause = "plan_cancelled" | "no_engine" | "no_connections";
 
@@ -140,7 +140,7 @@ export type RoutineRunStatus =
   | "cancelled"
   | "missed";
 
-/** Why a run started a second time by itself: its engine stalled, dusk bot
+/** Why a run started a second time by itself: its engine stalled, Metal
  * restarted while it ran, the provider rate-limited it or failed for a moment,
  * it waited for its engine's usage limit to reset, or it failed some other way.
  * A run gets one. */
@@ -171,7 +171,7 @@ export interface Routine extends RoutineQuietFields {
   overlap?: "skip" | "queue";
   /** Each run starts with the previous run's report. */
   continuity?: boolean;
-  /** Also run once each time dusk bot starts. */
+  /** Also run once each time Metal starts. */
   runOnStartup?: boolean;
   checks?: RoutineCheck[];
   access?: RoutineAccess;
@@ -190,9 +190,9 @@ export interface Routine extends RoutineQuietFields {
   weekRuns?: { ok: number; total: number };
   /** A plain sentence when the routine names a path that cannot exist on the computer that runs it. */
   warning?: string;
-  /** Set while dusk bot keeps it paused because its owner left; turning it on or off clears it. */
+  /** Set while Metal keeps it paused because its owner left; turning it on or off clears it. */
   heldFor?: RoutineHoldCause;
-  /** Why dusk bot turned it off by itself; gone once it is turned back on. */
+  /** Why Metal turned it off by itself; gone once it is turned back on. */
   pausedFor?: RoutinePause;
   attachments?: RoutineContextAttachment[];
   sourceThreadId?: string;

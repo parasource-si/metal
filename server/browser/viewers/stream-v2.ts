@@ -7,7 +7,7 @@
 // Adapted from pingdotgg/t3code@00cdceb1 apps/server/src/preview/ServerBrowserStream.ts, MIT License, Copyright (c)
 // 2026 T3 Tools Inc. (full text in third_party/t3-code/LICENSE); modified: written on ws without Effect, the viewer is
 // the browser service's (it follows the tab in front of the bot's one browser), the socket opens before the browser
-// has started, and dusk bot's own messages are added.
+// has started, and Metal's own messages are added.
 import type { IncomingMessage } from "node:http";
 import type { Socket } from "node:net";
 

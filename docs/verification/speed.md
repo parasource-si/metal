@@ -1,6 +1,6 @@
 # Speed: start, replies, chat UI and API routes
 
-How long dusk bot takes from process start to a usable chat, and from a send to the first visible text, hop by hop, on
+How long Metal takes from process start to a usable chat, and from a send to the first visible text, hop by hop, on
 disposable fake-engine fixtures. Measured 2026-11-19 on an Apple M5 Pro (18 cores, 48 GB), Node 26.7, Chrome for Testing
 headless, with other agents' fixtures running on the same machine (numbers move a few ms between runs).
 

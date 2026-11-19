@@ -25,7 +25,7 @@ export type YourComputerKey = keyof typeof YOUR_COMPUTER_WORDS;
 export const YOUR_COMPUTER_TOOL = "use_your_computer";
 
 /** A failed turn's line starts with this when the desktop app's own driver is not ready; the app adds the permission fix. */
-export const THIS_COMPUTER_NOT_READY = "dusk bot can't use this computer yet: ";
+export const THIS_COMPUTER_NOT_READY = "Metal can't use this computer yet: ";
 
 /** A copy run from source drives this Mac through the separate CuaDriver app, so macOS lists the grants under its name;
  * electron/cua-gate.mjs writes "... required for CuaDriver; ..." when it waits for one. */
@@ -33,20 +33,20 @@ export const COMPUTER_HELPER_APP = "CuaDriver";
 
 /** The app the person must turn on in System Settings for a reason that names missing grants. */
 export function permissionHolder(reason: string): string {
-  return reason.includes(`required for ${COMPUTER_HELPER_APP}`) ? COMPUTER_HELPER_APP : "dusk bot";
+  return reason.includes(`required for ${COMPUTER_HELPER_APP}`) ? COMPUTER_HELPER_APP : "Metal";
 }
 
-/** Also matches lines saved before the separator changed. */
+/** Saved lines use either app name and either separator. */
 export function isThisComputerNotReady(line: string): boolean {
-  return line.startsWith(THIS_COMPUTER_NOT_READY) || line.toLowerCase().startsWith("dusk bot can't use this computer yet \u2014 ");
+  return /^(?:Metal|dusk bot) can't use this computer yet(?::| \u2014) /i.test(line);
 }
 
 /** A failed turn's line when the server it ran on was not started by the desktop app, so it was never handed this computer. */
 export const THIS_COMPUTER_NOT_GRANTED =
-  "Only the dusk bot app on this computer can let a bot use it. Open the app here, or let the bot work in its own browser or on a cloud desktop instead.";
+  "Only the Metal app on this computer can let a bot use it. Open the app here, or let the bot work in its own browser or on a cloud desktop instead.";
 
 export function isThisComputerNotGranted(line: string): boolean {
-  return line.startsWith(THIS_COMPUTER_NOT_GRANTED.slice(0, THIS_COMPUTER_NOT_GRANTED.indexOf(".") + 1));
+  return /^Only the (?:Metal|dusk bot) app on this computer can let a bot use it\./.test(line);
 }
 
 const BROWSERS: Record<string, string> = {

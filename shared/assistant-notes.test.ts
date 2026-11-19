@@ -18,16 +18,16 @@ const block = (extra: Record<string, unknown> = {}) => JSON.stringify({
 const code = (error: unknown) => (error instanceof GrokImportError ? error.code : String(error));
 
 describe("the copy prompt", () => {
-  it("asks for one self-describing file with a setup block for dusk bot and every part the importer splits", () => {
+  it("asks for one self-describing file with a setup block for Metal and every part the importer splits", () => {
     for (const part of [
-      "format: dusk-bot-notes", "version: 3", "# SETUP INSTRUCTIONS FOR DUSK BOT", "# About me", "## Basics", "## Work", "## Projects", "## Goals",
+      "format: dusk-bot-notes", "version: 3", "# SETUP INSTRUCTIONS FOR METAL", "# About me", "## Basics", "## Work", "## Projects", "## Goals",
       "## Preferences", "## Writing style", "## Tools", "## Schedule", "# Contacts", "# How I like answers", "# Memories", "# Open threads",
       "# Routines", "# Connected apps", "# Skills", "# Bots", "## Bot: <its name>", "### Instructions", "### Personality", "### Memories",
       "### Knowledge files", "### Skills", "### Routines", "### Apps", "word for word", NOTES_END,
     ]) expect(NOTES_PROMPT).toContain(part);
     // one file to Downloads, a download where it can make files, a code block where it can't; parts that each stand alone
-    expect(NOTES_PROMPT).toContain("save it straight to ~/Downloads/dusk-bot-notes.md");
-    expect(NOTES_PROMPT).toContain("give me dusk-bot-notes.md to download");
+    expect(NOTES_PROMPT).toContain("save it straight to ~/Downloads/metal-notes.md");
+    expect(NOTES_PROMPT).toContain("give me metal-notes.md to download");
     expect(NOTES_PROMPT).toContain("one code block that starts with ````markdown");
     expect(NOTES_PROMPT).toMatch(/custom GPT, Project, Gem/);
     expect(NOTES_PROMPT).toContain("each part starting with the same front matter");

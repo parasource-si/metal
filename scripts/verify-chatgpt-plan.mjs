@@ -56,7 +56,7 @@ async function start() {
     }
     else if (message.method === "turn/completed") completions?.(message.params);
   });
-  await rpc("initialize", { clientInfo: { name: "duskbot", title: "dusk bot", version: "fixture" } });
+  await rpc("initialize", { clientInfo: { name: "duskbot", title: "Metal", version: "fixture" } });
   child.stdin.write(JSON.stringify({ method: "initialized" }) + "\n");
 }
 function rpc(method, params) {

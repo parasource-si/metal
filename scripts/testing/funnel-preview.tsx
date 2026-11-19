@@ -32,7 +32,7 @@ const account: CloudAccountState = {
 const idle: StartFreshView = { phase: "idle", steps: [
   { id: "signout", kind: "signout", label: "Sign this computer out of sam@example.test", status: "pending" },
   { id: "ai", kind: "ai", label: "Remove the saved AI keys", status: "pending" },
-  { id: "local", kind: "local", label: "Wipe this computer's dusk bot data on restart", status: "pending" },
+  { id: "local", kind: "local", label: "Wipe this computer's Metal data on restart", status: "pending" },
 ] };
 window.duskDesktop = {
   platform: "darwin",

@@ -4,7 +4,7 @@
   "title": "Sintra alternatives: preset helpers or bots you define?",
   "nav": "sintra",
   "h1": "sintra alternatives when you want to define the jobs yourself",
-  "description": "Compare Sintra’s role-based helpers with dusk bot: job choices, AI billing, phone access and promotional prices, with reasons to choose either.",
+  "description": "Compare Sintra’s role-based helpers with Metal: job choices, AI billing, phone access and promotional prices, with reasons to choose either.",
   "keyword": "sintra ai alternatives",
   "keywords": [
     "ai employees for business",
@@ -60,7 +60,7 @@
     "intro": "**put the commitment beside the sale price.** these offers appeared on 12 november 2026. check the term, total payment and renewal price before buying.",
     "cols": [
       "Sintra",
-      "dusk bot"
+      "Metal"
     ],
     "rows": [
       {
@@ -157,7 +157,7 @@
     },
     {
       "h": "decide what each bot should know",
-      "md": "**give the writer and reviewer the same brief.** each dusk bot keeps its own memory. group chats let bots hand work over with mentions or a leader. learning from groups is optional per bot.[^3][^10][^11]\n\nattach the sources each job needs. [ai teammates](/ai-teammates) explains that setup. sintra’s pages leave collaboration unclear, so try a handoff before buying it for that reason. [relevance ai](/alternatives/relevance-ai) is another workforce option; read its current pricing.\n\nkeep connected-app trials read only. ordinary edits do not automatically ask. if you permit writes, say “ask me before you change anything”. sending has its own setting.[^9][^12]"
+      "md": "**give the writer and reviewer the same brief.** each Metal bot keeps its own memory. group chats let bots hand work over with mentions or a leader. learning from groups is optional per bot.[^3][^10][^11]\n\nattach the sources each job needs. [ai teammates](/ai-teammates) explains that setup. sintra’s pages leave collaboration unclear, so try a handoff before buying it for that reason. [relevance ai](/alternatives/relevance-ai) is another workforce option; read its current pricing.\n\nkeep connected-app trials read only. ordinary edits do not automatically ask. if you permit writes, say “ask me before you change anything”. sending has its own setting.[^9][^12]"
     }
   ],
   "faq": [
@@ -186,43 +186,43 @@
       "checked": "2026-11-12"
     },
     {
-      "label": "dusk bot: bots",
+      "label": "Metal: bots",
       "url": "/docs/bots"
     },
     {
-      "label": "dusk bot: getting started",
+      "label": "Metal: getting started",
       "url": "/docs/getting-started"
     },
     {
-      "label": "dusk bot: account and billing",
+      "label": "Metal: account and billing",
       "url": "/docs/account-and-billing"
     },
     {
-      "label": "dusk bot: faq and license",
+      "label": "Metal: faq and license",
       "url": "/docs/faq"
     },
     {
-      "label": "dusk bot: dusk cloud",
+      "label": "Metal: dusk cloud",
       "url": "/docs/dusk-cloud"
     },
     {
-      "label": "dusk bot: phone",
+      "label": "Metal: phone",
       "url": "/docs/phone"
     },
     {
-      "label": "dusk bot: files and apps",
+      "label": "Metal: files and apps",
       "url": "/docs/files-and-apps"
     },
     {
-      "label": "dusk bot: group chats",
+      "label": "Metal: group chats",
       "url": "/docs/group-chats"
     },
     {
-      "label": "dusk bot: memory",
+      "label": "Metal: memory",
       "url": "/docs/memory"
     },
     {
-      "label": "dusk bot: sending and full access",
+      "label": "Metal: sending and full access",
       "url": "/docs/computer"
     }
   ],

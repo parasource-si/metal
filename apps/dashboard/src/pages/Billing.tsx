@@ -103,9 +103,9 @@ function OpenApp() {
     <div role="status" data-open-app="" className="surface mb-3 flex flex-wrap items-center justify-between gap-x-6 gap-y-3 rounded-card bg-card px-6 py-4">
       <div className="min-w-0">
         <p className="text-14 text-ink">you're all set</p>
-        <p className="mt-0.5 text-13 text-ink-3">your cloud is getting ready. dusk bot picks it up by itself, so open it now or later.</p>
+        <p className="mt-0.5 text-13 text-ink-3">your cloud is getting ready. Metal picks it up by itself, so open it now or later.</p>
       </div>
-      <a href={APP_CLOUD_LINK} data-open-app-link="" className="press hover-btn inline-flex h-10 shrink-0 items-center rounded-full bg-btn px-4.5 text-14 font-medium text-ink">open dusk bot</a>
+      <a href={APP_CLOUD_LINK} data-open-app-link="" className="press hover-btn inline-flex h-10 shrink-0 items-center rounded-full bg-btn px-4.5 text-14 font-medium text-ink">open Metal</a>
     </div>
   );
 }
@@ -117,9 +117,9 @@ function AllSet({ onStay }: { onStay(): void }) {
       <div className="flex justify-center"><span className="peek inline-flex"><Mascot color="blue" size={64} state="happy" track /></span></div>
       <Card className="enter relative -mt-4">
         <h1 className="text-20 font-medium text-ink">you're all set</h1>
-        <p className="mt-1.5 text-14 leading-[1.55] text-ink-3">go back to dusk bot. your cloud is getting ready, and dusk bot picks it up by itself.</p>
+        <p className="mt-1.5 text-14 leading-[1.55] text-ink-3">go back to Metal. your cloud is getting ready, and Metal picks it up by itself.</p>
         <div className="mt-6 flex flex-wrap items-center gap-4">
-          <a href={APP_CLOUD_LINK} data-open-app-link="" className="press hover-btn inline-flex h-10 items-center rounded-full bg-ink px-4.5 text-14 font-medium text-bg">open dusk bot</a>
+          <a href={APP_CLOUD_LINK} data-open-app-link="" className="press hover-btn inline-flex h-10 items-center rounded-full bg-ink px-4.5 text-14 font-medium text-bg">open Metal</a>
           <button type="button" onClick={onStay} className={quiet}>see your plan</button>
         </div>
       </Card>

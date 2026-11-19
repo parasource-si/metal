@@ -44,7 +44,7 @@ export function createMacPermissions({ platform, systemPreferences, desktopCaptu
       if (asked.screen) await openSettings("screen");
       else {
         asked.screen = true;
-        // a real capture from this process is what puts dusk bot in the list and shows the prompt
+        // a real capture from this process is what puts Metal in the list and shows the prompt
         try { await desktopCapturer.getSources({ types: ["screen"], thumbnailSize: { width: 1, height: 1 } }); } catch {}
       }
     }

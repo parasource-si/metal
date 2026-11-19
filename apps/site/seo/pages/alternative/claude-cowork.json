@@ -4,7 +4,7 @@
   "title": "Claude Cowork alternatives: platforms and AI choice",
   "nav": "claude cowork",
   "h1": "a claude cowork alternative when you want more ai choices",
-  "description": "Claude Cowork is becoming Claude and now covers Windows and Linux beta. Compare its platforms, paid plans and engine choice with dusk bot.",
+  "description": "Claude Cowork is becoming Claude and now covers Windows and Linux beta. Compare its platforms, paid plans and engine choice with Metal.",
   "keyword": "claude cowork alternative",
   "keywords": [
     "claude desktop alternative",
@@ -12,7 +12,7 @@
     "claude cowork vs chatgpt agent",
     "claude cowork pricing"
   ],
-  "answer": "**give each job the ai you want doing it.** dusk bot offers separate bots with their own chats and memory, on your disk, your server or dusk cloud.[^3][^4][^7] claude already supports windows and linux beta, alongside macos, web and phones.[^2] as of 12 november 2026, cowork is becoming just claude.[^1] switching makes more sense for ai choice than platform support.",
+  "answer": "**give each job the ai you want doing it.** Metal offers separate bots with their own chats and memory, on your disk, your server or dusk cloud.[^3][^4][^7] claude already supports windows and linux beta, alongside macos, web and phones.[^2] as of 12 november 2026, cowork is becoming just claude.[^1] switching makes more sense for ai choice than platform support.",
   "updated": "2026-11-12",
   "review": {
     "status": "approved",
@@ -61,7 +61,7 @@
     "intro": "**windows users can choose either app.** these platform and plan details are as of 12 november 2026. both linux offerings are beta; match the listed system to the machine you use.",
     "cols": [
       "claude, formerly cowork",
-      "dusk bot"
+      "Metal"
     ],
     "rows": [
       {
@@ -148,7 +148,7 @@
       }
     ]
   },
-  "method": "**use this to choose a setup, then try your own work in it.** we make dusk bot. we read anthropic's product, pricing and help pages on 12 november 2026.\n\nwe didn't run matching file tasks on every operating system or benchmark the engines. the rename is rolling out, so your installed app may still say cowork. support for a platform doesn't promise the same results on it.",
+  "method": "**use this to choose a setup, then try your own work in it.** Metal is based on Dusk Bot. we read anthropic's product, pricing and help pages on 12 november 2026.\n\nwe didn't run matching file tasks on every operating system or benchmark the engines. the rename is rolling out, so your installed app may still say cowork. support for a platform doesn't promise the same results on it.",
   "sections": [
     {
       "h": "the name changed; the paid features still cost money",
@@ -206,7 +206,7 @@
       "checked": "2026-11-12"
     },
     {
-      "label": "dusk bot model switching",
+      "label": "Metal model switching",
       "url": "/docs/bots"
     },
     {
@@ -240,7 +240,7 @@
     "steps": [
       "write down what your current claude setup cannot do",
       "see whether the current claude app already does that job",
-      "try one file question with a dusk bot",
+      "try one file question with a Metal",
       "compare the review work each result leaves you"
     ]
   },

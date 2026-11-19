@@ -190,7 +190,7 @@
       ],
       "state": "idle",
       "ms": 10410,
-      "output": "I’m canceling your daily morning summary now.\n---\nI couldn’t find a daily morning summary automation for me or dusk bot, so nothing was cancelled. Where do you receive the summary?"
+      "output": "I’m canceling your daily morning summary now.\n---\nI couldn’t find a daily morning summary automation for me or Metal, so nothing was cancelled. Where do you receive the summary?"
     },
     {
       "model": "gpt-6.1-terra",

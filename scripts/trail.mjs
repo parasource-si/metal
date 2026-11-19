@@ -49,7 +49,7 @@ export function parseWhen(value, now = Date.now()) {
 export function defaultLogDirs(env = process.env, platform = process.platform, home = os.homedir()) {
   if (env.DUSK_TRAIL_DIR) return [env.DUSK_TRAIL_DIR];
   if (env.DUSK_LOG_DIR) return [env.DUSK_LOG_DIR];
-  const names = ["duskbot", "dusk bot", "Dusk Bot", "dusk-bot"];
+  const names = ["duskbot", "Metal", "Metal", "dusk-bot"];
   const bases = platform === "darwin" ? [path.join(home, "Library", "Logs")]
     : platform === "win32" ? [path.join(env.APPDATA ?? path.join(home, "AppData", "Roaming"))].flatMap((base) => [base])
       : [path.join(env.XDG_CONFIG_HOME ?? path.join(home, ".config"))];

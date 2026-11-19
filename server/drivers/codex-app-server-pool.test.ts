@@ -131,7 +131,7 @@ describe("Codex app-server pool", () => {
     pool.release(pool.adopt("key", asChild(child)));
     child.say({ jsonrpc: "2.0", id: 7, method: "item/commandExecution/requestApproval", params: {} });
     await flush();
-    expect(child.written).toEqual([{ jsonrpc: "2.0", id: 7, error: { code: -32603, message: "No dusk bot turn is running on this thread." } }]);
+    expect(child.written).toEqual([{ jsonrpc: "2.0", id: 7, error: { code: -32603, message: "No Metal turn is running on this thread." } }]);
   });
 
   it("drops an app-server that exits while idle", () => {

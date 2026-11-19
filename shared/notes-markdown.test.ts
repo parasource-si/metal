@@ -8,7 +8,7 @@ const code = (run: () => unknown) => {
   try { run(); return "none"; } catch (error) { return error instanceof GrokImportError ? error.code : String(error); }
 };
 
-const whole = file(`# SETUP INSTRUCTIONS FOR DUSK BOT
+const whole = file(`# SETUP INSTRUCTIONS FOR METAL
 
 This export is from ChatGPT for Priya Shah. It lists 1 bot under Bots: recreate it as its own bot.
 
@@ -88,7 +88,7 @@ Convert cups to grams.
 ### Apps
 - Recipe search (https://mcp.example.com/recipes)
 
-END OF DUSK BOT NOTES
+END OF METAL NOTES
 `);
 
 describe("the markdown notes file", () => {
@@ -124,9 +124,14 @@ describe("the markdown notes file", () => {
     expect(bot.memoryFiles!["memory/knowledge-files.md"]).toContain("- pantry.pdf");
   });
 
+  it("keeps the setup block and final marker from earlier exports", () => {
+    const legacy = whole.replace("SETUP INSTRUCTIONS FOR METAL", "SETUP INSTRUCTIONS FOR DUSK BOT").replace("END OF METAL NOTES", "END OF DUSK BOT NOTES");
+    expect(parseNotes(legacy)).toEqual(parseNotes(whole));
+  });
+
   it("joins the parts of a split answer, and says when the last part never came", () => {
     const one = file("# Memories\n- Likes tea\n");
-    const two = file("# Memories\n- Likes tea\n- Runs on Sundays\n\nEND OF DUSK BOT NOTES\n");
+    const two = file("# Memories\n- Likes tea\n- Runs on Sundays\n\nEND OF METAL NOTES\n");
     const joined = parseNotes(`${one}\n\n${two}`);
     expect(joined.memories).toEqual(["Likes tea", "Runs on Sundays"]);
     expect(joined.partial).toBe(false);
@@ -134,7 +139,7 @@ describe("the markdown notes file", () => {
   });
 
   it("looks through a heading wrapped around everything and bold field names", () => {
-    const notes = parseNotes(file("# My export\n## About me\n- Lives in Oslo\n## Routines\n### Standup\n- **Cron:** 0 9 * * 1-5\n- **Time zone:** Europe/Oslo\n~~~text\nAsk what I'm doing today.\n~~~\n\nEND OF DUSK BOT NOTES"));
+    const notes = parseNotes(file("# My export\n## About me\n- Lives in Oslo\n## Routines\n### Standup\n- **Cron:** 0 9 * * 1-5\n- **Time zone:** Europe/Oslo\n~~~text\nAsk what I'm doing today.\n~~~\n\nEND OF METAL NOTES"));
     expect(notes.aboutMe).toEqual(["Lives in Oslo"]);
     expect(notes.recurring[0]).toMatchObject({ name: "Standup", cron: "0 9 * * 1-5", timeZone: "Europe/Oslo" });
   });
@@ -146,7 +151,7 @@ describe("the markdown notes file", () => {
       "# Skills", "## Order triage", "~~~text", "List new orders.", "~~~",
       "# Bots", "## Bot: Kiln", "### Instructions", "~~~text", "You run the shop.", "~~~", "### Memories", "- Tidepool sells out fastest",
       "### Skills", "#### Order triage", "~~~text", "List new orders.", "~~~", "### Routines", "#### Morning orders", "- Cron: 30 8 * * *", "~~~text", "Check new orders.", "~~~",
-      "", "END OF DUSK BOT NOTES",
+      "", "END OF METAL NOTES",
     ].join("\n")));
     expect(notes.instructions).toBe("");
     expect(notes.memories).toEqual(["Maya hates phone calls"]);
@@ -158,9 +163,9 @@ describe("the markdown notes file", () => {
 
   it("refuses the prompt itself, a template never filled in, and credentials", () => {
     expect(code(() => parseNotes(NOTES_PROMPT))).toBe("cutOff");
-    expect(code(() => parseNotes(file("# Memories\n- <each saved memory>\n\nEND OF DUSK BOT NOTES")))).toBe("notExport");
+    expect(code(() => parseNotes(file("# Memories\n- <each saved memory>\n\nEND OF METAL NOTES")))).toBe("notExport");
     expect(code(() => parseNotes(file("# Memories\n- Likes tea", "format: dusk-bot-notes\nversion: 9\nfrom: Claude")))).toBe("newerVersion");
-    const notes = parseNotes(file("# Memories\n- My key is sk-ant-api03-abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGH\n\nEND OF DUSK BOT NOTES"));
+    const notes = parseNotes(file("# Memories\n- My key is sk-ant-api03-abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGH\n\nEND OF METAL NOTES"));
     expect(notes.memories[0]).not.toContain("abcdefghijklmnopqrstuvwxyz0123456789");
   });
 });

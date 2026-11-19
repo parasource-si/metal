@@ -4,7 +4,7 @@
   "title": "Hermes Agent alternatives: self-run or hosted?",
   "nav": "hermes agent",
   "h1": "hermes agent alternatives when upkeep is the question",
-  "description": "Compare Hermes Agent's open source, desktop and Nous cloud options with dusk bot, including the sign-in limits stated in Hermes' provider docs.",
+  "description": "Compare Hermes Agent's open source, desktop and Nous cloud options with Metal, including the sign-in limits stated in Hermes' provider docs.",
   "keyword": "hermes agent alternative",
   "keywords": [
     "hermes agent alternatives",
@@ -60,7 +60,7 @@
     "intro": "**you can buy hosting on either side.** tiers and sign-in limits below are as of 12 november 2026. read the current provider terms before choosing a connection.",
     "cols": [
       "Hermes Agent",
-      "dusk bot"
+      "Metal"
     ],
     "rows": [
       {
@@ -155,7 +155,7 @@
       }
     ]
   },
-  "method": "**compare the upkeep and sign-in bill before moving.** we make dusk bot. we read the saved hermes homepage, readme and provider docs against dusk docs on 12 november 2026.\n\nwe did not run matching jobs, measure minimum hardware or test isolation strength. use this comparison to choose a trial, then judge the result yourself.",
+  "method": "**compare the upkeep and sign-in bill before moving.** Metal is based on Dusk Bot. we read the saved hermes homepage, readme and provider docs against dusk docs on 12 november 2026.\n\nwe did not run matching jobs, measure minimum hardware or test isolation strength. use this comparison to choose a trial, then judge the result yourself.",
   "sections": [
     {
       "h": "keep hermes if the code matters",
@@ -274,7 +274,7 @@
       ],
       [
         "named bots in a shared conversation",
-        "dusk bot"
+        "Metal"
       ],
       [
         "hosting without running your own server",

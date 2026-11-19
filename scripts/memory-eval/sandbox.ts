@@ -1,4 +1,4 @@
-// A throwaway dusk bot server for the memory eval: its own data dir and home, one engine instance pointed at an
+// A throwaway Metal server for the memory eval: its own data dir and home, one engine instance pointed at an
 // OpenAI-compatible gateway, nothing from this machine's real bots. The key is read here and written only into the
 // sandbox's own config.json (0600), never printed.
 import { spawn, type ChildProcess } from "node:child_process";

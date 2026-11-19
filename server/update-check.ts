@@ -2,7 +2,7 @@ import { createPublicKey, verify } from "node:crypto";
 import { existsSync } from "node:fs";
 import { join, sep } from "node:path";
 
-export const LATEST_RELEASE_URL = "https://api.github.com/repos/DuskBotAI/duskbot/releases/latest";
+export const LATEST_RELEASE_URL = "https://api.github.com/repos/parasource-si/metal/releases/latest";
 
 /** "managed" is a hosted or Cloud server that is updated for its owner. */
 export type InstallKind = "desktop" | "managed" | "docker" | "podman" | "npm" | "git" | "unknown";
@@ -33,9 +33,7 @@ export interface UpdateCheck {
   restart?: boolean;
 }
 
-/** the signed desktop release manifest: `{ v: 1, signature: "r1.<kid>.<manifest>.<sig>" }`, written by scripts/release-manifest.ts */
-export const DESKTOP_MANIFEST_URL = "https://dusk.bot/releases/latest.json";
-export const DESKTOP_DOWNLOAD_URL = "https://dusk.bot/download";
+export const DESKTOP_DOWNLOAD_URL = "https://github.com/parasource-si/metal/releases/latest";
 
 /** CI's release keys (apps/cloud-service/src/release-signing.ts pins the same ones; a test keeps them equal) */
 export const DESKTOP_RELEASE_KEYS: readonly { kid: string; x: string }[] = [
@@ -69,12 +67,18 @@ export function newerVersion(a: string, b: string): boolean {
   return false;
 }
 
+function publishedVersion(body: unknown): string | null {
+  if (!body || typeof body !== "object") return null;
+  const release = body as { tag_name?: unknown; draft?: unknown; prerelease?: unknown };
+  if (release.draft !== false || release.prerelease !== false || typeof release.tag_name !== "string") return null;
+  return /^v(\d+\.\d+\.\d+)$/.exec(release.tag_name)?.[1] ?? null;
+}
+
 const DESKTOP_CHECK_TTL_MS = 60 * 60_000;
-let desktopCache: { at: number; latest: string | null } | null = null;
 
 /**
- * The desktop app asks dusk.bot's signed manifest whether a newer release exists and only ever points at the download
- * page: nothing is downloaded or installed for the person. Other installs are updated by whoever runs them.
+ * The desktop app checks Metal releases and links to the release page. A configured signed feed is verified with
+ * its pinned keys. Other installs are updated by whoever runs them.
  */
 export function createUpdateChecker(options: {
   current: string;
@@ -85,18 +89,21 @@ export function createUpdateChecker(options: {
   keys?: readonly { kid: string; x: string }[];
 }) {
   const now = options.now ?? Date.now;
+  let desktopCache: { at: number; latest: string | null } | null = null;
   return async function check(): Promise<UpdateCheck> {
     const base: UpdateCheck = { current: options.current, install: options.install, available: false };
     if (options.install !== "desktop") return base;
     if (!desktopCache || now() - desktopCache.at >= DESKTOP_CHECK_TTL_MS) {
-      const response = await (options.fetch ?? fetch)(options.manifestUrl ?? DESKTOP_MANIFEST_URL, { redirect: "error", signal: AbortSignal.timeout(10_000), headers: { accept: "application/json" } });
+      const response = await (options.fetch ?? fetch)(options.manifestUrl ?? LATEST_RELEASE_URL, { redirect: "error", signal: AbortSignal.timeout(10_000), headers: { accept: "application/json" } });
       if (response.status === 404) desktopCache = { at: now(), latest: null };
-      else if (!response.ok) throw new Error(`the release manifest answered ${response.status}`);
-      else desktopCache = { at: now(), latest: verifiedDesktopVersion(await response.json().catch(() => null), options.keys) };
+      else if (!response.ok) throw new Error(`the release check returned ${response.status}`);
+      else {
+        const body: unknown = await response.json().catch(() => null);
+        const latest = options.manifestUrl ? verifiedDesktopVersion(body, options.keys) : publishedVersion(body);
+        desktopCache = { at: now(), latest };
+      }
     }
     const latest = desktopCache.latest;
     return latest && newerVersion(latest, options.current) ? { ...base, latest, available: true, releaseUrl: DESKTOP_DOWNLOAD_URL } : base;
   };
 }
-
-export function resetDesktopUpdateCacheForTests() { desktopCache = null; }

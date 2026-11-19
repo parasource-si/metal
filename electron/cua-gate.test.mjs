@@ -26,6 +26,6 @@ describe("CuaDriver's permission gate", () => {
     expect(reason).toContain("Screen Recording and Accessibility required");
     expect(driverGateFromReason(reason)).toEqual(["Screen Recording", "Accessibility"]);
     expect(permissionHolder(reason)).toBe(COMPUTER_HELPER_APP);
-    expect(driverGateFromReason("embedded host failed: Screen Recording required; restart dusk bot")).toBeNull();
+    expect(driverGateFromReason("embedded host failed: Screen Recording required; restart Metal")).toBeNull();
   });
 });

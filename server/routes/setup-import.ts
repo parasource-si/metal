@@ -9,7 +9,7 @@ import type { BusyFlag } from "./config.ts";
 import { PASS, type RouteHandler } from "./table.ts";
 
 export interface SetupImportRouteDeps {
-  /** True only on the desktop app's own server. Never on `duskbot serve`, where any local process, a bot's shell
+  /** True only on the desktop app's own server. Never on `metal serve`, where any local process, a bot's shell
    * among them, is the owner's loopback; nor on a Cloud home or a hosted organization server, whose files are not the
    * person's own. */
   local: boolean;
@@ -29,7 +29,7 @@ export const GROK_LOOK_PATH = "/api/setup-import/grok";
 export const BOTS_LOOK_PATH = "/api/setup-import/bots";
 /** The notes file another AI saved to Downloads after the prompt was copied (`?since=` its time, in ms). */
 export const NOTES_LOOK_PATH = "/api/setup-import/notes";
-const LOCAL_ONLY = "Only the desktop app on the computer running dusk bot can bring in that computer's skills and tools.";
+const LOCAL_ONLY = "Only the desktop app on the computer running Metal can bring in that computer's skills and tools.";
 const SOURCES = SETUP_SOURCES;
 const requestSchema = z.object({
   skills: z.boolean().optional(), tools: z.boolean().optional(), instructions: z.boolean().optional(), memory: z.boolean().optional(),

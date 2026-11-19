@@ -94,7 +94,7 @@ export class McpToolHints {
   }
 
   /** Whether a call only reads, so no mode below Full needs to ask: the server marks it read-only (and its name agrees),
-   * dusk bot's own api_request is a GET, or it is a known read of dusk bot's own app servers. */
+   * Metal's own api_request is a GET, or it is a known read of Metal's own app servers. */
   readsOnly(input: { server: string; tool: string; spec: McpServerSpec | Json; facts?: ToolCallFacts; apiServer?: boolean }): boolean {
     const full = `mcp__${input.server}__${input.tool}`;
     if (isOutboundTool(full)) return false;

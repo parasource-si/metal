@@ -1,12 +1,12 @@
 ---
 title: account and billing
-description: what's free, what plus and pro add, and how to pay, change or cancel. an account is only needed for a plan.
+description: upstream Dusk Cloud accounts, plans, invoices and cancellation.
 section: help
 order: 1
 art: s-coins
 ---
 
-dusk bot is free for personal use, with every feature, on your own computer. you need an account only to buy a plan.
+Metal is free for personal use, with every feature, on your own computer. the upstream Dusk Cloud service manages its own plans and accounts.
 
 ## plans
 
@@ -22,13 +22,13 @@ yearly is two months free. **team** is $119 a month or $1,190 a year: a team lic
 
 **ai usage is never on your dusk bill.** your ai provider bills you on your plan with them.
 
-using dusk bot at or for a business needs a work license. pro includes one for one person, or you can add one on its own for $12 a month (on free or plus) from the billing page of your account. the [license page](/license) has the exact terms.
+commercial use of Metal requires a separate license from the upstream copyright holder. the [license page](/license) has the terms.
 
 ## your account
 
-go to [dusk.bot/dashboard]({{app}}) and enter your email. we send a code; there's no password. the account shows your plan, invoices, and each place your bots live, with their bots, usage and bot computers. it never sees your messages, prompts, files or keys.
+go to [dusk.bot/dashboard]({{app}}) and enter your email. the upstream service sends a code; there's no password. the account shows your plan, invoices, and each place your bots live, with their bots, usage and bot computers. it never sees your messages, prompts, files or keys.
 
-payments, tax and invoices are handled by dodo payments, our merchant of record. we never see your card number.
+payments, tax and invoices are handled by dodo payments, the upstream service's merchant of record.
 
 ## changing or cancelling
 

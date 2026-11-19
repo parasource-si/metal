@@ -24,16 +24,16 @@ FAKE_CLAUDE_TOOL_CALLS_FILE="$W/calls.json" node --experimental-strip-types scri
 Second terminal (same `W`; `DATA` is the `dataDir` the launcher printed):
 
 ```sh
-pnpm control:dusk new-bot --name Pepper --url http://127.0.0.1:PORT
-pnpm control:dusk send --bot BOT_ID --text "Tell me when report.txt is there, then say so" --url http://127.0.0.1:PORT
-pnpm control:dusk wait --bot BOT_ID --timeout 30 --url http://127.0.0.1:PORT
-pnpm control:dusk messages --bot BOT_ID --limit 12 --url http://127.0.0.1:PORT
+pnpm control:metal new-bot --name Pepper --url http://127.0.0.1:PORT
+pnpm control:metal send --bot BOT_ID --text "Tell me when report.txt is there, then say so" --url http://127.0.0.1:PORT
+pnpm control:metal wait --bot BOT_ID --timeout 30 --url http://127.0.0.1:PORT
+pnpm control:metal messages --bot BOT_ID --limit 12 --url http://127.0.0.1:PORT
 touch "$W/report.txt"; sleep 25
-pnpm control:dusk wait --bot BOT_ID --timeout 60 --url http://127.0.0.1:PORT
-pnpm control:dusk messages --bot BOT_ID --limit 12 --url http://127.0.0.1:PORT
+pnpm control:metal wait --bot BOT_ID --timeout 60 --url http://127.0.0.1:PORT
+pnpm control:metal messages --bot BOT_ID --limit 12 --url http://127.0.0.1:PORT
 curl -s http://127.0.0.1:PORT/api/notifications
 cat "$DATA/waits.json"
-sleep 10; pnpm control:dusk messages --bot BOT_ID --limit 12 --url http://127.0.0.1:PORT
+sleep 10; pnpm control:metal messages --bot BOT_ID --limit 12 --url http://127.0.0.1:PORT
 ```
 
 Expected:

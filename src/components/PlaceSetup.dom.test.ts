@@ -247,7 +247,7 @@ it("the SSH way shows the tunnel command with the server's own login and address
   expect(commands).toContain("ssh -N -L 8790:127.0.0.1:8799 ubuntu@203.0.113.7");
 });
 
-it("a dusk bot already running is connected by its address and code, and what was typed is checked", async () => {
+it("a Metal already running is connected by its address and code, and what was typed is checked", async () => {
   const workspaces = { add: vi.fn(async () => true) };
   vi.stubGlobal("duskDesktop", { workspaces });
   const onClose = vi.fn();

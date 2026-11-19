@@ -32,7 +32,7 @@ import { museMcpConfig, museMcpToolReferences } from "./muse-mcp.ts";
 
 const DRIVER_KIND = "museCode";
 const PROVIDER_ID = "meta";
-const CLIENT_INFO = { name: "duskbot", title: "dusk bot", version: "1" };
+const CLIENT_INFO = { name: "duskbot", title: "Metal", version: "1" };
 const MUSE_CONTEXT_WINDOW = 1_048_576;
 const RE_ANCHOR_TURNS = 8;
 const STARTUP_TIMEOUT_MS = 30_000;

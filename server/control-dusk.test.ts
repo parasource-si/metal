@@ -115,7 +115,7 @@ describe("control-dusk command mapping", () => {
     });
   });
 
-  it("rejects an available engine when the endpoint is not dusk bot", async () => {
+  it("rejects an available engine when the endpoint is not Metal", async () => {
     const callTool = vi.fn(async (name: string) => name === "get_system_health"
       ? { status: "connected", app: "another-app" }
       : { instances: [{ instanceId: "ready", snapshot: { state: "available" } }] });
@@ -132,7 +132,7 @@ describe("control-dusk command mapping", () => {
       callTool: vi.fn() as any,
       env: {},
     })).rejects.toMatchObject({
-      message: "mutating commands require an explicit dusk bot instance",
+      message: "mutating commands require an explicit Metal instance",
     });
   });
 
@@ -184,7 +184,7 @@ describe("control-dusk command mapping", () => {
       callTool: vi.fn() as any,
       env: {},
     })).rejects.toMatchObject({
-      message: "mutating commands require an explicit dusk bot instance",
+      message: "mutating commands require an explicit Metal instance",
     });
   });
 
@@ -230,7 +230,7 @@ describe("control-dusk command mapping", () => {
     });
     await expect(runControlDusk(["set-model", "--bot", "bot-1", "--instance", "claude", "--model", "model-b"], {
       callTool: callTool as any, env: {},
-    })).rejects.toThrow("explicit dusk bot instance");
+    })).rejects.toThrow("explicit Metal instance");
   });
 });
 

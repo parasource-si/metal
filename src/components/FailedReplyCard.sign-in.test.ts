@@ -48,7 +48,7 @@ beforeEach(() => {
   fixture.dispatch.mockClear();
   // the Mac's own desktop bridge is there and local; it is never asked about the workspace's AIs
   vi.stubGlobal("window", Object.assign(window, { duskDesktop: { platform: "darwin", remoteClient: { active: false } } }));
-  fixture.bots = [{ id: "dusk", name: "dusk bot", modelSelection: { instanceId: "githubCopilot", model: "auto" } } as Bot];
+  fixture.bots = [{ id: "dusk", name: "Metal", modelSelection: { instanceId: "githubCopilot", model: "auto" } } as Bot];
 });
 afterEach(async () => { await act(async () => root?.unmount()); root = null; });
 

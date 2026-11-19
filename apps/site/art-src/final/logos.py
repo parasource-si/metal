@@ -1,5 +1,5 @@
 # the logos shown on the home page, written to public/landing/art/logos
-# connectors: the files the app itself ships (src/assets/app-logos in the Dusk Bot checkout); every mark belongs to its owner
+# connectors: the files the app itself ships (src/assets/app-logos in the Metal checkout); every mark belongs to its owner
 # models: @lobehub/icons-static-svg (MIT) from jsdelivr
 import os, shutil, subprocess, sys
 from PIL import Image

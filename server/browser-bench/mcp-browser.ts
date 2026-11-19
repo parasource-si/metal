@@ -1,4 +1,4 @@
-// dusk bot's browser tools as a stdio MCP server over the real BrowserService and a headless Chrome, so an engine CLI
+// Metal's browser tools as a stdio MCP server over the real BrowserService and a headless Chrome, so an engine CLI
 // plays a benchmark task through the same code a bot uses. Every call is appended to BENCH_LOG.
 // Run: DUSK_CDP_E2E=1 node --experimental-strip-types server/browser-bench/mcp-browser.ts
 import "./stdout-guard.ts";

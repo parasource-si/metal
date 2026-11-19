@@ -199,7 +199,7 @@ export interface WorkspaceReport {
   apps?: AppsReport;
   /** structured usage since the last report (usage-signals.ts); the service rolls it up and never keeps it on the workspace */
   usage?: UsageReport;
-  /** the person changed "help improve dusk bot" in the app: true is off. The service sets the account's switch to match
+  /** the person changed "help improve Metal" in the app: true is off. The service sets the account's switch to match
    * (off also deletes what it stored); sent until a report gets through */
   usageOptOut?: boolean;
   /** cpu and memory samples newer than the last report's, sent only while someone watches (machine-pulse.ts) */
@@ -210,7 +210,7 @@ export interface WorkspaceReport {
 /** answer to POST /v1/report and GET /v1/wait */
 export interface ReportAnswer {
   v: 1; watching: boolean; nextReportMs: number; commands: DashboardCommand[];
-  /** the account's "help improve dusk bot" switch (true is off), so the app follows a change made on the account */
+  /** the account's "help improve Metal" switch (true is off), so the app follows a change made on the account */
   usageOptOut?: boolean;
 }
 

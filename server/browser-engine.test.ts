@@ -643,7 +643,7 @@ describe("finding the browser engine", () => {
 
   it.each(SUPPORTED_BROWSER_TARGETS)("uses the complete %s desktop bundle before old downloaded engines", (target) => {
     const [platform, arch] = target.split("-");
-    const env = { DUSK_RESOURCES_PATH: join(tmpdir(), "dusk bot resources"), PATH: "" };
+    const env = { DUSK_RESOURCES_PATH: join(tmpdir(), "Metal resources"), PATH: "" };
     const bundle = browserBundlePaths(join(env.DUSK_RESOURCES_PATH, "browser-engine"), target);
     const files = new Set([bundle.directory, bundle.engine, bundle.chrome, bundle.manifest, bundle.licenses]);
     const options = { env, platform: platform as NodeJS.Platform, arch, exists: (p: string) => files.has(p) };
@@ -714,7 +714,7 @@ describe("finding the browser engine", () => {
     expect(browserEngineStatus({ dataDir, env, exists, versionOf: () => AGENT_BROWSER_VERSION })).toMatchObject({ kind: "ready", binaryPath: pathBinary, managed: false });
   });
 
-  it("hands agent-browser the Chrome dusk bot prepared instead of the bundled shell, never when it attaches to the person's Chrome", () => {
+  it("hands agent-browser the Chrome Metal prepared instead of the bundled shell, never when it attaches to the person's Chrome", () => {
     const resources = mkdtempSync(join(tmpdir(), "dusk-browser-resources-"));
     scratch.push(resources);
     const host = { platform: "darwin" as const, arch: "arm64" };

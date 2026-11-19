@@ -943,7 +943,7 @@ describe("Antigravity driver over shared ACP", () => {
     expect(normalizeAntigravityTurn({ ...turn, model: "gemini-4-argon-high" }, ["gemini-3.8-flash"])).toEqual({ ...turn, model: "gemini-4-argon-high" });
   });
 
-  it("keeps one process across approval and model changes, starting on dusk bot's model", async () => {
+  it("keeps one process across approval and model changes, starting on Metal's model", async () => {
     ensureDirs();
     const fake = fakeRuntime();
     const dump = join(fake.directory, "dump.json");
@@ -1017,7 +1017,7 @@ describe("Antigravity driver over shared ACP", () => {
       return { done, events: recorder!.events.filter((event) => event.turnId === turnId) };
     };
     expect((await run("thread-known", "gemini-3.8-flash-low")).done).toMatchObject({ ok: true });
-    // a tier-locked model, and dusk bot's static default the account lacks
+    // a tier-locked model, and Metal's static default the account lacks
     for (const [index, model] of ["gemini-3.8-pro-high", STATIC_ANTIGRAVITY_MODELS.default].entries()) {
       const { done, events } = await run(`thread-unavailable-${index}`, model);
       expect(done).toMatchObject({ ok: false });

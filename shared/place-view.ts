@@ -79,7 +79,7 @@ export interface PlaceFacts {
   place: Place | "auto" | "off";
   server: ServerKind;
   bot: string;
-  /** Desktop only: signed in to a paid dusk bot Cloud plan (the desktop bridge). */
+  /** Desktop only: signed in to a paid Dusk Cloud plan (the desktop bridge). */
   plan?: boolean;
   /** Legacy inputs are accepted when reading older workspace records. */
   backend?: "box" | "vps";

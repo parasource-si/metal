@@ -4,7 +4,7 @@
   "title": "Slack AI assistant: find decisions without rereading it all",
   "nav": "slack",
   "h1": "a slack assistant that finds the decision in the thread",
-  "description": "Use dusk bot to read Slack threads, find decisions and draft replies in chat. Try three routines with source links and clear posting limits.",
+  "description": "Use Metal to read Slack threads, find decisions and draft replies in chat. Try three routines with source links and clear posting limits.",
   "keyword": "claude slack",
   "keywords": [
     "claude slack integration",
@@ -12,7 +12,7 @@
     "slack ai agent",
     "slack mcp"
   ],
-  "answer": "**get yesterday's decision without spending the morning in slack.** a dusk bot searches channels, reads the replies and brings you the outcome with a source link. you choose the ai behind it.\n\nkeep a catch-up private in dusk chat, or let it propose a reply for you to post. read-only slack access is enough for both.",
+  "answer": "**get yesterday's decision without spending the morning in slack.** a Metal bot searches channels, reads the replies and brings you the outcome with a source link. you choose the ai behind it.\n\nkeep a catch-up private in dusk chat, or let it propose a reply for you to post. read-only slack access is enough for both.",
   "updated": "2026-11-12",
   "review": {
     "status": "approved",
@@ -136,19 +136,19 @@
   ],
   "sources": [
     {
-      "label": "dusk bot docs: connected apps",
+      "label": "Metal docs: connected apps",
       "url": "/docs/files-and-apps"
     },
     {
-      "label": "dusk bot docs: scheduled work",
+      "label": "Metal docs: scheduled work",
       "url": "/docs/routines"
     },
     {
-      "label": "dusk bot docs: sending controls",
+      "label": "Metal docs: sending controls",
       "url": "/docs/computer"
     },
     {
-      "label": "dusk bot docs: phone access",
+      "label": "Metal docs: phone access",
       "url": "/docs/phone"
     }
   ],

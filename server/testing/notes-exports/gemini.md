@@ -6,9 +6,9 @@ from: Gemini
 exported: 2024-10-24
 ---
 
-# SETUP INSTRUCTIONS FOR DUSK BOT
+# SETUP INSTRUCTIONS FOR Metal
 
-This export comes from Gemini for Maya Okafor, a 34-year-old product designer and ceramicist based in Lisbon. There are 2 bots listed under Bots, which are Gems created in Gemini that dusk bot should recreate as standalone bots using the provided instructions, personality traits, and knowledge files. The About me, Contacts, and Memories sections contain shared profile data that all bots should have access to in their shared memory. The Routines section contains scheduled recurring tasks previously set up in Gemini that dusk bot should re-establish on the specified schedule.
+This export comes from Gemini for Maya Okafor, a 34-year-old product designer and ceramicist based in Lisbon. There are 2 bots listed under Bots, which are Gems created in Gemini that Metal should recreate as standalone bots using the provided instructions, personality traits, and knowledge files. The About me, Contacts, and Memories sections contain shared profile data that all bots should have access to in their shared memory. The Routines section contains scheduled recurring tasks previously set up in Gemini that Metal should re-establish on the specified schedule.
 
 # About me
 ## Basics
@@ -82,5 +82,5 @@ Write Etsy listings for Okafor Clay mugs. Title under 140 characters, then 3 sho
 ### Knowledge files
 - brand-voice.docx
 
-END OF DUSK BOT NOTES
+END OF Metal NOTES
 ````

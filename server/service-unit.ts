@@ -34,9 +34,9 @@ export function serviceCommand(spec: Pick<ServiceSpec, "node" | "script" | "serv
 
 export function systemdUnit(spec: ServiceSpec): string {
   const lines = [
-    "# Written by `duskbot service install`. Re-run it to change the options.",
+    "# Written by `metal service install`. Re-run it to change the options.",
     "[Unit]",
-    `Description=dusk bot${spec.label ? ` (${spec.label})` : ""}`,
+    `Description=Metal${spec.label ? ` (${spec.label})` : ""}`,
     "After=network-online.target",
     "Wants=network-online.target",
     "",
@@ -107,7 +107,7 @@ export function launchdPlist(spec: ServiceSpec): string {
 export function unstableInstallWarning(script: string): string | null {
   const normalized = script.replace(/\\/g, "/");
   if (/\/_npx\//.test(normalized) || /\/\.npm\/_npx\//.test(normalized)) {
-    return `this command runs from an npx cache (${dirname(script)}), which npm may delete at any time. Install the private package permanently first (npm install --global --prefix "$HOME/.local" ./duskbot-private.tgz) and run \`duskbot service install\` from that install.`;
+    return `this command runs from an npx cache (${dirname(script)}), which npm may delete at any time. Install the private package permanently first (npm install --global --prefix "$HOME/.local" ./metal-private.tgz) and run \`metal service install\` from that install.`;
   }
   return null;
 }
@@ -149,8 +149,9 @@ export function shippedSentinelCli(
   platform: NodeJS.Platform, home: string, exists: (path: string) => boolean, hasSentinel: (script: string) => boolean = () => true,
 ): { node: string; script: string } | null {
   const candidates = platform === "darwin"
-    ? ["/Applications/Dusk Bot.app", join(home, "Applications", "Dusk Bot.app")].map((app) => ({
-      node: join(app, "Contents", "MacOS", "Dusk Bot"), script: join(app, "Contents", "Resources", "server", "duskbot.js"),
+    ? ["Metal", "Dusk Bot"].flatMap((name) => ["/Applications", join(home, "Applications")].map((directory) => {
+      const app = join(directory, `${name}.app`);
+      return { node: join(app, "Contents", "MacOS", name), script: join(app, "Contents", "Resources", "server", name === "Metal" ? "metal.js" : "duskbot.js") };
     }))
     : platform === "linux" ? [{ node: "/opt/dusk-bot/duskbot", script: "/opt/dusk-bot/resources/server/duskbot.js" }] : [];
   return candidates.find((cli) => exists(cli.node) && exists(cli.script) && hasSentinel(cli.script)) ?? null;
@@ -217,9 +218,9 @@ function systemdQuoted(value: string, command = false): string {
 export function sentinelSystemdService(spec: SentinelServiceSpec): string {
   for (const [label, value] of [["home", spec.home], ["node", spec.node], ["script", spec.script], ["data dir", spec.dataDir], ["output", spec.out]] as const) assertUnitValue(label, value);
   return [
-    "# Written by `duskbot service install --sentinel`. Started by its timer.",
+    "# Written by `metal service install --sentinel`. Started by its timer.",
     "[Unit]",
-    "Description=dusk bot Sentinel health scan",
+    "Description=Metal Sentinel health scan",
     "",
     "[Service]",
     "Type=oneshot",
@@ -234,9 +235,9 @@ export function sentinelSystemdService(spec: SentinelServiceSpec): string {
 
 export function sentinelSystemdTimer(): string {
   return [
-    "# Written by `duskbot service install --sentinel`.",
+    "# Written by `metal service install --sentinel`.",
     "[Unit]",
-    "Description=Run the dusk bot Sentinel health scan every two minutes",
+    "Description=Run the Metal Sentinel health scan every two minutes",
     "",
     "[Timer]",
     `OnBootSec=${SENTINEL_INTERVAL_SECONDS}s`,

@@ -4,7 +4,7 @@
   "title": "Claude Code routines are now scheduled tasks: a guide",
   "nav": "claude code scheduled tasks",
   "h1": "claude code routines are now called scheduled tasks",
-  "description": "Understand Claude Code cloud scheduled tasks, local tasks and /loop, including what runs with your laptop closed and how dusk bot routines differ.",
+  "description": "Understand Claude Code cloud scheduled tasks, local tasks and /loop, including what runs with your laptop closed and how Metal routines differ.",
   "keyword": "claude code routines",
   "keywords": [
     "claude code schedule tasks",
@@ -101,15 +101,15 @@
       "checked": "2026-11-12"
     },
     {
-      "label": "dusk bot docs: routines",
+      "label": "Metal docs: routines",
       "url": "/docs/routines"
     },
     {
-      "label": "dusk bot docs: files and apps",
+      "label": "Metal docs: files and apps",
       "url": "/docs/files-and-apps"
     },
     {
-      "label": "dusk bot docs: permissions and sends",
+      "label": "Metal docs: permissions and sends",
       "url": "/docs/computer"
     }
   ],

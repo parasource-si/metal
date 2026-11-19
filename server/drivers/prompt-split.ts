@@ -23,10 +23,10 @@ export function promptHalves(
 }
 
 export const VOLATILE_CONTEXT_NOTE_PREFIX =
-  "Context from dusk bot updated since this conversation started; it replaces any earlier copy:";
+  "Context from Metal updated since this conversation started; it replaces any earlier copy:";
 
 export const VOLATILE_CONTEXT_CLEARED_NOTE =
-  "The dusk bot context notes from earlier in this conversation have been cleared; the standing instructions still apply.";
+  "The Metal context notes from earlier in this conversation have been cleared; the standing instructions still apply.";
 
 export function volatileContextNote(volatile: string, hadVolatile: boolean): string {
   const text = volatile.trim();

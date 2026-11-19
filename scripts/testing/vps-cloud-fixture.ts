@@ -1,4 +1,4 @@
-// Two real servers for the move straight from a VPS to My Cloud: a server of the person's own ("vps", `duskbot serve`,
+// Two real servers for the move straight from a VPS to My Cloud: a server of the person's own ("vps", `metal serve`,
 // paired with this app as a pairing link pairs it) and the person's Cloud home ("cloud", paired the way the Admin pairs
 // it), with main's own wiring for the move (electron/vps-cloud-move.mjs) between them. Disposable homes, a synthetic
 // Claude CLI; no network.
@@ -93,7 +93,7 @@ await import(${JSON.stringify(pathToFileURL(join(SERVER_DIR, "testing", "fake-cl
   await start("vps", { DUSK_ENVIRONMENT_LABEL: "Hetzner box", ...vpsEnv }, vpsPort);
   const minted = await fetch(`${vpsBase}/api/auth/pairing`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ label: "My desktop" }) });
   const pairing = (await minted.json() as { code: string }).code;
-  const paired = await fetch(`${vpsBase}/api/auth/pair`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ code: pairing, label: "dusk bot app" }) });
+  const paired = await fetch(`${vpsBase}/api/auth/pair`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ code: pairing, label: "Metal app" }) });
   const vpsToken = (await paired.json() as { token: string }).token;
   const vps: Side = async (method, path, body) => {
     const response = await fetch(`${vpsBase}${path}`, { method, headers: { authorization: `Bearer ${vpsToken}`, ...(body === undefined ? {} : { "content-type": "application/json" }) },
@@ -112,7 +112,7 @@ await import(${JSON.stringify(pathToFileURL(join(SERVER_DIR, "testing", "fake-cl
       "x-dusk-cloud-timestamp": timestamp, "x-dusk-cloud-nonce": nonce, "x-dusk-cloud-signature": `v1=${cloudPairingSignature(secret, timestamp, nonce, body)}` }, body });
     return ((await response.json()) as { code: string }).code;
   };
-  const ownerPaired = await fetch(`${cloudBase}/api/auth/pair`, { method: "POST", headers: { ...EDGE, "content-type": "application/json" }, body: JSON.stringify({ code: await mintCode("dusk bot app (Cloud)") }) });
+  const ownerPaired = await fetch(`${cloudBase}/api/auth/pair`, { method: "POST", headers: { ...EDGE, "content-type": "application/json" }, body: JSON.stringify({ code: await mintCode("Metal app (Cloud)") }) });
   const owner = ((await ownerPaired.json()) as { token: string }).token;
   const cloud: Side = async (method, path, body) => {
     const response = await fetch(`${cloudBase}${path}`, { method, headers: { ...EDGE, authorization: `Bearer ${owner}`, ...(body === undefined ? {} : { "content-type": "application/json" }) },
@@ -143,7 +143,7 @@ await import(${JSON.stringify(pathToFileURL(join(SERVER_DIR, "testing", "fake-cl
     fetch: windowFetch,
     environments: () => [place],
     cloud: () => oneHomeCloud(account.state),
-    home: () => (account.state.machine?.origin ? { origin: cloudBase, grant: async () => ({ origin: cloudBase, code: await mintCode("dusk bot app (Cloud)") }) } : null),
+    home: () => (account.state.machine?.origin ? { origin: cloudBase, grant: async () => ({ origin: cloudBase, code: await mintCode("Metal app (Cloud)") }) } : null),
     cloudRead: (route) => fetch(`${cloudBase}${route}`, { headers: { ...EDGE, authorization: `Bearer ${owner}`, accept: "application/json", ...BACKGROUND_HEADERS } }),
     cloudFetch: windowFetch,
     journal: file("vps-cloud-move.json"),

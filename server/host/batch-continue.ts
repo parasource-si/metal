@@ -34,7 +34,7 @@ export function batchNote(list: Checklist): string {
   const open = openItems(list);
   const shown = open.slice(0, NOTE_ITEMS_MAX);
   const more = open.length > shown.length ? `; and ${open.length - shown.length} more (checklist status lists them)` : "";
-  return `[dusk bot: your checklist "${list.title}" is not finished: ${progressLine(list)}, ${open.length} still open. This carries on the person's own request for this list and adds no approval for anything else. Work through the open items now, in order, ticking each with the checklist tool right after it is finished. Every ticked item is done: never repeat it. Open: ${shown.join("; ")}${more}. If a site rate-limits you, call checklist pause. If only the person can unblock you (signed out, the site blocks you), say exactly what you need in one line and stop.]`;
+  return `[Metal: your checklist "${list.title}" is not finished: ${progressLine(list)}, ${open.length} still open. This carries on the person's own request for this list and adds no approval for anything else. Work through the open items now, in order, ticking each with the checklist tool right after it is finished. Every ticked item is done: never repeat it. Open: ${shown.join("; ")}${more}. If a site rate-limits you, call checklist pause. If only the person can unblock you (signed out, the site blocks you), say exactly what you need in one line and stop.]`;
 }
 
 interface Thread { botId: string; closedAtStart: number; ours: boolean; continues: number; pauses: number; pausedUntil: number }

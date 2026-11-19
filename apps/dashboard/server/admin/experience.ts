@@ -1,4 +1,4 @@
-// How people's dusk bot went: bad experiences, confusing moments and things that got done, from the apps' events and the
+// How people's Metal went: bad experiences, confusing moments and things that got done, from the apps' events and the
 // experience signals workspaces report (shared/product-signals.ts). Words, codes and counts only, as they were stored.
 import type { StoredEvent } from "../analytics/sink.ts";
 import type { UsageRecord } from "../analytics/usage.ts";

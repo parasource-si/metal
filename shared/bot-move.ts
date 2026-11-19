@@ -1,5 +1,5 @@
 // "Bring your bots": the bots a person kept in another agent app on this computer (OpenClaw and its old names Clawdbot
-// and Moltbot, Hermes Agent, Claude Code's and Gemini CLI's own agents, and dusk bot's own earlier builds), as the
+// and Moltbot, Hermes Agent, Claude Code's and Gemini CLI's own agents, and Metal's own earlier builds), as the
 // desktop app's server reads them, before they move in as packages.
 import type { GrokBot, MoveFrom } from "./grok-import.ts";
 
@@ -8,7 +8,7 @@ const SOURCES: readonly string[] = ["openclaw", "hermes", "openmausbot", "claude
 
 export interface FoundApp {
   source: BotMoveSource;
-  /** The name it was installed under (OpenClaw, Clawdbot, Moltbot, Hermes Agent), or "your earlier dusk bot" for dusk bot's own old data folders. */
+  /** The name it was installed under (OpenClaw, Clawdbot, Moltbot, Hermes Agent), or "your earlier Metal" for Metal's own old data folders. */
   app: string;
   /** The folder it was read from, written with ~. */
   where: string;

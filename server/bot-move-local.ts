@@ -234,7 +234,7 @@ const routine = (fields: Partial<GrokRoutine> & Pick<GrokRoutine, "name" | "inst
 
 const MINUTE = 60_000;
 
-/** An "every N" schedule as a repeating one from now; outside dusk bot's 5 minutes to a day, null. */
+/** An "every N" schedule as a repeating one from now; outside Metal's 5 minutes to a day, null. */
 function everySchedule(ms: number, now: number): PackageRoutineSchedule | null {
   const minutes = Math.round(ms / MINUTE);
   return Number.isFinite(minutes) && minutes >= 5 && minutes <= 1_440 ? { type: "interval", everyMinutes: minutes, anchorAt: now } : null;
@@ -606,10 +606,10 @@ function hermesJobs(reader: Reader, dir: string, now: number): GrokRoutine[] {
   });
 }
 
-// dusk bot's own earlier builds: ~/.openmausbot and ~/.opengrokbot, the same layout as dusk bot's folder (bots.json,
+// Metal's own earlier builds: ~/.openmausbot and ~/.opengrokbot, the same layout as Metal's folder (bots.json,
 // workspaces/<id>/ with MEMORY.md, memory/ and skills/, routines.json). A first start moves an old folder in; one is
 // left behind only when the new folder already had bots.
-const OWN_OLD_HOMES = [{ dir: ".openmausbot", app: "your earlier dusk bot" }, { dir: ".opengrokbot", app: "your earlier dusk bot" }] as const;
+const OWN_OLD_HOMES = [{ dir: ".openmausbot", app: "your earlier Metal" }, { dir: ".opengrokbot", app: "your earlier Metal" }] as const;
 
 function readOwnOld(machine: SetupMachine, dataDir: string | undefined): FoundApp[] {
   const current = dataDir ? machine.fs.realpath(dataDir) ?? dataDir : null;

@@ -1,4 +1,4 @@
-# Limits: what keeps dusk bot up and what it costs us
+# Limits: what keeps Metal up and what it costs us
 
 Every limit, quota and cost lever the hosted side relies on, with its value today and where it lives. Values are the
 code defaults; the ones you can change say how. "Per ip" means the caller's address as Cloudflare saw it (an IPv6
@@ -9,7 +9,7 @@ Short version:
 - **We pay for no one's AI.** Every engine runs on the person's own sign-in or key, on their computer or their dusk cloud.
 - **Apps cost us nothing per call.** People connect apps with their own accounts, tokens or their own Composio. Our
   Composio broker is closed to new installs.
-- **The money levers are dusk cloud machines (InstaBox) and email (Brevo).** A machine's compute is held under its plan
+- **The money levers are Dusk Cloud machines (InstaBox) and email (Brevo).** A machine's compute is held under its plan
   by the cost ceiling, its upload is slowed and then paused by the egress steps, and sign-in mail is capped per address,
   per ip, per hour and per day.
 - **The uptime levers are the Contabo box** (account service, relay, Mongo all share it) **and its 800 Mbit/s port.**
@@ -76,7 +76,7 @@ contacts, not sends.
 | Work license free until | 2026-12-01 (`DUSK_FREE_WORK_UNTIL`) | same |
 | Dodo fees | 6% + $0.40 a charge | ops page |
 
-## 5. dusk cloud machines (InstaBox, `apps/cloud-service`)
+## 5. Dusk Cloud machines (InstaBox, `apps/cloud-service`)
 
 | Plan | Machine | Upload a month: alert / slower at / paused at |
 |---|---|---|
@@ -86,7 +86,7 @@ contacts, not sends.
 
 - **Who pays the tokens:** the person. The bot runs on their own Claude, ChatGPT or other sign-in; nothing on the
   cloud bills us per token. (The voice, X and decision relays in `server/included-services.ts` are not wired into
-  dusk cloud machines.)
+  Dusk Cloud machines.)
 - **Compute:** InstaBox bills by the running hour (0.4 c per vCPU-hour, 0.225 c per GiB-hour, disk 8 c per GiB a month).
   Each machine has a monthly cost ceiling of always-on cost x 1.065; past it, starts and backups are refused
   (`power/ceiling.ts`, `spend.ts`). So a machine that runs flat out all month costs about what its plan assumed.
@@ -97,7 +97,7 @@ contacts, not sends.
 - **Upload (egress):** read every 5 min. Past each step the machine is slowed inside the VM; a machine that removes
   its own limit is paused at once; at the last step it is paused until the 1st. InstaBox includes 1 TiB a month across
   the workspace, then $0.02 a GB.
-- **CPU:** no cap (the plan pays for the cores). A dusk cloud above 90% cpu for 6 hours opens one incident a day
+- **CPU:** no cap (the plan pays for the cores). A Dusk Cloud above 90% cpu for 6 hours opens one incident a day
   (mining or a runaway loop), so we look before InstaBox does.
 - **Memory:** the home service is held at 80% (soft) and 90% (hard) of the machine, bots at 65% / 75%.
 - **Backups:** daily (`DUSK_MANAGED_BACKUP_HOURS`), 3 kept plus one at least a week older, at most 4 GiB each
@@ -122,7 +122,7 @@ Changeable live from the admin relay page (`relay-limits.json`).
 | New pairing sessions | 120 an hour per ip; queued bytes 16 MiB per direction, frames dropped after 60 s, 1 GiB queued in all |
 | Per ip | 512 connections, 200 requests a second |
 | Phone channels | 50 posts a second, 256 MiB a minute, 600 reads a minute |
-| Who can make a tunnel | only a signed-in dusk bot account (anonymous sessions get 401) |
+| Who can make a tunnel | only a signed-in Metal account (anonymous sessions get 401) |
 | nginx in front (Contabo only) | 512 connections and 200 requests a second per ip, 10 new sessions a minute; Oracle's Caddy has none |
 
 Load test (2026-11-13): 100 tunnels with 3 clients each and a full reconnect storm ran clean on both nodes. On Contabo
@@ -180,5 +180,5 @@ records, `workspaces`. At today's sizes this is years away from mattering; the 5
   rare (a lost machine only), unlike the daily backups, which now stream.
 - **Rate limit counters live in memory** and reset when the account service restarts (sign-in codes in flight are
   saved, so a deploy no longer kills them).
-- **Bot tools reaching private addresses** on a dusk cloud: the bot has a shell on its own machine by design, so this is
+- **Bot tools reaching private addresses** on a Dusk Cloud: the bot has a shell on its own machine by design, so this is
   the owner's own machine, not ours.

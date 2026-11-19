@@ -4,7 +4,7 @@
   "title": "HubSpot AI assistant for customer handovers and CRM notes",
   "nav": "hubspot",
   "h1": "a hubspot assistant for the customer handover",
-  "description": "Use dusk bot to review HubSpot contacts, company links and open tickets. Copy customer handover routines and keep CRM changes under your instructions.",
+  "description": "Use Metal to review HubSpot contacts, company links and open tickets. Copy customer handover routines and keep CRM changes under your instructions.",
   "answer": "**learn the champion left before you walk into the kickoff call.** ask the bot for a hubspot account brief ten minutes before: linked contacts, company details, deals and tickets, with record links beside the gaps. start read only. it hands you the questions the crm can answer and the ones a person still needs to ask. notes and tasks can come later.",
   "tags": [
     "crm",
@@ -123,15 +123,15 @@
   ],
   "sources": [
     {
-      "label": "dusk bot docs: files and apps",
+      "label": "Metal docs: files and apps",
       "url": "/docs/files-and-apps"
     },
     {
-      "label": "dusk bot docs: routines",
+      "label": "Metal docs: routines",
       "url": "/docs/routines"
     },
     {
-      "label": "dusk bot docs: permissions and sending",
+      "label": "Metal docs: permissions and sending",
       "url": "/docs/computer"
     }
   ],

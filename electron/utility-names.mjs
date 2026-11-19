@@ -1,5 +1,5 @@
 /** the `serviceName` each utility process this app forks carries; Electron reports it as the `name` of its child-process-gone */
-export const UTILITY_NAMES = Object.freeze({ server: "dusk bot server", devServer: "dusk bot dev server", companion: "dusk bot companion" });
+export const UTILITY_NAMES = Object.freeze({ server: "Metal server", devServer: "Metal dev server", companion: "Metal companion" });
 
 const OWN = new Set(Object.values(UTILITY_NAMES));
 

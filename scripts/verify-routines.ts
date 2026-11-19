@@ -75,7 +75,7 @@ try {
   } finally { await waitForExit(proxy, { signal: "SIGTERM" }); }
   writeFileSync(gate, "finish the isolated setup turn");
   await control(["wait", "--bot", pepper.id, "--timeout", "15"]);
-  const { project: resultsFolder } = await api("POST", `/api/bots/${pepper.id}/projects`, { name: "dusk bot management", emoji: "🛠️" });
+  const { project: resultsFolder } = await api("POST", `/api/bots/${pepper.id}/projects`, { name: "Metal management", emoji: "🛠️" });
   const { task: resultsTask } = await api("POST", `/api/bots/${pepper.id}/tasks`, { title: "Fleet health reports", projectId: resultsFolder.id });
   await api("POST", `/api/bots/${pepper.id}/tasks/${pepper.threadId}`, {});
   const manual = await api("POST", "/api/routines", {
@@ -97,7 +97,7 @@ try {
     enabled: true, schedule: { type: "once", at: Date.now() + 12_000 },
   });
   ui = await mountPreview(fixture, {
-    entry: "/scripts/testing/threads-preview.tsx", route: "/__routines.html", title: "Isolated dusk bot Routines",
+    entry: "/scripts/testing/threads-preview.tsx", route: "/__routines.html", title: "Isolated Metal Routines",
   });
   console.log(JSON.stringify({ ...fixture.info, previewUrl: ui.previewUrl, pepperId: pepper.id, misoId: miso.id, scheduledRoutineId: scheduled.routine.id, manualRoutineId: manual.routine.id, resultsThreadId: resultsTask.threadId, resultsFolderId: resultsFolder.id }));
   await parkUntilSignal();

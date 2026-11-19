@@ -1,4 +1,4 @@
-// dusk bot's own OAuth apps (Notion, Linear, Airtable, Todoist, ClickUp, Trello, Dropbox) are registered to this one
+// Metal's own OAuth apps (Notion, Linear, Airtable, Todoist, ClickUp, Trello, Dropbox) are registered to this one
 // fixed address, so a sign-in works whichever port the desktop app ended up on. The state names that port; this sends
 // the browser straight back to it on this computer, with nothing stored or logged here. Trello's token rides in the
 // address's #fragment, which the browser keeps across the redirect and never sends to us.
@@ -32,5 +32,5 @@ export function appTokenCallback(res, params) {
     "x-frame-options": "DENY",
     "content-security-policy": "default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'",
   });
-  res.end(handoffPage({ title: "dusk bot", mood: "oops", content: "<h1>that link didn&#39;t work</h1><p>This sign-in link is not valid. Start again from dusk bot.</p>" }));
+  res.end(handoffPage({ title: "Metal", mood: "oops", content: "<h1>that link didn&#39;t work</h1><p>This sign-in link is not valid. Start again from Metal.</p>" }));
 }

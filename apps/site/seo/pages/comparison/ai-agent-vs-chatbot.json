@@ -89,7 +89,7 @@
         "label": "checking progress",
         "cells": [
           "you inspect the reply before using it",
-          "in dusk bot, tool activity is shown while the bot works; you can stop it"
+          "in Metal, tool activity is shown while the bot works; you can stop it"
         ],
         "src": [
           2
@@ -108,7 +108,7 @@
       }
     ]
   },
-  "method": "**the labels describe responsibility, not a ranking.** we make dusk bot and use its docs for the agent examples.\n\nwe didn't run matching tests across products. a chat interface can include tools, memory and background work. inspect the controls before deciding how much authority a product gets.",
+  "method": "**the labels describe responsibility, not a ranking.** we make Metal and use its docs for the agent examples.\n\nwe didn't run matching tests across products. a chat interface can include tools, memory and background work. inspect the controls before deciding how much authority a product gets.",
   "sections": [
     {
       "h": "when a chatbot is enough",
@@ -139,31 +139,31 @@
   ],
   "sources": [
     {
-      "label": "dusk bot: what a bot is",
+      "label": "Metal: what a bot is",
       "url": "/docs/getting-started"
     },
     {
-      "label": "dusk bot: jobs, tools and stopping work",
+      "label": "Metal: jobs, tools and stopping work",
       "url": "/docs/bots"
     },
     {
-      "label": "dusk bot: connected-app limits",
+      "label": "Metal: connected-app limits",
       "url": "/docs/files-and-apps"
     },
     {
-      "label": "dusk bot: schedules and app events",
+      "label": "Metal: schedules and app events",
       "url": "/docs/routines"
     },
     {
-      "label": "dusk bot: memory controls",
+      "label": "Metal: memory controls",
       "url": "/docs/memory"
     },
     {
-      "label": "dusk bot: command and file approvals",
+      "label": "Metal: command and file approvals",
       "url": "/docs/computer"
     },
     {
-      "label": "dusk bot: focused group chats",
+      "label": "Metal: focused group chats",
       "url": "/docs/group-chats"
     }
   ],

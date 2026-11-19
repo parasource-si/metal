@@ -339,7 +339,7 @@ function forwardMobile(req: IncomingMessage, res: ServerResponse, options: Proxy
     clearTimeout(deadline);
     if (res.destroyed || res.writableEnded) return;
     sendJson(res, timedOut ? 504 : 502, {
-      error: timedOut ? "dusk bot did not respond" : "dusk bot is not running on this computer",
+      error: timedOut ? "Metal did not respond" : "Metal is not running on this computer",
     });
   });
   res.on("close", () => {
@@ -485,7 +485,7 @@ async function admitMobile(options: ProxyOptions, admission: Admission, req: Inc
   if (verdict.kind === "not-phone") return "not-phone";
   if (verdict.kind === "unknown") return NOT_HERE;
   if (verdict.kind === "limited") return { status: 503, body: { error: "too many phone checks; try again in a minute", code: "limited" } };
-  return { status: 502, body: { error: "dusk bot is not running on this computer" } };
+  return { status: 502, body: { error: "Metal is not running on this computer" } };
 }
 
 export function createProxyHandler(options: ProxyOptions) {
@@ -565,7 +565,7 @@ export function createProxyHandler(options: ProxyOptions) {
     // session; the owner enables this per device, off by default.
     if (isCloudDesktopAccess(method, path) && !device?.cloudDesktopAccess) {
       return sendJson(res, 403, {
-        error: "computer access is off for this device: enable it in dusk bot → Settings → Remote access",
+        error: "computer access is off for this device: enable it in Metal → Settings → Remote access",
       });
     }
 
@@ -649,7 +649,7 @@ export function createProxyHandler(options: ProxyOptions) {
           const fail = () => {
             if (finished) return;
             finished = true;
-            sendJson(res, 502, { error: "dusk bot is not ready on this computer" });
+            sendJson(res, 502, { error: "Metal is not ready on this computer" });
           };
           harness.on("data", (chunk: Buffer) => {
             size += chunk.length;
@@ -803,7 +803,7 @@ export function createProxyHandler(options: ProxyOptions) {
           if (size > MAX_JSON_BODY_BYTES) {
             harness.destroy();
             if (res.headersSent) res.destroy();
-            else sendJson(res, 502, { error: "the response from dusk bot was too large" });
+            else sendJson(res, 502, { error: "the response from Metal was too large" });
             return;
           }
           chunks.push(chunk);
@@ -887,8 +887,8 @@ export function createProxyHandler(options: ProxyOptions) {
         res,
         timedOut ? 504 : 502,
         timedOut
-          ? { error: "dusk bot did not respond" }
-          : { error: "dusk bot is not running on this computer" },
+          ? { error: "Metal did not respond" }
+          : { error: "Metal is not running on this computer" },
       );
     });
     req.pipe(upstream);

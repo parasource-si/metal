@@ -73,7 +73,7 @@ export function trapTab(event: ReactKeyboardEvent<HTMLElement>, root: HTMLElemen
   }
 }
 
-/** The first run, one calm screen at a time: the welcome, an AI, a dusk bot account, where the bots live, what other AI
+/** The first run, one calm screen at a time: the welcome, an AI, a Dusk account, where the bots live, what other AI
  * apps here hold and the prompt for AIs online, the phone (while the phone app is offered). It ends in Dusk's chat (Dusk made the Chief of Staff where no other
  * bot is one), where Dusk greets and asks for whatever is still missing. On dusk cloud it is the browser (account, plan and
  * checkout there, this screen waiting beside it), the AI while the Cloud is made, then the Cloud, ending in that Cloud's chat. */

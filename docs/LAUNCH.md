@@ -1,4 +1,6 @@
-# Launch checklist: dusk bot on dusk.bot
+# Upstream Dusk Bot launch notes
+
+The deployment details below refer to the original Dusk Bot services. See [Releasing Metal](releasing.md) for this fork.
 
 What the launch branch (`w15/launch`) did, and what needs the owner's accounts, keys or decisions. Each owner step is
 written to be done in order. **Done** means committed and checked; **Owner** means it needs you.

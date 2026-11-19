@@ -68,7 +68,7 @@ export function installTrailMain({ ipcMain, app, dialog, shell, powerMonitor, Br
       trail("export.saved", { events: count });
       const ask = await dialog.showMessageBox(owner, {
         type: "info",
-        message: "Send the usage log to dusk bot support?",
+        message: "Send the usage log to Dusk support?",
         detail: `${TRAIL_EXPORT_PREVIEW}.\n\nYour email app opens a new message to ${SUPPORT_EMAIL}; attach the file from the folder that opens.`,
         buttons: ["Send by email", "Done"],
         defaultId: 0,
@@ -77,7 +77,7 @@ export function installTrailMain({ ipcMain, app, dialog, shell, powerMonitor, Br
       });
       if (ask.response !== 0) return { saved: true, sent: false };
       shell.showItemInFolder(chosen.filePath);
-      const subject = encodeURIComponent("dusk bot usage log");
+      const subject = encodeURIComponent("Metal usage log");
       const body = encodeURIComponent(`What happened, and roughly when:\n\n\n(The usage log ${path.basename(chosen.filePath)} is attached.)`);
       await shell.openExternal(`mailto:${SUPPORT_EMAIL}?subject=${subject}&body=${body}`);
       trail("export.sent", { how: "email" });

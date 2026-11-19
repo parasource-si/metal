@@ -40,7 +40,7 @@ pnpm exec vitest run server/guarded-messages-api.test.ts
 
 Each case launches the prescribed `control-dusk` verification server in a fresh
 home and uses only its gated fake provider. The test records the exact HTTP
-requests, `control:dusk` commands, bounded transcripts and wait results next to
+requests, `control:metal` commands, bounded transcripts and wait results next to
 the server log in a `.log.guarded-messages.json` receipt. Temporary homes and
 their child processes are closed by each fixture.
 

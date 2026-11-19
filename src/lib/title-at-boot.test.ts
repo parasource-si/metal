@@ -10,6 +10,6 @@ describe("the window's name at boot", () => {
     const render = main.indexOf("createRoot(");
     expect(title).toBeGreaterThan(-1);
     expect(render).toBeGreaterThan(title);
-    expect(PRODUCT_NAME).toBe("dusk bot");
+    expect(PRODUCT_NAME).toBe("Metal");
   });
 });

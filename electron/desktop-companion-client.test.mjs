@@ -199,7 +199,7 @@ describe("desktop companion pairing", () => {
         requestId: "request-https-03",
         fetchImpl,
       }),
-    ).rejects.toThrow("dusk bot HTTPS companion address");
+    ).rejects.toThrow("Metal HTTPS companion address");
     expect(fetchImpl).toHaveBeenCalledTimes(2);
   });
 

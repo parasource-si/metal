@@ -161,7 +161,7 @@ describe("a message that tags @devs", () => {
     expect(fx.reports.note("rover-main", false)).toBe("");
     fx.busy.delete("rover-main");
     await fx.settle();
-    expect(fx.sent[1]!.description).toContain("the bot's engine cannot use dusk bot's tools");
+    expect(fx.sent[1]!.description).toContain("the bot's engine cannot use Metal's tools");
     expect(fx.sent[1]!.diagnostics).toContain("Engine: Codex (codex), model gpt-5.5, effort high");
 
     fx.person("scout-main", "@devs it failed");
@@ -297,7 +297,7 @@ describe("a report that cannot go yet", () => {
     const second = fixture({ dataDir: first.dataDir });
     await second.settle();
     expect(second.sent).toHaveLength(1);
-    expect(second.sent[0]!.description).toContain("dusk bot restarted before a bot wrote one");
+    expect(second.sent[0]!.description).toContain("Metal restarted before a bot wrote one");
     second.stop();
     writeFileSync(join(first.dataDir, DEVS_REPORTS_FILE), "not json");
     const third = fixture({ dataDir: first.dataDir });

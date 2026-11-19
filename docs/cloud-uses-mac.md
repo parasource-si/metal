@@ -1,6 +1,6 @@
 # Cloud bots use this Mac
 
-A person's bots on their dusk cloud can work on that person's Mac while the Mac is on and the dusk bot app is open: run
+A person's bots on their Dusk Cloud can work on that person's Mac while the Mac is on and the Metal app is open: run
 terminal commands, download files, read and write files, and open apps and links. No screen control, so no Screen
 Recording or Accessibility permission.
 
@@ -68,8 +68,8 @@ Settings > Your computer, on the cloud's own Settings page in the app:
   - The card says why it asks. "Always allow" saves an exact plain command (no shell syntax) in its folder, a download
     site, a write folder, an exact open target or a read path, per bot.
 - **Only these folders**: off by default. When on, reads, lists, writes, downloads and a command's folder must resolve
-  (links followed) inside the list (default `~/Downloads` and `~/dusk bot`), and only https, http and mailto links open.
-- **View log**: each job is one line in `~/Library/Logs/Dusk Bot/mac-control.log` (tool, bot, command or paths, whether
+  (links followed) inside the list (default `~/Downloads` and `~/Metal`), and only https, http and mailto links open.
+- **View log**: each job is one line in `~/Library/Logs/Metal/mac-control.log` (tool, bot, command or paths, whether
   a card allowed it, outcome or refusal; never file contents). The chat keeps each tool call too.
 
 The Mac tells its cloud its mode, home folder and folder limit in each poll, so the cloud knows when to show a card;

@@ -39,7 +39,7 @@ app sign-ins expire. open **Connected apps**, disconnect it and connect it again
 
 ## my phone can't connect
 
-if it's paired with your computer, that computer has to be on, awake and running dusk bot. still nothing? pair again with the default **secure HTTPS pairing**, or pair with [dusk cloud](/docs/dusk-cloud) so it never depends on your laptop.
+if it's paired with your computer, that computer has to be on, awake and running Metal. still nothing? pair again with the default **secure HTTPS pairing**, or pair with [dusk cloud](/docs/dusk-cloud) so it never depends on your laptop.
 
 ## windows says it "protected your pc"
 

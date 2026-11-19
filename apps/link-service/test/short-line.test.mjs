@@ -83,7 +83,7 @@ describe("short line", () => {
     const script = bootstrapScript("http://127.0.0.1:9", "abcdefghij-abcdefghijklmnopqrstuvwxyz", "cloudflare");
     const ran = await run(`printf '%s' '${script.replaceAll("'", "'\\''")}' | sh`);
     expect(ran.code).toBe(1);
-    expect(ran.stderr).toContain("dusk bot could not be downloaded");
+    expect(ran.stderr).toContain("Metal could not be downloaded");
   }, 30_000);
 
   it("a download that stalls is given up on, never waited on forever", () => {

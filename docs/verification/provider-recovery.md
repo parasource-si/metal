@@ -1,7 +1,7 @@
 # Provider images, authentication and thread approvals
 
 Every command below uses a disposable home. No real account, API key,
-provider charge, deployment, or running dusk bot workspace is involved.
+provider charge, deployment, or running Metal workspace is involved.
 
 ## Real CLI transport checks
 
@@ -16,7 +16,7 @@ node --experimental-strip-types scripts/verify-opencode-permissions.ts /absolute
 
 - Grok must deliver the **exact** synthetic PNG bytes to a loopback model.
   Grok 1.0.25 advertises `image:false` despite accepting native ACP image
-  blocks. dusk bot enables that verified compatibility path only for official
+  blocks. Metal enables that verified compatibility path only for official
   1.0.x runtimes from 1.0.25 onward; other runtimes must negotiate image
   input normally. The fixture uses a valid 32×32 PNG because Grok rejects
   images below 8 pixels per axis or 512 total pixels.
@@ -27,8 +27,8 @@ node --experimental-strip-types scripts/verify-opencode-permissions.ts /absolute
   outside the turn's folder, must run its Stop hook in that folder, and a field
   in it Claude Code would refuse must not cost the turn its authentication
   (Claude Code drops a whole settings file over one such field, and the bot's
-  settings ride in dusk bot's own `--settings` file). dusk bot retains project settings but
-  projects only account authentication from personal settings. Explicit dusk bot
+  settings ride in Metal's own `--settings` file). Metal retains project settings but
+  projects only account authentication from personal settings. Explicit Metal
   credentials/endpoints take precedence as a pair.
 - OpenCode must actually read a synthetic file **outside** its workspace in
   Full mode without a permission request. The same native session resumes in
@@ -45,7 +45,7 @@ node --experimental-strip-types scripts/verify-opencode-permissions.ts /absolute
 These prove transport/auth integration, not hosted image interpretation,
 subscription entitlement, Console-profile availability, or production API
 uptime. If Claude still reports signed out, compare its `/status` Profile
-and the account selected in dusk bot; never request the user's keys or tokens.
+and the account selected in Metal; never request the user's keys or tokens.
 
 ## ACP internal-error recovery
 
@@ -56,7 +56,7 @@ pnpm exec vitest run server/drivers/acp/acp.test.ts server/acp-recovery.e2e.test
 The ACP transport fixture injects an internal RPC error, including one after
 partial output. The failed turn completes once without automatically resending
 it. The failed process is retired; a subsequent explicit turn resumes the durable
-session on a fresh process and can complete in the same dusk bot thread. Where a
+session on a fresh process and can complete in the same Metal thread. Where a
 native session can no longer be loaded, the replacement receives the canonical
 conversation history rather than only the latest message.
 

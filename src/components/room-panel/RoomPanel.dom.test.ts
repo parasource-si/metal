@@ -128,7 +128,7 @@ describe("the Room panel's card", () => {
     expect(rowValue('[data-panel-page="responder"]')).toBe("Jev decides");
     expect(rowValue('[data-panel-page="folder"]')).toBe("recruiting");
     render(room({ defaultResponder: { kind: "auto", fallbackBotId: "lead", by: "dusk" } }));
-    expect(rowValue('[data-panel-page="responder"]')).toBe("Let dusk decide");
+    expect(rowValue('[data-panel-page="responder"]')).toBe("Let Metal decide");
     render(room({ defaultResponder: { kind: "member", botId: "lead", leader: true } }));
     expect(rowValue('[data-panel-page="responder"]')).toBe("Desk Manager leads");
     render(room({ defaultResponder: { kind: "everyone" } }));
@@ -239,7 +239,7 @@ describe("who responds", () => {
     expect(choices).toEqual([
       ["leader", "LeaderDesk Manager gets your message and hands out the work", "true"],
       ["everyone", "Everyone at onceEvery bot answers, side by side", "false"],
-      ["dusk", "Let dusk decideA quick model of your AI picks who answers", "false"],
+      ["dusk", "Let Metal decideA quick model of your AI picks who answers", "false"],
       ["auto", "Jev decidesPicks the right bot for each message", "false"],
       ["leader:lead", "Desk Manager", "true"],
       ["leader:bench", "Vendor Bench", "false"],

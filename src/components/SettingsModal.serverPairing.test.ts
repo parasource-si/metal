@@ -51,7 +51,7 @@ describe("Settings → Remote access: server pairing card visibility", () => {
     expect(render()).toContain("SERVER_PAIRING_CARD_MARKER");
   });
 
-  it("on a dusk bot Cloud home, which is personal, tells the card so and offers no People section to invite anyone", () => {
+  it("on a dusk cloud home, which is personal, tells the card so and offers no People section to invite anyone", () => {
     vi.stubGlobal("window", { addEventListener: vi.fn(), removeEventListener: vi.fn(),});
     fixture.section = "people";
     expect(render()).toContain('data-panel-page="people"');

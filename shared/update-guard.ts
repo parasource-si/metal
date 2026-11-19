@@ -1,4 +1,4 @@
-// What every self-updating dusk bot install does with an update (a managed cloud home through apps/cloud-service, a
+// What every self-updating Metal install does with an update (a managed cloud home through apps/cloud-service, a
 // self-hosted server through the installer): an update is applied only when it is signed, newer than what runs, at or
 // above the signed floor and not on the signed block list; it waits for an idle moment; it is on trial until its
 // self-test passes and the next runs go through; a failed self-test or the first two runs failing in a row rolls it

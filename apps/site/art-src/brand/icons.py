@@ -40,6 +40,6 @@ rounded(sized(192), 0.22).save(art('icon-192.png'), optimize=True)
 rounded(sized(512), 0.22).save(art('icon-512.png'), optimize=True)
 maskable(512).convert('RGB').save(art('icon-maskable-512.png'), optimize=True)
 rounded(sized(320), 0.22).save(art('mark-320.webp'), lossless=True, method=6)                      # the brand page's tiles
-rounded(sized(1024), 0.22).save(os.path.join(site, 'brand', 'dusk-bot-logo.png'), optimize=True)  # the brand page's downloads
-sized(1024).convert('RGB').save(os.path.join(site, 'brand', 'dusk-bot-logo-square.png'), optimize=True)
+rounded(sized(1024), 0.22).save(os.path.join(site, 'brand', 'metal-logo.png'), optimize=True)  # the brand page's downloads
+sized(1024).convert('RGB').save(os.path.join(site, 'brand', 'metal-logo-square.png'), optimize=True)
 print('wrote the logo at every size')

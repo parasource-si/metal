@@ -1,8 +1,8 @@
 # Proactive routines
 
-Dusk keeps an eye on the person's day with one ordinary routine,
+Metal keeps an eye on the person's day with one ordinary routine,
 "Keep an eye on my day". It is never made without a yes: on a personal install
-or Cloud that can reach connected apps, Dusk posts one card in its chat with
+or Cloud that can reach connected apps, Metal posts one card in its chat with
 **Turn it on** and **Not now**. Turn it on makes the routine, daily at 08:00 in
 the person's time zone (the computer's clock, or the owner's zone on a Cloud).
 Not now is kept and the card never comes back. An install that already made the
@@ -10,45 +10,45 @@ routine, or whose bot already has a briefing routine, is never asked, and a
 watch it made earlier on a 15-minute schedule is left as it is. It is built from
 four upgrades every routine can use, plus the helper models for the inbox.
 The bot that is proactive is the one `proactiveOwner` names
-(`server/host/proactive-owner.ts`): the place's Dusk, shown in the sidebar or
+(`server/host/proactive-owner.ts`): the place's Metal, shown in the sidebar or
 not, and the main Chief only where there is no Dusk. A Team Cloud member's
-Dusk is never the one. There is no second bot and no separate watcher: the
+Metal is never the one. There is no second bot and no separate watcher: the
 routine engine (`server/routines.ts`) runs it like any other routine, on the
 desktop, headless and on a Cloud.
 
 ## Who owns it
 
-- **A new install.** Its first bot is Dusk, which is also its Chief. The
+- **A new install.** Its first bot is Metal, which is also its Chief. The
   routine, the brief, the add-a-key card and the intro's line about the day are
-  Dusk's.
+  Metal's.
 - **An install that had a Chief before Dusk.** The Chief stays the Chief.
-  The first time the server starts with Dusk there, the Chief's "Keep an eye
-  on my day" becomes Dusk's. It is the same routine, moved, so everything
+  The first time the server starts with Metal there, the Chief's "Keep an eye
+  on my day" becomes Metal's. It is the same routine, moved, so everything
   the person set stays: on or paused, the instructions they edited, the checks'
   cursors and seen ids, and the day's run count. The brief's chat becomes
-  Dusk's own conversation, and its next card says again what it does. Cards
+  Metal's own conversation, and its next card says again what it does. Cards
   already posted stay where they were.
 - **The handover is safe to repeat.** It waits while a run of the routine is
   queued or working. `watch.json` records which bot each briefing routine was
   handed to, so it happens once: a routine the person later puts back on the
   Chief stays there. A restart between the steps finishes them at the next
   start, and a computer frozen by a move to My Cloud hands nothing over.
-- **One on at a time.** When a briefing routine lands on Dusk, handed over
+- **One on at a time.** When a briefing routine lands on Metal, handed over
   or arrived with it in a move, it is the one. Every other briefing routine is
   paused, never deleted, so the inbox is never read twice and a paused routine
   stays paused.
-- **Hidden from the sidebar.** Dusk keeps working: the brief is posted to its
+- **Hidden from the sidebar.** Metal keeps working: the brief is posted to its
   chat, and the notification and the first open of the day open that chat.
 
 ## What the person sees
 
-- **The brief.** One ordinary chat message a day from Dusk, in a fixed chat
-  of Dusk's, edited in place, written with no AI. It exists only once it has
+- **The brief.** One ordinary chat message a day from Metal, in a fixed chat
+  of Metal's, edited in place, written with no AI. It exists only once it has
   something for the person (something that needs them, an important email or a
   meeting today); an empty brief is never posted. It opens on the first open of
   the day and after three hours away. Any other moment, it never takes the
   screen from the chat in use. No title or date: the first one ever says once
-  what it does and that the person can tell Dusk to stop or change it. Then:
+  what it does and that the person can tell Metal to stop or change it. Then:
   1. "Quick heads-up, N things need you:" and a short list (six at most, then
      "and N more"): emails waiting on a reply, failed or missed routines,
      meetings that clash, an app that can't be read ("Couldn't read Gmail:
@@ -92,7 +92,7 @@ there is no brief at all. Its row says
    `server/read-and-draft.ts`. Everything is allow-only:
    - the run runs at Ask, and the server refuses every request in it outright,
      never as a card;
-   - its dusk bot routes are conversation reads, its own results, the
+   - its Metal routes are conversation reads, its own results, the
      engine's hooks and the connected-apps relay;
    - through the relay it reads Gmail and Google Calendar, and may write one
      draft per thread, replying to that thread's sender, in a thread its checks
@@ -103,7 +103,7 @@ there is no brief at all. Its row says
    - its conversation stays out of recall, recent work, `list_threads` and Chief
      notices.
 
-   The model work needs an engine whose every tool use reaches dusk bot's
+   The model work needs an engine whose every tool use reaches Metal's
    answerer (Claude today). On any other engine the watch prepares no meeting,
    says so in the brief, and still does what needs no AI.
 5. **Helper models sort the inbox** (`server/host/inbox-triage.ts`). With a
@@ -162,11 +162,11 @@ there is no brief at all. Its row says
   start. A scripted test install without the fake connected-apps service
   behaves as before.
 - Routines carry `checks`, `access` and `deliver` through Cloud moves and team
-  backups. The watch moves to My Cloud with Dusk. A move carries Dusk
+  backups. The watch moves to My Cloud with Dusk. A move carries Metal
   when it has a routine the person set up, paused or changed, even if nobody
-  has opened Dusk; the watch exactly as the server made it does not count.
+  has opened Metal; the watch exactly as the server made it does not count.
   On My Cloud the arrived watch pauses My Cloud's own. The move freeze pauses the watch like any routine, so two
-  homes never watch the same inbox. Dusk never moves into a team.
+  homes never watch the same inbox. Metal never moves into a team.
 
 ## Not in v1
 

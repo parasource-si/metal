@@ -1,4 +1,4 @@
-// dusk bot's own listening ports, which no bot's browser may reach, and one egress gate per running browser.
+// Metal's own listening ports, which no bot's browser may reach, and one egress gate per running browser.
 import { subscribe } from "node:diagnostics_channel";
 import type { Server } from "node:net";
 

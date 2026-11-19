@@ -34,7 +34,7 @@ test("Exec quotes the path by the Desktop Entry rules", () => {
   assert.equal(execArg("/home/me/bad\nname"), null);
   assert.equal(execArg(""), null);
   const text = menuEntryText({ appImage: "/home/me/Dusk Bot.AppImage", icon: "/home/me/icon.svg" });
-  for (const line of ["Name=dusk bot", `Exec="/home/me/Dusk Bot.AppImage" %U`, "Icon=/home/me/icon.svg", "StartupWMClass=bot.dusk.app", "Categories=Utility;",
+  for (const line of ["Name=Metal", `Exec="/home/me/Dusk Bot.AppImage" %U`, "Icon=/home/me/icon.svg", "StartupWMClass=bot.dusk.app", "Categories=Utility;",
     "MimeType=x-scheme-handler/duskbot;x-scheme-handler/openmausbot;", "Terminal=false"]) assert.ok(text.split("\n").includes(line), line);
 });
 

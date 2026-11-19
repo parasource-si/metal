@@ -1,6 +1,6 @@
 // @vitest-environment happy-dom
 // docs/analytics.md is the promise of what the app sends: anonymous usage, on by default in the desktop app and stopped
-// entirely by turning "help improve dusk bot" off; only the events its table lists; nothing from the phone app.
+// entirely by turning "help improve Metal" off; only the events its table lists; nothing from the phone app.
 import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -38,7 +38,7 @@ describe("docs/analytics.md", () => {
     expect(docs).toMatch(/turn it off at any time/);
     expect(docs).toMatch(/phone app sends none/i);
     expect(docs).not.toMatch(/posthog|\bfork\b/i);
-    expect(read("README.md")).toMatch(/on until you turn off "help improve dusk bot"/);
+    expect(read("README.md")).toMatch(/on until you turn off "help improve Metal"/);
   });
 
   const harness = async () => {

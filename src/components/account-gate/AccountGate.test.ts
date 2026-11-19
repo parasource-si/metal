@@ -45,13 +45,13 @@ afterEach(async () => { await act(async () => root?.unmount()); host.remove(); v
 
 it("renders the title, providers and email step, and focuses the email field", async () => {
   const html = renderToStaticMarkup(createElement(AccountGate, { bridge }));
-  expect(html).toContain("Sign in to dusk bot");
+  expect(html).toContain("Sign in to your Dusk account");
   expect(html).toContain(`One account for your bots, your ${deviceWord()} and your cloud desktop.`);
   for (const name of ["Google", "Apple"]) expect(html).toContain(`Continue with ${name}`);
   expect(html).not.toContain("Continue with X");
   expect(html).toContain('type="email"'); expect(html).toContain("Send code");
   await mount();
-  expect(host.querySelector("h1")?.textContent).toBe("Sign in to dusk bot");
+  expect(host.querySelector("h1")?.textContent).toBe("Sign in to your Dusk account");
   expect(document.activeElement).toBe(email());
 });
 
@@ -163,7 +163,7 @@ it("back to sign in returns to the providers and a plain code", async () => {
   await mount();
   await act(async () => button("Can't sign in?").click());
   await act(async () => button("Back to sign in").click());
-  expect(host.querySelector("h1")?.textContent).toBe("Sign in to dusk bot");
+  expect(host.querySelector("h1")?.textContent).toBe("Sign in to your Dusk account");
   await type(email(), "person@example.com"); await submit();
   expect(bridge.signInStart).toHaveBeenCalledExactlyOnceWith("person@example.com");
 });

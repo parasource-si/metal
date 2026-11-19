@@ -51,7 +51,7 @@ function clear(): void {
   ++revision;
 }
 
-/** on by default in the desktop app (an opt-out): "help improve dusk bot" off stops everything. The phone app (and a page
+/** on by default in the desktop app (an opt-out): "help improve Metal" off stops everything. The phone app (and a page
  * that hasn't said which app it is yet) sends nothing unless the switch was turned on there. */
 export function usageAnalyticsEnabled(): boolean {
   try {
@@ -156,7 +156,7 @@ export function screen(path: string): void {
 }
 
 export type SharingPlace = "settings" | "first_run";
-/** the "help improve dusk bot" switch moved in `where`. On is an ordinary event. Off drops everything still queued and
+/** the "help improve Metal" switch moved in `where`. On is an ordinary event. Off drops everything still queued and
  * sends this one event, once and without retries; nothing follows it. */
 export function usageSharingChanged(on: boolean, where: SharingPlace): void {
   try {

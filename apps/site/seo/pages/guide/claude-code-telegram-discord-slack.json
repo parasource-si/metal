@@ -4,7 +4,7 @@
   "title": "Claude Code from Telegram, Discord or Slack: routes",
   "nav": "claude code in chat apps",
   "h1": "claude code from telegram, discord or slack",
-  "description": "Compare a custom chat bridge with Claude Remote Control and dusk bot chat, and separate talking to a bot from posting into a team channel.",
+  "description": "Compare a custom chat bridge with Claude Remote Control and Metal chat, and separate talking to a bot from posting into a team channel.",
   "keyword": "claude code telegram",
   "keywords": [
     "claude code discord",
@@ -75,7 +75,7 @@
       "a": "**we do not know of one.** anthropic’s published phone route is remote control.[^1]"
     },
     {
-      "q": "can i use a slack post to control a dusk bot?",
+      "q": "can i use a slack post to control a Metal bot?",
       "a": "**you chat with the bot in dusk.** slack events can start a routine and arrive at once. the bot can post back, but slack does not become its chat interface.[^2][^4][^7]"
     },
     {
@@ -90,11 +90,11 @@
       "checked": "2026-11-12"
     },
     {
-      "label": "dusk bot docs: bots",
+      "label": "Metal docs: bots",
       "url": "/docs/bots"
     },
     {
-      "label": "dusk bot docs: phone",
+      "label": "Metal docs: phone",
       "url": "/docs/phone"
     },
     {
@@ -103,7 +103,7 @@
       "checked": "2026-11-12"
     },
     {
-      "label": "dusk bot docs: files and apps",
+      "label": "Metal docs: files and apps",
       "url": "/docs/files-and-apps"
     },
     {
@@ -112,11 +112,11 @@
       "checked": "2026-11-12"
     },
     {
-      "label": "dusk bot docs: routines and app events",
+      "label": "Metal docs: routines and app events",
       "url": "/docs/routines"
     },
     {
-      "label": "dusk bot docs: sending and full access",
+      "label": "Metal docs: sending and full access",
       "url": "/docs/computer"
     }
   ],

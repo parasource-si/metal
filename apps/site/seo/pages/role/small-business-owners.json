@@ -10,7 +10,7 @@
     "ai virtual assistant for small business",
     "best ai agents for small business"
   ],
-  "answer": "**you opened a shop, not a second career in inbox admin.** a dusk bot can bring you customer questions, invoice mismatches and tomorrow’s booking gaps from the mail, files and calendar you allow. it can draft replies to reviews you attach too. business use needs a work license. start read only, with answers in chat for you to use.",
+  "answer": "**you opened a shop, not a second career in inbox admin.** a Metal bot can bring you customer questions, invoice mismatches and tomorrow’s booking gaps from the mail, files and calendar you allow. it can draft replies to reviews you attach too. business use needs a work license. start read only, with answers in chat for you to use.",
   "updated": "2026-11-12",
   "review": {
     "status": "approved",
@@ -112,19 +112,19 @@
   ],
   "sources": [
     {
-      "label": "dusk bot docs: bots",
+      "label": "Metal docs: bots",
       "url": "/docs/bots"
     },
     {
-      "label": "dusk bot docs: files and apps",
+      "label": "Metal docs: files and apps",
       "url": "/docs/files-and-apps"
     },
     {
-      "label": "dusk bot docs: routines",
+      "label": "Metal docs: routines",
       "url": "/docs/routines"
     },
     {
-      "label": "dusk bot docs: account and billing",
+      "label": "Metal docs: account and billing",
       "url": "/docs/account-and-billing"
     },
     {

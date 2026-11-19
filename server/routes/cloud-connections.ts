@@ -1,7 +1,7 @@
 // The routes a one-time move to the person's own Cloud uses for connections. GET /api/cloud-connections, on either
 // side, names this server's connections (never a secret) with the engines it runs and the programs it has. On a Cloud
 // home: POST /api/cloud-connections/connected-apps makes this Cloud act as the computer's connected-apps account (a
-// one-time code from dusk bot's service, or the person's own Composio project); PUT
+// one-time code from Metal's service, or the person's own Composio project); PUT
 // /api/cloud-connections/mcp/<name>/sign-in takes a sign-in that moved; PUT
 // /api/cloud-connections/email takes the person's mailboxes. Admin scope
 // (request-auth's default): only the owner's app reaches them.

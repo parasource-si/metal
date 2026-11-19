@@ -1,4 +1,4 @@
-# dusk bot connected-apps broker
+# Metal connected-apps broker
 
 This Worker keeps the shared Composio project key out of desktop builds. Each
 installation receives a random bearer token stored only as a SHA-256 hash in
@@ -8,8 +8,8 @@ MCP traffic, and returns short-lived Connect Links to the local app.
 The desktop never receives the project key. Authorization links are returned
 only on demand and are never persisted in chat messages.
 
-Deployment for this repository: it runs on dusk bot's own Cloudflare account at
-`https://composio.dusk.bot`, with dusk bot's own Composio project. Put
+The upstream broker runs on Dusk Bot's Cloudflare account at
+`https://composio.dusk.bot`, with Dusk Bot's Composio project. Put
 `DUSK_COMPOSIO_API_KEY`, `CLOUDFLARE_API_TOKEN` (Workers Scripts, D1 and the
 dusk.bot zone's Workers routes, all edit) and `CLOUDFLARE_ACCOUNT_ID` in
 `~/.config/duskbot/dusk.env`, then run `scripts/deploy-composio-broker.sh`. It
@@ -23,7 +23,7 @@ the IDs in `wrangler.jsonc`, deploy under their own Worker name, and set
 `DUSK_COMPOSIO_BROKER_URL` in their packaged build. Running only the local
 server with a Composio project key remains the no-Cloudflare self-host path.
 
-`REGISTRATION_MODE` is `closed` (since 2026-11-13: dusk bot pays nothing per
+`REGISTRATION_MODE` is `closed` (since 2026-11-13: the upstream project pays nothing per
 tool call) and `GLOBAL_DAILY_TOOL_CALLS` is 500, so the existing test
 installations stay inside Composio's free allowance. No build registers here by
 default.
@@ -49,7 +49,7 @@ Worker logs `usage budgets are off`, so apply it before deploying.
 ## App events (Composio triggers)
 
 The broker also receives Composio trigger events for every installation and
-queues them until the installation's dusk bot server collects them. A desktop
+queues them until the installation's Metal server collects them. A desktop
 needs no public URL: Composio posts to the broker, the server long-polls it.
 
 ```

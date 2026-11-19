@@ -69,7 +69,7 @@ export function botCard({ name, body, colour, line }) {
   s.bot("mochi", C.pinkBot, 250, 500, 4).bot("loaf", C.tangerine, 960, 500, 4).bot("goo", C.mint, 1040, 500, 3.5);
   s.bubble(600, 266, `hi, i'm ${name}!`, { size: 34, pad: 22, u: 4 });
   s.text(600, 572, line, { size: 26, anchor: "middle" });
-  s.text(600, 606, "made with dusk bot", { size: 18, fill: C.inkSoft, anchor: "middle" });
+  s.text(600, 606, "made with Metal", { size: 18, fill: C.inkSoft, anchor: "middle" });
   return s.svg();
 }
 

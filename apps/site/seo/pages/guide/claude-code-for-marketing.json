@@ -10,7 +10,7 @@
     "claude code for marketing agency",
     "claude code for marketing automation"
   ],
-  "answer": "**the draft sounds great. the delivery promise is made up.** give a claude code bot the approved facts and ask it to find those gaps before customers do. it can review briefs, compare copy with approved claims and organise a content inventory. in dusk bot, attach the files and text the job. repeat a useful review as a routine.[^1][^2][^3]",
+  "answer": "**the draft sounds great. the delivery promise is made up.** give a claude code bot the approved facts and ask it to find those gaps before customers do. it can review briefs, compare copy with approved claims and organise a content inventory. in Metal, attach the files and text the job. repeat a useful review as a routine.[^1][^2][^3]",
   "updated": "2026-11-12",
   "review": {
     "status": "approved",
@@ -81,15 +81,15 @@
   ],
   "sources": [
     {
-      "label": "dusk bot docs: ai and getting started",
+      "label": "Metal docs: ai and getting started",
       "url": "/docs/getting-started"
     },
     {
-      "label": "dusk bot docs: files and apps",
+      "label": "Metal docs: files and apps",
       "url": "/docs/files-and-apps"
     },
     {
-      "label": "dusk bot docs: routines",
+      "label": "Metal docs: routines",
       "url": "/docs/routines"
     },
     {
@@ -98,7 +98,7 @@
       "checked": "2026-11-12"
     },
     {
-      "label": "dusk bot docs: computer",
+      "label": "Metal docs: computer",
       "url": "/docs/computer"
     }
   ],

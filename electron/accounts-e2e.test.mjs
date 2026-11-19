@@ -293,7 +293,7 @@ describe("accounts across the website, desktop, workspace and phone", () => {
     const second = browser(); f.resend(); await webSignIn(second, "second@accounts.test");
     link.enroll.onState(d.client.state());
     await waitFor(() => expect(link.answers).toHaveLength(2));
-    expect(link.answers[1]).toMatchObject({ status: 409, error: expect.stringMatching(/belongs to another dusk bot account/) });
+    expect(link.answers[1]).toMatchObject({ status: 409, error: expect.stringMatching(/belongs to another Dusk account/) });
     expect(link.memory).toMatchObject({ accountId: owner, workspaceId });
     expect(await workspaces(first)).toMatchObject([{ id: workspaceId }]); expect(await workspaces(second)).toEqual([]);
   }, 30_000);

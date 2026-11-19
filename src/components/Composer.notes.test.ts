@@ -45,7 +45,7 @@ const bot: Bot = {
   modelSelection: { instanceId: ENGINE, model: "fake" },
 };
 const peer: Bot = { ...bot, id: "juniper", threadId: "juniper-thread", name: "Juniper", color: "teal" };
-const NOTES = "---\nformat: dusk-bot-notes\nversion: 3\nfrom: ChatGPT\n---\n\n# Memories\n- Likes tea\n\nEND OF DUSK BOT NOTES\n";
+const NOTES = "---\nformat: dusk-bot-notes\nversion: 3\nfrom: ChatGPT\n---\n\n# Memories\n- Likes tea\n\nEND OF METAL NOTES\n";
 
 let root: Root;
 let container: HTMLDivElement;

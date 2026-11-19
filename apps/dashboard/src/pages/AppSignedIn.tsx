@@ -17,9 +17,9 @@ export function AppSignedInPage() {
         <div className="flex justify-center"><span className="peek inline-flex"><Mascot color="blue" size={64} state="happy" track /></span></div>
         <Card className="enter relative -mt-4">
           <h1 className="text-20 font-medium text-ink">{set ? "you're all set" : "you're signed in"}</h1>
-          <p className="mt-1.5 text-14 leading-[1.55] text-ink-3">{set ? "head back to the app. dusk bot carries on from here, nothing else to do in the browser." : "head back to the app. dusk bot signs itself in, nothing else to do here."}</p>
+          <p className="mt-1.5 text-14 leading-[1.55] text-ink-3">{set ? "head back to the app. Metal carries on from here, nothing else to do in the browser." : "head back to the app. Metal signs itself in, nothing else to do here."}</p>
           <div className="mt-6 flex flex-wrap gap-2">
-            <a href={link} data-back-to-app="" className="press hover-btn inline-flex h-10 items-center rounded-full bg-ink px-4.5 text-14 font-medium text-bg">open dusk bot</a>
+            <a href={link} data-back-to-app="" className="press hover-btn inline-flex h-10 items-center rounded-full bg-ink px-4.5 text-14 font-medium text-bg">open Metal</a>
           </div>
         </Card>
       </div>

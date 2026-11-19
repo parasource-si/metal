@@ -88,7 +88,7 @@ async function bundleIdRecord(identifier = BUNDLE_ID, register = false) {
   const one = data.find((b) => b.attributes.identifier === identifier);
   if (one) return one;
   if (!register) throw new Error(`no App ID ${identifier} in the developer account`);
-  const { data: made } = await call("POST", "/v1/bundleIds", { data: { type: "bundleIds", attributes: { identifier, name: "dusk bot Live Activity", platform: "IOS" } } });
+  const { data: made } = await call("POST", "/v1/bundleIds", { data: { type: "bundleIds", attributes: { identifier, name: "Metal Live Activity", platform: "IOS" } } });
   console.log(`registered the App ID ${identifier}`);
   return made;
 }

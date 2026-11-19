@@ -21,7 +21,7 @@ export function roomResponderLine(responder: GroupDefaultResponder, name: (botId
   switch (responder.kind) {
     case "everyone": return "every member answers the person's messages";
     case "mentions": return "only the members a message @mentions answer";
-    case "auto": return "dusk bot picks who answers each message";
+    case "auto": return "Metal picks who answers each message";
     case "member": return `${name(responder.botId)} answers the person's messages`;
   }
 }

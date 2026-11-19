@@ -1740,7 +1740,7 @@
       ],
       "state": "completed",
       "ms": 4058,
-      "output": "On it, setting up your new bot Ledger to track your monthly spending.\n---\nDone, I've asked dusk bot to set up Ledger for your monthly spending."
+      "output": "On it, setting up your new bot Ledger to track your monthly spending.\n---\nDone, I've asked Metal to set up Ledger for your monthly spending."
     },
     {
       "model": "gemini-3.1-flash-lite",

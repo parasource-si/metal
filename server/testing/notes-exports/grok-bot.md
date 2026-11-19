@@ -6,9 +6,9 @@ from: Grok Bot
 exported: 2026-03-22
 ---
 
-# SETUP INSTRUCTIONS FOR DUSK BOT
+# SETUP INSTRUCTIONS FOR Metal
 
-This export comes from the Grok Bot desktop app and is for Maya Okafor, a product designer in Lisbon who also runs the Etsy shop Okafor Clay. One bot is listed under Bots. It is an assistant she built in Grok Bot, and dusk bot should recreate it as its own bot with the instructions, personality, memories, skills and routines given. About me, Contacts and Memories are facts about her for the memory all her bots share. Skills are hers for every bot. Routines are things done for her on a schedule and should be set up again.
+This export comes from the Grok Bot desktop app and is for Maya Okafor, a product designer in Lisbon who also runs the Etsy shop Okafor Clay. One bot is listed under Bots. It is an assistant she built in Grok Bot, and Metal should recreate it as its own bot with the instructions, personality, memories, skills and routines given. About me, Contacts and Memories are facts about her for the memory all her bots share. Skills are hers for every bot. Routines are things done for her on a schedule and should be set up again.
 
 # About me
 ## Basics
@@ -95,5 +95,5 @@ Draft the wholesale invoice for Casa Ribeira.
 - WhatsApp
 - Google Sheets
 
-END OF DUSK BOT NOTES
+END OF Metal NOTES
 ````

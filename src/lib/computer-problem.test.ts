@@ -12,7 +12,7 @@ describe("a bot computer's problem in plain words", () => {
       .toEqual({ line: "botPanel.screen.updateReady", fix: "replace", keepsFiles: false });
   });
 
-  it("never replaces a container dusk bot did not make, nor a team's shared computer, from one bot's tab", () => {
+  it("never replaces a container Metal did not make, nor a team's shared computer, from one bot's tab", () => {
     expect(computerProblem({ phase: "vps-incompatible", failed: true, vps: { managed: false } })).toMatchObject({ line: "computer.problem.notOurs", fix: "settings" });
     expect(computerProblem({ phase: "vps-incompatible", failed: true, vps: { managed: true, teamComputer: { id: "t" } } })).toMatchObject({ line: "botPanel.screen.updateReady", fix: "settings" });
   });

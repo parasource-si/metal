@@ -74,7 +74,7 @@ export function createUserPresence({ platform = process.platform, systemPreferen
       }
     }
     if (platform === "win32") {
-      const outcome = helloOutcome(await windowsHello({ reason: `dusk bot wants to ${reason}.`, hwnd, timeoutMs }));
+      const outcome = helloOutcome(await windowsHello({ reason: `Metal wants to ${reason}.`, hwnd, timeoutMs }));
       if (outcome === "unavailable") return ["confirm", await inApp(reason)];
       return ["windows-hello", outcome === "pass"];
     }
@@ -105,7 +105,7 @@ export function installUserPresence({ ipcMain, guard, dialog, systemPreferences,
       const win = parent();
       if (!win) return false;
       const { response } = await dialog.showMessageBox(win, {
-        type: "question", message: "Confirm it's you", detail: `dusk bot wants to ${reason}.`,
+        type: "question", message: "Confirm it's you", detail: `Metal wants to ${reason}.`,
         buttons: ["Continue", "Cancel"], defaultId: 1, cancelId: 1,
       });
       return response === 0;

@@ -69,7 +69,7 @@ test("a granted permission is never asked again", async () => {
 test("notifications are never asked for on a Mac: asking posts nothing and saves nothing", async () => {
   const { deps, calls } = fakeMac({ saved: { other: 1 } });
   const permissions = createMacPermissions(deps);
-  const after = await permissions.request("notifications", { title: "dusk bot", body: "hello" });
+  const after = await permissions.request("notifications", { title: "Metal", body: "hello" });
   assert.equal("notifications" in after, false);
   assert.deepEqual(calls.notes, []);
   assert.deepEqual(calls.writes, []);

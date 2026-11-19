@@ -10,7 +10,7 @@ import { createDevServerChild } from "./dev-server-child.mjs";
 import { world } from "./fixtures/home-window-world.mjs";
 import { installOwnHome } from "./own-home-main.mjs";
 
-// A computer whose bots moved to a server of the person's own: its own view is a clean workspace with a fresh dusk bot, the
+// A computer whose bots moved to a server of the person's own: its own view is a clean workspace with a fresh Metal, the
 // frozen copy stays exactly as it was on disk, and moving back runs that copy again.
 const SERVER = "https://garage.example.test";
 const PLACE = "instance-20261103-1451";
@@ -100,7 +100,7 @@ test("an install already frozen switches on its next launch; the frozen copy sta
     const config = JSON.parse(fs.readFileSync(path.join(fresh, "config.json"), "utf8"));
     assert.equal(config.language, "de");
     assert.ok(config.onboarding.completedAt, "never the new-user setup");
-    assert.deepEqual(fs.readdirSync(fresh), ["config.json"], "a fresh workspace: its server adds the default dusk bot");
+    assert.deepEqual(fs.readdirSync(fresh), ["config.json"], "a fresh workspace: its server adds the default Metal");
     assert.deepEqual(tree(data), before, "the frozen copy is untouched");
 
     // a second launch with the same marker keeps it, and seeds nothing over what the clean workspace made meanwhile

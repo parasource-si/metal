@@ -136,7 +136,7 @@ if (form) {
     lede.append(already ? 'you were already on it. ' : '', "we'll write to ", Object.assign(document.createElement('b'), { textContent: email }), " when it's your turn.");
     form.hidden = true; done.hidden = false; hero.classList.add('is-done');
     hero.dispatchEvent(new Event('wl:layout'));
-    document.title = "You're on the list · dusk bot";
+    document.title = "You're on the list · Metal";
     title.focus();
     cheer();
   }

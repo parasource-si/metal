@@ -15,7 +15,7 @@ import { useDesktopCapabilities } from "./DesktopCapabilities";
 import { friendlyError } from "@/lib/plain-error";
 
 const LINUX_GUIDE_URL =
-  "https://github.com/goatedgrokbotalternative/duskbot/blob/main/docs/linux-desktop.md#enable-local-control";
+  "https://github.com/parasource-si/metal/blob/main/docs/linux-desktop.md#enable-local-control";
 
 export function LinuxLocalControl() {
   const { capabilities } = useDesktopCapabilities();

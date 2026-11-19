@@ -46,12 +46,12 @@ file to let the turn finish, then:
 
 ```sh
 H=/tmp/duskbot-verify-data-XXXXXX/ui.json
-pnpm control:dusk ui snapshot --ui $H
-pnpm control:dusk ui click --ui $H --name "Create routine"
-pnpm control:dusk ui wait-settle --ui $H --timeout 60
-pnpm control:dusk ui click --ui $H --name "Details"
-pnpm control:dusk ui screenshot --ui $H --out .dusk-scratch/verify-evidence/widgets.png
-pnpm control:dusk ui console --ui $H
+pnpm control:metal ui snapshot --ui $H
+pnpm control:metal ui click --ui $H --name "Create routine"
+pnpm control:metal ui wait-settle --ui $H --timeout 60
+pnpm control:metal ui click --ui $H --name "Details"
+pnpm control:metal ui screenshot --ui $H --out .dusk-scratch/verify-evidence/widgets.png
+pnpm control:metal ui console --ui $H
 ```
 
 Expected: the snapshot holds a `Pull requests` list with three rows and the

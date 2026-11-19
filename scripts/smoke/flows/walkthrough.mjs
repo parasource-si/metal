@@ -33,10 +33,10 @@ const stamp = new Date().toISOString().replace(/[-:T.]/g, "").slice(4, 12);
 const log = (line) => console.log(`[walkthrough ${new Date().toISOString().slice(11, 19)}] ${line}`);
 const sleep = (ms) => new Promise((done) => setTimeout(done, ms));
 
-/** the flows, in the order a person meets them; `account`: it makes a dusk bot account (deleted after) */
+/** the flows, in the order a person meets them; `account`: it makes a Metal account (deleted after) */
 const SECTIONS = [
   { id: "1", slug: "first-run", title: "Fresh install, first launch", script: "onboarding.mjs", args: ["--path", "mac", "--tour"], account: false,
-    blurb: "A new person opens the app: where the bots live, this Mac's sheet, connecting an AI (the cards and the full list), bringing notes from another AI, then the first chat with dusk bot, its working row and first reply (with no AI connected, the Connect your AI card)." },
+    blurb: "A new person opens the app: where the bots live, this Mac's sheet, connecting an AI (the cards and the full list), bringing notes from another AI, then the first chat with Metal, its working row and first reply (with no AI connected, the Connect your AI card)." },
   { id: "2", slug: "account", title: "Sign in and your account", script: "account-entry.mjs", args: [], account: true,
     blurb: "The account menu signed out, sign-in continuing in the browser (the website's sign-up, the approve page, the app signing itself in), billing, the signed-in account card and menu, and signing in again from the menu." },
   { id: "3", slug: "own-server", title: "Your own server (VPS)", script: "add-server.mjs", args: ["--signed-out"], account: true, vm: true,
@@ -227,7 +227,7 @@ function buildPage(cleanupItems, ownerProblems) {
       <div class="videos">${videos || "<p class=\"dim\">no video</p>"}</div>${steps}</section>`;
   }).join("\n");
 
-  const html = `<!doctype html><html lang="en"><head><meta charset="utf-8"><title>dusk bot walkthrough</title><meta name="viewport" content="width=device-width,initial-scale=1">
+  const html = `<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Metal walkthrough</title><meta name="viewport" content="width=device-width,initial-scale=1">
 <style>
 :root { color-scheme: light; --ink: #1d1d1f; --dim: #6e6e73; --line: #e5e5ea; --warn: #b25000; --bg: #fafafa; }
 * { box-sizing: border-box; } body { margin: 0; font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: var(--ink); background: var(--bg); }
@@ -248,7 +248,7 @@ nav ol { padding-left: 20px; } .toc a { color: inherit; }
 table { border-collapse: collapse; background: #fff; } td, th { text-align: left; padding: 4px 10px; border-bottom: 1px solid var(--line); font-size: 13px; vertical-align: top; }
 @media print { body { background: #fff; } main { max-width: none; padding: 0; } .video video { display: none; } .print-only { display: inline; font-size: 11px; } .shot { box-shadow: none; border: 1px solid var(--line); padding: 6px; margin-bottom: 10px; } .shot img { width: auto; max-width: 100%; max-height: 4.3in; margin: 0 auto; } h2 { break-before: page; } }
 </style></head><body><main>
-<h1>dusk bot, every flow as a new person sees it</h1>
+<h1>Metal, every flow as a new person sees it</h1>
 <p class="dim">Generated ${esc(new Date().toISOString().replace("T", " ").slice(0, 16))} UTC from <code>${esc(commit)}</code> by <code>node scripts/smoke/flows/walkthrough.mjs</code>. App window at its normal size (1040x760, light), browser pages at 1280x860. Accounts are *@qa.dusk.test sink addresses on preview; payments are Dodo TEST mode with the test card.</p>
 <nav class="toc"><ol>${SECTIONS.map((section) => { const entry = sections.find((item) => item.section === section); return `<li><a href="#s${section.id}">${esc(section.title)}</a> <span class="dim">${entry.missing ? "not recorded" : `${entry.captures.length} screens`}</span></li>`; }).join("")}</ol></nav>
 <h2 id="issues">⚠ What looks broken, confusing or off-brand (${issues.length})</h2>

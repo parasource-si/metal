@@ -4,7 +4,7 @@ import type { AuthProviders, IdentityProvider } from "../data/contracts";
 import { useSession } from "../data/session";
 import { api, ApiError, FIXTURE, type Account } from "../lib/api";
 import { appPath, Link, navigate, useLocation } from "../lib/router";
-import { planIntent, planQuery, SITE_NAME, SITE_URL, siteUrl } from "../lib/site";
+import { planIntent, planQuery, SITE_NAME, siteUrl } from "../lib/site";
 import { ProviderMark, PROVIDER_NAME } from "../ui/BrandMarks";
 import { APP_LANDING_PATH } from "../../../../shared/account-api.ts";
 import { SplitFrame } from "../ui/Frame";
@@ -21,7 +21,7 @@ const REASON: Record<string, string> = {
   signup_closed: "there's no account for this email, and new accounts aren't open yet.",
   device_limit: "this account is signed in on too many devices. sign out somewhere else and try again.",
   rate_limited: "too many tries. wait a minute, then try again.",
-  offline: "can't reach dusk bot. check your connection and try again.",
+  offline: "can't reach Metal. check your connection and try again.",
 };
 
 const OAUTH: IdentityProvider[] = ["google", "apple"];
@@ -38,7 +38,7 @@ const OAUTH_ERROR: Record<string, string> = {
   oauth_expired: "that sign-in took too long. start again.",
   provider_unavailable: "that sign-in option isn't available right now. use your email instead.",
   signup_closed: "new accounts aren't open yet.",
-  identity_taken: "that account is already linked to another dusk bot account. sign in with it instead.",
+  identity_taken: "that account is already linked to another Dusk Cloud account. sign in with it instead.",
 };
 
 type Mode = "signin" | "signup";
@@ -252,7 +252,7 @@ export function AuthScreen({ mode, note, forApp = false }: { mode: Mode; note?: 
       mood={mood}
       scene={scene}
       card={<SceneCard />}
-      aside={<a href={SITE_URL} className="text-link -me-2 inline-flex h-11 items-center gap-1.5 rounded-full px-2 text-14"><ArrowLeft size={15} strokeWidth={1.75} aria-hidden />back to {SITE_NAME === "dusk.bot" ? SITE_NAME : "the site"}</a>}
+      aside={<a href={siteUrl()} className="text-link -me-2 inline-flex h-11 items-center gap-1.5 rounded-full px-2 text-14"><ArrowLeft size={15} strokeWidth={1.75} aria-hidden />back to {SITE_NAME}</a>}
       foot={signup ? <>by continuing you agree to the <a href={siteUrl("/terms")} className={LINK}>terms</a> and <a href={siteUrl("/privacy")} className={LINK}>privacy policy</a>.</> : "your chats and files stay on your own computers."}
     >
       {step === "done" ? (

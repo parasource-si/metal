@@ -1,4 +1,4 @@
-// Dusk on a real server in an isolated fixture: a new install's first bot, never deleted or archived, taken off the
+// Metal on a real server in an isolated fixture: a new install's first bot, never deleted or archived, taken off the
 // sidebar by its switch, and still holding a Chief's tools once another bot is the Chief. The fake engine holds its turn
 // open so this test can start the agents server that turn was handed and call create_bot the way the engine would.
 import { spawn } from "node:child_process";
@@ -30,7 +30,7 @@ async function callTool(server: McpServer, name: string, args: unknown): Promise
   }
 }
 
-it("makes Dusk a new install's first bot, never deleted, hidden by its switch, with a Chief's tools after the Chief moves on", async () => {
+it("makes Metal a new install's first bot, never deleted, hidden by its switch, with a Chief's tools after the Chief moves on", async () => {
   const fixture = await launchVerificationServer({ ...process.env, FAKE_CLAUDE_MODE: "hang" });
   const api = async (method: string, path: string, body?: unknown) => {
     const response = await fetch(`${fixture.info.url}${path}`, { method, headers: { "content-type": "application/json" },
@@ -41,7 +41,7 @@ it("makes Dusk a new install's first bot, never deleted, hidden by its switch, w
   const bots = async () => (await api("GET", "/api/bots")).body.bots as any[];
   try {
     const [maus] = await bots();
-    // The fixture renames its starter; it is still the new install's Dusk.
+    // The fixture renames its starter; it is still the new install's Metal.
     expect(maus).toMatchObject({ color: "chrome", chiefOfStaff: true, defaultBot: {} });
     expect(maus.messages.map((message: any) => [message.kind, message.helperIntro])).toEqual([["options", true]]);
 
@@ -80,7 +80,7 @@ it("makes Dusk a new install's first bot, never deleted, hidden by its switch, w
   }
 }, 120_000);
 
-it("lets Dusk read the unread notifications and mark finished work read, not once sign-in members share the workspace, and gives no other bot the tools", async () => {
+it("lets Metal read the unread notifications and mark finished work read, not once sign-in members share the workspace, and gives no other bot the tools", async () => {
   const fixture = await launchVerificationServer({ ...process.env, FAKE_CLAUDE_MODE: "hang" });
   const api = async (path: string) => (await (await fetch(`${fixture.info.url}${path}`, { signal: AbortSignal.timeout(10_000) })).json()) as any;
   const control = (args: string[]) => runControlDusk([...args, "--url", fixture.info.url]) as Promise<any>;

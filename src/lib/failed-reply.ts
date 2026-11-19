@@ -61,17 +61,17 @@ export function trailingRows(messages: readonly Message[], scan = 200, now = Dat
 }
 
 // the runtime's own words for a turn a restart cut (server/runtime/tree.ts CUT_TWICE, INTERRUPTED_OUTWARD)
-const RESTART_CUT = /^Interrupted by (?:another |an? )?dusk bot restart\b/i;
+const RESTART_CUT = /^Interrupted by (?:another |an? )?(?:dusk bot|Metal) restart\b/i;
 const RESTART_DID = /\bafter it already (.+?); not resumed\b/;
 
 // the app's names before it became dusk bot, as older stored errors still say them
-const OLD_NAMES = /\b(?:OpenMausBot|OpenMaus|Open Maus Bot|MausBot|Maus Bot)\b/g;
-const OLD_IMAGE = /^The VPS container uses an incompatible or untrusted (?:OpenMausBot|OpenMaus|MausBot|dusk bot) image\b/i;
+const OLD_NAMES = /\b(?:OpenMausBot|OpenMaus|Open Maus Bot|MausBot|Maus Bot|Dusk Bot)\b/gi;
+const OLD_IMAGE = /^The VPS container uses an incompatible or untrusted (?:OpenMausBot|OpenMaus|MausBot|dusk bot|Metal) image\b/i;
 
-/** A stored error in today's words: a known old computer error becomes its plain line, old app names become dusk bot. */
+/** A stored error in today's words: a known old computer error becomes its plain line, old app names become Metal. */
 export function currentFailureWords(text: string): string {
   if (OLD_IMAGE.test(text.trim())) return t("failedReply.computerOutdated");
-  return text.replace(OLD_NAMES, "dusk bot");
+  return text.replace(OLD_NAMES, "Metal");
 }
 
 /** What a turn a restart cut had already done outside, in the server's words: "sent an email (gmail_send)". */
@@ -190,7 +190,7 @@ function detailWords(kind: FailedReplyKind, engineName: string, onServer: boolea
   return t(DETAIL[kind]);
 }
 
-/** Why dusk bot stopped a browser run itself, in one line. */
+/** Why Metal stopped a browser run itself, in one line. */
 /** A failed row as a list previews it: the plain line its failure card leads with, never the engine's raw words. */
 export function failurePreviewLine(tool: NonNullable<Message["tool"]>, engine: InstanceInfo | undefined): string {
   const kind = failedReplyKind(tool, engine, true);

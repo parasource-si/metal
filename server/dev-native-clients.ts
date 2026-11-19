@@ -1,4 +1,4 @@
-// a source checkout's server signs in to dusk bot's own OAuth apps (shared/native-connectors.json) with the clients in
+// a source checkout's server signs in to configured OAuth apps (shared/native-connectors.json) with the clients in
 // the operator's secrets file, as a release bakes them in; without them every one-click sign-in reads as not set up.
 import { readFileSync } from "node:fs";
 import { homedir } from "node:os";

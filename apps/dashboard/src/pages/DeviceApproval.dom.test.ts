@@ -33,13 +33,13 @@ async function open() {
 }
 const press = (host: HTMLElement, label: string) => [...host.querySelectorAll("button")].find((b) => b.textContent?.includes(label))!;
 
-test("approving shows a signed-in step with an open dusk bot button and no automatic redirect", async () => {
+test("approving shows a signed-in step with an open Metal button and no automatic redirect", async () => {
   const host = await open();
   await act(async () => press(host, "approve").click());
   expect(state.approve).toHaveBeenCalledWith("ABCD-1234");
   expect(state.moved).toEqual([]);
   expect(host.textContent).toContain("you're signed in");
-  expect(host.querySelector("[data-back-to-app]")?.textContent).toBe("open dusk bot");
+  expect(host.querySelector("[data-back-to-app]")?.textContent).toBe("open Metal");
   expect(host.querySelector<HTMLAnchorElement>("[data-back-to-app]")?.getAttribute("href")).toBe("duskbot://open");
 });
 

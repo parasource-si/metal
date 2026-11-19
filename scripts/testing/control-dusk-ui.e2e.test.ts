@@ -372,7 +372,7 @@ describe("control-dusk ui drives the real renderer", () => {
     expect(logs.ok).toBe(true);
     expect((logs.messages as Array<{ type: string; text: string }>).filter((message) => message.type === "error")).toEqual([]);
     const title = await ui("eval", info.ui, "--js", "document.title");
-    expect(title).toMatchObject({ ok: true, result: "Isolated dusk bot Chat" });
+    expect(title).toMatchObject({ ok: true, result: "Isolated Metal Chat" });
 
     await waitForExit(launched.child, { signal: "SIGINT", graceMs: 30_000 });
     expect(launched.child.exitCode).toBe(0);

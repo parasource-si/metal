@@ -26,7 +26,7 @@ not prove a customer's real DNS, certificate, or reverse proxy is configured.
 2. Start Vite on a separate free port with `DUSK_PORT` set to the printed harness
    port. Do not let it proxy to the default port or the user's live app.
 3. A custom domain has no Settings rows: a self-hosted server gets one with
-   `duskbot serve --domain HOST` (a managed Caddy) or `--public-url` behind a
+   `metal serve --domain HOST` (a managed Caddy) or `--public-url` behind a
    proxy of its own, as the add-a-place flow's "your own domain" way shows.
    Check the API alone with the domain helper tests above.
 4. To exercise Codex, add an instance to **only the fixture's config.json**:

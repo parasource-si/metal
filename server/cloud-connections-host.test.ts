@@ -89,6 +89,6 @@ describe("a move's routes and private port", () => {
     cloud.mcpOAuth.markNeedsSignIn("linear", LINEAR);
     desktop.mcpOAuth.markNeedsSignIn("linear", LINEAR);
     expect(cloud.connections.prompt({})).toContain("linear (sign in here: https://dusk-u-1.fly.dev/?connect=mcp%3Alinear)");
-    expect(desktop.connections.prompt({})).toBe(" Signed out right now: the MCP server linear. When a task needs one, tell the person in one line to sign in to it in dusk bot's Apps; do not try its tools until then.");
+    expect(desktop.connections.prompt({})).toBe(" Signed out right now: the MCP server linear. When a task needs one, tell the person in one line to sign in to it in Metal's Apps; do not try its tools until then.");
   });
 });

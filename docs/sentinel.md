@@ -1,6 +1,6 @@
 # Sentinel
 
-Sentinel is an opt-in health scanner for a dusk bot data dir. It reads the
+Sentinel is an opt-in health scanner for a Metal data dir. It reads the
 data dir's databases and logs without modifying them, groups failures into
 issues, and writes those issues to its own folder outside the data dir (see
 [Privacy model](#privacy-model)). An `--out` inside the data dir is refused.
@@ -117,19 +117,19 @@ in its `index.ts`. A detector may see the same record on several scans. The
 
 | Kind | Fires on | Origin |
 |---|---|---|
-| `tool_error` | A failed tool call, grouped by tool and normalized error | `harness` for dusk bot's own MCP servers (`mcp__agents__*`, `computer`, `browser`, …) and harness notices; `shell` for Bash and exec; `external` for other MCP servers and the engine's built-in tools |
+| `tool_error` | A failed tool call, grouped by tool and normalized error | `harness` for Metal's own MCP servers (`mcp__agents__*`, `computer`, `browser`, …) and harness notices; `shell` for Bash and exec; `external` for other MCP servers and the engine's built-in tools |
 | `turn_timeout` / `turn_stop` | A `turn.completed` that is not ok (stops the person chose are excluded), a turn stopped on budget (`max_tokens`, `max_turns`), or a room turn the harness stopped for running too long | `external` for account stops (`auth_required`, `quota`, …), otherwise `harness` |
 | `queue_wait` | Delegated work that waited longer than `--queue-wait` (default 300 s) before starting, or is still waiting | `harness` |
 | `cost` | A single turn that cost more than `--cost` (default $5) | `harness` |
 | `retry_loop` | The same tool failing with the same signature 3 or more times in one turn | That of the tool |
 
-Harness failures are ranked `high`, because they are bugs in dusk bot
+Harness failures are ranked `high`, because they are bugs in Metal
 itself.
 
 ## Installing it
 
 ```sh
-duskbot service install --sentinel [--data-dir DIR]
+metal service install --sentinel [--data-dir DIR]
 ```
 
 This writes the schedule into Sentinel's own folder (above) and prints the
@@ -144,7 +144,7 @@ explicitly, so the paths it prints are the ones the scan uses.
 - **Windows:** prints a `schtasks` command that runs the same scan every two
   minutes.
 
-`duskbot service uninstall --sentinel` prints the commands that remove it.
+`metal service uninstall --sentinel` prints the commands that remove it.
 
 ### Which CLI the schedule runs
 
@@ -154,7 +154,7 @@ ships, whichever command you ran it from:
 
 | Platform | Node | Script |
 |---|---|---|
-| macOS | `/Applications/Dusk Bot.app/Contents/MacOS/Dusk Bot` (or under `~/Applications`) | `…/Contents/Resources/server/duskbot.js` |
+| macOS | `/Applications/Metal.app/Contents/MacOS/Metal` (or under `~/Applications`) | `…/Contents/Resources/server/duskbot.js` |
 | Ubuntu `.deb` | `/opt/dusk-bot/duskbot` | `/opt/dusk-bot/resources/server/duskbot.js` |
 
 The app's own executable runs as Node with `ELECTRON_RUN_AS_NODE=1`, just as
@@ -174,7 +174,7 @@ duskbot sentinel --check-install
 ```
 
 This reads the installed plist or unit and checks that its Node and script
-paths still exist. It prints `stale install: … rerun duskbot service
+paths still exist. It prints `stale install: … rerun metal service
 install --sentinel` if either path is missing. This matters because launchd
 and systemd fail quietly when a path is gone: nothing reaches Sentinel's own
 log, because Sentinel never starts. After moving the app, upgrading Node, or

@@ -125,7 +125,7 @@ export function StepArt({ art, place }: { art?: ArtName; place?: PlaceArtName })
   return art ? <Art name={art} size="xl" className="place-mark h-16" /> : null;
 }
 
-/** "help improve dusk bot": on by default (an opt-out), small and muted, saved the moment it is switched. Shown at the foot
+/** "help improve Metal": on by default (an opt-out), small and muted, saved the moment it is switched. Shown at the foot
  * of the place step, a quick screen, never on one people wait on. */
 export function ImproveSwitch() {
   const improve = useHelpImprove("first_run");
@@ -172,7 +172,7 @@ function PlaceChoice({ kind, art, title, sub, tag, note, onClick }: { kind: stri
   );
 }
 
-/** The desktop app's first screen: dusk bot says hello and asks the one question that shapes the rest, where the bots
+/** The desktop app's first screen: Metal says hello and asks the one question that shapes the rest, where the bots
  * live. dusk cloud's tile says its trial and price before anything is asked for. */
 export function PlaceStep({ onMac, onCloud, onServer, cloudTag, cloudNote }: {
   onMac: () => void; onCloud: () => void; onServer: () => void;

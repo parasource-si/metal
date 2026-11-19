@@ -43,6 +43,7 @@ export declare function defaultDataDir(home: string, options?: MoveOptions): str
 export declare function dataDirFor(configured: string | undefined, home: string, options?: MoveOptions): string;
 export declare function defaultCompanionDir(home: string, options?: MoveOptions): string;
 export declare const DATA_DIR_NAMES: readonly string[];
+export declare function hasDesktopUserData(dir: string, fs?: typeof import("node:fs")): boolean;
 export declare function migrateLegacyUserData(next: string, appData: string, options?: { fs?: typeof import("node:fs"); log?: (line: string) => void; packaged?: boolean }): boolean;
 export declare function safeStorageItem(name: string): { service: string; account: string };
 export declare function carryLegacySafeStorageKey(options: {

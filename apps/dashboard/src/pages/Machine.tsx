@@ -118,7 +118,7 @@ export function MachineView({ detail, now, region }: { detail: WorkspaceDetail; 
         <Card>
           <SectionTitle action={m.update?.available ? <Badge tone="accent">update {m.update.latest} ready</Badge> : <Badge>up to date</Badge>}>server</SectionTitle>
           <dl className="">
-            <KV k="dusk bot running for" v={duration(m.processUptimeSec)} />
+            <KV k="Metal running for" v={duration(m.processUptimeSec)} />
             {region && <KV k="region" v={region} />}
             <KV k="processor" v={`${m.host.cpus} ${m.host.cpus === 1 ? "core" : "cores"}${m.host.cpuModel ? ` · ${m.host.cpuModel}` : ""}`} />
             <KV k="version" v={`${m.app.version} · node ${m.app.node}`} />

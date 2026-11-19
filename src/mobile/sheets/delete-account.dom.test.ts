@@ -21,7 +21,7 @@ describe("delete account confirm step", () => {
   it("says what goes and that a plan is cancelled before anything is deleted", () => {
     const onDelete = vi.fn(async () => true);
     show(onDelete);
-    expect(host.textContent).toContain("Delete your dusk bot account?");
+    expect(host.textContent).toContain("Delete your Dusk account?");
     expect(host.textContent).toContain("person@example.com");
     expect(host.textContent).toContain("cancelled and does not renew");
     expect(onDelete).not.toHaveBeenCalled();

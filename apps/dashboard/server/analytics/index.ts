@@ -29,7 +29,7 @@ interface RouteHelpers {
   /** a signed-in admin's browser */
   isOwner(req: IncomingMessage): boolean;
 }
-/** `optOut`: accounts that turned "help improve dusk bot" off: no usage counts, notes or events from them are kept */
+/** `optOut`: accounts that turned "help improve Metal" off: no usage counts, notes or events from them are kept */
 interface OptOutState { v: 1; optOut: string[] }
 
 export const MAX_BATCH = 20;

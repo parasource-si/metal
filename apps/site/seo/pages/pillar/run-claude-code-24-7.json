@@ -13,7 +13,7 @@
     "claude code vps",
     "claude code background agent"
   ],
-  "answer": "**the 7am brief won't arrive from a laptop that went to sleep at midnight.** a dusk bot using claude code needs an awake computer and open app. your server or dusk cloud keeps it available overnight, within ai limits and any human questions. as of 12 november 2026, anthropic also offers cloud sessions and scheduled tasks. compare those before buying another host.",
+  "answer": "**the 7am brief won't arrive from a laptop that went to sleep at midnight.** a Metal bot using claude code needs an awake computer and open app. your server or dusk cloud keeps it available overnight, within ai limits and any human questions. as of 12 november 2026, anthropic also offers cloud sessions and scheduled tasks. compare those before buying another host.",
   "updated": "2026-11-12",
   "review": {
     "status": "approved",
@@ -42,7 +42,7 @@
   },
   "og_line": "choose a home for overnight work.",
   "table": {
-    "h": "three homes for a dusk bot",
+    "h": "three homes for a Metal",
     "intro": "**hosting keeps the machine on, not the ai allowance topped up.** these dusk prices reflect 12 november 2026. server rental and ai usage have their own bills.",
     "cols": [
       "home",
@@ -100,7 +100,7 @@
     },
     {
       "h": "use dusk cloud when the laptop needs to sleep",
-      "md": "**let the laptop sleep without taking the morning brief with it.** pick a plan and sign in under settings, dusk cloud. the welcome moves chats, memory and routines with your bots. the machine is yours, not shared; dusk makes daily backups.[^1]\n\nplus keeps a good amount of bot desktops awake; pro is for heavy workloads. pair your phone to that cloud computer and reach the bots with your laptop off.[^6]\n\nthe [phone guide](/claude-code-from-your-phone) separates dusk bot chat from anthropic's remote control. the phone reaches the work running elsewhere."
+      "md": "**let the laptop sleep without taking the morning brief with it.** pick a plan and sign in under settings, dusk cloud. the welcome moves chats, memory and routines with your bots. the machine is yours, not shared; dusk makes daily backups.[^1]\n\nplus keeps a good amount of bot desktops awake; pro is for heavy workloads. pair your phone to that cloud computer and reach the bots with your laptop off.[^6]\n\nthe [phone guide](/claude-code-from-your-phone) separates Metal chat from anthropic's remote control. the phone reaches the work running elsewhere."
     },
     {
       "h": "read anthropic’s current rules too",
@@ -123,31 +123,31 @@
   ],
   "sources": [
     {
-      "label": "dusk bot: dusk cloud",
+      "label": "Metal: dusk cloud",
       "url": "/docs/dusk-cloud"
     },
     {
-      "label": "dusk bot: billing",
+      "label": "Metal: billing",
       "url": "/docs/account-and-billing"
     },
     {
-      "label": "dusk bot: your own server",
+      "label": "Metal: your own server",
       "url": "/docs/your-own-server"
     },
     {
-      "label": "dusk bot: computer and approvals",
+      "label": "Metal: computer and approvals",
       "url": "/docs/computer"
     },
     {
-      "label": "dusk bot: bots",
+      "label": "Metal: bots",
       "url": "/docs/bots"
     },
     {
-      "label": "dusk bot: phone",
+      "label": "Metal: phone",
       "url": "/docs/phone"
     },
     {
-      "label": "dusk bot: routines",
+      "label": "Metal: routines",
       "url": "/docs/routines"
     },
     {

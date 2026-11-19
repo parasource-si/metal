@@ -24,7 +24,7 @@ it("pairs through the real home pairing handler and signs the exact health targe
     return Response.json({ v: 1 });
   });
   const client = createHomeClient({ fetch: fetcher, now: () => at });
-  const grant = await client.pair("https://cloud.example.test", secret, { label: "dusk bot app (Cloud)", ttlSeconds: 300 });
+  const grant = await client.pair("https://cloud.example.test", secret, { label: "Metal app (Cloud)", ttlSeconds: 300 });
   expect(grant).toEqual({ code: expect.stringMatching(/^[\w]{4}-[\w]{4}-[\w]{4}$/), expiresAt: at + 300_000 });
   expect(Object.keys(grant).sort()).toEqual(["code", "expiresAt"]);
   expect(await client.healthy("https://cloud.example.test", secret)).toBe(true);

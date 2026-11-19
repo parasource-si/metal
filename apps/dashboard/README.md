@@ -1,10 +1,10 @@
-# dusk bot account dashboard
+# Metal account dashboard
 
-One hosted web app for everyone's dusk bot workspaces. A person signs in with their dusk bot account and sees
+One hosted web app for everyone's Metal workspaces. A person signs in with their Metal account and sees
 each of their workspaces (their Mac, each VPS) side by side: bots, usage, the machine and its bot computers, devices.
 
 ```
- workspace (a dusk bot server)            dashboard service (apps/dashboard/server)          browser (apps/dashboard/src)
+ workspace (a Metal server)            dashboard service (apps/dashboard/server)          browser (apps/dashboard/src)
  ---------------------------------            ------------------------------------          -----------------------
  POST /api/dashboard/link  (app menu)  ---->  POST /v1/enroll {ed25519 public key}
    opens the claim link in the browser        <---- {workspaceId, claimUrl}
@@ -171,10 +171,10 @@ plain, like dusk.bot.
 ### The site and the app point at each other
 
 The page links back to the marketing site (the logo and "back to" on sign-in and onboarding, terms, privacy, every
-download button). `DUSK_SITE_URL` at build sets where that is; it defaults to `https://dusk.bot`:
+download button). `DUSK_SITE_URL` at build sets where that is; it defaults to the current origin:
 
 ```sh
-DUSK_SITE_URL=https://dusk-preview.example pnpm build:dashboard
+DUSK_SITE_URL=http://localhost:3103 pnpm build:dashboard
 ```
 
 The site links in with these addresses (`src/lib/site.ts` reads them):
@@ -212,7 +212,7 @@ about a pixel larger, because General Sans runs small.
 
 ## Bots
 
-Bots are drawn with the dusk bot engine in `src/mascot` (a copy of the site's `mascot-src/engine`; `ui/Mascot.tsx` wraps
+Bots are drawn with the Metal engine in `src/mascot` (a copy of the site's `mascot-src/engine`; `ui/Mascot.tsx` wraps
 it). A bot's saved colour and body are kept as they are and mapped when drawn: `bodyOf` in `ui/Mascot.tsx` turns every
 body id a bot may have been saved with into the nearest of the ten dusk bodies, and an unset body draws as the squircle.
 

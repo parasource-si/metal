@@ -1,4 +1,4 @@
-// Onboarding as a brand-new person: a fresh profile and a fresh dusk bot account on preview (a *@qa.dusk.test sink
+// Onboarding as a brand-new person: a fresh profile and a fresh Metal account on preview (a *@qa.dusk.test sink
 // address), the app's account gate, then the welcome funnel down one path, end to end:
 //   mac:    this Mac's sheet, an AI (the free model), notes from another AI, then the first bot's first reply
 //   cloud:  dusk cloud goes straight to the browser (the account intent's one-time handoff to the plans page), a plan,
@@ -97,11 +97,11 @@ await runFlow(flow, async () => {
     await flow.launch();
     await flow.viewport(SIZES[0][1], SIZES[0][2]);
     if (!gate) {
-      await flow.waitText(/where should your bots live|meet dusk bot|sign in to dusk bot/i, "the first screen", { timeout: 120_000 });
-      if (/sign in to dusk bot/i.test(await flow.text())) throw new Error("the app asked for an account before anything else");
+      await flow.waitText(/where should your bots live|meet Metal|sign in to Metal/i, "the first screen", { timeout: 120_000 });
+      if (/sign in to Metal/i.test(await flow.text())) throw new Error("the app asked for an account before anything else");
       return `account: ${(await flow.accountState().catch(() => null))?.status ?? "none"}`;
     }
-    await flow.waitText(/sign in to dusk bot/i, "the account gate", { timeout: 120_000 });
+    await flow.waitText(/sign in to Metal/i, "the account gate", { timeout: 120_000 });
     await shots("account-gate");
     const providers = await flow.evaluate(`[...document.querySelectorAll("button")].map((b) => b.innerText.trim()).filter((t) => /^continue with/i.test(t))`);
     flow.facts.gateProviders = providers;
@@ -111,7 +111,7 @@ await runFlow(flow, async () => {
   if (gate) await flow.step("sign-in", "signs in with an emailed code (sink address)", () => flow.signInAtGate(), { critical: true });
 
   await flow.step("place", "the first screen asks where the bots live", async () => {
-    await flow.waitText(/meet dusk bot|where should your bots live/i, "the welcome", { timeout: 60_000 });
+    await flow.waitText(/meet Metal|where should your bots live/i, "the welcome", { timeout: 60_000 });
     funnelStarted.at = Date.now();
     if (await flow.evaluate(`Boolean([...document.querySelectorAll("button")].find((b) => /^get started$/i.test(b.innerText.trim()) && b.getClientRects().length))`)) {
       flow.facts.helloScreen = true;
@@ -311,7 +311,7 @@ await runFlow(flow, async () => {
 
   await flow.step("phone", "the phone step (skipped) or straight on", async () => {
     await sleep(1500);
-    if (/dusk bot on your phone/i.test(await flow.text())) {
+    if (/Metal on your phone/i.test(await flow.text())) {
       flow.friction("extra-click", "phone step", "a phone QR step in the first run before the person has used a bot");
       await flow.click("skip");
       return "skipped";

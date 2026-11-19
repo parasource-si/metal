@@ -29,7 +29,7 @@ describe("whether a turn read outside content", () => {
     expect(readOutsideContent([{ role: "bot", kind: "activity", tool: { name: "web_fetch" } }, ask])).toBe(false);
   });
 
-  it("judges dusk bot's own tools by their bare names under every engine's spelling", () => {
+  it("judges Metal's own tools by their bare names under every engine's spelling", () => {
     for (const own of ["mcp__agents__memory_update", "agents__session_search", "agents_list_bots", "mcp__agents__set_status"]) {
       expect(readOutsideContent([ask, { role: "bot", kind: "activity", tool: { name: own } }]), own).toBe(false);
     }

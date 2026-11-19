@@ -1,6 +1,6 @@
 import { useEffect, type ReactNode, type Ref } from "react";
 import mark from "../../favicon.svg";
-import { SITE_URL } from "../lib/site";
+import { siteUrl } from "../lib/site";
 import { cx } from "./kit";
 import { Scene, useMedia, type SceneHandle, type SceneMood } from "./Scene";
 
@@ -31,9 +31,9 @@ export function SplitFrame({ mood, step, scene, card, snug = false, aside, child
       </Scene>
       <div className="flex min-h-[calc(100dvh-168px)] flex-col px-5 lg:min-h-[calc(100dvh-24px)] lg:px-10">
         <header className="flex h-16 shrink-0 items-center justify-between gap-4">
-          <a href={SITE_URL} className="-ms-2 flex items-center gap-2 rounded-full px-2 py-1" aria-label="dusk bot, back to the site">
+          <a href={siteUrl()} className="-ms-2 flex items-center gap-2 rounded-full px-2 py-1" aria-label="Metal, back to the site">
             <img src={mark} alt="" width={28} height={28} className="size-7" />
-            <span className="text-[17px] font-[550] tracking-[-0.02em] text-ink">dusk bot</span>
+            <span className="text-[17px] font-[550] tracking-[-0.02em] text-ink">Metal</span>
           </a>
           {aside}
         </header>

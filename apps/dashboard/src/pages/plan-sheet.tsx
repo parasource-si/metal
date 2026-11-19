@@ -284,7 +284,7 @@ export function LicenseSheet({ start, source, onClose, onNothingLeft }: { source
     setBusy(true); setError(null);
     try {
       if (owned) { if (await apply(sel)) { toast(offer?.timing === "scheduled" ? `changes on ${shortDate(offer.effectiveAt)}` : sel.license === "personal" ? "license removed" : "license updated"); onClose(); } }
-      else if (await checkout({ source, kind: "plan", selection: sel, bundle: null })) { toast("license active. thanks for backing dusk bot."); onClose(); }
+      else if (await checkout({ source, kind: "plan", selection: sel, bundle: null })) { toast("license active. thanks for backing Metal."); onClose(); }
       else setError("checkout didn't open. try again.");
     } catch (e) { setError((e as Error).message); } finally { setBusy(false); }
   };

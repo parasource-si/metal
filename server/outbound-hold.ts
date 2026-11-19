@@ -56,11 +56,11 @@ export function createOutboundHold(deps: OutboundHoldDeps): OutboundHold {
       const allowance = outboundDailyCap(currentSender.outbound, fullAccess, opaque);
       const { app, calls, summary } = outboundCard(outboundCalls);
       const capNote = (count: number, full: boolean) =>
-        `dusk bot did not send this. ${currentSender.name} has reached its daily limit of ${count} outbound action${count === 1 ? "" : "s"}${full ? " at Full access" : ""}. Tell the user it was not sent, and ask them to ${full ? "set a sending rule" : "raise the limit"} under the bot's Permissions before trying again.`;
+        `Metal did not send this. ${currentSender.name} has reached its daily limit of ${count} outbound action${count === 1 ? "" : "s"}${full ? " at Full access" : ""}. Tell the user it was not sent, and ask them to ${full ? "set a sending rule" : "raise the limit"} under the bot's Permissions before trying again.`;
       if (allowance) {
         let today: number;
         try { today = outboundCounts.today(currentSender.id); }
-        catch { return refuseOutbound("dusk bot did not send this: the daily allowance could not be read. Nothing was sent."); }
+        catch { return refuseOutbound("Metal did not send this: the daily allowance could not be read. Nothing was sent."); }
         if (today + outboundCalls.length > allowance.cap) {
           appendDecision(DATA_DIR, {
             threadId, botId: currentSender.id, botName: currentSender.name,
@@ -115,8 +115,8 @@ export function createOutboundHold(deps: OutboundHoldDeps): OutboundHold {
           }
           return refuseOutbound(
             answer === "timeout"
-              ? "dusk bot did not send this: nobody answered the approval in time. Ask the user before trying again."
-              : "dusk bot did not send this: the user declined. Do not retry it; ask the user what they would like instead.",
+              ? "Metal did not send this: nobody answered the approval in time. Ask the user before trying again."
+              : "Metal did not send this: the user declined. Do not retry it; ask the user what they would like instead.",
           );
         }
         return { ok: true, approved: true };

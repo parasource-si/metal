@@ -212,7 +212,7 @@ export interface TeamView {
 export interface TeamJoinAnswer { team: TeamView }
 
 /**
- * what an app or the dashboard asks before work use: may this account use dusk bot for work now, and why.
+ * what an app or the dashboard asks before work use: may this account use Metal for work now, and why.
  * personal use is always allowed and is not asked about.
  */
 export interface LicenseCheck {
@@ -294,7 +294,7 @@ export interface CloudDesktopView {
   botComputers: number | null;
   /** the desktop's own https origin once it answers */
   origin: string | null;
-  /** the dashboard workspace its dusk bot install reports as */
+  /** the dashboard workspace its Metal install reports as */
   workspaceId: string | null;
   lastReportAt: number | null;
   /** when a cancelled or ended desktop is destroyed */

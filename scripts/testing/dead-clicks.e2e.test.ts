@@ -81,7 +81,7 @@ const wide = encodePng(480, 120, (x, y) => [200, 100 + (x % 100), 80 + (y % 40)]
     }
 
     if (!ONLY || ONLY === "app") {
-      app = await mountPreview(fixture, { entry: "/src/main.tsx", route: "/__app.html", title: "dusk bot", logLevel: "warn", hmr: false });
+      app = await mountPreview(fixture, { entry: "/src/main.tsx", route: "/__app.html", title: "Metal", logLevel: "warn", hmr: false });
       const url = `${app.previewUrl}`;
       reports.push(await crawlDeadClicks({
         evaluate: (expression) => page.evaluate(expression),

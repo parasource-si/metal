@@ -18,7 +18,7 @@ const LOOK_MS = 4_000;
 export function ImportSettings({ client = setupImportApi }: { client?: SetupImportClient }) {
   const { state, dispatch } = useStore();
   const first = myDefaultBot(state.bots, useViewerEmail());
-  // only the desktop app on the computer running dusk bot can read what that computer holds
+  // only the desktop app on the computer running Metal can read what that computer holds
   const local = localSetupImport(state.config?.cloudHome === true);
   const move = useBotMove({ look: local });
   const [detection, setDetection] = useState<SetupDetection | null | undefined>(local ? undefined : null);

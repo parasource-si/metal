@@ -25,14 +25,14 @@ await runFlow(flow, async () => {
   try {
     await flow.step("launch", signedOut ? "a fresh app, no account" : "a fresh app starts at the account gate", async () => {
       await flow.launch();
-      await flow.waitText(signedOut ? /meet dusk bot|where should your bots live/i : /sign in to dusk bot/i, signedOut ? "the welcome" : "the account gate", { timeout: 120_000 });
+      await flow.waitText(signedOut ? /meet Metal|where should your bots live/i : /sign in to Metal/i, signedOut ? "the welcome" : "the account gate", { timeout: 120_000 });
     }, { critical: true });
 
     if (!signedOut) await flow.step("sign-in", "signs in with an emailed code", () => flow.signInAtGate(), { critical: true });
 
     let line = null;
     await flow.step("install-line", "\"use your own server\" shows the one install line", async () => {
-      await flow.waitText(/meet dusk bot|where should your bots live/i, "the welcome", { timeout: 60_000 });
+      await flow.waitText(/meet Metal|where should your bots live/i, "the welcome", { timeout: 60_000 });
       await flow.click("get started", { timeout: 10_000 }).catch(() => {});
       await flow.waitText(/where should your bots live/i, "where should your bots live");
       const started = Date.now();
@@ -132,7 +132,7 @@ await runFlow(flow, async () => {
       await sleep(5000);
       flow.facts.windowAt = await flow.evaluate(`location.host`);
       flow.facts.serverScreen = (await flow.text()).replace(/\s+/g, " ").slice(0, 160);
-      if (/meet dusk bot|where should your bots live/i.test(flow.facts.serverScreen)) flow.friction("confusing", "after the move", "the server opens on the welcome from the start (\"meet dusk bot\", then \"where should your bots live?\" again), though the person already chose this server");
+      if (/meet Metal|where should your bots live/i.test(flow.facts.serverScreen)) flow.friction("confusing", "after the move", "the server opens on the welcome from the start (\"meet Metal\", then \"where should your bots live?\" again), though the person already chose this server");
       const running = await vm.exec("systemctl is-active duskbot.service", 30);
       flow.facts.serverService = running.stdout.trim();
       if (!running.stdout.startsWith("active")) throw new Error(`duskbot.service is ${running.stdout.split("\n")[0]}`);

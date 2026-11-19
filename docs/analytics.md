@@ -1,11 +1,11 @@
 # Product analytics
 
-The desktop app shares anonymous usage information to help improve dusk bot. **Help improve dusk bot** is on on a new
+The desktop app shares anonymous usage information to help improve Metal. **Help improve Metal** is on on a new
 install (an opt-out). The switch is on the first screen of the first run ("Share anonymous usage to help improve dusk
 bot. Never your messages or files.") and in Settings, and you can turn it off at any time. Once it is off, the app
 records nothing more, clears anything still queued and sends nothing.
 
-There is no third-party analytics SDK. Everything below goes to the dusk bot account service, the same service your
+There is no third-party analytics SDK. Everything below goes to the configured account service, the same service your
 sign-in uses.
 
 ## What the switch covers
@@ -50,7 +50,7 @@ and the app version.
 
 ## Turning it off
 
-Turn off **help improve dusk bot** on the first screen of the first run or in Settings. The desktop app, its background
+Turn off **help improve Metal** on the first screen of the first run or in Settings. The desktop app, its background
 server (usage records) and its crash reports all follow the same switch, and stop at once. A server you run yourself can also be kept off with `DUSK_USAGE_SIGNALS=off`, and a desktop build's
 crash reports with `DUSK_ERROR_REPORTS=0`.
 

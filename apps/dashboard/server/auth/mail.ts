@@ -64,8 +64,8 @@ export function sinkTestMail(inner: Mailer, box: TestMailbox): Mailer {
   return { async send(message) { if (isTestAddress(message.to)) { box.keep(message); return; } return inner.send(message); } };
 }
 export const REPLY_TO = "hello@dusk.bot";
-export const SENDER_NAME = "dusk bot";
-/** the address out of "Name <address>" or a bare address; every email goes out under the name "dusk bot" */
+export const SENDER_NAME = "Metal";
+/** the address out of "Name <address>" or a bare address; every email goes out under the name "Metal" */
 export const senderAddress = (from: string) => (from.match(/<([^>]+)>\s*$/)?.[1] ?? from).trim();
 export function resendMailer(options: { apiKey: string; from: string; fetch?: typeof fetch }): Mailer {
   const request = options.fetch ?? fetch;

@@ -2,7 +2,7 @@ import { t } from "@/lib/i18n";
 import { useHelpImprove } from "@/lib/help-improve";
 import { SettingRow, Switch } from "./SettingsPrimitives";
 
-/** The single "help improve dusk bot" row: anonymous usage info, notes on how sessions went and crash reports, all
+/** The single "help improve Metal" row: anonymous usage info, notes on how sessions went and crash reports, all
  * scrubbed on this computer first. On by default. */
 export function DataSharingRows() {
   const { on, failed, set } = useHelpImprove("settings");

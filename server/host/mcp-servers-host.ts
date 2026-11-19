@@ -94,7 +94,7 @@ export async function urlServerAnswers(server: RemoteMcpSpec, timeoutMs: number 
   const client = new RemoteMcpClient(server, { maxBytes: MAX_REMOTE_MCP_BYTES });
   const deadline = AbortSignal.timeout(timeoutMs);
   try {
-    await client.initialize("dusk bot", deadline);
+    await client.initialize("Metal", deadline);
     return { ok: true };
   } catch (error) {
     if (error instanceof McpRpcError) return { ok: true };

@@ -98,7 +98,7 @@ describe("toolStep", () => {
       .toEqual({ activity: "edit", target: "index.html" });
   });
 
-  it("reads dusk bot's own batch search, shell and browser pages by what they work on", () => {
+  it("reads Metal's own batch search, shell and browser pages by what they work on", () => {
     expect(toolStep({ title: "mcp__agents__web_search_many", input: toolDetailPreview({ queries: ["keyboard reviews", "  best budget keyboard "] }) }))
       .toEqual({ activity: "web", target: "keyboard reviews" });
     expect(toolStep({ title: "agents_web_search_many", input: '{"queries":["keyboard reviews","best budg' })).toEqual({ activity: "web", target: "keyboard reviews" });

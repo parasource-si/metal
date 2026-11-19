@@ -27,13 +27,13 @@ test("a page that fails to load tries once more by itself, then shows what to pr
   assert.equal(win.loads.at(-1), "data:failed,http://127.0.0.1:7000/viewer");
 });
 
-test("a server that can't come back says so in one sentence and offers Restart dusk bot", async () => {
+test("a server that can't come back says so in one sentence and offers Restart Metal", async () => {
   const calls = [];
   const app = { relaunch: () => calls.push("relaunch"), quit: () => calls.push("quit") };
   let shown;
   await offerRestart({ dialog: { showMessageBox: async (options) => { shown = options; return { response: 0 }; } }, app });
-  assert.equal(shown.buttons[0], "Restart dusk bot");
+  assert.equal(shown.buttons[0], "Restart Metal");
   assert.equal(shown.message, "The bot server stopped");
-  assert.equal(shown.detail, "Restart dusk bot to bring it back.");
+  assert.equal(shown.detail, "Restart Metal to bring it back.");
   assert.deepEqual(calls, ["relaunch", "quit"]);
 });

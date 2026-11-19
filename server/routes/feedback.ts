@@ -1,5 +1,5 @@
 // POST /api/feedback: what the person wrote in Give feedback, with up to FEEDBACK_LIMITS.images pictures, sent on to the
-// dusk bot team's bug reports (devs-report-send.ts) as source "feedback". A signed-in person's address goes with it;
+// Dusk team's bug reports (devs-report-send.ts) as source "feedback". A signed-in person's address goes with it;
 // signed out, it goes without one.
 import { z } from "zod";
 
@@ -58,6 +58,6 @@ export function createFeedbackRoutes(deps: FeedbackRouteDeps): RouteHandler {
     if (outcome.ok) return json(res, 201, { id: outcome.id });
     if (outcome.why === "limited") return json(res, 429, { error: "You've sent a lot of feedback this hour. Try again later.", ...(outcome.retryAfterMs ? { retryAfter: Math.ceil(outcome.retryAfterMs / 1000) } : {}) });
     if (outcome.why === "refused") return json(res, 400, { error: outcome.detail });
-    return json(res, 502, { error: "Couldn't reach dusk bot. Check your connection and try again." });
+    return json(res, 502, { error: "Couldn't reach Dusk’s feedback service. Check your connection and try again." });
   };
 }

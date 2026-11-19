@@ -66,7 +66,7 @@ function setup(options: Partial<BrowserServiceOptions> = {}, startUrls?: string[
 }
 
 describe("the bots' browser tools", () => {
-  it("advertises 22 tools and restart_browser, with dusk bot's names and no launch settings", async () => {
+  it("advertises 22 tools and restart_browser, with Metal's names and no launch settings", async () => {
     const { service, target } = setup();
     const listed = await service.agentRpc(target, "tools/list", {}) as { tools: Array<{ name: string; inputSchema: { properties?: Record<string, unknown> } }> };
     expect(listed.tools.map((tool) => tool.name)).toEqual(TOOL_LIST.map((tool) => tool.name));

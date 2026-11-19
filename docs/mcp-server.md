@@ -1,7 +1,7 @@
-# dusk bot MCP server
+# Metal MCP server
 
-The dusk bot desktop app includes a local stdio MCP server. It lets another MCP client coordinate your
-dusk bot team while the desktop app and its harness are running.
+The Metal desktop app includes a local stdio MCP server. It lets another MCP client coordinate your
+Metal team while the desktop app and its harness are running.
 
 ## What it can do
 
@@ -16,7 +16,7 @@ change credentials, or control computer/VM lifecycle. Those actions stay in the 
 
 ## From the duskbot command
 
-With the `duskbot` npm package installed, the MCP client can run it
+With the `metal` npm package installed, the MCP client can run it
 directly; it serves the same tools:
 
 ```json
@@ -32,14 +32,14 @@ The same operations are also commands of their own, for scripts and CI:
 
 ## From a source checkout
 
-Start dusk bot, then configure the MCP client to run:
+Start Metal, then configure the MCP client to run:
 
 ```json
 {
   "mcpServers": {
     "duskbot": {
       "command": "pnpm",
-      "args": ["--dir", "/absolute/path/to/dusk bot", "mcp"]
+      "args": ["--dir", "/absolute/path/to/Metal", "mcp"]
     }
   }
 }
@@ -52,7 +52,7 @@ loopback without one. A hosted or shared server with service loopback trust
 session for almost every tool, reads included. To authorize an external MCP
 client:
 
-1. In dusk bot, open **Settings → Phone → Set up a phone** and reveal the
+1. In Metal, open **Settings → Phone → Set up a phone** and reveal the
    one-time pairing code.
 2. Exchange it locally (remove spaces from the displayed code):
 
@@ -88,25 +88,25 @@ macOS example:
 {
   "mcpServers": {
     "duskbot": {
-      "command": "/Applications/Dusk Bot.app/Contents/MacOS/Dusk Bot",
-      "args": ["/Applications/Dusk Bot.app/Contents/Resources/server/mcp-server.js"],
+      "command": "/Applications/Metal.app/Contents/MacOS/Metal",
+      "args": ["/Applications/Metal.app/Contents/Resources/server/mcp-server.js"],
       "env": { "ELECTRON_RUN_AS_NODE": "1" }
     }
   }
 }
 ```
 
-On Windows, use the installed `Dusk Bot.exe` as `command`, the adjacent
+On Windows, use the installed `Metal.exe` as `command`, the adjacent
 `resources\\server\\mcp-server.js` as the argument, and the same `ELECTRON_RUN_AS_NODE=1` environment value.
-The usual per-user install is under `%LOCALAPPDATA%\\Programs\\dusk bot`.
+The usual per-user install is under `%LOCALAPPDATA%\\Programs\\Metal`.
 
 On Ubuntu `.deb` installs, the executable is normally `/opt/dusk-bot/duskbot` and the script is
 `/opt/dusk-bot/resources/server/mcp-server.js`. Use the same environment value.
 
 ## Connection discovery
 
-With no configuration, the MCP process probes dusk bot's three desktop ports (`8799`, `18799`, and `28799`)
-and accepts only a health response that identifies itself as dusk bot. This handles the desktop's normal
+With no configuration, the MCP process probes Metal's three desktop ports (`8799`, `18799`, and `28799`)
+and accepts only a health response with the compatible `app: "duskbot"` identifier. This handles the desktop's normal
 fallback when another local process already owns port 8799.
 
 Set `DUSK_PORT` to force one local port, or `DUSK_URL` to use an explicit HTTP(S) origin. Cleartext remote

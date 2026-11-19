@@ -4,7 +4,7 @@
   "title": "An n8n alternative if you would rather text a bot",
   "nav": "n8n",
   "h1": "an n8n alternative for people who do not want to build workflows",
-  "description": "Compare n8n workflows with dusk bot routines: who builds the steps, where they run, EUR execution prices and the limits of a chat-based approach.",
+  "description": "Compare n8n workflows with Metal routines: who builds the steps, where they run, EUR execution prices and the limits of a chat-based approach.",
   "keyword": "n8n alternative for non technical",
   "keywords": [
     "n8n ai agent",
@@ -60,7 +60,7 @@
     "intro": "**n8n starter is 20 eur a month, with the year paid up front.** prices are as of 12 november 2026. executions measure workflow runs; your finished job can take more than one.",
     "cols": [
       "n8n",
-      "dusk bot"
+      "Metal"
     ],
     "rows": [
       {
@@ -185,35 +185,35 @@
       "checked": "2026-11-12"
     },
     {
-      "label": "dusk bot: getting started",
+      "label": "Metal: getting started",
       "url": "/docs/getting-started"
     },
     {
-      "label": "dusk bot: dusk cloud",
+      "label": "Metal: dusk cloud",
       "url": "/docs/dusk-cloud"
     },
     {
-      "label": "dusk bot: account and billing",
+      "label": "Metal: account and billing",
       "url": "/docs/account-and-billing"
     },
     {
-      "label": "dusk bot: faq",
+      "label": "Metal: faq",
       "url": "/docs/faq"
     },
     {
-      "label": "dusk bot: routines",
+      "label": "Metal: routines",
       "url": "/docs/routines"
     },
     {
-      "label": "dusk bot: files and apps",
+      "label": "Metal: files and apps",
       "url": "/docs/files-and-apps"
     },
     {
-      "label": "dusk bot: bots",
+      "label": "Metal: bots",
       "url": "/docs/bots"
     },
     {
-      "label": "dusk bot: computer",
+      "label": "Metal: computer",
       "url": "/docs/computer"
     }
   ],
@@ -237,7 +237,7 @@
       ],
       [
         "give a bot a job and steer its work",
-        "dusk bot"
+        "Metal"
       ],
       [
         "self-host the community workflow platform",
@@ -245,7 +245,7 @@
       ],
       [
         "start locally with separate bot memories",
-        "dusk bot"
+        "Metal"
       ]
     ]
   },

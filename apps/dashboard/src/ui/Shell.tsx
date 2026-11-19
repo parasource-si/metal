@@ -15,7 +15,7 @@ import { Mascot } from "./Mascot";
 import { Avatar } from "./Avatar";
 import { UserFace } from "./UserAvatar";
 import { adminCall } from "../admin/api";
-import { SITE_NAME, SITE_URL } from "../lib/site";
+import { SITE_NAME, siteUrl } from "../lib/site";
 import mark from "../../favicon.svg";
 import { useNow } from "../lib/now";
 import { useToasts } from "../lib/toast";
@@ -143,7 +143,7 @@ function UserRow() {
           <div className="truncate px-2.5 py-2 text-13 text-ink-3">{account.email}</div>
           <button role="menuitem" onClick={() => { setOpen(false); navigate("/account"); }} className="hover-ghost flex w-full items-center gap-2.5 rounded-[12px] px-2.5 py-2 text-14 text-ink-2"><CircleUser size={16} strokeWidth={1.75} aria-hidden /> account</button>
           {admin && <button role="menuitem" onClick={() => { setOpen(false); navigate("/admin"); }} className="hover-ghost flex w-full items-center gap-2.5 rounded-[12px] px-2.5 py-2 text-14 text-ink-2"><Shield size={16} strokeWidth={1.75} aria-hidden /> admin</button>}
-          <a role="menuitem" href={SITE_URL} className="hover-ghost flex w-full items-center gap-2.5 rounded-[12px] px-2.5 py-2 text-14 text-ink-2"><ArrowUpRight size={16} strokeWidth={1.75} aria-hidden /> {SITE_NAME}</a>
+          <a role="menuitem" href={siteUrl()} className="hover-ghost flex w-full items-center gap-2.5 rounded-[12px] px-2.5 py-2 text-14 text-ink-2"><ArrowUpRight size={16} strokeWidth={1.75} aria-hidden /> {SITE_NAME}</a>
           <button role="menuitem" onClick={() => void api.signOut().finally(() => setAccount(null))} className="hover-ghost flex w-full items-center gap-2.5 rounded-[12px] px-2.5 py-2 text-14 text-ink-2"><LogOut size={16} strokeWidth={1.75} aria-hidden /> sign out</button>
       </Pop>
       <button aria-haspopup="menu" aria-expanded={open} onClick={() => setOpen((o) => !o)} className="hover-side flex w-full items-center gap-3 rounded-[18px] px-2.5 py-2 text-start">
@@ -280,9 +280,9 @@ function Nav({ onNavigate }: { onNavigate?: () => void }) {
 
 function Brand() {
   return (
-    <Link to="/" className="flex items-center gap-2 rounded-full px-2.5 py-1" aria-label="dusk bot, home">
+    <Link to="/" className="flex items-center gap-2 rounded-full px-2.5 py-1" aria-label="Metal, home">
       <img src={mark} alt="" width={26} height={26} className="size-[26px]" />
-      <span className="text-[17px] font-[550] tracking-[-0.02em] text-ink">dusk bot</span>
+      <span className="text-[17px] font-[550] tracking-[-0.02em] text-ink">Metal</span>
     </Link>
   );
 }

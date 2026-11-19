@@ -160,14 +160,14 @@ export function AdminApp() {
     document.addEventListener("keydown", key);
     return () => document.removeEventListener("keydown", key);
   }, [drawer]);
-  useEffect(() => { document.title = `${current?.label ?? "admin"} / dusk bot admin`; }, [current]);
+  useEffect(() => { document.title = `${current?.label ?? "admin"} / Metal admin`; }, [current]);
   useEffect(() => { const to = MOVED[path]; if (to) navigate(to, { replace: true }); }, [path]);
   const side = (close?: () => void) => (
     <>
         <div className="flex items-center justify-between">
-          <Link to="/admin" className="flex items-center gap-2 rounded-full px-2.5 py-1" aria-label="dusk bot admin, overview">
+          <Link to="/admin" className="flex items-center gap-2 rounded-full px-2.5 py-1" aria-label="Metal admin, overview">
             <img src={mark} alt="" width={24} height={24} className="size-6" />
-            <span className="text-[16px] font-[550] tracking-[-0.02em] text-ink">dusk bot</span>
+            <span className="text-[16px] font-[550] tracking-[-0.02em] text-ink">Metal</span>
             <span className="tag !h-[22px] !px-2">admin</span>
           </Link>
           {close && <button type="button" autoFocus onClick={close} aria-label="close menu" className="press hover-ghost -me-1 grid size-11 place-items-center rounded-full text-ink-2"><X size={18} strokeWidth={1.75} /></button>}
@@ -236,7 +236,7 @@ export function AdminApp() {
       <aside className="fixed inset-y-0 left-0 z-20 flex w-[232px] flex-col gap-6 overflow-y-auto overscroll-contain bg-side px-3 pb-4 pt-5 max-lg:hidden">{side()}</aside>
       <header className="sticky top-0 z-20 box-content flex h-14 items-center gap-1 bg-bg/95 px-3 pt-[env(safe-area-inset-top)] backdrop-blur lg:hidden">
         <button ref={menuButton} type="button" onClick={() => setDrawer(true)} aria-label="open menu" aria-expanded={drawer} className="press hover-ghost grid size-11 place-items-center rounded-full text-ink-2"><Menu size={20} strokeWidth={1.75} /></button>
-        <Link to="/admin" className="flex min-w-0 items-center gap-2" aria-label="dusk bot admin, overview"><img src={mark} alt="" width={22} height={22} className="size-[22px]" /><span className="text-[15px] font-[550] tracking-[-0.02em]">dusk bot</span><span className="tag !h-[22px] !px-2">admin</span></Link>
+        <Link to="/admin" className="flex min-w-0 items-center gap-2" aria-label="Metal admin, overview"><img src={mark} alt="" width={22} height={22} className="size-[22px]" /><span className="text-[15px] font-[550] tracking-[-0.02em]">Metal</span><span className="tag !h-[22px] !px-2">admin</span></Link>
         <span className="min-w-0 flex-1 truncate text-end text-14 text-ink-3">{current?.label}</span>
         <span className="w-2 shrink-0" aria-hidden />
       </header>

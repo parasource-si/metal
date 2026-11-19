@@ -53,7 +53,7 @@ export function rateLimited(name: string, text: string): boolean {
 }
 
 const rateNote = (site: string) =>
-  `dusk bot note: ${site} says to slow down or try again later. Do not retry this right away. If you are working through a checklist, call checklist pause with the minutes the site asked for (15 if it does not say) and end your turn: dusk bot carries on with the rest after the pause. Otherwise tell the person in one line.`;
+  `Metal note: ${site} says to slow down or try again later. Do not retry this right away. If you are working through a checklist, call checklist pause with the minutes the site asked for (15 if it does not say) and end your turn: Metal carries on with the rest after the pause. Otherwise tell the person in one line.`;
 
 export function createBrowserLoops(deps: { stop(stop: BrowserStop): void }) {
   const threads = new Map<string, Thread>();
@@ -66,7 +66,7 @@ export function createBrowserLoops(deps: { stop(stop: BrowserStop): void }) {
   const halt = (threadId: string, blocker: BrowserBlocker, cause: string): Result => {
     threads.delete(threadId);
     deps.stop({ threadId, blocker, cause });
-    return { isError: true, content: [{ type: "text", text: `dusk bot stopped this run: ${cause}. Do not try again; the person decides what happens next.` }] };
+    return { isError: true, content: [{ type: "text", text: `Metal stopped this run: ${cause}. Do not try again; the person decides what happens next.` }] };
   };
 
   return {
@@ -102,7 +102,7 @@ export function createBrowserLoops(deps: { stop(stop: BrowserStop): void }) {
       }
       if (!kind || !state.site || told) return result;
       state.final.set(state.site, kind);
-      return { ...result, content: [...(result.content ?? []), { type: "text", text: `dusk bot note: on ${state.site}, ${NOTE[kind]}. That is final: do not retry it, a variation of it, or this site in this turn. Tell the person what happened and what they can do.` }] };
+      return { ...result, content: [...(result.content ?? []), { type: "text", text: `Metal note: on ${state.site}, ${NOTE[kind]}. That is final: do not retry it, a variation of it, or this site in this turn. Tell the person what happened and what they can do.` }] };
     },
 
     /** A turn's end forgets what its calls saw. */

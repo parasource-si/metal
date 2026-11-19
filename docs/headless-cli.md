@@ -1,6 +1,6 @@
-# Run dusk bot from scripts and CI
+# Run Metal from scripts and CI
 
-The `duskbot` command can drive a running workspace without a screen: set
+The `metal` command can drive a running workspace without a screen: set
 up a team from a file, give a bot a job, wait until it and every teammate it
 asked are done, and keep what they made. It works against the server on this
 computer or one somewhere else, and it is built for scripts, CI and other
@@ -8,11 +8,11 @@ agents: every command can print one JSON document, and the exit code says how
 things went.
 
 ```sh
-npm install -g duskbot            # or use npx duskbot …
-duskbot serve --no-pair &         # a workspace with no screen (or use your desktop app)
-duskbot engine set claude --key-env ANTHROPIC_API_KEY
-duskbot team apply launch-room.yaml
-duskbot run "Room Lead" "Rehearse the launch of https://example.com" --export ./rehearsal
+npm install -g ./metal-private.tgz # install the server archive from your operator
+metal serve --no-pair &         # a workspace with no screen (or use your desktop app)
+metal engine set claude --key-env ANTHROPIC_API_KEY
+metal team apply launch-room.yaml
+metal run "Room Lead" "Rehearse the launch of https://example.com" --export ./rehearsal
 ```
 
 `run` prints progress as it goes, then the Room Lead's final reply and the
@@ -30,8 +30,8 @@ On this computer a headless server treats you as its owner, and no token is
 needed. Anywhere else you need a token:
 
 ```sh
-duskbot connect https://maus.example.com --code ABCD1234 --out ~/.duskbot-token
-duskbot doctor --url https://maus.example.com --token-file ~/.duskbot-token
+metal connect https://maus.example.com --code ABCD1234 --out ~/.duskbot-token
+metal doctor --url https://maus.example.com --token-file ~/.duskbot-token
 ```
 
 Get the code in the app under **Settings → Phone → Set up a phone**. On this
@@ -63,7 +63,7 @@ redaction the transcript uses). Durations are written `90`, `90s`, `5m` or `2h`.
 
 ## Commands
 
-Run `duskbot help VERB` for any of these. A TARGET is a bot or room by
+Run `metal help VERB` for any of these. A TARGET is a bot or room by
 name or id, or `--bot ID`, `--channel ID` or `--thread ID`; `--task ID` picks
 one of its conversations.
 
@@ -82,7 +82,7 @@ one of its conversations.
 | `engine set KIND`, `engine list` | Gives the workspace an engine key without a screen (below). |
 | `connect [URL]` | Gets a token for a workspace elsewhere. |
 | `new-bot`, `new-channel`, `set-model`, `edit` | Make a bot or a room, change a bot's model, rewrite an earlier message. |
-| `mcp` | The dusk bot MCP server on stdin and stdout ([docs/mcp-server.md](mcp-server.md)). |
+| `mcp` | The Metal MCP server on stdin and stdout ([docs/mcp-server.md](mcp-server.md)). |
 
 The message for `send` and `run` can be the next word, `--text TEXT`,
 `--message-file FILE`, or `-` to read it from stdin.
@@ -90,14 +90,14 @@ The message for `send` and `run` can be the next word, `--text TEXT`,
 ## run and wait
 
 ```sh
-duskbot run "Room Lead" --message-file brief.md --timeout 45m --on-input exit --export ./out
+metal run "Room Lead" --message-file brief.md --timeout 45m --on-input exit --export ./out
 ```
 
 `run` starts a new conversation (titled by `--title` or the message's first
 line) unless `--task current` or `--task ID` says otherwise, sends the message
 once, and waits for the whole job: the bot's own turn and every piece of work
 it handed to a teammate, and theirs in turn. Its first progress line names the
-conversation and when the job began (`since`), so a later `duskbot wait
+conversation and when the job began (`since`), so a later `metal wait
 --thread ID --since MS` can pick the same job up again.
 
 - `--wait job` (the default) waits for the bot and every teammate; `--wait turn`
@@ -152,8 +152,8 @@ have).
 ## export
 
 ```sh
-duskbot export "Room Lead" --out ./rehearsal          # its current conversation
-duskbot export --thread 3f2a… --out ./rehearsal --root ROOT_ID
+metal export "Room Lead" --out ./rehearsal          # its current conversation
+metal export --thread 3f2a… --out ./rehearsal --root ROOT_ID
 ```
 
 | Written | What it holds |
@@ -176,7 +176,7 @@ lists are removed first, and nothing else in the folder is touched.
 ## events
 
 ```sh
-duskbot events --job 3f2a… --until-settled > events.jsonl
+metal events --job 3f2a… --until-settled > events.jsonl
 ```
 
 One JSON line per event: messages as they are written and changed, threads,
@@ -193,8 +193,8 @@ always JSON lines; `--jsonl` is accepted and changes nothing.
 ## engine
 
 ```sh
-duskbot engine set claude --key-env ANTHROPIC_API_KEY --base-url https://gateway.example.com --install
-duskbot engine list
+metal engine set claude --key-env ANTHROPIC_API_KEY --base-url https://gateway.example.com --install
+metal engine list
 ```
 
 KIND is `claude`, `openai`, `openrouter`, `openai-compatible` (needs
@@ -217,10 +217,10 @@ with their standing instructions, models, approval levels and computers,
 skills, rooms, and the engines they run on. Write it in YAML or JSON.
 
 ```sh
-duskbot team apply launch-room.yaml             # plan, then apply
-duskbot team apply launch-room.yaml --dry-run   # only the plan
-duskbot team apply launch-room.yaml --check     # exit 6 if anything would change (CI)
-duskbot team export --team "Launch Room" --out exported.yaml
+metal team apply launch-room.yaml             # plan, then apply
+metal team apply launch-room.yaml --dry-run   # only the plan
+metal team apply launch-room.yaml --check     # exit 6 if anything would change (CI)
+metal team export --team "Launch Room" --out exported.yaml
 ```
 
 Apply prints its plan, then makes the changes:
@@ -274,7 +274,7 @@ bots:                                       # at least one
     chief: true                             # Chief of Staff of its team (one per team); false removes it
     manages: [Support]                      # other teams this Chief is also in charge of (every bot reaches every bot anyway)
     soul: TEXT | { file: PATH }             # standing instructions, at most 24,000 bytes
-    model: claude/claude-sonnet-5-5         # INSTANCE/MODEL; duskbot models lists them
+    model: claude/claude-sonnet-5-5         # INSTANCE/MODEL; metal models lists them
     effort: none | low | medium | high | xhigh | max
     approval: ask | edits | auto | full     # a new bot starts at full; Custom is set in the desktop app
     computer: auto | off | browser | local | vm | cloud
@@ -330,7 +330,7 @@ One Room Lead and the visitors who rehearse a launch, on a sandbox with no
 Claude login: the key runs every Claude bot.
 
 ```yaml
-# launch-room.yaml — duskbot team apply launch-room.yaml
+# launch-room.yaml — metal team apply launch-room.yaml
 version: 1
 
 engines:
@@ -388,7 +388,7 @@ Then rehearse, wait for every visitor, and keep the report, transcripts and
 screenshots:
 
 ```sh
-duskbot run "Room Lead" "Rehearse the launch of https://example.com with every visitor, then write report.md." \
+metal run "Room Lead" "Rehearse the launch of https://example.com with every visitor, then write report.md." \
   --timeout 45m --export ./rehearsal
 ```
 
@@ -404,27 +404,27 @@ an engine that can limit built-in tools.
 
 ```yaml
 # .github/workflows/rehearse.yml (a sketch)
-- run: npm install -g duskbot @anthropic-ai/claude-code
-- run: duskbot serve --no-pair --data-dir "$RUNNER_TEMP/omb" &
+- run: npm install -g ./metal-private.tgz @anthropic-ai/claude-code
+- run: metal serve --no-pair --data-dir "$RUNNER_TEMP/omb" &
   env: { DUSK_ANTHROPIC_API_KEY: "${{ secrets.ANTHROPIC_API_KEY }}" }   # the workspace's Claude key from the start
-- run: duskbot doctor --wait 2m          # the server answers and an engine is ready
-- run: duskbot team apply team.yaml
-- run: duskbot run "Release checker" "Check the deploy at ${{ env.URL }}" --timeout 20m --strict --export ./out
+- run: metal doctor --wait 2m          # the server answers and an engine is ready
+- run: metal team apply team.yaml
+- run: metal run "Release checker" "Check the deploy at ${{ env.URL }}" --timeout 20m --strict --export ./out
 - uses: actions/upload-artifact@v4
   with: { name: release-check, path: ./out }
 ```
 
 `doctor --wait` waits for an engine too, so the server gets its key in its
 own environment, as here (`DUSK_ANTHROPIC_API_KEY`; the team file's `engines:`
-section, or `duskbot engine set`, can set it later instead).
+section, or `metal engine set`, can set it later instead).
 
 The step fails when the job fails (exit 1), needs someone (exit 3) or runs out
 of time (exit 4). To drive a workspace that is already running elsewhere, set
-`DUSK_URL` and pass a token made with `duskbot connect` as a secret
+`DUSK_URL` and pass a token made with `metal connect` as a secret
 file (`--token-file`).
 
 ## For other agents
 
-`duskbot mcp` serves the same operations as MCP tools on stdin and stdout
+`metal mcp` serves the same operations as MCP tools on stdin and stdout
 ([docs/mcp-server.md](mcp-server.md)): `wait_for_conversation` waits on the
 same job, and returns the same result, as `wait`.

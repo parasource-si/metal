@@ -1,4 +1,4 @@
-// Cua-backed Local VM: dusk bot owns only the sandbox boundary; desktop automation is Cua Driver's (`cua-driver mcp` in the container).
+// Cua-backed Local VM: Metal owns only the sandbox boundary; desktop automation is Cua Driver's (`cua-driver mcp` in the container).
 import { DOCKER_NAMES } from "../electron/legacy-names.mjs";
 import { execFile } from "node:child_process";
 import { createHash, randomBytes } from "node:crypto";
@@ -366,7 +366,7 @@ function statusProblem(status: ContainerComputerStatus): string | null {
 
 function existingContainerProblem(status: ContainerComputerStatus): string | null {
   if (!status.imageMatches) return "The existing Local VM uses an older desktop or Cua Driver; recreate it";
-  if (!status.managed) return "The existing container was not created by dusk bot; recreate it";
+  if (!status.managed) return "The existing container was not created by Metal; recreate it";
   if (status.network === "unsafe") return "The existing Local VM exposes its viewer publicly; recreate it";
   if (status.security === "unsafe") return "The existing Local VM is missing safety limits; recreate it";
   if (status.persistence === "unsafe") return "The existing Local VM is missing its durable folder; recreate it";
@@ -382,7 +382,7 @@ export function imageLabelsMatch(labels: Record<string, string> | undefined): bo
   );
 }
 
-/** Ownership ignores image/driver versions, so an older dusk bot container stays removable. */
+/** Ownership ignores image/driver versions, so an older Metal container stays removable. */
 function containerOwnershipLabelsMatch(
   labels: Record<string, string> | undefined,
   target: LocalVmTarget,
@@ -962,7 +962,7 @@ export async function containerComputerAction(
   if (action === "remove" && !before.managed) {
     throw Object.assign(
       new Error(
-        `The existing container named ${target.containerName} was not created by dusk bot; remove it manually in ${runtime}`,
+        `The existing container named ${target.containerName} was not created by Metal; remove it manually in ${runtime}`,
       ),
       { status: 409 },
     );

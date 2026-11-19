@@ -1,5 +1,5 @@
 // request_sign_in's card: the person signs in themselves where the bot works, for what no saved login can fill.
-// A human check or bot block goes through dusk bot's own recovery first (site-block-ladder.ts): wait, reload, the
+// A human check or bot block goes through Metal's own recovery first (site-block-ladder.ts): wait, reload, the
 // person's own connection, another route; the card is the last step, and a task asks for a site at most once.
 import type { Surface } from "../../shared/wire.ts";
 import { isPendingSignInRequest, normalizeSignInSite } from "../../shared/sign-in-request.ts";
@@ -21,7 +21,7 @@ export interface SignInRequestDeps {
   signInControlKey(bot: BotRecord, threadId: string, place: Surface): string;
   /** Watches a human check's page and settles its card once the check clears. */
   watchCheck?(ref: { botId: string; threadId: string; messageId: string; site: string; place: Surface }): void;
-  /** dusk bot's own recovery on the page behind a check; `quick` once it already ran for this site in this task. */
+  /** Metal's own recovery on the page behind a check; `quick` once it already ran for this site in this task. */
   recoverCheck?(ref: CheckRef, options: { quick: boolean }): Promise<LadderResult>;
   now?(): number;
 }
@@ -95,7 +95,7 @@ export function createSignInRequests(deps: SignInRequestDeps) {
     return onlyAsked;
   }
 
-  /** The order for a check: one ask per site per task, dusk bot's own recovery, other routes, and only then the card. */
+  /** The order for a check: one ask per site per task, Metal's own recovery, other routes, and only then the card. */
   async function requestCheck(from: BotRecord, threadId: string, owner: { group: GroupRecord | undefined }, target: { url: string; site: string }, place: Surface, otherRoutes: string):
     Promise<SignInCard | CheckAnswer> {
     const site = target.site;

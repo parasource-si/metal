@@ -24,7 +24,7 @@ describe("service units", () => {
 
   it("renders a systemd unit that restarts, runs as the user, and grants low ports only for --domain", () => {
     const unit = systemdUnit(spec);
-    expect(unit).toContain("Description=dusk bot (agentada)");
+    expect(unit).toContain("Description=Metal (agentada)");
     expect(unit).toContain("User=maus");
     expect(unit).toContain("Environment=DUSK_DATA_DIR=/home/maus/.duskbot");
     expect(unit).toContain("ExecStart=/usr/bin/node /usr/lib/node_modules/duskbot/cli.js serve --port 8799 --data-dir /home/maus/.duskbot --domain maus.example.com --no-pair");
@@ -48,7 +48,7 @@ describe("service units", () => {
   });
 
   it("refuses to point a service at an npx cache, and knows where each platform's file goes", () => {
-    expect(unstableInstallWarning("/home/maus/.npm/_npx/abc123/node_modules/duskbot/cli.js")).toMatch(/npm install --global --prefix "\$HOME\/\.local" \.\/duskbot-private\.tgz/);
+    expect(unstableInstallWarning("/home/maus/.npm/_npx/abc123/node_modules/duskbot/cli.js")).toMatch(/npm install --global --prefix "\$HOME\/\.local" \.\/metal-private\.tgz/);
     expect(unstableInstallWarning("/usr/lib/node_modules/duskbot/cli.js")).toBeNull();
     const linux = servicePlan("linux", "/home/maus/.duskbot");
     expect(linux?.installed).toBe("/etc/systemd/system/duskbot.service");
@@ -95,6 +95,11 @@ describe("service units", () => {
   });
 
   it("finds the CLI the installed desktop app ships, and runs it as Node", () => {
+    const metal = "/Applications/Metal.app/Contents";
+    const installedMetal = new Set([metal + "/MacOS/Metal", metal + "/Resources/server/metal.js"]);
+    expect(shippedSentinelCli("darwin", "/Users/maus", (path) => installedMetal.has(path))).toEqual({
+      node: metal + "/MacOS/Metal", script: metal + "/Resources/server/metal.js",
+    });
     const app = "/Applications/Dusk Bot.app/Contents";
     const present = new Set([`${app}/MacOS/Dusk Bot`, `${app}/Resources/server/duskbot.js`]);
     expect(shippedSentinelCli("darwin", "/Users/maus", (path) => present.has(path))).toEqual({ node: `${app}/MacOS/Dusk Bot`, script: `${app}/Resources/server/duskbot.js` });

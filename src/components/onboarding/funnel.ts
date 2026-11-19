@@ -9,7 +9,7 @@ export type FunnelStep = BeatId;
 export type FunnelPath = "mac" | "cloud";
 
 export interface FunnelFacts {
-  /** a dusk bot account can be signed in to from this window, and isn't yet */
+  /** a Dusk account can be signed in to from this window, and isn't yet */
   account: boolean;
   /** this is the desktop app's own window, where bots can live on this Mac, in dusk cloud or on a server */
   desktop: boolean;
@@ -17,7 +17,7 @@ export interface FunnelFacts {
   bring?: boolean;
   /** where the person put the bots; dusk cloud signs in, picks a plan and pays in the browser, then ends on the cloud */
   path?: FunnelPath | null;
-  /** the hello screen; false for a server opened from the desktop app, whose person has already met dusk bot there */
+  /** the hello screen; false for a server opened from the desktop app, whose person has already met Metal there */
   hello?: boolean;
   /** the phone app is offered (phoneAppEnabled) */
   phone?: boolean;

@@ -39,7 +39,7 @@ afterAll(async () => {
   if (scratch) rmSync(scratch, { recursive: true, force: true });
 });
 
-/** The bot's own dusk bot tools, as its turn reaches them: the MCP proxy the turn was started with. */
+/** The bot's own Metal tools, as its turn reaches them: the MCP proxy the turn was started with. */
 async function botTools(home: string) {
   let agents: { command: string; args: string[]; env: Record<string, string> } | undefined;
   await expect.poll(() => {
@@ -80,7 +80,7 @@ it("moves every Vault item with its value, sealed, and no value shows anywhere o
   expect((await local("POST", "/api/logins", { site: "accounts.example.test", username: "alice", password: PASSWORD, totp: TOTP, bots: [bot.id] })).status).toBe(201);
   expect((await local("POST", "/api/logins/1password", { token: TOKEN })).status).toBe(200);
 
-  // The bot asks on two cards: a file for its own commands, and a ref for dusk bot's tools; the person saves both to the Vault.
+  // The bot asks on two cards: a file for its own commands, and a ref for Metal's tools; the person saves both to the Vault.
   expect((await local("POST", `/api/bots/${bot.id}/messages`, { text: "Set up Stripe test charges and Notion's MCP." })).status).toBe(202);
   const tools = await botTools(join(fx.root, "desktop"));
   const cards = async () => (await local("GET", `/api/threads/${bot.threadId}/messages`)).body.messages.filter((message: any) => message.kind === "secret");

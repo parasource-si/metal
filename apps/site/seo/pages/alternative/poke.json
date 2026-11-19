@@ -4,7 +4,7 @@
   "title": "Poke AI alternatives: texting a contact or your bots",
   "nav": "poke",
   "h1": "poke ai alternatives when you want an app for your bots",
-  "description": "Compare Poke's iMessage assistant and credit tiers with dusk bot's own app, separate AI bill and phone pairing, including the Cognition update.",
+  "description": "Compare Poke's iMessage assistant and credit tiers with Metal's own app, separate AI bill and phone pairing, including the Cognition update.",
   "keyword": "poke ai alternatives",
   "keywords": [
     "poke ai",
@@ -12,7 +12,7 @@
     "poke ai imessage",
     "poke ai cost"
   ],
-  "answer": "**poke suits an assistant beside your contacts.** it works in imessage and other chat apps without an install. dusk bot suits separate bots in their own app, with an ai you choose per bot. poke bundles models; dusk separates ai and hosting bills. as of 12 november 2026, poke says it is joining cognition. existing users can continue as before.[^1][^2][^3][^4]",
+  "answer": "**poke suits an assistant beside your contacts.** it works in imessage and other chat apps without an install. Metal suits separate bots in their own app, with an ai you choose per bot. poke bundles models; dusk separates ai and hosting bills. as of 12 november 2026, poke says it is joining cognition. existing users can continue as before.[^1][^2][^3][^4]",
   "updated": "2026-11-12",
   "review": {
     "status": "approved",
@@ -61,7 +61,7 @@
     "intro": "**nobody can tell you what a poke credit buys.** poke doesn't publish it. prices as of 12 november 2026.",
     "cols": [
       "Poke",
-      "dusk bot"
+      "Metal"
     ],
     "rows": [
       {
@@ -147,7 +147,7 @@
       }
     ]
   },
-  "method": "**we build dusk bot. we haven't sent the same job to both.** prices and company status reflect 12 november 2026.\n\npoke doesn't name its models or publish a usable credit-to-task rate. we cannot price an identical job or rank delivery reliability.",
+  "method": "**we build Metal. we haven't sent the same job to both.** prices and company status reflect 12 november 2026.\n\npoke doesn't name its models or publish a usable credit-to-task rate. we cannot price an identical job or rank delivery reliability.",
   "sections": [
     {
       "h": "the familiar contact is a good reason to stay",
@@ -155,7 +155,7 @@
     },
     {
       "h": "the phone works only if its host does",
-      "md": "**text from the couch with the laptop shut.** poke is an always-on cloud agent, according to cognition.[^4]\n\nin dusk, pair your phone to where your bots live:\n\n- your computer: keep it on with dusk running\n- dusk cloud: your computer can be off\n- current phone version: browser and home-screen shortcut, without notifications; store apps are on the way[^6][^7]\n\nread [poke versus dusk bot](/vs/poke) if phone access decides the choice."
+      "md": "**text from the couch with the laptop shut.** poke is an always-on cloud agent, according to cognition.[^4]\n\nin dusk, pair your phone to where your bots live:\n\n- your computer: keep it on with dusk running\n- dusk cloud: your computer can be off\n- current phone version: browser and home-screen shortcut, without notifications; store apps are on the way[^6][^7]\n\nread [poke versus Metal](/vs/poke) if phone access decides the choice."
     },
     {
       "h": "one bundle or two bills",
@@ -259,7 +259,7 @@
       ],
       [
         "a different ai and memory for each bot",
-        "dusk bot"
+        "Metal"
       ],
       [
         "phone access with your computer off",

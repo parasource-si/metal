@@ -13,7 +13,7 @@ export function slackCallback(res, params) {
     (codes.length === 1 && errors.length === 0 && CODE.test(codes[0])) ||
     (errors.length === 1 && codes.length === 0 && ERROR.test(errors[0]))
   );
-  let content = "<h1>that link didn&#39;t work</h1><p>This Slack link is not valid. Start again from dusk bot.</p>";
+  let content = "<h1>that link didn&#39;t work</h1><p>This Slack link is not valid. Start again from Metal.</p>";
   let head = "";
   let mood = "oops";
   if (valid) {
@@ -22,10 +22,10 @@ export function slackCallback(res, params) {
     const denied = errors[0] === "access_denied";
     head = `<meta http-equiv="refresh" content="0;url=${link}">`;
     mood = denied ? "oops" : "go";
-    content = `<h1>${escapeHtml(denied ? "Slack didn't add the bot" : "Returning to dusk bot")}</h1>
-<p>${denied ? "You can close this tab." : "If nothing happens, open dusk bot yourself."}</p>
-<p class="go"><a href="${link}">Open dusk bot</a></p>
-<p class="hint">Or copy this link and paste it into dusk bot:</p>
+    content = `<h1>${escapeHtml(denied ? "Slack didn't add the bot" : "Returning to Metal")}</h1>
+<p>${denied ? "You can close this tab." : "If nothing happens, open Metal yourself."}</p>
+<p class="go"><a href="${link}">Open Metal</a></p>
+<p class="hint">Or copy this link and paste it into Metal:</p>
 <code>${link}</code>`;
   }
   res.writeHead(valid ? 200 : 400, {
@@ -36,5 +36,5 @@ export function slackCallback(res, params) {
     "x-frame-options": "DENY",
     "content-security-policy": "default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'",
   });
-  res.end(handoffPage({ title: "Returning to dusk bot", mood, content, head }));
+  res.end(handoffPage({ title: "Returning to Metal", mood, content, head }));
 }

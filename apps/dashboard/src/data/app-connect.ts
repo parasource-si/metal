@@ -49,7 +49,7 @@ const browserDeps = (reload: () => Promise<ConnectorsAnswer | null>): FlowDeps =
 export function notAnswering(ws: Pick<WorkspaceSummary, "name" | "kind">): string {
   return ws.kind === "vps"
     ? `${ws.name} is not answering right now. try again in a minute.`
-    : `${ws.name} is not answering. open dusk bot on it, then try again.`;
+    : `${ws.name} is not answering. open Metal on it, then try again.`;
 }
 
 /** queues the command and follows it: not taken in PICKUP_MS or not answered in ANSWER_MS ends it with what to do next */
@@ -139,7 +139,7 @@ export async function finishSignIn(state: string, status: string | null, deps: F
     }
     await deps.sleep(SIGN_IN_POLL_MS);
   }
-  patch(key, { phase: "failed", message: `${label} signed in, but ${workspaceName} hasn't seen it yet. reload in a minute, or open dusk bot there.` });
+  patch(key, { phase: "failed", message: `${label} signed in, but ${workspaceName} hasn't seen it yet. reload in a minute, or open Metal there.` });
 }
 
 const dropFlow = (key: string) => { const { [key]: _, ...rest } = store.flows; setFlows(rest); };

@@ -82,15 +82,15 @@
   ],
   "sources": [
     {
-      "label": "dusk bot docs: routines",
+      "label": "Metal docs: routines",
       "url": "/docs/routines"
     },
     {
-      "label": "dusk bot docs: app access and sending",
+      "label": "Metal docs: app access and sending",
       "url": "/docs/files-and-apps"
     },
     {
-      "label": "dusk bot docs: sending settings",
+      "label": "Metal docs: sending settings",
       "url": "/docs/computer"
     },
     {

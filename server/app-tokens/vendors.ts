@@ -1,5 +1,5 @@
 // How each token app is reached: the live check that proves a pasted token works, and either the vendor's own MCP
-// server (which takes the token in a header) or the API origin dusk bot's own api_request tool calls with it.
+// server (which takes the token in a header) or the API origin Metal's own api_request tool calls with it.
 // Endpoints and header formats are from each vendor's API docs (checked 2026-11-13).
 import { nativeConnector, type NativeConnector } from "../../shared/native-connectors.ts";
 
@@ -59,7 +59,7 @@ async function read(fetchImpl: Fetch, url: string, init: RequestInit, signal: Ab
   if (response.status === 404) throw new TokenCheckError("refused", "The app couldn't find that account. Check the site or store name and the token.");
   if (!response.ok) throw new TokenCheckError("refused", `The app answered with an error (${response.status}). Check the token and try again.`);
   const body = await response.json().catch(() => null);
-  if (!body || typeof body !== "object") throw new TokenCheckError("refused", "The app gave an answer dusk bot couldn't read.");
+  if (!body || typeof body !== "object") throw new TokenCheckError("refused", "The app gave an answer Metal couldn't read.");
   return body as Record<string, any>;
 }
 

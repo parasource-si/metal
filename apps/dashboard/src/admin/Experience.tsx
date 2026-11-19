@@ -64,7 +64,7 @@ function Timeline({ who }: { who: string }) {
   );
 }
 
-/** how dusk bot went for people: what went wrong, where they got stuck and what got done, never what was said */
+/** how Metal went for people: what went wrong, where they got stuck and what got done, never what was said */
 export function ExperiencePage() {
   const [range, setRange] = useState<Range>(() => rangeOf("30d"));
   const { data, error, loading, reload } = useAdmin<ExperienceAnswer>(`/experience?from=${range.from}&to=${range.to}`);

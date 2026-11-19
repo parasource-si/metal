@@ -3,7 +3,7 @@
     "section": "5",
     "surface": "browser",
     "match": "Order Summary[\\s\\S]*GST",
-    "note": "owner: the checkout's merchant name reads \"Dusk Bot\" (off-brand capitals) and the phone field defaults to +91; both are Dodo dashboard settings (tax is now said before checkout)"
+    "note": "owner: the checkout's merchant name reads \"Metal\" (off-brand capitals) and the phone field defaults to +91; both are Dodo dashboard settings (tax is now said before checkout)"
   },
   {
     "section": "5",

@@ -67,7 +67,7 @@ describe("webhook-only ingress", () => {
       await new Promise<void>((resolve) => guarded.server.close(() => resolve()));
     }
   });
-  it("exposes health but nothing from the main dusk bot API", async () => {
+  it("exposes health but nothing from the main Metal API", async () => {
     const health = await fetch(`${ingress.baseUrl}/health`);
     expect(health.status).toBe(200);
     expect(await health.json()).toEqual({ app: "duskbot-webhooks", ready: true });

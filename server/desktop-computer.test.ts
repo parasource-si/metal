@@ -77,7 +77,7 @@ describe("this computer, only for the desktop app's own server", () => {
       expect(desktop.unavailableReason(), platform).toBeNull();
     }
     expect(thisComputerNotReady(createDesktopComputer())).toBe(
-      "Only the dusk bot app on this computer can let a bot use it. Open the app here, or let the bot work in its own browser or on a cloud desktop instead.",
+      "Only the Metal app on this computer can let a bot use it. Open the app here, or let the bot work in its own browser or on a cloud desktop instead.",
     );
   });
 
@@ -85,17 +85,17 @@ describe("this computer, only for the desktop app's own server", () => {
     const desktop = createDesktopComputer({ platform: "darwin" });
     expect(desktop.receive({ type: DESKTOP_COMPUTER_GRANT, connection: READY })).toBe(true);
     expect(desktop.connection()).toEqual({ command: "/fixture/cua-driver", args: ["mcp"], env: {}, platform: "darwin", scope: "local-computer" });
-    const reason = "embedded host failed: Screen Recording required; grant access in System Settings and restart dusk bot";
+    const reason = "embedded host failed: Screen Recording required; grant access in System Settings and restart Metal";
     expect(desktop.receive({ type: DESKTOP_COMPUTER_GRANT, connection: { mode: "unavailable", reason } })).toBe(true);
     expect(desktop.connection()).toBeNull();
     expect(desktop.unavailableReason()).toBe(reason);
     expect(thisComputerNotReady(desktop, "darwin")).toBe(
-      "dusk bot can't use this computer yet: Screen Recording required. Turn on dusk bot in System Settings > Privacy & Security > Screen Recording; then quit and reopen dusk bot.",
+      "Metal can't use this computer yet: Screen Recording required. Turn on Metal in System Settings > Privacy & Security > Screen Recording; then quit and reopen Metal.",
     );
     expect(desktop.receive({ type: DESKTOP_COMPUTER_GRANT, connection: null })).toBe(true);
     expect(desktop.connection()).toBeNull();
     expect(desktop.granted()).toBe(true);
-    expect(thisComputerNotReady(desktop)).toBe("dusk bot can't use this computer yet: make sure dusk bot has the permissions it asks for, then restart it");
+    expect(thisComputerNotReady(desktop)).toBe("Metal can't use this computer yet: make sure Metal has the permissions it asks for, then restart it");
   });
 
   it.each([
@@ -105,7 +105,7 @@ describe("this computer, only for the desktop app's own server", () => {
     const desktop = createDesktopComputer({ platform: "darwin" });
     desktop.receive({ type: DESKTOP_COMPUTER_GRANT, connection: { mode: "unavailable", reason } });
     expect(desktop.unavailableReason()).toBe(reason);
-    expect(thisComputerNotReady(desktop, "darwin")).toBe("dusk bot can't use this computer yet: the computer helper did not answer. Press Retry in Settings > Computer; if it still fails, quit and reopen dusk bot.");
+    expect(thisComputerNotReady(desktop, "darwin")).toBe("Metal can't use this computer yet: the computer helper did not answer. Press Retry in Settings > Computer; if it still fails, quit and reopen Metal.");
   });
 
   it("names CuaDriver, every missing grant, and no restart when the helper app waits for macOS", () => {
@@ -113,7 +113,7 @@ describe("this computer, only for the desktop app's own server", () => {
     const reason = "Screen Recording and Accessibility required for CuaDriver; turn on CuaDriver in System Settings > Privacy & Security";
     desktop.receive({ type: DESKTOP_COMPUTER_GRANT, connection: { mode: "unavailable", reason } });
     expect(thisComputerNotReady(desktop, "darwin")).toBe(
-      "dusk bot can't use this computer yet: Screen Recording and Accessibility required. Turn on CuaDriver in System Settings > Privacy & Security > Screen Recording and Privacy & Security > Accessibility; dusk bot notices by itself, no restart needed.",
+      "Metal can't use this computer yet: Screen Recording and Accessibility required. Turn on CuaDriver in System Settings > Privacy & Security > Screen Recording and Privacy & Security > Accessibility; Metal notices by itself, no restart needed.",
     );
   });
 

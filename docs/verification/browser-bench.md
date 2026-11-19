@@ -2,7 +2,7 @@
 
 27 local pages that reproduce the UI bots trip on (`server/browser-bench/tasks-*.ts`), each with a check of what the
 page itself saw: the message sent, the setting saved, the answer the bot gave. A real Claude Code CLI plays each task
-with dusk bot's browser tools as its only tools, through the real `BrowserService` on a headless Chrome
+with Metal's browser tools as its only tools, through the real `BrowserService` on a headless Chrome
 (`--use-mock-keychain --password-store=basic`). Nothing leaves the computer: every page is served on loopback, and
 every run gets its own path, so runs in parallel never share state.
 

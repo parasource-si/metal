@@ -86,7 +86,7 @@ describe("the public edge and a sleeping home", () => {
     // a page's read while it sleeps learns that it sleeps, so it wakes it on the person's next action instead of polling
     expect(anonymous.headers.get("x-dusk-cloud-power")).toBe("asleep");
     // and it is told the truth: nothing is waking it, so it never reads "waking up" and waits for a wake nobody started
-    expect(await anonymous.text()).toBe("This dusk bot is asleep. It wakes when someone uses it.");
+    expect(await anonymous.text()).toBe("This Metal workspace is asleep. It wakes when someone uses it.");
     expect((await send("/api/events", { headers: { cookie: "s=1" } })).headers.get("x-dusk-cloud-power")).toBe("asleep");
     await f.service.reconcile();
     expect(f.api.machines.get(c.serverId!)!.state).toBe("suspended");

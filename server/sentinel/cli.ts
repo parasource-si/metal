@@ -17,11 +17,11 @@ export interface SentinelArgs {
   checkInstall?: boolean;
 }
 
-export const SENTINEL_USAGE = `duskbot sentinel [--data-dir DIR] [--out DIR] [--once] [--json]
+export const SENTINEL_USAGE = `metal sentinel [--data-dir DIR] [--out DIR] [--once] [--json]
                      [--queue-wait SECONDS] [--cost USD]
-duskbot sentinel --check-install [--json]
+metal sentinel --check-install [--json]
 
-Scans a dusk bot data dir, read-only, for failed tool calls, stopped or
+Scans a Metal data dir, read-only, for failed tool calls, stopped or
 timed-out turns, long queue waits, expensive turns and retry loops, and keeps
 them as issues in issues.jsonl, outside the data dir: on macOS in
 ~/Library/Application Support/duskbot-sentinel, on Linux in
@@ -64,7 +64,7 @@ export function parseSentinelArgs(argv: string[], env: NodeJS.ProcessEnv = proce
         if (!Number.isFinite(scaled) || number < 0) return { error: `${arg} takes a number of 0 or more`, json };
         if (arg === "--queue-wait") args.queueWaitMs = scaled;
         else args.costUsd = scaled;
-      } else return { error: `unknown argument "${arg}"; see duskbot sentinel --help`, json };
+      } else return { error: `unknown argument "${arg}"; see metal sentinel --help`, json };
     } catch (error) {
       return { error: error instanceof Error ? error.message : String(error), json };
     }
@@ -84,10 +84,10 @@ const HOST: SentinelHost = { platform: process.platform, home: homedir(), exists
 export function describeInstallCheck(check: SentinelInstallCheck): string {
   switch (check.status) {
     case "ok": return `sentinel schedule ok: ${check.unit} runs ${check.script} with ${check.node}`;
-    case "stale": return `stale install: ${check.unit} needs ${check.missing.join(" and ")}, which no longer exists; rerun duskbot service install --sentinel`;
-    case "not_installed": return `no Sentinel schedule at ${check.unit}; install one with duskbot service install --sentinel`;
-    case "unreadable": return `could not read the command in ${check.unit}; rerun duskbot service install --sentinel`;
-    default: return "no Sentinel schedule to check on this platform; duskbot service install --sentinel prints the Task Scheduler command for Windows";
+    case "stale": return `stale install: ${check.unit} needs ${check.missing.join(" and ")}, which no longer exists; rerun metal service install --sentinel`;
+    case "not_installed": return `no Sentinel schedule at ${check.unit}; install one with metal service install --sentinel`;
+    case "unreadable": return `could not read the command in ${check.unit}; rerun metal service install --sentinel`;
+    default: return "no Sentinel schedule to check on this platform; metal service install --sentinel prints the Task Scheduler command for Windows";
   }
 }
 
@@ -115,7 +115,7 @@ export function runSentinelCli(argv: string[], io: { log(line: string): void; er
   try {
     isDir = statSync(args.dataDir).isDirectory();
   } catch {}
-  if (!isDir) return fail(`no dusk bot data dir at ${args.dataDir}; pass --data-dir with the folder that holds messages.db`, args.json);
+  if (!isDir) return fail(`no Metal data dir at ${args.dataDir}; pass --data-dir with the folder that holds messages.db`, args.json);
   const refusal = outRefusal(args.out, args.dataDir);
   if (refusal) return fail(refusal, args.json);
   let summary: ScanSummary;

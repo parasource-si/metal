@@ -543,7 +543,7 @@ const bridge = {
   openAtLogin: {
     state: () => ipcRenderer.invoke("open-at-login:state"),
     set: on => on !== true || isLocalPage || navigator.userActivation?.isActive === true
-      ? ipcRenderer.invoke("open-at-login:set", on === true) : Promise.reject(new Error("Turn on the switch to open dusk bot at login.")),
+      ? ipcRenderer.invoke("open-at-login:set", on === true) : Promise.reject(new Error("Turn on the switch to open Metal at login.")),
   },
   // An AppImage's own entry in the app menu (electron/appimage-menu-entry.mjs); this computer's page only.
   appMenuEntry: {

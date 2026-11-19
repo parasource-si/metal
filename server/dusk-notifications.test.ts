@@ -88,7 +88,7 @@ describe("marking read", () => {
 });
 
 describe("who may", () => {
-  it("is Dusk alone, and on a personal install", () => {
+  it("is Metal alone, and on a personal install", () => {
     const pip = { id: "pip", name: "Pip" } as BotRecord;
     const chief = { id: "chief", name: "Chief", chiefOfStaff: true } as BotRecord;
     const team = { id: "ada", name: "Dusk", defaultBot: { person: "ada@example.com" } } as BotRecord;
@@ -103,7 +103,7 @@ describe("who may", () => {
     expect(rows[0]!.read).toBe(false);
   });
 
-  it("refuses on any shared workspace, even for a Dusk with no person", () => {
+  it("refuses on any shared workspace, even for a Metal with no person", () => {
     const { host, rows } = setup([entry("a", "done")], [MAUS], true);
     expect(listUnread(host, "maus")).toMatchObject({ ok: false, error: expect.stringContaining("read in the app") });
     expect(markRead(host, "maus", ["a"])).toMatchObject({ ok: false });
@@ -115,7 +115,7 @@ describe("who may", () => {
     expect(hints).toEqual([["list_unread_notifications", true], ["mark_notifications_read", false]]);
   });
 
-  it("is mounted for the Dusk profile and flat", () => {
+  it("is mounted for the Metal profile and flat", () => {
     expect([...DUSK_TOOL_NAMES]).toEqual(["list_unread_notifications", "mark_notifications_read"]);
     expect(DUSK_TOOL_DEFINITIONS.map((tool) => tool.name)).toEqual([...DUSK_TOOL_NAMES]);
     expect(JSON.stringify(DUSK_TOOL_DEFINITIONS)).not.toMatch(/"(oneOf|anyOf|allOf|const|format)"/);
@@ -131,7 +131,7 @@ describe("the internal route", () => {
     return { outcome, status: status as number | undefined, payload: payload as { text?: string; error?: string } | undefined, rows };
   }
 
-  it("lists and marks for Dusk, 403 for any other bot, 400 for a bad body, and passes other paths", async () => {
+  it("lists and marks for Metal, 403 for any other bot, 400 for a bad body, and passes other paths", async () => {
     expect((await call("maus", "GET", "/api/internal/notifications")).status).toBe(200);
     const marked = await call("maus", "POST", "/api/internal/notifications/read", { ids: ["a", "b"] });
     expect([marked.status, marked.rows.map((row) => row.read)]).toEqual([200, [true, false]]);

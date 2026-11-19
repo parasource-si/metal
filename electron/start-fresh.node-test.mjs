@@ -87,7 +87,7 @@ test("finish is refused before a run", async () => {
   assert.deepEqual(calls, []);
 });
 
-test("the next start deletes this computer's data, named local folders and dusk bot's own files, keeping tools, the lease and Chromium's", () => {
+test("the next start deletes this computer's data, named local folders and Metal's own files, keeping tools, the lease and Chromium's", () => {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), "start-fresh-desktop-"));
   try {
     const userData = path.join(root, "userData"), dataDir = path.join(root, ".duskbot"), named = path.join(root, ".duskbot-work"), stranger = path.join(root, "Documents");

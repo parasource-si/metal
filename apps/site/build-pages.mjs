@@ -1,7 +1,7 @@
-// builds the dusk.bot pages: wraps each page body in the shared layout, turns the legal pages (Markdown in the Dusk Bot
+// builds the dusk.bot pages: wraps each page body in the shared layout, turns the legal pages (Markdown in the Metal
 // repo's docs/legal) into terms/, privacy/, cookies/, refunds/, acceptable-use/, subprocessors/, license/ and security/, the docs (pages/docs/*.md, see build-docs.mjs) into
 // docs/, pages/changelog.md into changelog/, and writes the sitemap, robots.txt, the manifest and the redirects. zero deps.
-//   node apps/site/build-pages.mjs [path to the dusk bot checkout, default: this repo]
+//   node apps/site/build-pages.mjs [path to the Metal checkout, default: this repo]
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -17,7 +17,7 @@ const repo = process.argv[2] || path.resolve(path.dirname(new URL(import.meta.ur
 // every link to the account web app goes through APP_URL, and every absolute address of this site through SITE_URL.
 // DUSK_APP_URL is a path on this origin (default /app, where preview.dusk.bot serves the app) or a full address
 export const APP_URL = (process.env.DUSK_APP_URL || '/dashboard').replace(/\/+$/, '');
-export const SITE_URL = (process.env.SITE_URL || 'https://dusk.bot').replace(/\/+$/, '');
+export const SITE_URL = (process.env.SITE_URL || 'http://localhost:3103').replace(/\/+$/, '');
 // DUSK_WAITLIST_HOME=1 is dusk.bot before launch: the waitlist page is the home page, on its own (no header, footer or
 // links out, as waitlist-only.mjs had it), /waitlist sends people there, and every other page is the full site
 export const WAITLIST_HOME = process.env.DUSK_WAITLIST_HOME === '1';
@@ -136,12 +136,12 @@ const withParts = (html) => html.replace(/\{\{include ([\w-]+)\}\}/g, (_, name) 
   return part + (name === 'home-window' && has('home-window.js') ? `<script src="${stamped('home-window.js')}"></script>` : '');
 });
 const has = (file) => fs.existsSync(path.join(site, file));
-// the first-party analytics tracker (apps/dashboard/tracker/dusk.js in the Dusk Bot repo), served as /a.js; its beacons go to
+// the first-party analytics tracker (apps/dashboard/tracker/dusk.js in the Metal repo), served as /a.js; its beacons go to
 // DUSK_TRACK_API (default /v1/t, the account service on this origin). Visits of signed-in admins are never counted.
 export const TRACK_API = process.env.DUSK_TRACK_API || '/v1/t';
 const tracker = path.join(repo, 'apps', 'dashboard', 'tracker', 'dusk.js');
 if (fs.existsSync(tracker)) fs.copyFileSync(tracker, path.join(site, 'a.js'));
-else console.warn('no tracker in the Dusk Bot checkout; pages are built without analytics');
+else console.warn('no tracker in the Metal checkout; pages are built without analytics');
 const trackerTag = () => has('a.js') ? `<script src="${stamped('a.js')}" data-api="${TRACK_API}" defer></script>\n` : '';
 // {{i name}} is a Gravity UI icon (MIT, icons/gravity, LICENSE beside them) or one of ours drawn in its style
 // (icons/drawn); {{i name cls}} adds a class. Site names stay as they were, each pointing at its drawing.
@@ -212,13 +212,24 @@ const withLinks = (html) => html.replace(/\{\{app( \/[\w/?=&-]*)?\}\}/g, (_, res
 const rel = JSON.parse(fs.readFileSync(path.join(here, 'releases.json'), 'utf8'));
 const latestFile = path.join(site, 'releases', 'latest.json');
 let latest = {};
-try { latest = JSON.parse(fs.readFileSync(latestFile, 'utf8')); } catch {}
+let latestSums = '';
+try {
+  const candidate = JSON.parse(fs.readFileSync(latestFile, 'utf8'));
+  if (/^\d+\.\d+\.\d+$/.test(candidate.version)) {
+    const sums = fs.readFileSync(path.join(site, 'releases', candidate.version, 'SHA256SUMS'), 'utf8');
+    if (/^[a-f0-9]{64}[^\S\n]+\*?Metal\S*\.dmg$/im.test(sums)) {
+      latest = candidate;
+      latestSums = sums;
+    }
+  }
+} catch {}
 const forced = process.env.DUSK_RELEASED;
 export const release = {
   ...rel,
   released: forced === '1' ? true : forced === '0' ? false : rel.released === true || typeof latest.version === 'string',
   version: latest.version || rel.version || '',
   date: rel.date || '',
+  androidReady: rel.androidReady || /^[a-f0-9]{64}[^\S\n]+\*?Metal\.apk$/im.test(latestSums),
 };
 release.sums = release.version && fs.existsSync(path.join(site, 'releases', release.version, 'SHA256SUMS')) ? `/releases/${release.version}/SHA256SUMS` : `${rel.base}${rel.checksums}`;
 const withRelease = (html) => {
@@ -240,7 +251,7 @@ const MENU = [...NAV, ['/changelog', "what's new"], ['/about', 'about'], ['/cont
 const FOOT = [
   ['product', [['/download', 'download'], ['/pricing', 'pricing'], ['/changelog', "what's new"], [`${APP_URL}/`, 'sign in']]],
   ['learn', [['/docs', 'docs'], ['/docs/getting-started', 'get started'], ['/docs/your-own-server', 'your own server'], ['/docs/faq', 'questions']]],
-  ['dusk bot', [['/about', 'about'], ['/contact', 'contact'], ['/brand', 'brand'], ['/security', 'security']]],
+  ['Metal', [['/about', 'about'], ['/contact', 'contact'], ['/brand', 'brand'], ['/security', 'security']]],
   ['legal', [['/terms', 'terms'], ['/privacy', 'privacy'], ['/cookies', 'cookies'], ['/refunds', 'refunds'], ['/acceptable-use', 'acceptable use'], ['/subprocessors', 'subprocessors'], ['/license', 'license']]],
 ];
 // the seo hubs (seo/), once any of their pages is live
@@ -265,7 +276,7 @@ export function layout({ title, description, body, page, at, section = page, og 
   const here_ = (href) => (href === address ? ' aria-current="page"' : href === `/${section}` ? ' class="is-here"' : '');
   const links = (list) => list.map(([href, label]) => `<a href="${href}"${here_(href)}>${label}</a>`).join('');
   const foot = ([head, list]) => `<div><h2>${head}</h2>${list.map(([href, label]) => `<a href="${href}"${href === address ? ' aria-current="page"' : ''}>${label}</a>`).join('')}</div>`;
-  const brand = '<a class="brand" href="/"><img src="/art/logo-96.webp" alt="" width="28" height="28">dusk bot</a>';
+  const brand = '<a class="brand" href="/"><img src="/art/logo-96.webp" alt="" width="28" height="28">Metal</a>';
   const css = home ? ['site.css', 'motion-kit-v2.css', 'home.css', ...(has('home-window.css') ? ['home-window.css'] : [])] : ['site.css', 'pages.css', ...styles.filter(has)];
   const tail = home
     ? `<script src="${stamped('motion.min.js')}" defer></script>\n<script src="${stamped('motion-kit-v2.js')}" defer></script>\n<script src="${stamped('home.js')}" defer></script>${has('mascot.js') ? `\n<script src="${stamped('mascot.js')}" defer></script>` : ''}\n<script src="${stamped('site.js')}" defer></script>`
@@ -278,7 +289,7 @@ export function layout({ title, description, body, page, at, section = page, og 
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(description)}">
 <meta name="theme-color" content="#ffffff">${noindex ? '\n<meta name="robots" content="noindex">' : `\n<link rel="canonical" href="${SITE_URL}${address === '/' ? '/' : address}">`}
-<meta property="og:site_name" content="dusk bot">
+<meta property="og:site_name" content="Metal">
 <meta property="og:type" content="${ogType}">
 <meta property="og:url" content="${SITE_URL}${address}">
 <meta property="og:title" content="${esc(title)}">
@@ -306,7 +317,7 @@ ${macros(body).replace(/(src=")\/(art\/[\w./-]+)"/g, (_, lead, file) => `${lead}
 </main>
 <footer class="foot">
 <div class="foot-in">
-<div class="foot-brand">${brand}<p>a team of ai bots that runs where you want it to.</p><a class="foot-mail" href="mailto:hello@dusk.bot">hello@dusk.bot</a></div>
+<div class="foot-brand">${brand}<p>a team of ai bots that runs where you want it to.</p><a class="foot-mail" href="https://github.com/parasource-si/metal">Metal on GitHub</a></div>
 ${FOOT.map(foot).join('\n')}
 </div>
 <p class="foot-fine"><span data-dusk>made at dusk. the bots did most of it.</span>${home ? ' the bots, chats and numbers shown on this page are samples.' : ''}</p>
@@ -333,9 +344,9 @@ const faqLd = (html) => {
   return qs.length ? [{ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: qs }] : [];
 };
 // who makes the site, on the home and about pages; sameAs lists only profiles the site itself links to
-const orgLd = { '@context': 'https://schema.org', '@type': 'Organization', name: 'dusk bot', url: `${SITE_URL}/`, logo: `${SITE_URL}/art/icon-512.png`, email: 'hello@dusk.bot' };
+const orgLd = { '@context': 'https://schema.org', '@type': 'Organization', name: 'Metal', url: `${SITE_URL}/`, logo: `${SITE_URL}/art/icon-512.png` };
 const appLd = {
-  '@context': 'https://schema.org', '@type': 'SoftwareApplication', name: 'dusk bot', url: `${SITE_URL}/`, image: `${SITE_URL}/art/og.jpg`,
+  '@context': 'https://schema.org', '@type': 'SoftwareApplication', name: 'Metal', url: `${SITE_URL}/`, image: `${SITE_URL}/art/og.jpg`,
   applicationCategory: 'ProductivityApplication', operatingSystem: 'macOS, Windows, Linux',
   description: 'A desktop app where you run a team of AI bots and message them like teammates. It runs on your computer, your own server or a dusk cloud computer, on the AI accounts you already have.',
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
@@ -352,7 +363,7 @@ for (const page of pages) {
   const body = withStrips(fs.readFileSync(path.join(here, 'pages', `${page.name}.html`), 'utf8'));
   if (WAITLIST_HOME && page.name === 'waitlist') {
     // the waitlist page is frozen as it went out, its structured data included
-    write('/', soloWaitlist(layout({ ...page, page: page.name, at: '/', kind: page.kind || 'p-waitlist', body, jsonld: [{ ...orgLd, name: 'dusk bot' }] })));
+    write('/', soloWaitlist(layout({ ...page, page: page.name, at: '/', kind: page.kind || 'p-waitlist', body, jsonld: [{ ...orgLd, name: 'Metal' }] })));
     continue;
   }
   const at = page.name === 'home' ? '/' : page.name === '404' ? '/404.html' : `/${page.name}`;
@@ -374,7 +385,7 @@ for (const page of pages) {
   });
   const shell = withStrips(fs.readFileSync(path.join(here, 'pages', 'partials', 'changelog-shell.html'), 'utf8'));
   const body = shell.replace('{{entries}}', entries.join('\n')).replace(/\{\{([#^])entries\}\}([\s\S]*?)\{\{\/entries\}\}/g, (_, mark, inner) => ((entries.length > 0) === (mark === '#') ? inner : ''));
-  write('/changelog', layout({ title: "what's new / dusk bot", description: 'Every dusk bot release, newest first: what changed and what got fixed.', page: 'changelog', kind: 'p-changelog', body }));
+  write('/changelog', layout({ title: "what's new / Metal", description: 'Every Metal release, newest first: what changed and what got fixed.', page: 'changelog', kind: 'p-changelog', body }));
 }
 
 // the legal pages, each with a list of its sections beside it
@@ -382,36 +393,34 @@ const legal = [['terms', 'Terms of Service', 'terms'], ['privacy', 'Privacy Poli
   ['acceptable-use', 'Acceptable Use Policy', 'acceptable use'], ['subprocessors', 'Subprocessors', 'subprocessors'], ['license', 'License', 'license'], ['security', 'Security', 'security']];
 // what each one covers, for search results and share cards
 const LEGAL_ABOUT = {
-  terms: 'The terms for using dusk bot: the app, accounts, paid plans, dusk cloud desktops, and what each side promises.',
-  privacy: 'What dusk bot collects in the app, the phone app, the account service, dusk cloud and this site, why, and how to get it deleted.',
+  terms: 'The upstream Dusk Bot terms for accounts, paid plans and Dusk Cloud.',
+  privacy: 'What the upstream Dusk Bot account service and Dusk Cloud collect, and how to get it deleted.',
   cookies: 'The few cookies and the local storage dusk.bot and the account pages use, what each is for, and your choices.',
-  refunds: 'How cancelling a dusk bot plan works, when you can get a refund, and how to ask for one.',
-  'acceptable-use': 'What you may not use dusk bot, its bots or dusk cloud desktops for, and what happens when someone does.',
-  subprocessors: 'The outside services that process data for dusk bot, what each one does, and where.',
-  license: 'The dusk bot license: free for personal use, what needs a work license, and the notices that come with the code.',
-  security: 'How to report a security problem in dusk bot, what is in scope, and what to expect from us.',
+  refunds: 'How to cancel a Dusk Cloud plan and how the upstream service handles refunds.',
+  'acceptable-use': 'The acceptable use policy for the upstream Dusk Bot service and Dusk Cloud.',
+  subprocessors: 'The outside services that process data for the upstream Dusk Bot service.',
+  license: 'The PolyForm Noncommercial license and the notices that come with the Metal code.',
+  security: 'How to report a security problem in Metal, what is in scope, and what to expect from us.',
 };
 const licenseSummary = `<section class="lic-sum" aria-label="the license in short">
-<p class="lic-lead">dusk bot's code is free for personal, non-commercial use. commercial use is not allowed without a separate written license from us.</p>
+<p class="lic-lead">Metal's code is free for personal, non-commercial use. commercial use is not allowed without a separate written license from the upstream copyright holder.</p>
 <dl>
-<div><dt>you can</dt><dd>read the code, run dusk bot, change it and share it, for personal and other noncommercial use. anyone you share it with must also get the license and its required notice.</dd></div>
-<div><dt>you can't</dt><dd>use it, or a changed copy, for commercial purposes without our license: at or for a business, inside a product, or as a commercial service. this applies to every version, including older copies.</dd></div>
+<div><dt>you can</dt><dd>read the code, run Metal, change it and share it, for personal and other noncommercial use. anyone you share it with must also get the license and its required notice.</dd></div>
+<div><dt>you can't</dt><dd>use it, or a changed copy, for commercial purposes without a separate license from the upstream copyright holder: at or for a business, inside a product, or as a commercial service. this applies to every version, including older copies.</dd></div>
 <div><dt>commercial license</dt><dd><a href="mailto:hello@dusk.bot">hello@dusk.bot</a></dd></div>
 </dl>
-<p>the license is the <a href="https://polyformproject.org/licenses/noncommercial/1.0.0">polyform noncommercial license 1.0.0</a>; its full text is at the end of this page. parts originally from the open source openmausbot project stay under their original apache 2.0 license, listed in <a href="https://github.com/DuskBotAI/duskbot/tree/main/third_party/openmausbot">third_party/openmausbot</a>.</p>
+<p>the license is the <a href="https://polyformproject.org/licenses/noncommercial/1.0.0">polyform noncommercial license 1.0.0</a>; its full text is at the end of this page. parts originally from the open source openmausbot project stay under their original apache 2.0 license, listed in <a href="https://github.com/parasource-si/metal/tree/main/third_party/openmausbot">third_party/openmausbot</a>.</p>
 </section>
 `;
 // the LICENSE file under its own heading, its headings a level down so they sit under it
 const licenseText = (md) => `\n<h2 id="full-license-text">full license text</h2>\n<div class="lic-full">${markdown(md.replace(/^<(https?:[^>]+)>$/gm, '[$1]($1)').replace(/^(#{1,2}) /gm, (_, h) => `${'#'.repeat(h.length + 2)} `))}</div>`;
 for (const [name, title] of legal) {
-  // the site never shows a person's name as copyright holder
-  const own = (md) => md.replace(/Copyright (\d{4}) [^.\n]+\./g, 'Copyright $1 dusk bot.');
-  let html = markdown(own(fs.readFileSync(path.join(repo, 'docs', 'legal', `${name}.md`), 'utf8')));
+  let html = markdown(fs.readFileSync(path.join(repo, 'docs', 'legal', `${name}.md`), 'utf8'));
   // the license page opens with what it means in plain words and ends with the repository's LICENSE in full
-  if (name === 'license') html = licenseSummary + html + licenseText(own(fs.readFileSync(path.join(repo, 'LICENSE'), 'utf8')));
+  if (name === 'license') html = licenseSummary + html + licenseText(fs.readFileSync(path.join(repo, 'LICENSE'), 'utf8'));
   const toc = [...html.matchAll(/<h2 id="([^"]+)">([\s\S]*?)<\/h2>/g)].map((m) => `<li><a href="#${m[1]}">${m[2]}</a></li>`).join('');
   const others = legal.map(([n, , s]) => `<a href="/${n}"${n === name ? ' aria-current="page"' : ''}>${s}</a>`).join('');
-  write(`/${name}`, layout({ title: `${title.toLowerCase()} / dusk bot`, description: LEGAL_ABOUT[name], page: name, section: 'legal', og: 'legal', kind: 'p-legal',
+  write(`/${name}`, layout({ title: `${title.toLowerCase()} / Metal`, description: LEGAL_ABOUT[name], page: name, section: 'legal', og: 'legal', kind: 'p-legal',
     body: `<header class="phead wrap"><h1>${title.toLowerCase()}</h1></header>
 ${strip('layers', 'circle blue, hex orange', 'short')}
 <div class="legal-wrap wrap">
@@ -442,12 +451,17 @@ fs.writeFileSync(path.join(site, `${indexNowKey}.txt`), indexNowKey);
 // pages taken down for good, which server.js answers with 410
 fs.writeFileSync(path.join(site, '_gone.json'), JSON.stringify(seo.gone));
 fs.writeFileSync(path.join(site, 'site.webmanifest'), JSON.stringify({
-  name: 'dusk bot', short_name: 'dusk bot', description: 'Your own team of AI bots, in a chat app.', start_url: '/', display: 'browser', background_color: '#ffffff', theme_color: '#ffffff',
+  name: 'Metal', short_name: 'Metal', description: 'Your own team of AI bots, in a chat app.', start_url: '/', display: 'browser', background_color: '#ffffff', theme_color: '#ffffff',
   icons: [{ src: '/art/icon-192.png', sizes: '192x192', type: 'image/png' }, { src: '/art/icon-512.png', sizes: '512x512', type: 'image/png' }, { src: '/art/icon-maskable-512.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' }],
 }, null, 2) + '\n');
 // server.js reads this: short and old addresses, each sent on to the page that answers it
 const redirects = { ...JSON.parse(fs.readFileSync(path.join(here, 'redirects.json'), 'utf8')), ...seo.redirects };
 // with the waitlist at home, its own address and everything that pointed at it go home
+if (!release.released) {
+  for (const [from, to] of Object.entries(redirects)) {
+    if (to.startsWith('/download#') && !['/download#requirements', '/download#verify'].includes(to)) redirects[from] = '/download';
+  }
+}
 if (WAITLIST_HOME) { fs.rmSync(path.join(site, 'waitlist'), { recursive: true, force: true }); for (const [k, v] of Object.entries(redirects)) if (v.split('#')[0] === '/waitlist') redirects[k] = '/'; redirects['/waitlist'] = '/'; }
 for (const [from, to] of Object.entries(redirects)) {
   const target = to.split('#')[0];

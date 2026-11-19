@@ -64,7 +64,7 @@ export function continuityCarry(run: RoutineRun, routines: readonly Pick<Routine
   };
 }
 
-export const DRY_RUN_NOTE = "[dusk bot: this is a test run. Nothing may leave this computer: do not send, post, book, buy, pay, " +
+export const DRY_RUN_NOTE = "[Metal: this is a test run. Nothing may leave this computer: do not send, post, book, buy, pay, " +
   "delete or submit anything, in an app or in the browser. Where the routine would, stop before that step and put exactly what it " +
   "would send or do in your reply as a draft. Read whatever you need.]";
 
@@ -79,7 +79,7 @@ export function composeExecutionPrompt(
     routine.dryRun ? DRY_RUN_NOTE : ""];
   const foreign = foreignPaths([prompt, ...(attachments ?? []).map((attachment) => attachment.path)], runHostPlatform(routine.runOn));
   if (foreign.length) {
-    parts.push(`[dusk bot: this run is on a ${hostName(runHostPlatform(routine.runOn))} computer, where ${foreign.join(", ")} cannot exist. If the work needs ${foreign.length > 1 ? "them" : "it"}, say plainly what is missing instead of reporting success.]`);
+    parts.push(`[Metal: this run is on a ${hostName(runHostPlatform(routine.runOn))} computer, where ${foreign.join(", ")} cannot exist. If the work needs ${foreign.length > 1 ? "them" : "it"}, say plainly what is missing instead of reporting success.]`);
   }
   if (carry) {
     parts.push(

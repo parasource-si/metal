@@ -273,7 +273,7 @@ function serializePayload(payload: JsonValue): string {
     }
   }
   if (text.length <= MAX_EVENT_CHARS) return text;
-  return `${text.slice(0, MAX_EVENT_CHARS)}\n\n[Payload truncated by dusk bot]`;
+  return `${text.slice(0, MAX_EVENT_CHARS)}\n\n[Payload truncated by Metal]`;
 }
 
 function previewPayload(payload: JsonValue): string {
@@ -608,7 +608,7 @@ export class WebhookManager {
       payload,
       contentType: "application/json",
       eventName,
-      userAgent: "dusk bot webhook tester",
+      userAgent: "Metal webhook tester",
       deliveryId: `test-${randomUUID()}`,
     }, true);
   }

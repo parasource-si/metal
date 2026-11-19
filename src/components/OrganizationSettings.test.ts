@@ -209,7 +209,7 @@ describe("optional desktop Organisation settings", () => {
   it("explains a lapsed Admin licence without a sign-in loop and shows Company models unavailable", async () => {
     await ready({ ...connected, status: "license-expired" });
     const html = render().html;
-    expect(html).toContain("Your organization&#x27;s dusk bot admin license has expired. Contact your admin.");
+    expect(html).toContain("Your organization&#x27;s Metal admin license has expired. Contact your admin.");
     expect(html).not.toContain("Disconnect below, then sign in again");
     expect(html).not.toContain("Sign in with your organization");
     expect(html).toContain("Unavailable until the licence is renewed");

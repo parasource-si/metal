@@ -1,4 +1,4 @@
-// Only the desktop app's own server may use this computer. A second dusk bot server on the same computer (a copy run
+// Only the desktop app's own server may use this computer. A second Metal server on the same computer (a copy run
 // from source, a demo) finds the app's driver record on disk, in the folder the app keeps it in, and still never mounts
 // this computer or drives it; the app's own server, which hears the record over its parent port, still can.
 import { spawn, type ChildProcess } from "node:child_process";
@@ -12,7 +12,7 @@ import { freePortBlock } from "./testing/ports.ts";
 import { removeTempDir, waitForExit } from "./testing/cleanup.ts";
 
 const ROOT = fileURLToPath(new URL("..", import.meta.url));
-const NOT_THE_APP = "Only the dusk bot app on this computer can let a bot use it.";
+const NOT_THE_APP = "Only the Metal app on this computer can let a bot use it.";
 
 describe("this computer belongs to the desktop app's own server", () => {
   let home = "";
@@ -209,7 +209,7 @@ describe("this computer belongs to the desktop app's own server", () => {
     expect(prompt).toContain("go straight to your built-in browser and do it; never say you cannot open a website");
     expect(prompt).toContain("controlling a computer's apps also comes with dusk cloud plans");
     expect(prompt).not.toMatch(/notice above the message box, and the person|allow it from the notice/);
-    expect(prompt).toContain("macOS has not given dusk bot Screen Recording on this Mac yet");
+    expect(prompt).toContain("macOS has not given Metal Screen Recording on this Mac yet");
     expect(prompt).toContain("Never call it for web work");
     const agents = sent.mcpConfig.mcpServers.agents;
     expect(agents.env.DUSK_SCREEN_ACCESS).toBe("1");

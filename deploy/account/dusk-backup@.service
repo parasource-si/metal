@@ -1,5 +1,5 @@
 [Unit]
-Description=dusk bot backup of %i (encrypted, off-box)
+Description=Metal backup of %i (encrypted, off-box)
 After=network-online.target
 Wants=network-online.target
 

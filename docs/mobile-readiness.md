@@ -23,7 +23,7 @@ is built into the app; the app never loads its interface from a server.
         |
         |  one of four transports, all behind the page's own fetch and EventSource
         v
-   https .............. the workspace's public address (your server, a hosted address, a dusk cloud computer)
+   https .............. the workspace's public address (your server, a hosted address, a Dusk Cloud computer)
    companion .......... the Mac's sidecar on the same Wi-Fi or tailnet (http, port 8810, allowlisted routes)
    relay .............. link.dusk.bot, frames sealed on the phone (AES-GCM, key from X25519) and opened on your server
 ```
@@ -75,7 +75,7 @@ Two runs drive real clients:
 | Permission asks answered once | **unverified here** | the phone renders the shared approval card and the workspace refuses a second answer (server tests). Not driven with two clients: the fake engine's approval recipe was not wired into the run |
 | Group chats, attachments and file cards across two clients | **unverified here** | rooms render and send on the phone (fixture); file upload and download are in the existing run. Not driven with two clients |
 | Routines switched on or off | **unverified here** | the routines sheet reads the same store; not driven |
-| A dusk cloud computer that is asleep | **fixed** (wording), **unverified** | the store stops reconnecting to a sleeping Cloud by design, and the phone's home said "Reconnecting" though it was not trying. It now says "Asleep · wakes when you type", then "Waking up", from the same power state the desktop reads (`src/lib/cloud-power.ts`). Not checked against a real Cloud computer |
+| A Dusk Cloud computer that is asleep | **fixed** (wording), **unverified** | the store stops reconnecting to a sleeping Cloud by design, and the phone's home said "Reconnecting" though it was not trying. It now says "Asleep · wakes when you type", then "Waking up", from the same power state the desktop reads (`src/lib/cloud-power.ts`). Not checked against a real Cloud computer |
 
 ### Bugs found and fixed
 
@@ -156,7 +156,7 @@ Two runs drive real clients:
 | Reduced motion | pass | `MotionConfig reducedMotion="user"`, CSS branches, the nav stack cross-fades instead of sliding |
 | Orientation, iPad | **fixed** | portrait only; iPhone only (`TARGETED_DEVICE_FAMILY = 1`) |
 | Empty and error states | pass | empty home, skeleton, unreachable screen with retry and countdown, pairing errors by cause |
-| First run | pass (browser) | intro, pairing by camera or 12 character code or pasted link, sign in to dusk cloud |
+| First run | pass (browser) | intro, pairing by camera or 12 character code or pasted link, sign in to Dusk Cloud |
 | Dead ends, placeholder text, debug UI | **fixed** | bugs 9, 10 and 16 |
 
 ## 4. App Store checklist
@@ -244,7 +244,7 @@ taken from after the `#`, which a browser never sends to the site. The site need
 1. `docs/store/apple-app-site-association.json` served as `https://dusk.bot/.well-known/apple-app-site-association` and
    the same on `dusk.bot`: content type `application/json`, no redirect, no file extension, with `TEAMID` replaced
    by your Apple team id.
-2. Pages at `/m/open` and `/m/pair` for someone without the app ("Get dusk bot for iPhone"). The `/m/pair` page must
+2. Pages at `/m/open` and `/m/pair` for someone without the app ("Get Metal for iPhone"). The `/m/pair` page must
    never read, log or send the part after the `#`.
 
 Nothing on the desktop makes these links yet; pairing codes and notifications still use `duskbot://`.
@@ -320,7 +320,7 @@ Grok's, and the Grok Bot logo in the import dialog. The skin ids are visible in 
 | Phone bundle builds | `pnpm mobile:build` | pass |
 | iOS app compiles for the simulator | `xcodebuild -project App.xcodeproj -scheme App -configuration Debug -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' CODE_SIGNING_ALLOWED=NO build` | BUILD SUCCEEDED |
 | Release build stops at the gate | same with `-configuration Release` | BUILD FAILED at "Release gate", 53 findings (intended) |
-| Typecheck | `pnpm typecheck`, `pnpm --filter @duskbot/mobile typecheck` | pass |
+| Typecheck | `pnpm typecheck`, `pnpm --filter @metal/mobile typecheck` | pass |
 | Lint | `pnpm lint` | 0 warnings in files this branch touched; the command still exits 1 on 6 warnings that are on `main` in files this branch did not touch (`src/components/chat-bubble.ts`, `server/first-message-job.ts`, `apps/dashboard/server/pages/*`, `apps/cloud-service/scripts/lifecycle-sim.ts`) |
 | Tests for everything this branch changed | `pnpm exec vitest run src/mobile shared/mobile-link.test.ts src/lib/chat-in-front.test.ts src/lib/random-uuid.test.ts scripts/testing/mobile-release-gate.test.ts scripts/ci-workflow.test.ts src/components/account-gate` | 22 files, 295 tests, all pass |
 | Renderer, shared, Electron, companion and link service tests | `pnpm exec vitest run src shared electron apps/companion apps/link-service` | 937 of 952 files pass (9676 tests pass, 24 fail). The same 24 tests in the same 15 files fail on the base commit `b40320d40` (run there from an export of it), so none is new; the `random-uuid` guard that was red on the base is green here |

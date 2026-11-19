@@ -160,9 +160,9 @@ describe("guided phone pairing address discovery", () => {
   });
 });
 
-// `duskbot pair` talks to 127.0.0.1, so the server answers as its owner and builds the phone-app invite from its own
+// `metal pair` talks to 127.0.0.1, so the server answers as its owner and builds the phone-app invite from its own
 // public address; the CLI prints it as it is and builds its own only for --public-url.
-describe("the phone-app link `duskbot pair` prints", () => {
+describe("the phone-app link `metal pair` prints", () => {
   const credential = `omb_pair_${"b".repeat(43)}`;
   const serverName = "Miguel's computer";
   const pairingResponse = (fields: Record<string, unknown>) => {

@@ -1,13 +1,13 @@
 appId: bot.dusk.app
-productName: Dusk Bot
+productName: Metal
 copyright: Copyright © 2026 dusk bot
-artifactName: DuskBot-${version}-${arch}.${ext}
+artifactName: Metal-${version}-${arch}.${ext}
 
 protocols:
-  - name: Dusk Bot package install
+  - name: Metal package install
     schemes: [duskbot]
   # links made before the rename (chat history, notifications) still open the app; electron/legacy-names.mjs reads them
-  - name: Dusk Bot links from before the rename
+  - name: Metal links from before the rename
     schemes: [openmausbot]
 
 publish: null
@@ -139,7 +139,7 @@ mac:
     NSSpeechRecognitionUsageDescription: Your voice is transcribed on this Mac to type messages for you.
     NSAccessibilityUsageDescription: Accessibility is used when you let a bot control this Mac.
     NSScreenCaptureUsageDescription: Screen Recording lets bots see this Mac before acting.
-    NSAppleEventsUsageDescription: Automation lets dusk bot open Terminal and lets bots control the apps you allow.
+    NSAppleEventsUsageDescription: Automation lets Metal open Terminal and lets bots control the apps you allow.
     NSDownloadsFolderUsageDescription: Downloads is checked for the notes file another AI saved for you (dusk-bot-notes.json), so it comes in by itself.
   # Notarization runs manually after the build (notarytool + staple),
   # mirroring the BlueyLite ship_release.sh flow.
@@ -148,11 +148,11 @@ mac:
 dmg:
   sign: true
   # the mounted volume's name in the Finder sidebar and the install window's title bar
-  title: dusk bot
+  title: Metal
   # ${arch} is load-bearing: without it the x64 dmg silently overwrites
   # the arm64 one when both arches build (this section overrides both the
   # top-level and mac-level artifactName, so it must carry the arch itself)
-  artifactName: DuskBot-${version}-${arch}.dmg
+  artifactName: Metal-${version}-${arch}.dmg
   # x/y are icon centres in points, drawn around by build/dmg/render.mjs.
   # electron-builder 26.15.3 sets the window frame (title bar included) to
   # build/background.png's size and ignores dmg.window whenever a background is
@@ -168,8 +168,8 @@ dmg:
       path: /Applications
 
 win:
-  # the portable zip needs its own name: DuskBot-<version>-x64.zip is the intel mac's updater zip on the same release
-  artifactName: DuskBot-${version}-win-${arch}.${ext}
+  # the portable zip needs its own name: Metal-<version>-x64.zip is the intel mac's updater zip on the same release
+  artifactName: Metal-${version}-win-${arch}.${ext}
   target:
     - target: nsis
       arch: x64
@@ -201,11 +201,11 @@ nsis:
   # by name, but electron-builder 26 shows them only on the assisted installer's pages; oneClick never draws them
   oneClick: true
   perMachine: false
-  shortcutName: Dusk Bot
+  shortcutName: Metal
   # Versioned, like the .dmg. The README's /latest/download/ button needs a
-  # STABLE filename, so ship a second copy named DuskBot-setup.exe on the
-  # release — the same trick as Dusk Bot.dmg beside DuskBot-${version}.dmg.
-  artifactName: DuskBot-${version}-setup.${ext}
+  # STABLE filename, so ship a second copy named Metal-setup.exe on the
+  # release — the same trick as Dusk Bot.dmg beside Metal-${version}.dmg.
+  artifactName: Metal-${version}-setup.${ext}
 
 linux:
   target:
@@ -221,7 +221,7 @@ linux:
   synopsis: Your own team of AI bots, in a chat app
   description: A local-first chat app for running a team of AI agents.
   maintainer: dusk bot <hello@dusk.bot>
-  vendor: dusk bot
+  vendor: Metal
   syncDesktopName: true
   # The reviewed x64 CLI runtime is staged before packaging and remains
   # outside ASAR so executable modes and adjacent sidecars are preserved.
@@ -240,14 +240,15 @@ linux:
     - from: build/icon.svg
       to: icon.svg
   # the install folder is /opt/<productName>: package:linux passes -c.productName=dusk-bot, because Chromium splits the
-  # setuid sandbox's path on spaces and "/opt/Dusk Bot" crashed every launch. the name people see is this one
+  # setuid sandbox's path on spaces and "/opt/Metal" crashed every launch. the name people see is this one
   desktop:
     entry:
-      Name: dusk bot
+      Name: Metal
       Comment: Your own team of AI bots, in a chat app
       Keywords: AI;Agents;Chat;Productivity;
 
 deb:
+  packageName: duskbot
   packageCategory: utils
   priority: optional
   # Add the narrow browser policy's parser without replacing Electron's

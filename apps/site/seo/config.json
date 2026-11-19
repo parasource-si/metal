@@ -1,12 +1,12 @@
 {
   "cta": {
-    "mode": "auto",
+    "mode": "download",
     "_mode": "auto follows the downloads: waitlist until releases.json or releases/latest.json says a version is out, then download. set waitlist or download to force one.",
-    "waitlist": { "href": "/waitlist", "button": "join the waitlist", "line": "dusk bot is opening soon. leave your email and we write once, when it's ready." },
-    "download": { "href": "/download", "button": "download dusk bot", "line": "free on your own computer, with every feature. no account, no card." }
+    "waitlist": { "href": "/waitlist", "button": "join the waitlist", "line": "Metal is opening soon. leave your email and we write once, when it's ready." },
+    "download": { "href": "/download", "button": "download Metal", "line": "free on your own computer, with every feature. no account, no card." }
   },
-  "byline": "the dusk bot team",
-  "made": "drafted with ai help from the dusk bot docs and the sources listed on this page, then checked against them. if something here is wrong or out of date, write to hello@dusk.bot.",
+  "byline": "the Metal team",
+  "made": "drafted with ai help from the Metal docs and the sources listed on this page, then checked against them. if something here is wrong or out of date, open an issue in the Metal repository.",
   "author_url": "/about",
   "related_count": 6,
   "sidebar_max": 40

@@ -147,7 +147,7 @@ export class CodexAppServer {
         this.sink.message(message);
       } else if (message?.id !== undefined && message.method) {
         // A server request with no turn to answer it: refuse it rather than leave the app-server waiting.
-        this.write({ jsonrpc: "2.0", id: message.id, error: { code: -32603, message: "No dusk bot turn is running on this thread." } });
+        this.write({ jsonrpc: "2.0", id: message.id, error: { code: -32603, message: "No Metal turn is running on this thread." } });
       }
     }
   }

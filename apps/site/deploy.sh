@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # deploy the dusk.bot site server with the deploy CLI. safe to rerun; a rerun is also how
 # install.sh gets refreshed. dusk.bot itself is the account service (deploy/account/deploy.sh production in the
-# Dusk Bot repo), which proxies every non-account path to this app on 127.0.0.1:3103; app., dev. and www. are its
+# Metal repo), which proxies every non-account path to this app on 127.0.0.1:3103; app., dev. and www. are its
 # aliases and redirect. preview.dusk.bot (deploy/account/deploy.sh preview) proxies to dusk-preview the same way.
 #   apps/site/deploy.sh landing    # dusk-landing, reached through dusk.bot
 #   apps/site/deploy.sh preview    # dusk-preview, reached through preview.dusk.bot: the full site, never indexed
@@ -10,9 +10,9 @@
 # keeps only the waitlist at /, its files, the privacy, terms and cookies pages (sign-in links to them), help and
 # account deletion (the app stores link to them), the download page (unlisted, handed to invited people), the license
 # page (the LICENSE notice links to it) and the own server guide (the installer prints its address), and the server sends every other page to / (DUSK_HOME_ONLY). at launch deploy it with DUSK_WAITLIST_HOME=0 for the full site.
-# DUSK_REPO is the Dusk Bot checkout (pages read docs/legal there); INSTALLER overrides where install.sh comes from.
+# DUSK_REPO is the Metal checkout (pages read docs/legal there); INSTALLER overrides where install.sh comes from.
 # the landing app's env (mongodb + brevo for the waitlist, names in .env.example) is built from the [landing] part of
-# ~/.config/duskbot/dusk.env by deploy/env.mjs in the Dusk Bot repo; LANDING_ENV sends a ready env file instead. with
+# ~/.config/duskbot/dusk.env by deploy/env.mjs in the Metal repo; LANDING_ENV sends a ready env file instead. with
 # neither, the env already on the server stays. the preview app keeps the env already on the server.
 set -euo pipefail
 
@@ -41,9 +41,10 @@ ran=0
 for row in "${SITES[@]}"; do
   read -r which name domain waitlist useenv <<<"$row"
   [ "$WHICH" = all ] || [ "$WHICH" = "$which" ] || continue
-  # the pages and the legal drafts (docs/legal in the Dusk Bot repo) become the site's html
+  # the pages and the legal drafts (docs/legal in the Metal repo) become the site's html
   [ "$waitlist" = 1 ] && RESTORE=1
-  DUSK_WAITLIST_HOME="$waitlist" node "$HERE/build-pages.mjs" "$DUSK_REPO"
+  site_url="${SITE_URL:-https://dusk.bot}"
+  SITE_URL="${site_url%/}" DUSK_WAITLIST_HOME="$waitlist" node "$HERE/build-pages.mjs" "$DUSK_REPO"
   # no deploy with a link, picture or anchor that leads nowhere
   node "$HERE/check-links.mjs"
   dir="$stage/$name"
@@ -63,9 +64,9 @@ for row in "${SITES[@]}"; do
     rm -rf "$pub/sitemaps" "$pub/docs/search.json" "$pub/_redirects.json" "$pub/_gone.json"
     find "$pub" -maxdepth 1 -regex '.*/[0-9a-f]\{32\}\.txt' -delete
     find "$pub" -type d -empty -delete
-    printf 'User-agent: *\nAllow: /\n\nSitemap: https://dusk.bot/sitemap.xml\n' > "$pub/robots.txt"
+    printf 'User-agent: *\nAllow: /\n\nSitemap: %s/sitemap.xml\n' "${site_url%/}" > "$pub/robots.txt"
     { printf '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-      for p in / /privacy /terms /cookies /license /support /delete-account; do printf '  <url><loc>https://dusk.bot%s</loc></url>\n' "$p"; done
+      for p in / /privacy /terms /cookies /license /support /delete-account; do printf '  <url><loc>%s%s</loc></url>\n' "${site_url%/}" "$p"; done
       printf '</urlset>\n'; } > "$pub/sitemap.xml"
     vars="DUSK_HOME_ONLY=1"
   fi

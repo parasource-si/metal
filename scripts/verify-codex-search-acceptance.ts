@@ -1,4 +1,4 @@
-// Real-model search acceptance through an isolated dusk bot server.
+// Real-model search acceptance through an isolated Metal server.
 // Existing sign-in is explicitly designated; personal chats/config are not copied.
 import { copyFileSync, mkdirSync, writeFileSync, readFileSync, existsSync } from "node:fs";
 import { join } from "node:path";

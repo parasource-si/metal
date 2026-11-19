@@ -166,13 +166,13 @@ describe("anonymous notes", () => {
     expect(leaks(note)).toEqual([]);
   });
   it("keeps the product's own words when the chat or a bot's name uses them, and still takes out names", () => {
-    const sources = ["Hi Dusk Bot, post this in Slack and email it via Gmail for Priya", "Sure! Opening Slack in the Browser now, then the Chat with Quill."];
+    const sources = ["Hi Metal, post this in Slack and email it via Gmail for Priya", "Sure! Opening Slack in the Browser now, then the Chat with Quill."];
     const note = scrubSummary("the user wanted the bot to post a message in slack and send an email to priya, but the bot could not open the browser or the chat with quill.",
-      SESSION_NOTE_MAX, { sources, avoid: ["dusk bot", "Quill"] })!;
+      SESSION_NOTE_MAX, { sources, avoid: ["Metal", "Quill"] })!;
     expect(note).toContain("the user wanted the bot to post a message in slack");
     expect(note).toContain("could not open the browser or the chat");
     expect(leaks(note)).toEqual([]);
-    expect(scrubSummary("The bot in Dusk Bot could not reach LinkedIn from the Browser.", SESSION_NOTE_MAX)).toBe("the bot in dusk bot could not reach linkedin from the browser.");
+    expect(scrubSummary("The bot in Metal could not reach LinkedIn from the Browser.", SESSION_NOTE_MAX)).toBe("the bot in Metal could not reach linkedin from the browser.");
   });
   it("is stable, so a scrubbed note passes the account service's check unchanged", () => {
     const once = scrubSummary("Connecting Gmail took 3 tries, then the session went smoothly with the browser and calendar.", SESSION_NOTE_MAX)!;

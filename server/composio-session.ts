@@ -60,7 +60,7 @@ async function activeAccounts(apiKey: string, userId?: string): Promise<Array<{ 
   return page.success ? page.data.items.filter((account) => !account.status || /^active$/i.test(account.status)) : [];
 }
 
-/** dusk bot names the Composio users it makes this way, this installation's and each teammate's shared one alike. */
+/** Metal names the Composio users it makes this way, this installation's and each teammate's shared one alike. */
 const OWN_USER = /^duskbot_/;
 
 /**
@@ -69,7 +69,7 @@ const OWN_USER = /^duskbot_/;
  * must match the connected-account user"), and accounts made in Composio's dashboard belong to whatever user id was
  * typed there, often "default". So: keep `prior` when it owns an active account; otherwise the user owning the most
  * active accounts, as the account list names them (Composio marks that field deprecated, so "default" is asked
- * directly when it is missing). A user dusk bot made is never taken over: it may be a teammate's.
+ * directly when it is missing). A user Metal made is never taken over: it may be a teammate's.
  */
 export async function connectionOwner(apiKey: string, prior: string | undefined): Promise<string | undefined> {
   try {

@@ -198,7 +198,7 @@ describe("Local VM inventory UI", () => {
     }));
 
     expect(markup).toContain("Not managed");
-    expect(markup).toContain("This desktop wasn&#x27;t made by dusk bot.");
+    expect(markup).toContain("This desktop wasn&#x27;t made by Metal.");
     expect(markup).toContain("Remove it in Docker or Podman.");
     expect(markup).not.toContain(">Delete</button>");
     expect(markup).not.toContain("Container labels do not match");
@@ -334,7 +334,7 @@ describe("VPS computer inventory UI", () => {
   });
 });
 
-describe("Settings → Computers on a dusk bot Cloud home", () => {
+describe("Settings → Computers on a dusk cloud home", () => {
   afterEach(() => { storeFixture.config = null; });
   // the labels and row names the page draws
   const cards = () => [...renderToStaticMarkup(createElement(LocalComputerSection)).matchAll(/<(?:div|h3)[^>]*data-(?:row-title|settings-heading)=""[^>]*>([^<]+)<\/(?:div|h3)>/g)].map((match) => match[1]);

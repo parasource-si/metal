@@ -14,7 +14,7 @@ import { asleepAnswer, BACKGROUND_HEADERS, openSleepingCloud, SIGNED_IN_MS } fro
 import { awayIn, parseJournal } from "./one-home.mjs";
 
 export const HOME_SCREEN_PATH = "/home";
-/** My Cloud opened from this computer, where the person met dusk bot: the Cloud's own welcome ends before it shows
+/** My Cloud opened from this computer, where the person met Metal: the Cloud's own welcome ends before it shows
  * (src/lib/cloud-welcome.ts WELCOMED_QUERY). One welcome only. */
 export const WELCOMED_ROUTE = "/?welcomed=1";
 /** The look at an awake My Cloud before the window moves there: under 3 s, so the offline screen shows within 3 s. */
@@ -430,7 +430,7 @@ export function createHomeWindow(deps) {
   async function redeem(origin, grant) {
     try {
       const response = await cookieFetch(`${origin}/api/auth/pair`, { method: "POST", credentials: "include", redirect: "error", cache: "no-store", signal: AbortSignal.timeout(15_000),
-        headers: { "content-type": "application/json", origin }, body: JSON.stringify({ code: grant.code, cookie: true, label: "dusk bot app" }) });
+        headers: { "content-type": "application/json", origin }, body: JSON.stringify({ code: grant.code, cookie: true, label: "Metal app" }) });
       await response.body?.cancel?.().catch(() => {});
       return response.ok;
     } catch { return false; }
@@ -725,7 +725,7 @@ export function createHomeWindow(deps) {
     async openHere() {
       here = true;
       await show();
-      if (!here) throw new Error("dusk bot could not start a fresh workspace on this computer.");
+      if (!here) throw new Error("Metal could not start a fresh workspace on this computer.");
     },
     /** This Mac is what the window shows by the person's choice. */
     here: () => here,

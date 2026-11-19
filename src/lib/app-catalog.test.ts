@@ -10,7 +10,7 @@ describe("rankCategories", () => {
     expect(rankCategories([])).toEqual({ inline: [], more: [] });
   });
 
-  it("keeps a category dusk bot's own app lives in among the inline ones, taking the last place", () => {
+  it("keeps a category Metal's own app lives in among the inline ones, taking the last place", () => {
     const cards = [card("a", "Productivity"), card("b", "Productivity"), card("c", "Design"), card("d", "Design"), card("e", "Files"), card("f", "Social")];
     expect(rankCategories(cards, 2, ["Social"])).toEqual({ inline: ["Design", "Social"], more: ["Productivity", "Files"] });
     expect(rankCategories(cards, 3, ["Social"]).inline).toEqual(["Design", "Productivity", "Social"]);

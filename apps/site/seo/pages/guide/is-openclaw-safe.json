@@ -57,7 +57,7 @@
       "md": "**make the first mistake cheap.** use a separate machine or a workspace without private files. connect one account, read only for a summary. leave payments, publishing and broad file access out.\n\ncompare the answer with the sources it names. add access when the next job needs it. connected accounts still reach beyond a separate computer.\n\nthe [computer-use safety guide](/guides/is-it-safe-to-let-ai-control-your-computer) covers watching and stopping the work."
     },
     {
-      "h": "how to set a boundary in dusk bot",
+      "h": "how to set a boundary in Metal",
       "md": "**in dusk, a read-only bot can bring you the summary without changing the account.** app access is off, read only, or read and write per bot. dusk blocks read-only changes before they reach the app.[^3]\n\nsending uses its own setting.[^4] ordinary edits, such as labels or page changes, can happen without asking. keep the first job read only; require confirmation if you later permit edits.\n\nadd trusted servers under plugins, mcp servers. the [mcp explainer](/guides/what-is-mcp) covers that connection."
     }
   ],
@@ -87,11 +87,11 @@
       "checked": "2026-11-12"
     },
     {
-      "label": "dusk bot docs: connected apps",
+      "label": "Metal docs: connected apps",
       "url": "/docs/files-and-apps"
     },
     {
-      "label": "dusk bot docs: sending and approval settings",
+      "label": "Metal docs: sending and approval settings",
       "url": "/docs/computer"
     }
   ],

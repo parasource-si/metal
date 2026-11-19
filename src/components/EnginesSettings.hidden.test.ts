@@ -81,10 +81,10 @@ describe("disconnecting a provider", () => {
   const confirmButton = (label: string) => [...document.querySelectorAll<HTMLButtonElement>("button")]
     .find((button) => button.textContent === label && !button.hasAttribute("data-disconnect-engine"))!;
 
-  it("signs out first where dusk bot can, so the signed-in app cannot bring it back", async () => {
+  it("signs out first where Metal can, so the signed-in app cannot bring it back", async () => {
     flushSync(() => root.render(createElement(DisconnectProvider, { instance: instance({ authentication: { method: "device-code", signOut: true } }) })));
     flushSync(() => host.querySelector<HTMLButtonElement>('[data-disconnect-engine="grok"]')!.click());
-    expect(document.body.textContent).toContain("dusk bot signs out of Grok");
+    expect(document.body.textContent).toContain("Metal signs out of Grok");
     flushSync(() => confirmButton("Disconnect").click());
     await settle();
     expect(fixture.calls.map((call) => call.path)).toEqual(["/api/instances/grok/auth/sign-out", "/api/instances/grok"]);

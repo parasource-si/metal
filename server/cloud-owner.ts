@@ -1,4 +1,4 @@
-// A dusk bot Cloud home is personal: only the owner's devices connect, each with an admin session. Every other stored session
+// A Dusk Cloud home is personal: only the owner's devices connect, each with an admin session. Every other stored session
 // is revoked at every boot, its key recorded first, so no crash can ever make it the owner's. Earlier keys settle once
 // (and after a restore): `adopted` keys keep who opened a conversation, its level and folder; only `proven` keys (a still
 // paired admin session, or one that answered a card) feed the owner's turns, memory and recall. Routines are the owner's only with proof.

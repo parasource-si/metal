@@ -25,11 +25,11 @@ const whereItLives = (environment) => (environment.kind === "local" ? environmen
 /** What the native About panel shows beside the app icon (Electron app.setAboutPanelOptions). */
 export function aboutPanelOptions(version) {
   return {
-    applicationName: "dusk bot",
+    applicationName: "Metal",
     applicationVersion: version,
     credits: "Your own team of AI bots, in a chat app",
     copyright: `© ${new Date().getFullYear()} dusk bot`,
-    website: "https://dusk.bot",
+    website: "https://github.com/parasource-si/metal",
   };
 }
 
@@ -89,10 +89,10 @@ export function buildApplicationMenu({ environments, activeId, onSwitch, onAddFr
     { role: "viewMenu" },
     { role: "windowMenu" },
     { role: "help", submenu: [
-      { label: "dusk bot help", click: () => void shell.openExternal("https://dusk.bot/docs") },
-      { label: "What's new", click: () => void shell.openExternal("https://dusk.bot/changelog") },
+      { label: "Metal help", click: () => void shell.openExternal("https://github.com/parasource-si/metal/tree/main/docs") },
+      { label: "What's new", click: () => void shell.openExternal("https://github.com/parasource-si/metal/blob/main/CHANGELOG.md") },
       { type: "separator" },
-      { label: "Contact support", click: () => void shell.openExternal("mailto:hello@dusk.bot") },
+      { label: "Contact support", click: () => void shell.openExternal("https://github.com/parasource-si/metal/issues") },
       ...(onExportUsageLog ? [{ label: "Export usage log…", click: () => onExportUsageLog() }] : []),
     ] },
   ];

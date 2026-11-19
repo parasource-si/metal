@@ -17,7 +17,7 @@ export interface AgentsConversation {
   host: { skillAuthoring: boolean; cloudHome: boolean; team: boolean; voiceNotes: boolean; x: boolean; research: boolean; slack?: boolean };
   /** The engine's driver kind: it decides whether the engine searches and reads the web on its own. */
   engine?: string;
-  /** The bot works on this Mac and macOS has not let dusk bot control its screen: request_screen_access is mounted. */
+  /** The bot works on this Mac and macOS has not let Metal control its screen: request_screen_access is mounted. */
   screenAccessMissing?: boolean;
 }
 

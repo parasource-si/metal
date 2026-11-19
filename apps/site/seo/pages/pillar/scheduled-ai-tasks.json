@@ -1,10 +1,10 @@
 {
   "path": "/scheduled-ai-tasks",
   "type": "pillar",
-  "title": "Scheduled AI tasks: compare four vendors and dusk bot",
+  "title": "Scheduled AI tasks: compare four vendors and Metal",
   "nav": "scheduled ai tasks",
   "h1": "scheduled ai tasks: what runs, where and when",
-  "description": "Compare Claude, ChatGPT, Gemini and Grok schedulers with dusk bot routines, including current limits and ten small jobs worth repeating.",
+  "description": "Compare Claude, ChatGPT, Gemini and Grok schedulers with Metal routines, including current limits and ten small jobs worth repeating.",
   "keyword": "claude scheduled tasks",
   "keywords": [
     "chatgpt scheduled tasks",
@@ -187,15 +187,15 @@
       "checked": "2026-11-12"
     },
     {
-      "label": "dusk bot: routines",
+      "label": "Metal: routines",
       "url": "/docs/routines"
     },
     {
-      "label": "dusk bot: troubleshooting",
+      "label": "Metal: troubleshooting",
       "url": "/docs/troubleshooting"
     },
     {
-      "label": "dusk bot: connected apps",
+      "label": "Metal: connected apps",
       "url": "/docs/files-and-apps"
     },
     {

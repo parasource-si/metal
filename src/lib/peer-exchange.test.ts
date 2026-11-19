@@ -21,7 +21,7 @@ describe("exchangeSummary", () => {
 
 describe("one chat per bot", () => {
   it("hides a teammate's question and the bot's own ask, and opens what came back", () => {
-    const peer = { id: "dusk", name: "dusk bot" };
+    const peer = { id: "dusk", name: "Metal" };
     expect(exchangeHidden({ kind: "single", direction: "inbound", peer })).toBe(true);
     expect(exchangeHidden({ kind: "single", direction: "outbound", as: "ask", peer })).toBe(true);
     expect(exchangeHidden({ kind: "single", direction: "outbound", as: "reply", peer })).toBe(false);
@@ -80,7 +80,7 @@ describe("exchangeRuns", () => {
     exchangeRuns(rows.map((row) => ({ rows: [row] })), (item: Item) => item.rows, exchangeEntries(rows, threadBotId)).map((run) => run.summary);
 
   it("reads a hand-off in the asker's chat as Asked then replied, the resume row folded in", () => {
-    const from = { botId: "dusk", name: "dusk bot", color: "blue" as const };
+    const from = { botId: "dusk", name: "Metal", color: "blue" as const };
     const to = { botId: "writer", name: "writer", color: "green" as const };
     const ref = { botId: "writer", threadId: "w", title: "@dusk bot · work" };
     const rows = [
@@ -102,13 +102,13 @@ describe("exchangeRuns", () => {
 
   it("reads the same exchange in the asked bot's chat as Message from then Responded to", () => {
     const rows = [
-      msg("ask", { text: "@writer What do you do?", roomRequest: { id: "r", phase: "request" }, from: { botId: "dusk", name: "dusk bot", color: "blue" }, at: 10 }),
+      msg("ask", { text: "@writer What do you do?", roomRequest: { id: "r", phase: "request" }, from: { botId: "dusk", name: "Metal", color: "blue" }, at: 10 }),
       msg("step", { kind: "activity", tool: { name: "Read", ok: true }, at: 11 }),
       msg("reply", { text: "I write.", at: 12 }),
     ];
     expect(runsOf(rows, "writer")).toEqual([
-      { kind: "single", direction: "inbound", peer: { id: "dusk", name: "dusk bot", color: "blue" } },
-      { kind: "single", direction: "outbound", as: "reply", peer: { id: "dusk", name: "dusk bot", color: "blue" } },
+      { kind: "single", direction: "inbound", peer: { id: "dusk", name: "Metal", color: "blue" } },
+      { kind: "single", direction: "outbound", as: "reply", peer: { id: "dusk", name: "Metal", color: "blue" } },
     ]);
   });
 });

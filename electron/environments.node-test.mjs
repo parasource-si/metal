@@ -244,9 +244,9 @@ test("the places line names this computer's bots briefly, says nothing when its 
 
 test("native window identity distinguishes hosted HTML, companion data, and the local workspace", () => {
   const state = { environments: [{ id: "old", name: "Old team", origin: "https://old.example" }], activeId: "old" };
-  assert.equal(env.workspaceWindowTitle(state), "dusk bot · Hosted: Old team (old.example)");
-  assert.equal(env.workspaceWindowTitle(state, { serverName: "Office", endpoint: "https://c-office.cloud.dusk.bot" }), "dusk bot · Connected to: Office (c-office.cloud.dusk.bot)");
-  assert.equal(env.workspaceWindowTitle(env.withActive(state, "local")), "dusk bot");
+  assert.equal(env.workspaceWindowTitle(state), "Metal · Hosted: Old team (old.example)");
+  assert.equal(env.workspaceWindowTitle(state, { serverName: "Office", endpoint: "https://c-office.cloud.dusk.bot" }), "Metal · Connected to: Office (c-office.cloud.dusk.bot)");
+  assert.equal(env.workspaceWindowTitle(env.withActive(state, "local")), "Metal");
 });
 
 test("a version 1 file parses as all-remote with kind stamped and activeId preserved, and serializes back as version 2", () => {
@@ -438,9 +438,9 @@ test("once My Cloud is home the switcher lists whole places only: My Cloud first
   assert.deepEqual(forgot, ["o"]);
   assert.equal(env.otherPlaces(state, home), 1);
   assert.equal(env.otherPlaces({ ...state, environments: state.environments.filter((entry) => entry.id !== "o") }, home), 0, "My Cloud alone: no switcher");
-  assert.equal(env.workspaceWindowTitle(state, null, home), "dusk bot · My Cloud", "with another place besides, the window names the one it shows");
-  assert.equal(env.workspaceWindowTitle({ ...state, environments: state.environments.filter((entry) => entry.id !== "o") }, null, home), "dusk bot", "the window onto home alone is simply the app");
-  assert.equal(env.workspaceWindowTitle({ ...state, activeId: "o" }, null, home), "dusk bot · Hosted: Office (office.example.test)");
+  assert.equal(env.workspaceWindowTitle(state, null, home), "Metal · My Cloud", "with another place besides, the window names the one it shows");
+  assert.equal(env.workspaceWindowTitle({ ...state, environments: state.environments.filter((entry) => entry.id !== "o") }, null, home), "Metal", "the window onto home alone is simply the app");
+  assert.equal(env.workspaceWindowTitle({ ...state, activeId: "o" }, null, home), "Metal · Hosted: Office (office.example.test)");
 });
 
 const TEAM = "https://dusk-u-acme.fly.dev";
@@ -454,7 +454,7 @@ test("the switcher lists My Cloud first, then each team from the session with th
   assert.deepEqual(items.map((item) => [item.label, item.sublabel, item.checked]), [["dusk cloud", "dusk-t-1.fly.dev", false], ["Acme", "Super admin", true], ["Office", "Your server · office.example.test", false]]);
   assert.deepEqual(env.workspaceMenuTemplate(state, { onSwitch() {}, onConnect() {}, onForget() {}, homeOrigin: home, foldSublabels: true }).map((item) => item.label), ["dusk cloud", "Acme · Super admin", "Office"]);
   for (const [role, label] of [["owner", "Super admin"], ["admin", "Admin"], ["member", "User"], ["other", "User"]]) assert.equal(env.teamRoleLabel(role), label, role);
-  assert.equal(env.workspaceWindowTitle(state, null, home), "dusk bot · Acme");
+  assert.equal(env.workspaceWindowTitle(state, null, home), "Metal · Acme");
   assert.deepEqual(env.workspaceSummary(state), { local: false, name: "Acme", origin: TEAM, role: "Super admin" });
   // Before the move (or a Team Owner, whose home is this computer): This computer, then each team with its role (no Forget), then servers as saved.
   const before = env.workspaceMenuTemplate(state, { onSwitch() {}, onConnect() {}, onForget() {} });

@@ -1,4 +1,4 @@
-# dusk bot harness server — hosted/self-hosted tenant image, and the
+# Metal harness server — hosted/self-hosted tenant image, and the
 # dusk cloud Pro home machine (docs/cloud-pro.md).
 #
 # Build the renderer + the self-contained server bundle, then ship only those
@@ -19,7 +19,7 @@
 #   docker buildx build -f deploy/docker/Dockerfile --platform linux/arm64 -t duskbot .   # Raspberry Pi 4/5, ARM servers
 #
 # HOME is the /data volume, so engine CLI logins (~/.claude, ~/.codex, ~/.grok,
-# ...) and dusk bot's own state (~/.duskbot) persist across container
+# ...) and Metal's own state (~/.duskbot) persist across container
 # restarts.
 #
 # A plain `docker run` of either image wants `--init --shm-size=512m`, as the

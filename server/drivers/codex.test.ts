@@ -738,7 +738,7 @@ process.stdout.write(JSON.stringify({jsonrpc:'2.0',id:m.id,result})+'\\n');});`)
       const input = calls.find((c) => c.method === "turn/start")?.params?.input as Array<{ text?: string }> | undefined;
       return input?.[0]?.text;
     };
-    expect(turnText(first)).toBe("Context from dusk bot updated since this conversation started; it replaces any earlier copy:\n\nMemory: likes quiet hours.\n\nfirst");
+    expect(turnText(first)).toBe("Context from Metal updated since this conversation started; it replaces any earlier copy:\n\nMemory: likes quiet hours.\n\nfirst");
     expect(turnText(second)).toBe("second");
     expect(turnText(third)).toContain("Memory: moved to Toronto.");
     expect(turnText(third)).toContain("third");
@@ -825,7 +825,7 @@ process.stdout.write(JSON.stringify({jsonrpc:'2.0',id:m.id,result})+'\\n');});`)
     },
   );
 
-  describe("dusk bot's own read profile", () => {
+  describe("Metal's own read profile", () => {
     type Call = { method: string; params: Record<string, any> };
     const turnCalls = async (threadId: string, input: Record<string, unknown>) => {
       const dump = join(scratch, `${threadId}.json`);
@@ -1304,7 +1304,7 @@ process.stdout.write(JSON.stringify({jsonrpc:'2.0',id:m.id,result})+'\\n');});`)
     expect(argv).toContain("mcp_servers.notes.command");
   });
 
-  it("reaches a url server through dusk bot's connector on Codex's own login, header values off argv", async () => {
+  it("reaches a url server through Metal's connector on Codex's own login, header values off argv", async () => {
     await create();
     const dump = join(scratch, "remote-mcp.json");
     process.env.FAKE_CODEX_DUMP = dump;
@@ -1379,7 +1379,7 @@ process.stdout.write(JSON.stringify({jsonrpc:'2.0',id:m.id,result})+'\\n');});`)
       expect(await recorder.until((event) => event.type === "turn.completed")).toMatchObject({ ok: true });
       const seen = JSON.parse(readFileSync(dump, "utf8"));
       expect(seen.mcpStartup.voluum).toEqual({ status: "ready", tools: ["report", "campaigns"] });
-      expect(strict.initializes).toEqual([{ protocolVersion: "2025-06-18", capabilities: {}, clientInfo: { name: "dusk bot tool proxy", version: "1" } }]);
+      expect(strict.initializes).toEqual([{ protocolVersion: "2025-06-18", capabilities: {}, clientInfo: { name: "Metal tool proxy", version: "1" } }]);
       expect(seen.argv.join(" ")).not.toContain("tok-voluum");
     });
 
@@ -1402,7 +1402,7 @@ process.stdout.write(JSON.stringify({jsonrpc:'2.0',id:m.id,result})+'\\n');});`)
       expect(strict.seenHeaders.at(-1)?.authorization).toBe("Bearer tok-refreshed");
     });
 
-    it("mounts dusk bot's own agents server as this server's endpoint on a Codex that takes it, with no proxy process", async () => {
+    it("mounts Metal's own agents server as this server's endpoint on a Codex that takes it, with no proxy process", async () => {
       const seenAuth: Array<string | undefined> = [];
       const harness = createServer(async (req, res) => {
         const url = new URL(req.url ?? "/", "http://fixture");
@@ -1468,7 +1468,7 @@ process.stdout.write(JSON.stringify({jsonrpc:'2.0',id:m.id,result})+'\\n');});`)
       expect(await recorder.until((event) => event.type === "turn.completed")).toMatchObject({ ok: true });
       const seen = JSON.parse(readFileSync(dump, "utf8"));
       expect(seen.mcpStartup.voluum).toEqual({ status: "ready", tools: ["report"] });
-      expect(strict.initializes).toEqual([{ protocolVersion: "2025-06-18", capabilities: {}, clientInfo: { name: "dusk bot tool proxy", version: "1" } }]);
+      expect(strict.initializes).toEqual([{ protocolVersion: "2025-06-18", capabilities: {}, clientInfo: { name: "Metal tool proxy", version: "1" } }]);
     });
   });
 
@@ -2215,7 +2215,7 @@ process.stdout.write(JSON.stringify({jsonrpc:'2.0',id:m.id,result})+'\\n');});`)
   it("reports local ChatGPT sign-out with a warning when remote revocation is unconfirmed", async () => {
     vi.spyOn(ChatGptPlanAuthController.prototype, "models").mockResolvedValue({ default: "gpt-6.1-sol", options: [{ id: "gpt-6.1-sol", label: "GPT-6.1 Sol" }] });
     vi.spyOn(ChatGptPlanAuthController.prototype, "snapshot").mockResolvedValue({ authenticated: false });
-    const message = "Signed out locally, but remote revocation was not confirmed. Disconnect dusk bot in ChatGPT Settings → Usage to end access there.";
+    const message = "Signed out locally, but remote revocation was not confirmed. Disconnect Metal in ChatGPT Settings → Usage to end access there.";
     vi.spyOn(ChatGptPlanAuthController.prototype, "signOut").mockRejectedValue(Object.assign(new Error(message), { code: "chatgpt_revocation_unconfirmed" }));
     await create({ authMode: "chatgpt-plan" });
     await expect(instance.signOut!()).resolves.toBeUndefined();
@@ -2782,14 +2782,14 @@ process.stdout.write(JSON.stringify({jsonrpc:'2.0',id:m.id,result})+'\\n');});`)
       requestType: "question",
       tool: "ask_user",
       summary: "Which source should I use?",
-      choices: ["Directly in dusk bot", "The official server in Executor"],
-      questions: [{ question: "Which source should I use?", options: [{ label: "Directly in dusk bot" }, { label: "The official server in Executor" }] }],
+      choices: ["Directly in Metal", "The official server in Executor"],
+      questions: [{ question: "Which source should I use?", options: [{ label: "Directly in Metal" }, { label: "The official server in Executor" }] }],
     });
     expect(recorder.events.find((e) => e.type === "item.completed" && e.itemType === "assistant_text")).toMatchObject({
-      text: "Which source should I use?\n- Directly in dusk bot\n- The official server in Executor",
+      text: "Which source should I use?\n- Directly in Metal\n- The official server in Executor",
     });
 
-    const answer = "The user answered your questions.\n\nQ: Which source should I use?\nA: Directly in dusk bot";
+    const answer = "The user answered your questions.\n\nQ: Which source should I use?\nA: Directly in Metal";
     await expect(instance.adapter.respondToRequest("t-async-question", opened.requestId!, { behavior: "answer", message: answer })).resolves.toBe("answered");
     expect(await recorder.until((e) => e.type === "request.resolved")).toMatchObject({ requestId: opened.requestId, behavior: "answer", source: "user" });
     expect(JSON.parse(readFileSync(dump, "utf8")).calls.find((c: any) => c.method === "turn/steer")?.params?.input).toEqual([{ type: "text", text: answer }]);
@@ -3566,7 +3566,7 @@ process.stdout.write(JSON.stringify({jsonrpc:'2.0',id:m.id,result})+'\\n');});`)
     const plus = "You've hit your usage limit. Upgrade to Pro (https://chatgpt.com/explore/pro), visit https://chatgpt.com/codex/settings/usage to purchase more credits or try again at 5:23 PM.";
     const said = codexUserError(plus, "own");
     expect(said).toContain("ChatGPT");
-    expect(said).toContain("not your dusk bot plan");
+    expect(said).toContain("not your Metal plan");
     expect(said).toMatch(/It resets at 5:23 PM \([^)]+\)\./);
     expect(said).not.toContain("Pro");
     expect(codexUserError("You've hit your usage limit for gpt-6.1-sol. Switch to another model now, or try again at Oct 17th, 2026 5:23 PM.", "own"))

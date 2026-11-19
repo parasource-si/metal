@@ -4,7 +4,7 @@
   "title": "Canva AI assistant for design files, assets and exports",
   "nav": "canva",
   "h1": "a canva bot for finding assets and preparing exports",
-  "description": "Find the right Canva design, see its export formats and follow the finished file. Copy routines for handoffs and asset naming with dusk bot.",
+  "description": "Find the right Canva design, see its export formats and follow the finished file. Copy routines for handoffs and asset naming with Metal.",
   "keyword": "chatgpt canva",
   "keywords": [
     "claude canva",
@@ -141,15 +141,15 @@
   ],
   "sources": [
     {
-      "label": "dusk bot docs: apps and files",
+      "label": "Metal docs: apps and files",
       "url": "/docs/files-and-apps"
     },
     {
-      "label": "dusk bot docs: routine schedules",
+      "label": "Metal docs: routine schedules",
       "url": "/docs/routines"
     },
     {
-      "label": "dusk bot docs: permissions and sending",
+      "label": "Metal docs: permissions and sending",
       "url": "/docs/computer"
     }
   ],

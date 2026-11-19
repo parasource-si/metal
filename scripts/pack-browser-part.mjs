@@ -14,9 +14,9 @@ import { browserBundleSpec } from "../server/browser-bundle-release.ts";
 import { verifyBrowserBundle } from "./prepare-browser.mjs";
 
 const root = fileURLToPath(new URL("../", import.meta.url));
-export const DOWNLOADS_BASE = "https://github.com/DuskBotAI/duskbot-releases/releases/download";
+export const DOWNLOADS_BASE = "https://github.com/parasource-si/metal/releases/download";
 
-export const partFileName = (version, target) => `DuskBot-${version}-browser-${target}.zip`;
+export const partFileName = (version, target) => `Metal-${version}-browser-${target}.zip`;
 
 /** Same vendor builds, same id: a later app version reuses the browser it already has. */
 export function browserPartId(target) {

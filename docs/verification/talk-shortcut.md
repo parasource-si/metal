@@ -1,6 +1,6 @@
 # Talk shortcut (hold to talk from any app)
 
-Turn on Settings → Talk to Dusk from any app (it is off until then), then hold ⌃⌥Space from any app, speak, let go. The words go to Dusk's "Quick asks"
+Turn on Settings → Talk to Metal from any app (it is off until then), then hold ⌃⌥Space from any app, speak, let go. The words go to Metal's "Quick asks"
 chat and a never-focused box at the bottom of the screen shows the reply.
 
 The real hotkey, the microphone, window focus and Spaces are macOS behavior:
@@ -51,16 +51,16 @@ or taller than the card shows a box the app never draws.
 ## Setup
 
 - A packaged build of the branch installed beside, never over, the installed
-  dusk bot (maintainers: the OMB2 side-by-side build). Never touch
-  `/Applications/Dusk Bot.app` or `~/.duskbot`.
+  Metal (maintainers: the OMB2 side-by-side build). Never touch
+  `/Applications/Metal.app` or `~/.duskbot`.
 - Launch with `DUSK_DATA_DIR=$HOME/.duskbot-test` unless the check needs real
-  bots. Only one running app may hold the key: quit any other dusk bot first.
+  bots. Only one running app may hold the key: quit any other Metal first.
 - Use composer dictation once first so Microphone and Speech Recognition are
   granted.
 
 ## By hand
 
-1. **Settings row.** Settings → General shows "Talk to Dusk from any app",
+1. **Settings row.** Settings → General shows "Talk to Metal from any app",
    on, "Hold ⌃⌥Space, speak, let go".
 2. **Hold, speak, release in another app.** In Safari's address bar: hold ⌃⌥,
    tap Space, say "what can you do", let go of ⌃⌥ (not Space). Expect live
@@ -68,22 +68,22 @@ or taller than the card shows a box the app never draws.
    then the reply, bottom-centre of that display. `osascript -e 'tell
    application "System Events" to name of first application process whose
    frontmost is true'` prints `Safari` before and after; the caret still blinks
-   in Safari; the box never takes focus and the dusk bot window never raises.
+   in Safari; the box never takes focus and the Metal window never raises.
 3. **Hide timing.** The box hides 12 s after the reply; with the pointer on it,
    it stays until the pointer leaves.
-4. **Click opens the chat.** Clicking it brings dusk bot forward on the "Quick
+4. **Click opens the chat.** Clicking it brings Metal forward on the "Quick
    asks" chat; the chat open before the ask had not changed until then.
 5. **Spaces and full screen.** In a full-screen app and on another Space, the
    box shows there.
 6. **No speech.** Tap and let go without speaking: the box closes, no error.
 7. **Voice already in use.** During a voice call, and while composer dictation
-   is on: "Voice is in use in dusk bot"; the call or dictation carries on.
+   is on: "Voice is in use in Metal"; the call or dictation carries on.
 8. **Mic indicator off after every speech use (scoped speech stop).** Start and
    stop composer dictation, take one push-to-talk call turn and one Live call
    turn: after each, the orange microphone indicator in the menu bar is off.
 9. **Chat recreated.** Delete the Quick asks chat, ask again: a new Quick asks
    chat.
-10. **Other key presets.** Switch to ⌃⇧Space: ⌃⌥Space does nothing in dusk bot
+10. **Other key presets.** Switch to ⌃⇧Space: ⌃⌥Space does nothing in Metal
     any more; ⌃⇧Space works and ends on letting go of ⌃ or ⇧. Repeat for
     ⌥⇧Space.
 11. **Off.** Turn it off: the key does nothing.
@@ -103,12 +103,12 @@ or taller than the card shows a box the app never draws.
     at most 240 px with its bottom edge showing (a Japanese reply is cut at ten
     lines).
 15. **My Cloud home.** After moving this computer's bots to My Cloud (window on
-    My Cloud's page): ⌃⌥Space does nothing in dusk bot and another app can take
+    My Cloud's page): ⌃⌥Space does nothing in Metal and another app can take
     it (`talk-shortcut:state` says unavailable, so no Settings row). Come home
     to this computer again: the key works without a restart. A box still up
-    when the move froze this computer says "Dusk lives on My Cloud now —
+    when the move froze this computer says "Metal lives on My Cloud now —
     talk to it there". A Quick asks chat link sent while My Cloud's page is
     shown does reach it as `chat:open`, and My Cloud has no such chat; with the
     key off there, no box makes one.
 16. **Server starting.** Quit, relaunch and press at once, before the window
-    loads: "dusk bot is still starting. Try again in a moment."
+    loads: "Metal is still starting. Try again in a moment."

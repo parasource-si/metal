@@ -120,7 +120,7 @@ test("a lapsed cookie: a new session from the Admin's one-time code, so the page
   const w = world({ cloud: { signedIn: false } });
   await w.home.show();
   assert.equal(w.pairs, 1);
-  assert.deepEqual(w.redeemed, [["cloud", { code: "AAAA-BBBB-CCCC", cookie: true, label: "dusk bot app" }]]);
+  assert.deepEqual(w.redeemed, [["cloud", { code: "AAAA-BBBB-CCCC", cookie: true, label: "Metal app" }]]);
   assert.deepEqual(w.went, [[CLOUD, CLOUD]], "signed in into the cookie first: one load, no sign-in page between");
   const refused = world({ cloud: { signedIn: false, redeems: false } });
   await refused.home.show();
@@ -754,7 +754,7 @@ test("a team on screen signs in again before its hour ends, without moving the p
   assert.deepEqual(w.teamPairs, ["team-acme"], "not before its time");
   await w.later(1);
   assert.deepEqual(w.teamPairs, ["team-acme", "team-acme"]);
-  assert.deepEqual(w.redeemed, [["team", { code: "TTTT-EEEE-AAAA", cookie: true, label: "dusk bot app" }]]);
+  assert.deepEqual(w.redeemed, [["team", { code: "TTTT-EEEE-AAAA", cookie: true, label: "Metal app" }]]);
   assert.equal(w.went.length, went, "the page never moved");
   assert.equal(w.pairs, 0, "never My Cloud's pairing");
   await w.later(TEAM_RENEW_MS);

@@ -99,11 +99,11 @@ const toolkitPageSchema = z.object({
 });
 const linkResponseSchema = z.object({ redirect_url: z.string().optional() });
 const aliasRequestSchema = z.object({ alias: z.string().nullable().optional(), callbackUrl: z.string().max(512).optional() });
-/** Security: Composio sends the browser to a callback only on dusk bot's own website, so this broker is never an open
+/** Security: Composio sends the browser to a callback only on the configured account website, so this broker is never an open
  *  redirect for anyone holding an installation */
 const CALLBACK_HOST = /^(?:[a-z0-9-]+\.)*dusk\.bot$/;
 
-/** a sign-in callback on dusk bot's website (https, its apps page with one `connect` state), or undefined */
+/** a sign-in callback on the configured account website (https, its apps page with one `connect` state), or undefined */
 export function brokerCallback(value: string | undefined): string | undefined {
   if (!value) return undefined;
   try {

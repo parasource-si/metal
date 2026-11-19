@@ -26,7 +26,7 @@ export interface CatalogProfile {
   /** A direct chat whose bot may pick where it works (Works on is not Off and no team computer is its own): select_computer
    * is mounted, and the harness refuses a pick on any turn but a person's own message. */
   computerSelection?: boolean;
-  /** The bot works on this Mac while macOS keeps dusk bot off its screen: request_screen_access is mounted. */
+  /** The bot works on this Mac while macOS keeps Metal off its screen: request_screen_access is mounted. */
   screenAccess?: boolean;
   /** A room's thread: the widget and page tools, which rooms refuse, and the wait tools, since a room holds no wait,
    * are not mounted. */

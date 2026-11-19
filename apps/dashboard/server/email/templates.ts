@@ -4,7 +4,7 @@ import type { Block, EmailConfig, Rendered } from "./layout.ts";
 export type { EmailConfig, Rendered } from "./layout.ts";
 
 const DAY = 86_400_000;
-const ACCOUNT_REASON = "you got this because you have a dusk bot account. it's about your account, so it can't be turned off.";
+const ACCOUNT_REASON = "you got this because you have a Metal account. it's about your account, so it can't be turned off.";
 
 export function emailConfig(env: NodeJS.ProcessEnv, { publicUrl, pageBase = "" }: { publicUrl: string; pageBase?: string }): EmailConfig {
   const origin = new URL(publicUrl).origin, trim = (value: string) => value.replace(/\/+$/, "");
@@ -52,31 +52,31 @@ const billingLink = (cfg: EmailConfig, before: string): Block => ({ t: "link", b
 
 /** the sign-in or sign-up code */
 /** the subject both sign-in code emails end with */
-export const CODE_SUBJECT = / is your dusk bot code$/;
+export const CODE_SUBJECT = / is your Metal code$/;
 export function codeEmail(cfg: EmailConfig, { code }: { code: string }): Rendered {
   return render(cfg, {
-    subject: `${code} is your dusk bot code`, preheader: `your dusk bot code is ${code}. it works for 10 minutes.`, tag: "sign in", ...SAY.code, transactional: true,
+    subject: `${code} is your Metal code`, preheader: `your Metal code is ${code}. it works for 10 minutes.`, tag: "sign in", ...SAY.code, transactional: true,
     blocks: [
       { t: "h1", text: "here's your code" },
       { t: "p", text: "pop it in where you signed in. it works for 10 minutes." },
       { t: "code", code },
       { t: "p", small: true, text: "didn't ask for this? you can ignore it. nobody gets in without the code." },
     ],
-    reason: "you got this because someone typed this address into dusk bot.",
+    reason: "you got this because someone typed this address into Metal.",
   });
 }
 
 /** the desktop app's sign-in or sign-up by email: one button that opens the website signed in, and the app follows */
 export function magicLinkEmail(cfg: EmailConfig, { link }: { link: string }): Rendered {
   return render(cfg, {
-    subject: "your dusk bot sign-in link", preheader: "open it to finish signing in. it works for 10 minutes.", tag: "sign in", ...SAY.code, transactional: true,
+    subject: "your Metal sign-in link", preheader: "open it to finish signing in. it works for 10 minutes.", tag: "sign in", ...SAY.code, transactional: true,
     blocks: [
       { t: "h1", text: "here's your sign-in link" },
-      { t: "button", label: "continue to dusk bot", href: link },
+      { t: "button", label: "continue to Metal", href: link },
       { t: "p", text: "it signs you in (or makes your account), and the app signs itself in too. it works for 10 minutes." },
       { t: "p", small: true, text: "didn't ask for this? you can ignore it. nobody gets in without the link." },
     ],
-    reason: "you got this because someone typed this address into dusk bot.",
+    reason: "you got this because someone typed this address into Metal.",
   });
 }
 
@@ -84,18 +84,18 @@ const WAYS: Record<string, string> = { email: "an emailed code", google: "google
 /** "can't sign in?": the code, a one-time link for the website, and the ways this address signs in. `ways` null: no
  *  account uses the address, so no code goes out */
 export function recoveryEmail(cfg: EmailConfig, { code, link = null, ways }: { code: string; link?: string | null; ways: string[] | null }): Rendered {
-  const reason = "you got this because someone asked to sign in to dusk bot with this address.";
+  const reason = "you got this because someone asked to sign in to Metal with this address.";
   if (!ways) return render(cfg, {
-    subject: "signing in to dusk bot", preheader: "no dusk bot account uses this address.", tag: "sign in", ...SAY.nobody, transactional: true,
+    subject: "signing in to Metal", preheader: "no Metal account uses this address.", tag: "sign in", ...SAY.nobody, transactional: true,
     blocks: [
       { t: "h1", text: "no account uses this address" },
-      { t: "p", text: "someone asked to sign in to dusk bot with this address, but no account uses it. try another address you use." },
+      { t: "p", text: "someone asked to sign in to Metal with this address, but no account uses it. try another address you use." },
       { t: "p", small: true, text: "didn't ask? you can ignore this email." },
     ], reason,
   });
   const list = joinOr(ways.map(way => WAYS[way] ?? way)) || WAYS.email;
   return render(cfg, {
-    subject: `${code} is your dusk bot code`, preheader: `your dusk bot code is ${code}. here's how you get back in.`, tag: "sign in", ...SAY.recover, transactional: true,
+    subject: `${code} is your Metal code`, preheader: `your Metal code is ${code}. here's how you get back in.`, tag: "sign in", ...SAY.recover, transactional: true,
     blocks: [
       { t: "h1", text: "here's how you get back in" },
       { t: "p", text: "use this code where you asked. it works for 10 minutes." },
@@ -110,10 +110,10 @@ export function recoveryEmail(cfg: EmailConfig, { code, link = null, ways }: { c
 /** after the first sign-up */
 export function welcomeEmail(cfg: EmailConfig, { cloudFromCents }: { cloudFromCents: number }): Rendered {
   return render(cfg, {
-    subject: "welcome to dusk bot", preheader: "a team of ai bots you text like teammates. here's how to get going.", tag: "welcome", ...SAY.welcome,
+    subject: "welcome to Metal", preheader: "a team of ai bots you text like teammates. here's how to get going.", tag: "welcome", ...SAY.welcome,
     blocks: [
-      { t: "h1", text: "welcome to dusk bot" },
-      { t: "p", text: "dusk bot is a chat app for a team of ai bots. you text them like teammates, and they get real work done on your computer." },
+      { t: "h1", text: "welcome to Metal" },
+      { t: "p", text: "Metal is a chat app for a team of ai bots. you text them like teammates, and they get real work done on your computer." },
       { t: "button", label: "get the app", href: `${cfg.site}/download` },
       { t: "cloud", eyebrow: "dusk cloud", title: "keep your bots awake 24/7",
         text: "your laptop sleeps. your bots don't have to. dusk cloud gives them their own always-on computer, so routines run on time and replies land while your lid is shut.",
@@ -148,7 +148,7 @@ export function cloudReadyEmail(cfg: EmailConfig, cloud: CloudFacts): Rendered {
       { t: "facts", rows: cloudRows(cloud, ["running", "ok"]) },
       { t: "h2", text: "what now" },
       { t: "steps", items: [
-        { title: "open the app and sign in", text: "use this email in dusk bot on your computer or phone. it finds your cloud by itself." },
+        { title: "open the app and sign in", text: "use this email in Metal on your computer or phone. it finds your cloud by itself." },
         { title: "move a bot over", text: "pick a bot that should never sleep and move it to your cloud." },
         { title: "give it a first routine", text: "try: **\"every morning at 8, send me the top ai news.\"**" },
       ] },
@@ -240,7 +240,7 @@ export function cloudDeletedEmail(cfg: EmailConfig, { name, at }: { name: string
       { t: "p", text: `we deleted **${name}** on ${formatDate(at)}. this can't be undone.` },
       { t: "h2", text: "what was removed" },
       { t: "list", items: ["the cloud computer itself", "the bots, chats, files and sign-ins that lived on it", "its backups, cleared out soon after if any are left"] },
-      { t: "note", tone: "info", text: "**what stays:** your dusk bot account, and the app and bots on your own computer." },
+      { t: "note", tone: "info", text: "**what stays:** your Metal account, and the app and bots on your own computer." },
       { t: "button", label: "start a new cloud", href: `${cfg.app}/cloud` },
     ],
     reason: ACCOUNT_REASON,
@@ -249,16 +249,16 @@ export function cloudDeletedEmail(cfg: EmailConfig, { name, at }: { name: string
 
 export function accountDeletedEmail(cfg: EmailConfig, { email }: { email: string }): Rendered {
   return render(cfg, {
-    subject: "your dusk bot account is deleted", preheader: `everything tied to ${email} is gone.`, tag: "account", ...SAY.bye,
+    subject: "your Metal account is deleted", preheader: `everything tied to ${email} is gone.`, tag: "account", ...SAY.bye,
     blocks: [
       { t: "h1", text: "your account is deleted" },
-      { t: "p", text: `thanks for trying dusk bot. the account for **${email}** is gone, and here's what went with it:` },
+      { t: "p", text: `thanks for trying Metal. the account for **${email}** is gone, and here's what went with it:` },
       { t: "list", items: ["your account, sign-ins and sessions", "your plans, so no more charges", "your clouds: each one stops (at once, or when its paid time ends), is kept 30 days, then deleted with everything on it"] },
-      { t: "note", tone: "info", text: "**what stays:** the dusk bot app and your bots on your own computer are yours. uninstall the app to remove them. payment records we have to keep by law stay, without your details." },
+      { t: "note", tone: "info", text: "**what stays:** the Metal app and your bots on your own computer are yours. uninstall the app to remove them. payment records we have to keep by law stay, without your details." },
       { t: "p", text: "if you ever want back in, signing up again takes a minute." },
       { t: "p", small: true, text: "didn't delete your account? reply to this email right away." },
     ],
-    reason: "you got this because your dusk bot account was just deleted. this is the last email we send to this address.",
+    reason: "you got this because your Metal account was just deleted. this is the last email we send to this address.",
   });
 }
 
@@ -278,7 +278,7 @@ export function promoEmail(cfg: EmailConfig, input: PromoInput): Rendered {
       { t: "button", label: input.cta.label, href: input.cta.href },
       ...input.features.map(feature => ({ t: "feature", image: feature.image ?? null, alt: feature.alt ?? "", title: feature.title, text: feature.text }) as Block),
     ],
-    reason: "You got this because you signed up for dusk bot news.", unsubscribe: input.unsubscribe,
+    reason: "You got this because you signed up for Metal news.", unsubscribe: input.unsubscribe,
   });
 }
 
@@ -327,14 +327,14 @@ export function cloudDeletionEmail(cfg: EmailConfig, { kind, name, at, link, day
 /** an owner's invite to their team; the link carries the token in its fragment, so it never reaches a server log */
 export function teamInviteEmail(cfg: EmailConfig, { team, from, link, expiresAt }: { team: string; from: string; link: string; expiresAt: number }): Rendered {
   return render(cfg, {
-    subject: `${from} invited you to ${team} on dusk bot`, preheader: `join ${team} and use its bots and its dusk cloud. the link works until ${formatDate(expiresAt)}.`, tag: "team", ...SAY.invite, transactional: true,
+    subject: `${from} invited you to ${team} on Metal`, preheader: `join ${team} and use its bots and its dusk cloud. the link works until ${formatDate(expiresAt)}.`, tag: "team", ...SAY.invite, transactional: true,
     blocks: [
       { t: "h1", text: `join ${team}` },
-      { t: "p", text: `**${from}** invited you to their team on dusk bot. once you're in, you open the team's dusk cloud from the dusk bot app and use the bots they share with you.` },
+      { t: "p", text: `**${from}** invited you to their team on Metal. once you're in, you open the team's dusk cloud from the Metal app and use the bots they share with you.` },
       { t: "button", label: "join the team", href: link },
       { t: "p", small: true, text: `sign in with this email address to join. the link works once, until ${formatDate(expiresAt)}. weren't expecting this? ignore it and nothing happens.` },
     ],
-    reason: "you got this because someone with a dusk bot team plan invited this address.",
+    reason: "you got this because someone with a Metal team plan invited this address.",
   });
 }
 

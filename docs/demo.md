@@ -1,6 +1,6 @@
 # The demo workspace
 
-`pnpm demo` starts a second, fully separate dusk bot filled with the test bots below, so you can click through every screen
+`pnpm demo` starts a second, fully separate Metal filled with the test bots below, so you can click through every screen
 and talk to bots that reply for real, without touching your own workspace.
 
 ```sh

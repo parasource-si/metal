@@ -3,8 +3,8 @@ export const KEEP_WORDS: ReadonlySet<string> = new Set([
   // companies and products
   "Agentcard", "Android", "AssemblyAI", "Cartesia", "Deepgram", "Whisper", "Anthropic", "Antigravity", "Apple", "Azure", "Bionic", "Caddy", "Cerebras", "Chatterbox", "Chrome",
   "Claude", "Clef", "Cloudflare", "Codex", "Copilot", "Composio", "Cua", "Cursor", "Debian", "Discord", "Docker", "Dropbox", "Electron", "Entra", "Firefox",
-  "Foundry", "Gemini", "Gmail", "Google", "Greenference", "Grok", "Groq", "Jev", "Kimi", "Linux", "Mac", "Markdown",
-  "Mermaid", "Meta", "Microsoft", "Mistral", "Moonshot", "Muse", "Node", "Notion", "Ollama", "OpenClaw", "Outlook", "Pi", "Podman",
+  "Foundry", "Gemini", "Gmail", "GitHub", "Google", "Greenference", "Grok", "Groq", "Jev", "Kimi", "Linux", "Mac", "Markdown",
+  "Mermaid", "Meta", "Metal", "Microsoft", "Mistral", "Moonshot", "Muse", "Node", "Notion", "Ollama", "OpenClaw", "Outlook", "Pi", "Podman",
   "PowerShell", "Qwen", "Reddit", "Safari", "Slack", "Stripe", "Tailscale", "Telegram", "Terminal", "Twitter", "Ubuntu",
   "Unsloth", "Venice", "Vercel", "Wayland", "Whop", "Windows", "Windsurf", "Xorg", "Accessibility", "Downloads", "Applications",
   // people and places
@@ -23,7 +23,7 @@ export const KEEP_PHRASES: readonly string[] = [
   "Screen Recording", "Speech Recognition", "Microphone and Speech Recognition", "Dictation in System Settings → Keyboard", "Dictation in System Settings",
   "Authorization: Bearer", "Authorization, with Bearer", "Gmail, Calendar",
   "Home Screen", "App Store", "Google Play", "Apple Pay", "Google Pay", "G Pay", "Mac mini",
-  "Dusk Bot", "Claude Code", "Hermes Agent", "Kimi Code", "Fish Audio", "LM Studio", "Google AI Studio", "Hacker News", "Vercel AI Gateway",
+  "Dusk account", "Dusk companion", "Claude Code", "Hermes Agent", "Kimi Code", "Fish Audio", "LM Studio", "Google AI Studio", "Hacker News", "Vercel AI Gateway",
   "Cloudflare Workers AI", "OpenCode Zen, Go", "OpenCode Zen and Go", "DeepSeek Harness", "Grok Imagine", "Muse Wonder", "Wispr Flow",
   "Cua Driver", "VS Code", "Node.js", "Wi-Fi", "Gmail, Calendar or Drive", "Outlook, Calendar or OneDrive", "Google Drive",
   "1Password", "AirPods Pro", "Google Calendar", "Google Sheets", "Google Docs", "Google Meet", "Microsoft Teams", "X Developer",
@@ -59,7 +59,7 @@ function caseRun(text: string): string {
     .replace(WORD, caseWord);
 }
 
-/** Dusk writes its own words in lowercase; other companies' names keep the case they write them in. */
+/** Normalize copy before restoring sentence capitalization and keeping product names as written. */
 export function brandCase(text: string): string {
   let out = "";
   let last = 0;
@@ -94,7 +94,7 @@ export function isFragment(key: string): boolean {
 }
 
 /** lowercase words a string may start with: other companies' own lowercase names and commands typed as written */
-export const LOWERCASE_STARTS: readonly string[] = ["dusk bot", "dusk cloud", "npm", "pnpm", "npx", "noVNC", "iPhone", "iPad", "iOS", "macOS", "x.com", "e.g."];
+export const LOWERCASE_STARTS: readonly string[] = ["dusk cloud", "npm", "pnpm", "npx", "noVNC", "iPhone", "iPad", "iOS", "macOS", "x.com", "e.g."];
 
 const ABBREVIATION_BEFORE = /\b(?:e\.g|i\.e|etc|vs|approx)\.\s*$/i;
 
@@ -136,7 +136,7 @@ export const QUOTED_BUTTONS: readonly string[] = ["Take over", "Take control", "
 const QUOTED_BUTTON = new RegExp(`(?<![\\w'’])(?:${[...QUOTED_BUTTONS].sort((a, b) => b.length - a.length).map((name) => name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|")})(?![\\w'’])`, "g");
 
 /** the policy for one English entry: sentence case everywhere (labels, buttons, titles, messages), other companies' names keep
- * their own case, "dusk bot" and "dusk cloud" stay lowercase, and the fragments filled into another line stay lowercase */
+ * their own case, "dusk cloud" stays lowercase, and the fragments filled into another line stay lowercase */
 export function entryCase(key: string, value: string): string {
   if (EXEMPT_KEYS.some((pattern) => pattern.test(key))) return value;
   if (isFragment(key)) return brandCase(value);

@@ -63,7 +63,7 @@ async function mount(integrations: Parameters<typeof mountChatTools>[0], compute
   return session;
 }
 
-describe("dusk bot's own servers on the chat runtime", () => {
+describe("Metal's own servers on the chat runtime", () => {
   it("answers the agents server in this process with the turn's token, starting no child", async () => {
     const stub = await harness((_request, _body, response) => json(response, { bots: [{ id: "b2", name: "Quill", model: "fake" }] }));
     const session = await mount({ agents: agentsServer(stub.url) });

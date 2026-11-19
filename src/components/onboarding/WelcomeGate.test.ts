@@ -156,7 +156,7 @@ describe("who gets the welcome flow", () => {
     expect(panelOpens()).toEqual([]);
   });
 
-  it("leaves a dusk bot Cloud home's first run to its engine sign-in", () => {
+  it("leaves a dusk cloud home's first run to its engine sign-in", () => {
     vi.stubGlobal("window", REMOTE_PAGE);
     expect(gate({ canSave: true, cloudHome: true }).tree).toBeNull();
     store.state = { ...store.state, welcomeOpen: true };

@@ -11,7 +11,7 @@ import { removeTempDir, waitForExit } from "./testing/cleanup.ts";
 import { freePortBlock } from "./testing/ports.ts";
 
 const SERVER_DIR = dirname(fileURLToPath(import.meta.url));
-const ENTRY = join(SERVER_DIR, "duskbot.ts");
+const ENTRY = join(SERVER_DIR, "metal.ts");
 const run = promisify(execFile);
 
 let home: string;
@@ -34,7 +34,7 @@ const cli = async (args: string[]) => {
   }
 };
 
-describe.skipIf(process.platform === "win32")("duskbot serve under service loopback trust", () => {
+describe.skipIf(process.platform === "win32")("metal serve under service loopback trust", () => {
   beforeAll(async () => {
     home = mkdtempSync(join(tmpdir(), "dusk-cli-service-"));
     PORT = await freePortBlock([0, 1]);

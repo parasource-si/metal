@@ -33,7 +33,7 @@ const ENTRY_POINTS = [
   "index.ts",
   "message-search.worker.ts",
   // the `duskbot` command
-  "duskbot.ts",
+  "metal.ts",
   "pair-cli.ts",
   "workspace-backup.worker.ts",
   "pdf-text.worker.ts",
@@ -90,9 +90,11 @@ await build({
   banner: NODE_REQUIRE,
   // every entry reads the old env names first, whichever process starts it
   inject: [join(root, "electron", "legacy-names.mjs")],
-  // dusk bot's own OAuth clients (shared/native-connectors.json), from the release environment
+  // Metal's own OAuth clients (shared/native-connectors.json), from the release environment
   define: { DUSK_BUILD_DEVICE_CLIENTS: JSON.stringify(JSON.stringify(nativeClients())) },
 });
+
+writeFileSync(join(root, "dist-server", "duskbot.js"), 'import "./metal.js";\n');
 
 // External MCP clients launch this as an independent stdio process, so release
 // users need no repository, TypeScript, pnpm or node_modules.
@@ -108,7 +110,7 @@ await build({
   plugins: [serverLocalePlugin],
 });
 
-// `duskbot serve --tunnel` spawns the connector guardian as its own
+// `metal serve --tunnel` spawns the connector guardian as its own
 // process, so it must exist as a file beside the server.
 await build({
   entryPoints: [join(root, "electron", "managed-companion-guardian-main.mjs")],

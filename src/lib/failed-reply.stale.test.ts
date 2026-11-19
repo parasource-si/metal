@@ -32,7 +32,7 @@ describe("old error words", () => {
   it("never shows an old app name", () => {
     const line = currentFailureWords("OpenMausBot can't use this computer yet: no running desktop. MausBot and Maus Bot too.");
     expect(line).not.toMatch(/maus/i);
-    expect(line).toContain("dusk bot can't use this computer yet");
+    expect(line).toContain("Metal can't use this computer yet");
   });
 
   it("leaves current words alone", () => {

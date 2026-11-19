@@ -4,7 +4,7 @@
   "title": "Personal AI agents: how to choose one that fits",
   "nav": "personal ai agent",
   "h1": "a personal ai agent that fits your actual day",
-  "description": "Compare personal AI agent types by where you talk, where they run and what you pay for. See where dusk bot fits, its phone limits and a small trial to try.",
+  "description": "Compare personal AI agent types by where you talk, where they run and what you pay for. See where Metal fits, its phone limits and a small trial to try.",
   "keyword": "personal ai agent",
   "keywords": [
     "personal ai agent app",
@@ -52,7 +52,7 @@
       {
         "label": "bots you keep in a desktop app",
         "cells": [
-          "dusk bot: named bots with jobs, chats and memory; local, cloud or your server",
+          "Metal: named bots with jobs, chats and memory; local, cloud or your server",
           "do you want to manage several distinct helpers?"
         ],
         "src": [
@@ -103,11 +103,11 @@
     },
     {
       "h": "tell it once, then keep the memory useful",
-      "md": "**teach it the preference you keep repeating.** each dusk bot keeps its own memory. about me in settings shares your name, time zone and writing preferences with all bots.\n\nread and edit notes in memory settings when an assumption changes. turning off let this bot use memory leaves the files on disk.[^7]\n\nstart connected apps read only. if you grant writes later, say \"ask me before you change anything\"; app edits do not automatically ask.[^8]\n\nyour text goes from the bot’s machine to your chosen ai provider. local storage and local ai are separate choices. ollama and lm studio offer the local-model route.[^1]"
+      "md": "**teach it the preference you keep repeating.** each Metal bot keeps its own memory. about me in settings shares your name, time zone and writing preferences with all bots.\n\nread and edit notes in memory settings when an assumption changes. turning off let this bot use memory leaves the files on disk.[^7]\n\nstart connected apps read only. if you grant writes later, say \"ask me before you change anything\"; app edits do not automatically ask.[^8]\n\nyour text goes from the bot’s machine to your chosen ai provider. local storage and local ai are separate choices. ollama and lm studio offer the local-model route.[^1]"
     },
     {
       "h": "compare complete bills",
-      "md": "**add up the work, the computer and any license you need.** as of 12 november 2026, dusk’s desktop app includes every feature free for personal use. work needs a license. your ai provider bills usage separately.\n\ncloud prices cover the computer, with ai separate:[^9]\n\n- plus: $20 monthly or $200 yearly\n- pro: $50 monthly or $500 yearly\n\npoke lists free and pro at $19 monthly. manus lists free and pro at $20 monthly with 4,000 monthly credits.[^10][^11] look at what your job consumes before comparing prices.\n\nwhen a dusk bot’s ai plan runs out, it tells you. wait for the reset or switch ai. cloud hosting keeps the machine awake; it does not add ai allowance."
+      "md": "**add up the work, the computer and any license you need.** as of 12 november 2026, dusk’s desktop app includes every feature free for personal use. work needs a license. your ai provider bills usage separately.\n\ncloud prices cover the computer, with ai separate:[^9]\n\n- plus: $20 monthly or $200 yearly\n- pro: $50 monthly or $500 yearly\n\npoke lists free and pro at $19 monthly. manus lists free and pro at $20 monthly with 4,000 monthly credits.[^10][^11] look at what your job consumes before comparing prices.\n\nwhen a Metal bot’s ai plan runs out, it tells you. wait for the reset or switch ai. cloud hosting keeps the machine awake; it does not add ai allowance."
     },
     {
       "h": "where dusk earns its place",
@@ -138,11 +138,11 @@
   ],
   "sources": [
     {
-      "label": "dusk bot docs: personal bots and ai choices",
+      "label": "Metal docs: personal bots and ai choices",
       "url": "/docs/getting-started"
     },
     {
-      "label": "dusk bot docs: where bots live",
+      "label": "Metal docs: where bots live",
       "url": "/docs/dusk-cloud"
     },
     {
@@ -161,19 +161,19 @@
       "checked": "2026-11-12"
     },
     {
-      "label": "dusk bot docs: phone browser and pairing",
+      "label": "Metal docs: phone browser and pairing",
       "url": "/docs/phone"
     },
     {
-      "label": "dusk bot docs: memory controls",
+      "label": "Metal docs: memory controls",
       "url": "/docs/memory"
     },
     {
-      "label": "dusk bot docs: app permissions",
+      "label": "Metal docs: app permissions",
       "url": "/docs/files-and-apps"
     },
     {
-      "label": "dusk bot docs: charges and work licensing",
+      "label": "Metal docs: charges and work licensing",
       "url": "/docs/account-and-billing"
     },
     {
@@ -187,7 +187,7 @@
       "checked": "2026-11-12"
     },
     {
-      "label": "dusk bot docs: license and moving bots",
+      "label": "Metal docs: license and moving bots",
       "url": "/docs/faq"
     }
   ],
@@ -212,7 +212,7 @@
       ],
       [
         "keeping separate helpers and their memory",
-        "dusk bot"
+        "Metal"
       ],
       [
         "asking a cloud agent for a finished deliverable",

@@ -1,14 +1,14 @@
 [
-  { "name": "home", "title": "dusk bot", "description": "Your own team of AI bots, in a chat app, on the AI accounts you already have. Free on your computer, and on dusk cloud they keep working with your laptop off." },
-  { "name": "download", "title": "download / dusk bot", "description": "Download dusk bot for macOS, Windows and Linux." },
-  { "name": "waitlist", "title": "join the waitlist / dusk bot", "description": "turn the ai you already pay for into bots you text like teammates. leave your email and get dusk bot early.", "scripts": ["waitlist.js"], "styles": ["waitlist.css"] },
-  { "name": "pricing", "title": "pricing / dusk bot", "description": "Keep your bots working with your laptop off on dusk cloud, from $20 a month. The app is free for personal use, with every feature." },
-  { "name": "about", "title": "about / dusk bot", "description": "What dusk bot is, how it is built, and who makes it." },
-  { "name": "contact", "title": "contact / dusk bot", "description": "Write to the people who make dusk bot: help, security reports and privacy requests." },
-  { "name": "support", "title": "help / dusk bot", "description": "Get help with dusk bot, the phone app and your account, and reach a person." },
-  { "name": "delete-account", "title": "delete your account / dusk bot", "description": "How to delete your dusk bot account, and what happens to your data." },
-  { "name": "brand", "title": "brand / dusk bot", "description": "The dusk bot mark, the bots, the colours and a short description, for writing about dusk bot." },
-  { "name": "m/pair", "title": "link your phone / dusk bot", "description": "Get dusk bot on your iPhone, then link it to your computer with this code.", "scripts": ["phone-link.js"], "styles": ["phone-link.css"], "og": "download", "noindex": true },
-  { "name": "m/signin", "title": "log in on your phone / dusk bot", "description": "Get dusk bot on your iPhone and log in to dusk cloud.", "scripts": ["phone-link.js"], "styles": ["phone-link.css"], "og": "download", "noindex": true },
-  { "name": "404", "title": "not found / dusk bot", "description": "This page is not here." }
+  { "name": "home", "title": "Metal", "description": "Your own team of AI bots, in a chat app, on the AI accounts you already have. Free on your computer, and on dusk cloud they keep working with your laptop off." },
+  { "name": "download", "title": "download / Metal", "description": "Download Metal for macOS, Windows and Linux." },
+  { "name": "waitlist", "title": "join the waitlist / Metal", "description": "turn the ai you already pay for into bots you text like teammates. leave your email and get Metal early.", "scripts": ["waitlist.js"], "styles": ["waitlist.css"] },
+  { "name": "pricing", "title": "pricing / Metal", "description": "Keep your bots working with your laptop off on dusk cloud, from $20 a month. The app is free for personal use, with every feature." },
+  { "name": "about", "title": "about / Metal", "description": "What Metal is, how it is built, and who makes it." },
+  { "name": "contact", "title": "contact / Metal", "description": "Write to the people who make Metal: help, security reports and privacy requests." },
+  { "name": "support", "title": "help / Metal", "description": "Get help with Metal, the phone app and your account, and reach a person." },
+  { "name": "delete-account", "title": "delete your account / Metal", "description": "How to delete your upstream Dusk Cloud account and what happens to your data." },
+  { "name": "brand", "title": "brand / Metal", "description": "The Metal mark, the bots, the colours and a short description, for writing about Metal." },
+  { "name": "m/pair", "title": "link your phone / Metal", "description": "Link Metal on your phone to your computer with this code.", "scripts": ["phone-link.js"], "styles": ["phone-link.css"], "og": "download", "noindex": true },
+  { "name": "m/signin", "title": "log in on your phone / Metal", "description": "Log in to upstream Dusk Cloud from Metal on your phone.", "scripts": ["phone-link.js"], "styles": ["phone-link.css"], "og": "download", "noindex": true },
+  { "name": "404", "title": "not found / Metal", "description": "This page is not here." }
 ]

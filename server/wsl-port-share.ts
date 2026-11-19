@@ -36,8 +36,8 @@ function answers(host: string, port: number, timeoutMs: number): Promise<boolean
 
 export function sharedPortWarning(port: number, host: string): string {
   return `[port] another program on Windows (${host}) also listens on port ${port}. WSL forwards this server's ${port} to `
-    + `127.0.0.1 on Windows, so that program's own local calls reach dusk bot instead and fail as unauthorized `
-    + `(an OpenMausBot or MausBot server does this). Give dusk bot its own port, such as --port 8789 or DUSK_PORT=8789, `
+    + `127.0.0.1 on Windows, so that program's own local calls reach Metal instead and fail as unauthorized `
+    + `(an OpenMausBot or MausBot server does this). Give Metal its own port, such as --port 8789 or DUSK_PORT=8789, `
     + `or move the other program.`;
 }
 

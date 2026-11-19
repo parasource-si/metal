@@ -3,10 +3,10 @@ import { macCuaPermissionHelper, macCuaPermissionMessage, missingMacCuaPermissio
 
 describe("macOS CUA permission recovery", () => {
   it("names only the grants the host reported missing", () => {
-    expect(missingMacCuaPermissions("embedded host failed: Screen Recording required; restart dusk bot")).toEqual(["screen"]);
+    expect(missingMacCuaPermissions("embedded host failed: Screen Recording required; restart Metal")).toEqual(["screen"]);
     expect(missingMacCuaPermissions("Accessibility and Screen Recording required")).toEqual(["screen", "accessibility"]);
-    expect(macCuaPermissionMessage(["accessibility"])).toContain("Accessibility is required for dusk bot");
-    expect(macCuaPermissionMessage(["screen"])).toContain("relaunch dusk bot");
+    expect(macCuaPermissionMessage(["accessibility"])).toContain("Accessibility is required for Metal");
+    expect(macCuaPermissionMessage(["screen"])).toContain("relaunch Metal");
   });
 
   it("tells the person to turn on CuaDriver, not to relaunch, when the helper app waits for a grant", () => {
@@ -18,9 +18,9 @@ describe("macOS CUA permission recovery", () => {
     expect(message).toContain("Screen Recording");
     expect(message).not.toContain("relaunch");
     expect(macCuaPermissionMessage(["screen", "accessibility"], reason)).toContain("Screen Recording and Accessibility");
-    expect(macCuaPermissionHelper("embedded host failed: Screen Recording required; restart dusk bot")).toBeNull();
+    expect(macCuaPermissionHelper("embedded host failed: Screen Recording required; restart Metal")).toBeNull();
     // the server's line for the chat names the grant the same way, so the card offers its pane
-    expect(missingMacCuaPermissions("dusk bot can't use this computer yet: Screen Recording required. Turn on CuaDriver in System Settings > Privacy & Security > Screen Recording; dusk bot notices by itself, no restart needed.")).toEqual(["screen"]);
+    expect(missingMacCuaPermissions("Metal can't use this computer yet: Screen Recording required. Turn on CuaDriver in System Settings > Privacy & Security > Screen Recording; Metal notices by itself, no restart needed.")).toEqual(["screen"]);
   });
 
   it("does not diagnose missing or malformed status as a grant failure", () => {

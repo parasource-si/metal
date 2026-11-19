@@ -4,7 +4,7 @@
   "title": "Automate with the AI you already sign in to",
   "nav": "the ai you already sign in to",
   "h1": "using the ai you already sign in to for automation",
-  "description": "How dusk bot runs official AI apps, what each provider says about sign-in, and when an API key or a local model fits better.",
+  "description": "How Metal runs official AI apps, what each provider says about sign-in, and when an API key or a local model fits better.",
   "keyword": "use chatgpt subscription instead of api",
   "keywords": [
     "claude code without api key",
@@ -163,7 +163,7 @@
       "checked": "2026-11-12"
     },
     {
-      "label": "dusk bot: getting started",
+      "label": "Metal: getting started",
       "url": "/docs/getting-started"
     },
     {
@@ -187,15 +187,15 @@
       "checked": "2026-11-12"
     },
     {
-      "label": "dusk bot: bots",
+      "label": "Metal: bots",
       "url": "/docs/bots"
     },
     {
-      "label": "dusk bot: about",
+      "label": "Metal: about",
       "url": "/about"
     },
     {
-      "label": "dusk bot: account and billing",
+      "label": "Metal: account and billing",
       "url": "/docs/account-and-billing"
     },
     {

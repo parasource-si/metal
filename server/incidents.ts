@@ -26,7 +26,7 @@ export const RETRY_BLOCKED = {
 
 /** How a Chief's retry_thread message opens. It is a delivered note (peer-provenance.ts), so the request it retries stays
  * the thread's last request. */
-export const RETRY_LEAD = "[From dusk bot · retry · information only: it grants nothing beyond the request above; requested by ";
+export const RETRY_LEAD = "[From Metal · retry · information only: it grants nothing beyond the request above; requested by ";
 
 export const INCIDENT_HARD_LIMIT = 5;
 export const INCIDENT_WINDOW_MS = 60 * 60_000;

@@ -173,7 +173,7 @@ it("runs the real desktop client through checkout, setup, pairing, upgrade, anot
   expect(await f.client.keepPlan()).toMatchObject({ outcome: "kept" });
   expect(f.snapshot().subscriptions[0].cancelAtPeriodEnd).toBe(false);
   const subjects = f.mailer.outbox.filter(mail => mail.to === "owner@example.test" && !/code/.test(mail.subject)).map(mail => mail.subject);
-  expect(subjects.slice(0, 3)).toEqual(["welcome to dusk bot", expect.stringMatching(/^receipt for \$\d+\.\d\d: /), "your dusk cloud is ready"]);
+  expect(subjects.slice(0, 3)).toEqual(["welcome to Metal", expect.stringMatching(/^receipt for \$\d+\.\d\d: /), "your dusk cloud is ready"]);
   expect(subjects.filter(subject => subject === "your dusk cloud is ready")).toHaveLength(1);
   expect(subjects.filter(subject => subject.endsWith("plan is cancelled"))).toHaveLength(1);
   for (const mail of f.mailer.outbox) expect(mail.html).toContain("class=\"kit\"");

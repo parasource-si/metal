@@ -8,7 +8,7 @@ description is in [self-hosting](../self-hosting.md#loopback-trust-owner-or-serv
 ## Sub-features
 
 - **Loopback trust.** At start-up the server logs `local requests: owner
-  trust (…)` or `local requests: service trust (…)`. A self-hosted server defaults to `owner`; dusk cloud defaults to `service`.
+  trust (…)` or `local requests: service trust (…)`. A self-hosted server defaults to `owner`; Dusk Cloud defaults to `service`.
   `DUSK_LOOPBACK_TRUST=owner|service` overrides (anything else means
   `service`); the desktop app always keeps `owner` behind its per-launch
   capability. Under `service` a session-less loopback request may use only
@@ -20,11 +20,11 @@ description is in [self-hosting](../self-hosting.md#loopback-trust-owner-or-serv
   exactly the set the cloud Slack worker calls (checked against the cloud
   repository's worker source, every released version), so the deployed
   worker needs no change.
-- **The CLI under service trust.** `duskbot serve` hands the server it
+- **The CLI under service trust.** `metal serve` hands the server it
   starts a per-launch secret over the server's stdin; that secret opens
   `/api/auth/pairing` for that CLI alone, so `serve` still prints the first
   pairing code, and if a code is refused anyway it says why and keeps the
-  server running. Later `duskbot pair` and `duskbot sessions` are
+  server running. Later `metal pair` and `metal sessions` are
   refused with an explanation. A browser on an SSH tunnel gets the sign-in
   page, not an app whose every admin call fails.
 - **Who may answer a card.** With an email sign-in list
@@ -74,7 +74,7 @@ pnpm exec vitest run server/request-auth.test.ts server/decision-log.test.ts \
   cannot approve (or use the bot-scoped route or always-allow) but can
   decline, while a Slack-shaped guarded request stays answerable by any
   member. Each answer's decision row and card name who answered.
-- `server/cli-service-trust.e2e.test.ts` runs the real `duskbot serve`
+- `server/cli-service-trust.e2e.test.ts` runs the real `metal serve`
   with `DUSK_LOOPBACK_TRUST=service`: it prints a pairing code and keeps
   running, the pairing route refuses every other local caller, and later
   `pair` and `sessions` commands exit with the explanation.
@@ -95,7 +95,7 @@ pnpm exec vitest run server/request-auth.test.ts server/decision-log.test.ts \
 
 ## Observed local result — 2026-09-23
 
-On a disposable worktree rebased onto dusk bot main `0bb37982`:
+On a disposable worktree rebased onto Metal main `0bb37982`:
 `pnpm typecheck`, `pnpm lint`, `pnpm i18n:check`, `pnpm test:packaged-server`,
 and the files above plus `server/index.test.ts`,
 `server/chat-followups-restart.test.ts`, `server/steer-e2e.test.ts`,

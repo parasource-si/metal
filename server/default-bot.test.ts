@@ -21,18 +21,18 @@ const boot = (store: Store) => ensureDefaultBot(store, { dataDir: DATA_DIR });
 const briefChief = (store: Store) => createBrief({ store, dataDir: DATA_DIR, hosted: false, watching: () => true, mainThread: (id) => store.bot(id)?.threadId,
   threadBusy: () => false, notify: () => {}, runs: () => [], needsYou: () => [], engineName: () => "Claude", hostTimeZone: () => "UTC", language: () => undefined, session: () => null,
   address: () => undefined, failRun: () => {}, keep: () => {}, items: () => null }).chief();
-/** A new install from before Dusk was marked: its first bot was Dusk in silver, made its Chief. */
+/** A new install from before Metal was marked: its first bot was Metal in silver, made its Chief. */
 function seededBefore(store: Store): BotRecord {
   const seeded = store.createBot({ name: "Dusk", color: "silver" });
   store.setChiefOfStaff(seeded.id);
   return seeded;
 }
 
-describe("Dusk, every person's helper", () => {
+describe("Metal, every person's helper", () => {
   beforeEach(() => rmSync(DATA_DIR, { recursive: true, force: true }));
   afterEach(() => readTeamRolesWith(() => null));
 
-  it("renames a Dusk still called MausBot and rewrites its seeded intro, card and all", () => {
+  it("renames a Metal still called MausBot and rewrites its seeded intro, card and all", () => {
     const store = new Store(selection);
     store.seedIfEmpty();
     const dusk = boot(store)!;
@@ -42,30 +42,30 @@ describe("Dusk, every person's helper", () => {
     store.patchMessage(dusk.threadId, intro.id, { text: legacy.text, card: legacy.card });
     const typed = store.appendMessage(dusk.threadId, { role: "user", kind: "text", text: "is MausBot your old name?" });
     expect(renameLegacyDefaultBots(store)).toBe(1);
-    expect(store.bot(dusk.id)?.name).toBe("dusk bot");
+    expect(store.bot(dusk.id)?.name).toBe("Metal");
     const after = store.messagesFor(dusk.threadId);
     const rewritten = after.find((message) => message.id === intro.id)!;
-    expect(rewritten.text).toBe(helperIntroMessage({ name: "dusk bot", chiefOfStaff: true }).text);
-    expect(rewritten.card?.title).toBe("Hey! I'm dusk bot. I'm new here.");
+    expect(rewritten.text).toBe(helperIntroMessage({ name: "Metal", chiefOfStaff: true }).text);
+    expect(rewritten.card?.title).toBe("Hey! I'm Metal. I'm new here.");
     expect(after.find((message) => message.id === typed.id)?.text).toBe("is MausBot your old name?");
     expect(renameLegacyDefaultBots(store)).toBe(0);
   });
 
-  it("renames a helper still called Dusk to dusk bot, intro included, and leaves a bot someone else named Dusk alone", () => {
+  it.each(["Dusk", "dusk bot", "DuskBot", "Dusk Bot"])("renames the helper from %s and leaves a custom bot with the same name alone", (legacyName) => {
     const store = new Store(selection);
     store.seedIfEmpty();
     const dusk = boot(store)!;
-    store.patchBot(dusk.id, { name: "Dusk" });
+    store.patchBot(dusk.id, { name: legacyName });
     const intro = store.messagesFor(dusk.threadId).find((message) => message.helperIntro)!;
-    const old = helperIntroMessage({ name: "Dusk", chiefOfStaff: true });
+    const old = helperIntroMessage({ name: legacyName, chiefOfStaff: true });
     store.patchMessage(dusk.threadId, intro.id, { text: old.text, card: old.card });
-    const later = store.createBot({ name: "Dusk" });
+    const later = store.createBot({ name: legacyName });
     expect(renameLegacyDefaultBots(store)).toBe(1);
-    expect(store.bot(dusk.id)?.name).toBe("dusk bot");
-    expect(store.bot(later.id)?.name).toBe("Dusk");
+    expect(store.bot(dusk.id)?.name).toBe("Metal");
+    expect(store.bot(later.id)?.name).toBe(legacyName);
     const rewritten = store.messagesFor(dusk.threadId).find((message) => message.id === intro.id)!;
-    expect(rewritten.text).toBe(helperIntroMessage({ name: "dusk bot", chiefOfStaff: true }).text);
-    expect(rewritten.card?.title).toBe("Hey! I'm dusk bot. I'm new here.");
+    expect(rewritten.text).toBe(helperIntroMessage({ name: "Metal", chiefOfStaff: true }).text);
+    expect(rewritten.card?.title).toBe("Hey! I'm Metal. I'm new here.");
   });
 
   it("renames an unmarked first bot still called MausBot, so the next start adopts it, but not a later bot someone named so", () => {
@@ -73,12 +73,12 @@ describe("Dusk, every person's helper", () => {
     const first = store.createBot({ name: "MausBot", color: "silver" });
     const later = store.createBot({ name: "MausBot" });
     expect(renameLegacyDefaultBots(store)).toBe(1);
-    expect(store.bot(first.id)?.name).toBe("dusk bot");
+    expect(store.bot(first.id)?.name).toBe("Metal");
     expect(store.bot(later.id)?.name).toBe("MausBot");
     expect(boot(store)?.id).toBe(first.id);
   });
 
-  it("gives a fresh install one Dusk, its Chief, in chrome, introduced once", () => {
+  it("gives a fresh install one Metal, its Chief, in chrome, introduced once", () => {
     const store = new Store(selection);
     store.seedIfEmpty();
     boot(store);
@@ -88,11 +88,11 @@ describe("Dusk, every person's helper", () => {
     boot(again);
     expect(again.bots).toHaveLength(1);
     const maus = placeDusks(again)[0]!;
-    expect(maus).toMatchObject({ name: "dusk bot", color: "chrome", chiefOfStaff: true, defaultBot: {} });
+    expect(maus).toMatchObject({ name: "Metal", color: "chrome", chiefOfStaff: true, defaultBot: {} });
     expect(intros(again, maus)).toHaveLength(1);
   });
 
-  it("leaves a Team Cloud member's Dusk uncrowned: it reaches no bot everyone sees, so a crown would promise work it can't hand on", () => {
+  it("leaves a Team Cloud member's Metal uncrowned: it reaches no bot everyone sees, so a crown would promise work it can't hand on", () => {
     const store = new Store(selection);
     store.seedIfEmpty({ defaultBot: false });
     const own = ensureDefaultBot(store, { dataDir: DATA_DIR, person: "ada@acme.test", team: "Acme" })!;
@@ -102,14 +102,14 @@ describe("Dusk, every person's helper", () => {
     expect(canManage(own, fox)).toBe(false);
   });
 
-  it("gives an existing install without one a Dusk once on update, beside its Chief, which stays exactly as it was", () => {
+  it("gives an existing install without one a Metal once on update, beside its Chief, which stays exactly as it was", () => {
     const store = new Store(selection);
     const chief = store.createBot({ name: "Pixel" });
     store.setChiefOfStaff(chief.id);
     store.createBot({ name: "Writer", title: "Writer", soul: "Write." });
     const before = structuredClone(store.bot(chief.id));
     const maus = boot(store)!;
-    expect(maus).toMatchObject({ name: "dusk bot", color: "chrome", defaultBot: {} });
+    expect(maus).toMatchObject({ name: "Metal", color: "chrome", defaultBot: {} });
     expect(maus.chiefOfStaff).toBeFalsy();
     expect(chiefLevel(maus)).toBe(true);
     expect(store.bot(chief.id)).toEqual(before);
@@ -121,7 +121,7 @@ describe("Dusk, every person's helper", () => {
     expect(restarted.bots.filter((bot) => bot.chiefOfStaff).map((bot) => bot.id)).toEqual([chief.id]);
   });
 
-  it("adopts a new install's renamed Dusk with its history instead of making another, and puts the intro on top of a new conversation", () => {
+  it("adopts a new install's renamed Metal with its history instead of making another, and puts the intro on top of a new conversation", () => {
     const store = new Store(selection);
     const seeded = seededBefore(store);
     const first = seeded.threadId;
@@ -141,23 +141,23 @@ describe("Dusk, every person's helper", () => {
     expect(intros(new Store(selection), new Store(selection).bot(seeded.id)!)).toHaveLength(1);
   });
 
-  it("keeps the colour the person gave an adopted Dusk", () => {
+  it("keeps the colour the person gave an adopted Metal", () => {
     const store = new Store(selection);
     const seeded = seededBefore(store);
     store.patchBot(seeded.id, { color: "blue" });
     expect(boot(store)).toMatchObject({ id: seeded.id, color: "blue" });
   });
 
-  it("makes Dusk the Chief of a place that has none, so the brief has someone to come from", () => {
+  it("makes Metal the Chief of a place that has none, so the brief has someone to come from", () => {
     const store = new Store(selection);
     store.createBot({ name: "Pixel" });
     const maus = boot(store)!;
     expect(store.bot(maus.id)?.chiefOfStaff).toBe(true);
     expect(briefChief(store)?.id).toBe(maus.id);
-    expect(intros(store, maus)[0]?.text).toContain("Hey! I'm dusk bot. I'm new here. I'm here to be your Chief of Staff. I can manage your other bots.");
+    expect(intros(store, maus)[0]?.text).toContain("Hey! I'm Metal. I'm new here. I'm here to be your Chief of Staff. I can manage your other bots.");
   });
 
-  it("makes an adopted Dusk the Chief when its place has none left", () => {
+  it("makes an adopted Metal the Chief when its place has none left", () => {
     const store = new Store(selection);
     const seeded = seededBefore(store);
     store.setChiefOfStaff(null);
@@ -167,7 +167,7 @@ describe("Dusk, every person's helper", () => {
     expect(briefChief(store)?.id).toBe(seeded.id);
   });
 
-  it("leaves a place's own Chief as the Chief, and the brief comes from Dusk, which says so", () => {
+  it("leaves a place's own Chief as the Chief, and the brief comes from Metal, which says so", () => {
     const store = new Store(selection);
     const chief = store.createBot({ name: "Clive" });
     store.setChiefOfStaff(chief.id);
@@ -179,7 +179,7 @@ describe("Dusk, every person's helper", () => {
     expect(intros(store, maus)[0]?.text).not.toContain("Chief of Staff");
   });
 
-  it("keeps a Dusk Chief hidden from the sidebar working as the Chief", () => {
+  it("keeps a Metal Chief hidden from the sidebar working as the Chief", () => {
     const store = new Store(selection);
     const maus = boot(store)!;
     store.patchBot(maus.id, { sidebarHidden: true });
@@ -189,7 +189,7 @@ describe("Dusk, every person's helper", () => {
     expect(briefChief(restarted)?.id).toBe(maus.id);
   });
 
-  it("knows a renamed Dusk by its mark: no second one on update, Chief tools kept", () => {
+  it("knows a renamed Metal by its mark: no second one on update, Chief tools kept", () => {
     const store = new Store(selection);
     store.createBot({ name: "Writer" });
     const chief = store.createBot({ name: "Clive" });
@@ -203,7 +203,7 @@ describe("Dusk, every person's helper", () => {
     expect(restarted.bots).toHaveLength(3);
   });
 
-  it("never takes a first bot that is not a new install's Dusk: it gets a Dusk beside it", () => {
+  it("never takes a first bot that is not a new install's Metal: it gets a Metal beside it", () => {
     const store = new Store(selection);
     const pixel = store.createBot({ name: "Pixel" });
     const maus = boot(store)!;
@@ -230,13 +230,13 @@ describe("Dusk, every person's helper", () => {
     expect(mdb.attentionRows(0).filter((row) => row.kind === "options")).toEqual([]);
   });
 
-  it("is hidden, never deleted or archived, and a hidden Dusk is never made again", () => {
+  it("is hidden, never deleted or archived, and a hidden Metal is never made again", () => {
     const store = new Store(selection);
     const maus = boot(store)!;
     const other = store.createBot({ name: "Writer" });
-    expect(() => store.deleteBot(maus.id)).toThrow(/dusk bot can't be deleted or archived/);
+    expect(() => store.deleteBot(maus.id)).toThrow(/Metal can't be deleted or archived/);
     expect(store.bot(maus.id)).toBeTruthy();
-    expect(defaultBotPatchRefusal(maus, { hidden: true })).toMatch(/Show dusk bot in the sidebar" in Settings → Models, under New bots\./);
+    expect(defaultBotPatchRefusal(maus, { hidden: true })).toMatch(/Show Metal in the sidebar" in Settings → Models, under New bots\./);
     expect(defaultBotPatchRefusal(other, { sidebarHidden: true })).toMatch(/Only your helper/);
     expect(defaultBotPatchRefusal(maus, { sidebarHidden: "yes" })).toBe("sidebarHidden must be true or false");
     expect(defaultBotPatchRefusal(maus, { sidebarHidden: true })).toBeNull();
@@ -265,7 +265,7 @@ describe("Dusk, every person's helper", () => {
     expect(placeDusks(store).map((bot) => bot.id)).toEqual([first.id]);
   });
 
-  it("gives each Team Cloud member their own private Dusk, and the team no Dusk of its own", () => {
+  it("gives each Team Cloud member their own private Metal, and the team no Metal of its own", () => {
     const store = new Store(selection);
     store.seedIfEmpty({ defaultBot: false });
     expect(store.bots).toHaveLength(1);
@@ -274,7 +274,7 @@ describe("Dusk, every person's helper", () => {
     const ada = ensureDefaultBot(store, { dataDir: DATA_DIR, person: "Ada@Example.com", team: "Acme" })!;
     const bea = ensureDefaultBot(store, { dataDir: DATA_DIR, person: "bea@example.com", team: "Acme" })!;
     expect(ensureDefaultBot(store, { dataDir: DATA_DIR, person: "ada@example.com", team: "Acme" })?.id).toBe(ada.id);
-    expect(ada).toMatchObject({ name: "dusk bot", defaultBot: { person: "ada@example.com" }, visibility: { people: ["ada@example.com"] } });
+    expect(ada).toMatchObject({ name: "Metal", defaultBot: { person: "ada@example.com" }, visibility: { people: ["ada@example.com"] } });
     expect(bea).toMatchObject({ defaultBot: { person: "bea@example.com" }, visibility: { people: ["bea@example.com"] } });
     expect(ada.chiefOfStaff).toBeFalsy();
     expect(intros(store, ada)[0]?.text).toContain("On Acme, I'm here for you and look after your own bots.");
@@ -282,7 +282,7 @@ describe("Dusk, every person's helper", () => {
     expect(store.bots).toHaveLength(3);
   });
 
-  it("holds a Chief's tools, never more than its member: a User's Dusk holds none", () => {
+  it("holds a Chief's tools, never more than its member: a User's Metal holds none", () => {
     const store = new Store(selection);
     const place = boot(store)!;
     const member = ensureDefaultBot(store, { dataDir: DATA_DIR, person: "user@example.com", team: "Acme" })!;
@@ -309,7 +309,7 @@ describe("Dusk, every person's helper", () => {
     }
     const fields = (bot: Record<string, unknown>) => Object.fromEntries(MOVE_BOT_FIELDS.map((name) => [name, bot[name] ?? null]));
 
-    it("leaves My Cloud exactly one Dusk when this computer's arrives: My Cloud's unused one is archived, whatever order the Chief comes in", async () => {
+    it("leaves My Cloud exactly one Metal when this computer's arrives: My Cloud's unused one is archived, whatever order the Chief comes in", async () => {
       const cloud = new Store(selection);
       cloud.seedIfEmpty();
       boot(cloud);
@@ -328,7 +328,7 @@ describe("Dusk, every person's helper", () => {
       expect(placeDusks(cloud).map((bot) => bot.id)).toEqual([arrivingMaus.id]);
     });
 
-    it("still makes one Dusk on My Cloud when this computer's arrives renamed and with its own picture", async () => {
+    it("still makes one Metal on My Cloud when this computer's arrives renamed and with its own picture", async () => {
       const cloud = new Store(selection);
       cloud.seedIfEmpty();
       boot(cloud);
@@ -341,7 +341,7 @@ describe("Dusk, every person's helper", () => {
       expect(cloud.bot(starter.id)?.defaultBot).toBeUndefined();
     });
 
-    it("keeps a My Cloud Dusk someone already used as an ordinary bot", async () => {
+    it("keeps a My Cloud Metal someone already used as an ordinary bot", async () => {
       const cloud = new Store(selection);
       const theirs = boot(cloud)!;
       cloud.appendMessage(theirs.threadId, { role: "user", kind: "text", text: "Hi" });
@@ -351,7 +351,7 @@ describe("Dusk, every person's helper", () => {
       expect(cloud.bot(theirs.id)?.hidden).toBeFalsy();
     });
 
-    it("comes home to exactly the one Dusk My Cloud had, and makes none", () => {
+    it("comes home to exactly the one Metal My Cloud had, and makes none", () => {
       const cloud = new Store(selection);
       cloud.seedIfEmpty();
       const mausOnCloud = boot(cloud)!;

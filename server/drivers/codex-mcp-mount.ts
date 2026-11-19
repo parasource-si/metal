@@ -36,7 +36,7 @@ export function mountMcpServer(
   if (approval !== "prompt") appServerArgs.push("-c", `${prefix}.default_tools_approval_mode="${approval}"`);
 }
 
-/** The built-in mounts that may be dusk bot's own proxies; a person's server of the same shape stays a process. */
+/** The built-in mounts that may be Metal's own proxies; a person's server of the same shape stays a process. */
 const OWN_SERVERS = new Set(["agents", "browser", "data", "email", "device"]);
 
 /** The env family holding own-server endpoint tokens and headers; it never reaches Codex's command shell. */
@@ -50,7 +50,7 @@ export function codexMountsOwnMcpOverHttp(version: string | null): boolean {
   return parsed !== null && versionAtLeast(parsed, OWN_MCP_HTTP_MIN_CODEX);
 }
 
-/** dusk bot's own server as an endpoint of this server, so Codex starts no proxy process for it. The token and
+/** Metal's own server as an endpoint of this server, so Codex starts no proxy process for it. The token and
  * every header ride environment variables: argv carries names only. */
 export function mountOwnMcpOverHttp(
   appServerArgs: string[],

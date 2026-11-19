@@ -225,7 +225,7 @@ export function createInstaboxProvider(options: InstaboxProviderOptions): Machin
     if (known) return known;
     const listed = await call("GET", `/v1/machines/${id}/ports`);
     let found = (listed?.ports ?? []).find((p: Record<string, unknown>) => p?.port === INSTABOX_HOME_PORT && typeof p.url === "string")?.url as string | undefined;
-    if (!found) { const made = await call("POST", `/v1/machines/${id}/ports`, { body: { port: INSTABOX_HOME_PORT, name: "dusk bot" } }); found = typeof made?.url === "string" ? made.url : undefined; }
+    if (!found) { const made = await call("POST", `/v1/machines/${id}/ports`, { body: { port: INSTABOX_HOME_PORT, name: "Metal" } }); found = typeof made?.url === "string" ? made.url : undefined; }
     const origin = found ? new URL(found).origin : "";
     if (!origin.startsWith("https://")) throw new RetryableCloudError();
     origins.set(id, origin);
@@ -438,7 +438,7 @@ export function createInstaboxProvider(options: InstaboxProviderOptions): Machin
           await call("POST", `/v1/machines/${serverId}/stop`, { body: {}, idempotent: true });
           await settle(serverId, x => x.state === "stopped");
         }
-        try { snap = snapshotOf(await call("POST", `/v1/machines/${serverId}/snapshots`, { body: { name, description: "dusk bot: a home kept after its plan ended" }, idempotent: `dusk-snap-${name}` })); }
+        try { snap = snapshotOf(await call("POST", `/v1/machines/${serverId}/snapshots`, { body: { name, description: "Metal: a home kept after its plan ended" }, idempotent: `dusk-snap-${name}` })); }
         catch (error) {
           // a lost answer retried: the name is taken by the snapshot the first request made
           if (!(error instanceof InstaboxError && error.status === 409)) throw error;

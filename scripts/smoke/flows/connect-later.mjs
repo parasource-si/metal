@@ -13,7 +13,7 @@ const shownButtons = (scope = "body") => flow.evaluate(`[...(document.querySelec
 await runFlow(flow, async () => {
   await flow.step("launch", "a fresh app on this Mac, past the welcome", async () => {
     await flow.launch();
-    await flow.waitText(/meet dusk bot|where should your bots live/i, "the welcome", { timeout: 120_000 });
+    await flow.waitText(/meet Metal|where should your bots live/i, "the welcome", { timeout: 120_000 });
     // past the welcome the way the first-run walkthrough already shows (section 1)
     await flow.evaluate(`fetch("/api/config", { method: "PUT", headers: { "content-type": "application/json" }, body: JSON.stringify({ onboarding: { completedAt: new Date().toISOString(), version: 1 } }) }).then((r) => r.status)`);
     await flow.evaluate(`location.reload(); true`).catch(() => {});

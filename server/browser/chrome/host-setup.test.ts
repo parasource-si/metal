@@ -25,7 +25,7 @@ describe("host setup", () => {
     const diagnosis = await diagnoseLaunchFailure({ executable: "/opt/chrome", output: "[0101/000000.000:FATAL:zygote_host_impl_linux.cc] No usable sandbox! ...", platform: "darwin" });
     expect(diagnosis).toBeInstanceOf(BrowserHostError);
     expect(diagnosis?.kind).toBe("sandbox");
-    expect(diagnosis?.message).toMatch(/duskbot browser setup/);
+    expect(diagnosis?.message).toMatch(/metal browser setup/);
     expect(await diagnoseLaunchFailure({ executable: "/opt/chrome", output: "something else", platform: "darwin" })).toBeNull();
     expect(sandboxDisabled({})).toBe(false);
     expect(sandboxDisabled({ DUSK_BROWSER_SANDBOX: "0" })).toBe(true);

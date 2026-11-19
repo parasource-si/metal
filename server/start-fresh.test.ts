@@ -40,7 +40,7 @@ async function ask(auth: RequestAuth, { method = "POST", isOwner = false, manage
   return { dir, restart, answer: answers[0], out };
 }
 
-describe("start fresh on a dusk bot server", () => {
+describe("start fresh on a Metal server", () => {
   it("lets this computer's desktop app ask, marks the folder and restarts, deleting nothing while running", async () => {
     const { dir, restart, answer } = await ask(owner);
     expect(answer?.status).toBe(202);

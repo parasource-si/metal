@@ -1,5 +1,5 @@
 // Read-only dry run of "bring what you already use" against this computer's real home: what each tool would bring,
-// in counts and kinds only. Writes nothing (dusk bot's data folder is pointed at a throwaway one), uploads nothing,
+// in counts and kinds only. Writes nothing (Metal's data folder is pointed at a throwaway one), uploads nothing,
 // prints no names, text or values. Run: node --experimental-strip-types scripts/import-dry-run.ts
 import { mkdtempSync } from "node:fs";
 import { tmpdir } from "node:os";

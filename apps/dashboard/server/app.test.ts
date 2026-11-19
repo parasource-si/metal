@@ -519,7 +519,7 @@ describe("hosted dashboard service", () => {
     expect(health.headers.get("cache-control")).toBe("no-store");
   });
 
-  it("serves dusk bot's MCP client metadata document under the address it names as its client id", async () => {
+  it("serves Metal's MCP client metadata document under the address it names as its client id", async () => {
     const answer = await page("/v1/oauth/mcp-client.json");
     expect(answer.status).toBe(200);
     const body = await answer.json();
@@ -534,7 +534,7 @@ describe("hosted dashboard service", () => {
     const other = await login("other@example.com");
     const answer = await page("/v1/account/export", undefined, cookie);
     expect(answer.status).toBe(200);
-    expect(answer.headers.get("content-disposition")).toMatch(/^attachment; filename="dusk-bot-account-\d{4}-\d{2}-\d{2}\.json"$/);
+    expect(answer.headers.get("content-disposition")).toMatch(/^attachment; filename="metal-account-\d{4}-\d{2}-\d{2}\.json"$/);
     const text = await answer.text(), data = JSON.parse(text);
     expect(data.account.email).toBe("owner@example.com");
     expect(data.workspaces.map((ws: { id: string }) => ws.id)).toEqual([id]);

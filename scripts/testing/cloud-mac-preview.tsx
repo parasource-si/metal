@@ -23,7 +23,7 @@ let state: CloudMacState = {
   enabled: true,
   mode: view === "restricted" ? "ask" : "auto",
   limitFolders: view === "restricted",
-  folders: ["~/Downloads", "~/dusk bot"],
+  folders: ["~/Downloads", "~/Metal"],
   cloud: "connected",
   problem: null,
   busy: [],

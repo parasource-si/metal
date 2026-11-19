@@ -47,7 +47,7 @@ if (dl) {
       form.addEventListener('submit', (e) => {
         e.preventDefault();
         const to = form.email.value.trim(), link = `${location.origin}/download`;
-        location.href = `mailto:${encodeURIComponent(to).replace('%40', '@')}?subject=${encodeURIComponent('dusk bot for your computer')}&body=${encodeURIComponent(`download dusk bot on your computer: ${link}`)}`;
+        location.href = `mailto:${encodeURIComponent(to).replace('%40', '@')}?subject=${encodeURIComponent('Metal for your computer')}&body=${encodeURIComponent(`download Metal on your computer: ${link}`)}`;
       });
       return;
     }

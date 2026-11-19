@@ -33,7 +33,7 @@ const DELAYS = [INTRO_TIMING.first, INTRO_TIMING.line, INTRO_TIMING.line, INTRO_
 /** Dusk's three lines: who it is, what it does here, and that it is looking around. A Dusk that is not the Chief
  * keeps its helper's lines; a Team Cloud member's leaves their day to the team's Chief. */
 /** `fromComputer`: a cloud the desktop app set up, where the Chief greets the person by the name it brought along;
- * `carried`: what they told dusk bot there about themselves came too. */
+ * `carried`: what they told Metal there about themselves came too. */
 export function introLines(input: { name: string; chief: boolean; person?: string; team?: string; fromComputer?: boolean; carried?: boolean }): string[] {
   const team = input.team ? t("helperIntro.team", { team: input.team }) : "";
   const carried = input.carried ? t("helperIntro.carried") : "";

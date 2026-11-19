@@ -54,7 +54,7 @@ const heading = () => host.querySelector("h1")?.textContent;
 it("log in opens the account sign-in straight away", async () => {
   await mount(onboarding());
   await press("[data-entry=signin]");
-  expect(heading()).toBe("Log in to dusk bot");
+  expect(heading()).toBe("Log in to Metal");
   expect(host.querySelector("input[type=email]")).not.toBeNull();
 });
 
@@ -189,7 +189,7 @@ it("the sign-in offer opens the sign-in without leaving the app", async () => {
   await act(async () => { vi.advanceTimersByTime(3000); });
   await act(async () => {});
   await act(async () => { [...host.querySelectorAll("button")].find((button) => button.textContent === "Log in")!.click(); });
-  expect(host.querySelector("[role=dialog] h1")?.textContent).toBe("Log in to dusk bot");
+  expect(host.querySelector("[role=dialog] h1")?.textContent).toBe("Log in to Metal");
 });
 
 it("a scan of the desktop's App Store qr says so, and the screen after a failed scan offers scanning again", async () => {

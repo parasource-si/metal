@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <sitemap><loc>https://dusk.bot/sitemaps/core.xml</loc><lastmod>2026-11-19</lastmod></sitemap>
-  <sitemap><loc>https://dusk.bot/sitemaps/hubs.xml</loc><lastmod>2026-11-12</lastmod></sitemap>
-  <sitemap><loc>https://dusk.bot/sitemaps/cohort-01.xml</loc><lastmod>2026-11-15</lastmod></sitemap>
-  <sitemap><loc>https://dusk.bot/sitemaps/cohort-02.xml</loc><lastmod>2026-11-15</lastmod></sitemap>
-  <sitemap><loc>https://dusk.bot/sitemaps/cohort-03.xml</loc><lastmod>2026-11-12</lastmod></sitemap>
-  <sitemap><loc>https://dusk.bot/sitemaps/cohort-04.xml</loc><lastmod>2026-11-13</lastmod></sitemap>
-  <sitemap><loc>https://dusk.bot/sitemaps/cohort-05.xml</loc><lastmod>2026-11-12</lastmod></sitemap>
+  <sitemap><loc>http://localhost:3103/sitemaps/core.xml</loc><lastmod>2026-11-19</lastmod></sitemap>
+  <sitemap><loc>http://localhost:3103/sitemaps/hubs.xml</loc><lastmod>2026-11-19</lastmod></sitemap>
+  <sitemap><loc>http://localhost:3103/sitemaps/cohort-01.xml</loc><lastmod>2026-11-19</lastmod></sitemap>
+  <sitemap><loc>http://localhost:3103/sitemaps/cohort-02.xml</loc><lastmod>2026-11-19</lastmod></sitemap>
+  <sitemap><loc>http://localhost:3103/sitemaps/cohort-03.xml</loc><lastmod>2026-11-19</lastmod></sitemap>
+  <sitemap><loc>http://localhost:3103/sitemaps/cohort-04.xml</loc><lastmod>2026-11-19</lastmod></sitemap>
+  <sitemap><loc>http://localhost:3103/sitemaps/cohort-05.xml</loc><lastmod>2026-11-19</lastmod></sitemap>
 </sitemapindex>

@@ -14,7 +14,7 @@ const MARKER = "error:";
 export type FailedReplyReason = "signed_out" | "credits" | "usage_limit" | "rate_limit" | "overloaded" | "timeout" | "no_ai"
   | "model_not_found" | "bad_request" | "context" | "session_lost" | "provider_down" | "cli_missing" | "cli_exit";
 
-/** Why dusk bot stopped a browser run itself: `loop`, the same step did nothing three times; the others, a page said
+/** Why Metal stopped a browser run itself: `loop`, the same step did nothing three times; the others, a page said
  * so in words a retry cannot change. */
 export interface BrowserBlocker { kind: "loop" | "credentials" | "credit" | "blocked"; site?: string }
 
@@ -52,7 +52,7 @@ export const ECHOED_PROMPT = "[…]";
 const LONG_QUOTED = /(?<!\w)'(?:[^'\\]|\\.){300,}(?:'|$)|(?<!\w)"(?:[^"\\]|\\.){300,}(?:"|$)/gs;
 const SEVERAL_LINES = /\n|\\n/;
 /** The opening line of every bot's system prompt (server/system-prompt.ts), wherever an echo of it starts. */
-const SYSTEM_PROMPT_OPENING = /\bYou are [^\n]{1,120}?, a personal bot in dusk bot\.|\bAbout you: you are [^\n]{1,120}?, a dusk bot\./;
+const SYSTEM_PROMPT_OPENING = /\bYou are [^\n]{1,120}?, a personal bot in (?:Metal|dusk bot)\.|\bAbout you: you are [^\n]{1,120}?, a (?:Metal bot|dusk bot)\./;
 
 /** Security invariant: an error must never carry the bot's system prompt, its memory or its file paths. An engine that
  * echoes the prompt it was sent loses that span, and the rest of its words stay. */
@@ -62,16 +62,16 @@ export function withoutEchoedPrompt(text: string): string {
   return opening ? `${out.slice(0, opening.index)}${ECHOED_PROMPT}` : out;
 }
 
-/** dusk bot's own words for a failed turn, an engine's internal error, or a bot's private folder. */
+/** Metal's own words for a failed turn, an engine's internal error, or a bot's private folder. */
 const ERROR_DUMP = /\bBot failed to respond\b|\bInternal error: ['"]|[\\/]\.duskbot[\\/](?:workspaces|bots)[\\/]/i;
 
-/** Security invariant: text bound for a conversation outside dusk bot (another app's chat, a mail, a caller) is never a
+/** Security invariant: text bound for a conversation outside Metal (another app's chat, a mail, a caller) is never a
  * failure report, an engine error or the bot's system prompt; a send carrying one is dropped. */
 export function isErrorDump(text: string): boolean {
   return ERROR_DUMP.test(text) || SYSTEM_PROMPT_OPENING.test(text);
 }
 
-export const ERROR_DUMP_REFUSAL = "Not sent: this text is an error report or dusk bot's own instructions, never a message for anyone outside dusk bot. "
+export const ERROR_DUMP_REFUSAL = "Not sent: this text is an error report or Metal's own instructions, never a message for anyone outside Metal. "
   + "Write the message itself, or tell the person in this chat what went wrong.";
 
 /** Whether any outbound call's arguments carry an error dump. */

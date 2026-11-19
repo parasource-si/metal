@@ -307,11 +307,11 @@ describe("thread control placement", () => {
     }
   });
   it("says in a few words that this computer can't be used, with the server's reason behind Copy details", () => {
-    const line = "Only the dusk bot app on this computer can let a bot use it. Open the app here, or let the bot work in its own browser or on a cloud desktop instead.";
+    const line = "Only the Metal app on this computer can let a bot use it. Open the app here, or let the bot work in its own browser or on a cloud desktop instead.";
     const markup = renderToStaticMarkup(createElement(ErrorRow, { message: line, action: { label: "Open screen", onClick: () => {} } }));
     expect(markup).toContain("I can&#x27;t use this computer right now.");
     expect(markup).toContain("data-error-details-copy");
-    expect(markup).not.toContain("Only the dusk bot app");
+    expect(markup).not.toContain("Only the Metal app");
     expect(markup).toContain(">Open screen</button>");
   });
   it("directs ChatGPT plan limits to usage settings rather than repeatedly retrying", () => {
@@ -456,33 +456,33 @@ describe("thread control placement", () => {
     fixture.localMessage = "Screen Recording required";
     window.duskDesktop = { platform: "darwin", permOpenSettings: vi.fn(), relaunch: vi.fn() } as unknown as NonNullable<Window["duskDesktop"]>;
     const screen = renderToStaticMarkup(createElement(ErrorRow, {
-      message: "dusk bot can't use this computer yet — embedded host failed: Screen Recording required. Relaunch dusk bot after granting any missing macOS permission.",
+      message: "Metal can't use this computer yet — embedded host failed: Screen Recording required. Relaunch Metal after granting any missing macOS permission.",
     }));
     expect(screen).toContain("Open Screen Recording settings");
-    expect(screen).toContain(">Relaunch dusk bot<");
+    expect(screen).toContain(">Relaunch Metal<");
     expect(screen).not.toContain("Open Accessibility settings");
     fixture.localMessage = "Accessibility required";
     const accessibility = renderToStaticMarkup(createElement(ErrorRow, {
-      message: "dusk bot can't use this computer yet — Accessibility required",
+      message: "Metal can't use this computer yet — Accessibility required",
     }));
     expect(accessibility).toContain("Open Accessibility settings");
     expect(accessibility).not.toContain("Open Screen Recording settings");
     expect(renderToStaticMarkup(createElement(ErrorRow, {
-      message: "dusk bot can't use this computer yet — Screen Recording required",
+      message: "Metal can't use this computer yet — Screen Recording required",
     }))).not.toContain("Open Screen Recording settings");
     expect(renderToStaticMarkup(createElement(ErrorRow, { message: "Network timeout" }))).not.toContain("Open Screen Recording settings");
     // a copy run from source waits on CuaDriver's grant: name it, open its pane, check again instead of relaunching
     fixture.localMessage = "Screen Recording required for CuaDriver; turn on CuaDriver in System Settings > Privacy & Security";
     window.duskDesktop = { platform: "darwin", permOpenSettings: vi.fn(), relaunch: vi.fn(), localControl: { retry: vi.fn() } } as unknown as NonNullable<Window["duskDesktop"]>;
     const helper = renderToStaticMarkup(createElement(ErrorRow, {
-      message: "dusk bot can't use this computer yet: Screen Recording required. Turn on CuaDriver in System Settings > Privacy & Security > Screen Recording; dusk bot notices by itself, no restart needed.",
+      message: "Metal can't use this computer yet: Screen Recording required. Turn on CuaDriver in System Settings > Privacy & Security > Screen Recording; Metal notices by itself, no restart needed.",
     }));
     expect(helper).toContain("Turn on CuaDriver in System Settings");
     expect(helper).toContain("Open Screen Recording settings");
     expect(helper).toContain("Check again");
     expect(helper).not.toContain("Relaunch");
     fixture.localReasonCode = "remote-server";
-    expect(renderToStaticMarkup(createElement(ErrorRow, { message: "dusk bot can't use this computer yet — Screen Recording required" }))).not.toContain("Open Screen Recording settings");
+    expect(renderToStaticMarkup(createElement(ErrorRow, { message: "Metal can't use this computer yet — Screen Recording required" }))).not.toContain("Open Screen Recording settings");
     fixture.localReasonCode = "cua-driver-unavailable";
     fixture.platform = "other";
     fixture.localMessage = "";

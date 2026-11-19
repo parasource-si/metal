@@ -257,9 +257,9 @@ async function waitOut(reader: PageReader, { deadline, fresh = false, now = Date
   return { report, probe };
 }
 
-/** What a bot does about a check or block that did not clear: never solve it, let dusk bot's recovery run, ask last. */
+/** What a bot does about a check or block that did not clear: never solve it, let Metal's recovery run, ask last. */
 export const BLOCKED_NEXT = "Never click it, solve it or try to hide that you are a bot. Do not wait or reload yourself: call request_sign_in with the site and human_check true now. " +
-  "dusk bot waits it out, reloads once and tries the person's own connection before anyone is asked, and tells you what to do next.";
+  "Metal waits it out, reloads once and tries the person's own connection before anyone is asked, and tells you what to do next.";
 
 /** Where a page's bot check stands, as every page read reports it. */
 export type CheckStatus = "cleared" | "checking" | "needs one click" | "needs you" | "blocked";

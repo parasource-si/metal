@@ -56,7 +56,7 @@ describe("a new bot's intro words", () => {
   });
 
   it("names a bot made by another bot, and a from-scratch bot with nothing else to go on", () => {
-    expect(introPrompt(base({ origin: { kind: "bot", by: "dusk bot" } }))).toContain("dusk bot made you just now because the person asked it to");
+    expect(introPrompt(base({ origin: { kind: "bot", by: "Metal" } }))).toContain("Metal made you just now because the person asked it to");
     const prompt = introPrompt(base({ apps: null, language: "de" }));
     expect(prompt).not.toContain("Connected apps you can use now");
     expect(prompt).toContain("made you from scratch");

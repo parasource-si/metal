@@ -37,47 +37,47 @@ describe("browser unread indicator", () => {
   afterEach(() => vi.unstubAllGlobals());
 
   it("prefixes the title with the count, replaces an older count, and drops it at zero", () => {
-    expect(titleWithUnread("dusk bot", 3)).toBe("(3) dusk bot");
-    expect(titleWithUnread("(3) dusk bot", 5)).toBe("(5) dusk bot");
+    expect(titleWithUnread("Metal", 3)).toBe("(3) Metal");
+    expect(titleWithUnread("(3) Metal", 5)).toBe("(5) Metal");
     expect(titleWithUnread("(5) Acme", 0)).toBe("Acme");
     expect(titleWithUnread("Acme", 0)).toBe("Acme");
   });
 
   it("sets the title and the app badge, and clears both", () => {
-    const doc = { title: "dusk bot" };
+    const doc = { title: "Metal" };
     const setAppBadge = vi.fn(async () => {});
     const clearAppBadge = vi.fn(async () => {});
     vi.stubGlobal("document", doc);
     vi.stubGlobal("navigator", { setAppBadge, clearAppBadge });
 
     showBrowserUnread(2);
-    expect(doc.title).toBe("(2) dusk bot");
+    expect(doc.title).toBe("(2) Metal");
     expect(setAppBadge).toHaveBeenCalledWith(2);
 
     showBrowserUnread(0);
-    expect(doc.title).toBe("dusk bot");
+    expect(doc.title).toBe("Metal");
     expect(clearAppBadge).toHaveBeenCalled();
   });
 
   it("keeps the page's own title, such as a white-label name or a preview page's", () => {
-    const doc = { title: "Isolated dusk bot Chat" };
+    const doc = { title: "Isolated Metal Chat" };
     vi.stubGlobal("document", doc);
     vi.stubGlobal("navigator", {});
     showBrowserUnread(0);
-    expect(doc.title).toBe("Isolated dusk bot Chat");
+    expect(doc.title).toBe("Isolated Metal Chat");
     showBrowserUnread(1);
-    expect(doc.title).toBe("(1) Isolated dusk bot Chat");
+    expect(doc.title).toBe("(1) Isolated Metal Chat");
   });
 
   it("still sets the title where the Badging API is missing or refuses", () => {
-    const doc = { title: "dusk bot" };
+    const doc = { title: "Metal" };
     vi.stubGlobal("document", doc);
     vi.stubGlobal("navigator", {});
     showBrowserUnread(1);
-    expect(doc.title).toBe("(1) dusk bot");
+    expect(doc.title).toBe("(1) Metal");
 
     vi.stubGlobal("navigator", { setAppBadge: () => Promise.reject(new Error("NotAllowedError")) });
     showBrowserUnread(4);
-    expect(doc.title).toBe("(4) dusk bot");
+    expect(doc.title).toBe("(4) Metal");
   });
 });

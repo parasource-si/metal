@@ -63,7 +63,7 @@ const DIGEST = /^[0-9a-f]{64}$/u;
 
 export function totpAddress(key: TotpKey): string {
   const query = new URLSearchParams({ secret: key.secret, algorithm: key.algorithm, digits: String(key.digits), period: String(key.period) });
-  return `otpauth://totp/dusk bot?${query}`;
+  return `otpauth://totp/Metal?${query}`;
 }
 
 /** What main may ask: a connection's fingerprints are asked only on its behalf, by a check of the credentials. */

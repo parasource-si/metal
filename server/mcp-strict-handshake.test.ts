@@ -93,14 +93,14 @@ describe("strict initialize fixture", () => {
     expect(fake.initializes).toEqual([SCHEMA_VALIDATION, CODEX]);
   });
 
-  it("accepts dusk bot's own client, which sends the minimal handshake", async () => {
+  it("accepts Metal's own client, which sends the minimal handshake", async () => {
     fake = await startFakeHttpMcp({ strictInitialize: "http-400", tools: TOOLS });
     const client = new RemoteMcpClient({ type: "http", url: fake.url, headers: {} });
-    await client.initialize("dusk bot", AbortSignal.timeout(5_000));
+    await client.initialize("Metal", AbortSignal.timeout(5_000));
     const listed = await client.request("tools/list", {}, AbortSignal.timeout(5_000)) as { tools: Array<{ name: string }> };
     expect(listed.tools.map((tool) => tool.name)).toEqual(["report", "campaigns"]);
     await client.close();
-    expect(fake.initializes).toEqual([{ protocolVersion: "2025-06-18", capabilities: {}, clientInfo: { name: "dusk bot", version: "1" } }]);
+    expect(fake.initializes).toEqual([{ protocolVersion: "2025-06-18", capabilities: {}, clientInfo: { name: "Metal", version: "1" } }]);
   });
 
   it.each([
@@ -108,7 +108,7 @@ describe("strict initialize fixture", () => {
     ["Claude Code", CLAUDE],
     ["Grok", GROK],
     ["schemaValidation", SCHEMA_VALIDATION],
-  ])("serves %s's handshake through dusk bot's stdio proxy, forwarding none of its fields", async (_name, handshake) => {
+  ])("serves %s's handshake through Metal's stdio proxy, forwarding none of its fields", async (_name, handshake) => {
     fake = await startFakeHttpMcp({ strictInitialize: "http-400", tools: TOOLS });
     const descriptor = mcpStdioServer({ type: "http", url: fake.url, headers: {} })!;
     child = spawn(descriptor.command, ["--experimental-strip-types", "--no-warnings", ...descriptor.args!], { stdio: "pipe", env: { ...process.env, ...descriptor.env } });
@@ -120,7 +120,7 @@ describe("strict initialize fixture", () => {
     expect((await ask(1, "initialize", handshake)).result.serverInfo.name).toBe("fake-http-mcp");
     child.stdin.write(`${JSON.stringify({ jsonrpc: "2.0", method: "notifications/initialized" })}\n`);
     expect((await ask(2, "tools/list")).result.tools.map((tool: { name: string }) => tool.name)).toEqual(["report", "campaigns"]);
-    expect(fake.initializes).toEqual([{ protocolVersion: "2025-06-18", capabilities: {}, clientInfo: { name: "dusk bot tool proxy", version: "1" } }]);
+    expect(fake.initializes).toEqual([{ protocolVersion: "2025-06-18", capabilities: {}, clientInfo: { name: "Metal tool proxy", version: "1" } }]);
   });
 
   it.each([
@@ -131,7 +131,7 @@ describe("strict initialize fixture", () => {
     const ask = startProxy(mcpStdioServer({ type: "http", url: fake.url, headers })!);
     const message = (await ask(1, "initialize", CODEX)).error?.message;
     expect(message).toBe("This MCP server refused its credentials (HTTP 401). If it uses a sign-in, send the message again: "
-      + "dusk bot refreshes sign-ins when a message starts. If it still fails, open Plugins → MCP servers and sign in to it again, "
+      + "Metal refreshes sign-ins when a message starts. If it still fails, open Plugins → MCP servers and sign in to it again, "
       + "or check its header values.");
     expect(message).not.toContain(fake.url);
     // not Codex's own sign-in: codexSignInRefused reads "please sign in again"
@@ -167,7 +167,7 @@ describe("strict initialize fixture", () => {
     fake = await startFakeHttpMcp({ tools: TOOLS, callDelayMs: 3_000 });
     const acp = startProxy(mcpStdioServer({ type: "http", url: fake.url, headers: {} }, { nodeEnv: { ELECTRON_RUN_AS_NODE: "1" } })!, FAST_CLOCK);
     await acp(1, "initialize", CODEX);
-    const timedOut = { code: -32001, message: expect.stringMatching(/^This tool did not answer within 2 minutes, so dusk bot stopped waiting for it\./) };
+    const timedOut = { code: -32001, message: expect.stringMatching(/^This tool did not answer within 2 minutes, so Metal stopped waiting for it\./) };
     expect((await acp(2, "tools/call", { name: "report", arguments: {} })).error).toEqual(timedOut);
     const stopped = once(child!, "close"); child!.kill(); await stopped;
     const searched = startProxy(mcpStdioServer({ type: "http", url: fake.url, headers: {} }, { directory: { name: "voluum" } })!, FAST_CLOCK);

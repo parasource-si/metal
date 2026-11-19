@@ -136,7 +136,7 @@ function Desktop() {
     <div style={{ position: "relative", width: 1512, height: 982, overflow: "hidden", fontFamily: "-apple-system, system-ui, sans-serif", background: WALLPAPER }}>
       <div style={{ position: "absolute", inset: "0 0 auto 0", height: menuBar, display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 18px",
         background: "rgb(30 24 40 / 0.28)", backdropFilter: "blur(30px)", color: "#f4f4f4", fontSize: 13, fontWeight: 500 }}>
-        <span style={{ display: "flex", gap: 20 }}><b>Dusk</b><span>File</span><span>Edit</span><span>View</span><span>Window</span><span>Help</span></span>
+        <span style={{ display: "flex", gap: 20 }}><b>Metal</b><span>File</span><span>Edit</span><span>View</span><span>Window</span><span>Help</span></span>
         <span style={{ display: "flex", gap: 16 }}><span>100%</span><span>Mon 9 Nov  10:40</span></span>
       </div>
       {!external && <div style={{ position: "absolute", top: 0, left: (1512 - 192) / 2, width: 192, height: 37, background: "#000", borderRadius: "0 0 10px 10px" }} />}

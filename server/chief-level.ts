@@ -2,8 +2,8 @@ import type { DefaultBotFields } from "../shared/default-bot.ts";
 
 export type TeamRoleOf = (email: string) => "owner" | "admin" | "member" | null;
 
-// Security invariant: a Team Cloud member's Dusk never holds more than its member. Until the server says how to read
-// members' roles, and whenever it cannot find one, a member's Dusk holds no Chief powers.
+// Security invariant: a Team Cloud member's Metal never holds more than its member. Until the server says how to read
+// members' roles, and whenever it cannot find one, a member's Metal holds no Chief powers.
 let roleOf: TeamRoleOf = () => null;
 
 export function readTeamRolesWith(resolver: TeamRoleOf): void {
@@ -12,7 +12,7 @@ export function readTeamRolesWith(resolver: TeamRoleOf): void {
 
 /** A Chief of Staff's powers: creating, configuring and deleting bots, rooms and routines through its tools, retrying a
  * teammate's thread, and its approval level passing down to the work it hands out. The Chief holds them, and so does the
- * person's Dusk (on a Team Cloud only when its member is an Owner or Admin). Being the Chief (the brief, who answers a
+ * person's Metal (on a Team Cloud only when its member is an Owner or Admin). Being the Chief (the brief, who answers a
  * room) stays with `chiefOfStaff`. */
 export function chiefLevel(bot: ({ chiefOfStaff?: boolean } & DefaultBotFields) | null | undefined): boolean {
   if (!bot) return false;
@@ -26,12 +26,12 @@ export function chiefLevel(bot: ({ chiefOfStaff?: boolean } & DefaultBotFields) 
 
 type RoleBot = ({ chiefOfStaff?: boolean } & DefaultBotFields) | null | undefined;
 
-/** The person's Dusk holding a Chief's powers: the only bot shown its notification tools. */
+/** The person's Metal holding a Chief's powers: the only bot shown its notification tools. */
 export function holdsDuskTools<T extends NonNullable<RoleBot>>(bot: T | null | undefined): bot is T {
   return Boolean(bot?.defaultBot) && chiefLevel(bot);
 }
 
-/** The role switches a bot's agents tools are listed under: the Chief-only tools, and Dusk's notification pair. */
+/** The role switches a bot's agents tools are listed under: the Chief-only tools, and Metal's notification pair. */
 export function roleToolEnv(bot: RoleBot): { DUSK_CHIEF_OF_STAFF: "1" | "0"; DUSK_DEFAULT_BOT: "1" | "0" } {
   return { DUSK_CHIEF_OF_STAFF: chiefLevel(bot) ? "1" : "0", DUSK_DEFAULT_BOT: holdsDuskTools(bot) ? "1" : "0" };
 }

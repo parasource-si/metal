@@ -16,7 +16,7 @@ import { memoryBugReportStore } from "./store.ts";
 const ADMIN = "owner@example.test", OTHER = "someone@example.test", ALERT = "owner@qa.dusk.test";
 const INSTALL = "test-install-0001";
 const payload = (over: Partial<DevsReportPayload> = {}): DevsReportPayload => ({ installId: INSTALL, source: "bot", description: "pictures never load\n\nWhere: Scout's chat",
-  appVersion: "0.1.150", platform: "darwin arm64, desktop app", diagnostics: "dusk bot @devs report\nApp version: 0.1.150", contactEmail: "ada@example.com", contact: "ada@example.com", ...over });
+  appVersion: "0.1.150", platform: "darwin arm64, desktop app", diagnostics: "Metal @devs report\nApp version: 0.1.150", contactEmail: "ada@example.com", contact: "ada@example.com", ...over });
 
 describe("bug reports", () => {
   let mailer: ReturnType<typeof memoryMailer>;

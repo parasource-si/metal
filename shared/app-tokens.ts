@@ -1,6 +1,6 @@
-// Apps dusk bot connects for free with the person's own credentials: a token they paste, or a device sign-in to our own
+// Apps Metal connects for free with the person's own credentials: a token they paste, or a device sign-in to our own
 // GitHub App or Google client (no app review). Each one either becomes the vendor's own MCP server with the token in a
-// header ("mcp"), or a small API tool dusk bot serves itself ("api"). Shared by the server and the Connect apps window.
+// header ("mcp"), or a small API tool Metal serves itself ("api"). Shared by the server and the Connect apps window.
 
 import { NATIVE_CONNECTORS } from "./native-connectors.ts";
 
@@ -22,7 +22,7 @@ export interface TokenAppSpec {
   /** Where the person makes the token: opened from the card. */
   settingsUrl: string;
   fields: readonly TokenField[];
-  /** Signs in to dusk bot's own OAuth app (shared/native-connectors.json) when this build has its client. An app with
+  /** Signs in to configured OAuth app (shared/native-connectors.json) when this build has its client. An app with
    * no fields signs in only that way. */
   native?: boolean;
 }

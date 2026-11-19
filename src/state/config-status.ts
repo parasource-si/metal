@@ -144,7 +144,7 @@ export interface ConfigStatus {
   /** The enrolled organisation's read-only desktop policy; null when this
    * desktop is not enrolled or its Admin sends no policy. */
   managedPolicy?: ManagedPolicySummary | null;
-  /** This server is a dusk bot Cloud home: it offers no "this computer" and no
+  /** This server is a dusk cloud home: it offers no "this computer" and no
    * Local VM (server/cloud-home.ts). Absent everywhere else. */
   cloudHome?: boolean;
   /** A Team Cloud: the team this server is the home of, and the Plan page (dusk cloud) where its people and plan
@@ -179,7 +179,7 @@ export interface BrowserEngineSummary {
   /** Whether a browser profile can use "My Chrome", the person's own running
    * Chrome: only where the bots run on their computer (the desktop app). */
   myChrome?: boolean;
-  /** browserEngine.engine: "chrome" when the bots' browsers run on dusk bot's own Chrome driver. */
+  /** browserEngine.engine: "chrome" when the bots' browsers run on Metal's own Chrome driver. */
   engine?: "agent-browser" | "chrome";
   /** Self-hosted servers only: whether bots' browsers may open this server's own sites and its local network
    * (browserEngine.egress.localNetwork, off by default). Absent on the desktop and on dusk cloud. */

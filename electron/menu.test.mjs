@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from "vitest";
 
 vi.mock("electron", () => ({
-  app: { name: "dusk bot" },
+  app: { name: "Metal" },
   Menu: { buildFromTemplate: (template) => template },
   shell: { openExternal: vi.fn(async () => {}) },
 }));
@@ -49,7 +49,7 @@ describe("buildApplicationMenu", () => {
     const onToggle = vi.fn();
     const template = build(platform, { openAtLogin: { checked: false, onToggle } });
     const item = template[0].submenu.find((entry) => entry.id === "open-at-login");
-    expect(template[0].label).toBe(platform === "darwin" ? "dusk bot" : "File");
+    expect(template[0].label).toBe(platform === "darwin" ? "Metal" : "File");
     expect(item).toMatchObject({ label: "Open at login", type: "checkbox", checked: false });
     item.click();
     expect(onToggle).toHaveBeenCalledWith(true);
@@ -73,7 +73,7 @@ describe("buildApplicationMenu", () => {
     const item = template[0].submenu.find((entry) => entry.id === "quit");
     expect(item.role).toBeUndefined();
     expect(item.accelerator).toBe(platform === "win32" ? undefined : "CmdOrCtrl+Q");
-    expect(item.label).toBe(platform === "darwin" ? "Quit dusk bot" : platform === "win32" ? "Exit" : "Quit");
+    expect(item.label).toBe(platform === "darwin" ? "Quit Metal" : platform === "win32" ? "Exit" : "Quit");
     item.click(item, null, { triggeredByAccelerator: true });
     item.click(item, null, { triggeredByAccelerator: false });
     expect(onQuit.mock.calls).toEqual([[true], [false]]);
@@ -95,7 +95,7 @@ describe("buildApplicationMenu", () => {
     const template = build(platform);
     expect(template[0].role).toBe("fileMenu");
     for (const item of template) {
-      expect(item.label).not.toBe("dusk bot");
+      expect(item.label).not.toBe("Metal");
     }
   });
 
@@ -141,8 +141,8 @@ describe("buildApplicationMenu", () => {
   it.each(["darwin", "linux", "win32"])("has a Help menu with the docs, what's new and support on %s", async platform => {
     const { shell } = await import("electron");
     const help = build(platform).find((entry) => entry.role === "help");
-    expect(help.submenu.filter((entry) => entry.label).map((entry) => entry.label)).toEqual(["dusk bot help", "What's new", "Contact support"]);
+    expect(help.submenu.filter((entry) => entry.label).map((entry) => entry.label)).toEqual(["Metal help", "What's new", "Contact support"]);
     for (const entry of help.submenu) entry.click?.();
-    expect(shell.openExternal.mock.calls.slice(-3).map(([url]) => url)).toEqual(["https://dusk.bot/docs", "https://dusk.bot/changelog", "mailto:hello@dusk.bot"]);
+    expect(shell.openExternal.mock.calls.slice(-3).map(([url]) => url)).toEqual(["https://github.com/parasource-si/metal/tree/main/docs", "https://github.com/parasource-si/metal/blob/main/CHANGELOG.md", "https://github.com/parasource-si/metal/issues"]);
   });
 });

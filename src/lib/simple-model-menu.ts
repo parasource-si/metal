@@ -115,7 +115,7 @@ export interface SimpleMenuInput {
 
 export const RECENT_SHOWN = 3;
 
-/** dusk bot's own free model: OpenCode ready through its free models alone, with no login of the person's own. */
+/** Metal's own free model: OpenCode ready through its free models alone, with no login of the person's own. */
 export const isFreeModel = (instance: InstanceInfo | undefined): boolean => Boolean(instance && freeFallback(instance));
 
 /** OpenCode's CLI names its free models with a `-free` suffix, which is the only price it reports over ACP (V2); the
@@ -132,7 +132,7 @@ const ownModelLabel = (label: string): string => {
 const freeModelNow = (instance: InstanceInfo): string => instance.models.default.trim()
   || instance.models.options.find((option) => !option.custom)?.id || "";
 
-/** The selection is the Free model row: dusk bot's default on OpenCode's free models, named by what it is, never by
+/** The selection is the Free model row: Metal's default on OpenCode's free models, named by what it is, never by
  * the model behind it (3656bc25c). A free model picked by name goes by that name. */
 export const isAutoFreeModel = (instance: InstanceInfo | undefined, model: string): boolean =>
   Boolean(instance && isFreeModel(instance) && model === freeModelNow(instance));

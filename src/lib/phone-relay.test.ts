@@ -10,7 +10,7 @@ describe("phone relay in the pairing pane", () => {
   });
 
   it("says what to do instead of a dead end", () => {
-    expect(relayUnavailableMessage({ status: "signed-out" })).toMatch(/Sign in to your dusk bot account/);
+    expect(relayUnavailableMessage({ status: "signed-out" })).toMatch(/Sign in to your Dusk account/);
     expect(relayUnavailableMessage({ status: "error", message: "This account already has 20 linked servers." })).toContain("20 linked servers");
     expect(relayUnavailableMessage({ status: "error", code: "tunnel_limit", message: "This account already has 20 linked servers. Remove one in the app to link another." }))
       .toMatch(/limit of linked servers and computers.*same Wi-Fi/);

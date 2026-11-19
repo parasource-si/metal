@@ -172,7 +172,7 @@ jobs:
         # macos-15 runners have 7 GB, so Node's default heap stops near 2 GB; the server typecheck now needs a little more.
         env:
           NODE_OPTIONS: --max-old-space-size=4096
-          # dusk bot's own OAuth clients (shared/native-connectors.json), baked in by scripts/bundle-server.mjs; a missing one
+          # Metal's own OAuth clients (shared/native-connectors.json), baked in by scripts/bundle-server.mjs; a missing one
           # leaves that one-click sign-in off
           DUSK_GITHUB_APP_CLIENT_ID: ${{ secrets.DUSK_GITHUB_APP_CLIENT_ID }}
           DUSK_GOOGLE_DRIVE_CLIENT_ID: ${{ secrets.DUSK_GOOGLE_DRIVE_CLIENT_ID }}
@@ -193,7 +193,7 @@ jobs:
 
       - name: "Gate: the signature must verify BEFORE notarization"
         run: |
-          for app in "release/mac-arm64/Dusk Bot.app" "release/mac/Dusk Bot.app"; do
+          for app in "release/mac-arm64/Metal.app" "release/mac/Metal.app"; do
             codesign --verify --deep --strict "$app"
             bin="$app/Contents/Resources/cloudflared/cloudflared"
             test -x "$bin" || { echo "::error::missing executable $bin"; exit 1; }
@@ -210,7 +210,7 @@ jobs:
             test -s "$app/Contents/Resources/parts.json" || { echo "::error::missing parts.json in $app"; exit 1; }
             case "$app" in *mac-arm64*) parch=arm64 ;; *) parch=x64 ;; esac
             part="$RUNNER_TEMP/part-$parch/browser-engine"; rm -rf "$part"; mkdir -p "$part"
-            ditto -x -k "release/DuskBot-$(node -p "require('./package.json').version")-browser-darwin-$parch.zip" "$part"
+            ditto -x -k "release/Metal-$(node -p "require('./package.json').version")-browser-darwin-$parch.zip" "$part"
             for browser_bin in "$part/agent-browser" "$part/chrome/"*/chrome-headless-shell; do
               test -x "$browser_bin"
               codesign --verify --strict "$browser_bin"
@@ -223,8 +223,8 @@ jobs:
       - name: "Gate: signed native browser works with an empty home"
         run: |
           case "$(node -p process.arch)" in
-            arm64) resources="$PWD/release/mac-arm64/Dusk Bot.app/Contents/Resources" ;;
-            x64) resources="$PWD/release/mac/Dusk Bot.app/Contents/Resources" ;;
+            arm64) resources="$PWD/release/mac-arm64/Metal.app/Contents/Resources" ;;
+            x64) resources="$PWD/release/mac/Metal.app/Contents/Resources" ;;
             *) exit 1 ;;
           esac
           # the browser is a downloaded part: smoke the signed copy the release ships, unpacked as the app unpacks it
@@ -234,7 +234,7 @@ jobs:
 
       - name: "Gate: both packaged servers start and every helper path resolves"
         run: |
-          for app in "release/mac-arm64/Dusk Bot.app" "release/mac/Dusk Bot.app"; do
+          for app in "release/mac-arm64/Metal.app" "release/mac/Metal.app"; do
             res="$app/Contents/Resources"
             # the server tree is plain JS — runnable on the runner's node
             # regardless of the app binary's arch
@@ -307,17 +307,17 @@ jobs:
           }
           v=$(node -p "require('./package.json').version")
           for pair in "arm64:release/mac-arm64" "x64:release/mac"; do
-            arch="${pair%%:*}"; app="${pair#*:}/Dusk Bot.app"
+            arch="${pair%%:*}"; app="${pair#*:}/Metal.app"
             ditto -c -k --sequesterRsrc --keepParent "$app" "$RUNNER_TEMP/app-$arch.zip"
             notarize "$RUNNER_TEMP/app-$arch.zip"
             # a zip cannot be stapled: Gatekeeper finds the browser part's ticket online
-            notarize "release/DuskBot-$v-browser-darwin-$arch.zip"
+            notarize "release/Metal-$v-browser-darwin-$arch.zip"
             staple "$app"
-            scripts/mac-dmg-swap-app.sh "release/DuskBot-$v-$arch.dmg" "$app" "$MAC_SIGN_IDENTITY" "$MAC_KEYCHAIN"
-            notarize "release/DuskBot-$v-$arch.dmg"
-            staple "release/DuskBot-$v-$arch.dmg"
-            rm -f "release/DuskBot-$v-$arch.zip" "release/DuskBot-$v-$arch.zip.blockmap"
-            ditto -c -k --sequesterRsrc --keepParent "$app" "release/DuskBot-$v-$arch.zip"
+            scripts/mac-dmg-swap-app.sh "release/Metal-$v-$arch.dmg" "$app" "$MAC_SIGN_IDENTITY" "$MAC_KEYCHAIN"
+            notarize "release/Metal-$v-$arch.dmg"
+            staple "release/Metal-$v-$arch.dmg"
+            rm -f "release/Metal-$v-$arch.zip" "release/Metal-$v-$arch.zip.blockmap"
+            ditto -c -k --sequesterRsrc --keepParent "$app" "release/Metal-$v-$arch.zip"
           done
           rm "$RUNNER_TEMP/notary.p8"
 
@@ -326,7 +326,7 @@ jobs:
         run: |
           v=$(node -p "require('./package.json').version")
           for pair in "arm64:release/mac-arm64" "x64:release/mac"; do
-            arch="${pair%%:*}"; app="${pair#*:}/Dusk Bot.app"; dmg="release/DuskBot-$v-$arch.dmg"
+            arch="${pair%%:*}"; app="${pair#*:}/Metal.app"; dmg="release/Metal-$v-$arch.dmg"
             codesign --verify --deep --strict --verbose=2 "$app"
             spctl -a -vvv -t exec "$app" 2>&1 | tee /dev/stderr | grep -q "source=Notarized Developer ID"
             xcrun stapler validate "$app"
@@ -339,8 +339,8 @@ jobs:
       - name: Stable-named copies for the README's /latest/download links
         run: |
           v=$(node -p "require('./package.json').version")
-          cp "release/DuskBot-$v-arm64.dmg" release/DuskBot.dmg
-          cp "release/DuskBot-$v-x64.dmg" release/DuskBot-intel.dmg
+          cp "release/Metal-$v-arm64.dmg" release/Metal.dmg
+          cp "release/Metal-$v-x64.dmg" release/Metal-intel.dmg
 
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
@@ -375,7 +375,7 @@ jobs:
         env:
           # the server typecheck in package:prepare outgrows Node's default ~2 GB heap (both runners have 16 GB)
           NODE_OPTIONS: --max-old-space-size=4096
-          # dusk bot's own OAuth clients (shared/native-connectors.json), baked in by scripts/bundle-server.mjs; a missing one
+          # Metal's own OAuth clients (shared/native-connectors.json), baked in by scripts/bundle-server.mjs; a missing one
           # leaves that one-click sign-in off
           DUSK_GITHUB_APP_CLIENT_ID: ${{ secrets.DUSK_GITHUB_APP_CLIENT_ID }}
           DUSK_GOOGLE_DRIVE_CLIENT_ID: ${{ secrets.DUSK_GOOGLE_DRIVE_CLIENT_ID }}
@@ -430,7 +430,7 @@ jobs:
         shell: bash
         run: |
           v=$(node -p "require('./package.json').version")
-          cp "release/DuskBot-$v-setup.exe" release/DuskBot-setup.exe
+          cp "release/Metal-$v-setup.exe" release/Metal-setup.exe
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: windows-release
@@ -470,7 +470,7 @@ jobs:
         env:
           # the server typecheck in package:prepare outgrows Node's default ~2 GB heap (both runners have 16 GB)
           NODE_OPTIONS: --max-old-space-size=4096
-          # dusk bot's own OAuth clients (shared/native-connectors.json), baked in by scripts/bundle-server.mjs; a missing one
+          # Metal's own OAuth clients (shared/native-connectors.json), baked in by scripts/bundle-server.mjs; a missing one
           # leaves that one-click sign-in off
           DUSK_GITHUB_APP_CLIENT_ID: ${{ secrets.DUSK_GITHUB_APP_CLIENT_ID }}
           DUSK_GOOGLE_DRIVE_CLIENT_ID: ${{ secrets.DUSK_GOOGLE_DRIVE_CLIENT_ID }}
@@ -529,9 +529,9 @@ jobs:
       - name: Stable-named copies and checksums
         run: |
           v=$(node -p "require('./package.json').version")
-          cp "release/DuskBot-$v-amd64.deb" release/DuskBot-amd64.deb
-          cp "release/DuskBot-$v-x86_64.AppImage" release/DuskBot.AppImage
-          (cd release && sha256sum DuskBot-$v-amd64.deb DuskBot-$v-x86_64.AppImage > SHA256SUMS-ubuntu-x64.txt)
+          cp "release/Metal-$v-amd64.deb" release/Metal-amd64.deb
+          cp "release/Metal-$v-x86_64.AppImage" release/Metal.AppImage
+          (cd release && sha256sum Metal-$v-amd64.deb Metal-$v-x86_64.AppImage > SHA256SUMS-ubuntu-x64.txt)
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: linux-release
@@ -565,25 +565,24 @@ jobs:
           VERSION: ${{ needs.prepare.outputs.version }}
         run: |
           required=(
-            "DuskBot-$VERSION-amd64.deb"
-            "DuskBot-$VERSION-arm64.dmg"
-            "DuskBot-$VERSION-arm64.zip"
-            "DuskBot-$VERSION-setup.exe"
-            "DuskBot-$VERSION-x64.dmg"
-            "DuskBot-$VERSION-x64.zip"
-            "DuskBot-$VERSION-browser-darwin-arm64.zip"
-            "DuskBot-$VERSION-browser-darwin-x64.zip"
-            "DuskBot-$VERSION-x86_64.AppImage"
-            DuskBot-amd64.deb DuskBot-intel.dmg DuskBot-setup.exe
-            DuskBot.AppImage DuskBot.dmg SHA256SUMS-ubuntu-x64.txt
+            "Metal-$VERSION-amd64.deb"
+            "Metal-$VERSION-arm64.dmg"
+            "Metal-$VERSION-arm64.zip"
+            "Metal-$VERSION-setup.exe"
+            "Metal-$VERSION-x64.dmg"
+            "Metal-$VERSION-x64.zip"
+            "Metal-$VERSION-browser-darwin-arm64.zip"
+            "Metal-$VERSION-browser-darwin-x64.zip"
+            "Metal-$VERSION-x86_64.AppImage"
+            Metal-amd64.deb Metal-intel.dmg Metal-setup.exe
+            Metal.AppImage Metal.dmg SHA256SUMS-ubuntu-x64.txt
           )
           for file in "${required[@]}"; do
             test -s "assets/$file" || { echo "::error::missing or empty release asset: $file"; exit 1; }
           done
           test "$(find assets -maxdepth 1 -type f | wc -l | tr -d ' ')" = "${#required[@]}" || {
             echo "::error::unexpected release asset set"; find assets -maxdepth 1 -type f -print; exit 1; }
-      # the files dusk.bot serves for this release: the installers' sums and the signed latest.json the app checks
-      # (server/update-check.ts). Kept apart from the canonical asset set, which the draft must match exactly.
+      # Generate checksums even when this build has no update-signing key.
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           ref: ${{ needs.prepare.outputs.sha }}
@@ -597,22 +596,23 @@ jobs:
       - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version: 24
-      - name: Sign the update manifest
+      - name: Generate release checksums and sign the manifest when configured
         env:
           VERSION: ${{ needs.prepare.outputs.version }}
           DUSK_RELEASE_SIGNING_KEY: ${{ secrets.DUSK_RELEASE_SIGNING_KEY }}
         run: |
-          if [ -z "$DUSK_RELEASE_SIGNING_KEY" ]; then
-            echo "::warning title=No update manifest::DUSK_RELEASE_SIGNING_KEY is not set, so apps will not hear about this release"
-            exit 0
-          fi
           mkdir -p site
-          cp assets/DuskBot-"$VERSION"-* site/
-          node src/scripts/release-manifest.ts site --version "$VERSION"
-          find site -maxdepth 1 -name 'DuskBot-*' -delete
+          if [ -n "$DUSK_RELEASE_SIGNING_KEY" ]; then
+            cp assets/Metal-"$VERSION"-* site/
+            node src/scripts/release-manifest.ts site --version "$VERSION"
+            find site -maxdepth 1 -name 'Metal-*' -delete
+          else
+            node --input-type=module -e 'import { sha256sums } from "./src/scripts/release-manifest.ts"; process.stdout.write(sha256sums("assets"));' > site/SHA256SUMS
+          fi
+          cp site/SHA256SUMS assets/
           cat site/SHA256SUMS
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
-        if: hashFiles('site/latest.json') != ''
+        if: hashFiles('site/SHA256SUMS') != ''
         with:
           name: dusk-site
           path: site/
@@ -647,7 +647,7 @@ jobs:
             done
           }
           ensure_draft "$GITHUB_REPOSITORY" --target "$SHA" \
-            --draft --title "dusk bot $VERSION" --generate-notes
+            --draft --title "Metal $VERSION" --generate-notes
           target=$(gh release view "$tag" --repo "$GITHUB_REPOSITORY" --json targetCommitish --jq .targetCommitish)
           target_sha=$(gh api "repos/$GITHUB_REPOSITORY/commits/$target" --jq .sha)
           test "$target_sha" = "$SHA" || {

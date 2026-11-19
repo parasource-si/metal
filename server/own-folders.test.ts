@@ -66,7 +66,7 @@ describe("settleChatFolder", () => {
     mkdirSync(inOther, { recursive: true });
     expect(foreignDataDir(inOther, here)).toBe(other);
     expect(settle(inOther)).toMatchObject({ cwd: join(here, "task-workspaces", BOT, THREAD), lost: "projects" });
-    expect(validateBotCwd(inOther)).toEqual({ ok: false, error: expect.stringMatching(/another dusk bot/) });
+    expect(validateBotCwd(inOther)).toEqual({ ok: false, error: expect.stringMatching(/another Metal/) });
   });
 
   it("keeps a picked folder that exists, no folder, and a chat not pinned yet", () => {

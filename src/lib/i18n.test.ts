@@ -36,7 +36,7 @@ describe("t", () => {
   });
 
   it("fills {app} with the product's name or the name a caller passes", () => {
-    expect(t("routines.runsOn.localHint")).toBe("Starts while dusk bot is open here.");
+    expect(t("routines.runsOn.localHint")).toBe("Starts while Metal is open here.");
     expect(t("routines.runsOn.localHint", { app: "Acme" })).toBe("Starts while Acme is open here.");
   });
 

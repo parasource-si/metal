@@ -192,7 +192,7 @@ export interface VpsComputerStatus {
   container_id: string | null;
   container_started_at?: string;
   image_id: string | null;
-  /** A bot desktop dusk bot made from an older image, otherwise safe: it is replaced on its home volume by itself. */
+  /** A bot desktop Metal made from an older image, otherwise safe: it is replaced on its home volume by itself. */
   outdated?: boolean;
   /** An outdated desktop that runs as it is, on its own image and Cua Driver, until its update is ready on the host. */
   runsOlderVersion?: boolean;
@@ -451,16 +451,16 @@ function statusProblem(status: VpsComputerStatus): string | null {
   if (status.outdated && !status.runsOlderVersion) return "This computer is on an older version and updates itself before its next use";
   if (!status.image && !status.runsOlderVersion) {
     return status.desktop === "cua"
-      ? `Prepare the pinned dusk bot Cua image on the VPS (Driver ${CUA_DRIVER_VERSION})`
-      : `Prepare the dusk bot desktop image on the VPS (${BOT_DESKTOP_IMAGE})`;
+      ? `Prepare the pinned Metal Cua image on the VPS (Driver ${CUA_DRIVER_VERSION})`
+      : `Prepare the Metal desktop image on the VPS (${BOT_DESKTOP_IMAGE})`;
   }
-  if (status.container === "missing") return "No dusk bot container exists for this bot on the VPS";
-  if (!status.imageMatches && !status.runsOlderVersion) return "The VPS container uses an incompatible or untrusted dusk bot image";
-  if (!status.managed) return "The VPS container name is occupied by a container dusk bot did not create";
+  if (status.container === "missing") return "No Metal container exists for this bot on the VPS";
+  if (!status.imageMatches && !status.runsOlderVersion) return "The VPS container uses an incompatible or untrusted Metal image";
+  if (!status.managed) return "The VPS container name is occupied by a container Metal did not create";
   if (status.network === "unsafe") return "The VPS container uses an unapproved network or publishes ports; refusing to use it";
   if (status.mounts === "unsafe") return "The VPS container has host mounts; refusing to use it";
   if (status.security === "unsafe") return "The VPS container has unsupported privilege, isolation, or automatic-removal settings";
-  if (status.container === "stopped") return "The dusk bot VPS container is stopped";
+  if (status.container === "stopped") return "The Metal VPS container is stopped";
   if (status.desktop_error) return `The VPS Cua desktop failed to start: ${status.desktop_error}`;
   if (!status.desktopReady) return "The VPS container started, but Cua Driver is not ready yet";
   return null;
@@ -856,7 +856,7 @@ export function vpsContainerRunArgs(
   ];
 }
 
-/** A bot desktop dusk bot made, safe in every way but made from another image: replacing it on its home volume keeps its
+/** A bot desktop Metal made, safe in every way but made from another image: replacing it on its home volume keeps its
  * saved files and sign-ins, so it happens by itself. A Cua desktop keeps nothing inside it, so a person replaces that one. */
 export function vpsDesktopReplaceable(status: Pick<VpsComputerStatus, "desktop" | "managed" | "container" | "imageMatches" | "network" | "mounts" | "security">): boolean {
   return status.desktop === "bot-desktop" && status.managed && status.container !== "missing" && !status.imageMatches &&
@@ -1140,7 +1140,7 @@ export async function vpsComputerAction(
         if (before.container === "missing") return before;
         if (!before.managed) {
           throw Object.assign(
-            new Error("The VPS container name is occupied by a container dusk bot did not create: remove it on the VPS yourself"),
+            new Error("The VPS container name is occupied by a container Metal did not create: remove it on the VPS yourself"),
             { status: 409 },
           );
         }

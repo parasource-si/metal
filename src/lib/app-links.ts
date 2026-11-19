@@ -1,13 +1,13 @@
-export const APP_NAME = "dusk bot";
-export const SITE_URL = "https://dusk.bot";
-export const DOCS_URL = `${SITE_URL}/docs`;
+export { PRODUCT_NAME as APP_NAME } from "./brand";
+export const SITE_URL = "https://github.com/parasource-si/metal";
+export const DOCS_URL = `${SITE_URL}/tree/main/docs`;
 export const HELP_CENTER_URL = DOCS_URL;
-export const APPROVAL_LEVELS_URL = `${DOCS_URL}/computer#asking-first`;
+export const APPROVAL_LEVELS_URL = `${SITE_URL}/blob/main/docs/approval-levels.md`;
 export const PASSKEY_HELP_URL = "https://dusk.bot/docs/troubleshooting";
-export const FEEDBACK_URL = "https://discord.gg/9Wb8MEpXRs";
-export const RELEASES_URL = `${SITE_URL}/changelog`;
+export const FEEDBACK_URL = `${SITE_URL}/issues`;
+export const RELEASES_URL = `${SITE_URL}/blob/main/CHANGELOG.md`;
 export const CLOUD_PLAN_URL = "https://dusk.bot/dashboard/cloud";
-export const LICENSE_URL = `${SITE_URL}/license`;
+export const LICENSE_URL = `https://dusk.bot/license`;
 export const THIRD_PARTY_NOTICES_URL = "/third-party-notices.txt";
 
 export function appVersion(): string {

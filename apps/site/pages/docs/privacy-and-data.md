@@ -39,7 +39,7 @@ to restore, choose **import backup** on the new machine. it replaces everything 
 ## deleting things
 
 - **a bot:** delete it from the sidebar.
-- **everything on your computer:** remove the app, the `.duskbot` folder in your home folder, and the app's own folder, which holds your sign-ins: `~/Library/Application Support/Dusk Bot` on a mac (and the **Dusk Bot Safe Storage** item in Keychain Access), `%APPDATA%\Dusk Bot` on windows, `~/.config/Dusk Bot` on linux.
+- **everything on your computer:** remove the app, the `.duskbot` folder in your home folder, and the app's own folder, which holds your sign-ins: `~/Library/Application Support/Dusk Bot` on a mac (and the **Metal Safe Storage** item in Keychain Access), `%APPDATA%\Dusk Bot` on windows, `~/.config/Dusk Bot` on linux.
 - **your account:** **delete account** on the account page.
 
 to see, correct or delete what we hold about you, write to privacy@dusk.bot. security problems go to security@dusk.bot (see the [security page](/security)).

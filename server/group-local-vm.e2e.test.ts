@@ -770,9 +770,9 @@ describe("Group Local VM ownership on the real isolated server", () => {
   });
 
   it.skipIf(process.platform === "linux")("tells a channel speaker which macOS grant is still off, instead of failing the turn", async () => {
-    const sent = await speaksWithoutThisComputer("embedded host failed: Screen Recording required; grant access in System Settings and restart dusk bot");
+    const sent = await speaksWithoutThisComputer("embedded host failed: Screen Recording required; grant access in System Settings and restart Metal");
     expect(sent).toContain("Control of this computer's desktop apps is not available");
-    if (process.platform === "darwin") expect(sent).toContain("macOS has not given dusk bot Screen Recording on this Mac yet");
+    if (process.platform === "darwin") expect(sent).toContain("macOS has not given Metal Screen Recording on this Mac yet");
   });
 
   it("runs a channel speaker's own VPS destination on its engine, waking and reusing its computer", async () => {

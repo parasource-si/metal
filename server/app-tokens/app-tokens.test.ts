@@ -227,7 +227,7 @@ describe("token apps service", () => {
     expect(apps.scrub("leak github_pat_secret")).toBe("leak [hidden]");
   });
 
-  it("connects an api app behind dusk bot's own endpoint, and a second account under its own name", async () => {
+  it("connects an api app behind Metal's own endpoint, and a second account under its own name", async () => {
     const { apps, servers } = setup({ "https://api.notion.com/": () => ({ body: { bot: { workspace_name: "Acme" } } }) });
     await route(apps, "POST", "/api/app-tokens/notion", { fields: { token: "ntn_one" } });
     await route(apps, "POST", "/api/app-tokens/notion", { fields: { token: "ntn_two" } });
@@ -366,7 +366,7 @@ describe("the GitHub and Google Drive rows", () => {
   });
 });
 
-describe("native sign-ins to dusk bot's own OAuth apps", () => {
+describe("native sign-ins to Metal's own OAuth apps", () => {
   const dirs: string[] = [];
   afterEach(() => { for (const dir of dirs.splice(0)) rmSync(dir, { recursive: true, force: true }); });
   function setup(routes: Parameters<typeof fakeFetch>[0], clients: Record<string, { clientId: string; clientSecret?: string } | null>) {

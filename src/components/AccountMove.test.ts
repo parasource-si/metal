@@ -134,7 +134,7 @@ describe("the move's row in the account menu", () => {
     expect(busy).toHaveLength(1);
     expect(busy[0]).toMatchObject({ label: "Try moving to dusk cloud again", disabled: true });
     expect(markup(busy[0]!.icon)).toContain("animate-spin");
-    expect(rows(failing, { unanswered: "dusk bot on this computer did not answer." })[0]!.title).toBe("dusk bot on this computer did not answer.");
+    expect(rows(failing, { unanswered: "Metal on this computer did not answer." })[0]!.title).toBe("Metal on this computer did not answer.");
     // Main gave no words of its own: the friendly line stays.
     expect(rows(failing, { unanswered: "Something got in the way. Your bots are safe here." })[0]!.title).toBe("Something got in the way. Your bots are safe here.");
   });
@@ -187,7 +187,7 @@ describe("useAccountMove", () => {
     expect(await shown(notice)).toEqual({ kind: null, items: [] });
     f.values = [];
     expect(await shown({ ...notice, running: true, runningReason: "first", last: { at: 3, reason: "first", failed: 2, seen: false, sent: { bots: 2, updatedBots: 0, skills: 0, logins: 0, onePassword: false, settings: 0, chats: null },
-      reasons: [{ what: { bots: [], skills: 0, logins: 2, onePassword: false, settings: 0, chats: false }, error: "dusk bot on this computer did not answer." }] } })).toEqual({ kind: null, items: [] });
+      reasons: [{ what: { bots: [], skills: 0, logins: 2, onePassword: false, settings: 0, chats: false }, error: "Metal on this computer did not answer." }] } })).toEqual({ kind: null, items: [] });
     f.values = [];
     vi.stubGlobal("window", {});
     expect(hook()).toEqual({ kind: null, items: [] });
@@ -218,11 +218,11 @@ describe("useAccountMove", () => {
 
   it("says main's words in the tooltip when Try again goes unanswered", async () => {
     const failing = await shown({ ...notice, move: { phase: "copy", failing: { error: "My Cloud did not answer." } } });
-    page.moveRetry = vi.fn().mockRejectedValue(new Error("Error invoking remote method 'cloud-send:move-retry': Error: dusk bot on this computer did not answer."));
+    page.moveRetry = vi.fn().mockRejectedValue(new Error("Error invoking remote method 'cloud-send:move-retry': Error: Metal on this computer did not answer."));
     failing.items[0]!.onSelect(); await flush();
     const after = hook();
-    expect(after.items[0]).toMatchObject({ title: "dusk bot on this computer did not answer.", disabled: false });
-    expect(lineHook().retry).toMatchObject({ retrying: false, why: "dusk bot on this computer did not answer." });
+    expect(after.items[0]).toMatchObject({ title: "Metal on this computer did not answer.", disabled: false });
+    expect(lineHook().retry).toMatchObject({ retrying: false, why: "Metal on this computer did not answer." });
   });
 
   it("the line's Try again and the menu's are one: either runs it, both wait for it, and it runs once at a time", async () => {

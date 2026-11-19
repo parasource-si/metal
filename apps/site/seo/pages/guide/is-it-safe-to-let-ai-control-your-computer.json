@@ -4,7 +4,7 @@
   "title": "Is it safe to let AI control your computer? What to check",
   "nav": "is it safe to let ai use your computer",
   "h1": "is it safe to let ai control your computer?",
-  "description": "What can go wrong when an AI agent clicks around for you, the five checks that make it safer, and how dusk bot handles approvals, sign-ins and its own computer.",
+  "description": "What can go wrong when an AI agent clicks around for you, the five checks that make it safer, and how Metal handles approvals, sign-ins and its own computer.",
   "keyword": "is it safe to let ai control your computer",
   "keywords": [
     "ai agent security",
@@ -16,7 +16,7 @@
   "updated": "2026-11-12",
   "review": {
     "status": "approved",
-    "by": "lead agent, against dusk bot docs",
+    "by": "lead agent, against Metal docs",
     "at": "2026-11-12"
   },
   "tags": [
@@ -50,8 +50,8 @@
       "md": "**if a tool fails two of these, only use it for things you'd happily redo by hand.**\n\n1. does it get its own computer, separate from yours?\n2. does it really ask before sending, buying or deleting?\n3. can you watch live and take over?\n4. can you limit it per app, read only where that's enough?\n5. is there one button that stops it now?"
     },
     {
-      "h": "how dusk bot answers each one",
-      "md": "**own computer.** on [dusk cloud](/docs/dusk-cloud) each bot gets its own desktop; on your server, a private one there. pointing a bot at your own mac screen is opt-in.\n\n**asking first.** risky steps stop at an **Allow** / **Deny** card, in the app, on your phone or in a call. per bot you pick **Ask for approval**, **Auto-accept edits**, **Approve for me** or **Full access**. sending has its own setting: ask every time, or a daily amount.\n\n**watching.** **Screen** shows it live. **Take control** to type a password or solve a captcha yourself; the bot stays signed in and never sees it.\n\n**limits per app.** allow each app per bot, read only if that's enough. dusk bot blocks the rest before it reaches the app.\n\n**stopping.** [[⌘ .]] ([[Ctrl .]] on windows and linux)."
+      "h": "how Metal answers each one",
+      "md": "**own computer.** on [dusk cloud](/docs/dusk-cloud) each bot gets its own desktop; on your server, a private one there. pointing a bot at your own mac screen is opt-in.\n\n**asking first.** risky steps stop at an **Allow** / **Deny** card, in the app, on your phone or in a call. per bot you pick **Ask for approval**, **Auto-accept edits**, **Approve for me** or **Full access**. sending has its own setting: ask every time, or a daily amount.\n\n**watching.** **Screen** shows it live. **Take control** to type a password or solve a captcha yourself; the bot stays signed in and never sees it.\n\n**limits per app.** allow each app per bot, read only if that's enough. Metal blocks the rest before it reaches the app.\n\n**stopping.** [[⌘ .]] ([[Ctrl .]] on windows and linux)."
     },
     {
       "h": "what stays your job",
@@ -74,19 +74,19 @@
   ],
   "sources": [
     {
-      "label": "dusk bot docs: a bot's computer",
+      "label": "Metal docs: a bot's computer",
       "url": "/docs/computer"
     },
     {
-      "label": "dusk bot docs: files and apps",
+      "label": "Metal docs: files and apps",
       "url": "/docs/files-and-apps"
     },
     {
-      "label": "dusk bot docs: memory",
+      "label": "Metal docs: memory",
       "url": "/docs/memory"
     },
     {
-      "label": "dusk bot docs: privacy and your data",
+      "label": "Metal docs: privacy and your data",
       "url": "/docs/privacy-and-data"
     }
   ],

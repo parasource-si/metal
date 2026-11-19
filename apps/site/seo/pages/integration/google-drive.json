@@ -4,7 +4,7 @@
   "title": "Google Drive AI assistant for file finding and tidy reviews",
   "nav": "google drive",
   "h1": "a google drive assistant that finds the right file",
-  "description": "Find files, inspect sharing and plan folder moves with dusk bot and Google Drive. Copy three routines that keep the first review read only.",
+  "description": "Find files, inspect sharing and plan folder moves with Metal and Google Drive. Copy three routines that keep the first review read only.",
   "answer": "**walk into the meeting with the approved packet, not the newer notes beside it.** a google drive bot finds files, reads their details and inspects sharing. connect drive, choose its ai and start read only. it can hand you candidates and filing proposals. folder creation and moves need write access and an ask-first instruction if you want review.",
   "tags": [
     "files",
@@ -124,15 +124,15 @@
   ],
   "sources": [
     {
-      "label": "dusk bot docs: files and apps",
+      "label": "Metal docs: files and apps",
       "url": "/docs/files-and-apps"
     },
     {
-      "label": "dusk bot docs: routines",
+      "label": "Metal docs: routines",
       "url": "/docs/routines"
     },
     {
-      "label": "dusk bot docs: permissions and sends",
+      "label": "Metal docs: permissions and sends",
       "url": "/docs/computer"
     }
   ],

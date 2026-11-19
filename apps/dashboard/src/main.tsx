@@ -153,7 +153,7 @@ function App() {
     if (account && (path === "/admin" || path.startsWith("/admin/"))) return;
     const page = path === HANDOFF_PATH ? "signing in" : path === APP_LANDING_PATH ? "signed in" : account === null ? (path === "/signup" ? "make your account" : "sign in")
       : TITLES[path] ?? (path.startsWith("/bots/") ? "bot" : path.startsWith("/workspaces/") ? "workspace" : deletePageId(path) !== null ? "delete cloud data" : "not found");
-    document.title = `${page} / dusk bot`;
+    document.title = `${page} / Metal`;
   }, [path, account]);
   // before launch only a real flow's pages show; any other move (a link, the sidebar, after signing in) goes to the waitlist
   const away = PRELAUNCH && !prelaunchAllowed(path, query, { handoff: handoffArrived(), appReturn: appReturn() !== null, claim: hasClaim(), deleting: (id) => deleteToken(id) !== null, teamInvite: teamInvite() !== null });
@@ -165,7 +165,7 @@ function App() {
   if (path === APP_LANDING_PATH) return <Suspense fallback={blank}><AppSignedInPage /></Suspense>;
   if (accountError) return <main className="flex min-h-[100dvh] items-center justify-center bg-bg px-6"><SkyEmpty art="cat" title="can't reach your account right now." action={<Button variant="primary" onClick={retryAccount}>try again</Button>} className="w-full max-w-[520px]">check your connection. your bots are fine, they live on your own computers.</SkyEmpty></main>;
   if (account === undefined) return path === "/billing" ? <PlansPageSkeleton /> : <div className="min-h-[100dvh] bg-bg" aria-busy="true" />;
-  if (account === null) return <AuthScreen mode={path === "/signup" ? "signup" : "signin"} forApp={path === "/cloud/desktop"} note={path === TEAM_JOIN_PATH ? "sign in with the email your invite was sent to, and you join the team." : path === "/claim" ? "this link connects a dusk bot workspace to your account, so its machine stats, bots and usage show here. chats and files stay on it. sign in to go on." : deleteSignInNote(path)} />;
+  if (account === null) return <AuthScreen mode={path === "/signup" ? "signup" : "signin"} forApp={path === "/cloud/desktop"} note={path === TEAM_JOIN_PATH ? "sign in with the email your invite was sent to, and you join the team." : path === "/claim" ? "this link connects a Metal workspace to your account, so its machine stats, bots and usage show here. chats and files stay on it. sign in to go on." : deleteSignInNote(path)} />;
   return <SignedIn />;
 }
 

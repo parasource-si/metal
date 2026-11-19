@@ -57,7 +57,7 @@ test("a workspace that never takes the command ends in PICKUP_MS with what to do
   expect(cloud.time()).toBeLessThanOrEqual(PICKUP_MS + 1000);
   const quiet = world();
   await runAppFlow("connect", mac, "gmail", "Gmail", quiet.deps);
-  expect(appFlowsNow()["ws:gmail"]).toMatchObject({ phase: "failed", message: "studio is not answering. open dusk bot on it, then try again." });
+  expect(appFlowsNow()["ws:gmail"]).toMatchObject({ phase: "failed", message: "studio is not answering. open Metal on it, then try again." });
   expect(quiet.went).toEqual([]);
 });
 
@@ -89,7 +89,7 @@ test("a sign-in called off at the app, a stale link and a workspace that never s
   const never = finishing({ workspaceId: "ws", slug: "gmail", outcome: "signed-in" }, { connectedAfter: Infinity });
   await finishSignIn("state", "success", never.deps, names);
   expect(never.time()).toBeGreaterThanOrEqual(FINISH_MS);
-  expect(appFlowsNow()["ws:gmail"]?.message).toBe("Gmail signed in, but My Cloud hasn't seen it yet. reload in a minute, or open dusk bot there.");
+  expect(appFlowsNow()["ws:gmail"]?.message).toBe("Gmail signed in, but My Cloud hasn't seen it yet. reload in a minute, or open Metal there.");
 });
 
 test("a sleeping cloud wakes first; the connect waits as the pill's button and runs from it", async () => {

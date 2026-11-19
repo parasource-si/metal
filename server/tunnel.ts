@@ -1,4 +1,4 @@
-// `duskbot serve --tunnel`: every public request arrives over an IPC listener, so request-auth always demands a paired session.
+// `metal serve --tunnel`: every public request arrives over an IPC listener, so request-auth always demands a paired session.
 import { spawn } from "node:child_process";
 import { randomUUID } from "node:crypto";
 import { chmodSync, existsSync, mkdirSync, readFileSync, statSync } from "node:fs";

@@ -13,7 +13,7 @@ import { ProgressGate } from "./progress-gate.ts";
 import { TurnStatus } from "./status-calls.ts";
 
 const INCOMPLETE_LOG_MESSAGE =
-  "Canonical event history is incomplete: dusk bot could not write one or more events to disk. Live updates will continue.";
+  "Canonical event history is incomplete: Metal could not write one or more events to disk. Live updates will continue.";
 
 const DELTA_MERGE_MS = 50;
 

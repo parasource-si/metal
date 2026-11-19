@@ -17,11 +17,11 @@ const colors: Record<string, string> = {
 };
 
 export function buildSlackManifest(bot: { name: string; description?: string; color?: string }, redirectUrl: string): Record<string, unknown> {
-  const name = bot.name.trim() || "dusk bot";
+  const name = bot.name.trim() || "Metal";
   return {
     display_information: {
       name: name.slice(0, 35),
-      description: (bot.description?.trim() || "A bot made with dusk bot.").slice(0, 140),
+      description: (bot.description?.trim() || "A bot made with Metal.").slice(0, 140),
       background_color: Object.hasOwn(colors, bot.color ?? "") ? colors[bot.color!] : colors.blue,
     },
     features: {

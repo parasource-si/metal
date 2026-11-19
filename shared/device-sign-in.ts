@@ -1,5 +1,5 @@
 // Where a person enters the one-time code that signs an engine's CLI in on
-// the machine running dusk bot (`codex login --device-auth`, `grok login
+// the machine running Metal (`codex login --device-auth`, `grok login
 // --device-auth`, `kimi login`, `copilot login --device-code`, `cursor-agent
 // login`). The server reads the page and the code from
 // the CLI's output with these rules, and the app checks them again before it

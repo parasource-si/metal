@@ -6,7 +6,7 @@ order: 1
 art: s-map
 ---
 
-dusk bot is an app where you keep a small team of ai bots and text them like teammates. you need the app and an ai you already use. no account, no card.
+Metal is an app where you keep a small team of ai bots and text them like teammates. you need the app and an ai you already use. no account, no card.
 
 ## get the app
 
@@ -14,7 +14,7 @@ download it from [the download page](/download) and open it.
 
 | system | what to do |
 | --- | --- |
-| **mac** (macos 12 or later) | open the `.dmg` and drag dusk bot into applications. |
+| **mac** (macos 12 or later) | open the `.dmg` and drag Metal into applications. |
 | **windows** (10 or 11, 64-bit) | run the installer. it needs no admin rights. if windows says it "protected your pc", choose **More info**, then **Run anyway**. |
 | **linux** (ubuntu 24.04, beta) | install the `.deb`, or run the appimage. |
 
@@ -22,7 +22,7 @@ the app tells you when there is a new version. your bots, chats and settings sta
 
 ## sign in to your ai
 
-dusk bot has no model of its own. your bots think with an ai you already pay for: claude, chatgpt, gemini, grok and others. the first screen lists them. pick one and sign in the usual way.
+Metal has no model of its own. your bots think with an ai you already pay for: claude, chatgpt, gemini, grok and others. the first screen lists them. pick one and sign in the usual way.
 
 {{include ui-signin}}
 

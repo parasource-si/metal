@@ -4,7 +4,7 @@
   "title": "Claude connectors: choose the app access your job needs",
   "nav": "claude connectors",
   "h1": "claude connectors: connect the job you actually need",
-  "description": "Get answers from the apps you already use. Compare Claude connectors with dusk bot connections, then pick one of 20 reading jobs to try.",
+  "description": "Get answers from the apps you already use. Compare Claude connectors with Metal connections, then pick one of 20 reading jobs to try.",
   "keyword": "claude connectors",
   "keywords": [
     "claude connectors list",
@@ -95,7 +95,7 @@
       "a": "**no: free includes connectors as of 12 november 2026.** so do pro, max and ultra. individual connections still have their own availability.[^1][^2]"
     },
     {
-      "q": "can i connect multiple gmail accounts in dusk bot?",
+      "q": "can i connect multiple gmail accounts in Metal?",
       "a": "**yes, up to five usable accounts per app.** label them and name the account in each task.[^3]"
     }
   ],
@@ -111,7 +111,7 @@
       "checked": "2026-11-12"
     },
     {
-      "label": "dusk bot docs: files and apps",
+      "label": "Metal docs: files and apps",
       "url": "/docs/files-and-apps"
     },
     {
@@ -215,7 +215,7 @@
       "checked": "2026-11-12"
     },
     {
-      "label": "dusk bot docs: computer",
+      "label": "Metal docs: computer",
       "url": "/docs/computer"
     }
   ],

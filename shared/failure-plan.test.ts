@@ -35,7 +35,7 @@ describe("every way a reply can be lost", () => {
     for (const kind of KINDS) {
       const { line } = FAILURE_PLANS[kind];
       expect(rawDetailIn(line), `${kind}: ${line}`).toBeNull();
-      expect(line, kind).toMatch(/^(?:dusk bot|[A-Z])[^\n]{10,120}\.$/);
+      expect(line, kind).toMatch(/^(?:Metal|[A-Z])[^\n]{10,120}\.$/);
       expect(line.split(/(?<=\.) /).length, kind).toBeLessThanOrEqual(2);
     }
   });

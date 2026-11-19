@@ -30,7 +30,7 @@ test("opened from the disk image: asks, without a don't-ask box, and moves on ye
   const { result, asked, app } = offer();
   assert.equal(await result, true);
   assert.equal(asked.length, 1);
-  assert.equal(asked[0].message, "Move dusk bot to Applications?");
+  assert.equal(asked[0].message, "Move Metal to Applications?");
   assert.deepEqual(asked[0].buttons, ["Move to Applications", "Not now"]);
   assert.equal(asked[0].checkboxLabel, undefined);
   assert.deepEqual(app.calls, ["move"]);

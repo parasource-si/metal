@@ -13,7 +13,7 @@ const RETIRED: ReadonlyArray<readonly [string, RegExp, string]> = [
   ["Dusk Bot Cloud", /Dusk Bot Cloud/i, "Dusk Cloud"],
   ["Dusk Pro", /Dusk Pro\b/, "Dusk Cloud"],
   // \b before "_" fails, so environment names such as DUSK_PUBLIC_IPV4 pass.
-  ["OMB", /\bOMB\b/, "Dusk Bot"],
+  ["OMB", /\bOMB\b/, "Metal"],
   ["Cloud box", /Cloud box/i, "cloud desktop"],
   ["Hosted desktop", /Hosted desktop/i, "cloud desktop"],
   ["Cloud VM", /Cloud VM/i, "cloud desktop"],
@@ -91,7 +91,7 @@ describe("one name per thing", () => {
   });
 
   const productNames = RETIRED.filter(([, , use]) => use === "Dusk Cloud");
-  it("translations never show retired provider names, Dusk Bot, T3 or an old name for Dusk Cloud, and keep its name as it is", () => {
+  it("translations never show retired provider names, T3 or an old name for Dusk Cloud, and keep its name as it is", () => {
     const offending = Object.entries(locales).filter(([code]) => code !== "en").flatMap(([code, pack]) =>
       Object.entries(pack)
         .filter(([key, value]) => /\bOMB\b|\bT3\b/.test(value!) || productNames.some(([, pattern]) => pattern.test(value!))
@@ -145,7 +145,7 @@ describe("one name per thing", () => {
       `Bots here can get their own cloud desktops from ${PROVIDER_WORD}, a paid service`, `Cloud desktops by ${PROVIDER_WORD}`,
     ]) expect(retiredIn(bad), bad).not.toEqual([]);
     for (const good of [
-      "Sign in to Dusk Cloud", "Pro active · verified by Dusk Cloud", "Restart Dusk Bot", "locked by another Dusk Bot process",
+      "Sign in to Dusk Cloud", "Pro active · verified by Dusk Cloud", "Restart Metal", "locked by another Metal process",
       "set DUSK_PUBLIC_IPV4", "Open My Cloud", "Open the Cloud", "Choose Cloud desktop to wake", "Auto, Cloud desktop or Browser",
       "Included with your Cloud plan",
       "Local VM", "Open your Plan page",

@@ -40,7 +40,7 @@ describe("one line and at most one action for every place", () => {
     const mirrored = new Set(Object.keys(PLACE_EN));
     const inCatalog = Object.keys(catalog).filter((key) => /^place\.(view|action)\./.test(key) || key === "place.askAdmin" || key === "place.backOnAuto");
     expect(inCatalog.filter((key) => !mirrored.has(key))).toEqual([]);
-    for (const sentence of Object.values(PLACE_WORDS)) expect(sentence).not.toMatch(/\x42oat|\bbox\b|dusk bot|Hosted desktop|Cloud box|Works on to Auto|\btools?\b/i);
+    for (const sentence of Object.values(PLACE_WORDS)) expect(sentence).not.toMatch(/\x42oat|\bbox\b|Metal|Hosted desktop|Cloud box|Works on to Auto|\btools?\b/i);
   });
 
   it("routes stored provider and billing states to VPS setup", () => {

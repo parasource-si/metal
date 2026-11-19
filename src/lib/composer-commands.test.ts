@@ -107,7 +107,7 @@ describe("composer slash commands", () => {
     ]);
   });
 
-  it("lists dusk bot's commands, then its own skills, and keeps the other tools' skills behind More until searched", () => {
+  it("lists Metal's commands, then its own skills, and keeps the other tools' skills behind More until searched", () => {
     const commands = [{ kind: "command" as const, id: "goal" as const, label: "/goal" as const, description: "Keep working" }];
     const skills = skillSlashCommands([
       { name: "standup", description: "Mine." },

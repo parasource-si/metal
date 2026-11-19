@@ -4,7 +4,7 @@ import { join } from "node:path";
 import { afterEach, describe, expect, it } from "vitest";
 import { createUsageSignalsSwitch } from "./usage-signals-switch.ts";
 
-describe("help improve dusk bot switch, one setting with the account's", () => {
+describe("help improve Metal switch, one setting with the account's", () => {
   const dirs: string[] = [];
   afterEach(() => { for (const dir of dirs.splice(0)) rmSync(dir, { recursive: true, force: true }); });
   const make = () => { const dir = mkdtempSync(join(tmpdir(), "usage-switch-")); dirs.push(dir); return { dir, open: () => createUsageSignalsSwitch(dir, {}) }; };

@@ -381,7 +381,7 @@ test("a malformed offer is no offer, and a malformed plan or extra is left out, 
 });
 
 test("the public offer is the catalog, with the free trial for new customers when the Admin says so", () => {
-  const offer = parsePublicOffer({ name: "dusk bot", surface: "cloud", plans: catalog(), trial: { days: 7, holdDays: 3, reminderDays: 2 }, refundDays: 14 });
+  const offer = parsePublicOffer({ name: "Metal", surface: "cloud", plans: catalog(), trial: { days: 7, holdDays: 3, reminderDays: 2 }, refundDays: 14 });
   assert.deepEqual(offer.plans.map(plan => plan.trialDays), [7, 7, 7]);
   assert.deepEqual([offer.recommended, offer.reminderDays, offer.refundDays, offer.checkout], ["pro", 2, 14, undefined]);
   const today = parsePublicOffer({ plans: catalog() });

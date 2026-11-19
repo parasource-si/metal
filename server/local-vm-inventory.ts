@@ -31,7 +31,7 @@ export interface LocalVmInventoryEntry {
   inUse: boolean;
 }
 
-/** Idle cleanup is destructive: a derived name alone is not ownership without dusk bot's verified labels. */
+/** Idle cleanup is destructive: a derived name alone is not ownership without Metal's verified labels. */
 export function shouldArmLocalVmIdle(
   status: Pick<ContainerComputerStatus, "container" | "managed"> | null,
 ): boolean {

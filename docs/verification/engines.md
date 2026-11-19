@@ -2,7 +2,7 @@
 
 ## Sub-features
 
-- Confirm the endpoint identifies itself as dusk bot.
+- Confirm the endpoint reports the compatible `app: "duskbot"` identifier.
 - List configured provider instances without exposing executable paths.
 - Distinguish available and unavailable engines.
 - Add named Claude accounts and select them independently for bots.
@@ -14,11 +14,11 @@ Open a bot's model picker or Settings → Engines.
 ## Driving it
 
 ```sh
-pnpm control:dusk doctor --url http://127.0.0.1:PORT
-pnpm control:dusk models --url http://127.0.0.1:PORT
+pnpm control:metal doctor --url http://127.0.0.1:PORT
+pnpm control:metal models --url http://127.0.0.1:PORT
 ```
 
-`doctor.ok` is true only when the endpoint is dusk bot and at least one
+`doctor.ok` is true only when the endpoint reports that identifier and at least one
 engine is available. The isolated fixture should expose `claude`.
 
 ## Startup engine discovery

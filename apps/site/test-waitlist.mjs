@@ -86,7 +86,7 @@ async function suite(label, { port, logs }, saved, unsubscribedAt) {
     const link = `http://127.0.0.1:${port}/unsubscribe?t=${unsubscribeToken(SECRET, 'grace@hopper.dev')}`;
     const r = await fetch(link);
     assert.equal(r.status, 200);
-    assert.match(await r.text(), /You&#39;re unsubscribed from dusk bot news\./);
+    assert.match(await r.text(), /You&#39;re unsubscribed from Metal news\./);
     const first = await unsubscribedAt('grace@hopper.dev');
     assert.ok(first, 'marked');
     assert.equal((await fetch(link)).status, 200, 'a second click is fine');

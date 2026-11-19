@@ -1,5 +1,5 @@
 // What an engine's own file tools may touch on a host where the bot box is off, and inside it as a second line: the
-// server's data folder minus this bot's own folders, the server's SSH keys and app settings, and dusk bot's other
+// server's data folder minus this bot's own folders, the server's SSH keys and app settings, and Metal's other
 // install folders. The bot box (server/bot-box) is the real boundary; these rules are what the engines enforce themselves.
 import { DATA_DIR_NAMES, LEGACY } from "../../electron/legacy-names.mjs";
 import { existsSync, readdirSync } from "node:fs";

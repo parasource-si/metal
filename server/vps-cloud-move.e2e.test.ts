@@ -135,7 +135,7 @@ describe("a VPS that can't be paused by its owner yet", () => {
     const bot = (await fx.vps("POST", "/api/bots", { name: "Echo", modelSelection: { instanceId: "claude", model: "claude-sonnet-5" } })).body.bot;
     await turn(fx.vps, bot, "Hi.");
     // an older server answers its owner's freeze as only its own computer may
-    fx.intercept = (url, init) => (url === `${fx.vpsBase}/api/move/freeze` && init.method === "POST" ? new Response(JSON.stringify({ error: "Only dusk bot on this computer can do this." }), { status: 403 }) : null);
+    fx.intercept = (url, init) => (url === `${fx.vpsBase}/api/move/freeze` && init.method === "POST" ? new Response(JSON.stringify({ error: "Only Metal on this computer can do this." }), { status: 403 }) : null);
     fx.viaMacAvailable = true;
     await fx.main.start(fx.place.id);
     await until(fx, () => fx.main.chosen()?.route === "via-mac", 400);
@@ -156,7 +156,7 @@ describe("a VPS that can't be paused by its owner yet", () => {
     await fx.main.start(fx.place.id);
     await until(fx, () => fx.main.view().stage === "failed", 400);
     expect(fx.main.view()).toMatchObject({ stage: "failed", route: "direct" });
-    expect(fx.main.view().error).toMatch(/Update dusk bot on Hetzner box/u);
+    expect(fx.main.view().error).toMatch(/Update Metal on Hetzner box/u);
     expect((await fx.vps("GET", "/api/move/freeze")).body.frozen).toBe(false);
   }, hostTimeout(240_000));
 });

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-// Dusk Bot docker gate. The server user is not in the docker group: it reaches docker only through this socket,
-// which forwards the Engine API requests Dusk Bot sends, on its own labelled containers with fixed safe flags,
+// Metal docker gate. The server user is not in the docker group: it reaches docker only through this socket,
+// which forwards the Engine API requests Metal sends, on its own labelled containers with fixed safe flags,
 // and answers everything else 403. Security invariant: nothing forwarded may give the caller host root.
 import { chmodSync, lstatSync, realpathSync, unlinkSync } from "node:fs";
 import { request } from "node:http";
@@ -351,7 +351,7 @@ function checkProbe(config, name) {
   return { kind: "probe", image };
 }
 
-/** POST /containers/create: a Dusk Bot computer (label VPS_LABEL=1) or one of the two host probes. */
+/** POST /containers/create: a Metal computer (label VPS_LABEL=1) or one of the two host probes. */
 export function checkCreate(body, { name, runsc = false } = {}) {
   if (!isObject(body)) refuse("the container config must be an object");
   const config = struct(body, "Config", CONFIG_RULES);
@@ -456,7 +456,7 @@ function assertRunsSafely(detail) {
     (Array.isArray(host.MaskedPaths) && host.MaskedPaths.length === 0) ||
     (Array.isArray(host.ReadonlyPaths) && host.ReadonlyPaths.length === 0) ||
     (Array.isArray(detail.Mounts) && detail.Mounts.some((mount) => mount?.Type !== "volume" && mount?.Type !== "tmpfs"));
-  if (unsafe) refuse("this computer was not made with the gate's safe flags; remove it and let dusk bot recreate it");
+  if (unsafe) refuse("this computer was not made with the gate's safe flags; remove it and let Metal recreate it");
 }
 
 const CONTAINER_OPS = {

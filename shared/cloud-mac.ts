@@ -1,4 +1,4 @@
-/** "Cloud bots use this Mac": the person's own dusk cloud reaches their Mac through the dusk bot app on it. */
+/** "Cloud bots use this Mac": the person's own dusk cloud reaches their Mac through the Metal app on it. */
 
 /** The Mac tools a dusk cloud's bots get. No screen tools: this never needs Screen Recording or Accessibility. */
 export const CLOUD_MAC_TOOL_NAMES = ["mac_exec", "mac_read_file", "mac_write_file", "mac_list", "mac_open", "mac_download"] as const;

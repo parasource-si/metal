@@ -33,7 +33,7 @@ describe("a failed turn's row", () => {
     const dir = new URL("../server/", import.meta.url);
     const handWritten = readdirSync(dir, { recursive: true, encoding: "utf8" })
       .map((file) => file.replaceAll("\\", "/"))
-      // server/headless is the duskbot command line: it prints errors to a terminal and never writes a turn row
+      // server/headless is the metal command line: it prints errors to a terminal and never writes a turn row
       .filter((file) => file.endsWith(".ts") && !file.endsWith(".test.ts") && !file.includes("testing") && !file.replaceAll("\\", "/").startsWith("headless/"))
       .flatMap((file) => readFileSync(new URL(file, dir), "utf8").split("\n")
         .filter((line) => /["'`]error: /.test(line))
@@ -43,7 +43,7 @@ describe("a failed turn's row", () => {
 });
 
 // A Python engine's KeyError on the prompt, through the ACP SDK's -32603 and acpRpcError, as a desktop user's group got it.
-const PROMPT = "You are Campaign Manager, a personal bot in dusk bot.\n\nAbout you: you are Campaign Manager, a dusk bot. dusk bot is the app you live in; you are not ChatGPT, Claude, Codex or any vendor's assistant. "
+const PROMPT = "You are Campaign Manager, a personal bot in Metal.\n\nAbout you: you are Campaign Manager, a Metal bot. Metal is the app you live in; you are not ChatGPT, Claude, Codex or any vendor's assistant. "
   + "Your memory is kept in \"/Users/someone/.duskbot/workspaces/0f6c2a4e-1111-4222-8333-944455556666/MEMORY.md\" with topic notes beside it.\n\n".repeat(4);
 const ECHO = `Internal error: '${PROMPT.replace(/\\/g, "\\\\").replace(/'/g, "\\'").replace(/\n/g, "\\n")}' (session/prompt)`;
 
@@ -65,11 +65,14 @@ describe("an error that repeats the prompt back", () => {
   });
 });
 
-describe("text bound for someone outside dusk bot", () => {
+describe("text bound for someone outside Metal", () => {
   it("is a dump when it is a failure report, an internal error, the system prompt or a bot's folder", () => {
     expect(isErrorDump(`Bot failed to respond\n${ECHO.slice(0, 600)}…`)).toBe(true);
     expect(isErrorDump("Internal error: 'anything'")).toBe(true);
     expect(isErrorDump(PROMPT)).toBe(true);
+    const legacy = PROMPT.replace("in Metal.", "in dusk bot.").replace("a Metal bot.", "a dusk bot.");
+    expect(isErrorDump(legacy)).toBe(true);
+    expect(withoutEchoedPrompt(legacy)).toBe(ECHOED_PROMPT);
     expect(isErrorDump("see C:\\Users\\a\\.duskbot\\workspaces\\x\\MEMORY.md")).toBe(true);
     expect(isErrorDump("The flyers are printed. Internal review is on Friday, I'll error on the side of early.")).toBe(false);
   });

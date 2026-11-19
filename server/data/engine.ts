@@ -81,7 +81,7 @@ export function instanceSettings(folder: string, dataDir: string, duckdbVersion:
     extension_directory: join(dataDir, "duckdb-extensions", duckdbVersion),
     autoinstall_known_extensions: "false",
     autoload_known_extensions: "true",
-    // Persistent secrets sit unencrypted on disk; dusk bot's broker issues temporary ones.
+    // Persistent secrets sit unencrypted on disk; Metal's broker issues temporary ones.
     allow_persistent_secrets: "false",
     preserve_insertion_order: "false",
   };
@@ -727,7 +727,7 @@ class Engine implements DataEngine {
       const detail = (error instanceof Error ? error.message : String(error)).split("\n")[0].trim();
       const where = directory ? `from ${directory}` : "from the server's node_modules";
       const action = directory
-        ? "Reinstall dusk bot, or point DUSK_DUCKDB_DIR at a folder holding node_modules/@duckdb."
+        ? "Reinstall Metal, or point DUSK_DUCKDB_DIR at a folder holding node_modules/@duckdb."
         : "Run pnpm install, or set DUSK_DUCKDB_DIR to a folder holding node_modules/@duckdb.";
       this.loaded = { reason: `DuckDB did not load ${where}: ${detail}. ${action}` };
     }

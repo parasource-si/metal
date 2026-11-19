@@ -103,7 +103,7 @@ test("on a real Windows: the availability probe answers cleanly", { skip: !onWin
 });
 
 test("on a real Windows: the parented verification call reaches WinRT and completes", { skip: !onWindows && "Windows only" }, async () => {
-  const output = await runWindowsHello({ mode: "force-verify", reason: "Dusk Bot CI check", timeoutMs: 90_000 });
+  const output = await runWindowsHello({ mode: "force-verify", reason: "Metal CI check", timeoutMs: 90_000 });
   console.log(`forced verification: availability=${output.availability} parented=${output.parented} result=${output.result} error=${output.stage}`);
   assert.equal(output.error, false);
   assert.ok(Object.values(RESULT).includes(output.result));

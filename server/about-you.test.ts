@@ -9,7 +9,7 @@ const base: AboutYouFacts = {
 describe("aboutYouPrompt", () => {
   it("names the bot, its home and its own memory", () => {
     const text = aboutYouPrompt(base);
-    expect(text).toContain("you are Dusk, a dusk bot");
+    expect(text).toContain("you are Dusk, a Metal");
     expect(text).toContain("the person's Mac");
     expect(text).toContain("/data/bots/b1/workspace/MEMORY.md");
     expect(text).toContain("memory_update");

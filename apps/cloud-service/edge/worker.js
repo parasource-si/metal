@@ -92,8 +92,8 @@ async function wakeAndWait(label, reason, env, ctx, now = () => Date.now()) {
 function waking(status, { asleep = false, wakeable = true } = {}) {
   // asleep and not being woken (a read never wakes a home): say so, never "waking up", or a reader waits for a wake that
   // nobody started
-  const text = status === 429 ? "This dusk bot was woken too often this hour. Try again later."
-    : asleep ? "This dusk bot is asleep. It wakes when someone uses it." : "This dusk bot is waking up. Try again in a few seconds.";
+  const text = status === 429 ? "This Metal workspace was woken too often this hour. Try again later."
+    : asleep ? "This Metal workspace is asleep. It wakes when someone uses it." : "This Metal workspace is waking up. Try again in a few seconds.";
   return new Response(text, { status: status === 429 ? 429 : 503, headers: { "content-type": "text/plain; charset=utf-8", "retry-after": status === 429 ? "300" : "5", "cache-control": "no-store",
     ...(status === 429 || !wakeable ? {} : { "x-dusk-cloud-power": asleep ? "asleep" : "waking", "x-omb-cloud-power": asleep ? "asleep" : "waking" }) } });
 }
@@ -131,7 +131,7 @@ async function queueHook(request, url, label, body, env) {
   const accepted = await queue.fetch("https://hook-queue/accept", { method: "POST", headers: { "x-hook-id": id, "x-hook-label": label, "x-hook-host": url.hostname },
     body: envelope({ method: request.method, path: url.pathname + url.search, headers: request.headers, body }) });
   await accepted.body?.cancel().catch(() => {});
-  const taken = () => new Response("Accepted. This dusk bot is waking up and gets it as soon as it answers.", { status: 202, headers: { "content-type": "text/plain; charset=utf-8", "cache-control": "no-store", "x-dusk-delivery": id } });
+  const taken = () => new Response("Accepted. This Metal workspace is waking up and gets it as soon as it answers.", { status: 202, headers: { "content-type": "text/plain; charset=utf-8", "cache-control": "no-store", "x-dusk-delivery": id } });
   // already queued or delivered: a sender's retry, and no second wake
   if (accepted.status === 200) return taken();
   if (accepted.status !== 202) return accepted.status === 507 ? waking(503) : null;

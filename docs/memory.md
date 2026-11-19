@@ -2,7 +2,7 @@
 
 ## How it works, in plain words
 
-dusk bot remembers things in two places.
+Metal remembers things in two places.
 
 **General memory** is what every one of your bots knows about you: your name,
 where you live, your work, how you like answers, your diet and health needs,
@@ -125,7 +125,7 @@ The rest of this page is the detailed reference.
 ## Reference
 
 By default, bots keep notes between tasks. The notes are plain markdown files in a
-folder on the computer running dusk bot — nothing is stored anywhere else,
+folder on the computer running Metal — nothing is stored anywhere else,
 and you can open, edit, or delete any of it in any editor. **Bot Settings →
 Memory** shows the same files with a gauge of how much of them actually loads,
 an editor that never overwrites something the bot wrote while you were typing,
@@ -157,7 +157,7 @@ The folder is the bot's private workspace: the directory its file tools work in
 when it has no project folder set. It is created the first time the bot runs a
 turn. **Open in Obsidian** and **Show in Finder** (Explorer, or your file
 manager) in the Memory panel open this folder; because it is on the server's
-disk, those buttons only work from the computer running dusk bot — a
+disk, those buttons only work from the computer running Metal — a
 paired phone or a remote browser is shown the path instead.
 
 Files are written with owner-only permissions (`0600`), atomically (a crash

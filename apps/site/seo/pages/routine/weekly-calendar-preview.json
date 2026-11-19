@@ -15,7 +15,7 @@
   "updated": "2026-11-12",
   "review": {
     "status": "approved",
-    "by": "lead agent, against dusk bot docs and the composio google calendar catalog",
+    "by": "lead agent, against Metal docs and the composio google calendar catalog",
     "at": "2026-11-12"
   },
   "tags": [
@@ -57,13 +57,13 @@
   "fails": [
     "it reads the wrong calendar. if you have several, name the ones you want: \"only my work calendar and the team calendar\". listing calendars is one of the things it can do, so ask it which ones it sees.",
     "times are off by an hour or more. ask the bot \"what time zone is this routine in?\" and tell it yours; put your time zone in **About me** so every bot knows.",
-    "it didn't run. on your own computer nothing runs while it's asleep or dusk bot is closed; a run missed by less than 12 hours runs once when you're back. **Automations** in the sidebar shows what happened to each run.",
+    "it didn't run. on your own computer nothing runs while it's asleep or Metal is closed; a run missed by less than 12 hours runs once when you're back. **Automations** in the sidebar shows what happened to each run.",
     "the list is too long to read. say \"shorter\" or \"only tell me about problems\" after the first run; it keeps the change."
   ],
   "sections": [
     {
       "h": "why sunday, and why it only reads",
-      "md": "**sunday night is the last cheap moment to fix a week.** people can still say yes to a new time.\n\nread only is the point. the bot needs only read access to your calendar, and dusk bot blocks any change from a bot that may only read. so you can switch it on for any bot without a second thought.\n\nwant it to move meetings later? give it write access and put \"ask me before you move anything\" in the same message. read its first few proposals before you say yes."
+      "md": "**sunday night is the last cheap moment to fix a week.** people can still say yes to a new time.\n\nread only is the point. the bot needs only read access to your calendar, and Metal blocks any change from a bot that may only read. so you can switch it on for any bot without a second thought.\n\nwant it to move meetings later? give it write access and put \"ask me before you move anything\" in the same message. read its first few proposals before you say yes."
     }
   ],
   "faq": [
@@ -78,19 +78,19 @@
   ],
   "sources": [
     {
-      "label": "dusk bot docs: routines",
+      "label": "Metal docs: routines",
       "url": "/docs/routines"
     },
     {
-      "label": "dusk bot docs: troubleshooting, a routine ran at the wrong time",
+      "label": "Metal docs: troubleshooting, a routine ran at the wrong time",
       "url": "/docs/troubleshooting"
     },
     {
-      "label": "dusk bot docs: memory, about me",
+      "label": "Metal docs: memory, about me",
       "url": "/docs/memory"
     },
     {
-      "label": "dusk bot docs: permissions and sends",
+      "label": "Metal docs: permissions and sends",
       "url": "/docs/computer"
     }
   ],

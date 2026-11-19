@@ -1,4 +1,4 @@
-// `pnpm test-bots`: adds the invented test bots (scripts/demo/content.mjs) to a running dusk bot, by default the
+// `pnpm test-bots`: adds the invented test bots (scripts/demo/content.mjs) to a running Metal, by default the
 // one on this computer at 127.0.0.1:8799, through its HTTP API only. Run it again and it skips what is already there.
 // `pnpm test-bots --remove` deletes only what it created, by the ids in its manifest, never anything else.
 //
@@ -30,7 +30,7 @@ const empty = () => ({ bots: [], rooms: [], routines: [], webhooks: [], sections
 
 async function target() {
   const health = await call(base, "GET", "/api/health").catch(() => null);
-  if (health?.app !== "duskbot") throw new Error(`no dusk bot server answers at ${base}`);
+  if (health?.app !== "duskbot") throw new Error(`no Metal server answers at ${base}`);
   const environment = await call(base, "GET", "/.well-known/duskbot/environment");
   if (!environment?.environmentId) throw new Error("the server did not say which workspace it is");
   return join(MANIFESTS, `manifest-${environment.environmentId}.json`);

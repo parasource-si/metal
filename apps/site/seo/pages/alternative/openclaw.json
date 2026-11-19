@@ -4,7 +4,7 @@
   "title": "OpenClaw alternatives for non-technical people (November 2026)",
   "nav": "openclaw",
   "h1": "openclaw alternatives for people who'd rather not run a server",
-  "description": "Hermes Agent, Genspark Claw, Poke and dusk bot next to OpenClaw: setup, where it runs, which AI it uses, price and security, each with a dated source.",
+  "description": "Hermes Agent, Genspark Claw, Poke and Metal next to OpenClaw: setup, where it runs, which AI it uses, price and security, each with a dated source.",
   "keyword": "openclaw alternatives",
   "keywords": [
     "openclaw alternative for non technical",
@@ -13,11 +13,11 @@
     "moltbot alternative",
     "openclaw safe alternative"
   ],
-  "answer": "love the idea of openclaw but not the upkeep? you have three ways out. run another open-source agent yourself (hermes agent). text a hosted assistant and install nothing (poke, genspark claw). or use an app with a small team of bots that can move to a hosted computer later (dusk bot). the right one depends on how much you want to own and look after.",
+  "answer": "love the idea of openclaw but not the upkeep? you have three ways out. run another open-source agent yourself (hermes agent). text a hosted assistant and install nothing (poke, genspark claw). or use an app with a small team of bots that can move to a hosted computer later (Metal). the right one depends on how much you want to own and look after.",
   "updated": "2026-11-12",
   "review": {
     "status": "approved",
-    "by": "lead agent, against omb-ref/seo-research/facts-competitors.json (checked 2026-11-12) and dusk bot docs",
+    "by": "lead agent, against omb-ref/seo-research/facts-competitors.json (checked 2026-11-12) and Metal docs",
     "at": "2026-11-12"
   },
   "tags": [
@@ -71,7 +71,7 @@
       "Hermes Agent",
       "Genspark Claw",
       "Poke",
-      "dusk bot"
+      "Metal"
     ],
     "rows": [
       {
@@ -228,7 +228,7 @@
       }
     ]
   },
-  "method": "**we read each product's own site, docs and pricing on 12 november 2026 and wrote down only what they say.** for openclaw's security record we counted its published advisories through github's api the same day; the malicious-skills finding is from a security firm's audit, reported by the hacker news.\n\nwe didn't run the same tasks through every product. this compares what each offers, not how well each does a job. and yes, we make dusk bot. read our column with that in mind, and tell us at hello@dusk.bot if a cell is wrong.",
+  "method": "**we read each product's own site, docs and pricing on 12 november 2026 and wrote down only what they say.** for openclaw's security record we counted its published advisories through github's api the same day; the malicious-skills finding is from a security firm's audit, reported by the hacker news.\n\nwe didn't run the same tasks through every product. this compares what each offers, not how well each does a job. and yes, Metal is based on Dusk Bot. read our column with that in mind, and tell us at hello@dusk.bot if a cell is wrong.",
   "sections": [
     {
       "h": "why people leave openclaw",
@@ -236,7 +236,7 @@
     },
     {
       "h": "the three kinds of alternative",
-      "md": "**pick by how much you want to own.**\n\n- **run it yourself:** [hermes agent](/alternatives/hermes-agent) is the closest swap. open source, texted from chat apps, yours to install and maintain. there's a desktop app for mac and windows.\n- **text a hosted assistant:** poke and genspark claw need nothing installed. the ai comes inside their plan, paid in their credits or tiers, not an ai account you already have.\n- **an app with a team of bots:** dusk bot. a few bots, one job each, own memory, the ai you picked. free on your computer; move to [dusk cloud](/docs/dusk-cloud) when you want them working with the lid shut."
+      "md": "**pick by how much you want to own.**\n\n- **run it yourself:** [hermes agent](/alternatives/hermes-agent) is the closest swap. open source, texted from chat apps, yours to install and maintain. there's a desktop app for mac and windows.\n- **text a hosted assistant:** poke and genspark claw need nothing installed. the ai comes inside their plan, paid in their credits or tiers, not an ai account you already have.\n- **an app with a team of bots:** Metal. a few bots, one job each, own memory, the ai you picked. free on your computer; move to [dusk cloud](/docs/dusk-cloud) when you want them working with the lid shut."
     },
     {
       "h": "moving over from openclaw",
@@ -250,7 +250,7 @@
     },
     {
       "q": "what's the easiest openclaw alternative for a non-technical person?",
-      "a": "the hosted ones you just text (poke, genspark claw) have the least setup. dusk bot is an app you download and sign in to, with no terminal, and it keeps using the ai you already sign in to."
+      "a": "the hosted ones you just text (poke, genspark claw) have the least setup. Metal is an app you download and sign in to, with no terminal, and it keeps using the ai you already sign in to."
     },
     {
       "q": "did openai buy openclaw?",
@@ -309,19 +309,19 @@
       "checked": "2026-11-12"
     },
     {
-      "label": "dusk bot docs: getting started",
+      "label": "Metal docs: getting started",
       "url": "/docs/getting-started"
     },
     {
-      "label": "dusk bot docs: dusk cloud",
+      "label": "Metal docs: dusk cloud",
       "url": "/docs/dusk-cloud"
     },
     {
-      "label": "dusk bot docs: a bot's computer",
+      "label": "Metal docs: a bot's computer",
       "url": "/docs/computer"
     },
     {
-      "label": "dusk bot license",
+      "label": "Metal license",
       "url": "/license"
     },
     {
@@ -335,7 +335,7 @@
       "checked": "2026-11-12"
     },
     {
-      "label": "dusk bot docs: the phone app",
+      "label": "Metal docs: the phone app",
       "url": "/docs/phone"
     }
   ],
@@ -357,7 +357,7 @@
       ],
       [
         "several bots with separate jobs, on the ai you already use",
-        "dusk bot"
+        "Metal"
       ],
       [
         "a hosted computer without running a server",

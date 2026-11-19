@@ -1,5 +1,5 @@
 // bots.json and groups.json are the only index of a person's bots: an empty list there reads as a fresh install, and the
-// first save (seeding Dusk) would write over whatever was unreadable. So a good read leaves a copy beside the file,
+// first save (seeding Metal) would write over whatever was unreadable. So a good read leaves a copy beside the file,
 // and a bad one sets the file aside and comes back from that copy.
 import { chmodSync, copyFileSync, readFileSync } from "node:fs";
 import { writeFileAtomicIfChanged } from "./atomic.ts";

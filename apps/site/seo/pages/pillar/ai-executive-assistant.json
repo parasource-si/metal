@@ -4,14 +4,14 @@
   "title": "AI executive assistant: get the prep, keep the decisions",
   "nav": "ai executive assistant",
   "h1": "an ai executive assistant for inbox and calendar work",
-  "description": "Try five inbox and calendar routines in dusk bot. Get agendas, meeting context and reply drafts while keeping commitments and sensitive replies with you.",
+  "description": "Try five inbox and calendar routines in Metal. Get agendas, meeting context and reply drafts while keeping commitments and sensitive replies with you.",
   "keyword": "ai executive assistant",
   "keywords": [
     "ai executive assistant free",
     "ai executive assistant reddit",
     "ai virtual assistant for small business"
   ],
-  "answer": "**walk into the call knowing what you promised last time.** a dusk bot reads your gmail threads and google calendar, brings you meeting context and drafts replies. it can also find possible times for your next catch-up.\n\nstart with reading. get the agenda and open questions in your chat, then choose what deserves your time.",
+  "answer": "**walk into the call knowing what you promised last time.** a Metal bot reads your gmail threads and google calendar, brings you meeting context and drafts replies. it can also find possible times for your next catch-up.\n\nstart with reading. get the agenda and open questions in your chat, then choose what deserves your time.",
   "updated": "2026-11-12",
   "review": {
     "status": "approved",
@@ -145,19 +145,19 @@
       "checked": "2026-11-12"
     },
     {
-      "label": "dusk bot docs: connected apps and send approvals",
+      "label": "Metal docs: connected apps and send approvals",
       "url": "/docs/files-and-apps"
     },
     {
-      "label": "dusk bot docs: personal use, work licenses and ai billing",
+      "label": "Metal docs: personal use, work licenses and ai billing",
       "url": "/docs/account-and-billing"
     },
     {
-      "label": "dusk bot docs: routine schedules and run history",
+      "label": "Metal docs: routine schedules and run history",
       "url": "/docs/routines"
     },
     {
-      "label": "dusk bot pricing",
+      "label": "Metal pricing",
       "url": "/pricing"
     },
     {
@@ -166,7 +166,7 @@
       "checked": "2026-11-12"
     },
     {
-      "label": "dusk bot docs: shared time zone preferences",
+      "label": "Metal docs: shared time zone preferences",
       "url": "/docs/memory"
     }
   ],

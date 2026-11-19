@@ -1,15 +1,15 @@
 {
-  "name": "duskbot",
+  "name": "metal",
   "private": true,
   "version": "0.2.23",
   "description": "A local-first chat app for running a team of AI agents.",
-  "homepage": "https://dusk.bot",
+  "homepage": "https://github.com/parasource-si/metal",
   "repository": {
     "type": "git",
-    "url": "https://github.com/DuskBotAI/duskbot.git"
+    "url": "https://github.com/parasource-si/metal.git"
   },
   "author": {
-    "name": "dusk bot",
+    "name": "Metal",
     "email": "hello@dusk.bot"
   },
   "license": "SEE LICENSE IN LICENSE",
@@ -30,16 +30,18 @@
     "mobile:preview": "node apps/mobile/scripts/phone-preview.mjs",
     "store:shots": "node --experimental-strip-types apps/mobile/store/capture.ts && node --experimental-strip-types apps/mobile/store/compose.ts",
     "test:phone-layout": "node --experimental-strip-types apps/mobile/store/layout-check.ts",
-    "mobile:build":"pnpm --filter @duskbot/mobile build",
+    "mobile:build":"pnpm --filter @metal/mobile build",
     "mobile:gate": "node apps/mobile/scripts/release-gate.mjs",
-    "mobile:release": "pnpm --filter @duskbot/mobile build && node apps/mobile/scripts/release-gate.mjs && pnpm --filter @duskbot/mobile exec cap sync",
+    "mobile:release": "pnpm --filter @metal/mobile build && node apps/mobile/scripts/release-gate.mjs && pnpm --filter @metal/mobile exec cap sync",
     "companion": "node --experimental-strip-types apps/companion/src/index.ts",
-    "dusk": "node --experimental-strip-types server/duskbot.ts",
-    "pair": "node --experimental-strip-types server/duskbot.ts pair",
+    "metal": "node --experimental-strip-types server/metal.ts",
+    "dusk": "node --experimental-strip-types server/metal.ts",
+    "pair": "node --experimental-strip-types server/metal.ts pair",
     "dev:server": "node --experimental-strip-types server/dev-server.ts",
     "demo": "node scripts/demo/demo.mjs",
     "test-bots": "node scripts/demo/test-bots.mjs",
     "mcp": "node --experimental-strip-types scripts/mcp-server.ts",
+    "control:metal": "node --experimental-strip-types scripts/control-dusk.ts",
     "control:dusk": "node --experimental-strip-types scripts/control-dusk.ts",
     "ui:baseline": "node --experimental-strip-types scripts/testing/visual-baseline.ts",
     "dev:desktop": "node scripts/prepare-cloudflared.mjs --current && electron .",

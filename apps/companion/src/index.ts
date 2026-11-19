@@ -87,7 +87,7 @@ const conflict = (name: string, port: number): string | null => {
 const fixedName = process.env.DUSK_COMPANION_NAME?.trim() || "";
 let cachedName = fixedName;
 
-const machineName = (): string => cachedName || "dusk bot";
+const machineName = (): string => cachedName || "Metal";
 
 /** True when the name changed. */
 async function refreshMachineName(): Promise<boolean> {

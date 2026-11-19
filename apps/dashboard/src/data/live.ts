@@ -104,7 +104,7 @@ export function billingFromWire(overview: WireBillingOverview, catalog: PlanCata
   };
 }
 
-export const SETUP_LABELS = { reserving: "reserving your machine", storage: "preparing its disk", starting: "installing dusk bot", checking: "waking your bots" } as const;
+export const SETUP_LABELS = { reserving: "reserving your machine", storage: "preparing its disk", starting: "installing Metal", checking: "waking your bots" } as const;
 
 export function cloudFromWire(cloud: CloudDesktopView): CloudDesktop | null {
   if (cloud.status === "checkout" || cloud.status === "destroying" || cloud.status === "destroyed") return null;

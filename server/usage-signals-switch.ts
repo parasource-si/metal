@@ -6,7 +6,7 @@ import { writeFileAtomic } from "./atomic.ts";
 
 export interface UsageSignalsChoice { enabled: boolean }
 
-/** the one "help improve dusk bot" switch: usage counts, the scrubbed notes about how sessions went, and (on the
+/** the one "help improve Metal" switch: usage counts, the scrubbed notes about how sessions went, and (on the
  * desktop) crash reports. on unless the person turns it off (or DUSK_USAGE_SIGNALS=off).
  *
  * It is the account's switch too. A change made here is kept as `push` until a report to the account service gets

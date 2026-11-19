@@ -124,7 +124,7 @@ export function createDodoProvider(options: DodoProviderOptions): BillingProvide
     // product and addons are sent again with the code, unbilled, from the next billing date
     async applyDiscount(input) {
       const discount = await json("/discounts", { type: "percentage", amount: input.percent * 100, subscription_cycles: input.cycles, usage_limit: 1, per_customer_usage_limit: 1,
-        preserve_on_plan_change: true, name: "stay on dusk bot", metadata: { accountId: input.accountId, kind: "retention" } });
+        preserve_on_plan_change: true, name: "stay on Metal", metadata: { accountId: input.accountId, kind: "retention" } });
       if (typeof discount.code !== "string" || !discount.code) throw new BillingProviderError("refused");
       await request(`/subscriptions/${encodeURIComponent(input.subscriptionId)}/change-plan`, "POST", { product_id: input.productId, quantity: 1, proration_billing_mode: "do_not_bill",
         effective_at: "next_billing_date", addons: input.addons.map(addon => ({ addon_id: addon.addonId, quantity: addon.quantity })), discount_codes: [discount.code] });

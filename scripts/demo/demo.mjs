@@ -1,4 +1,4 @@
-// `pnpm demo`: a separate dusk bot seeded with the test bots (scripts/demo/content.mjs), in its own data folder, harness port and UI port.
+// `pnpm demo`: a separate Metal seeded with the test bots (scripts/demo/content.mjs), in its own data folder, harness port and UI port.
 // It never reads or writes ~/.duskbot and never talks to the 8799 harness or the 5199 UI.
 //
 //   pnpm demo            start (seeding on first run) and open it in the browser
@@ -193,7 +193,7 @@ function openBrowser() {
 
 function summary() {
   console.log(`
-dusk bot demo is running
+Metal demo is running
   open      ${URL_UI}
   harness   ${API} (webhooks on ${PORT + 1})
   data      ${DEMO_DIR}

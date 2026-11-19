@@ -4,7 +4,7 @@
   "title": "Claude Code for email: find the mail you need again",
   "nav": "claude code for email",
   "h1": "claude code for email: clean up one slice first",
-  "description": "Use Claude Code in dusk bot to sort one slice of Gmail and make label changes you approved, with trash left out of the job.",
+  "description": "Use Claude Code in Metal to sort one slice of Gmail and make label changes you approved, with trash left out of the job.",
   "keyword": "claude code for email",
   "keywords": [
     "claude code email agent",
@@ -50,7 +50,7 @@
     },
     {
       "h": "give the bot reading access",
-      "md": "**get the first shortlist while your mail stays untouched.** choose claude code for a dusk bot. connect gmail under **connected apps** and allow that bot to read only.[^1][^3]\n\nyou sign in on google's page. composio holds the connection; dusk stores no gmail sign-in credentials.[^1]\n\nlabel separate inboxes and name the one you mean. dusk supports up to five usable accounts per app. an empty search might mean the wrong mailbox.[^1]\n\nyour claude sign-in runs on anthropic's terms, not ours. read them (checked 12 november 2026) before you put it on a schedule.[^6]"
+      "md": "**get the first shortlist while your mail stays untouched.** choose claude code for a Metal bot. connect gmail under **connected apps** and allow that bot to read only.[^1][^3]\n\nyou sign in on google's page. composio holds the connection; dusk stores no gmail sign-in credentials.[^1]\n\nlabel separate inboxes and name the one you mean. dusk supports up to five usable accounts per app. an empty search might mean the wrong mailbox.[^1]\n\nyour claude sign-in runs on anthropic's terms, not ours. read them (checked 12 november 2026) before you put it on a schedule.[^6]"
     },
     {
       "h": "read the conversation before choosing the label",
@@ -89,7 +89,7 @@
   ],
   "sources": [
     {
-      "label": "dusk bot docs: files and apps",
+      "label": "Metal docs: files and apps",
       "url": "/docs/files-and-apps"
     },
     {
@@ -98,15 +98,15 @@
       "checked": "2026-11-12"
     },
     {
-      "label": "dusk bot docs: ai setup",
+      "label": "Metal docs: ai setup",
       "url": "/docs/getting-started"
     },
     {
-      "label": "dusk bot docs: approval settings",
+      "label": "Metal docs: approval settings",
       "url": "/docs/computer"
     },
     {
-      "label": "dusk bot docs: routines",
+      "label": "Metal docs: routines",
       "url": "/docs/routines"
     },
     {

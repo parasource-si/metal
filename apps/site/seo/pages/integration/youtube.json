@@ -4,8 +4,8 @@
   "title": "YouTube AI assistant for comments and channel reviews",
   "nav": "youtube",
   "h1": "a youtube assistant for the work around your videos",
-  "description": "Review YouTube comments, playlists and channel data with dusk bot. See available caption actions, three routines and the limits on video summaries.",
-  "answer": "**your next video idea may already be sitting in the comments.** a dusk bot can collect viewer questions, group recurring topics and bring you the comments behind them. it also reads video details and playlists with the ai you choose. spoken-content summaries need downloadable captions; that action requires video ownership, so a link alone is not enough.",
+  "description": "Review YouTube comments, playlists and channel data with Metal. See available caption actions, three routines and the limits on video summaries.",
+  "answer": "**your next video idea may already be sitting in the comments.** a Metal bot can collect viewer questions, group recurring topics and bring you the comments behind them. it also reads video details and playlists with the ai you choose. spoken-content summaries need downloadable captions; that action requires video ownership, so a link alone is not enough.",
   "tags": [
     "video",
     "comments",
@@ -122,15 +122,15 @@
   ],
   "sources": [
     {
-      "label": "dusk bot docs: files and apps",
+      "label": "Metal docs: files and apps",
       "url": "/docs/files-and-apps"
     },
     {
-      "label": "dusk bot docs: routines",
+      "label": "Metal docs: routines",
       "url": "/docs/routines"
     },
     {
-      "label": "dusk bot docs: approval and sending",
+      "label": "Metal docs: approval and sending",
       "url": "/docs/computer"
     }
   ],

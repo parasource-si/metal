@@ -1,4 +1,4 @@
-# dusk bot agent notes
+# Metal agent notes
 
 Before claiming a server or conversation change works, follow
 [`docs/verification/README.md`](docs/verification/README.md). Always launch an
@@ -6,7 +6,7 @@ isolated fixture; never verify mutations against the user's live app or data.
 
 ## Data
 
-New server-side Dusk data goes to Dusk's MongoDB through `MONGODB_URI` /
+New server-side Metal data goes to the configured MongoDB through `MONGODB_URI` /
 `MONGODB_DB`, not new JSON state files. Where it runs and what may move:
 [`docs/mongodb.md`](docs/mongodb.md).
 

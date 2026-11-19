@@ -9,7 +9,7 @@ import path from 'node:path';
 import { sceneId } from './art/scene.mjs';
 import { HUBS } from './records.mjs';
 
-// claims no page may make, whatever else it says: that an ai vendor endorses, approves or partners with dusk bot, or that
+// claims no page may make, whatever else it says: that an ai vendor endorses, approves or partners with Metal, or that
 // its ai is free or unlimited. (the owner cleared plain wording about using the ai subscription you already have on
 // 2026-11-12; statements about vendor terms must still be factual, dated and sourced)
 export const SUBSCRIPTION = [

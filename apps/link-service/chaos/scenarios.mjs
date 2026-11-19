@@ -207,7 +207,7 @@ export const SCENARIOS = [
     },
   },
   {
-    name: "server-restart", title: "dusk bot on the server restarts (down 6 s)", quick: true, budgetMs: 10_000,
+    name: "server-restart", title: "Metal on the server restarts (down 6 s)", quick: true, budgetMs: 10_000,
     async run(world) {
       await world.bot.stop();
       await sleep(6000);

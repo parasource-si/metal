@@ -47,13 +47,13 @@ export async function connectVerb(ctx: VerbContext): Promise<VerbOutcome> {
   }
   let code = flag(ctx.flags, "code")?.replace(/\s+/g, "");
   if (!code && !isLoopback(origin)) throw usageError("a workspace elsewhere needs a pairing code", "open Settings → Phone → Set up a phone there, then pass --code CODE");
-  const unreachable = () => new HeadlessError(`no dusk bot server answers at ${origin}`, EXIT.unreachable, "check the address, and that the server is running");
+  const unreachable = () => new HeadlessError(`no Metal server answers at ${origin}`, EXIT.unreachable, "check the address, and that the server is running");
   const describe = (path: string) => call(origin, path).catch(() => { throw unreachable(); });
   // a server from before the rename answers only under the old path
   let described = await describe("/.well-known/duskbot/environment");
   if (described.status === 404) described = await describe(toLegacyPath("/.well-known/duskbot/environment"));
   if (described.status !== 200 || typeof described.body.environmentId !== "string") throw unreachable();
-  const label = flag(ctx.flags, "label")?.trim() || "duskbot CLI";
+  const label = flag(ctx.flags, "label")?.trim() || "metal CLI";
   if (!code) {
     const minted = await call(origin, "/api/auth/pairing", { method: "POST", body: JSON.stringify({ label, ...(ctx.flags.client ? { scopes: ["client"] } : {}) }) });
     if (minted.status !== 200 || typeof minted.body.code !== "string") {
@@ -80,7 +80,7 @@ export async function connectVerb(ctx: VerbContext): Promise<VerbOutcome> {
     human: [
       `Connected to "${environment.label}" (${origin}, id ${environment.environmentId}).`,
       `Session "${session.label ?? label}", ${scope === "admin" ? "full access" : "chat and approvals only"}${typeof session.expiresAt === "number" ? `, until ${new Date(session.expiresAt).toISOString().slice(0, 10)}` : ""}.`,
-      `Token saved to ${out}. Use it with: duskbot doctor --url ${origin} --token-file ${out}`,
+      `Token saved to ${out}. Use it with: metal doctor --url ${origin} --token-file ${out}`,
     ],
   };
 }

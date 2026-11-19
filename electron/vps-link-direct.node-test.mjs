@@ -77,7 +77,7 @@ test("a reply's records go out as one write (sshd does not set nodelay for a cha
   assert.equal(writes.length, 1);
 });
 
-/** a fake dusk bot, an in-memory ssh channel to the real agent half, and a fake relay that serves the same frames */
+/** a fake Metal, an in-memory ssh channel to the real agent half, and a fake relay that serves the same frames */
 async function rig({ agentKey = KEY } = {}) {
   const seen = [];
   const slow = [];

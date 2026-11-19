@@ -4,7 +4,7 @@
   "title": "AI assistants you text: iMessage, WhatsApp or their own app",
   "nav": "ai you text",
   "h1": "ai assistants you text: choose the channel and the computer",
-  "description": "Compare Poke, OpenClaw, Hermes Agent, Genspark Claw and dusk bot by messaging channel, setup and what stays running when your laptop is off.",
+  "description": "Compare Poke, OpenClaw, Hermes Agent, Genspark Claw and Metal by messaging channel, setup and what stays running when your laptop is off.",
   "keyword": "ai assistant that texts you",
   "keywords": [
     "ai agent imessage",
@@ -66,7 +66,7 @@
       "openclaw",
       "hermes agent",
       "genspark claw",
-      "dusk bot"
+      "Metal"
     ],
     "rows": [
       {
@@ -176,7 +176,7 @@
       }
     ]
   },
-  "method": "**choose how you want to talk and who keeps it running.** we make dusk bot. we read the product pages and docs on 12 november 2026.\n\nwe didn't run identical tasks, time message delivery or test every channel ourselves. use the channel and hosting rows to choose your first trial.",
+  "method": "**choose how you want to talk and who keeps it running.** Metal is based on Dusk Bot. we read the product pages and docs on 12 november 2026.\n\nwe didn't run identical tasks, time message delivery or test every channel ourselves. use the channel and hosting rows to choose your first trial.",
   "sections": [
     {
       "h": "if imessage is the requirement, start there",
@@ -205,7 +205,7 @@
       "a": "**poke describes proactive messages, reminders and background automations.[^11]** try the trigger and channel you need before relying on that first nudge."
     },
     {
-      "q": "does dusk bot work in whatsapp?",
+      "q": "does Metal work in whatsapp?",
       "a": "**you talk to dusk bots in their own app.** phone access uses a paired browser version today. store apps are on their way.[^12][^13]"
     }
   ],
@@ -266,19 +266,19 @@
       "checked": "2026-11-12"
     },
     {
-      "label": "dusk bot: phone",
+      "label": "Metal: phone",
       "url": "/docs/phone"
     },
     {
-      "label": "dusk bot: getting started",
+      "label": "Metal: getting started",
       "url": "/docs/getting-started"
     },
     {
-      "label": "dusk bot: dusk cloud",
+      "label": "Metal: dusk cloud",
       "url": "/docs/dusk-cloud"
     },
     {
-      "label": "dusk bot: routines",
+      "label": "Metal: routines",
       "url": "/docs/routines"
     },
     {
@@ -287,7 +287,7 @@
       "checked": "2026-11-12"
     },
     {
-      "label": "dusk bot: bots",
+      "label": "Metal: bots",
       "url": "/docs/bots"
     },
     {
@@ -324,7 +324,7 @@
       ],
       [
         "separate bots on different ai models",
-        "dusk bot"
+        "Metal"
       ]
     ]
   },

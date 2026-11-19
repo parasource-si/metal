@@ -114,7 +114,7 @@ export function WorkspacesPage() {
               <div className="min-w-0 md:pr-6">
                 <h3 className="mb-5 text-14 font-medium text-ink">your mac</h3>
                 <ol className="flex flex-col gap-5">
-                  <Step n={1} title="download dusk bot for mac"><ButtonLink to={DOWNLOAD_URL} external size="sm" className="mt-1.5">download</ButtonLink></Step>
+                  <Step n={1} title="download Metal for mac"><ButtonLink to={DOWNLOAD_URL} external size="sm" className="mt-1.5">download</ButtonLink></Step>
                   <Step n={2} title="sign in with this account">it shows up here by itself a few seconds later.</Step>
                   <Step n={3} title="keep it awake">your bots run while the mac is on.</Step>
                 </ol>
@@ -149,7 +149,7 @@ function CloudColumn({ hasCloud }: { hasCloud: boolean }) {
   );
 }
 
-/** a server of the person's own: one quiet offer, on its own page, to move it to dusk cloud. the dusk bot app that linked
+/** a server of the person's own: one quiet offer, on its own page, to move it to dusk cloud. the Metal app that linked
  *  it runs the move (its bots, chats and memory go straight across), so the button opens the app there */
 function ServerToCloud({ w }: { w: WorkspaceSummary }) {
   const { catalog } = useCloud();
@@ -159,7 +159,7 @@ function ServerToCloud({ w }: { w: WorkspaceSummary }) {
       <p className="text-14 text-ink">move {w.name} to dusk cloud</p>
       <p className="mt-1 text-13 text-ink-3">always on, with nothing to keep running. we handle updates and backups.{from ? ` from ${from} a month.` : ""}</p>
     </div>
-    <Button size="sm" onClick={() => openApp(appLink.serverMove(w.id), "opening dusk bot. the move starts there.")}>move to dusk cloud</Button>
+    <Button size="sm" onClick={() => openApp(appLink.serverMove(w.id), "opening Metal. the move starts there.")}>move to dusk cloud</Button>
   </div>;
 }
 
@@ -192,7 +192,7 @@ export function WorkspacePage({ id }: { id: string }) {
       <header className="mb-8 flex items-center gap-4"><span className="grid size-14 shrink-0 place-items-center rounded-[12px] bg-card-2 text-ink-2" aria-hidden>{workspaceIcon(w, cloud, 24)}</span><div className="min-w-0 flex-1"><h1 className="t-title truncate">{w.name}</h1><div className="mt-1 flex flex-wrap items-center gap-x-4 gap-y-1 text-13 text-ink-3"><span>{KIND_LABEL(w.kind, cloud)}</span><FreshnessTag freshness={w.freshness} at={w.lastReportAt} now={now} cloud={cloud} /></div></div></header>
       <div className="flex flex-col gap-4">
         {cloud && <div className="surface flex flex-wrap items-center justify-between gap-3 rounded-card bg-card px-6 py-4"><div className="min-w-0"><p className="text-14 text-ink">{tierName(catalog, cloud)} · {regionName(catalog, cloud.region)}</p><CloudStatus cloud={cloud} className="mt-1" /></div><ButtonLink to="/cloud" size="sm">open dusk cloud</ButtonLink></div>}
-        {!detail || selected?.id !== id || cloud?.resting ? <NumbersPending cloud={cloud} error={loadError ?? (selected?.id === id ? detailError : null)} retry={retry} className="h-60 !rounded-card" /> : !detail.report ? <SkyEmpty title="waiting for its first report">keep dusk bot running there. its first report usually arrives in a few seconds.</SkyEmpty> : <><MachineView detail={detail} now={now} /><WorkspaceDevices detail={detail} now={now} ready={selected?.id === id} /></>}
+        {!detail || selected?.id !== id || cloud?.resting ? <NumbersPending cloud={cloud} error={loadError ?? (selected?.id === id ? detailError : null)} retry={retry} className="h-60 !rounded-card" /> : !detail.report ? <SkyEmpty title="waiting for its first report">keep Metal running there. its first report usually arrives in a few seconds.</SkyEmpty> : <><MachineView detail={detail} now={now} /><WorkspaceDevices detail={detail} now={now} ready={selected?.id === id} /></>}
         {w.kind === "vps" && !cloud && clouds !== null && <ServerToCloud w={w} />}
       </div>
     </>}

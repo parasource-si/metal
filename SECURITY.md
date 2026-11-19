@@ -2,7 +2,7 @@
 
 ## Report a vulnerability
 
-Email **security@dusk.bot**. Please do not open a public issue, pull request or discussion for a security problem.
+Contact the Metal repository maintainers privately for a bug in this fork. Email **security@dusk.bot** for vulnerabilities in the upstream Dusk Bot services. Use private channels for security reports.
 
 Include:
 
@@ -15,13 +15,10 @@ Never send passwords, API keys, session tokens or other people's data.
 
 ## What to expect
 
-We aim to acknowledge reports within 3 business days, then keep you posted on our assessment and the fix. Please coordinate
-public disclosure with us. There is no bug bounty yet.
+Coordinate public disclosure with the maintainers handling the report.
 
 ## Scope
 
-dusk.bot (including the dashboard and API), link.dusk.bot, the dusk bot desktop and phone apps, and the VPS installer.
-Denial of service, social engineering and third-party providers are out of scope.
+Metal reports cover the fork's desktop and phone apps and self-hosted server.
 
-The full policy, including safe harbour for good-faith research, is at [dusk.bot/security](https://dusk.bot/security)
-([source](docs/legal/security.md)). Machine-readable contact details: [security.txt](https://dusk.bot/.well-known/security.txt).
+The [upstream Dusk Bot security policy](https://dusk.bot/security) and [upstream security.txt](https://dusk.bot/.well-known/security.txt) cover its hosted services.

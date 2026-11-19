@@ -41,7 +41,7 @@ describe("the general bot-wall states", () => {
   });
 });
 
-describe("dusk bot's own recovery from a bot wall", () => {
+describe("Metal's own recovery from a bot wall", () => {
   it("waits out a self-clearing interstitial quietly, without reloading or going home", async () => {
     const fixture = site([verifying, verifying, verifying, null, page()], { home: true });
     expect(await runSiteBlockLadder(fixture.deps)).toEqual({ outcome: "cleared", via: "wait", waitedMs: 12_500 });

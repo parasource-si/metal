@@ -4,7 +4,7 @@
   "title": "Jira AI assistant: catch sprint changes before the meeting",
   "nav": "jira",
   "h1": "a jira assistant that explains what changed",
-  "description": "Read Jira issue history, sprint changes and release questions with dusk bot. Try three review routines and keep status changes under your control.",
+  "description": "Read Jira issue history, sprint changes and release questions with Metal. Try three review routines and keep status changes under your control.",
   "answer": "**walk into the sprint meeting knowing what changed yesterday.** a jira bot reads issues, comments and history, then explains scope and status changes in your dusk chat. schedule that review with the ai you choose.\n\nstart read only. you get the story behind the labels while tickets and the sprint stay where they are.",
   "tags": [
     "issues",
@@ -94,7 +94,7 @@
     "**move an issue with read-only access.** listing available transitions is a read; applying one is a change.",
     "**invent why a bug reopened.** comments and history provide evidence. missing explanations should remain questions.",
     "**declare a release ready from a filter.** the routine compares issues with your checklist and brings back unresolved work.",
-    "**review on schedule while the local machine sleeps.** dusk bot must be open and the computer awake. dusk cloud can keep the review running."
+    "**review on schedule while the local machine sleeps.** Metal must be open and the computer awake. dusk cloud can keep the review running."
   ],
   "sections": [
     {
@@ -109,7 +109,7 @@
   "faq": [
     {
       "q": "can claude help with jira without changing tickets?",
-      "a": "**yes.** a dusk bot can use the search and read actions with jira read only. these three routines return findings in chat."
+      "a": "**yes.** a Metal bot can use the search and read actions with jira read only. these three routines return findings in chat."
     },
     {
       "q": "will it ask before changing an issue status?",
@@ -122,15 +122,15 @@
   ],
   "sources": [
     {
-      "label": "dusk bot docs: files and apps",
+      "label": "Metal docs: files and apps",
       "url": "/docs/files-and-apps"
     },
     {
-      "label": "dusk bot docs: routines",
+      "label": "Metal docs: routines",
       "url": "/docs/routines"
     },
     {
-      "label": "dusk bot docs: permissions and sending",
+      "label": "Metal docs: permissions and sending",
       "url": "/docs/computer"
     }
   ],

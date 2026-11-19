@@ -20,7 +20,7 @@ const accountSchema = z.object({
   label: z.string().min(1).max(120),
   server: z.string().min(1).max(32),
   fields: z.record(z.string(), z.string().max(4_096)),
-  /** api apps: the bearer dusk bot's own MCP endpoint asks of the server entry. */
+  /** api apps: the bearer Metal's own MCP endpoint asks of the server entry. */
   mcpKey: z.string().regex(/^[a-f0-9]{64}$/u).optional(),
   /** Unix ms when `fields.token` stops working; a device sign-in refreshes it before then. */
   expiresAt: z.number().optional(),

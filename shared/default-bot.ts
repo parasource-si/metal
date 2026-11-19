@@ -3,7 +3,7 @@ import type { MausColor } from "./wire.ts";
 
 /** Dusk: every person's built-in helper. A new install's first bot (its Chief of Staff too); an existing place or
  * person without one is given one once. It can be renamed and recoloured, hidden from the sidebar, never deleted. */
-export const DEFAULT_BOT_NAME = "dusk bot";
+export const DEFAULT_BOT_NAME = "Metal";
 export const DEFAULT_BOT_COLOR: MausColor = "chrome";
 
 export interface DefaultBotMark {

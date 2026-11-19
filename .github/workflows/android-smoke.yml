@@ -56,7 +56,7 @@ jobs:
           profile: pixel_6
           disable-animations: true
           emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -no-snapshot
-          script: apps/mobile/scripts/android-smoke.sh "$RUNNER_TEMP/apk/dusk-bot-1.2.apk" "smoke-out/api-${{ matrix.api }}"
+          script: apps/mobile/scripts/android-smoke.sh "$RUNNER_TEMP/apk/Metal-1.2.apk" "smoke-out/api-${{ matrix.api }}"
       - if: always()
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:

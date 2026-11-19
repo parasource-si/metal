@@ -4,8 +4,8 @@
   "title": "LinkedIn AI assistant for post reviews, not inbox outreach",
   "nav": "linkedin",
   "h1": "a linkedin assistant for posts worth reading",
-  "description": "See what a dusk bot can do in LinkedIn: draft and publish posts, read page stats and company details. No inbox messages or connection requests.",
-  "answer": "**turn a useful customer question into your next linkedin post.** a dusk bot can draft in chat, publish posts and read named posts, company details and selected statistics. as of 12 november 2026, the toolkit has 29 actions. it has no inbox messaging, connection requests or general people search. give it the source posts and choose the ai you already sign in to.",
+  "description": "See what a Metal bot can do in LinkedIn: draft and publish posts, read page stats and company details. No inbox messages or connection requests.",
+  "answer": "**turn a useful customer question into your next linkedin post.** a Metal bot can draft in chat, publish posts and read named posts, company details and selected statistics. as of 12 november 2026, the toolkit has 29 actions. it has no inbox messaging, connection requests or general people search. give it the source posts and choose the ai you already sign in to.",
   "tags": [
     "professional-social",
     "publishing",
@@ -114,7 +114,7 @@
     },
     {
       "q": "can claude write my linkedin posts?",
-      "a": "**yes. ask a dusk bot to draft in chat.** choose the ai and provide approved facts and source posts. publishing uses a separate action if you allow it later."
+      "a": "**yes. ask a Metal bot to draft in chat.** choose the ai and provide approved facts and source posts. publishing uses a separate action if you allow it later."
     },
     {
       "q": "can it monitor every new comment automatically?",
@@ -123,15 +123,15 @@
   ],
   "sources": [
     {
-      "label": "dusk bot docs: files and apps",
+      "label": "Metal docs: files and apps",
       "url": "/docs/files-and-apps"
     },
     {
-      "label": "dusk bot docs: routines",
+      "label": "Metal docs: routines",
       "url": "/docs/routines"
     },
     {
-      "label": "dusk bot docs: permissions and sends",
+      "label": "Metal docs: permissions and sends",
       "url": "/docs/computer"
     }
   ],

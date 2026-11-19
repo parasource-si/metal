@@ -52,7 +52,7 @@ export const X_MESSAGES = {
   badKey: "Sign in to dusk cloud again (your account menu) to use X research.",
   ownBadKey: "treg rejected your key. Check it in Settings → API keys.",
   /** A Cloud home's relay token is the Admin's to replace; the person has no sign-in to redo there. */
-  homeBadKey: "X research isn't connected on this Cloud right now. It comes with your plan, so there is nothing to sign in to: try again later, and tell dusk bot support if it keeps happening.",
+  homeBadKey: "X research isn't connected on this Cloud right now. It comes with your plan, so there is nothing to sign in to: try again later, and tell Metal support if it keeps happening.",
   noPlan: "X research comes with dusk cloud plans, and this account's plan isn't active.",
   rateLimited: "X research is busy right now. Try again in a moment.",
   badRequest: "That X research request was refused. Check the query, handle or post link.",

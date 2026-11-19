@@ -16,7 +16,7 @@ test("accepts strict code and error links and trims surrounding whitespace", () 
 test("rejects other handlers, wrong case, unknown keys, duplicates and fragments", () => {
   for (const link of [
     "duskbot://bot/scout", "duskbot://thread/abc?bot=scout", "duskbot://cloud",
-    "duskbot://organization", CODE_LINK.replace("duskbot", "dusk bot"),
+    "duskbot://organization", CODE_LINK.replace("duskbot", "Metal"),
     CODE_LINK.replace("slack", "Slack"), CODE_LINK.replace("oauth", "OAuth"),
     `${CODE_LINK}&extra=1`, `${CODE_LINK}&state=${STATE}`, `${CODE_LINK}&code=abcdefgh`,
     `${ERROR_LINK}&error=other`, `${CODE_LINK}&error=access_denied`, `${CODE_LINK}#fragment`,

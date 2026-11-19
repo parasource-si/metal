@@ -1,6 +1,6 @@
-// "Start fresh": resets dusk bot on this computer only. It signs this computer out, removes the AI keys saved here and,
+// "Start fresh": resets Metal on this computer only. It signs this computer out, removes the AI keys saved here and,
 // at the next start, every bot, chat and file kept here, so the app comes back as a new install. Nothing outside this
-// computer is touched: the dusk bot account, its plan or trial, its dusk cloud computers and linked servers all stay
+// computer is touched: the Dusk account, its plan or trial, its dusk cloud computers and linked servers all stay
 // (a server or cloud is only forgotten here). Deleting the account, which cancels its plan, is its own action on the
 // website's account page, never part of this.
 //
@@ -20,7 +20,7 @@ const KEPT_IN_DATA = new Set(["tools", "cache", ".cache", "tmp", ".tmp", "dist-n
 export const keptInDataDir = (name) => KEPT_IN_DATA.has(name) || name.startsWith(`${SERVER_LEASE_NAME}.`);
 /** userData files that hold nothing of the person's: where the window was, the startup look, the updater's id */
 const KEPT_IN_USER_DATA = new Set(["window-state.json", "startup-theme.json", "startup-loads.json", "last-run-version.json", "server-compile-cache", DESKTOP_MARKER]);
-/** userData folders that are dusk bot's own (the rest is Chromium's, cleared through its session) */
+/** userData folders that are Metal's own (the rest is Chromium's, cleared through its session) */
 const OWN_FOLDERS = /^(cloud-sync(-.+)?|vps-backups)$/;
 
 const errorText = (error) => String(error?.message ?? error ?? "failed").slice(0, 200);
@@ -116,7 +116,7 @@ export function createStartFresh(deps) {
 }
 
 /**
- * At start, before anything reads them: when a start-fresh is pending, this computer's data folders and dusk bot's own files
+ * At start, before anything reads them: when a start-fresh is pending, this computer's data folders and Metal's own files
  * in userData are deleted. True when it ran, so the caller clears the window's storage too. The marker goes last, so a
  * start cut off halfway deletes again.
  * @param {{ userData: string, dataDir: string, fs?: typeof nodeFs, log?: (line: string) => void }} input

@@ -16,8 +16,8 @@ export interface SitePlan {
   finish(meta: PageMeta): PageMeta;
 }
 
-export const UNFURL_USER_AGENT = "Mozilla/5.0 (compatible; dusk bot link preview; +https://dusk.bot)";
-const META_USER_AGENT = "facebookexternalhit/1.1 (compatible; dusk bot link preview; +https://dusk.bot)";
+export const UNFURL_USER_AGENT = "Mozilla/5.0 (compatible; Metal link preview; +https://dusk.bot)";
+const META_USER_AGENT = "facebookexternalhit/1.1 (compatible; Metal link preview; +https://dusk.bot)";
 
 const hostIs = (url: URL, ...domains: string[]) => {
   const host = url.hostname.toLowerCase().replace(/\.$/, "");

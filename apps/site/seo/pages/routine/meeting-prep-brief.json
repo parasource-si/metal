@@ -85,15 +85,15 @@
   ],
   "sources": [
     {
-      "label": "dusk bot docs: routines and schedule cards",
+      "label": "Metal docs: routines and schedule cards",
       "url": "/docs/routines"
     },
     {
-      "label": "dusk bot docs: files and apps",
+      "label": "Metal docs: files and apps",
       "url": "/docs/files-and-apps"
     },
     {
-      "label": "dusk bot docs: dusk cloud",
+      "label": "Metal docs: dusk cloud",
       "url": "/docs/dusk-cloud"
     },
     {

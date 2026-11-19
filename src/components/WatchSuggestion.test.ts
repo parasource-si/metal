@@ -41,7 +41,7 @@ describe("the keep-an-eye-on-my-day suggestion card", () => {
     expect(view.html).toContain("Turn it on");
     expect(view.html).toContain("Not now");
     expect(richRowKind(message())).toBe("widget");
-    expect(nodes(RichMessageRow({ botId: "b1", botName: "dusk bot", threadId: "t1", message: message() })).some((node) => node.type === WatchSuggestion)).toBe(true);
+    expect(nodes(RichMessageRow({ botId: "b1", botName: "Metal", threadId: "t1", message: message() })).some((node) => node.type === WatchSuggestion)).toBe(true);
   });
 
   it("sends the answer, and once answered says so with no buttons", async () => {

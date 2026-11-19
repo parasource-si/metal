@@ -39,7 +39,7 @@ const BROWSER_RESTART_TOOL_SPEC = {
 };
 export const BROWSER_UPLOAD_TOOL = "agent_browser_upload";
 export const BROWSER_HOVER_TOOL = "agent_browser_hover";
-/** agent-browser 0.37.0 offers upload and hover only in its 156-tool "all" profile, so dusk bot runs these two through the daemon's relay. */
+/** agent-browser 0.37.0 offers upload and hover only in its 156-tool "all" profile, so Metal runs these two through the daemon's relay. */
 const RELAYED_TOOL_SPECS = [
   {
     name: BROWSER_UPLOAD_TOOL,
@@ -299,7 +299,7 @@ class BrowserClient {
 export type ApplyViewport = (spec: BrowserSpawnSpec, size: PageSize) => Promise<unknown>;
 
 type LaunchSpec = { command: string; env?: Record<string, string | undefined> };
-/** The browser the engine starts, prepared by dusk bot. */
+/** The browser the engine starts, prepared by Metal. */
 export interface BrowserLaunch {
   /** Before the engine may start the browser; rejects with a message for the bot while it cannot start yet. */
   ready(spec: LaunchSpec): Promise<void>;
@@ -605,7 +605,7 @@ export class BrowserRuntime {
           .then((result) => firstText(result).trim(), (error: unknown) => { if (error instanceof TransportError) throw error; return ""; });
         const heldNote = this.holds.note(session);
         if (toolName === "agent_browser_eval" && await this.holds.refuses(session, pageUrl)) return { isError: true, content: [{ type: "text", text: heldNote ?? SECRET_ON_PAGE }] };
-        // Launch and session parameters dusk bot owns never reach the engine from a call.
+        // Launch and session parameters Metal owns never reach the engine from a call.
         const stripped = method === "tools/call" ? stripHarnessOwnedArguments(params) : params;
         const labelled = toolName === "agent_browser_tab_new" && ctx
           ? { ...stripped as object, arguments: this.threadTabs.labelNewTab(ctx.threadId, ((stripped as { arguments?: Record<string, unknown> }).arguments) ?? {}) } : stripped;

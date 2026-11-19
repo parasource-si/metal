@@ -100,7 +100,7 @@ describe("a saved key", () => {
     expect(html).toContain("Install DeepSeek Harness here");
     expect(html).toContain("••••••••9z9z");
 
-    // Nothing dusk bot can install here: no install offer.
+    // Nothing Metal can install here: no install offer.
     fixture.instances = [{ ...deepseek("unavailable"), install: { command: { linux: "npm install -g @deepseek-ai/dsh" } } } as InstanceInfo];
     expect(render({ id: "deepseek" })).not.toContain("data-key-engine-missing");
     fixture.instances = [deepseek("available")];

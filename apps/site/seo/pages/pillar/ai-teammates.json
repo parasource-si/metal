@@ -4,14 +4,14 @@
   "title": "AI teammates for solo founders and small teams",
   "nav": "ai teammates",
   "h1": "ai teammates for a small team with work to finish",
-  "description": "Give dusk bot teammates narrow jobs, clear handoffs and a human owner, with group chats, shared-bot team plans and what work use needs.",
+  "description": "Give Metal teammates narrow jobs, clear handoffs and a human owner, with group chats, shared-bot team plans and what work use needs.",
   "keyword": "ai teammates",
   "keywords": [
     "ai team members",
     "ai agents team",
     "ai coworker"
   ],
-  "answer": "**hand off the prep and arrive with something ready to decide.** give a dusk bot a narrow job and a person who accepts the result. bots keep separate names, chats, memory and ai choices. bring them into a group when their jobs need each other. choose which apps each can reach and what it may remember. work use needs a work license.",
+  "answer": "**hand off the prep and arrive with something ready to decide.** give a Metal bot a narrow job and a person who accepts the result. bots keep separate names, chats, memory and ai choices. bring them into a group when their jobs need each other. choose which apps each can reach and what it may remember. work use needs a work license.",
   "updated": "2026-11-12",
   "review": {
     "status": "approved",
@@ -85,35 +85,35 @@
   ],
   "sources": [
     {
-      "label": "dusk bot docs: separate bot jobs and chats",
+      "label": "Metal docs: separate bot jobs and chats",
       "url": "/docs/bots"
     },
     {
-      "label": "dusk bot docs: group handoffs and answer settings",
+      "label": "Metal docs: group handoffs and answer settings",
       "url": "/docs/group-chats"
     },
     {
-      "label": "dusk bot docs: access for each bot",
+      "label": "Metal docs: access for each bot",
       "url": "/docs/files-and-apps"
     },
     {
-      "label": "dusk bot docs: group learning and memory settings",
+      "label": "Metal docs: group learning and memory settings",
       "url": "/docs/memory"
     },
     {
-      "label": "dusk bot docs: personal and work use",
+      "label": "Metal docs: personal and work use",
       "url": "/docs/account-and-billing"
     },
     {
-      "label": "dusk bot docs: source-available license",
+      "label": "Metal docs: source-available license",
       "url": "/docs/faq"
     },
     {
-      "label": "dusk bot pricing: pro and team plans",
+      "label": "Metal pricing: pro and team plans",
       "url": "/pricing"
     },
     {
-      "label": "dusk bot docs: permissions and sends",
+      "label": "Metal docs: permissions and sends",
       "url": "/docs/computer"
     }
   ],

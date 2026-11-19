@@ -34,7 +34,7 @@ export interface OpenRequest {
 
 export interface OpenedBrowser {
   readonly browser: CdpBrowser;
-  /** The largest page its windows may show, as no real window is larger than its screen; null where dusk bot sizes no window. */
+  /** The largest page its windows may show, as no real window is larger than its screen; null where Metal sizes no window. */
   readonly pageLimit?: { width: number; height: number } | null;
   readonly pid: number | null;
   /** The Chrome version that answered, e.g. 155.0.8059.80. */
@@ -79,7 +79,7 @@ export interface LocalBackendOptions {
 
 const LOCAL_CAPS: BackendCaps = { persistentProfile: true, window: true, egressGate: true, identityOverride: true, ownsAllTabs: true, downloads: "local", uploads: "path", botPasskeys: true };
 
-/** A Chrome dusk bot launches on a profile folder of its own, driven over its DevTools pipe. */
+/** A Chrome Metal launches on a profile folder of its own, driven over its DevTools pipe. */
 export class LocalBackend implements Backend {
   readonly kind = "local" as const;
   readonly caps = LOCAL_CAPS;

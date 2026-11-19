@@ -69,11 +69,11 @@ it("opens Android's link page with the APK download beside the same qr", async (
   expect(minted).toBe(1);
   const steps = host.querySelector("[data-phone-steps=android]")!;
   expect(steps.querySelectorAll(":scope > li")).toHaveLength(2);
-  expect(steps.textContent).toContain("Get the dusk bot app");
+  expect(steps.textContent).toContain("Get the Metal app");
   const apk = steps.querySelector("[data-phone-apk]")!;
   expect(apk.getAttribute("href")).toBe("https://dusk.bot/download#android");
   expect(apk.textContent).toBe("Download");
-  expect(apk.getAttribute("aria-label")).toBe("Download dusk bot for Android");
+  expect(apk.getAttribute("aria-label")).toBe("Download Metal for Android");
   expect(host.querySelector("[data-phone-qr]")?.getAttribute("data-phone-qr")).toBe("https://dusk.bot/m/pair#m=offer1&c=ABCDEFGH0001");
 });
 
@@ -91,14 +91,14 @@ it("always opens on the phone picker, then shows the iPhone's two numbered steps
   expect(host.querySelector("[data-phone-qr]")?.getAttribute("data-phone-qr")).toBe("https://dusk.bot/m/pair#m=offer1&c=ABCDEFGH0001");
   const steps = host.querySelector("[data-phone-steps=ios]")!;
   expect(steps.querySelectorAll(":scope > li")).toHaveLength(2);
-  expect(steps.textContent).toContain("Get the dusk bot app");
+  expect(steps.textContent).toContain("Get the Metal app");
   expect(steps.textContent).toContain("Open it and scan the QR code, or type the code");
   expect(host.querySelector("[data-phone-card] [data-phone-code]"), "the code sits in the card under the qr").not.toBeNull();
   expect(host.querySelector("[data-phone-code]")?.textContent).toBe("ABCD EFGH 0001");
   const store = host.querySelector("[data-phone-app-store]")!;
   expect(store.getAttribute("href")).toBe("https://apps.apple.com/app/id6834725640");
   expect(store.textContent).toBe("App Store");
-  expect(store.getAttribute("aria-label")).toBe("Get dusk bot on the App Store");
+  expect(store.getAttribute("aria-label")).toBe("Get Metal on the App Store");
   expect(store.querySelector("[data-store-mark]"), "a plain Apple glyph, not the pixel art").toBeNull();
   expect(host.textContent).toContain("Waiting for your phone");
   await click("[data-pairing-back]");
@@ -159,7 +159,7 @@ it("on a dusk cloud shows one qr that opens the app's log in with the account's 
   await click("[data-phone-platform=ios]");
   expect(host.querySelector("[data-phone-cloud]")).not.toBeNull();
   expect(host.textContent).toContain("Log in on your iPhone");
-  expect(host.querySelector("[data-phone-steps=ios]")?.textContent).toContain("Open dusk bot and log in");
+  expect(host.querySelector("[data-phone-steps=ios]")?.textContent).toContain("Open Metal and log in");
   expect(host.querySelector("[data-phone-cloud-sign-in]")?.textContent).toContain("Log in with");
   expect(host.querySelector("[data-phone-cloud-sign-in]")?.textContent).toContain("owner@example.test");
   expect(host.querySelector("[data-phone-qr]")?.getAttribute("data-phone-qr")).toBe("https://dusk.bot/m/signin#email=owner%40example.test");

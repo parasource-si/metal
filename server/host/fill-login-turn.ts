@@ -53,7 +53,7 @@ export interface FillLoginTurnDeps<T extends Turn = Turn> {
   desktop?(bot: BotRecord, turn: T): Promise<DesktopLogin | { refusal: string } | null>;
 }
 
-const ONLY_IN_BROWSER = "fill_login types a password only into a page of your own browser, where dusk bot checks the page's site first";
+const ONLY_IN_BROWSER = "fill_login types a password only into a page of your own browser, where Metal checks the page's site first";
 
 export function createFillLoginTurn<T extends Turn = Turn>(deps: FillLoginTurnDeps<T>) {
   // Security: on a screen the server cannot prove which site a focused box belongs to, so a secret is never typed there.
@@ -77,7 +77,7 @@ export function createFillLoginTurn<T extends Turn = Turn>(deps: FillLoginTurnDe
       return { ok: false, text: `${ONLY_IN_BROWSER}${notHere}, and this run cannot move to your browser. ${signIn}` };
     }
     const chrome = deps.myChrome(current) ? ", which is the person's own Chrome (My Chrome), signed in as them" : "";
-    return { ok: false, text: `${ONLY_IN_BROWSER}${notHere}. dusk bot is moving this conversation to your own browser${chrome}. End this turn now without using the screen tools: the request continues there with your browser tools. Open the site's sign-in page in that browser, then call fill_login.` };
+    return { ok: false, text: `${ONLY_IN_BROWSER}${notHere}. Metal is moving this conversation to your own browser${chrome}. End this turn now without using the screen tools: the request continues there with your browser tools. Open the site's sign-in page in that browser, then call fill_login.` };
   }
 
   // a clear "wrong password" or refused code removes a saved login; an unclear refusal marks it once; a temporary one does nothing

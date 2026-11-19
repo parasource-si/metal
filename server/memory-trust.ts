@@ -21,7 +21,7 @@ export const BLOCKED_LINE = "[blocked: a saved line read like an instruction rat
 /** Tools whose results are outside content: whatever they return was written by someone other than the person. */
 const OUTSIDE_TOOL = /browser|web|fetch|read_pages?|research|search|crawl|scrape|download|gmail|mail|inbox|slack|composio|http|url|rss|calendar|drive|notion|github|webhook|connector|mcp__/i;
 const OWN_TOOL = /^(?:session_search|memory_update|memory_log|list_bots|list_threads)$/;
-/** dusk bot's own tools server in each engine's spelling: its tools are judged by their bare names, not as any MCP server. */
+/** Metal's own tools server in each engine's spelling: its tools are judged by their bare names, not as any MCP server. */
 const OWN_SERVER = /^(?:mcp__agents__|agents__|agents_)/;
 
 type PathMessage = { role: string; kind?: string; sender?: { id?: string; name?: string }; peerAsk?: unknown; tool?: { name?: string } };

@@ -97,7 +97,7 @@ export interface CloudPlanAllowances {
   /** A team plan's people its price includes, and what each one more costs a month in US cents, when the Admin says. */
   includedSeats?: number; extraSeatCents?: number;
 }
-/** One plan dusk bot Cloud sells: its monthly price before tax in US cents,
+/** One plan dusk cloud sells: its monthly price before tax in US cents,
  * and its free trial's days when it comes with one. */
 export interface CloudOfferPlan { tier: string; label?: string; amount: number; allowances?: CloudPlanAllowances; trialDays?: number }
 /** What someone may buy now: the session's `offer` (signed in), or the public

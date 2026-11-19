@@ -1,5 +1,5 @@
 {
-  "name": "dusk-sites",
+  "name": "metal-sites",
   "private": true,
   "type": "module",
   "description": "the dusk.bot site server behind the account service (deployed with deploy.sh). mongodb is only used by the landing waitlist when MONGODB_URI is set",

@@ -175,7 +175,7 @@ describe("Slack bridge", () => {
   it("posts a fixed failure when a turn ends without terminal text", async () => {
     await f.deliver(); f.push(f.thread(), { kind: "activity", turnSucceeded: false });
     await removed(f.fake);
-    expect(f.fake.posted.map((p) => p.text)).toEqual(["I couldn't finish that. Check dusk bot for details."]);
+    expect(f.fake.posted.map((p) => p.text)).toEqual(["I couldn't finish that. Check Metal for details."]);
   });
   it("cancels a request without posting", async () => {
     await f.deliver();
@@ -188,7 +188,7 @@ describe("Slack bridge", () => {
     f.push(f.thread(), { kind: "options", card: { requestId: "approval", requestType: "permission", tool: "Bash", title: "Approve?", subtitle: "Choose", options: [] } });
     f.notify(f.thread()); f.notify(f.thread());
     await f.fake.waitForPost(() => true);
-    expect(f.fake.posted.map((p) => p.text)).toEqual(["I need you in dusk bot to continue: an approval or a question is waiting there."]);
+    expect(f.fake.posted.map((p) => p.text)).toEqual(["I need you in Metal to continue: an approval or a question is waiting there."]);
     expect(f.fake.reactions).toHaveLength(1);
     f.terminal(); await removed(f.fake);
   });
@@ -235,7 +235,7 @@ describe("Slack bridge", () => {
   it("handles send rejection with a fixed reply and safe logs", async () => {
     f.send.mockRejectedValueOnce(new Error(`${f.link.botToken} hello secret words`));
     await f.deliver();
-    expect(f.fake.posted.map((p) => p.text)).toEqual(["I couldn't start on that. Check dusk bot for details."]);
+    expect(f.fake.posted.map((p) => p.text)).toEqual(["I couldn't start on that. Check Metal for details."]);
     expect(f.fake.posted[0]!.thread_ts).toBe("1700000000.000001");
     await removed(f.fake);
     expect(f.bridge.pendingCount()).toBe(0);

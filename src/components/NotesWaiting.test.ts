@@ -19,7 +19,7 @@ import { NotesWaitingLine, useNotesIntake } from "./NotesWaiting";
 (globalThis as { IS_REACT_ACT_ENVIRONMENT?: boolean }).IS_REACT_ACT_ENVIRONMENT = true;
 const maus = { id: "maus", name: "Dusk", threadId: "maus-thread", defaultBot: {}, messages: [] };
 const atlas = { id: "atlas", name: "Atlas", threadId: "atlas-thread", messages: [] };
-const NOTES = "---\nformat: dusk-bot-notes\nversion: 3\nfrom: ChatGPT\n---\n\n# Memories\n- Likes tea\n\nEND OF DUSK BOT NOTES\n";
+const NOTES = "---\nformat: dusk-bot-notes\nversion: 3\nfrom: ChatGPT\n---\n\n# Memories\n- Likes tea\n\nEND OF METAL NOTES\n";
 
 let host: HTMLDivElement, root: Root;
 let take: ReturnType<typeof useNotesIntake> | null = null;

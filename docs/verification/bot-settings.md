@@ -153,9 +153,9 @@ tabbed panel instead, and that one is driven through
 node --experimental-strip-types scripts/control-dusk.ts ui launch
 H=/tmp/duskbot-verify-data-XXXXXX/ui.json
 # The preview reads as an existing install, so it starts in Advanced mode.
-pnpm control:dusk ui eval --ui $H --js "localStorage.setItem('dusk-advanced-mode','0'); location.reload(); 'simple'"
-pnpm control:dusk ui click --ui $H --name "Open Pepper's profile"
-pnpm control:dusk ui snapshot --ui $H --interactive
+pnpm control:metal ui eval --ui $H --js "localStorage.setItem('dusk-advanced-mode','0'); location.reload(); 'simple'"
+pnpm control:metal ui click --ui $H --name "Open Pepper's profile"
+pnpm control:metal ui snapshot --ui $H --interactive
 ```
 
 Expected: six tabs (Details, Memory, Library, Skills, Routines, Vault), and on

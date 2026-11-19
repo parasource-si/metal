@@ -4,23 +4,23 @@
 // chat here, or saved to Downloads, it is split into About me, the first bot's memory, skills and routines, and a bot
 // each for its custom assistants. One combined block, not a file per bot: one copy and one paste whatever the
 // assistant holds, and the importer, not the person, does the sorting. Pure text: the renderer and tests both read it.
-import { markdownNotes, NOTES_END } from "./notes-markdown.ts";
+import { markdownNotes, NOTES_END, NOTES_SETUP } from "./notes-markdown.ts";
 import {
   bracedObjects, credentialKeys, GrokImportError, looseJson, mergeGrokBots, readBot, redactStrings, type GrokBot, type GrokSkill, type MoveFrom,
 } from "./grok-import.ts";
 
 export const NOTES_FORMAT = "dusk-bot-notes";
 export const NOTES_MAX_CHARS = 4 * 1024 * 1024;
-/** 3 is a markdown file with front matter, a setup block for dusk bot, contacts, skills and per-bot personality; 2 (JSON)
+/** 3 is a markdown file with front matter, a setup block for Metal, contacts, skills and per-bot personality; 2 (JSON)
  * is still read. */
 export const NOTES_VERSION = 3;
-export const NOTES_FILE_NAME = "dusk-bot-notes.md";
+export const NOTES_FILE_NAME = "metal-notes.md";
 const TEMPLATE_FROM = "<name of this app";
 const OLD_TEMPLATE_FROM = "your app's name";
 
 export { NOTES_END };
 
-export const NOTES_PROMPT = `I'm moving to a new assistant called dusk bot and want it to pick up where you and I are, so I don't start over. Please make me one complete export of everything you know about me and everything I've set up with you. Don't change or delete anything on your side.
+export const NOTES_PROMPT = `I'm moving to a new assistant called Metal and want it to pick up where you and I are, so I don't start over. Please make me one complete export of everything you know about me and everything I've set up with you. Don't change or delete anything on your side.
 
 Go through all of it: your saved memories, my custom instructions and personalization, every custom GPT, Project, Gem, companion, agent or bot I made (its instructions, personality and attached files), my scheduled tasks, my connected apps, and what you've learned about me from our chats.
 
@@ -38,9 +38,9 @@ from: ${TEMPLATE_FROM}, e.g. Grok, ChatGPT, Claude or Gemini>
 exported: <today's date, YYYY-MM-DD>
 ---
 
-# SETUP INSTRUCTIONS FOR DUSK BOT
+# ${NOTES_SETUP}
 
-<Write this part yourself, to dusk bot, in 3 to 6 sentences: which app this export comes from and who I am in one line; how many bots are listed under Bots, and that each is an assistant I built here which dusk bot should recreate as its own bot with the instructions, personality, memories, skills and routines given; that About me, Contacts and Memories are facts about me for the memory all my bots share; that Skills are mine for every bot; and that Routines are things you did for me on a schedule, to set up again.>
+<Write this part yourself, to Metal, in 3 to 6 sentences: which app this export comes from and who I am in one line; how many bots are listed under Bots, and that each is an assistant I built here which Metal should recreate as its own bot with the instructions, personality, memories, skills and routines given; that About me, Contacts and Memories are facts about me for the memory all my bots share; that Skills are mine for every bot; and that Routines are things you did for me on a schedule, to set up again.>
 
 # About me
 ## Basics
@@ -134,7 +134,7 @@ Rules:
 - Write only what you actually know. Never guess or invent anything.
 - Leave out passwords, API keys, tokens, account numbers and card numbers.
 - Keep verbatim text between the ~~~text and ~~~ lines, so headings inside it stay part of it.
-- The file's last line is ${NOTES_END}. If it doesn't all fit, stop after a whole section or bot, tell me to say "continue", and give the rest as dusk-bot-notes-2.md (then -3 and so on), each part starting with the same front matter. Only the last part ends with ${NOTES_END}.
+- The file's last line is ${NOTES_END}. If it doesn't all fit, stop after a whole section or bot, tell me to say "continue", and give the rest as metal-notes-2.md (then -3 and so on), each part starting with the same front matter. Only the last part ends with ${NOTES_END}.
 `;
 
 /** Something the other AI did on a schedule for the person; `cron` and `timeZone` when it gave them. */
@@ -153,7 +153,7 @@ export interface AssistantNotes {
   recurring: NotesRoutine[];
   /** The person's own skills, for every bot: kept on the first bot. */
   skills: GrokSkill[];
-  /** What the other AI wrote to dusk bot about the file (SETUP INSTRUCTIONS FOR DUSK BOT). */
+  /** What the other AI wrote to Metal about the file (SETUP INSTRUCTIONS FOR METAL). */
   setup: string;
   /** Apps it was connected to for the person, by name. */
   apps: string[];

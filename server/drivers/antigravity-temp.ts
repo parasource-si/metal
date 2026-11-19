@@ -138,7 +138,7 @@ async function listDirectory(path: string): Promise<Dirent[]> {
   }
 }
 
-/** Nothing when any step of dataDir/tmp/agy/<id> is a link or junction, so a sweep never leaves dusk bot's folder. */
+/** Nothing when any step of dataDir/tmp/agy/<id> is a link or junction, so a sweep never leaves Metal's folder. */
 async function ownedTempDirectories(dataDir: string, only?: string): Promise<string[]> {
   const root = resolve(antigravityTempRoot(dataDir));
   let realRoot: string;

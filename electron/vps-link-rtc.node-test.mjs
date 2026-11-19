@@ -82,7 +82,7 @@ async function fixture() {
   };
   const vpsFetch = spied("to-app"), appFetch = spied("to-vps");
   const base = `http://127.0.0.1:${await listen(relay)}`;
-  // the dusk bot server behind the agent
+  // the Metal server behind the agent
   const big = Buffer.alloc(1024 * 1024, 7);
   const app = createServer((req, res) => {
     if (req.url === "/big") { res.writeHead(200, { "content-type": "application/octet-stream" }); res.end(big); return; }

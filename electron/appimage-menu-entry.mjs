@@ -29,7 +29,7 @@ export function execArg(value) {
 export function menuEntryText({ appImage, icon }) {
   const exec = execArg(appImage);
   if (!exec || CONTROL.test(icon)) return null;
-  return ["[Desktop Entry]", "Type=Application", "Name=dusk bot", "Comment=Your own team of AI bots, in a chat app", `Exec=${exec} %U`,
+  return ["[Desktop Entry]", "Type=Application", "Name=Metal", "Comment=Your own team of AI bots, in a chat app", `Exec=${exec} %U`,
     `Icon=${icon}`, "Terminal=false", "Categories=Utility;", "Keywords=AI;Agents;Chat;Productivity;", "StartupWMClass=bot.dusk.app",
     "MimeType=x-scheme-handler/duskbot;x-scheme-handler/openmausbot;", MARK, ""].join("\n");
 }

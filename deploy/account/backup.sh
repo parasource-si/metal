@@ -1,5 +1,5 @@
 #!/bin/sh
-# encrypted, off-box daily backup of one set (dusk bot, make.design), run as root by dusk-backup@<set>.timer with
+# encrypted, off-box daily backup of one set (Metal, make.design), run as root by dusk-backup@<set>.timer with
 # /etc/dusk-backup/<set>.env (mode 0600, see backup.env.example). every destination gets the same archive.
 #   DUSK_BACKUP_NAME         set name: the archive prefix and the folder under each destination (default dusk-account)
 #   DUSK_BACKUP_PATHS        space-separated folders or files to include; DUSK_DASHBOARD_DATA is added when set

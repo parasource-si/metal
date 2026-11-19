@@ -1,7 +1,7 @@
 // This computer's page with no bots of its own, while the person's live somewhere else (the server they moved to, My
 // Cloud, a team's Cloud, a server they linked): the page says where they are and opens that place, never a blank first
 // run. Signed in, the place is also noted for the account (account-setup-store.mjs), so a fresh install of the same
-// account says "You already set up dusk bot on …" and offers to connect.
+// account says "You already set up Metal on …" and offers to connect.
 
 import { BACKGROUND_HEADERS } from "./cloud-power.mjs";
 

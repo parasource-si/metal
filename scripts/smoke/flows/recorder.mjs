@@ -53,7 +53,7 @@ function autoWarnings(look) {
   if ((m = hit(/\b(something went wrong|went wrong|failed to [a-z]+|an error occurred|internal server error|unexpected error|not found|can't reach|couldn['’]t [a-z]+ [a-z]+|try again later)\b[^\n]{0,60}/i))) found.push(`error words on screen: "${m.trim()}"`);
   if ((m = hit(/\b(undefined|NaN|\[object Object\]|null)\b/))) found.push(`a raw value on screen: "${m}"`);
   if ((m = hit(/\b[a-z]+(?:\.[a-z][a-zA-Z]+){2,}\b/)) && !/\b(dusk\.bot|qa\.dusk\.test|apps\.siddz|dodopayments|[a-z]+\.(com|dev|io|sh|net|org|app|bot))\b/.test(m)) found.push(`what looks like an untranslated key: "${m}"`);
-  if ((m = hit(/\b(Dusk ?Bot|DuskBot|Dusk bot|Dusk Cloud|Dusk cloud)\b/))) found.push(`off-brand name "${m}" (the brand is lowercase "dusk bot", "dusk cloud")`);
+  if ((m = hit(/\b(?:dusk ?bot)\b/i))) found.push(`off-brand name "${m}" (the app is named Metal)`);
   if (text.includes("\u2014")) found.push("an em dash on screen");
   if (look.overflow) found.push(`the page scrolls sideways at ${look.width}x${look.height}`);
   return found;

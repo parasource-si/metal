@@ -1,6 +1,6 @@
 # Desktop-to-desktop companion mode
 
-Every dusk bot desktop build can play either role:
+Every Metal desktop build can play either role:
 
 - **Host mode** is the normal app. It owns the agents, conversations, credentials, routines, and computers.
 - **Client mode** controls a paired host through the same authenticated, default-deny companion API used by the phone app.
@@ -26,7 +26,7 @@ below. The two connection types intentionally do not share credentials.
 4. Enter the host's managed companion address (`https://<label>.cloud.dusk.bot`) and the six-digit code.
 5. Choose **Pair and switch to client mode**. The client restarts and opens the host's bot UI.
 
-The HTTPS address uses the host's managed outbound tunnel. TLS is verified by the operating system, and the client does not need Tailscale. HTTPS is intentionally restricted to the names dusk bot issues (`c-` and 32 hexadecimal characters under `cloud.dusk.bot`) so a typo, or any other host in that domain, cannot receive the pairing code or a paired-device token. Update older clients before pairing over HTTPS, or pair over Tailscale.
+The HTTPS address uses the host's managed outbound tunnel. TLS is verified by the operating system, and the client does not need Tailscale. HTTPS is intentionally restricted to the names Metal issues (`c-` and 32 hexadecimal characters under `cloud.dusk.bot`) so a typo, or any other host in that domain, cannot receive the pairing code or a paired-device token. Update older clients before pairing over HTTPS, or pair over Tailscale.
 
 ## Pair over Tailscale
 

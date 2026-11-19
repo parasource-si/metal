@@ -19,9 +19,9 @@ function write(path, bytes) {
 }
 
 // apple's macOS icon grid: the artwork is an 824 px rounded square centred in 1024
-const MAC = svg(1024, 1024, `<title>dusk bot</title>${logoTile({ size: 824, x: 100, y: 100, radius: 185 })}`);
+const MAC = svg(1024, 1024, `<title>Metal</title>${logoTile({ size: 824, x: 100, y: 100, radius: 185 })}`);
 const FULL = svg(1024, 1024, logoTile());
-const FAVICON = svg(33, 33, `<title>dusk bot</title>${logoTile({ size: 33, radius: 4 })}`);
+const FAVICON = svg(33, 33, `<title>Metal</title>${logoTile({ size: 33, radius: 4 })}`);
 
 write("build/icon.svg", `${MAC}\n`);
 write("build/icon-1024.png", png(MAC, 1024));

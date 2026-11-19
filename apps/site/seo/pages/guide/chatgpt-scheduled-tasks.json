@@ -58,7 +58,7 @@
     },
     {
       "h": "when another scheduler makes sense",
-      "md": "**keep a useful chatgpt task where it already works.** compare [gemini schedules](/guides/gemini-scheduled-actions) if their delivery fits you better. the [scheduler table](/scheduled-ai-tasks) compares more homes for repeat work.\n\ndusk routines belong to named bots. describe the job, then read the card's next runs. local routines need the computer awake and dusk bot open. dusk cloud runs them on time.[^5]\n\nthat doesn't add chatgpt usage. compare the [whole bill](/guides/how-much-does-an-ai-agent-cost) and check your provider's current terms before connecting ongoing work through another app."
+      "md": "**keep a useful chatgpt task where it already works.** compare [gemini schedules](/guides/gemini-scheduled-actions) if their delivery fits you better. the [scheduler table](/scheduled-ai-tasks) compares more homes for repeat work.\n\ndusk routines belong to named bots. describe the job, then read the card's next runs. local routines need the computer awake and Metal open. dusk cloud runs them on time.[^5]\n\nthat doesn't add chatgpt usage. compare the [whole bill](/guides/how-much-does-an-ai-agent-cost) and check your provider's current terms before connecting ongoing work through another app."
     }
   ],
   "faq": [
@@ -97,7 +97,7 @@
       "checked": "2026-11-12"
     },
     {
-      "label": "dusk bot: routines",
+      "label": "Metal: routines",
       "url": "/docs/routines"
     }
   ],

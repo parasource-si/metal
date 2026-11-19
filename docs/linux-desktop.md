@@ -1,12 +1,12 @@
 # Ubuntu Desktop
 
-dusk bot has an Ubuntu 24.04 LTS x86_64 desktop beta. The Electron package embeds the harness server, so
+Metal has an Ubuntu 24.04 LTS x86_64 desktop beta. The Electron package embeds the harness server, so
 installed builds do not require Node, pnpm, Swift, or a terminal at runtime. For giving a bot the same kind
 of Linux desktop on your own server instead of this machine, see [byo-vps.md](byo-vps.md).
 
 ## What works
 
-- The native Electron window and embedded dusk bot server on GNOME Xorg and GNOME Wayland.
+- The native Electron window and embedded Metal server on GNOME Xorg and GNOME Wayland.
 - Local Claude, Codex, Grok, Gemini, and other configured agent CLIs.
 - Chat, streaming turns, approvals, bot-to-bot communication, and local data storage.
 - Composio connected apps and cloud desktops.
@@ -32,12 +32,12 @@ CUA supply-chain work is tracked in [issue #113](https://github.com/DuskBotAI/du
 
 Choose one Ubuntu 24.04 x86_64 package from the latest release:
 
-- [Debian package (`DuskBot-amd64.deb`)](https://github.com/DuskBotAI/duskbot/releases/latest/download/DuskBot-amd64.deb) — recommended; APT installs its desktop dependencies and configures the bundled bot browser's sandbox.
-- [Portable AppImage (`DuskBot.AppImage`)](https://github.com/DuskBotAI/duskbot/releases/latest/download/DuskBot.AppImage) — does not install system files.
-- [SHA-256 checksums](https://github.com/DuskBotAI/duskbot/releases/latest/download/SHA256SUMS-ubuntu-x64.txt)
+- [Debian package (`Metal-amd64.deb`)](https://github.com/parasource-si/metal/releases/latest/download/Metal-amd64.deb) — recommended; APT installs its desktop dependencies and configures the bundled bot browser's sandbox.
+- [Portable AppImage (`Metal.AppImage`)](https://github.com/parasource-si/metal/releases/latest/download/Metal.AppImage) — does not install system files.
+- [SHA-256 checksums](https://github.com/parasource-si/metal/releases/latest/download/SHA256SUMS-ubuntu-x64.txt)
 
 Versioned packages and previous releases remain available on the
-[releases page](https://github.com/DuskBotAI/duskbot/releases).
+[releases page](https://github.com/parasource-si/metal/releases).
 
 ## Build packages
 
@@ -48,8 +48,8 @@ Requirements for building from source:
 - pnpm 10.33.0 (Corepack can install the version declared by the project)
 
 ```sh
-git clone https://github.com/DuskBotAI/duskbot.git
-cd duskbot
+git clone https://github.com/parasource-si/metal.git
+cd metal
 corepack enable
 pnpm install --frozen-lockfile
 pnpm package:linux
@@ -57,8 +57,8 @@ pnpm package:linux
 
 The build creates:
 
-- `release/DuskBot-<version>-amd64.deb`
-- `release/DuskBot-<version>-x86_64.AppImage`
+- `release/Metal-<version>-amd64.deb`
+- `release/Metal-<version>-x86_64.AppImage`
 
 The AppImage uses a static runtime and does not require the legacy `libfuse2` package.
 
@@ -67,10 +67,10 @@ The AppImage uses a static runtime and does not require the legacy `libfuse2` pa
 Install a downloaded Debian package with APT so its desktop dependencies are resolved:
 
 ```sh
-sudo apt install ./DuskBot-amd64.deb
+sudo apt install ./Metal-amd64.deb
 ```
 
-Then open **dusk bot** from the GNOME application launcher. To remove it:
+Then open **Metal** from the GNOME application launcher. To remove it:
 
 ```sh
 sudo apt remove duskbot
@@ -79,11 +79,11 @@ sudo apt remove duskbot
 The portable AppImage does not install system files:
 
 ```sh
-chmod +x release/DuskBot-*-x86_64.AppImage
-./release/DuskBot-*-x86_64.AppImage
+chmod +x release/Metal-*-x86_64.AppImage
+./release/Metal-*-x86_64.AppImage
 ```
 
-For a downloaded release AppImage, use `DuskBot.AppImage` in place of the versioned path above.
+For a downloaded release AppImage, use `Metal.AppImage` in place of the versioned path above.
 
 ### Arch Linux and EndeavourOS (AppImage)
 
@@ -92,8 +92,8 @@ install lacks the FUSE helper and some desktop libraries the AppImage needs, so 
 
 ```sh
 sudo pacman -S --needed fuse3 gtk3 nss alsa-lib libcups mesa
-chmod +x DuskBot.AppImage
-./DuskBot.AppImage
+chmod +x Metal.AppImage
+./Metal.AppImage
 ```
 
 A full desktop install (for example EndeavourOS with KDE or GNOME) usually has all of these already, and
@@ -135,7 +135,7 @@ pnpm package:linux:dir
 
 ## Agent CLI discovery
 
-Applications launched from GNOME do not inherit the same interactive shell `PATH` as a terminal. dusk bot
+Applications launched from GNOME do not inherit the same interactive shell `PATH` as a terminal. Metal
 keeps the inherited path and adds existing common locations such as:
 
 - `~/.local/bin`
@@ -151,16 +151,16 @@ It also probes the login shell in the background. If a CLI still is not detected
 path before launching the app from a terminal and verify it there:
 
 ```sh
-DUSK_EXTRA_PATH=/your/custom/bin ./release/DuskBot-*-x86_64.AppImage
+DUSK_EXTRA_PATH=/your/custom/bin ./release/Metal-*-x86_64.AppImage
 ```
 
-Restart dusk bot after installing or signing in to a CLI.
+Restart Metal after installing or signing in to a CLI.
 
 ## Xorg and Wayland
 
 The shell, chat, cloud computers, connected apps, and preview-only capture work in both GNOME session types.
 The Wayland chooser/select/persistent-stream/cancel/end/retry lifecycle has been validated in a real Ubuntu
-24.04 GNOME Wayland session. dusk bot detects Wayland before XWayland when both `WAYLAND_DISPLAY` and
+24.04 GNOME Wayland session. Metal detects Wayland before XWayland when both `WAYLAND_DISPLAY` and
 `DISPLAY` exist, so capture cannot accidentally bypass portal-mediated behavior.
 
 Open the Computer panel and use the separate **Preview this computer** card. Capture never starts when the app
@@ -171,7 +171,7 @@ or panel opens.
   you press **Stop preview**, close the panel, end sharing from GNOME, or quit the app.
 
 Cancelling or ending Wayland sharing returns to a calm **Try again** state and never reopens the chooser
-automatically. dusk bot does not capture screen audio, remember the selected monitor after restart, or
+automatically. Metal does not capture screen audio, remember the selected monitor after restart, or
 offer an **Open Settings** action on Linux.
 
 Local computer control is independent from preview. It is available after explicit opt-in on Xorg and remains
@@ -182,7 +182,7 @@ fail-closed on Wayland. XWayland's `DISPLAY` never bypasses the Wayland safety g
 Installed `.deb` and AppImage builds include the certified **Cua Driver 0.19.3** CLI and cursor-theme sidecar.
 On GNOME Xorg, open Settings, choose **Enable local control (Beta)**, wait for **Ready**, then explicitly assign a bot
 to **This computer**. No driver download, terminal command, `chmod`, or daemon setup is required. The owned daemon
-starts with `--no-overlay`, so Cua's decorative full-screen X11 cursor surface is never created. dusk bot also
+starts with `--no-overlay`, so Cua's decorative full-screen X11 cursor surface is never created. Metal also
 uses Electron software rendering when the NVIDIA driver is loaded, to avoid the reproduced NVIDIA/libGLES
 GPU-process failure that could leave an invisible focused app window receiving input. Other GPUs keep hardware
 acceleration, because software rendering costs about a CPU core while the window animates. Set `DUSK_LINUX_GPU=off`
@@ -221,7 +221,7 @@ package-owned path to `root:root 0755` automatically.
 The packaged runtime remains outside ASAR for deterministic provenance and validation. In packaged builds neither a
 `CUA_DRIVER_PATH` value nor an ambient PATH candidate can replace it; on Wayland neither can bypass the safety gate.
 
-The Xorg runtime uses private sockets, standard permission mode, per-action dusk bot approvals,
+The Xorg runtime uses private sockets, standard permission mode, per-action Metal approvals,
 telemetry/update-check suppression, strict driver identity, overlay-free startup, and lifecycle cleanup tests. Those
 defenses remain necessary, but none substitutes for the real-seat acceptance evidence required to enable Wayland. Linux
 **Auto** never routes to the user's desktop, and no Cloud or Local VM approval can authorize it.
@@ -251,7 +251,7 @@ contract without activating it in a packaged app. Only a real-seat acceptance ma
 
 ### An agent CLI is missing
 
-Run the CLI directly in a terminal, finish its sign-in flow, then restart dusk bot. If it lives outside the
+Run the CLI directly in a terminal, finish its sign-in flow, then restart Metal. If it lives outside the
 common directories above, use `DUSK_EXTRA_PATH` while testing and report the install location so it can be
 considered for automatic discovery.
 
@@ -277,8 +277,8 @@ open a new chooser. Cancelling or stopping sharing never causes an automatic sec
 Confirm the executable bit and architecture:
 
 ```sh
-chmod +x DuskBot-*-x86_64.AppImage
-file DuskBot-*-x86_64.AppImage
+chmod +x Metal-*-x86_64.AppImage
+file Metal-*-x86_64.AppImage
 ```
 
 Run it from a terminal once to collect the startup output. Do not install `libfuse2` just for this AppImage; the

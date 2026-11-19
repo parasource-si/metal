@@ -150,7 +150,7 @@ function fakeOnePassword(at: string, token: string): string {
 exports.createClient = async ({ auth }) => {
   if (auth !== ${JSON.stringify(token)}) throw new Error("error authenticating: invalid service account token");
   return {
-    vaults: { list: async () => [{ id: "v1", title: "Shared with dusk bot" }] },
+    vaults: { list: async () => [{ id: "v1", title: "Shared with Metal" }] },
     items: { list: async () => [], getAll: async () => ({ individualResponses: [] }) },
   };
 };
@@ -265,7 +265,7 @@ await import(${JSON.stringify(pathToFileURL(join(SERVER_DIR, "testing", "fake-cl
     return ((await response.json()) as { code: string }).code;
   };
   const pairOwner = async () => {
-    const paired = await fetch(`${cloudBase}/api/auth/pair`, { method: "POST", headers: { ...EDGE, "content-type": "application/json" }, body: JSON.stringify({ code: await mintCode("dusk bot app (Cloud)") }) });
+    const paired = await fetch(`${cloudBase}/api/auth/pair`, { method: "POST", headers: { ...EDGE, "content-type": "application/json" }, body: JSON.stringify({ code: await mintCode("Metal app (Cloud)") }) });
     return ((await paired.json()) as { token: string }).token;
   };
   let owner = await pairOwner();
@@ -315,7 +315,7 @@ await import(${JSON.stringify(pathToFileURL(join(SERVER_DIR, "testing", "fake-cl
     teamFixture = {
       base: teamBase, home: join(root, "team"), id: team.id, name: team.name,
       async grant(member) {
-        const body = JSON.stringify({ label: "dusk bot app (Team Cloud)", ttlSeconds: 300, team: { id: team.id, name: team.name }, member });
+        const body = JSON.stringify({ label: "Metal app (Team Cloud)", ttlSeconds: 300, team: { id: team.id, name: team.name }, member });
         const timestamp = String(Math.floor(Date.now() / 1000)), nonce = randomBytes(16).toString("base64url");
         const minted = await fetch(`${teamBase}/api/cloud/pairing`, { method: "POST", headers: { ...EDGE, "content-type": "application/json",
           "x-dusk-cloud-timestamp": timestamp, "x-dusk-cloud-nonce": nonce, "x-dusk-cloud-signature": `v1=${cloudPairingSignature(secret, timestamp, nonce, body)}` }, body });
@@ -324,7 +324,7 @@ await import(${JSON.stringify(pathToFileURL(join(SERVER_DIR, "testing", "fake-cl
       },
       async pair(member, options = {}) {
         const claims = options.body ?? { team: { id: team.id, name: team.name }, ...(member ? { member } : {}) };
-        const body = JSON.stringify({ label: options.label ?? "dusk bot app (Team Cloud)", ttlSeconds: 300, ...claims });
+        const body = JSON.stringify({ label: options.label ?? "Metal app (Team Cloud)", ttlSeconds: 300, ...claims });
         const timestamp = String(Math.floor(Date.now() / 1000)), nonce = randomBytes(16).toString("base64url");
         const minted = await remember(await fetch(`${teamBase}/api/cloud/pairing`, { method: "POST", headers: { ...EDGE, "content-type": "application/json",
           "x-dusk-cloud-timestamp": timestamp, "x-dusk-cloud-nonce": nonce, "x-dusk-cloud-signature": `v1=${cloudPairingSignature(options.secret ?? secret, timestamp, nonce, body)}` }, body }));
@@ -405,7 +405,7 @@ await import(${JSON.stringify(pathToFileURL(join(SERVER_DIR, "testing", "fake-cl
     cloudPage: (event) => (event as { page?: "local" | "cloud" })?.page ?? null,
     server: () => port,
     localRequest: async (route, init = {}) => remember(await fetch(`${desktopBase}${route}`, { ...init, headers: { ...init.headers as Record<string, string>, "x-dusk-desktop-owner": ownerCapability } })),
-    home: () => ({ origin: cloudBase, grant: async () => ({ origin: cloudBase, code: await mintCode("dusk bot app (Cloud)") }) }),
+    home: () => ({ origin: cloudBase, grant: async () => ({ origin: cloudBase, code: await mintCode("Metal app (Cloud)") }) }),
     cookieFetch: throughEdge(owner) as typeof fetch,
     reconnect: async () => false,
     power: { asleep: () => false },
@@ -415,7 +415,7 @@ await import(${JSON.stringify(pathToFileURL(join(SERVER_DIR, "testing", "fake-cl
     fetch: throughEdge(null) as typeof fetch,
     engineWaitMs: 2_000,
     ...(space ? { space } : {}),
-    account: () => ({ state: () => account.state, pairHome: async () => ({ origin: cloudBase, code: await mintCode("dusk bot app (Cloud)"), expiresAt: Date.now() + 300_000 }), exportHome: (options) => account.exportHome(options),
+    account: () => ({ state: () => account.state, pairHome: async () => ({ origin: cloudBase, code: await mintCode("Metal app (Cloud)"), expiresAt: Date.now() + 300_000 }), exportHome: (options) => account.exportHome(options),
       reportMove: async (options) => (account.reportMove ? account.reportMove(options) : false), reportKept: async (options) => (account.reportKept ? account.reportKept(options) : false),
       pairTeam: (teamId: string) => account.pairTeam(teamId) }),
     teamJournal: {
@@ -449,7 +449,7 @@ await import(${JSON.stringify(pathToFileURL(join(SERVER_DIR, "testing", "fake-cl
       origin: () => cloudBase,
       asleep: () => false,
       read: (route) => throughEdge(owner)(`${cloudBase}${route}`, { headers: { accept: "application/json", ...BACKGROUND_HEADERS } }),
-      open: () => openOwnerSession({ origin: cloudBase, grant: async () => ({ origin: cloudBase, code: await mintCode("dusk bot app (Cloud)") }) }, throughEdge(null) as typeof fetch),
+      open: () => openOwnerSession({ origin: cloudBase, grant: async () => ({ origin: cloudBase, code: await mintCode("Metal app (Cloud)") }) }, throughEdge(null) as typeof fetch),
     },
     handoff: (what) => asks.request(port, what as ConnectionAsk),
     store: {
@@ -487,7 +487,7 @@ await import(${JSON.stringify(pathToFileURL(join(SERVER_DIR, "testing", "fake-cl
       cloudPage: (event) => (event as { page?: "local" | "cloud" })?.page ?? null,
       server: () => ipc,
       localRequest: async (route, init = {}) => remember(await fetch(`${base}${route}`, { ...init, headers: { ...init.headers as Record<string, string>, "x-dusk-desktop-owner": capability } })),
-      home: () => ({ origin: cloudBase, grant: async () => ({ origin: cloudBase, code: await mintCode("dusk bot app (Cloud)") }) }),
+      home: () => ({ origin: cloudBase, grant: async () => ({ origin: cloudBase, code: await mintCode("Metal app (Cloud)") }) }),
       cookieFetch: throughOwner,
       reconnect: async () => false,
       power: { asleep: () => false },
@@ -496,7 +496,7 @@ await import(${JSON.stringify(pathToFileURL(join(SERVER_DIR, "testing", "fake-cl
       localOrigin: () => base,
       fetch: throughEdge(null) as typeof fetch,
       engineWaitMs: 2_000,
-      account: () => ({ state: () => deskAccount.state, pairHome: async () => ({ origin: cloudBase, code: await mintCode("dusk bot app (Cloud)"), expiresAt: Date.now() + 300_000 }), exportHome: (options) => deskAccount.exportHome(options),
+      account: () => ({ state: () => deskAccount.state, pairHome: async () => ({ origin: cloudBase, code: await mintCode("Metal app (Cloud)"), expiresAt: Date.now() + 300_000 }), exportHome: (options) => deskAccount.exportHome(options),
         reportMove: async (options) => (deskAccount.reportMove ? deskAccount.reportMove(options) : false), reportKept: async (options) => (deskAccount.reportKept ? deskAccount.reportKept(options) : false),
         pairTeam: (teamId: string) => deskAccount.pairTeam(teamId) }),
       teamJournal: {

@@ -21,7 +21,7 @@ try {
     encoding: "utf8",
     stdio: ["ignore", "pipe", "ignore"],
   }).trim();
-  if (status.startsWith("ii")) fail("refusing to replace a pre-existing dusk bot installation");
+  if (status.startsWith("ii")) fail("refusing to replace a pre-existing Metal installation");
 } catch (error) {
   if (String(error?.message ?? error).includes("refusing to replace")) throw error;
 }
@@ -45,8 +45,8 @@ try {
       "Package: duskbot",
       "Version: 0.1.7",
       "Architecture: amd64",
-      "Maintainer: dusk bot CI <ci@duskbot.invalid>",
-      "Description: Legacy dusk bot directory-mode upgrade fixture",
+      "Maintainer: Metal CI <ci@duskbot.invalid>",
+      "Description: Legacy Metal directory-mode upgrade fixture",
       "",
     ].join("\n"),
     { mode: 0o644 },

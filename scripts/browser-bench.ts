@@ -1,5 +1,5 @@
 // The browser benchmark: 25 local pages that reproduce hard real-world UI (server/browser-bench/tasks*.ts), each with
-// a check of what the page saw. A real Claude Code CLI plays each task through dusk bot's browser tools on the real
+// a check of what the page saw. A real Claude Code CLI plays each task through Metal's browser tools on the real
 // BrowserService and a headless Chrome; nothing leaves this computer.
 //   --engine claude    the real Claude Code CLI, built-in tools off, the browser tools as its one MCP server
 //   --engine scripted  each task's known way through, no model: checks the fixtures and their checks

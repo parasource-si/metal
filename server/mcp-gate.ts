@@ -304,7 +304,7 @@ createInterface({ input: process.stdin }).on("line", (line) => {
   if (message?.method === "tools/call" && typeof params?.name === "string") {
     const target = callTarget(params.name, params.arguments);
     if (target !== undefined && appOnly.has(target)) return rejectRequest(message.id, -32602, APP_ONLY_REFUSAL);
-    // dusk bot's own agents tools write into its own chats; every other server's send reaches someone outside.
+    // Metal's own agents tools write into its own chats; every other server's send reaches someone outside.
     if (NAME !== "agents" && target !== undefined && isOutboundTool(target) && sendsErrorDump([{ arguments: params.arguments }])) {
       return rejectRequest(message.id, -32602, ERROR_DUMP_REFUSAL);
     }

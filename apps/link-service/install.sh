@@ -170,7 +170,7 @@ EOF
 banner() {
   say ""
   if [ "$UI" != tty ] || [ "$ASCII" = 1 ] || [ "$COLS" -lt 80 ]; then
-    say "  ${ACC}${BOLD}dusk bot${R}  ${DIM}server setup${R}"
+    say "  ${ACC}${BOLD}Metal${R}  ${DIM}server setup${R}"
     say ""
     MASCOT=0
     return 0
@@ -569,13 +569,13 @@ show_asks() {
 # plain words for a failed step, printed once in the terminal
 failure_words() {
   case "$1" in
-    check) say "This server can't run dusk bot as it is: the lines above say why. It needs Ubuntu 20.04+ or Debian 11+ on a 64-bit processor with systemd, 1 GB of memory, 3 GB of free disk and a correct clock." ;;
+    check) say "This server can't run Metal as it is: the lines above say why. It needs Ubuntu 20.04+ or Debian 11+ on a 64-bit processor with systemd, 1 GB of memory, 3 GB of free disk and a correct clock." ;;
     basics) say "Couldn't install the basic tools. Check this server's internet connection and paste the line again." ;;
     user) say "Couldn't create the account your bots run under." ;;
     node) say "Couldn't install Node. Check this server's internet connection and paste the line again." ;;
-    app) say "Couldn't install dusk bot. Paste the line again; it picks up where it stopped." ;;
+    app) say "Couldn't install Metal. Paste the line again; it picks up where it stopped." ;;
     engines) say "Couldn't install the Claude and ChatGPT tools. Paste the line again; it picks up where it stopped." ;;
-    service) if grep -q "^port $PORT here is taken" "$LOG" 2>/dev/null; then say "Another program has the port dusk bot needs ($PORT). Stop it, then paste the line again."; else say "The dusk bot server didn't start. The app shows the last lines of its log."; fi ;;
+    service) if grep -q "^port $PORT here is taken" "$LOG" 2>/dev/null; then say "Another program has the port Metal needs ($PORT). Stop it, then paste the line again."; else say "The Metal server didn't start. The app shows the last lines of its log."; fi ;;
     address) say "Couldn't set up this server's address. Paste the line again." ;;
     desktop|sandbox|fence) say "Couldn't get the bot computer ready." ;;
     link) say "Couldn't link this server to your app. Make a new line in the app and paste it here." ;;
@@ -590,9 +590,9 @@ step_title() {
     docker) say "Installing Docker" ;;
     user) say "Making a home for your bots" ;;
     node) say "Installing Node" ;;
-    app) say "Installing dusk bot" ;;
+    app) say "Installing Metal" ;;
     engines) say "Installing Claude and ChatGPT" ;;
-    service) say "Starting dusk bot" ;;
+    service) say "Starting Metal" ;;
     address) say "Setting up the connection" ;;
     sandbox) say "Sandboxing bot computers" ;;
     fence) say "Fencing their network" ;;
@@ -608,7 +608,7 @@ phase_title() {
   case "$1" in
     prepare) say "Preparing your server" ;;
     runtime) say "Installing the runtime" ;;
-    omb) say "Installing dusk bot" ;;
+    omb) say "Installing Metal" ;;
     computer) say "Setting up the bot computer" ;;
     link) say "Linking to your app" ;;
   esac
@@ -729,8 +729,8 @@ do_check() {
   case "${ID:-}" in ubuntu|debian) ;; *) echo "unsupported system: ${ID:-unknown}"; return 1 ;; esac
   major=${VERSION_ID%%.*}
   case "$ID" in
-    ubuntu) [ "${major:-0}" -ge 20 ] 2>/dev/null || { echo "Ubuntu ${VERSION_ID:-unknown} is too old: dusk bot needs Ubuntu 20.04 or newer"; return 1; } ;;
-    debian) [ "${major:-0}" -ge 11 ] 2>/dev/null || { echo "Debian ${VERSION_ID:-unknown} is too old: dusk bot needs Debian 11 or newer"; return 1; } ;;
+    ubuntu) [ "${major:-0}" -ge 20 ] 2>/dev/null || { echo "Ubuntu ${VERSION_ID:-unknown} is too old: Metal needs Ubuntu 20.04 or newer"; return 1; } ;;
+    debian) [ "${major:-0}" -ge 11 ] 2>/dev/null || { echo "Debian ${VERSION_ID:-unknown} is too old: Metal needs Debian 11 or newer"; return 1; } ;;
   esac
   [ -d /run/systemd/system ] || { echo "systemd is not running"; return 1; }
   echo "memory: $(awk '/MemTotal/ { printf "%d MB", $2 / 1024 }' /proc/meminfo)"
@@ -1112,23 +1112,28 @@ note_failed() { # version
 }
 
 get_package() { # file
-  verified_download "$LINK_BASE/pkg/$LINK_ID/$PKG_SHA.tgz" "$1" "$PKG_SHA" "$PKG_SIZE" 1800 "dusk bot"
+  verified_download "$LINK_BASE/pkg/$LINK_ID/$PKG_SHA.tgz" "$1" "$PKG_SHA" "$PKG_SIZE" 1800 "Metal"
 }
 # the wrapper switches to the server account before it runs anything from that account's home, so root never executes
 # a file the server account can write
 put_command() {
-  if [ -e "$CLI" ] && ! grep -qs "managed by duskbot-link" "$CLI"; then echo "left $CLI as it is: it is not ours"; return 0; fi
   _run="env HOME=$SVC_HOME PATH=$SVC_HOME/.local/bin:/usr/local/bin:/usr/bin:/bin $SVC_HOME/.local/bin/duskbot"
   cat > "$TMP/cli" <<EOF
 #!/bin/sh
-# managed by duskbot-link: this server's dusk bot, run as $SVC_USER
+# managed by duskbot-link: Metal running as $SVC_USER
 if [ "\$(id -un)" = $SVC_USER ]; then exec $_run "\$@"; fi
 if [ "\$(id -u)" -eq 0 ]; then exec runuser -u $SVC_USER -- $_run "\$@"; fi
 exec sudo -u $SVC_USER -- $_run "\$@"
 EOF
-  if [ -f "$CLI" ] && cmp -s "$TMP/cli" "$CLI"; then return 0; fi
-  install -o root -g root -m 0755 "$TMP/cli" "$CLI"
-  echo "duskbot now runs from any login on this server"
+  for _cli in "$CLI" "${CLI%/*}/metal"; do
+    if [ -L "$_cli" ] || { [ -e "$_cli" ] && ! grep -qs "managed by duskbot-link" "$_cli"; }; then
+      echo "left $_cli as it is: it is not ours"
+      continue
+    fi
+    if [ -f "$_cli" ] && cmp -s "$TMP/cli" "$_cli"; then continue; fi
+    install -o root -g root -m 0755 "$TMP/cli" "$_cli" || return 1
+    echo "${_cli##*/} now runs from any login on this server"
+  done
 }
 
 do_app() {
@@ -1147,7 +1152,7 @@ do_app() {
   fi
   if [ -z "$PKG_SHA" ]; then
     if [ -x "$bin" ] && [ "$OFFLINE" = 1 ]; then echo "keeping the installed build ($(state_get package))"; return 0; fi
-    echo "the link service has no dusk bot build to hand out yet"
+    echo "the link service has no Metal build to hand out yet"
     return 1
   fi
   if [ -x "$bin" ] && [ "$(state_get package)" = "sha256:$PKG_SHA" ] && [ -z "$(state_get app-installing)" ]; then echo "already installed: build ${PKG_SHA%"${PKG_SHA#????????????}"}"; return 0; fi
@@ -1280,7 +1285,7 @@ server_unit() {
   cat > "$TMP/new" <<EOF
 # managed by duskbot-link
 [Unit]
-Description=Server for dusk bot
+Description=Server for Metal
 After=network-online.target omb-docker-gate.service
 Wants=network-online.target
 
@@ -1348,7 +1353,7 @@ helper_units() {
   cat > "$TMP/new" <<EOF
 # managed by duskbot-link: the app sent an engine sign-in; the hand-off takes it to the server
 [Unit]
-Description=Engine sign-in handed off to dusk bot
+Description=Engine sign-in handed off to Metal
 
 [Path]
 PathExists=$HANDOFF/engines.env
@@ -1362,7 +1367,7 @@ EOF
   cat > "$TMP/new" <<EOF
 # managed by duskbot-link
 [Unit]
-Description=Hand an engine sign-in to dusk bot
+Description=Hand an engine sign-in to Metal
 
 [Service]
 Type=oneshot
@@ -1379,7 +1384,7 @@ EOF
   cat > "$TMP/new" <<EOF
 # managed by duskbot-link: the outbound tunnel and control channel to the app
 [Unit]
-Description=Link for dusk bot
+Description=Link for Metal
 After=network-online.target duskbot.service
 Wants=network-online.target
 
@@ -1412,7 +1417,7 @@ EOF
   cat > "$TMP/new" <<EOF
 # managed by duskbot-link: the only way to docker on this server, for the server's own labelled bot computers
 [Unit]
-Description=Docker gate for dusk bot
+Description=Docker gate for Metal
 After=docker.service
 Requires=docker.service
 StartLimitIntervalSec=0
@@ -1446,7 +1451,7 @@ EOF
 # managed by duskbot-link: installs a server build the link agent staged, only while no bot is working, and puts the
 # build before back when the new one does not answer or fails its self-test
 [Unit]
-Description=Server update for dusk bot
+Description=Server update for Metal
 After=duskbot.service
 
 [Service]
@@ -1459,7 +1464,7 @@ EOF
   cat > "$TMP/new" <<EOF
 # managed by duskbot-link
 [Unit]
-Description=Look for a staged dusk bot server build
+Description=Look for a staged Metal server build
 
 [Timer]
 OnBootSec=15min
@@ -1541,7 +1546,7 @@ port_owner() {
   owner=$(ss -Hltnp "sport = :$PORT" 2>/dev/null | sed -n 's/.*users:(("\([^"]*\)",pid=\([0-9]*\).*/\1 \2/p' | head -n 1)
   [ -n "$owner" ] || return 0
   [ "$(ps -o user= -p "${owner#* }" 2>/dev/null | tr -d ' ')" = "$SVC_USER" ] && return 0
-  echo "port $PORT here is taken by ${owner% *} (pid ${owner#* }), not dusk bot: stop it, then paste the line again"
+  echo "port $PORT here is taken by ${owner% *} (pid ${owner#* }), not Metal: stop it, then paste the line again"
   return 1
 }
 do_service() {
@@ -1713,7 +1718,7 @@ address_tailscale() {
   fi
   use_address direct tailscale "$dns" 0
   restart_for_address
-  echo "https://$dns serves dusk bot on your tailnet"
+  echo "https://$dns serves Metal on your tailnet"
 }
 
 cloudflared_install() {
@@ -1730,7 +1735,7 @@ cloudflared_unit() { # exec args, [credentials file the unit's own user reads th
   cat > "$TMP/new" <<EOF
 # managed by duskbot-link: the app's address through Cloudflare
 [Unit]
-Description=Cloudflare tunnel for dusk bot
+Description=Cloudflare tunnel for Metal
 After=network-online.target duskbot.service
 Wants=network-online.target
 
@@ -1781,7 +1786,7 @@ address_cloudflare() {
   done
   use_address direct cloudflare "$host" 0
   restart_for_address
-  echo "https://$host serves dusk bot through Cloudflare"
+  echo "https://$host serves Metal through Cloudflare"
 }
 
 do_address() {
@@ -1799,7 +1804,7 @@ do_address() {
     relay) relay_address "the private relay, as asked" ;;
     ssh) relay_address "linked through the relay; the app reaches it over ssh on port 22"
       _user=${SUDO_USER:-root}; _ip=$(public_ip)
-      [ -z "$_ip" ] || printf 'To open dusk bot in a browser on your computer, keep this running there:\n  ssh -N -L 8790:127.0.0.1:%s %s@%s\nthen go to http://127.0.0.1:8790\n' "$PORT" "$_user" "$_ip" \
+      [ -z "$_ip" ] || printf 'To open Metal in a browser on your computer, keep this running there:\n  ssh -N -L 8790:127.0.0.1:%s %s@%s\nthen go to http://127.0.0.1:8790\n' "$PORT" "$_user" "$_ip" \
         | ask "{\"kind\":\"ssh\",\"user\":\"$_user\",\"host\":\"$_ip\",\"state\":\"done\"}" ;;
     tailscale) address_tailscale ;;
     cloudflare) address_cloudflare ;;
@@ -2042,7 +2047,7 @@ demo_work() {
     node) demo_lines 0.35 "$ curl -fsSL --connect-timeout 15 -m 300 https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key -o /tmp/nodesource.key" "$ apt-get -y -q install nodejs" "Get:1 https://deb.nodesource.com/node_24.x nodistro InRelease [12.1 kB]" \
       "Get:4 https://deb.nodesource.com/node_24.x nodistro/main arm64 nodejs 24.11.0-1nodesource1 [31.2 MB]" \
       "Unpacking nodejs (24.11.0-1nodesource1) ..." "node v24.11.0, npm 11.6.1" ;;
-    app) echo "$ curl -fsSL -H 'authorization: Bearer [redacted]' https://link.dusk.bot/pkg/demodemoab/7c2f0a9e41d6.tgz"; echo "downloading dusk bot 0.1.141 (41.6 MB)"; demo_bytes 43620000 MB 32
+    app) echo "$ curl -fsSL -H 'authorization: Bearer [redacted]' https://link.dusk.bot/pkg/demodemoab/7c2f0a9e41d6.tgz"; echo "downloading Metal 0.1.141 (41.6 MB)"; demo_bytes 43620000 MB 32
       demo_lines 0.4 "sha256 ok: 7c2f0a9e41d6b3c88f1e2a07d95b6e4f3a10c2d8e7f6b5a4c3d2e1f0a9b8c7d6" \
         "added 3 packages in 2s" "changed 61 packages in 4s" ;;
     engines)
@@ -2119,7 +2124,7 @@ finale() {
   mascot 0
   glyph ok; _ok=$G; glyph sep
   where="$NAME $G $SYS $ARCH $G $link"
-  printf '\n  %s%s %sYour dusk bot is ready%s  %s%s %s%s\n' "$OK" "$_ok" "$BOLD" "$R" "$DIM" "$G" "$total" "$R"
+  printf '\n  %s%s %sYour Metal is ready%s  %s%s %s%s\n' "$OK" "$_ok" "$BOLD" "$R" "$DIM" "$G" "$total" "$R"
   printf '    %s%s%s\n\n' "$DIM" "$where" "$R"
   if [ "${DUSK_VERBOSE:-}" = 1 ]; then printf '%s\n' "$table" | sed 's/^/    /'; printf '\n'; fi
   if [ -z "$DEMO" ] && ! box_works >/dev/null 2>&1; then
@@ -2350,7 +2355,7 @@ take_lock() {
   command -v flock >/dev/null 2>&1 && ( : >>"$INSTALL_LOCK" ) 2>/dev/null || return 0
   exec 9>>"$INSTALL_LOCK"
   flock -n 9 && LOCKED=1 && return 0
-  fail_line "Someone is already installing or removing dusk bot on this server (another terminal, or one whose connection dropped). Wait for it to finish, then paste the line again. Its logs: $LOGS/"
+  fail_line "Someone is already installing or removing Metal on this server (another terminal, or one whose connection dropped). Wait for it to finish, then paste the line again. Its logs: $LOGS/"
   exit 1
 }
 on_stop() {

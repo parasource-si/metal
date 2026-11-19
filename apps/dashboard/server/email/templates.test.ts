@@ -17,7 +17,7 @@ describe("account emails", () => {
     expect(email.html).toMatch(/^<!doctype html>/);
     expect(email.html).toContain('<meta name="color-scheme" content="light dark">');
     expect(email.html).toContain('class="kit"');
-    expect(email.html).toContain(">dusk bot<");
+    expect(email.html).toContain(">Metal<");
     expect(email.html).toContain("prefers-color-scheme: dark");
     expect(email.html).toContain("max-width:560px");
     expect(email.text).toMatch(/\n--\n\ndusk bot\n/);
@@ -69,12 +69,12 @@ describe("account emails", () => {
 
   it("keeps the code one copyable string, and in the subject and preheader for notifications", () => {
     const code = all.find(sample => sample.id === "01-code")!.email;
-    expect(code.subject).toBe("48213097 is your dusk bot code");
+    expect(code.subject).toBe("48213097 is your Metal code");
     expect(code.text).toContain("    48213097");
     const shown = /user-select:all">([\s\S]*?)<\/div>/.exec(code.html)![1]!;
     expect(shown.replace(/<[^>]+>/g, "")).toBe("48213097");
-    expect(code.html).toContain("your dusk bot code is 48213097.");
-    expect(all.find(sample => sample.id === "01b-recovery")!.email.subject).toBe("48213097 is your dusk bot code");
+    expect(code.html).toContain("your Metal code is 48213097.");
+    expect(all.find(sample => sample.id === "01b-recovery")!.email.subject).toBe("48213097 is your Metal code");
     const welcome = all.find(sample => sample.id === "02-welcome")!.email;
     expect(welcome.text).toContain("from $20/mo");
     expect(welcome.html).toContain("https://preview.dusk.bot/dashboard/cloud");

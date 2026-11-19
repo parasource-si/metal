@@ -1,4 +1,4 @@
-// A server's bots to dusk cloud from an app that is not signed in to its dusk bot account (the owner's report: the
+// A server's bots to dusk cloud from an app that is not signed in to its Metal account (the owner's report: the
 // checkout sheet said "sign in on this Mac's own page first"). A fresh app that skips the account, its own server (a
 // throwaway InstaBox machine, always deleted), the server's page, Get dusk cloud: the sign-in must open right there (the
 // accounts sheet in the rail's view), and after it the checkout opens by itself, is paid in Dodo TEST mode, and the move
@@ -65,7 +65,7 @@ let vm = null, serverOrigin = null;
 await runFlow(flow, async () => {
   await flow.step("launch", "a fresh app, not signed in to an account", async () => {
     await flow.launch();
-    await flow.waitText(/meet dusk bot|where should your bots live|sign in to dusk bot/i, "the welcome", { timeout: 120_000 });
+    await flow.waitText(/meet Metal|where should your bots live|sign in to Metal/i, "the welcome", { timeout: 120_000 });
     const state = await flow.accountState().catch(() => null);
     return `account: ${state?.status ?? "none"}`;
   }, { critical: true });

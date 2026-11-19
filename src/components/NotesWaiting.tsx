@@ -38,7 +38,7 @@ export function useNotesIntake() {
   }, [state.bots, state.config?.profile?.aboutMe, state.config?.team, firstBotId, dispatch]);
 }
 
-/** While the prompt's answer may still come, Downloads is checked every few seconds for the dusk-bot-notes.md it
+/** While the prompt's answer may still come, Downloads is checked every few seconds for the metal-notes.md it
  * asks for, and a new one comes in by itself, with the first bot's note saying so. Only on the desktop app's own
  * computer; never before the prompt was copied. Paste and drop still work the whole time. */
 export function useNotesFromDownloads() {

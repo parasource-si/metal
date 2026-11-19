@@ -277,7 +277,7 @@ describe("Settings → Engines → setup cards", () => {
 
     vi.stubGlobal("window", { duskDesktop: { remoteClient: { active: true } } });
     const remote = renderToStaticMarkup(createElement(EnginesSettings));
-    expect(remote).toContain("open settings → API keys on the computer running dusk bot");
+    expect(remote).toContain("open settings → API keys on the computer running Metal");
     expect(remote).not.toContain("data-key-row");
 
     vi.stubGlobal("window", {});

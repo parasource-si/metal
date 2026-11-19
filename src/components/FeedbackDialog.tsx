@@ -76,7 +76,7 @@ export function FeedbackDialog({ onClose, onSent, send = sendFeedback }: { onClo
       onClose={onClose}
       data-panel-modal="feedback"
       footer={<>
-        <span className="me-auto min-w-0 truncate text-[12px] leading-4 text-ink/56">{t("giveFeedback.goesTo")}</span>
+        <span className="me-auto min-w-0 truncate text-[12px] leading-4 text-ink/56">{t("giveFeedback.goesTo", { app: "Dusk" })}</span>
         <button type="button" onClick={onClose} className={mdSecondaryCls}>{t("giveFeedback.cancel")}</button>
         <button type="button" data-feedback-send="" disabled={!text.trim() || sending} onClick={() => void submit()} className={mdPrimaryCls}>
           {sending ? t("giveFeedback.sending") : t("giveFeedback.send")}

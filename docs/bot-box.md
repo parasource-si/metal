@@ -1,7 +1,7 @@
 # The bot box
 
-On a dusk cloud home every bot turn runs in a box: the engine (Claude Code, Codex, Grok, OpenCode, the ACP agents),
-every shell command it runs, the MCP servers it starts and dusk bot's own helper proxies all live inside one
+On a Dusk Cloud home every bot turn runs in a box: the engine (Claude Code, Codex, Grok, OpenCode, the ACP agents),
+every shell command it runs, the MCP servers it starts and Metal's own helper proxies all live inside one
 unprivileged [bubblewrap](https://github.com/containers/bubblewrap) sandbox for that process's lifetime. The server,
 its database, its settings, other bots' folders and other turns' processes are not in it. Code: `server/bot-box/`.
 

@@ -80,7 +80,7 @@ describe("a human check or bot block, before anyone is asked", () => {
     expect(cards(run.messages)).toEqual([]);
   });
 
-  it("does not ask about a page where dusk bot sees no check, so a card can never settle itself in a loop", async () => {
+  it("does not ask about a page where Metal sees no check, so a card can never settle itself in a loop", async () => {
     const run = harness([{ outcome: "none" }]);
     expect(await run.requestSignIn(bot, "t1", "shop.example", "", true, "none")).toMatchObject({ outcome: "no-check" });
     expect(cards(run.messages)).toEqual([]);
@@ -153,7 +153,7 @@ describe("a human check card", () => {
     expect(made).toMatchObject({ site: "pastebin.com", place: "browser" });
     const card = run.messages[0]!;
     expect(card.signIn).toEqual({ url: "https://pastebin.com/", site: "pastebin.com", place: "browser", check: true });
-    expect(card.text).toBe("pastebin.com wants a quick human check. Open this conversation in dusk bot and tap Take over, and Pepper carries on from there.");
+    expect(card.text).toBe("pastebin.com wants a quick human check. Open this conversation in Metal and tap Take over, and Pepper carries on from there.");
     expect(card.text).not.toMatch(/please|complete this check/i);
     expect(run.pleas).toEqual([{ key: "b1", reason: "human check on pastebin.com", ref: { botId: "b1", threadId: "t1", messageId: "m1", site: "pastebin.com", place: "browser", check: true } }]);
     expect(run.watched).toEqual([{ botId: "b1", threadId: "t1", messageId: "m1", site: "pastebin.com", place: "browser" }]);

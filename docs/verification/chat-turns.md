@@ -17,11 +17,11 @@ Starting or selecting another bot task does not stop the previous one.
 ## Driving it
 
 ```sh
-pnpm control:dusk new-bot --name Probe --url http://127.0.0.1:PORT
+pnpm control:metal new-bot --name Probe --url http://127.0.0.1:PORT
 # Copy bot.id from the JSON above as BOT_ID.
-pnpm control:dusk send --bot BOT_ID --text "hello" --url http://127.0.0.1:PORT
-pnpm control:dusk wait --bot BOT_ID --timeout 30 --url http://127.0.0.1:PORT
-pnpm control:dusk messages --bot BOT_ID --limit 10 --url http://127.0.0.1:PORT
+pnpm control:metal send --bot BOT_ID --text "hello" --url http://127.0.0.1:PORT
+pnpm control:metal wait --bot BOT_ID --timeout 30 --url http://127.0.0.1:PORT
+pnpm control:metal messages --bot BOT_ID --limit 10 --url http://127.0.0.1:PORT
 ```
 
 The wait result must be `settled`, and the messages result must contain the
@@ -34,7 +34,7 @@ command without starting a turn.
   reading, or stopping. Pass `--task THREAD_ID` to target another owned bot task
   without changing the selection. A channel send still requires its active task.
 - `set-model --bot BOT_ID --task THREAD_ID --instance INSTANCE_ID --model MODEL_ID`
-  changes only that idle task. Get exact available IDs from `control:dusk models`.
+  changes only that idle task. Get exact available IDs from `control:metal models`.
   Without `--task`, the legacy model operation updates the bot default and its
   selected idle task, leaving other tasks unchanged.
 - A bot working inside a channel must be awaited through that channel.
@@ -49,16 +49,16 @@ pinned from the composer chip wins over the bot's Works on, except Off.
 
 ```sh
 node --experimental-strip-types scripts/control-dusk.ts launch
-pnpm control:dusk new-bot --name Orbit --url http://127.0.0.1:PORT
+pnpm control:metal new-bot --name Orbit --url http://127.0.0.1:PORT
 curl -s -X PATCH "http://127.0.0.1:PORT/api/bots/BOT_ID" \
   -H 'content-type: application/json' -d '{"computer":"cloud"}'
-pnpm control:dusk send --bot BOT_ID --text "compare shipping prices on two sites" --url http://127.0.0.1:PORT
-pnpm control:dusk wait --bot BOT_ID --timeout 40 --url http://127.0.0.1:PORT
+pnpm control:metal send --bot BOT_ID --text "compare shipping prices on two sites" --url http://127.0.0.1:PORT
+pnpm control:metal wait --bot BOT_ID --timeout 40 --url http://127.0.0.1:PORT
 # pin this conversation to the browser, the way the composer chip does
 curl -s -X PATCH "http://127.0.0.1:PORT/api/bots/BOT_ID/tasks/THREAD_ID" \
   -H 'content-type: application/json' -d '{"surface":"browser"}'
-pnpm control:dusk send --bot BOT_ID --text "compare shipping prices on two sites" --url http://127.0.0.1:PORT
-pnpm control:dusk wait --bot BOT_ID --timeout 40 --url http://127.0.0.1:PORT
+pnpm control:metal send --bot BOT_ID --text "compare shipping prices on two sites" --url http://127.0.0.1:PORT
+pnpm control:metal wait --bot BOT_ID --timeout 40 --url http://127.0.0.1:PORT
 ```
 
 In `fake-claude-dump.json` the Cloud turn's `systemPrompt` must say everything
@@ -82,14 +82,14 @@ it to narrate a browser it cannot call.
 ```sh
 node --experimental-strip-types scripts/control-dusk.ts launch
 # second terminal, using the printed URL
-pnpm control:dusk new-bot --name Orbit --url http://127.0.0.1:PORT
-pnpm control:dusk send --bot BOT_ID --text "list my calendar events" --url http://127.0.0.1:PORT
-pnpm control:dusk wait --bot BOT_ID --timeout 40 --url http://127.0.0.1:PORT
+pnpm control:metal new-bot --name Orbit --url http://127.0.0.1:PORT
+pnpm control:metal send --bot BOT_ID --text "list my calendar events" --url http://127.0.0.1:PORT
+pnpm control:metal wait --bot BOT_ID --timeout 40 --url http://127.0.0.1:PORT
 # the fixture's own API sets the destination the Works on picker sets
 curl -s -X PATCH "http://127.0.0.1:PORT/api/bots/BOT_ID" \
   -H 'content-type: application/json' -d '{"computer":"off"}'
-pnpm control:dusk send --bot BOT_ID --text "open a browser and check my calendar" --url http://127.0.0.1:PORT
-pnpm control:dusk wait --bot BOT_ID --timeout 40 --url http://127.0.0.1:PORT
+pnpm control:metal send --bot BOT_ID --text "open a browser and check my calendar" --url http://127.0.0.1:PORT
+pnpm control:metal wait --bot BOT_ID --timeout 40 --url http://127.0.0.1:PORT
 ```
 
 After each settled turn read `fake-claude-dump.json` in the fixture's printed

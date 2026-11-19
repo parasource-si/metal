@@ -244,7 +244,7 @@ it("on the person's own Cloud, Settings shows the plan read only, with Manage, a
   await flush(); expect(plan.signIn).toHaveBeenCalledExactlyOnceWith();
   plan.state.mockRejectedValueOnce(new Error("cloud-plan:state is only available in this app's window")); f.values = []; view(); f.effects[0](); await flush();
   const refused = view();
-  expect(refused.html).toContain("Your plan is managed in the dusk bot app on your computer.");
+  expect(refused.html).toContain("Your plan is managed in the Metal app on your computer.");
   expect(refused.nodes.some(node => node.type === "button")).toBe(false);
   none(refused.html, ["could not complete", 'role="alert"', "Loading"]);
 });
@@ -255,11 +255,11 @@ it("on My Cloud once it is home, Settings is that app's own: the plan is managed
     return { html: renderToStaticMarkup(createElement(Capture)), nodes: nodes(tree) }; };
   view(); f.effects[0](); await flush();
   all(view().html, ["Your plan is managed on your plan page.", "Your plan, as dusk cloud verified it.", "Manage in your browser"]);
-  none(view().html, ["dusk bot app", "On your computer"]);
+  none(view().html, ["Metal app", "On your computer"]);
   plan.state.mockResolvedValueOnce({ status: "paid", tier: "pro", home: true }); f.values = []; view(); f.effects[0](); await flush();
   all(view().html, ["Pro active · verified by dusk cloud", "Your plan, as dusk cloud verified it."]); none(view().html, ["On your computer"]);
   plan.state.mockResolvedValueOnce({ status: "none" }); f.values = []; view(); f.effects[0](); await flush();
-  all(view().html, ["Your plan is managed in the dusk bot app on your computer.", "verified it for the app on your computer"]);
+  all(view().html, ["Your plan is managed in the Metal app on your computer.", "verified it for the app on your computer"]);
 });
 
 const pro: CloudAccountState = { ...free, entitlement: { plan: "pro", status: "active", expiresAt: 1_900_000_000_000, version: 2 } };
@@ -489,7 +489,7 @@ it("on a Team Cloud, sends people to the Plan page for its people and plan, neve
   expect(card.props.team).toBe(team);
   const html = renderToStaticMarkup(createElement(TeamPeopleCard, { team }));
   all(html, ["People and plan", "Invite people to Acme, change their roles and manage its plan on your plan page.", 'href="https://cloud.example.com/cloud"', "Open your plan page"]);
-  none(html, ["managed in the dusk bot app on your computer"]);
+  none(html, ["managed in the Metal app on your computer"]);
   expect(renderToStaticMarkup(createElement(TeamPeopleCard, { team: { name: "Acme" } }))).not.toContain("href=");
   // My Cloud's own page is unchanged.
   expect(render({ cloudHome: true }).nodes.some(node => node.type === CloudPlanOnCloud)).toBe(true);

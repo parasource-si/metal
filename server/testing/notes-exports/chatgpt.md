@@ -6,7 +6,7 @@ from: ChatGPT
 exported: unknown
 ---
 
-# SETUP INSTRUCTIONS FOR DUSK BOT
+# SETUP INSTRUCTIONS FOR Metal
 
 This export comes from ChatGPT and belongs to Maya Okafor, a product designer in Lisbon. Two assistants Maya built here are listed under Bots; recreate each as its own bot using the instructions, personality, memories, knowledge files and other details given. About me, Contacts and Memories contain facts for the memory shared by all her bots. Skills, if listed, apply to every bot. Routines are scheduled tasks ChatGPT performed for Maya and should be set up again.
 
@@ -112,5 +112,5 @@ Teach Maya Japanese at JLPT N4 level. Every reply: one new grammar point, five v
 - Maya struggles with the particles wa and ga.
 - Maya is using Genki II.
 
-END OF DUSK BOT NOTES
+END OF Metal NOTES
 ````

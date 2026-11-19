@@ -135,7 +135,7 @@ describe("link previews", () => {
     const { previews, asked } = harness({
       [`https://cdn.syndication.twimg.com/tweet-result?id=${id}&lang=en&token=${syndicationToken(id)}`]: { type: "application/json", body: fixture("tweet.json") },
     });
-    expect(await previews.get(`https://x.com/duskbot/status/${id}`)).toMatchObject({ title: "dusk bot (@duskbot)", siteName: "X", video: true });
+    expect(await previews.get(`https://x.com/duskbot/status/${id}`)).toMatchObject({ title: "Metal (@duskbot)", siteName: "X", video: true });
     expect(asked.some((href) => href.startsWith("https://x.com/"))).toBe(false);
   });
 });

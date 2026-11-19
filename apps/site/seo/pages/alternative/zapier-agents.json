@@ -4,7 +4,7 @@
   "title": "Zapier Agents alternatives: app reach or your own bots?",
   "nav": "zapier agents",
   "h1": "a zapier agents alternative you talk to in its own app",
-  "description": "Compare Zapier Agents with dusk bot on app coverage, recurring work and chat. Keep agent activities separate from Zap tasks before budgeting.",
+  "description": "Compare Zapier Agents with Metal on app coverage, recurring work and chat. Keep agent activities separate from Zap tasks before budgeting.",
   "keyword": "zapier agents alternative",
   "keywords": [
     "zapier agents pricing",
@@ -60,7 +60,7 @@
     "intro": "**an activity and a zap task spend different allowances.** prices are as of 12 november 2026. compare the charge for your actual process; a dusk chat uses another billing setup.",
     "cols": [
       "Zapier Agents",
-      "dusk bot"
+      "Metal"
     ],
     "rows": [
       {
@@ -142,7 +142,7 @@
       }
     ]
   },
-  "method": "**try the operation your process depends on.** we read zapier's agents and pricing pages against dusk docs on 12 november 2026. we make dusk bot.\n\nwe didn't run matching tasks or measure a real process's activities. we haven't tested each connection either. the catalogue tells you where to start looking; your trial tells you whether the job works.",
+  "method": "**try the operation your process depends on.** we read zapier's agents and pricing pages against dusk docs on 12 november 2026. Metal is based on Dusk Bot.\n\nwe didn't run matching tasks or measure a real process's activities. we haven't tested each connection either. the catalogue tells you where to start looking; your trial tells you whether the job works.",
   "sections": [
     {
       "h": "activities are not zap tasks",
@@ -154,7 +154,7 @@
     },
     {
       "h": "try the friday file review",
-      "md": "**get the weekly file roundup out of your head.** ask: \"every friday at 3, read your folder's files from this week. list filenames with one line about each. change nothing.\" bots keep their work in their own folders, alongside chats and memory.[^4][^6]\n\nmoving because you want phone chat? dusk uses its own app and paired phone browser. store apps are on the way.[^5]\n\nsee [assistants you text](/alternatives/ai-assistant-you-text) for messaging-app choices. read your ai provider's current terms before choosing the ai for your dusk bot."
+      "md": "**get the weekly file roundup out of your head.** ask: \"every friday at 3, read your folder's files from this week. list filenames with one line about each. change nothing.\" bots keep their work in their own folders, alongside chats and memory.[^4][^6]\n\nmoving because you want phone chat? dusk uses its own app and paired phone browser. store apps are on the way.[^5]\n\nsee [assistants you text](/alternatives/ai-assistant-you-text) for messaging-app choices. read your ai provider's current terms before choosing the ai for your Metal bot."
     }
   ],
   "faq": [
@@ -188,35 +188,35 @@
       "checked": "2026-11-12"
     },
     {
-      "label": "dusk bot: bots",
+      "label": "Metal: bots",
       "url": "/docs/bots"
     },
     {
-      "label": "dusk bot: phone",
+      "label": "Metal: phone",
       "url": "/docs/phone"
     },
     {
-      "label": "dusk bot: files and apps",
+      "label": "Metal: files and apps",
       "url": "/docs/files-and-apps"
     },
     {
-      "label": "dusk bot: getting started",
+      "label": "Metal: getting started",
       "url": "/docs/getting-started"
     },
     {
-      "label": "dusk bot: dusk cloud",
+      "label": "Metal: dusk cloud",
       "url": "/docs/dusk-cloud"
     },
     {
-      "label": "dusk bot: routines",
+      "label": "Metal: routines",
       "url": "/docs/routines"
     },
     {
-      "label": "dusk bot: group chats",
+      "label": "Metal: group chats",
       "url": "/docs/group-chats"
     },
     {
-      "label": "dusk bot: computer",
+      "label": "Metal: computer",
       "url": "/docs/computer"
     }
   ],

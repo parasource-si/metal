@@ -156,7 +156,7 @@ export async function prepareAntigravityProfile(input: {
 
   const executable = process.platform === "win32" ? process.execPath.replaceAll("\\", "/") : process.execPath;
   if (/\r|\n|\0|%s/u.test(executable) || executable.includes(delimiter)) {
-    throw new Error("The dusk bot runtime path cannot safely suppress Antigravity browser launches.");
+    throw new Error("The Metal runtime path cannot safely suppress Antigravity browser launches.");
   }
   const browserCommand = [executable, "-e", browserHelperSource, "--", "%s"]
     .map(quoteBrowserArgument)
@@ -174,7 +174,7 @@ export async function prepareAntigravityProfile(input: {
     PYTHONUNBUFFERED: "1",
     ELECTRON_RUN_AS_NODE: "1",
   });
-  // On Windows the runtime unpacks 0.34-1.26 GB into TEMP per launch: one dusk bot folder per instance,
+  // On Windows the runtime unpacks 0.34-1.26 GB into TEMP per launch: one Metal folder per instance,
   // stable so the pooled spawn contract (which hashes this env) holds.
   let tempDirectory: string | undefined;
   if ((input.platform ?? process.platform) === "win32") {
@@ -389,7 +389,7 @@ export class AntigravityAcpClient {
         (this.nativeStartupHint ? `${this.nativeStartupHint} ` : "") +
         `Startup output: ${this.startupOutputBytes} bytes; diagnostic output: ${this.startupDiagnosticBytes} bytes. ` +
         (this.tempDirectory ? `Unpacked into temp: ${Math.round(Math.max(0, now - before) / 1_000_000)} MB. ` : "") +
-        "Retry setup. If it still fails, share this error and your dusk bot version; do not paste Google sign-in links or tokens.",
+        "Retry setup. If it still fails, share this error and your Metal version; do not paste Google sign-in links or tokens.",
       );
     };
     const initialized = await this.request("initialize", {

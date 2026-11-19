@@ -1,5 +1,5 @@
 // This computer's server, started as the desktop app starts it (its private port emulated over Node's IPC), and servers of
-// the person's own (`duskbot serve`, nothing of dusk cloud), each paired with this app as a pairing link pairs it.
+// the person's own (`metal serve`, nothing of dusk cloud), each paired with this app as a pairing link pairs it.
 // Main's own wiring for the move to such a server (electron/own-home-main.mjs) sits between them, its requests carrying
 // the pairing's session as the window's would. Disposable homes and a synthetic Claude CLI; no network.
 import { randomBytes } from "node:crypto";
@@ -134,10 +134,10 @@ await import(${JSON.stringify(pathToFileURL(join(SERVER_DIR, "testing", "fake-cl
     const port = await freePortBlock([0, 1]);
     const base = `http://127.0.0.1:${port}`;
     await start(`server-${servers.length + 1}`, { DUSK_ENVIRONMENT_LABEL: name, ...more }, port);
-    // `duskbot pair` on that server, then the link opened in this app: a session of the admin scope.
+    // `metal pair` on that server, then the link opened in this app: a session of the admin scope.
     const minted = await fetch(`${base}/api/auth/pairing`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ label: "My desktop" }) });
     const code = (await minted.json() as { code: string }).code;
-    const paired = await fetch(`${base}/api/auth/pair`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ code, label: "dusk bot app" }) });
+    const paired = await fetch(`${base}/api/auth/pair`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ code, label: "Metal app" }) });
     const token = (await paired.json() as { token: string }).token;
     if (typeof token !== "string") throw new Error(`could not pair with ${name}`);
     const as: Side = async (method, path, body) => {

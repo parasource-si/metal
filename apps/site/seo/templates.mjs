@@ -48,7 +48,7 @@ export function templates(ctx) {
       .sort((a, b) => b[0] - a[0] || a[1].path.localeCompare(b[1].path)).slice(0, config.related_count).map(([, o]) => o);
   }
   const card = (o, lazy = true) => `<li><a href="${o.path}"><img src="/art/seo/${sceneId(o.path)}-660.webp" alt="" width="660" height="264"${lazy ? ' loading="lazy"' : ''} decoding="async"><b>${esc(o.h1)}</b><span>${esc(o.og_line || o.description)}</span></a></li>`;
-  const ctaBlock = (r) => `<aside class="seo-cta seo-boiler" aria-label="get dusk bot">${bot('kit', 'violet')}<div><p>${esc(r.cta_line || cta.line)}</p><a class="btn dark" href="${cta.href}${cta.source ? `?source=${encodeURIComponent(`seo:${r.path}`)}` : ''}">${esc(cta.button)}</a></div></aside>`;
+  const ctaBlock = (r) => `<aside class="seo-cta seo-boiler" aria-label="get Metal">${bot('kit', 'violet')}<div><p>${esc(r.cta_line || cta.line)}</p><a class="btn dark" href="${cta.href}${cta.source ? `?source=${encodeURIComponent(`seo:${r.path}`)}` : ''}">${esc(cta.button)}</a></div></aside>`;
   const faq = (r) => (r.faq?.length ? section('questions', r.faq.map((q) => `<h3 id="${slug(q.q)}">${esc(q.q)}</h3>\n${md(q.a)}`).join('\n'), 'seo-faq') : '');
   const sources = (r) => (r.sources?.length ? `<section class="seo-sources" aria-labelledby="sources"><h2 id="sources">sources</h2><ol>${r.sources.map((s, i) => `<li id="src-${i + 1}">${s.url.startsWith('/') ? `<a href="${s.url}">${esc(s.label)}</a>` : `<a href="${esc(s.url)}" rel="nofollow noopener">${esc(s.label)}</a>`}${s.checked ? `, checked ${day(s.checked)}` : ''}</li>`).join('')}</ol></section>` : '');
 
@@ -74,9 +74,9 @@ export function templates(ctx) {
 
     compare: (r) => {
       const name = r.competitor?.name || r.compare.cols[0];
-      const verdict = `<div class="seo-verdict"><div><h3>pick ${esc(r.verdict.them_title || name)} if</h3>${list(r.verdict.them)}</div><div><h3>pick ${esc(r.verdict.dusk_title || 'dusk bot')} if</h3>${list(r.verdict.dusk)}</div></div>`;
+      const verdict = `<div class="seo-verdict"><div><h3>pick ${esc(r.verdict.them_title || name)} if</h3>${list(r.verdict.them)}</div><div><h3>pick ${esc(r.verdict.dusk_title || 'Metal')} if</h3>${list(r.verdict.dusk)}</div></div>`;
       const rows = r.compare.rows.map((row) => [inline(row.label), ...row.cells.map((c, i) => inline(c) + (i === row.cells.length - 1 ? srcRefs(row.src) : ''))]);
-      const heads = r.compare.cols.map((c) => (c === 'dusk bot' ? `<span class="seo-th">${bot('kit', 'violet', 'seo-mini')}${esc(c)}</span>` : esc(c)));
+      const heads = r.compare.cols.map((c) => (c === 'Metal' ? `<span class="seo-th">${bot('kit', 'violet', 'seo-mini')}${esc(c)}</span>` : esc(c)));
       return `${section('the short version', verdict)}\n${section(r.compare.h || 'side by side', `${r.compare.intro ? md(r.compare.intro) : ''}<div class="seo-compare">${table(['', ...heads], rows, `${name} and the others, side by side`)}</div>`)}\n${sections(r)}\n${section('how we checked', md(r.method))}`;
     },
 
@@ -86,7 +86,7 @@ export function templates(ctx) {
       if (f) {
         const reads = f.tools.filter((t) => t.kind === 'read').length, sends = f.tools.filter((t) => t.kind === 'send').length;
         const rows = app.highlight.map((h) => { const t = f.tools.find((x) => x.slug === h.slug); if (!t) throw new Error(`${r.file}: ${h.slug} is not a ${app.toolkit} action in seo/facts/connectors/${app.toolkit}.json`); return [esc(t.name), { read: 'read', write: 'change', send: 'send: asks first' }[t.kind], inline(h.use)]; });
-        can = section(`what a bot can do in ${app.name}`, `${md(app.intro)}${table(['action', 'dusk bot treats it as', 'what you would use it for'], rows, `${app.name} actions`)}<p class="seo-fact">composio, the connection service behind dusk bot's apps, lists <b>${f.tools_count} ${esc(f.name)} actions</b> (version ${esc(f.version)}, read ${day(f.fetched_at)}${srcRefs([r.sources.findIndex((s) => s.url === f.source) + 1])}). dusk bot treats ${reads} as reads, ${sends} as sends and ${f.tools_count - reads - sends} as changes.</p><p class="seo-fact">only actions starting with a read word (get, list, search) count as reads, so a read-only bot can't call the rest. a send reaches people or moves money${sends ? ', like ' + esc(f.tools.find((t) => t.kind === 'send').name.toLowerCase()) : ''}, and waits for your <b>Allow</b> unless you set a daily amount.</p>${f.managed_sign_in ? '' : `<p class="callout careful">composio has no ready-made sign-in for ${esc(app.name)}. connecting it needs your own composio project key and an auth config of your own, added under <b>Settings</b>, <b>API keys</b>. on dusk cloud, ask us first.</p>`}`);
+        can = section(`what a bot can do in ${app.name}`, `${md(app.intro)}${table(['action', 'Metal treats it as', 'what you would use it for'], rows, `${app.name} actions`)}<p class="seo-fact">composio, the connection service behind Metal's apps, lists <b>${f.tools_count} ${esc(f.name)} actions</b> (version ${esc(f.version)}, read ${day(f.fetched_at)}${srcRefs([r.sources.findIndex((s) => s.url === f.source) + 1])}). Metal treats ${reads} as reads, ${sends} as sends and ${f.tools_count - reads - sends} as changes.</p><p class="seo-fact">only actions starting with a read word (get, list, search) count as reads, so a read-only bot can't call the rest. a send reaches people or moves money${sends ? ', like ' + esc(f.tools.find((t) => t.kind === 'send').name.toLowerCase()) : ''}, and waits for your <b>Allow</b> unless you set a daily amount.</p>${f.managed_sign_in ? '' : `<p class="callout careful">composio has no ready-made sign-in for ${esc(app.name)}. connecting it needs your own composio project key and an auth config of your own, added under <b>Settings</b>, <b>API keys</b>. on dusk cloud, ask us first.</p>`}`);
       } else can = section(`what a bot can do with ${app.name}`, md(app.intro));
       const steps = app.toolkit ? `<ol class="seo-steps seo-boiler"><li>open <b>Connected apps</b> in the sidebar.</li><li>pick ${esc(app.name)} and sign in on ${esc(app.name)}'s own page, so your password goes to them and never to a bot.</li><li>choose which bots may use it, and whether each may only read or may also change things. your bookkeeper doesn't need your ${esc(app.name)}.</li><li>ask in plain words. reading and drafting happen freely; sending asks you first.</li></ol>` : '';
       const routines = r.routines.map((x) => `<div class="seo-routine"><h3>${esc(x.name)}</h3>${copyBox(x.message)}<p class="seo-runs"><span>${esc(x.when)}</span>${x.output ? ` · ${inline(x.output)}` : ''}</p></div>`).join('');
@@ -103,7 +103,7 @@ export function templates(ctx) {
 
     glossary: (r) => `${section('in one line', `<p class="seo-def">${inline(r.definition)}</p>`)}\n${section('an example', md(r.example))}\n${sections(r)}`,
 
-    // one app action. the facts (what composio says it does, its inputs, the permissions it asks for, how dusk bot treats
+    // one app action. the facts (what composio says it does, its inputs, the permissions it asks for, how Metal treats
     // it) come from seo/facts/connectors; the words (what it's for, a routine, steps, limits) are the record's own. three
     // layouts, picked from the address, so pages of one app don't read as one page with the name swapped
     action: (r) => {
@@ -116,7 +116,7 @@ export function templates(ctx) {
       const inputs = (t.inputs || []).filter((i) => i.name !== 'user_id' && !/deprecated/i.test(i.about)).sort((a, b) => b.required - a.required).slice(0, 6);
       const variant = [...r.path].reduce((n, c) => n + c.charCodeAt(0), 0) % 3;
       const H = [
-        { what: 'what it does', uses: 'when you would use it', try: 'try it', steps: 'set it up', needs: 'what it needs from you', rules: 'how dusk bot handles it', watch: 'where it stops' },
+        { what: 'what it does', uses: 'when you would use it', try: 'try it', steps: 'set it up', needs: 'what it needs from you', rules: 'how Metal handles it', watch: 'where it stops' },
         { what: `${t.name.toLowerCase()}, in plain words`, uses: 'good jobs for it', try: 'a routine to copy', steps: 'how to start', needs: 'the details it works from', rules: 'before it runs', watch: 'limits worth knowing' },
         { what: 'the short version', uses: 'where it helps', try: 'send this to your bot', steps: 'step by step', needs: 'inputs', rules: 'permissions and asking first', watch: 'what can go wrong' },
       ][variant];
@@ -126,7 +126,7 @@ export function templates(ctx) {
         try: section(H.try, `${copyBox(r.routine.message, 'paste this into a chat with your bot')}<dl class="seo-specs"><div><dt>when</dt><dd>${inline(r.routine.when)}</dd></div><div><dt>needs</dt><dd>${inline(r.routine.needs)}</dd></div></dl>${r.routine.output ? `<p class="code-label">what comes back looks like this (an example)</p><div class="code plain seo-sample"><pre><code>${esc(r.routine.output)}</code></pre></div>` : ''}`),
         steps: section(H.steps, `<ol class="seo-steps">${r.steps.map((x) => `<li>${inline(x)}</li>`).join('')}</ol>`),
         needs: inputs.length ? section(H.needs, `${table(['input', 'required', 'what it is'], inputs.map((i) => [`<code>${esc(i.name)}</code>`, i.required ? 'yes' : 'no', esc(i.about.split(/(?<=\.)\s/)[0] || i.type)]), 'inputs')}<p class="seo-fact">from composio's catalog for ${esc(appName)} (action <code>${esc(t.slug)}</code>, read ${day(f.fetched_at)}${srcRefs([r.sources.findIndex((x) => x.url === f.source) + 1])}). your bot fills these in from what you tell it.</p>`) : '',
-        rules: section(H.rules, `<p>dusk bot counts <b>${esc(t.name)}</b> as ${kindWords}.${t.kind === 'read' ? ' a bot you allow only to read can use it.' : ' a bot you allow only to read can never call it.'}</p>${Array.isArray(t.scopes) && t.scopes.length ? `<p class="seo-fact">the permissions ${esc(appName)} asks for to run it: ${t.scopes.slice(0, 4).map((x) => `<code>${esc(x.replace(/^https:\/\/www\.googleapis\.com\/auth\//, ''))}</code>`).join(', ')}.</p>` : ''}${r.rules ? md(r.rules) : ''}`),
+        rules: section(H.rules, `<p>Metal counts <b>${esc(t.name)}</b> as ${kindWords}.${t.kind === 'read' ? ' a bot you allow only to read can use it.' : ' a bot you allow only to read can never call it.'}</p>${Array.isArray(t.scopes) && t.scopes.length ? `<p class="seo-fact">the permissions ${esc(appName)} asks for to run it: ${t.scopes.slice(0, 4).map((x) => `<code>${esc(x.replace(/^https:\/\/www\.googleapis\.com\/auth\//, ''))}</code>`).join(', ')}.</p>` : ''}${r.rules ? md(r.rules) : ''}`),
         watch: section(H.watch, list(r.watch)),
       };
       const order = [['what', 'uses', 'try', 'steps', 'needs', 'rules', 'watch'], ['what', 'try', 'uses', 'rules', 'steps', 'watch', 'needs'], ['uses', 'what', 'steps', 'try', 'watch', 'rules', 'needs']][variant];
@@ -187,7 +187,7 @@ export function templates(ctx) {
 <aside class="docs-side"><nav class="docs-nav" aria-label="${esc(hub.nav)}">${sidebar(r, hub)}</nav></aside>
 <details class="docs-jump"><summary><span>${esc(hub.nav)}</span><b>${esc(r.nav || r.h1)}</b>${icon('chevron-down')}</summary><nav class="docs-nav" aria-label="${esc(hub.nav)}, every page">${sidebar(r, hub)}</nav></details>
 <article class="doc prose seo-page">
-<p class="crumb"><a href="/">dusk bot</a><span aria-hidden="true">/</span><a href="${hub.at}">${esc(hub.nav)}</a>${r.parent ? `<span aria-hidden="true">/</span><a href="${r.parent.path}">${esc(r.parent.nav)}</a>` : ''}</p>
+<p class="crumb"><a href="/">Metal</a><span aria-hidden="true">/</span><a href="${hub.at}">${esc(hub.nav)}</a>${r.parent ? `<span aria-hidden="true">/</span><a href="${r.parent.path}">${esc(r.parent.nav)}</a>` : ''}</p>
 <header class="seo-top"><h1>${esc(r.h1)}</h1>
 <p class="lede seo-answer">${inline(lede)}</p>
 <p class="seo-meta seo-boiler">by <a href="${config.author_url}">${esc(config.byline)}</a> · checked <time datetime="${updated}">${day(updated)}</time> · <a href="#how-made">how we made this</a></p></header>
@@ -211,7 +211,7 @@ ${toc}
     // every live action, grouped by app, so each one has a way in from the hub
     const acts = hub.id === 'integrations' ? pages.filter((o) => o.type === 'integration').map((app) => [app, records.filter((o) => o.kind === 'action' && o.action?.toolkit === app.app?.toolkit && o.built && (preview || o.indexable))]).filter(([, l]) => l.length) : [];
     const actBlock = acts.length ? `<section class="wrap seo-hub seo-hubs" aria-labelledby="actions"><h2 id="actions">what a bot can do, app by app</h2>${acts.map(([app, l]) => `<h3>${esc(app.nav || app.h1)}</h3><ul>${l.map((o) => `<li><a href="${o.path}">${esc(o.nav || o.h1)}</a></li>`).join('')}</ul>`).join('')}</section>` : '';
-    const body = `<header class="phead wrap"><p class="crumb"><a href="/">dusk bot</a><span aria-hidden="true">/</span>${esc(hub.nav)}</p><h1>${esc(hub.h1)}</h1><p class="lede">${esc(hub.lede)}</p></header>
+    const body = `<header class="phead wrap"><p class="crumb"><a href="/">Metal</a><span aria-hidden="true">/</span>${esc(hub.nav)}</p><h1>${esc(hub.h1)}</h1><p class="lede">${esc(hub.lede)}</p></header>
 <figure class="wrap seo-hub-hero"><img src="/art/seo/${sceneId(hub.at)}.webp" srcset="/art/seo/${sceneId(hub.at)}-660.webp 660w, /art/seo/${sceneId(hub.at)}.webp 1320w" sizes="(max-width: 760px) 100vw, 1160px" alt="${esc(HUBS[hub.id].alt)}" width="1320" height="528" fetchpriority="high" decoding="async"></figure>
 ${groups.map(([g, l], i) => `<section class="wrap seo-hub" aria-labelledby="${g.id}"><h2 id="${g.id}">${esc(g.title)}</h2><ul class="seo-cards">${l.map((o) => card(o, i > 0 || l.indexOf(o) > 2)).join('')}</ul></section>`).join('\n')}
 ${actBlock}

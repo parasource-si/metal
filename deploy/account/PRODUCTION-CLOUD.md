@@ -1,4 +1,4 @@
-# dusk cloud on dusk.bot: the production runbook
+# Upstream Dusk Cloud production notes
 
 Turns on managed clouds for the production account service with nothing for sale, gives App Review's account its
 demo cloud, routes the public edge to both account services, and puts the APNs key on the link service. Every step

@@ -15,7 +15,7 @@ const apps = REMOTE_MCP_APPS.filter((app) => !only.length || only.includes(app.i
 const dir = mkdtempSync(join(tmpdir(), "dusk-mcp-probe-"));
 const manager = new McpOAuthManager({ file: join(dir, "oauth.json"), lifetimeMs: 60_000 });
 const HEADERS = { "content-type": "application/json", accept: "application/json, text/event-stream" };
-const INIT = { protocolVersion: "2025-06-18", capabilities: {}, clientInfo: { name: "dusk bot", version: "1" } };
+const INIT = { protocolVersion: "2025-06-18", capabilities: {}, clientInfo: { name: "Metal", version: "1" } };
 const rpc = (method: string, id: number, params: unknown = {}) => JSON.stringify({ jsonrpc: "2.0", id, method, params });
 
 async function rpcBody(response: Response): Promise<any> {

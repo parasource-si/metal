@@ -31,7 +31,7 @@ import { createRoutineChecks } from "./routine-checks.ts";
 
 export { WATCH_INSTRUCTIONS, WATCH_NAME } from "./default-watch.ts";
 export const WATCH_FILE = "watch.json";
-/** The engines whose every tool use outside a run's allowlist reaches dusk bot's answerer and is refused there. */
+/** The engines whose every tool use outside a run's allowlist reaches Metal's answerer and is refused there. */
 const FENCED_ENGINES = new Set(["claudeAgent"]);
 const READ_SLUG: Record<ReadApp, string> = { gmail: "GMAIL_FETCH_EMAILS", googlecalendar: "GOOGLECALENDAR_EVENTS_LIST" };
 const ACTIVE = new Set(["queued", "running", "waiting"]);

@@ -24,7 +24,7 @@ export function macPermissionsBridge(): MacPermissionsBridge | null {
 
 const PANES: Record<MacPermission, string> = { accessibility: "Privacy_Accessibility", screen: "Privacy_ScreenCapture" };
 
-/** System Settings at this permission's own list, where any app (dusk bot or its helper) is turned on. */
+/** System Settings at this permission's own list, where any app (Metal or its helper) is turned on. */
 export async function openMacPermissionPane(kind: MacPermission): Promise<void> {
   const desktop = typeof window === "undefined" ? undefined : window.duskDesktop;
   try {
@@ -38,7 +38,7 @@ export function permissionsMissing(status: MacPermissionStatus | null): boolean 
   return MAC_PERMISSIONS.some((kind) => status[kind] !== "granted");
 }
 
-/** Screen Recording granted in System Settings only takes effect once dusk bot reopens. */
+/** Screen Recording granted in System Settings only takes effect once Metal reopens. */
 export function screenNeedsReopen(status: MacPermissionStatus | null): boolean {
   return status?.supported === true && status.screen === "asked";
 }

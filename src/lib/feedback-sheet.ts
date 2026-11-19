@@ -47,7 +47,7 @@ async function signedInEmail(): Promise<string | undefined> {
   return state?.account?.email || undefined;
 }
 
-/** The dusk bot team's own report endpoint (apps/dashboard bug-reports), which the server's route forwards to. */
+/** The Metal team's own report endpoint (apps/dashboard bug-reports), which the server's route forwards to. */
 async function reportEndpoint(): Promise<string> {
   const configured = import.meta.env.VITE_DUSK_ACCOUNT_ORIGIN;
   if (configured) return `${configured.replace(/\/+$/, "")}/api/bug-reports`;

@@ -7,7 +7,7 @@ order: 1
 art: s-signpost
 ---
 
-bots are only as good as what you hand them. none of this is required, but people who get the most out of dusk bot do most of it.
+bots are only as good as what you hand them. none of this is required, but people who get the most out of Metal do most of it.
 
 ## 1. one bot, one job
 

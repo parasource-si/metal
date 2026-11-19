@@ -36,7 +36,7 @@ function trackedSources(): string[] {
 }
 
 describe("headless Chrome never reaches the macOS keychain", () => {
-  it("gives every Chrome dusk bot starts on a Mac both switches", () => {
+  it("gives every Chrome Metal starts on a Mac both switches", () => {
     expect(credentialStoreFlags("darwin")).toEqual(expect.arrayContaining(FLAGS));
     expect(gateChromeFlags(4321, "darwin")).toEqual(expect.arrayContaining(FLAGS));
   });

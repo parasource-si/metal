@@ -1,5 +1,5 @@
-import { carryLegacySafeStorageKey, DATA_DIR_NAMES, dataDirFor, devAppName, fromLegacyLink, LEGACY } from "./legacy-names.mjs";
-import { app, autoUpdater, BrowserWindow, Tray, WebContentsView, clipboard, desktopCapturer, dialog, globalShortcut, ipcMain, Menu, nativeImage, net, Notification as ElectronNotification, powerMonitor, powerSaveBlocker, safeStorage, screen, session, shell, systemPreferences, utilityProcess, nativeTheme } from "electron";
+import { carryLegacySafeStorageKey, DATA_DIR_NAMES, dataDirFor, devAppName, fromLegacyLink, hasDesktopUserData, LEGACY } from "./legacy-names.mjs";
+import { app, BrowserWindow, Tray, WebContentsView, clipboard, desktopCapturer, dialog, globalShortcut, ipcMain, Menu, nativeImage, net, Notification as ElectronNotification, powerMonitor, powerSaveBlocker, safeStorage, screen, session, shell, systemPreferences, utilityProcess, nativeTheme } from "electron";
 import { createRequire } from "node:module";
 import { randomBytes, randomUUID } from "node:crypto";
 import fs from "node:fs";
@@ -95,12 +95,12 @@ import {
 import capabilitiesModule from "./capabilities.cjs";
 import environmentsModule from "./environments.cjs";
 import localOriginModule from "./local-origin.cjs";
-import { aboutPanelOptions, buildApplicationMenu } from "./menu.mjs"; import { installDesktopBots } from "./desktop-bots.mjs"; import { installReloadKeys } from "./reload-keys.mjs"; import { startDesktopErrorReporting } from "./desktop-errors.mjs"; import { createUpdateNotice } from "./update-notice.mjs"; import { createAppUpdater, developerIdSigned, quietNow, squirrelInstaller, justUpdated, updatePlace, setupIn, setupSources, DOWNLOAD_PAGE } from "./app-update.mjs"; import { nsisInstaller, windowsPlace, TRIED } from "./app-update-windows.mjs"; import { appImageUpdates, swappedVersion } from "./app-update-linux.mjs"; import { createAppImageMenuEntry, installAppImageMenuEntry } from "./appimage-menu-entry.mjs"; import { quietSignals } from "./update-when-quiet-main.mjs"; import { createDemoUpdater, demoUpdateFlag } from "./app-update-demo.mjs";
+import { aboutPanelOptions, buildApplicationMenu } from "./menu.mjs"; import { installDesktopBots } from "./desktop-bots.mjs"; import { installReloadKeys } from "./reload-keys.mjs"; import { startDesktopErrorReporting } from "./desktop-errors.mjs"; import { createUpdateNotice, METAL_RELEASES_URL } from "./update-notice.mjs"; import { justUpdated } from "./app-update.mjs"; import { createAppImageMenuEntry, installAppImageMenuEntry } from "./appimage-menu-entry.mjs"; import { createDemoUpdater, demoUpdateFlag } from "./app-update-demo.mjs";
 import { acquireDataDirLease } from "./data-dir-lease.mjs";
 import { offerMoveToApplications } from "./move-to-applications.mjs";
 import { switchLocalEnvironment } from "./environment-switch.mjs";
 import { createManagedDesktopClient, createManagedDesktopRelay, createManagedDesktopStore } from "./managed-desktop.mjs";
-import { analyticsAllowed, createProductEvents } from "./product-events.mjs"; import { crashProps, createExperienceRelay, updateFailStage } from "./experience-relay.mjs"; import { UTILITY_NAMES } from "./utility-names.mjs"; import { createUsageNotes } from "./usage-notes.mjs";
+import { analyticsAllowed, createProductEvents } from "./product-events.mjs"; import { crashProps, createExperienceRelay } from "./experience-relay.mjs"; import { UTILITY_NAMES } from "./utility-names.mjs"; import { createUsageNotes } from "./usage-notes.mjs";
 import { createAccountErrors } from "./account-errors.mjs";
 import { CHECKOUT_SOURCES, cloudMenuSublabel, cloudTarget, createCloudAccountClient, createCloudAccountStore } from "./cloud-account.mjs"; import { isAppLink } from "./cloud-signin.mjs";
 import { ACCOUNT_PAGES, installCloudPlanIpc } from "./cloud-plan-ipc.mjs";
@@ -220,26 +220,28 @@ if (process.platform === "linux") {
 
 unlimitTunnelConnections(app);
 
-// macOS dev app: its own keychain key. electron names the key "<app.name> Safe Storage" once this file has run
-// (electron_browser_main_parts.cc PostCreateMainMessageLoop), and the packaged app is "duskbot" too, so a key the dev
-// build made had the packaged app ask for the login password. its folders stay where they are; on the first run the
-// key it used so far is copied (macOS may ask once to let `security` read it), so what it sealed still opens
-if (!app.isPackaged && process.platform === "darwin") {
-  const userData = app.getPath("userData"), logs = app.getPath("logs");
-  const shared = app.getName();
-  app.setName(devAppName(shared));
-  app.setPath("userData", userData);
-  app.setPath("logs", logs);
-  // a test run with its own folder or a mock keychain never reads the real one
-  if (!app.commandLine.hasSwitch("user-data-dir") && !app.commandLine.hasSwitch("use-mock-keychain")) {
-    const carried = carryLegacySafeStorageKey({ name: app.getName(), packaged: false, from: [shared, LEGACY.devName, LEGACY.product], trust: process.execPath });
-    if (carried !== "present") console.log(`[desktop] dev keychain key: ${carried}`);
-  }
+const isolatedUserData = app.commandLine.hasSwitch("user-data-dir");
+const defaultUserData = app.getPath("userData");
+const legacyNames = app.isPackaged
+  ? [process.platform === "linux" ? "dusk-bot" : "Dusk Bot", "duskbot"]
+  : ["duskbot"];
+const legacyUserData = !isolatedUserData && !hasDesktopUserData(defaultUserData)
+  && legacyNames.map(name => path.join(app.getPath("appData"), name)).find(dir => hasDesktopUserData(dir));
+const devOnMac = !app.isPackaged && process.platform === "darwin";
+app.setName(devOnMac ? devAppName("Metal") : "Metal");
+const userData = legacyUserData || defaultUserData;
+fs.mkdirSync(userData, { recursive: true });
+app.setPath("userData", userData);
+
+// Electron names the macOS Safe Storage key after app.name.
+if (process.platform === "darwin" && legacyUserData && !app.commandLine.hasSwitch("use-mock-keychain")) {
+  const from = devOnMac ? ["duskbot dev", "duskbot", LEGACY.devName, LEGACY.product] : ["duskbot", "Dusk Bot", LEGACY.product];
+  const carried = carryLegacySafeStorageKey({ name: app.getName(), packaged: app.isPackaged, from, trust: process.execPath });
+  if (carried !== "present") console.log(`[desktop] keychain key: ${carried}`);
 }
 
-
 if (!app.requestSingleInstanceLock()) {
-  console.log("[desktop] dusk bot is already running: focusing that window");
+  console.log("[desktop] Metal is already running: focusing that window");
   process.exit(0);
 }
 
@@ -1184,7 +1186,7 @@ async function runCompanyBackup(kind, input, scheduled = null) {
     const status = await localBackupStatus(proc);
     if (status.pendingRestore) {
       publishCompanyBackupState({ busy: false, pendingRestore: true });
-      throw new Error("Restart dusk bot to finish the pending restore before starting another backup operation.");
+      throw new Error("Restart Metal to finish the pending restore before starting another backup operation.");
     }
     if (status.busy) throw companyBackupDeferred();
     const transfers = createCompanyBackups({
@@ -1368,7 +1370,7 @@ async function startServerPackaged() {
       stranded: (candidate) => strandedServerOn(candidate, { execPath: process.execPath }),
       log: slog,
     });
-    if (busy.length && !told) { told = true; startupScreen?.status("Another app is using dusk bot's port, so it's opening on a free one"); }
+    if (busy.length && !told) { told = true; startupScreen?.status("Another app is using Metal's port, so it's opening on a free one"); }
     for (const taken of busy) skipped.add(taken);
     const started = await startServerOn(port);
     if (started.proc) {
@@ -1458,7 +1460,7 @@ function notifyDesktopViewer(open) {
 }
 
 function openDesktopViewer(owner, rawUrl, rawTitle, contextId) {
-  if (!owner || owner.isDestroyed()) throw new Error("The dusk bot window is unavailable");
+  if (!owner || owner.isDestroyed()) throw new Error("The Metal window is unavailable");
   const url = desktopViewerUrl(rawUrl);
   const titleCandidate = Object.prototype.toString.call(rawTitle) === "[object String]" ? rawTitle.trim() : "";
   const title = titleCandidate ? titleCandidate.slice(0, 80) : "Live desktop";
@@ -1550,7 +1552,7 @@ function openDesktopViewer(owner, rawUrl, rawTitle, contextId) {
 }
 
 function ensureDesktopWorkspace(owner) {
-  if (!owner || owner.isDestroyed()) throw new Error("The dusk bot window is unavailable");
+  if (!owner || owner.isDestroyed()) throw new Error("The Metal window is unavailable");
   if (desktopWorkspaceManager) {
     if (desktopWorkspaceOwner !== owner) {
       throw new Error("The two-desktop view belongs to another app window");
@@ -1783,7 +1785,7 @@ async function switchLocalEnvironmentTo(targetDir, targetId, quiet = false, { st
   const failedSwitch = () => {
     if (!quiet) dialog.showErrorBox(
       "Could not switch environments",
-      "dusk bot could not switch to that environment. The app log has the details.",
+      "Metal could not switch to that environment. The app log has the details.",
     );
     return { ok: false, error: "switch-failed" };
   };
@@ -2028,7 +2030,7 @@ async function connectHostedWorkspace(input, name) {
     throw new Error("Enter an HTTPS server address or a full pairing link. Keep the pairing code after #, not in the URL query.");
   }
   if (isThisAppsServer(link.origin, SERVER_PORT)) {
-    throw new Error("That link is this computer's own dusk bot; on your computer run ssh -N -L 8790:127.0.0.1:8799 you@your-server, then paste http://127.0.0.1:8790 with the code.");
+    throw new Error("That link is this computer's own Metal; on your computer run ssh -N -L 8790:127.0.0.1:8799 you@your-server, then paste http://127.0.0.1:8790 with the code.");
   }
   const host = new URL(link.origin).host;
   const { response } = await dialog.showMessageBox({
@@ -3383,7 +3385,7 @@ app.whenReady().then(async () => {
       persistEnvironments({ ...environmentsState, activeId: LOCAL_ID }, "unusable");
       dialog.showErrorBox(
         "The environment's folder is missing",
-        `${boot.missingDir} is not there anymore, so dusk bot came up on this computer's default data folder instead. Restore or remount that folder, then choose the environment again from the Server menu.`,
+        `${boot.missingDir} is not there anymore, so Metal came up on this computer's default data folder instead. Restore or remount that folder, then choose the environment again from the Server menu.`,
       );
     }
     bootDataDir = boot.dataDir === desktopDataDir() ? startFolder() : boot.dataDir;
@@ -3397,8 +3399,8 @@ app.whenReady().then(async () => {
       runningDataDir = bootDataDir;
     } catch (error) {
       dialog.showErrorBox(
-        "dusk bot could not start safely",
-        error?.message ?? "Another process is using this dusk bot data folder.",
+        "Metal could not start safely",
+        error?.message ?? "Another process is using this Metal data folder.",
       );
       app.quit();
       return;
@@ -3566,8 +3568,8 @@ app.whenReady().then(async () => {
             runningDataDir = desktopDataDir();
           } catch (error) {
             dialog.showErrorBox(
-              "dusk bot could not start safely",
-              error?.message ?? "Another process is using this dusk bot data folder.",
+              "Metal could not start safely",
+              error?.message ?? "Another process is using this Metal data folder.",
             );
             app.quit();
             return;
@@ -3576,12 +3578,12 @@ app.whenReady().then(async () => {
           if (retried) {
             dialog.showErrorBox(
               "The environment was unhealthy",
-              `dusk bot could not start on ${bootDataDir} and came up on this computer's default data folder instead. Choose that environment again from the Server menu once it is available.`,
+              `Metal could not start on ${bootDataDir} and came up on this computer's default data folder instead. Choose that environment again from the Server menu once it is available.`,
             );
           } else {
             dialog.showErrorBox(
-              "dusk bot could not start",
-              `dusk bot could not start on ${bootDataDir} or on this computer's default data folder. Check that both folders are readable, then start the app again.`,
+              "Metal could not start",
+              `Metal could not start on ${bootDataDir} or on this computer's default data folder. Check that both folders are readable, then start the app again.`,
             );
             app.quit();
           }
@@ -3677,10 +3679,7 @@ const requestSignalQuit = () => {
 process.once("SIGINT", requestSignalQuit);
 process.once("SIGTERM", requestSignalQuit);
 
-// the mac app installs its own updates when it is Developer ID signed (electron/app-update.mjs), and a windows install
-// through its NSIS installer (electron/app-update-windows.mjs); elsewhere, and on an unsigned mac build, the notice says a
-// release is out
-let appUpdater = null, appUpdatedTo = null, appUpdateMode = app.isPackaged ? "notice" : "dev", windowsInstaller = null, windowsSessionEnding = false;
+let appUpdater = null, appUpdatedTo = null, appUpdateMode = app.isPackaged ? "notice" : "dev", windowsSessionEnding = false;
 const appUpdateState = () => ({ ...(appUpdater?.state() ?? { ready: null, available: null, progress: null }), mode: appUpdateMode, updated: appUpdatedTo });
 const tellAppUpdate = () => { const page = mainWindow && !mainWindow.isDestroyed() ? { sender: mainWindow.webContents, senderFrame: mainWindow.webContents.mainFrame } : null; if (page && (senderIsLocal(page) || homeWindow.homePage(page))) page.sender.send("app-update:changed", appUpdateState()); };
 function startDemoUpdates() {
@@ -3690,43 +3689,17 @@ function startDemoUpdates() {
   appUpdater.start();
 }
 function startAppUpdates(notice) {
-  const updateDir = path.join(app.getPath("userData"), "app-update");
-  const installedHere = () => (process.env.APPIMAGE ? swappedVersion(updateDir) === app.getVersion() : fs.existsSync(path.join(updateDir, process.platform === "win32" ? `DuskBot-${app.getVersion()}-setup.exe` : `DuskBot-${app.getVersion()}-${process.arch}.zip`)));
-  if (justUpdated(jsonFile(path.join(app.getPath("userData"), "app-version.json")), app.getVersion(), installedHere)) {
+  if (justUpdated(jsonFile(path.join(app.getPath("userData"), "app-version.json")), app.getVersion())) {
     appUpdatedTo = app.getVersion();
-    try { productEvents.action("app_updated", { how: installedHere() ? "self" : "manual" }); } catch {}
+    try { productEvents.action("app_updated", { how: "manual" }); } catch {}
   }
-  const onFailed = (message, info) => productEvents.action("update_failed", { stage: info?.stage ?? updateFailStage(message), reason: info?.reason });
-  const signals = quietSignals({ focused: () => Boolean(BrowserWindow.getFocusedWindow()), powerMonitor, window: () => mainWindow, lastInput: () => oneHome.lastInput(), local: localServerRequest, place: () => null,
-    cloudFetch: (...args) => session.defaultSession.fetch(...args), asleep: () => true, busy: () => (speechBusy() ? "dictation" : null) });
-  if (process.platform === "win32") windowsInstaller = nsisInstaller({ dir: updateDir, current: app.getVersion(), quit: () => app.quit(), log: slog });
-  const own = windowsInstaller ? { platform: "win32", signed: async () => true, blocked: async () => windowsPlace(app.getPath("exe")), asset: setupIn, sources: setupSources, keep: [TRIED], installer: windowsInstaller } : process.platform === "linux" && process.env.APPIMAGE ? appImageUpdates({ app, dir: updateDir, log: slog }) : null;
-  if (own) {
-    appUpdateMode = "self";
-    appUpdater = createAppUpdater({ current: app.getVersion(), arch: process.arch, dir: updateDir, ...own, quiet: () => quietNow(signals), fallback: notice, log: slog, onState: tellAppUpdate, onFailed });
-    appUpdater.start();
-    powerMonitor.on("resume", () => appUpdater?.soon?.());
-    return;
-  }
-  if (process.platform !== "darwin") {
-    notice.start();
-    appUpdater = createAppUpdater({ current: app.getVersion(), arch: process.arch, dir: updateDir, installs: false, platform: process.platform, appImage: Boolean(process.env.APPIMAGE), fallback: { check: async () => null }, log: slog, onState: tellAppUpdate, onFailed, intervalMs: 6 * 60 * 60_000 });
-    appUpdater.start();
-    return;
-  }
-  const bundle = path.resolve(path.dirname(app.getPath("exe")), "..", "..");
-  appUpdateMode = "self";
-  appUpdater = createAppUpdater({ current: app.getVersion(), arch: process.arch, dir: updateDir, signed: () => developerIdSigned(bundle), blocked: async () => updatePlace(bundle),
-    installer: squirrelInstaller({ autoUpdater }), quiet: () => quietNow(signals), fallback: notice, log: slog, onState: tellAppUpdate, onFailed });
-  appUpdater.start();
-  powerMonitor.on("resume", () => appUpdater?.soon?.());
+  notice.start();
 }
 ipcMain.handle("app-update:state", localOrHome("app-update:state", appUpdateState));
 ipcMain.handle("app-update:restart", localOrHome("app-update:restart", () => appUpdater?.restart() ?? false));
 ipcMain.handle("app-update:download", localOrHome("app-update:download", () => appUpdater?.check({ again: true }) ?? null));
-// only the link main found for this release (an installer on dusk.bot or the downloads repo), or the download page
-ipcMain.handle("app-update:open", localOrHome("app-update:open", () => { const url = appUpdater?.state().manual?.url; void shell.openExternal(typeof url === "string" && /^https:\/\/(dusk\.bot|github\.com)\//.test(url) ? url : DOWNLOAD_PAGE); return true; }));
-ipcMain.handle("app-update:move", localOrHome("app-update:move", () => { try { return app.moveToApplicationsFolder(); } catch (error) { slog(`app update: could not move to Applications (${error instanceof Error ? error.message : String(error)})`); void shell.openExternal(DOWNLOAD_PAGE); return false; } }));
+ipcMain.handle("app-update:open", localOrHome("app-update:open", () => { void shell.openExternal(METAL_RELEASES_URL); return true; }));
+ipcMain.handle("app-update:move", localOrHome("app-update:move", () => { try { return app.moveToApplicationsFolder(); } catch (error) { slog(`app update: could not move to Applications (${error instanceof Error ? error.message : String(error)})`); void shell.openExternal(METAL_RELEASES_URL); return false; } }));
 ipcMain.handle("app-update:seen", localOrHome("app-update:seen", () => { if (appUpdatedTo) { appUpdatedTo = null; tellAppUpdate(); } }));
 
 // powerMonitor is usable only once the app is ready.
@@ -3787,5 +3760,4 @@ function releaseDesktopDataDirLease() {
 app.on("will-quit", releaseDesktopDataDirLease);
 app.on("will-quit", () => desktopTray?.destroy());
 // after the app's own shutdown (before-quit waits for its server and helpers), so the installer finds nothing to close
-app.on("will-quit", () => { windowsInstaller?.quitting({ ending: windowsSessionEnding }); });
 process.once("exit", releaseDesktopDataDirLease);

@@ -6,7 +6,7 @@ import { createOneChat, storageOrder } from "./one-chat.ts";
 function setup(options: { team?: boolean; confined?: boolean } = {}) {
   const store = new Store(() => ({ instanceId: "codex", model: "gpt-5.5" }));
   const asker = store.createBot({ name: "content" });
-  const helper = store.createBot({ name: "dusk bot" });
+  const helper = store.createBot({ name: "Metal" });
   const main = store.bot(helper.id)!.threadId;
   const oneChat = createOneChat({
     store, team: options.team ?? false, confined: () => options.confined ?? false,
@@ -44,15 +44,15 @@ describe("one chat per bot", () => {
     store.appendMessage(main, { role: "user", kind: "text", text: "morning", at: t0 + 1_000 });
     store.appendMessage(main, { role: "bot", kind: "text", text: "hi", at: t0 + 1_500 });
     const work = store.createTask(helper.id, "@content · work", false, undefined, { botId: asker.id, name: "content", threadId: askerThread, kind: "work", at: t0 + 1_900 })!;
-    const request = store.appendMessage(work.threadId, { role: "bot", kind: "text", text: "@dusk bot what is the plan?", from: { botId: asker.id, name: "content", color: "blue" }, roomRequest: { id: "r1", phase: "request" }, at: t0 + 2_000 });
+    const request = store.appendMessage(work.threadId, { role: "bot", kind: "text", text: "@Metal what is the plan?", from: { botId: asker.id, name: "content", color: "blue" }, roomRequest: { id: "r1", phase: "request" }, at: t0 + 2_000 });
     const reply = store.appendMessage(work.threadId, { role: "bot", kind: "text", text: "Ship on Friday", at: t0 + 2_500 });
     store.appendMessage(main, { role: "user", kind: "text", text: "later", at: t0 + 3_000 });
-    const ref = store.appendMessage(askerThread, { role: "bot", kind: "activity", tool: { name: "Sent to dusk bot", ok: true }, threadRef: { botId: helper.id, threadId: work.threadId, title: "@content · work" } });
+    const ref = store.appendMessage(askerThread, { role: "bot", kind: "activity", tool: { name: "Sent to Metal", ok: true }, threadRef: { botId: helper.id, threadId: work.threadId, title: "@content · work" } });
 
     expect(oneChat.fold({ inUse: () => false, apart: () => false })).toBe(1);
 
     expect(store.bot(helper.id)!.tasks!.map((task) => task.threadId)).toEqual([main]);
-    expect(store.activePath(main).map((row) => row.text).slice(-5)).toEqual(["morning", "hi", "@dusk bot what is the plan?", "Ship on Friday", "later"]);
+    expect(store.activePath(main).map((row) => row.text).slice(-5)).toEqual(["morning", "hi", "@Metal what is the plan?", "Ship on Friday", "later"]);
     expect(store.messagesFor(main).map((row) => row.id)).toEqual(expect.arrayContaining([request.id, reply.id]));
     expect(store.messagesFor(askerThread).find((row) => row.id === ref.id)?.threadRef?.threadId).toBe(main);
     expect(oneChat.fold({ inUse: () => false, apart: () => false })).toBe(0);

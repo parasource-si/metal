@@ -102,7 +102,7 @@ describe("Grok cannot run here: an xAI key instead", () => {
     expect(html).not.toContain("<button");
   });
 
-  it("installs Grok in place wherever dusk bot can, and never shows the installer command", () => {
+  it("installs Grok in place wherever Metal can, and never shows the installer command", () => {
     const installable = { ...missing, install: { ...missing.install, server: { script: true } } };
     for (const where of [undefined, desktop]) {
       const html = render(installable, where);

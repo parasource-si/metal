@@ -80,7 +80,7 @@ const lift = (value: number | null) => value === null ? <span className="text-in
 /** the list of fixes, numbered, each with the number behind it */
 export function ImproveList({ items, limit }: { items: Improvement[]; limit?: number }) {
   const shown = limit ? items.slice(0, limit) : items;
-  if (!shown.length) return <p className="rounded-[18px] bg-card px-4 py-6 text-center text-14 text-ink-3">nothing stands out yet. this fills in as more people use dusk bot.</p>;
+  if (!shown.length) return <p className="rounded-[18px] bg-card px-4 py-6 text-center text-14 text-ink-3">nothing stands out yet. this fills in as more people use Metal.</p>;
   return (
     <ol className="flex flex-col gap-1.5 overflow-hidden rounded-[20px]">
       {shown.map((item, i) => (

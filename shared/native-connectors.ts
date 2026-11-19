@@ -1,6 +1,6 @@
 import table from "./native-connectors.json" with { type: "json" };
 
-/** One connector dusk bot signs in to with its own OAuth app (no per-call cost, no app review). Adding one is a row in
+/** One connector Metal signs in to with its own OAuth app (no per-call cost, no app review). Adding one is a row in
  * native-connectors.json plus its client id (and secret, when the vendor needs one) in the release environment. */
 export interface NativeConnector {
   id: string;
@@ -32,7 +32,7 @@ export interface NativeConnector {
   /** Who the token signs in as, and the dotted path of the name in its JSON. Sent with the token as a bearer unless
    * `auth` is "raw"; a POST sends no body (Dropbox's get_current_account). */
   check: { url: string; label: string; method?: "GET" | "POST"; auth?: "bearer" | "raw"; headers?: Record<string, string> };
-  /** The vendor's own MCP server, which takes the token as a bearer, or an API origin for dusk bot's api_request tool. */
+  /** The vendor's own MCP server, which takes the token as a bearer, or an API origin for Metal's api_request tool. */
   use: { mcp: string } | { api: string; docs: string };
 }
 

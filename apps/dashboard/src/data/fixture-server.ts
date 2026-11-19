@@ -10,7 +10,7 @@ import { CANCEL_ANSWERS } from "./wire";
 const DAY = 86_400_000;
 /** the managed fixture's emailed delete link: /clouds/fx-cloud/delete?fixture=managed#<this> */
 export const FIXTURE_DELETE_TOKEN = "fixture-delete-link".padEnd(43, "0");
-const steps = ["Reserving your machine", "Installing dusk bot", "Linking it to your account", "Waking your bots"];
+const steps = ["Reserving your machine", "Installing Metal", "Linking it to your account", "Waking your bots"];
 const fail = (message: string, status = 400, code = "invalid_request"): never => { throw new ApiError(message, status, code); };
 
 function createState() {
@@ -391,7 +391,7 @@ function route(method: string, path: string, body: unknown, query: URLSearchPara
       if (!COMMAND_KINDS.includes(b.kind as CommandKind) || typeof b.target !== "string") fail("Choose a command and target.");
       if ((b.kind as string).startsWith("app.")) {
         if (!appSlug(b.target)) fail("Command is invalid.", 400, "invalid_command");
-        if (workspaceDetail(detail, now).workspace.freshness === "offline") fail(detail.workspace.kind === "vps" ? "This cloud is asleep or not answering. Wake it from clouds, then try again." : "Your computer is asleep. Connect from the dusk bot app on it, or use dusk cloud.", 409, "workspace_offline");
+        if (workspaceDetail(detail, now).workspace.freshness === "offline") fail(detail.workspace.kind === "vps" ? "This cloud is asleep or not answering. Wake it from clouds, then try again." : "Your computer is asleep. Connect from the Metal app on it, or use dusk cloud.", 409, "workspace_offline");
       }
       const command: CommandView = { id: `fx-command-${s.nextId++}`, kind: b.kind as CommandKind, target: b.target as string, issuedAt: now, expiresAt: now + 600_000, status: "sent", message: null, doneAt: null,
         ...(b.kind === "app.connect" && b.returnHere === true ? { callback: `${location.origin}${location.pathname}?connect=${fixtureConnectState(id, b.target as string)}` } : {}) };

@@ -1,4 +1,4 @@
-// Alias for `duskbot pair`: docs and images reference dist-server/pair-cli.js.
+// Alias for `metal pair`: docs and images reference dist-server/pair-cli.js.
 import "../electron/legacy-names.mjs";
 import { main } from "./cli.ts";
 import { exitAfterFlush } from "./exit.ts";

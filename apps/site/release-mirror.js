@@ -6,7 +6,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { pipeline } from 'node:stream/promises';
 
-export const MIRRORED = /^\/releases\/(\d+\.\d+\.\d+)\/(DuskBot-\1-[A-Za-z0-9_.-]+\.(?:zip|dmg|exe|deb|AppImage))$/;
+export const MIRRORED = /^\/releases\/(\d+\.\d+\.\d+)\/((?:Metal|DuskBot)-\1-[A-Za-z0-9_.-]+\.(?:zip|dmg|exe|deb|AppImage))$/;
 
 /** the start and end (inclusive) a Range header asks for in a file of `size` bytes; null for the whole file, false when unsatisfiable */
 export function byteRange(header, size) {

@@ -4,7 +4,7 @@
   "title": "Read Google Sheets cell values with AI from a set range",
   "nav": "get spreadsheet values",
   "h1": "ask about the values in a specific google sheets range",
-  "description": "Read a chosen Google Sheets range with a bot, using calculated values or formulas. Set the exact file, tab and range, and understand its dusk bot access rule.",
+  "description": "Read a chosen Google Sheets range with a bot, using calculated values or formulas. Set the exact file, tab and range, and understand its Metal access rule.",
   "keyword": "read google sheets values with ai",
   "keywords": [
     "google sheets get cell values with ai",
@@ -15,7 +15,7 @@
   "updated": "2026-11-12",
   "review": {
     "status": "approved",
-    "by": "lead agent, after two independent reviewer passes, against dusk bot docs and the composio catalog",
+    "by": "lead agent, after two independent reviewer passes, against Metal docs and the composio catalog",
     "at": "2026-11-12"
   },
   "tags": [
@@ -81,15 +81,15 @@
   ],
   "sources": [
     {
-      "label": "dusk bot docs: files and apps",
+      "label": "Metal docs: files and apps",
       "url": "/docs/files-and-apps"
     },
     {
-      "label": "dusk bot docs: routines",
+      "label": "Metal docs: routines",
       "url": "/docs/routines"
     },
     {
-      "label": "dusk bot docs: computer permissions",
+      "label": "Metal docs: computer permissions",
       "url": "/docs/computer"
     }
   ],

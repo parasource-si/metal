@@ -309,7 +309,7 @@ const delayedJsonBody = async (
 
 const claudePrompts = (file = fakeClaudePrompts): string[] =>
   existsSync(file) ? readFileSync(file, "utf8").split("\n").filter(Boolean) : [];
-const COMPUTER_FREE_NOTE = "dusk bot computer update: the computer this conversation waited for is free again. Continue the task that parked waiting for it.";
+const COMPUTER_FREE_NOTE = "Metal computer update: the computer this conversation waited for is free again. Continue the task that parked waiting for it.";
 
 /** The running turn's first screen call, which is what takes a cloud computer; the answer waits while another turn has it. */
 const reachForComputer = async () => {
@@ -452,7 +452,7 @@ beforeAll(async () => {
   // a fleet of exactly one unknown driver: no CLI probes, no network
   mkdirSync(join(home, ".duskbot"), { recursive: true });
   mkdirSync(join(staticDir, "assets"), { recursive: true });
-  writeFileSync(join(staticDir, "index.html"), "<!doctype html><title>Packaged dusk bot</title>");
+  writeFileSync(join(staticDir, "index.html"), "<!doctype html><title>Packaged Metal</title>");
   writeFileSync(join(staticDir, "manifest.webmanifest"), '{"name":"Fixture web app","display":"standalone","start_url":"/"}');
   writeFileSync(join(staticDir, "assets", "smoke.css"), "body { color: white; }");
   writeFileSync(
@@ -1351,10 +1351,10 @@ describe("harness HTTP API", () => {
     expect(room.messages.find(
       (message: { id: string }) => message.id === "restarted-goal-card",
     )).toMatchObject({
-      text: "Goal failed: dusk bot restarted before this goal finished.",
+      text: "Goal failed: Metal restarted before this goal finished.",
       goalRun: {
         status: "failed",
-        detail: "dusk bot restarted before this goal finished.",
+        detail: "Metal restarted before this goal finished.",
         turnCount: 2,
         finishedAt: expect.any(Number),
       },
@@ -1496,7 +1496,7 @@ describe("harness HTTP API", () => {
     expect(root.status).toBe(200);
     expect(root.headers.get("content-type")).toBe("text/html");
     expect(root.headers.get("cache-control")).toBe("no-cache");
-    expect(await root.text()).toContain("Packaged dusk bot");
+    expect(await root.text()).toContain("Packaged Metal");
 
     const index = await fetch(`${BASE}/index.html`);
     expect(index.headers.get("cache-control")).toBe("no-cache");
@@ -1519,7 +1519,7 @@ describe("harness HTTP API", () => {
     expect(spa.status).toBe(200);
     expect(spa.headers.get("content-type")).toBe("text/html");
     expect(spa.headers.get("cache-control")).toBe("no-cache");
-    expect(await spa.text()).toContain("Packaged dusk bot");
+    expect(await spa.text()).toContain("Packaged Metal");
 
     const missingChunk = await fetch(`${BASE}/assets/missing-abc123.js`);
     expect(missingChunk.status).toBe(200);
@@ -3363,7 +3363,7 @@ describe("harness HTTP API", () => {
       expect((await api("POST", `/api/bots/${botIds[0]}/interrupt`, {})).status).toBe(200);
       await idle(botIds[0]);
       const missingThread = JSON.stringify((await api("GET", "/api/bots?messages=30")).body.bots.find((bot: { id: string }) => bot.id === botIds[0]).messages);
-      expect(missingThread).not.toMatch(/No dusk bot container|docker|VPS/);
+      expect(missingThread).not.toMatch(/No Metal container|docker|VPS/);
       expect(claudePrompts()).toHaveLength(missingPromptBaseline + 1);
       expect(readFileSync(fakeDockerLog, "utf8").slice(missingOffset)).not.toMatch(/ (?:run|start|create|build|pull)(?: |$)/m);
     } finally {
@@ -4993,7 +4993,7 @@ describe("harness HTTP API", () => {
     expect(markdownExport.body.markdown).toContain("Give this file to your Chief of Staff");
     expect(markdownExport.body.markdown).not.toMatch(/Archived|autoApprove|alwaysAllow|modelSelection|threadId/);
     expect((await api("GET", "/api/bots")).body.groups).toHaveLength(roomsBefore);
-    expect((await api("POST", "/api/teams/export", {})).body.team.name).toBe("My dusk bot Team");
+    expect((await api("POST", "/api/teams/export", {})).body.team.name).toBe("My Metal Team");
     expect((await api("POST", "/api/teams/export", [])).status).toBe(400);
 
     const stream = await openSse(`${BASE}/api/events`);
@@ -5132,7 +5132,7 @@ describe("harness HTTP API", () => {
         tagline: "Find and explain the signal.",
         summary: "A complete two-bot signal workflow.",
         category: "Research",
-        author: { name: "dusk bot" },
+        author: { name: "Metal" },
         license: "MIT",
         outcomes: ["Produce a concise signal brief."],
         setupMinutes: 4,
@@ -5521,7 +5521,7 @@ describe("harness HTTP API", () => {
         .find((message: { id: string }) => message.id === messageId);
       expect(directCard).toMatchObject({
         kind: "secret",
-        text: "Securely provide the OpenAI API key from dusk bot on your phone or computer. It is never added to chat.",
+        text: "Securely provide the OpenAI API key from Metal on your phone or computer. It is never added to chat.",
       });
       expect(directCard.secret.description).toContain(
         `${bot.name} can use it but never read it back.`,
@@ -5663,7 +5663,7 @@ describe("harness HTTP API", () => {
       expect((await card(firstCard.messageId)).signIn).toMatchObject({ site: "example.com", superseded: true });
       expect(await card(secondCard.messageId)).toMatchObject({
         kind: "signin",
-        text: `${bot.name} needs you to sign in to example.com. Open this conversation in dusk bot to sign in, then press done.`,
+        text: `${bot.name} needs you to sign in to example.com. Open this conversation in Metal to sign in, then press done.`,
         signIn: { url: "https://www.example.com/", site: "example.com", place: "browser", reason: "Still behind a login." },
       });
       expect((await card(secondCard.messageId)).signIn.superseded).toBeUndefined();
@@ -8008,7 +8008,7 @@ describe("harness HTTP API", () => {
 
       const page = await viaProxy("GET", callback.pathname + callback.search);
       expect(page.status).toBe(200);
-      expect(page.text).toBe("Signed in. You can close this tab and return to dusk bot.");
+      expect(page.text).toBe("Signed in. You can close this tab and return to Metal.");
       expect(page.headers).toMatchObject({ "cache-control": "no-store", "referrer-policy": "no-referrer", "content-type": "text/plain; charset=utf-8" });
       expect(page.text).not.toContain(callback.searchParams.get("code"));
       expect(JSON.parse((await viaProxy("GET", `${base}/${auth.flowId}`, signedIn)).text).auth.phase).toBe("succeeded");
@@ -8264,8 +8264,8 @@ describe("harness HTTP API", () => {
       expect((await api("POST", `/api/bots/${bot.id}/messages`, { text: "hello" })).status).toBe(202);
       const seen = await readJsonFileWhenReady<{ systemPrompt?: string }>(fakeClaudeDump, 15_000);
       const system: string = seen.systemPrompt ?? "";
-      expect(system.startsWith("You are Kiwi, a personal bot in dusk bot. Role: Tracker.")).toBe(true);
-      const persona = "You are Kiwi, a personal bot in dusk bot. Role: Tracker.";
+      expect(system.startsWith("You are Kiwi, a personal bot in Metal. Role: Tracker.")).toBe(true);
+      const persona = "You are Kiwi, a personal bot in Metal. Role: Tracker.";
       const afterPersona = system.slice(persona.length);
       expect(afterPersona.startsWith("\n\nYour standing instructions follow.")).toBe(true);
       expect(system).toContain("--- BEGIN STANDING INSTRUCTIONS (SOUL.md, 28 bytes) ---\nFile bugs. Never file noise.\n--- END STANDING INSTRUCTIONS ---");
@@ -8362,7 +8362,7 @@ describe("harness HTTP API", () => {
       rmSync(fakeClaudeDump, { force: true });
       expect((await api("POST", `/api/bots/${bot.id}/messages`, { text: "hello" })).status).toBe(202);
       let system = (await readJsonFileWhenReady<{ systemPrompt: string }>(fakeClaudeDump, 15_000)).systemPrompt;
-      expect(system.startsWith("You are Blank, a personal bot in dusk bot.")).toBe(true);
+      expect(system.startsWith("You are Blank, a personal bot in Metal.")).toBe(true);
       expect(system).not.toContain("at most four questions");
       expect(system).toContain("propose_profile");
 
@@ -9636,7 +9636,7 @@ describe("harness HTTP API", () => {
 
       const removed = await api("POST", `/api/bots/${bot.id}/local-computer/remove`, {});
       expect(removed.status).toBe(409);
-      expect(removed.body.error).toMatch(/not created by dusk bot.*remove it manually/i);
+      expect(removed.body.error).toMatch(/not created by Metal.*remove it manually/i);
       expect(readFileSync(fakeDockerLog, "utf8").split("\n")).not.toContain(
         `rm -f ${status.body.container_name}`,
       );
@@ -9870,7 +9870,7 @@ describe("harness HTTP API", () => {
         .find((message: { id: string }) => message.id === messageId);
       expect(roomCard).toMatchObject({
         kind: "secret",
-        text: "Securely provide the OpenAI API key from dusk bot on your phone or computer. It is never added to chat.",
+        text: "Securely provide the OpenAI API key from Metal on your phone or computer. It is never added to chat.",
         from: { botId: second.id, name: second.name, color: second.color },
       });
 
@@ -12441,7 +12441,7 @@ describe("bot memory API", () => {
       expect(before.body.sections[0]).toEqual({
         id: "persona",
         label: "Identity",
-        text: "You are Kiwi, a personal bot in dusk bot. Role: Tracker. About: Files bugs.",
+        text: "You are Kiwi, a personal bot in Metal. Role: Tracker. About: Files bugs.",
         bytes: 75,
       });
       expect(before.body.sections.map((s: { id: string }) => s.id)).not.toContain("soul");

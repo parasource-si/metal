@@ -5,7 +5,7 @@ import { DUSK_TOOL_DEFINITIONS } from "./agents-dusk-tools.ts";
 
 const listed = (env: Record<string, string>) => availableTools(catalogProfileFromEnv({ DUSK_BOT_ID: "maus", DUSK_CHIEF_OF_STAFF: "1", ...env }));
 
-describe("Dusk's two notification tools on the wire", () => {
+describe("Metal's two notification tools on the wire", () => {
   const maus = listed({ DUSK_DEFAULT_BOT: "1" }).slice(-2) as Array<{ name: string; inputSchema: Record<string, any> }>;
 
   it("are listed last, in this order, only with DUSK_DEFAULT_BOT", () => {

@@ -4,8 +4,8 @@
   "title": "Asana AI assistant for project handoffs and task reviews",
   "nav": "asana",
   "h1": "an asana assistant for the work between tasks",
-  "description": "Connect Asana to dusk bot for dependency checks, handoff lists and project reviews. Copy three routines and see the actions and limits behind them.",
-  "answer": "**walk into the handoff knowing what still blocks it.** an asana bot can read tasks, comments, subtasks and dependencies together, then name the unfinished work and its owner. give that review to a dusk bot using the ai you choose. start read only. let the review earn your trust before allowing it to change tasks.",
+  "description": "Connect Asana to Metal for dependency checks, handoff lists and project reviews. Copy three routines and see the actions and limits behind them.",
+  "answer": "**walk into the handoff knowing what still blocks it.** an asana bot can read tasks, comments, subtasks and dependencies together, then name the unfinished work and its owner. give that review to a Metal bot using the ai you choose. start read only. let the review earn your trust before allowing it to change tasks.",
   "tags": [
     "projects",
     "handoffs",
@@ -122,15 +122,15 @@
   ],
   "sources": [
     {
-      "label": "dusk bot docs: files and apps",
+      "label": "Metal docs: files and apps",
       "url": "/docs/files-and-apps"
     },
     {
-      "label": "dusk bot docs: routines",
+      "label": "Metal docs: routines",
       "url": "/docs/routines"
     },
     {
-      "label": "dusk bot docs: sending and permissions",
+      "label": "Metal docs: sending and permissions",
       "url": "/docs/computer"
     }
   ],

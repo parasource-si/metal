@@ -13,7 +13,7 @@ const validPackage: any = {
     tagline: "Turn a question into a sourced brief.",
     summary: "A small research team.",
     category: "Research",
-    author: { name: "dusk bot" },
+    author: { name: "Metal" },
     license: "MIT",
     outcomes: ["Produce a sourced brief."],
     setupMinutes: 3,

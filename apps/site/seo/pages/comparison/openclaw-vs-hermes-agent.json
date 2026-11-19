@@ -1,9 +1,9 @@
 {
   "path": "/vs/openclaw-vs-hermes-agent",
-  "title": "OpenClaw vs Hermes Agent: where dusk bot fits",
+  "title": "OpenClaw vs Hermes Agent: where Metal fits",
   "nav": "openclaw vs hermes agent",
   "h1": "openclaw vs hermes agent: which one should you run?",
-  "description": "Compare OpenClaw, Hermes Agent and dusk bot on setup, agent teams, scheduling and hosting, with dated sources and no performance rankings.",
+  "description": "Compare OpenClaw, Hermes Agent and Metal on setup, agent teams, scheduling and hosting, with dated sources and no performance rankings.",
   "answer": "**choose who handles the upkeep before choosing the agent.** openclaw and hermes can run on your machine or server. openclaw centres on chat channels and routing. hermes adds persistent memory and self-created skills.[^1][^3] both give you open-source code to change. dusk puts named bots with separate jobs in an app, with hosting available when you want it.",
   "tags": [
     "openclaw",
@@ -47,7 +47,7 @@
     "cols": [
       "OpenClaw",
       "Hermes Agent",
-      "dusk bot"
+      "Metal"
     ],
     "rows": [
       {
@@ -131,7 +131,7 @@
       }
     ]
   },
-  "method": "**try the same small job before moving your work.** we make dusk bot. this comparison uses product sources checked on 12 november 2026 and dusk docs.\n\nwe have not run head-to-head tasks or measured installation times. we leave out security rankings because disclosure counts cannot rank safety. the rows compare setup and features, not answer quality.",
+  "method": "**try the same small job before moving your work.** Metal is based on Dusk Bot. this comparison uses product sources checked on 12 november 2026 and dusk docs.\n\nwe have not run head-to-head tasks or measured installation times. we leave out security rankings because disclosure counts cannot rank safety. the rows compare setup and features, not answer quality.",
   "sections": [
     {
       "h": "start where you want to talk",
@@ -187,15 +187,15 @@
       "checked": "2026-11-12"
     },
     {
-      "label": "dusk bot: first setup",
+      "label": "Metal: first setup",
       "url": "/docs/getting-started"
     },
     {
-      "label": "dusk bot: hosting choices",
+      "label": "Metal: hosting choices",
       "url": "/docs/dusk-cloud"
     },
     {
-      "label": "dusk bot: group chats",
+      "label": "Metal: group chats",
       "url": "/docs/group-chats"
     },
     {
@@ -204,11 +204,11 @@
       "checked": "2026-11-12"
     },
     {
-      "label": "dusk bot: routine schedules",
+      "label": "Metal: routine schedules",
       "url": "/docs/routines"
     },
     {
-      "label": "dusk bot: ai and app billing",
+      "label": "Metal: ai and app billing",
       "url": "/docs/account-and-billing"
     }
   ],
@@ -266,7 +266,7 @@
       ],
       [
         "named bots in a shared app conversation",
-        "dusk bot"
+        "Metal"
       ]
     ]
   },

@@ -32,7 +32,7 @@ export function refusedApps(output: string): string[] {
 }
 
 export function reconnectNote(labels: readonly string[]): string {
-  return `[dusk bot: the person reconnected ${labels.join(" and ")}, so ${labels.length === 1 ? "its" : "their"} tools work again. Carry on with the task that stopped for it, from where it stopped, without asking them to reconnect or repeating what you already said.]`;
+  return `[Metal: the person reconnected ${labels.join(" and ")}, so ${labels.length === 1 ? "its" : "their"} tools work again. Carry on with the task that stopped for it, from where it stopped, without asking them to reconnect or repeating what you already said.]`;
 }
 
 interface Turn { refused: Set<string>; text: string }

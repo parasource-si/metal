@@ -8,7 +8,7 @@ import { DiagnosticsRow } from "./DiagnosticsRow";
 (globalThis as { IS_REACT_ACT_ENVIRONMENT?: boolean }).IS_REACT_ACT_ENVIRONMENT = true;
 let host: HTMLDivElement;
 let root: Root;
-const FOLDER = "C:\\Users\\Ash\\AppData\\Roaming\\Dusk Bot\\logs";
+const FOLDER = "C:\\Users\\Ash\\AppData\\Roaming\\Metal\\logs";
 
 beforeEach(() => {
   setLocale("en");

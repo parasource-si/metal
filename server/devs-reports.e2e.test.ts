@@ -125,7 +125,7 @@ it("sends one report with the bot's report_bug summary and the facts, redacted, 
   expect(whole).not.toContain("convert in.png out.webp");
 
   const dump = JSON.parse(readFileSync(fixture.fixtureDumpPath, "utf8")) as { prompt: unknown };
-  expect(JSON.stringify(dump.prompt)).toContain("this message tags @devs, so it is a bug report for dusk bot's developers");
+  expect(JSON.stringify(dump.prompt)).toContain("this message tags @devs, so it is a bug report for Dusk's developers");
   const line = "Sent to the dusk team (report report-1). The dusk team gets it by email and will reply to ada@example.com.";
   await until(async () => (await rows()).some((row) => row.kind === "activity" && row.tool?.name === `notice: ${line}`), 20_000);
   const tool = (await rows()).find((row) => row.kind === "activity" && row.tool?.name === "report_bug");

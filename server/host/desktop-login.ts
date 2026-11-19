@@ -8,7 +8,7 @@ import { DESKTOP_TAKEN, type DesktopLogin } from "./fill-login-turn.ts";
 
 type Turn = { botId: string; threadId: string; generation: string; teamComputerId?: string };
 
-export const DESKTOP_FILL_BUSY = "dusk bot is typing a saved login on this computer, so this call was not performed. Look at the screen again once fill_login has answered.";
+export const DESKTOP_FILL_BUSY = "Metal is typing a saved login on this computer, so this call was not performed. Look at the screen again once fill_login has answered.";
 
 export interface DesktopLoginDeps<T extends Turn> {
   /** The VPS desktop this turn mounted, if it is this bot's turn's. */

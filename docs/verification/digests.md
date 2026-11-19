@@ -12,7 +12,7 @@ pnpm exec vitest run server/commands.test.ts server/store.test.ts server/message
 ```
 
 The first test starts `launchVerificationServer`, then uses the shared
-`control:dusk` surface to create two bots, send consecutive direct turns,
+`control:metal` surface to create two bots, send consecutive direct turns,
 wait for settlement, create a room, send to it, and read both transcripts.
 It checks per-turn hook results (including reused tool IDs), unique persisted
 receipts and the room speaker. Commands, wait results and transcripts are

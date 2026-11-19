@@ -209,7 +209,7 @@ function PlaceRow({ place, count, lit, opening, busy, onOpen }: {
   );
 }
 
-/** A fresh install whose account set up dusk bot elsewhere: connect there, or set this computer up instead. */
+/** A fresh install whose account set up Metal elsewhere: connect there, or set this computer up instead. */
 export function SetUpOnCard({ screen, simulated = false, opening = null, onConnect, onStay }: {
   screen: Extract<ElsewhereScreen, { kind: "set-up-on" }>; simulated?: boolean; opening?: string | null; onConnect: () => void; onStay: () => void;
 }) {

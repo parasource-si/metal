@@ -129,7 +129,7 @@ describe.skipIf(process.platform !== "darwin")("async standalone CUA launch (iso
     vi.stubEnv("DUSK_CUA_EMBEDDED", "");
     fixture.script = "process.stderr.write('fixture launch failure'); process.exit(4)";
     const failure = await cua.startCua();
-    expect(failure).toEqual({ mode: "unavailable", reason: "The computer helper (CuaDriver) did not answer. Press Retry; if it still fails, quit and reopen dusk bot." });
+    expect(failure).toEqual({ mode: "unavailable", reason: "The computer helper (CuaDriver) did not answer. Press Retry; if it still fails, quit and reopen Metal." });
     fixture.script = "setTimeout(() => process.exit(0), 120)";
     const results = await Promise.all([cua.requestComputerUse(), cua.requestComputerUse()]);
     expect(results).toEqual([{ enabled: true, status: "ready", reasonCode: undefined, message: undefined }, { enabled: true, status: "ready", reasonCode: undefined, message: undefined }]);

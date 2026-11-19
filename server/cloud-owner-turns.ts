@@ -1,4 +1,4 @@
-// Which turns on a dusk bot Cloud home provably act for its owner: a conversation they started from their own admin-scoped
+// Which turns on a Dusk Cloud home provably act for its owner: a conversation they started from their own admin-scoped
 // device, a room member answering their own line there, or a routine they wrote or started by hand, in a conversation they
 // opened that has never held anybody else's words, since a resumed session carries everything said in it. Webhooks,
 // guests, work handed in from elsewhere and anything unprovable never do. Only such turns write the bot's memory.

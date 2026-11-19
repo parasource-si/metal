@@ -196,7 +196,7 @@ for (const bot of BOTS) {
   }
 }
 
-// the whole window: dusk bot's chat with its panel open, the demo's first frame
+// the whole window: Metal's chat with its panel open, the demo's first frame
 for (const bot of BOTS.slice(1)) await show(page, bot, messages(bot), { select: false, unread: Boolean(bot.unread) });
 await show(page, BOTS[0], messages(BOTS[0]), { unread: false });
 await page.waitForTimeout(500);

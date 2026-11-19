@@ -16,7 +16,7 @@ export const MODELS = {
 
 export const BOTS = [
   {
-    key: 'dusk', name: 'dusk bot', main: true, color: 'chrome', body: 'kit', model: 'sonnet',
+    key: 'dusk', name: 'Metal', main: true, color: 'chrome', body: 'kit', model: 'sonnet',
     routines: [{ name: 'Morning brief', time: '08:00', weekdays: [1, 2, 3, 4, 5], enabled: true }, { name: 'Friday wrap-up', time: '17:00', weekdays: [5], enabled: false }],
     history: [
       { u: 'Morning. What did everyone do overnight?' },

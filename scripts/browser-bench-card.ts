@@ -14,7 +14,7 @@ type Run = { label: string; model: string | null; runs: number; at: string; card
 const before = JSON.parse(readFileSync(opt("before"), "utf8")) as Run;
 const after = JSON.parse(readFileSync(opt("after"), "utf8")) as Run;
 const out = opt("out");
-const title = args.includes("--title") ? opt("title") : "dusk bot browser: before and after";
+const title = args.includes("--title") ? opt("title") : "Metal browser: before and after";
 
 const GROUP_NAMES: Record<string, string> = { composers: "Rich-text composers", lists: "Long, virtual and paged lists", widgets: "Custom widgets", frames: "Frames, payment fields, popups", overlays: "Overlays, walls, menus, modals", flows: "Sign-in, slow apps, re-renders", files: "Uploads, downloads, forms" };
 
@@ -69,7 +69,7 @@ table{border-collapse:collapse;width:100%;background:#fff;border-radius:10px;box
 .cols{display:grid;grid-template-columns:1.7fr 1fr;gap:22px}.note{background:#fff;border-radius:10px;padding:14px 16px;box-shadow:0 0 0 1px var(--grid);font-size:12.5px}.note ul{padding-left:18px;margin:6px 0}
 </style></head><body><div class="viz-root">
 <h1>${esc(title)}</h1>
-<p class="sub">${ids.length} local pages of hard real-world UI, ${after.runs} runs each, played by Claude Code ${esc(after.model ?? "")} through dusk bot's real browser service and headless Chrome. Before: ${esc(before.label)} (${before.at.slice(0, 16).replace("T", " ")}). After: ${esc(after.label)} (${after.at.slice(0, 16).replace("T", " ")}).</p>
+<p class="sub">${ids.length} local pages of hard real-world UI, ${after.runs} runs each, played by Claude Code ${esc(after.model ?? "")} through Metal's real browser service and headless Chrome. Before: ${esc(before.label)} (${before.at.slice(0, 16).replace("T", " ")}). After: ${esc(after.label)} (${after.at.slice(0, 16).replace("T", " ")}).</p>
 <div class="tiles">
 ${tile("Tasks done right", `${before.card.all.successPct}%`, `${after.card.all.successPct}%`, delta(before.card.all.successPct, after.card.all.successPct, false, " pts"))}
 ${tile("Tool calls per task", `${before.card.all.meanSteps}`, `${after.card.all.meanSteps}`, delta(before.card.all.meanSteps, after.card.all.meanSteps, true))}

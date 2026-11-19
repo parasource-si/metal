@@ -55,7 +55,7 @@ describe("McpToolHints", () => {
     expect(list).toHaveBeenCalledTimes(2);
   });
 
-  it("reads dusk bot's own api_request by its method, and its own app servers by their known reads", () => {
+  it("reads Metal's own api_request by its method, and its own app servers by their known reads", () => {
     const h = new McpToolHints({ list: async () => [] });
     const api = { type: "http" as const, url: "http://127.0.0.1:1/api/app-tokens/mcp/0123456789abcdef", headers: {} };
     expect(h.readsOnly({ server: "stripe", tool: "api_request", spec: api, apiServer: true, facts: { method: "GET" } })).toBe(true);

@@ -29,7 +29,7 @@ const { trailingRows } = await import("@/lib/failed-reply");
 const MISSING = "Screen Recording required for CuaDriver; turn on CuaDriver in System Settings > Privacy & Security";
 const status = vi.fn(async () => ({ supported: true as const, accessibility: "granted" as const, screen: "missing" as const }));
 const retry = vi.fn(async () => ({}));
-const onMac: Bot = { id: "dusk", name: "dusk bot", computer: "local", modelSelection: { instanceId: "claude", model: "sonnet" } } as Bot;
+const onMac: Bot = { id: "dusk", name: "Metal", computer: "local", modelSelection: { instanceId: "claude", model: "sonnet" } } as Bot;
 fixture.bots = [onMac];
 fixture.instances = [{ instanceId: "claude", driverKind: "claudeAgent", displayName: "Claude", snapshot: { state: "available", authenticated: true } } as InstanceInfo];
 
@@ -62,7 +62,7 @@ describe("screen access for a bot on this Mac", () => {
   it("says it plainly with one Allow access that opens the permissions modal, and a close", async () => {
     await render(createElement(ScreenAccessNotice, { bot: { ...onMac, threadId: "modal" } }));
     await ask("modal");
-    expect(document.body.textContent).toContain("dusk bot needs screen access to use this Mac");
+    expect(document.body.textContent).toContain("Metal needs screen access to use this Mac");
     expect(document.body.textContent).not.toMatch(/CuaDriver|Open screen/);
     expect(actions()).toEqual(["Allow access"]);
     expect(document.querySelector("[data-chat-error] button[aria-label]")).not.toBeNull();
@@ -95,11 +95,11 @@ describe("screen access for a bot on this Mac", () => {
     const at = Date.now();
     const ask: Message = { id: "ask", role: "user", kind: "text", at, text: "hi" };
     const failed: Message = { id: "failed", role: "bot", kind: "activity", at: at + 1, tool: {
-      name: "error: dusk bot can't use this computer yet: Screen Recording required.", ok: false,
-      place: { state: "place-failed", source: "works-on", params: { bot: "dusk bot", cause: "dusk bot can't use this computer yet: Screen Recording required. Turn on CuaDriver in System Settings > Privacy & Security > Screen Recording; dusk bot notices by itself, no restart needed." } },
+      name: "error: Metal can't use this computer yet: Screen Recording required.", ok: false,
+      place: { state: "place-failed", source: "works-on", params: { bot: "Metal", cause: "Metal can't use this computer yet: Screen Recording required. Turn on CuaDriver in System Settings > Privacy & Security > Screen Recording; Metal notices by itself, no restart needed." } },
     } } as Message;
     await render(createElement(FailedReplyCard, { rows: trailingRows([ask, failed]), botId: "dusk", threadId: "main" }));
-    expect(document.body.textContent).toContain("dusk bot needs screen access to use this Mac");
+    expect(document.body.textContent).toContain("Metal needs screen access to use this Mac");
     expect(actions()).toEqual(["Allow access"]);
   });
 });

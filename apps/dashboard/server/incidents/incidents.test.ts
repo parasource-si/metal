@@ -106,7 +106,7 @@ describe("alert throttling", () => {
     time.now = Date.parse("2026-11-13T08:01:00Z"); await incidents.tick(); await incidents.tick();
     const daily = mailer.outbox.slice(RULES.mailsPerDay);
     expect(daily).toHaveLength(1);
-    expect(daily[0]!.subject).toBe("5 problems not emailed yet on dusk bot");
+    expect(daily[0]!.subject).toBe("5 problems not emailed yet on Metal");
     expect(daily[0]!.text).toContain("more issues than the daily email limit");
     time.now = Date.parse("2026-11-14T08:01:00Z"); await incidents.tick();
     expect(mailer.outbox).toHaveLength(RULES.mailsPerDay + 1);

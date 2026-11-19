@@ -2536,7 +2536,7 @@ describe("live config frames", () => {
     expect(configStatusFromFrame(baseFrame)).not.toHaveProperty("team");
   });
 
-  it("keeps a dusk bot Cloud home's flag through live config refreshes, and adds none elsewhere", () => {
+  it("keeps a dusk cloud home's flag through live config refreshes, and adds none elsewhere", () => {
     expect(configStatusFromFrame({ ...baseFrame, cloudHome: true }).cloudHome).toBe(true);
     expect(configStatusFromFrame(baseFrame)).not.toHaveProperty("cloudHome");
   });

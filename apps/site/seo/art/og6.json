@@ -5,7 +5,7 @@
    "404"
   ],
   "alt": "you found the bots' secret room: pixel bots asleep on a hill at night under the moon, one ghost bot wide awake",
-  "hash": "a3af87ad2e44acfd"
+  "hash": "a641e74cfddf66d7"
  },
  {
   "id": "home",
@@ -13,8 +13,8 @@
    "home",
    "waitlist"
   ],
-  "alt": "meet dusk bot, with the purple cat bot standing in the title between the words, and five pixel bots on a hill under a blue pixel sky",
-  "hash": "d0a03d2bb0070e37"
+  "alt": "meet Metal, with the purple cat bot standing beside the name, and five pixel bots on a hill under a blue pixel sky",
+  "hash": "eba0931d38848ee2"
  },
  {
   "id": "pricing",
@@ -22,7 +22,7 @@
    "pricing"
   ],
   "alt": "a whole ai team, free on your laptop: six pixel bots on a hill around a sign saying \"free. really.\"",
-  "hash": "e41233ae93b3ee71"
+  "hash": "c6c20eb8283841bd"
  },
  {
   "id": "download",
@@ -30,7 +30,7 @@
    "download"
   ],
   "alt": "your new coworkers are ready: five pixel bots popping up from the bottom of a blue pixel sky",
-  "hash": "f404e08439a33f21"
+  "hash": "46d194a50ee1f87e"
  },
  {
   "id": "docs",
@@ -38,7 +38,7 @@
    "docs"
   ],
   "alt": "everything your bots can do: a blue pixel bot reading over a big open notebook, a yellow bot sitting on a stack of books, a magnifying glass",
-  "hash": "bfcad6cba3e13669"
+  "hash": "cac09b455868d697"
  },
  {
   "id": "about",
@@ -46,7 +46,7 @@
    "about"
   ],
   "alt": "who's behind the bots: four pixel bots sitting on a cloud, chatting \"who made this?\" \"we did most of it.\"",
-  "hash": "85045dea8135acac"
+  "hash": "2989238e9863fa34"
  },
  {
   "id": "changelog",
@@ -54,7 +54,7 @@
    "changelog"
   ],
   "alt": "the bots learned new tricks: three pixel bots balanced on each other's heads while the others cheer",
-  "hash": "5ebc004750c66299"
+  "hash": "ec132cedc5b917a0"
  },
  {
   "id": "contact",
@@ -63,1231 +63,1231 @@
    "support"
   ],
   "alt": "a human reads every message: a blue pixel bot beside a pink desk phone, chatting \"hello? anyone there?\" \"yes. a real person.\"",
-  "hash": "98a891e78c5270de"
+  "hash": "dfa1d9cdad6b7ab9"
  },
  {
   "id": "integrations",
   "seo": "/integrations",
   "alt": "your bots already know your apps: the gmail, slack, notion, github, calendar and linear marks floating around a pink pixel bot with heart eyes",
-  "hash": "fc859d918acb114b"
+  "hash": "ecec83d1113daf2e"
  },
  {
   "id": "alternatives",
   "seo": "/alternatives",
   "alt": "before you pick an ai agent: two pixel bots back to back at a signpost, looking different ways",
-  "hash": "35798afe4ef06130"
+  "hash": "f5dcbe172904d4b6"
  },
  {
   "id": "openclaw",
   "seo": "/alternatives/openclaw",
   "alt": "tried openclaw? read this first: a yellow star bot scouting with binoculars, two small bots behind it",
-  "hash": "ee1444c300261df1"
+  "hash": "f558e23b8c474327"
  },
  {
   "id": "guides",
   "seo": "/guides",
   "alt": "ai agents, explained like a friend would: a blue pixel bot leading a line of bots towards a map",
-  "hash": "a69fef8ec173e8a3"
+  "hash": "ddeac1b2aa3f4d57"
  },
  {
   "id": "use-cases",
   "seo": "/use-cases",
   "alt": "what would you hand off first? four pixel bots, each beside its job: a mailbox, a chart, a briefcase and a clock",
-  "hash": "f79af6e99c3ad865"
+  "hash": "64aa67f0746d6b43"
  },
  {
   "id": "claude-code",
   "seo": "/run-claude-code-24-7",
   "alt": "claude code, even while you sleep: a closed laptop under the moon at sunset, one pixel bot still working beside it, one asleep",
-  "hash": "07d7af7e09c7abfe"
+  "hash": "b16b88ba036535d5"
  },
  {
   "id": "gmail",
   "seo": "/integrations/gmail",
   "alt": "your inbox, sorted before you wake up: a purple cat bot standing on a big gmail tile, chatting \"anything urgent?\" \"two. drafts are ready.\"",
-  "hash": "8e3f86ab33b9a144"
+  "hash": "7e19b4d3c2f3e72c"
  },
  {
   "id": "agents-when-laptop-closed",
   "seo": "/agents-when-laptop-closed",
   "alt": "your laptop's shut. your bots aren't.: three pixel bots in a line, heading for a closed laptop, on a hill under a blue pixel sky",
-  "hash": "134c22d9dbfb930c"
+  "hash": "7d3e1eeceb649ad8"
  },
  {
   "id": "ai-agent-that-controls-your-computer",
   "seo": "/ai-agent-that-controls-your-computer",
   "alt": "give your bot its own computer: three pixel bots in a line, heading for a computer, on a hill under a blue pixel sky",
-  "hash": "a51c5ca8adb9f278"
+  "hash": "3d35ff2b57f7fc42"
  },
  {
   "id": "ai-chief-of-staff",
   "seo": "/ai-chief-of-staff",
   "alt": "an ai chief of staff: three pixel bots in a line, heading for a map, on a hill under a blue pixel sky",
-  "hash": "59618a861761cb6d"
+  "hash": "b9441b9fdd817169"
  },
  {
   "id": "ai-employees",
   "seo": "/ai-employees",
   "alt": "ai employees, minus the hype: three pixel bots in a line, heading for a briefcase, on a hill under a blue pixel sky",
-  "hash": "01a787ae7b180e07"
+  "hash": "8855680242a22813"
  },
  {
   "id": "ai-executive-assistant",
   "seo": "/ai-executive-assistant",
   "alt": "an assistant that preps your day: three pixel bots in a line, heading for an alarm clock, on a hill under a blue pixel sky",
-  "hash": "e5411204e8a1ef44"
+  "hash": "8bd54c86d111bea5"
  },
  {
   "id": "ai-group-chat",
   "seo": "/ai-group-chat",
   "alt": "a group chat with your bots: three pixel bots in a line, heading for chat bubbles, on a hill under a blue pixel sky",
-  "hash": "5f207a3d4962bdd6"
+  "hash": "02db69cdbdf2f718"
  },
  {
   "id": "ai-teammates",
   "seo": "/ai-teammates",
   "alt": "ai teammates with clear jobs: three pixel bots in a line, heading for a folder, on a hill under a blue pixel sky",
-  "hash": "784bd0fd9e754c79"
+  "hash": "ca7af067e900906d"
  },
  {
   "id": "alternatives--ai-assistant-you-text",
   "seo": "/alternatives/ai-assistant-you-text",
   "alt": "ai assistants you text: a mint pixel bot at a signpost, looking at a tile saying AI you text, on a hill under a blue pixel sky",
-  "hash": "8225db0855086768"
+  "hash": "bf8fca009d6a8c33"
  },
  {
   "id": "alternatives--chatgpt-agent",
   "seo": "/alternatives/chatgpt-agent",
   "alt": "chatgpt agent is gone: an orange pixel bot at a signpost, looking at a tile saying ChatGPT Work, on a hill under a blue pixel sky",
-  "hash": "5553e9a362c8b2e6"
+  "hash": "88f17b27368590cf"
  },
  {
   "id": "alternatives--claude-cowork",
   "seo": "/alternatives/claude-cowork",
   "alt": "tried claude cowork? read this first: a coral pixel bot at a signpost, looking at a tile saying Claude Cowork, on a hill under a blue pixel sky",
-  "hash": "b4978e6a22b79f90"
+  "hash": "1bef3b8cddb6d708"
  },
  {
   "id": "alternatives--genspark",
   "seo": "/alternatives/genspark",
   "alt": "tried genspark? read this first: an orange pixel bot at a signpost, looking at a tile saying Genspark, on a hill under a blue pixel sky",
-  "hash": "a905f73295178d4d"
+  "hash": "c81edcbd704b22b4"
  },
  {
   "id": "alternatives--gumloop",
   "seo": "/alternatives/gumloop",
   "alt": "tried gumloop? read this first: a blue pixel bot at a signpost, looking at a tile saying Gumloop, on a hill under a blue pixel sky",
-  "hash": "1a373863731eb097"
+  "hash": "cb51a34da87e444b"
  },
  {
   "id": "alternatives--hermes-agent",
   "seo": "/alternatives/hermes-agent",
   "alt": "tried hermes agent? read this first: a green pixel bot at a signpost, looking at a tile saying Hermes Agent, on a hill under a blue pixel sky",
-  "hash": "26c0b427ce31351c"
+  "hash": "47ad8b0b0b49e42b"
  },
  {
   "id": "alternatives--lindy",
   "seo": "/alternatives/lindy",
   "alt": "tried lindy? read this first: a purple pixel bot at a signpost, looking at a tile saying Lindy, on a hill under a blue pixel sky",
-  "hash": "1f81e0e4d4087b07"
+  "hash": "db785acd3bca53e8"
  },
  {
   "id": "alternatives--manus",
   "seo": "/alternatives/manus",
   "alt": "tried manus? read this first: a blue pixel bot at a signpost, looking at a tile saying Manus, on a hill under a blue pixel sky",
-  "hash": "a811707a192ee8a1"
+  "hash": "06cf9496160e9d3d"
  },
  {
   "id": "alternatives--n8n",
   "seo": "/alternatives/n8n",
   "alt": "tried n8n? read this first: a green pixel bot at a signpost, looking at a tile saying n8n, on a hill under a blue pixel sky",
-  "hash": "781512693aa36376"
+  "hash": "995380b7df36fec2"
  },
  {
   "id": "alternatives--openclaw-hosting",
   "seo": "/alternatives/openclaw-hosting",
   "alt": "hosting openclaw? read this first: an indigo pixel bot at a signpost, looking at a tile saying OpenClaw hosting, on a hill under a blue pixel sky",
-  "hash": "1ad023a67c492247"
+  "hash": "4aecf63489ed2c9e"
  },
  {
   "id": "alternatives--openclaw-no-setup",
   "seo": "/alternatives/openclaw-no-setup",
   "alt": "openclaw setup without the terminal: an indigo pixel bot at a signpost, looking at a tile saying OpenClaw, on a hill under a blue pixel sky",
-  "hash": "cdf0791529cf628c"
+  "hash": "e8653ecb1777bc3f"
  },
  {
   "id": "alternatives--perplexity-comet",
   "seo": "/alternatives/perplexity-comet",
   "alt": "tried perplexity comet? read this first: a green pixel bot at a signpost, looking at a tile saying Perplexity Comet, on a hill under a blue pixel sky",
-  "hash": "23e1c239a68459d7"
+  "hash": "3cce4feff1a02db6"
  },
  {
   "id": "alternatives--poke",
   "seo": "/alternatives/poke",
   "alt": "tried poke? read this first: a blue pixel bot at a signpost, looking at a tile saying Poke, on a hill under a blue pixel sky",
-  "hash": "2839a8777759eb82"
+  "hash": "f149c6d9b0a9aa8d"
  },
  {
   "id": "alternatives--relevance-ai",
   "seo": "/alternatives/relevance-ai",
   "alt": "tried relevance ai? read this first: a yellow pixel bot at a signpost, looking at a tile saying Relevance AI, on a hill under a blue pixel sky",
-  "hash": "445b76b05dc9e9ae"
+  "hash": "364ae9fa3f164166"
  },
  {
   "id": "alternatives--sintra",
   "seo": "/alternatives/sintra",
   "alt": "tried sintra? read this first: a blue pixel bot at a signpost, looking at a tile saying Sintra, on a hill under a blue pixel sky",
-  "hash": "34fdc01c2c42796a"
+  "hash": "06188645d9ee41d2"
  },
  {
   "id": "alternatives--zapier-agents",
   "seo": "/alternatives/zapier-agents",
   "alt": "tried zapier agents? read this first: a yellow pixel bot at a signpost, looking at a tile saying Zapier Agents, on a hill under a blue pixel sky",
-  "hash": "cdf7011959bb27de"
+  "hash": "5a1ff8cbb3c82372"
  },
  {
   "id": "claude-code-from-your-phone",
   "seo": "/claude-code-from-your-phone",
   "alt": "claude code, from your phone: three pixel bots in a line, heading for a phone, on a hill under a blue pixel sky",
-  "hash": "c0ca9bd70250a010"
+  "hash": "8050e23a967cec82"
  },
  {
   "id": "for--ecommerce",
   "seo": "/for/ecommerce",
   "alt": "an ai team for ecommerce: two pixel bots either side of a parcel, on a hill under a blue pixel sky",
-  "hash": "e3e2aa0498664d06"
+  "hash": "d10314ea8f54f4eb"
  },
  {
   "id": "for--founders",
   "seo": "/for/founders",
   "alt": "an ai team for founders: two pixel bots either side of a briefcase, on a hill under a blue pixel sky",
-  "hash": "a6d18de5e5c74584"
+  "hash": "4656f179fc0be2d1"
  },
  {
   "id": "for--product-managers",
   "seo": "/for/product-managers",
   "alt": "an ai team for product managers: two pixel bots either side of a chart, on a hill under a blue pixel sky",
-  "hash": "38cff026766b9bea"
+  "hash": "fd94dcfd5740b036"
  },
  {
   "id": "for--real-estate-agents",
   "seo": "/for/real-estate-agents",
   "alt": "an ai team for realtors: two pixel bots either side of a little house, on a hill under a blue pixel sky",
-  "hash": "17ec71884935f0a5"
+  "hash": "5090a676cc2aa106"
  },
  {
   "id": "for--recruiters",
   "seo": "/for/recruiters",
   "alt": "an ai team for recruiters: two pixel bots either side of a magnifying glass, on a hill under a blue pixel sky",
-  "hash": "b503ea66f4af8478"
+  "hash": "339b7515e862e739"
  },
  {
   "id": "for--small-business-owners",
   "seo": "/for/small-business-owners",
   "alt": "an ai team for small businesses: two pixel bots either side of a briefcase, on a hill under a blue pixel sky",
-  "hash": "75f636aa9ff8aa45"
+  "hash": "8474034b710a1ec2"
  },
  {
   "id": "for--students",
   "seo": "/for/students",
   "alt": "an ai team for students: two pixel bots either side of a graduation cap, on a hill under a blue pixel sky",
-  "hash": "150c31c2d96d9c38"
+  "hash": "997c4ae15acf4eed"
  },
  {
   "id": "glossary--always-on-ai-agent",
   "seo": "/glossary/always-on-ai-agent",
   "alt": "always-on ai agent: a mint pixel bot reading over an open notebook beside a stack of books, on a hill under a blue pixel sky",
-  "hash": "ac03e9e6a7c7fe13"
+  "hash": "5152dea029ceb26d"
  },
  {
   "id": "guides--apps-that-use-your-ai-subscription",
   "seo": "/guides/apps-that-use-your-ai-subscription",
   "alt": "who can use your ai plan?: three pixel bots in a line, heading for an open notebook, on a hill under a blue pixel sky",
-  "hash": "150cd06d8ac2d849"
+  "hash": "d6dccadcd373e881"
  },
  {
   "id": "guides--chatgpt-scheduled-tasks",
   "seo": "/guides/chatgpt-scheduled-tasks",
   "alt": "chatgpt scheduled tasks: three pixel bots in a line, heading for an alarm clock, on a hill under a blue pixel sky",
-  "hash": "66f9c3cd55644239"
+  "hash": "5b36975c510fb562"
  },
  {
   "id": "guides--claude-code-for-email",
   "seo": "/guides/claude-code-for-email",
   "alt": "claude code for email: three pixel bots in a line, heading for a mailbox, on a hill under a blue pixel sky",
-  "hash": "ebed88cb3fe4812f"
+  "hash": "5c49001416a9e654"
  },
  {
   "id": "guides--claude-code-for-marketing",
   "seo": "/guides/claude-code-for-marketing",
   "alt": "claude code for marketing: three pixel bots in a line, heading for a megaphone, on a hill under a blue pixel sky",
-  "hash": "a27e7bddfda8be90"
+  "hash": "ce78d1b20ba1e755"
  },
  {
   "id": "guides--claude-code-for-non-developers",
   "seo": "/guides/claude-code-for-non-developers",
   "alt": "claude code for non-developers: three pixel bots in a line, heading for a folder, on a hill under a blue pixel sky",
-  "hash": "d377c73321a6801a"
+  "hash": "36db7685cad52e4b"
  },
  {
   "id": "guides--claude-code-routines",
   "seo": "/guides/claude-code-routines",
   "alt": "claude code scheduled tasks: three pixel bots in a line, heading for an alarm clock, on a hill under a blue pixel sky",
-  "hash": "eb9b714306031f75"
+  "hash": "7860667560b6a5b3"
  },
  {
   "id": "guides--claude-code-telegram-discord-slack",
   "seo": "/guides/claude-code-telegram-discord-slack",
   "alt": "claude code in chat apps: three pixel bots in a line, heading for a phone, on a hill under a blue pixel sky",
-  "hash": "1e2d1a78e58be256"
+  "hash": "55e55e39535683b2"
  },
  {
   "id": "guides--claude-connectors",
   "seo": "/guides/claude-connectors",
   "alt": "claude connectors: three pixel bots in a line, heading for a plug, on a hill under a blue pixel sky",
-  "hash": "f138762d6e777756"
+  "hash": "2cbeeec9bc905d3c"
  },
  {
   "id": "guides--claude-cowork-pricing",
   "seo": "/guides/claude-cowork-pricing",
   "alt": "what claude cowork really costs: three pixel bots in a line, heading for a coin purse, on a hill under a blue pixel sky",
-  "hash": "1b03fda22673ff0c"
+  "hash": "f1f57063f6b1cc7f"
  },
  {
   "id": "guides--claude-cowork-windows",
   "seo": "/guides/claude-cowork-windows",
   "alt": "cowork on windows and linux: three pixel bots in a line, heading for a computer, on a hill under a blue pixel sky",
-  "hash": "1843a729183f11b7"
+  "hash": "81714734a96c9904"
  },
  {
   "id": "guides--claude-scheduled-tasks",
   "seo": "/guides/claude-scheduled-tasks",
   "alt": "claude scheduled tasks: three pixel bots in a line, heading for an alarm clock, on a hill under a blue pixel sky",
-  "hash": "815df5cb4c7d50fd"
+  "hash": "9766d7b4c900a494"
  },
  {
   "id": "guides--claude-skills",
   "seo": "/guides/claude-skills",
   "alt": "claude skills: three pixel bots in a line, heading for a stack of books, on a hill under a blue pixel sky",
-  "hash": "8247cfdbeebc1f77"
+  "hash": "070f7a16a74b0d5d"
  },
  {
   "id": "guides--claude-subscription-vs-api",
   "seo": "/guides/claude-subscription-vs-api",
   "alt": "claude plan vs api: three pixel bots in a line, heading for a coin purse, on a hill under a blue pixel sky",
-  "hash": "6b23cd74b18b82a6"
+  "hash": "5c17154d52bb35dd"
  },
  {
   "id": "guides--gemini-scheduled-actions",
   "seo": "/guides/gemini-scheduled-actions",
   "alt": "gemini scheduled actions: three pixel bots in a line, heading for an alarm clock, on a hill under a blue pixel sky",
-  "hash": "20234abc148b0b80"
+  "hash": "26f98c879eafdecc"
  },
  {
   "id": "guides--grok-tasks",
   "seo": "/guides/grok-tasks",
   "alt": "grok tasks, automations and bot routines: three pixel bots in a line, heading for a cloud, on a hill under a blue pixel sky",
-  "hash": "0706e255f743fe56"
+  "hash": "03b783fdd35dd6d8"
  },
  {
   "id": "guides--how-much-does-an-ai-agent-cost",
   "seo": "/guides/how-much-does-an-ai-agent-cost",
   "alt": "how much an ai agent costs: three pixel bots in a line, heading for a receipt, on a hill under a blue pixel sky",
-  "hash": "0509d970c12d119c"
+  "hash": "2af28a1093094b6e"
  },
  {
   "id": "guides--is-it-safe-to-let-ai-control-your-computer",
   "seo": "/guides/is-it-safe-to-let-ai-control-your-computer",
   "alt": "is it safe to let ai use your computer: three pixel bots in a line, heading for a shield, on a hill under a blue pixel sky",
-  "hash": "f7ab53033cd237dc"
+  "hash": "874959c0063d9984"
  },
  {
   "id": "guides--is-openclaw-safe",
   "seo": "/guides/is-openclaw-safe",
   "alt": "openclaw safety: three pixel bots in a line, heading for a shield, on a hill under a blue pixel sky",
-  "hash": "ceae7b6deb625d56"
+  "hash": "721d13a03c54e8a6"
  },
  {
   "id": "guides--openclaw-clawdbot-moltbot-explained",
   "seo": "/guides/openclaw-clawdbot-moltbot-explained",
   "alt": "did openai buy openclaw?: three pixel bots in a line, heading for a signpost, on a hill under a blue pixel sky",
-  "hash": "1d78de150a8bb708"
+  "hash": "23f8304b7ed45dac"
  },
  {
   "id": "guides--what-is-an-ai-agent",
   "seo": "/guides/what-is-an-ai-agent",
   "alt": "what is an ai agent: three pixel bots in a line, heading for a computer, on a hill under a blue pixel sky",
-  "hash": "28fba691022e0feb"
+  "hash": "22c1c4fbe55e741c"
  },
  {
   "id": "guides--what-is-mcp",
   "seo": "/guides/what-is-mcp",
   "alt": "what is mcp: three pixel bots in a line, heading for a plug, on a hill under a blue pixel sky",
-  "hash": "5e3567f121d2268c"
+  "hash": "8644dfbec301dd82"
  },
  {
   "id": "integrations--airtable",
   "seo": "/integrations/airtable",
   "alt": "airtable, handled by your bots: a coral pixel bot standing beside the Airtable mark on a hill under a blue pixel sky",
-  "hash": "813fd1eb9e51807f"
+  "hash": "29f916eb563378b8"
  },
  {
   "id": "integrations--airtable--create-records",
   "seo": "/integrations/airtable/create-records",
   "alt": "create records in airtable: a coral pixel bot standing beside the Airtable mark on a hill under a blue pixel sky",
-  "hash": "e98de7a454031023"
+  "hash": "41bfebd85ecf1195"
  },
  {
   "id": "integrations--asana",
   "seo": "/integrations/asana",
   "alt": "asana, handled by your bots: a blue pixel bot standing beside the Asana mark on a hill under a blue pixel sky",
-  "hash": "22ffd8908abbc5cb"
+  "hash": "7dd1276f01cfcdfc"
  },
  {
   "id": "integrations--asana--create-task-comment",
   "seo": "/integrations/asana/create-task-comment",
   "alt": "add task comment in asana: a blue pixel bot standing beside the Asana mark on a hill under a blue pixel sky",
-  "hash": "1958d21da203a07b"
+  "hash": "cfde049f9e7e66ba"
  },
  {
   "id": "integrations--asana--get-a-task",
   "seo": "/integrations/asana/get-a-task",
   "alt": "read a task in asana: a blue pixel bot standing beside the Asana mark on a hill under a blue pixel sky",
-  "hash": "34aa82ad9613ddab"
+  "hash": "57220bfb3f07be3b"
  },
  {
   "id": "integrations--canva",
   "seo": "/integrations/canva",
   "alt": "canva, handled by your bots: a pink pixel bot standing beside the Canva mark on a hill under a blue pixel sky",
-  "hash": "d7c0a14343b95681"
+  "hash": "7b248c429fffba1c"
  },
  {
   "id": "integrations--canva--list-user-designs",
   "seo": "/integrations/canva/list-user-designs",
   "alt": "find designs in canva: a pink pixel bot standing beside the Canva mark on a hill under a blue pixel sky",
-  "hash": "252779bc1dc45d36"
+  "hash": "67a3cd7161ed84a1"
  },
  {
   "id": "integrations--discord",
   "seo": "/integrations/discord",
   "alt": "discord, handled by your bots: a blue pixel bot standing beside the Discord mark on a hill under a blue pixel sky",
-  "hash": "3404800802ef9a65"
+  "hash": "cd12f2fda4528aa7"
  },
  {
   "id": "integrations--excel",
   "seo": "/integrations/excel",
   "alt": "excel, handled by your bots: an indigo pixel bot standing beside the Excel mark on a hill under a blue pixel sky",
-  "hash": "c2974685cc35898e"
+  "hash": "01934d2321586e9b"
  },
  {
   "id": "integrations--excel--add-table",
   "seo": "/integrations/excel/add-table",
   "alt": "add table in excel: an indigo pixel bot standing beside the Excel mark on a hill under a blue pixel sky",
-  "hash": "45c36deebd7a46b1"
+  "hash": "1da1e37dfa7657db"
  },
  {
   "id": "integrations--excel--search-drive-files",
   "seo": "/integrations/excel/search-drive-files",
   "alt": "search workbook files in excel: an indigo pixel bot standing beside the Excel mark on a hill under a blue pixel sky",
-  "hash": "fab9c2a236762d70"
+  "hash": "a6e8a7054cbf07ef"
  },
  {
   "id": "integrations--figma",
   "seo": "/integrations/figma",
   "alt": "figma, handled by your bots: a coral pixel bot standing beside the Figma mark on a hill under a blue pixel sky",
-  "hash": "680e8cc8178ba80c"
+  "hash": "dcdee9604cd2a65f"
  },
  {
   "id": "integrations--github",
   "seo": "/integrations/github",
   "alt": "github, handled by your bots: a coral pixel bot standing beside the GitHub mark on a hill under a blue pixel sky",
-  "hash": "77cfe5454eed7b8a"
+  "hash": "eda73e0a4d7db9bd"
  },
  {
   "id": "integrations--github--add-labels-to-an-issue",
   "seo": "/integrations/github/add-labels-to-an-issue",
   "alt": "add labels to an issue: a coral pixel bot standing beside the GitHub mark on a hill under a blue pixel sky",
-  "hash": "ddeccaf408389ee4"
+  "hash": "7bc04b743bf623e4"
  },
  {
   "id": "integrations--github--close-an-issue",
   "seo": "/integrations/github/close-an-issue",
   "alt": "close an issue in github: a coral pixel bot standing beside the GitHub mark on a hill under a blue pixel sky",
-  "hash": "492e06fda78bcbcd"
+  "hash": "b23ff1a1db51eaba"
  },
  {
   "id": "integrations--github--create-an-issue",
   "seo": "/integrations/github/create-an-issue",
   "alt": "create an issue in github: a coral pixel bot standing beside the GitHub mark on a hill under a blue pixel sky",
-  "hash": "5f648733d7a7df0a"
+  "hash": "6e22c2e8c81404b6"
  },
  {
   "id": "integrations--github--create-an-issue-comment",
   "seo": "/integrations/github/create-an-issue-comment",
   "alt": "add an issue comment in github: a coral pixel bot standing beside the GitHub mark on a hill under a blue pixel sky",
-  "hash": "989c87f1006b5af8"
+  "hash": "7f6a64ba704c1ef3"
  },
  {
   "id": "integrations--github--get-a-pull-request",
   "seo": "/integrations/github/get-a-pull-request",
   "alt": "get a pull request in github: a coral pixel bot standing beside the GitHub mark on a hill under a blue pixel sky",
-  "hash": "6c69649d6425acbf"
+  "hash": "fda8b6c2a97c9c47"
  },
  {
   "id": "integrations--github--list-repository-issues",
   "seo": "/integrations/github/list-repository-issues",
   "alt": "list repository issues in github: a coral pixel bot standing beside the GitHub mark on a hill under a blue pixel sky",
-  "hash": "8295e1773a3da0af"
+  "hash": "df53980442598d1c"
  },
  {
   "id": "integrations--github--search-issues-and-pull-requests",
   "seo": "/integrations/github/search-issues-and-pull-requests",
   "alt": "search issues and pull requests: a coral pixel bot standing beside the GitHub mark on a hill under a blue pixel sky",
-  "hash": "61e727802b0c4c23"
+  "hash": "dac19a50b71a514d"
  },
  {
   "id": "integrations--gmail--batch-modify-gmail-messages",
   "seo": "/integrations/gmail/batch-modify-gmail-messages",
   "alt": "change message labels in bulk: an orange pixel bot standing beside the Gmail mark on a hill under a blue pixel sky",
-  "hash": "4a0ca5df36adbeb4"
+  "hash": "2de4d14e569bed1d"
  },
  {
   "id": "integrations--gmail--create-email-draft",
   "seo": "/integrations/gmail/create-email-draft",
   "alt": "create email draft in gmail: an orange pixel bot standing beside the Gmail mark on a hill under a blue pixel sky",
-  "hash": "c013d58d7b902d81"
+  "hash": "5ed6b9388583bd64"
  },
  {
   "id": "integrations--gmail--delete-thread",
   "seo": "/integrations/gmail/delete-thread",
   "alt": "delete thread in gmail: an orange pixel bot standing beside the Gmail mark on a hill under a blue pixel sky",
-  "hash": "eb610d9fcf9996f1"
+  "hash": "597302e1dfc55d35"
  },
  {
   "id": "integrations--gmail--fetch-emails",
   "seo": "/integrations/gmail/fetch-emails",
   "alt": "fetch emails in gmail: an orange pixel bot standing beside the Gmail mark on a hill under a blue pixel sky",
-  "hash": "f5de4a68bbfaabd7"
+  "hash": "0693161144897edd"
  },
  {
   "id": "integrations--gmail--get-gmail-attachment",
   "seo": "/integrations/gmail/get-gmail-attachment",
   "alt": "get an attachment in gmail: an orange pixel bot standing beside the Gmail mark on a hill under a blue pixel sky",
-  "hash": "6be3c880f0e22729"
+  "hash": "c535bb6277b0d53d"
  },
  {
   "id": "integrations--gmail--list-drafts",
   "seo": "/integrations/gmail/list-drafts",
   "alt": "list drafts in gmail: an orange pixel bot standing beside the Gmail mark on a hill under a blue pixel sky",
-  "hash": "1597f2bd6aa93a31"
+  "hash": "85d7a295c4223398"
  },
  {
   "id": "integrations--gmail--move-to-trash",
   "seo": "/integrations/gmail/move-to-trash",
   "alt": "move to trash in gmail: an orange pixel bot standing beside the Gmail mark on a hill under a blue pixel sky",
-  "hash": "3fc5351d41df6779"
+  "hash": "c424d2f3b717ccc3"
  },
  {
   "id": "integrations--gmail--reply-to-email-thread",
   "seo": "/integrations/gmail/reply-to-email-thread",
   "alt": "reply to email thread in gmail: an orange pixel bot standing beside the Gmail mark on a hill under a blue pixel sky",
-  "hash": "51e039a021c98342"
+  "hash": "6cffae0e75f6b5b9"
  },
  {
   "id": "integrations--gmail--search-people",
   "seo": "/integrations/gmail/search-people",
   "alt": "search people in gmail: an orange pixel bot standing beside the Gmail mark on a hill under a blue pixel sky",
-  "hash": "4fb71242d12226c3"
+  "hash": "94a7e07c1dcf17d4"
  },
  {
   "id": "integrations--gmail--send-draft",
   "seo": "/integrations/gmail/send-draft",
   "alt": "send draft in gmail: an orange pixel bot standing beside the Gmail mark on a hill under a blue pixel sky",
-  "hash": "6949e3c639ad753d"
+  "hash": "7a443c814dd8f2e0"
  },
  {
   "id": "integrations--gmail--send-email",
   "seo": "/integrations/gmail/send-email",
   "alt": "send email in gmail: an orange pixel bot standing beside the Gmail mark on a hill under a blue pixel sky",
-  "hash": "db31086128f6449f"
+  "hash": "e454d7cf8b22a688"
  },
  {
   "id": "integrations--gmail--untrash-message",
   "seo": "/integrations/gmail/untrash-message",
   "alt": "restore trashed message in gmail: an orange pixel bot standing beside the Gmail mark on a hill under a blue pixel sky",
-  "hash": "a0c3cad80e936a8a"
+  "hash": "7e8e99a1d99837dd"
  },
  {
   "id": "integrations--gmail--update-draft",
   "seo": "/integrations/gmail/update-draft",
   "alt": "update a draft in gmail: an orange pixel bot standing beside the Gmail mark on a hill under a blue pixel sky",
-  "hash": "eec04ab355abf9e0"
+  "hash": "ee1fb2036f3aef4c"
  },
  {
   "id": "integrations--google-calendar",
   "seo": "/integrations/google-calendar",
   "alt": "google calendar, handled by your bots: a mint pixel bot standing beside the Google Calendar mark on a hill under a blue pixel sky",
-  "hash": "19fd78648a884820"
+  "hash": "bd683299f801a8d1"
  },
  {
   "id": "integrations--google-calendar--create-a-new-calendar",
   "seo": "/integrations/google-calendar/create-a-new-calendar",
   "alt": "create a calendar in google calendar: a mint pixel bot standing beside the Google Calendar mark on a hill under a blue pixel sky",
-  "hash": "4419eb7042efc95c"
+  "hash": "bbcbeda9bb8b409b"
  },
  {
   "id": "integrations--google-calendar--create-event",
   "seo": "/integrations/google-calendar/create-event",
   "alt": "create event in google calendar: a mint pixel bot standing beside the Google Calendar mark on a hill under a blue pixel sky",
-  "hash": "4d7b8bf896ecb01f"
+  "hash": "2ae6782f571e64e7"
  },
  {
   "id": "integrations--google-calendar--delete-event",
   "seo": "/integrations/google-calendar/delete-event",
   "alt": "delete event in google calendar: a mint pixel bot standing beside the Google Calendar mark on a hill under a blue pixel sky",
-  "hash": "133c7f5dbbe8d0ce"
+  "hash": "79e7a99a123b76bb"
  },
  {
   "id": "integrations--google-calendar--find-event",
   "seo": "/integrations/google-calendar/find-event",
   "alt": "find event in google calendar: a mint pixel bot standing beside the Google Calendar mark on a hill under a blue pixel sky",
-  "hash": "a435569f37cc5510"
+  "hash": "8c9e3d294dac015d"
  },
  {
   "id": "integrations--google-calendar--get-event-instances",
   "seo": "/integrations/google-calendar/get-event-instances",
   "alt": "get event instances in google calendar: a mint pixel bot standing beside the Google Calendar mark on a hill under a blue pixel sky",
-  "hash": "0218cf0209c79c8d"
+  "hash": "b366d816ff6e4745"
  },
  {
   "id": "integrations--google-calendar--list-events-from-all-calendars",
   "seo": "/integrations/google-calendar/list-events-from-all-calendars",
   "alt": "list events across calendars: a mint pixel bot standing beside the Google Calendar mark on a hill under a blue pixel sky",
-  "hash": "586163d1e9c47d6b"
+  "hash": "2fe34c0ec57c98de"
  },
  {
   "id": "integrations--google-calendar--patch-event",
   "seo": "/integrations/google-calendar/patch-event",
   "alt": "patch event details in google calendar: a mint pixel bot standing beside the Google Calendar mark on a hill under a blue pixel sky",
-  "hash": "f7f6d854f05b42f9"
+  "hash": "a24d906f763d4d0d"
  },
  {
   "id": "integrations--google-calendar--query-calendar-availability",
   "seo": "/integrations/google-calendar/query-calendar-availability",
   "alt": "query calendar availability in google calendar: a mint pixel bot standing beside the Google Calendar mark on a hill under a blue pixel sky",
-  "hash": "5512402155400a7c"
+  "hash": "af6891daa4659876"
  },
  {
   "id": "integrations--google-drive",
   "seo": "/integrations/google-drive",
   "alt": "google drive, handled by your bots: a pink pixel bot standing beside the Google Drive mark on a hill under a blue pixel sky",
-  "hash": "a37a5702a0876b09"
+  "hash": "8ceb2496af486642"
  },
  {
   "id": "integrations--google-drive--create-a-folder",
   "seo": "/integrations/google-drive/create-a-folder",
   "alt": "create a folder in google drive: a pink pixel bot standing beside the Google Drive mark on a hill under a blue pixel sky",
-  "hash": "c6ff16434099e900"
+  "hash": "bdb605a04a79dc29"
  },
  {
   "id": "integrations--google-drive--create-permission",
   "seo": "/integrations/google-drive/create-permission",
   "alt": "create permission in google drive: a pink pixel bot standing beside the Google Drive mark on a hill under a blue pixel sky",
-  "hash": "43da5c281885f838"
+  "hash": "5037641d159f5b47"
  },
  {
   "id": "integrations--google-drive--export-google-workspace-file",
   "seo": "/integrations/google-drive/export-google-workspace-file",
   "alt": "export workspace file in google drive: a pink pixel bot standing beside the Google Drive mark on a hill under a blue pixel sky",
-  "hash": "16fcbd226010b1c3"
+  "hash": "74d21a90bd0e9cca"
  },
  {
   "id": "integrations--google-drive--find-file",
   "seo": "/integrations/google-drive/find-file",
   "alt": "find file in google drive: a pink pixel bot standing beside the Google Drive mark on a hill under a blue pixel sky",
-  "hash": "5286e5706b887cfb"
+  "hash": "a6390f204c4652b3"
  },
  {
   "id": "integrations--google-drive--move-file",
   "seo": "/integrations/google-drive/move-file",
   "alt": "move a file in google drive: a pink pixel bot standing beside the Google Drive mark on a hill under a blue pixel sky",
-  "hash": "78a9a361b4fe09bb"
+  "hash": "fae66f266672ffe8"
  },
  {
   "id": "integrations--google-drive--upload-file",
   "seo": "/integrations/google-drive/upload-file",
   "alt": "upload file in google drive: a pink pixel bot standing beside the Google Drive mark on a hill under a blue pixel sky",
-  "hash": "e37b1adc8e7f5e9a"
+  "hash": "7423f57cd46a2485"
  },
  {
   "id": "integrations--google-sheets",
   "seo": "/integrations/google-sheets",
   "alt": "google sheets, handled by your bots: an orange pixel bot standing beside the Google Sheets mark on a hill under a blue pixel sky",
-  "hash": "1fa6cc859f9b1c32"
+  "hash": "f37300cc7450d0ec"
  },
  {
   "id": "integrations--google-sheets--append-values-to-spreadsheet",
   "seo": "/integrations/google-sheets/append-values-to-spreadsheet",
   "alt": "append values to spreadsheet: an orange pixel bot standing beside the Google Sheets mark on a hill under a blue pixel sky",
-  "hash": "22b792b4df771608"
+  "hash": "2b75d420a19d9459"
  },
  {
   "id": "integrations--google-sheets--copy-sheet-to-another-spreadsheet",
   "seo": "/integrations/google-sheets/copy-sheet-to-another-spreadsheet",
   "alt": "copy a tab to another spreadsheet: an orange pixel bot standing beside the Google Sheets mark on a hill under a blue pixel sky",
-  "hash": "1d675b5968faa9ac"
+  "hash": "e62c4bcc08d9876b"
  },
  {
   "id": "integrations--google-sheets--create-a-google-sheet",
   "seo": "/integrations/google-sheets/create-a-google-sheet",
   "alt": "create a spreadsheet in google sheets: an orange pixel bot standing beside the Google Sheets mark on a hill under a blue pixel sky",
-  "hash": "3dd3608febcf1b6e"
+  "hash": "b2ff2825953473e1"
  },
  {
   "id": "integrations--google-sheets--export-sheet-as-pdf",
   "seo": "/integrations/google-sheets/export-sheet-as-pdf",
   "alt": "export sheet as pdf: an orange pixel bot standing beside the Google Sheets mark on a hill under a blue pixel sky",
-  "hash": "27d5d366cbeb3e71"
+  "hash": "91661b2433ce1cbd"
  },
  {
   "id": "integrations--google-sheets--get-spreadsheet-values",
   "seo": "/integrations/google-sheets/get-spreadsheet-values",
   "alt": "get spreadsheet values in google sheets: an orange pixel bot standing beside the Google Sheets mark on a hill under a blue pixel sky",
-  "hash": "217824d5a82434c7"
+  "hash": "47d3cf6fb4544976"
  },
  {
   "id": "integrations--google-sheets--search-spreadsheets",
   "seo": "/integrations/google-sheets/search-spreadsheets",
   "alt": "search spreadsheets in google sheets: an orange pixel bot standing beside the Google Sheets mark on a hill under a blue pixel sky",
-  "hash": "9f5cbbd615f9d9a1"
+  "hash": "bcb813cc7a5fa8e9"
  },
  {
   "id": "integrations--google-sheets--set-basic-filter",
   "seo": "/integrations/google-sheets/set-basic-filter",
   "alt": "set a basic filter: an orange pixel bot standing beside the Google Sheets mark on a hill under a blue pixel sky",
-  "hash": "6f8f31c52362332f"
+  "hash": "f483dd531080e8d7"
  },
  {
   "id": "integrations--google-sheets--set-data-validation-rule",
   "seo": "/integrations/google-sheets/set-data-validation-rule",
   "alt": "set data validation in google sheets: an orange pixel bot standing beside the Google Sheets mark on a hill under a blue pixel sky",
-  "hash": "e94ff849ea27bb7a"
+  "hash": "8fdf2adafe4c33c6"
  },
  {
   "id": "integrations--google-sheets--sort-range",
   "seo": "/integrations/google-sheets/sort-range",
   "alt": "sort a range in google sheets: an orange pixel bot standing beside the Google Sheets mark on a hill under a blue pixel sky",
-  "hash": "f217c72d98941a00"
+  "hash": "398d25b70845f228"
  },
  {
   "id": "integrations--google-sheets--update-spreadsheet-values",
   "seo": "/integrations/google-sheets/update-spreadsheet-values",
   "alt": "update spreadsheet values in google sheets: an orange pixel bot standing beside the Google Sheets mark on a hill under a blue pixel sky",
-  "hash": "d118820e7adce568"
+  "hash": "8496a9065be52bc1"
  },
  {
   "id": "integrations--google-sheets--upsert-rows",
   "seo": "/integrations/google-sheets/upsert-rows",
   "alt": "upsert rows in google sheets: an orange pixel bot standing beside the Google Sheets mark on a hill under a blue pixel sky",
-  "hash": "5487852765f2dca9"
+  "hash": "a5e1ab64696144a7"
  },
  {
   "id": "integrations--hubspot",
   "seo": "/integrations/hubspot",
   "alt": "hubspot, handled by your bots: a coral pixel bot standing beside the HubSpot mark on a hill under a blue pixel sky",
-  "hash": "330d93b4feb6b84e"
+  "hash": "4357e4fe76b30a6a"
  },
  {
   "id": "integrations--jira",
   "seo": "/integrations/jira",
   "alt": "jira, handled by your bots: a mint pixel bot standing beside the Jira mark on a hill under a blue pixel sky",
-  "hash": "704dab4dbcec3fd9"
+  "hash": "8358d990a1c877b2"
  },
  {
   "id": "integrations--jira--add-comment",
   "seo": "/integrations/jira/add-comment",
   "alt": "add issue comment in jira: a mint pixel bot standing beside the Jira mark on a hill under a blue pixel sky",
-  "hash": "42030fe2f0451220"
+  "hash": "49222529beb8c0bf"
  },
  {
   "id": "integrations--jira--assign-issue",
   "seo": "/integrations/jira/assign-issue",
   "alt": "assign an issue in jira: a mint pixel bot standing beside the Jira mark on a hill under a blue pixel sky",
-  "hash": "be865c3a3c677ef5"
+  "hash": "654999bf8aa34f09"
  },
  {
   "id": "integrations--linear",
   "seo": "/integrations/linear",
   "alt": "linear, handled by your bots: a mint pixel bot standing beside the Linear mark on a hill under a blue pixel sky",
-  "hash": "5e79ec87c4f34aee"
+  "hash": "3a7f2b86cdd49628"
  },
  {
   "id": "integrations--linear--search-linear-issues",
   "seo": "/integrations/linear/search-linear-issues",
   "alt": "search issues in linear: a mint pixel bot standing beside the Linear mark on a hill under a blue pixel sky",
-  "hash": "7a9471655f407dec"
+  "hash": "4551a285fb594697"
  },
  {
   "id": "integrations--linear--update-issue",
   "seo": "/integrations/linear/update-issue",
   "alt": "update issue in linear: a mint pixel bot standing beside the Linear mark on a hill under a blue pixel sky",
-  "hash": "ae3228532beaf54a"
+  "hash": "cab8c1597f0e4835"
  },
  {
   "id": "integrations--linkedin",
   "seo": "/integrations/linkedin",
   "alt": "linkedin, handled by your bots: an orange pixel bot standing beside the LinkedIn mark on a hill under a blue pixel sky",
-  "hash": "78ade4aa0964e86a"
+  "hash": "89e4f0bec104e560"
  },
  {
   "id": "integrations--notion",
   "seo": "/integrations/notion",
   "alt": "notion, handled by your bots: a yellow pixel bot standing beside the Notion mark on a hill under a blue pixel sky",
-  "hash": "6f710e7e91d5a450"
+  "hash": "c91ab5ab99e96a6b"
  },
  {
   "id": "integrations--notion--add-multiple-content-blocks",
   "seo": "/integrations/notion/add-multiple-content-blocks",
   "alt": "add content blocks in notion: a yellow pixel bot standing beside the Notion mark on a hill under a blue pixel sky",
-  "hash": "34f560a41d256048"
+  "hash": "b39259a67eff22b6"
  },
  {
   "id": "integrations--notion--create-comment",
   "seo": "/integrations/notion/create-comment",
   "alt": "create comment in notion: a yellow pixel bot standing beside the Notion mark on a hill under a blue pixel sky",
-  "hash": "3a223f3bab642c15"
+  "hash": "0d87275d75ad267c"
  },
  {
   "id": "integrations--notion--create-notion-page",
   "seo": "/integrations/notion/create-notion-page",
   "alt": "create a page in notion: a yellow pixel bot standing beside the Notion mark on a hill under a blue pixel sky",
-  "hash": "adf916a68a123612"
+  "hash": "dd35de43d8daf3b7"
  },
  {
   "id": "integrations--notion--fetch-comments",
   "seo": "/integrations/notion/fetch-comments",
   "alt": "fetch comments in notion: a yellow pixel bot standing beside the Notion mark on a hill under a blue pixel sky",
-  "hash": "ae8d39e0e694424c"
+  "hash": "81f44a7e6db4dab3"
  },
  {
   "id": "integrations--notion--get-page-markdown",
   "seo": "/integrations/notion/get-page-markdown",
   "alt": "get page markdown in notion: a yellow pixel bot standing beside the Notion mark on a hill under a blue pixel sky",
-  "hash": "19a7ffac48b012ad"
+  "hash": "d4c5f4ebb1e9bdcb"
  },
  {
   "id": "integrations--notion--insert-row-database",
   "seo": "/integrations/notion/insert-row-database",
   "alt": "add database row in notion: a yellow pixel bot standing beside the Notion mark on a hill under a blue pixel sky",
-  "hash": "feb3313a53410ec6"
+  "hash": "2a8f7b8cd4a6bb27"
  },
  {
   "id": "integrations--notion--move-page",
   "seo": "/integrations/notion/move-page",
   "alt": "move page in notion: a yellow pixel bot standing beside the Notion mark on a hill under a blue pixel sky",
-  "hash": "b78fa705d9ee6bad"
+  "hash": "938d36be1b21bf1f"
  },
  {
   "id": "integrations--notion--query-database-with-filter",
   "seo": "/integrations/notion/query-database-with-filter",
   "alt": "query database with filter in notion: a yellow pixel bot standing beside the Notion mark on a hill under a blue pixel sky",
-  "hash": "e8f6455ec5e0a02d"
+  "hash": "59cb1b891d8f095b"
  },
  {
   "id": "integrations--notion--replace-page-content",
   "seo": "/integrations/notion/replace-page-content",
   "alt": "replace page content in notion: a yellow pixel bot standing beside the Notion mark on a hill under a blue pixel sky",
-  "hash": "21e5ea715363deae"
+  "hash": "9666f1808d652fec"
  },
  {
   "id": "integrations--notion--search-notion-pages-and-databases",
   "seo": "/integrations/notion/search-notion-pages-and-databases",
   "alt": "search pages and databases in notion: a yellow pixel bot standing beside the Notion mark on a hill under a blue pixel sky",
-  "hash": "acdd0f19334739f8"
+  "hash": "31984b0b2127afbb"
  },
  {
   "id": "integrations--notion--update-page",
   "seo": "/integrations/notion/update-page",
   "alt": "update page properties in notion: a yellow pixel bot standing beside the Notion mark on a hill under a blue pixel sky",
-  "hash": "48458f517495173b"
+  "hash": "6f6bd2e7969dd68e"
  },
  {
   "id": "integrations--notion--upsert-database-rows",
   "seo": "/integrations/notion/upsert-database-rows",
   "alt": "add or update database rows: a yellow pixel bot standing beside the Notion mark on a hill under a blue pixel sky",
-  "hash": "66c4886459869888"
+  "hash": "872277cbbf557e57"
  },
  {
   "id": "integrations--obsidian",
   "seo": "/integrations/obsidian",
   "alt": "obsidian, handled by your bots: an orange pixel bot standing beside the Obsidian mark on a hill under a blue pixel sky",
-  "hash": "0fe00cc6dfc05f1e"
+  "hash": "5590c6fba1533a0a"
  },
  {
   "id": "integrations--outlook",
   "seo": "/integrations/outlook",
   "alt": "outlook, handled by your bots: a yellow pixel bot standing beside the Outlook mark on a hill under a blue pixel sky",
-  "hash": "d60da705ae1876a2"
+  "hash": "159bd310378eb775"
  },
  {
   "id": "integrations--outlook--create-calendar-event",
   "seo": "/integrations/outlook/create-calendar-event",
   "alt": "create calendar event in outlook: a yellow pixel bot standing beside the Outlook mark on a hill under a blue pixel sky",
-  "hash": "07b6edf005626271"
+  "hash": "6b8b9b5e5a3e845c"
  },
  {
   "id": "integrations--outlook--create-email-draft",
   "seo": "/integrations/outlook/create-email-draft",
   "alt": "create an email draft in outlook: a yellow pixel bot standing beside the Outlook mark on a hill under a blue pixel sky",
-  "hash": "61e6cd78f0dfbaa2"
+  "hash": "43b8eba3270a12e1"
  },
  {
   "id": "integrations--outlook--create-to-do-task",
   "seo": "/integrations/outlook/create-to-do-task",
   "alt": "create to do task in outlook: a yellow pixel bot standing beside the Outlook mark on a hill under a blue pixel sky",
-  "hash": "bd34989728f4739d"
+  "hash": "603d6107848fc84e"
  },
  {
   "id": "integrations--outlook--decline-calendar-event",
   "seo": "/integrations/outlook/decline-calendar-event",
   "alt": "decline a calendar invitation in outlook: a yellow pixel bot standing beside the Outlook mark on a hill under a blue pixel sky",
-  "hash": "a3929788477d6e1e"
+  "hash": "466eda61daa52e14"
  },
  {
   "id": "integrations--outlook--download-outlook-attachment",
   "seo": "/integrations/outlook/download-outlook-attachment",
   "alt": "download an attachment in outlook: a yellow pixel bot standing beside the Outlook mark on a hill under a blue pixel sky",
-  "hash": "a6e46460757c5411"
+  "hash": "1ca663a91599c2b4"
  },
  {
   "id": "integrations--outlook--find-meeting-times",
   "seo": "/integrations/outlook/find-meeting-times",
   "alt": "find meeting times in outlook: a yellow pixel bot standing beside the Outlook mark on a hill under a blue pixel sky",
-  "hash": "79928fd064e4ae0b"
+  "hash": "5b7eb95faff755c5"
  },
  {
   "id": "integrations--outlook--list-tasks-from-a-to-do-list",
   "seo": "/integrations/outlook/list-tasks-from-a-to-do-list",
   "alt": "list tasks from a to do list: a yellow pixel bot standing beside the Outlook mark on a hill under a blue pixel sky",
-  "hash": "b35bb0128d513741"
+  "hash": "ae85b1186099b614"
  },
  {
   "id": "integrations--outlook--move-message-to-folder",
   "seo": "/integrations/outlook/move-message-to-folder",
   "alt": "move message to folder in outlook: a yellow pixel bot standing beside the Outlook mark on a hill under a blue pixel sky",
-  "hash": "30c5713425b8d075"
+  "hash": "8a9a5fdba8a99eff"
  },
  {
   "id": "integrations--outlook--query-emails",
   "seo": "/integrations/outlook/query-emails",
   "alt": "query emails in a folder: a yellow pixel bot standing beside the Outlook mark on a hill under a blue pixel sky",
-  "hash": "ab4a5eb65cac1891"
+  "hash": "b1c68b07762b37b5"
  },
  {
   "id": "integrations--outlook--reply-to-email",
   "seo": "/integrations/outlook/reply-to-email",
   "alt": "reply to email in outlook: a yellow pixel bot standing beside the Outlook mark on a hill under a blue pixel sky",
-  "hash": "f92bd59612261e0c"
+  "hash": "626380813549019c"
  },
  {
   "id": "integrations--outlook--search-calendar-events",
   "seo": "/integrations/outlook/search-calendar-events",
   "alt": "search calendar events in outlook: a yellow pixel bot standing beside the Outlook mark on a hill under a blue pixel sky",
-  "hash": "ae561a3f88f49f86"
+  "hash": "1f5ecc6be7eb1661"
  },
  {
   "id": "integrations--outlook--send-email",
   "seo": "/integrations/outlook/send-email",
   "alt": "send email in outlook: a yellow pixel bot standing beside the Outlook mark on a hill under a blue pixel sky",
-  "hash": "c2d27c3a7108a8e1"
+  "hash": "18400048e6fe8cc0"
  },
  {
   "id": "integrations--salesforce",
   "seo": "/integrations/salesforce",
   "alt": "salesforce, handled by your bots: an indigo pixel bot standing beside the Salesforce mark on a hill under a blue pixel sky",
-  "hash": "e76c723fa9c1f6f6"
+  "hash": "419ad8b3ce195119"
  },
  {
   "id": "integrations--shopify",
   "seo": "/integrations/shopify",
   "alt": "shopify, handled by your bots: a yellow pixel bot standing beside the Shopify mark on a hill under a blue pixel sky",
-  "hash": "3427fb30d25374dc"
+  "hash": "9201a336d9073909"
  },
  {
   "id": "integrations--slack",
   "seo": "/integrations/slack",
   "alt": "slack, handled by your bots: a purple pixel bot standing beside the Slack mark on a hill under a blue pixel sky",
-  "hash": "e9b39c7ee17c9163"
+  "hash": "a4208fdc59f1e62b"
  },
  {
   "id": "integrations--slack--add-reaction-to-message",
   "seo": "/integrations/slack/add-reaction-to-message",
   "alt": "add reaction to message in slack: a purple pixel bot standing beside the Slack mark on a hill under a blue pixel sky",
-  "hash": "dd0b36627716f5a4"
+  "hash": "a3e3373eb1816418"
  },
  {
   "id": "integrations--slack--create-a-reminder",
   "seo": "/integrations/slack/create-a-reminder",
   "alt": "create a reminder in slack: a purple pixel bot standing beside the Slack mark on a hill under a blue pixel sky",
-  "hash": "117b43fdb6aae0bb"
+  "hash": "ffa13eac746c7b25"
  },
  {
   "id": "integrations--slack--create-slack-canvas",
   "seo": "/integrations/slack/create-slack-canvas",
   "alt": "create slack canvas in slack: a purple pixel bot standing beside the Slack mark on a hill under a blue pixel sky",
-  "hash": "ed2e19899e5ab414"
+  "hash": "9ceb2a789b3b111b"
  },
  {
   "id": "integrations--slack--create-slack-list-item",
   "seo": "/integrations/slack/create-slack-list-item",
   "alt": "add list item in slack: a purple pixel bot standing beside the Slack mark on a hill under a blue pixel sky",
-  "hash": "b939aafab221bc0d"
+  "hash": "4490dbd717fc28c2"
  },
  {
   "id": "integrations--slack--fetch-conversation-history",
   "seo": "/integrations/slack/fetch-conversation-history",
   "alt": "read conversation history in slack: a purple pixel bot standing beside the Slack mark on a hill under a blue pixel sky",
-  "hash": "91a28489eb4b4e38"
+  "hash": "e252a7f2436df57d"
  },
  {
   "id": "integrations--slack--list-unread-channel-messages",
   "seo": "/integrations/slack/list-unread-channel-messages",
   "alt": "list unread channel messages in slack: a purple pixel bot standing beside the Slack mark on a hill under a blue pixel sky",
-  "hash": "61f877462b15332a"
+  "hash": "d631548e44654757"
  },
  {
   "id": "integrations--slack--schedule-message",
   "seo": "/integrations/slack/schedule-message",
   "alt": "schedule message in slack: a purple pixel bot standing beside the Slack mark on a hill under a blue pixel sky",
-  "hash": "9ab8ed4b9672e5f1"
+  "hash": "de2ac4fa1b43bb46"
  },
  {
   "id": "integrations--slack--search-messages",
   "seo": "/integrations/slack/search-messages",
   "alt": "search messages in slack: a purple pixel bot standing beside the Slack mark on a hill under a blue pixel sky",
-  "hash": "5a1a5782d80f168a"
+  "hash": "f234d9c58f0abf67"
  },
  {
   "id": "integrations--slack--send-message",
   "seo": "/integrations/slack/send-message",
   "alt": "send message in slack: a purple pixel bot standing beside the Slack mark on a hill under a blue pixel sky",
-  "hash": "f1827f1e3ad83f29"
+  "hash": "94faffb6cd2ca602"
  },
  {
   "id": "integrations--slack--update-a-slack-message",
   "seo": "/integrations/slack/update-a-slack-message",
   "alt": "update a message in slack: a purple pixel bot standing beside the Slack mark on a hill under a blue pixel sky",
-  "hash": "a4c3a03d1cdee9ce"
+  "hash": "2ff903128823882a"
  },
  {
   "id": "integrations--stripe",
   "seo": "/integrations/stripe",
   "alt": "stripe, handled by your bots: a purple pixel bot standing beside the Stripe mark on a hill under a blue pixel sky",
-  "hash": "7d8bdfac349673b4"
+  "hash": "15b956f74c2a34b4"
  },
  {
   "id": "integrations--stripe--retrieve-invoice",
   "seo": "/integrations/stripe/retrieve-invoice",
   "alt": "read an invoice in stripe: a purple pixel bot standing beside the Stripe mark on a hill under a blue pixel sky",
-  "hash": "d2c2b11cddcd68ff"
+  "hash": "d7d77eca5bfdbcfc"
  },
  {
   "id": "integrations--twitter",
   "seo": "/integrations/twitter",
   "alt": "x, handled by your bots: an orange pixel bot standing beside the X mark on a hill under a blue pixel sky",
-  "hash": "8695f9c3d0d7acb3"
+  "hash": "17d10196bec7a9e9"
  },
  {
   "id": "integrations--whatsapp",
   "seo": "/integrations/whatsapp",
   "alt": "whatsapp, handled by your bots: a coral pixel bot standing beside the WhatsApp mark on a hill under a blue pixel sky",
-  "hash": "e7d00d39e1b973f9"
+  "hash": "6cb4b0597a1298ae"
  },
  {
   "id": "integrations--youtube",
   "seo": "/integrations/youtube",
   "alt": "youtube, handled by your bots: a pink pixel bot standing beside the YouTube mark on a hill under a blue pixel sky",
-  "hash": "be13afb85d3cd426"
+  "hash": "0e9e842e9f96448d"
  },
  {
   "id": "personal-ai-agent",
   "seo": "/personal-ai-agent",
   "alt": "a personal ai agent, done right: three pixel bots in a line, heading for a little house, on a hill under a blue pixel sky",
-  "hash": "03884b4389995add"
+  "hash": "f6827f6e21d99cab"
  },
  {
   "id": "routines--github-issue-triage",
   "seo": "/routines/github-issue-triage",
   "alt": "github issue triage, on repeat: an orange pixel bot at work beside a magnifying glass, another bot asleep, on a hill under a blue pixel sky",
-  "hash": "6c92402f34c3ddab"
+  "hash": "9c87f9379ab90800"
  },
  {
   "id": "routines--meeting-prep-brief",
   "seo": "/routines/meeting-prep-brief",
   "alt": "meeting prep brief, on repeat: a mint pixel bot at work beside an open notebook, another bot asleep, on a hill under a blue pixel sky",
-  "hash": "fb4f7f2005fe7f56"
+  "hash": "e2f1c217e33a3d4b"
  },
  {
   "id": "routines--slack-channel-digest",
   "seo": "/routines/slack-channel-digest",
   "alt": "slack channel digest, on repeat: a coral pixel bot at work beside chat bubbles, another bot asleep, on a hill under a blue pixel sky",
-  "hash": "1798f24f5fd65217"
+  "hash": "05b69c33cbcb069c"
  },
  {
   "id": "routines--weekly-calendar-preview",
   "seo": "/routines/weekly-calendar-preview",
   "alt": "weekly calendar preview, on repeat: a green pixel bot at work beside an alarm clock, another bot asleep, on a hill under a blue pixel sky",
-  "hash": "8e0689b262ab6ddd"
+  "hash": "43036b38e7b31233"
  },
  {
   "id": "routines--weekly-receipts-sweep",
   "seo": "/routines/weekly-receipts-sweep",
   "alt": "weekly receipts sweep, on repeat: a mint pixel bot at work beside a receipt, another bot asleep, on a hill under a blue pixel sky",
-  "hash": "13f80a2d85b416a4"
+  "hash": "84148405ff75e141"
  },
  {
   "id": "scheduled-ai-tasks",
   "seo": "/scheduled-ai-tasks",
   "alt": "ai tasks that run themselves: three pixel bots in a line, heading for an alarm clock, on a hill under a blue pixel sky",
-  "hash": "2aa8f20da466304c"
+  "hash": "a115674ee6ab1641"
  },
  {
   "id": "tools--always-on-cost",
   "seo": "/tools/always-on-cost",
   "alt": "what does always-on really cost?: a purple pixel bot working something out beside a chart, on a hill under a blue pixel sky",
-  "hash": "57c48ca7f97ebce1"
+  "hash": "40b539c88b7dff38"
  },
  {
   "id": "use-cases--competitor-monitoring",
   "seo": "/use-cases/competitor-monitoring",
   "alt": "competitor monitoring, handed to a bot: a pink pixel bot with binoculars, another bot looking on, on a hill under a blue pixel sky",
-  "hash": "7c4bd94455f9f4ac"
+  "hash": "c887de12edf1109b"
  },
  {
   "id": "use-cases--daily-briefing",
   "seo": "/use-cases/daily-briefing",
   "alt": "your morning brief: a pink pixel bot with an alarm clock, another bot looking on, on a hill under a blue pixel sky",
-  "hash": "ba826e245b776add"
+  "hash": "f8a99ed17e81d11d"
  },
  {
   "id": "use-cases--email-triage",
   "seo": "/use-cases/email-triage",
   "alt": "ai email triage: an indigo pixel bot with a mailbox, another bot looking on, on a hill under a blue pixel sky",
-  "hash": "8aac6d24362cacb4"
+  "hash": "3d924a5809a5da9e"
  },
  {
   "id": "use-cases--file-organizer",
   "seo": "/use-cases/file-organizer",
   "alt": "file organizer, handed to a bot: an indigo pixel bot with a folder, another bot looking on, on a hill under a blue pixel sky",
-  "hash": "5e56072ac8aac2ca"
+  "hash": "9625f2df53ba0610"
  },
  {
   "id": "use-cases--invoice-follow-up",
   "seo": "/use-cases/invoice-follow-up",
   "alt": "invoice follow-up, handed to a bot: a yellow pixel bot with a receipt, another bot looking on, on a hill under a blue pixel sky",
-  "hash": "adf29673b95ac7e1"
+  "hash": "190cc959009f2455"
  },
  {
   "id": "use-cases--lead-research",
   "seo": "/use-cases/lead-research",
   "alt": "lead research, handed to a bot: an orange pixel bot with a briefcase, another bot looking on, on a hill under a blue pixel sky",
-  "hash": "9e1b02c865cb56ce"
+  "hash": "9f2f30cf471bfe68"
  },
  {
   "id": "use-cases--market-research",
   "seo": "/use-cases/market-research",
   "alt": "market research, handed to a bot: an orange pixel bot with a stack of books, another bot looking on, on a hill under a blue pixel sky",
-  "hash": "f0f456387da53362"
+  "hash": "d0b3a624b1c129de"
  },
  {
   "id": "use-cases--newsletter",
   "seo": "/use-cases/newsletter",
   "alt": "newsletter, handed to a bot: a yellow pixel bot with a newspaper, another bot looking on, on a hill under a blue pixel sky",
-  "hash": "27f42c93b9f5df67"
+  "hash": "a96a7e90e83f2976"
  },
  {
   "id": "use-cases--social-media-posting",
   "seo": "/use-cases/social-media-posting",
   "alt": "social media posting, handed to a bot: a green pixel bot with a megaphone, another bot looking on, on a hill under a blue pixel sky",
-  "hash": "d8a0a72c1c59d59b"
+  "hash": "9db85f8273477c25"
  },
  {
   "id": "use-cases--web-scraping",
   "seo": "/use-cases/web-scraping",
   "alt": "web scraping, handed to a bot: a mint pixel bot with a computer, another bot looking on, on a hill under a blue pixel sky",
-  "hash": "75fa953d4791089b"
+  "hash": "e5bdd2b83659f0b8"
  },
  {
   "id": "use-your-ai-subscription",
   "seo": "/use-your-ai-subscription",
   "alt": "put your ai plan to work: three pixel bots in a line, heading for a key, on a hill under a blue pixel sky",
-  "hash": "af48c1e196f0be82"
+  "hash": "6755b41a895436db"
  },
  {
   "id": "vs--ai-agent-vs-chatbot",
   "seo": "/vs/ai-agent-vs-chatbot",
   "alt": "ai agent vs chatbot: an orange pixel bot facing a tile saying Chatbot / agent, with a vs badge between them, on a hill under a blue pixel sky",
-  "hash": "3dbb95b0901ee8af"
+  "hash": "8630587b7cbfbf0e"
  },
  {
   "id": "vs--chatgpt-agent",
   "seo": "/vs/chatgpt-agent",
-  "alt": "chatgpt work vs dusk bot: an orange pixel bot facing a tile saying ChatGPT Work, with a vs badge between them, on a hill under a blue pixel sky",
-  "hash": "8e34c61564804a82"
+  "alt": "chatgpt work vs Metal: an orange pixel bot facing a tile saying ChatGPT Work, with a vs badge between them, on a hill under a blue pixel sky",
+  "hash": "4732caa98d853145"
  },
  {
   "id": "vs--claude-cowork",
   "seo": "/vs/claude-cowork",
-  "alt": "claude cowork vs dusk bot: a coral pixel bot facing a tile saying Claude Cowork, with a vs badge between them, on a hill under a blue pixel sky",
-  "hash": "5742a8114ee9e36c"
+  "alt": "claude cowork vs Metal: a coral pixel bot facing a tile saying Claude Cowork, with a vs badge between them, on a hill under a blue pixel sky",
+  "hash": "7f55e95b88fda213"
  },
  {
   "id": "vs--lindy",
   "seo": "/vs/lindy",
-  "alt": "lindy vs dusk bot: a green pixel bot facing a tile saying Lindy, with a vs badge between them, on a hill under a blue pixel sky",
-  "hash": "1a428591e4a93c64"
+  "alt": "lindy vs Metal: a green pixel bot facing a tile saying Lindy, with a vs badge between them, on a hill under a blue pixel sky",
+  "hash": "347c4c5753f897e9"
  },
  {
   "id": "vs--manus",
   "seo": "/vs/manus",
-  "alt": "manus vs dusk bot: a coral pixel bot facing a tile saying Manus, with a vs badge between them, on a hill under a blue pixel sky",
-  "hash": "8359c5dc94049604"
+  "alt": "manus vs Metal: a coral pixel bot facing a tile saying Manus, with a vs badge between them, on a hill under a blue pixel sky",
+  "hash": "627490dec9fdd463"
  },
  {
   "id": "vs--openclaw",
   "seo": "/vs/openclaw",
-  "alt": "openclaw vs dusk bot: a blue pixel bot facing a tile saying OpenClaw, with a vs badge between them, on a hill under a blue pixel sky",
-  "hash": "f49b07273a2d6d5c"
+  "alt": "openclaw vs Metal: a blue pixel bot facing a tile saying OpenClaw, with a vs badge between them, on a hill under a blue pixel sky",
+  "hash": "97ecb4cafe5d6b3f"
  },
  {
   "id": "vs--openclaw-vs-hermes-agent",
   "seo": "/vs/openclaw-vs-hermes-agent",
   "alt": "openclaw vs hermes agent: an orange pixel bot facing a tile saying OpenClaw / Hermes Agent, with a vs badge between them, on a hill under a blue pixel sky",
-  "hash": "4c46ca10f773e8b8"
+  "hash": "e4f58975cae594d5"
  },
  {
   "id": "vs--poke",
   "seo": "/vs/poke",
-  "alt": "poke vs dusk bot: a mint pixel bot facing a tile saying Poke, with a vs badge between them, on a hill under a blue pixel sky",
-  "hash": "cc23273538c836e8"
+  "alt": "poke vs Metal: a mint pixel bot facing a tile saying Poke, with a vs badge between them, on a hill under a blue pixel sky",
+  "hash": "16f91fbf56d7b0a0"
  },
  {
   "id": "routines",
   "seo": "/routines",
   "alt": "jobs your bots do on repeat: a pink pixel bot at work beside an alarm clock, another bot asleep, on a hill under a blue pixel sky",
-  "hash": "9131a58d2049ce45"
+  "hash": "489fbdca0a846887"
  },
  {
   "id": "glossary",
   "seo": "/glossary",
   "alt": "ai agent words, minus the jargon: a green pixel bot reading over an open notebook beside a stack of books, on a hill under a blue pixel sky",
-  "hash": "12e9ff4c790fabfa"
+  "hash": "4ea47ee73f69e295"
  },
  {
   "id": "tools",
   "seo": "/tools",
   "alt": "free tools for planning bots: a pink pixel bot working something out beside a chart, on a hill under a blue pixel sky",
-  "hash": "c25ee0120ab4517b"
+  "hash": "6c56555106c7192b"
  },
  {
   "id": "docs--account-and-billing",
@@ -1295,7 +1295,7 @@
    "docs--account-and-billing"
   ],
   "alt": "docs: account and billing: a pink pixel bot beside a key, a friend next to it, on a hill under a blue pixel sky",
-  "hash": "4e9b8f2dac2ea254"
+  "hash": "b236c5170fb7d186"
  },
  {
   "id": "docs--bots",
@@ -1303,7 +1303,7 @@
    "docs--bots"
   ],
   "alt": "docs: bots and chats: a coral pixel bot beside chat bubbles, a friend next to it, on a hill under a blue pixel sky",
-  "hash": "73fdcfc9e73c8728"
+  "hash": "c574c4df9903d823"
  },
  {
   "id": "docs--computer",
@@ -1311,15 +1311,15 @@
    "docs--computer"
   ],
   "alt": "docs: a bot's computer: a green pixel bot beside a computer, a friend next to it, on a hill under a blue pixel sky",
-  "hash": "a4cbb01a545147ba"
+  "hash": "24cca20a6dba3d86"
  },
  {
   "id": "docs--dusk-cloud",
   "core": [
    "docs--dusk-cloud"
   ],
-  "alt": "docs: dusk cloud: two pixel bots sitting on a cloud, on a hill under a blue pixel sky",
-  "hash": "a4ee992b3a60ddc9"
+  "alt": "docs: Dusk Cloud: two pixel bots sitting on a cloud, on a hill under a blue pixel sky",
+  "hash": "90adab5e121e44f7"
  },
  {
   "id": "docs--faq",
@@ -1327,7 +1327,7 @@
    "docs--faq"
   ],
   "alt": "docs: questions: an orange pixel bot beside a magnifying glass, a friend next to it, on a hill under a blue pixel sky",
-  "hash": "1fffb848f45d780d"
+  "hash": "2ef958f19d878e37"
  },
  {
   "id": "docs--files-and-apps",
@@ -1335,7 +1335,7 @@
    "docs--files-and-apps"
   ],
   "alt": "docs: files and apps: a coral pixel bot beside a folder, a friend next to it, on a hill under a blue pixel sky",
-  "hash": "6046e4ab6532715f"
+  "hash": "38c580253db0e709"
  },
  {
   "id": "docs--getting-started",
@@ -1343,7 +1343,7 @@
    "docs--getting-started"
   ],
   "alt": "docs: getting started: a pink pixel bot beside a signpost, a friend next to it, on a hill under a blue pixel sky",
-  "hash": "dd41145e873b0c09"
+  "hash": "4740f0342339af97"
  },
  {
   "id": "docs--group-chats",
@@ -1351,7 +1351,7 @@
    "docs--group-chats"
   ],
   "alt": "docs: group chats: a blue pixel bot beside chat bubbles, a friend next to it, on a hill under a blue pixel sky",
-  "hash": "ee8cb8d3bf2a41cd"
+  "hash": "75bd35c957065c71"
  },
  {
   "id": "docs--memory",
@@ -1359,7 +1359,7 @@
    "docs--memory"
   ],
   "alt": "docs: memory: a coral pixel bot beside an open notebook, a friend next to it, on a hill under a blue pixel sky",
-  "hash": "dffae296cc89fd09"
+  "hash": "319cbe3f4e4a2d58"
  },
  {
   "id": "docs--phone",
@@ -1367,7 +1367,7 @@
    "docs--phone"
   ],
   "alt": "docs: the phone app: a purple pixel bot beside a phone, a friend next to it, on a hill under a blue pixel sky",
-  "hash": "ac4cc91ad3cbf000"
+  "hash": "cb17530fba4b8396"
  },
  {
   "id": "docs--privacy-and-data",
@@ -1375,7 +1375,7 @@
    "docs--privacy-and-data"
   ],
   "alt": "docs: privacy and your data: an indigo pixel bot beside a shield, a friend next to it, on a hill under a blue pixel sky",
-  "hash": "1d3627f2e6d21ea3"
+  "hash": "de99912ce5c635f9"
  },
  {
   "id": "docs--routines",
@@ -1383,7 +1383,7 @@
    "docs--routines"
   ],
   "alt": "docs: routines: an indigo pixel bot beside an alarm clock, a friend next to it, on a hill under a blue pixel sky",
-  "hash": "41103b247843cecc"
+  "hash": "babd422df183a863"
  },
  {
   "id": "docs--tips",
@@ -1391,7 +1391,7 @@
    "docs--tips"
   ],
   "alt": "docs: tips for using bots: a blue pixel bot beside a mug, a friend next to it, on a hill under a blue pixel sky",
-  "hash": "e47f6e572e4f5bbc"
+  "hash": "f3015660f287da33"
  },
  {
   "id": "docs--troubleshooting",
@@ -1399,7 +1399,7 @@
    "docs--troubleshooting"
   ],
   "alt": "docs: troubleshooting: a purple pixel bot beside a magnifying glass, a friend next to it, on a hill under a blue pixel sky",
-  "hash": "7d24d38dbee4e6da"
+  "hash": "1a120b77ac86b04c"
  },
  {
   "id": "docs--your-own-server",
@@ -1407,15 +1407,15 @@
    "docs--your-own-server"
   ],
   "alt": "docs: your own server: a purple pixel bot beside a server box, a friend next to it, on a hill under a blue pixel sky",
-  "hash": "ea32cf9df5649e9c"
+  "hash": "47bced628dfa8012"
  },
  {
   "id": "brand",
   "core": [
    "brand"
   ],
-  "alt": "the bots, the mark, the colours: the dusk bot mark, a purple cat bot winking and five colour swatches, on a hill under a blue pixel sky",
-  "hash": "3a1b895978f02dd4"
+  "alt": "the bots, the mark, the colours: the Metal mark, a purple cat bot winking and five colour swatches, on a hill under a blue pixel sky",
+  "hash": "a206d40f13a7633a"
  },
  {
   "id": "legal",
@@ -1428,6 +1428,6 @@
    "delete-account"
   ],
   "alt": "the fine print, in plain words: a green pixel bot beside a shield, a friend next to it, on a hill under a blue pixel sky",
-  "hash": "464b3a8660eb0b74"
+  "hash": "99d8138e13ca48fd"
  }
 ]

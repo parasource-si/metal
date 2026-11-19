@@ -52,7 +52,7 @@ mv /opt/dusk-link-node.new /opt/dusk-link-node && rm -rf /tmp/dusk-link-src
 install -o root -g root -m 0600 /tmp/dusk-link-node.env /etc/dusk-link-node.env && rm -f /tmp/dusk-link-node.env
 cat > /etc/systemd/system/dusk-link-node.service <<UNIT
 [Unit]
-Description=dusk bot link service, node $NODE_ID
+Description=Metal link service, node $NODE_ID
 After=network-online.target
 Wants=network-online.target
 

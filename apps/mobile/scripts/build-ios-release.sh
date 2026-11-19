@@ -66,14 +66,14 @@ fi
 build_number="${DUSK_IOS_BUILD_NUMBER:-$(date -u +%y%m%d%H%M)}"
 cd "$repo"
 echo "== web bundle"
-pnpm --filter @duskbot/mobile build
+pnpm --filter @metal/mobile build
 echo "== release gate"
 node apps/mobile/scripts/release-gate.mjs
 echo "== cap sync ios"
 (cd "$mobile" && npx cap sync ios)
 
 mkdir -p "$out"
-archive="$out/dusk-bot.xcarchive"
+archive="$out/Metal.xcarchive"
 rm -rf "$archive"
 echo "== archive (build $build_number)"
 if [ "$mode" = unsigned ]; then
@@ -99,7 +99,7 @@ trap cleanup EXIT
 p12_password=$(openssl rand -hex 24)
 openssl x509 -inform DER -in "$cer_file" -out "$work/cert.pem" 2>/dev/null || cp "$cer_file" "$work/cert.pem"
 # 3DES/SHA1 so `security import` reads it (OpenSSL 3 defaults to AES, which macOS refuses)
-(umask 077; openssl pkcs12 -export -inkey "$key_file" -in "$work/cert.pem" -name "dusk bot distribution" \
+(umask 077; openssl pkcs12 -export -inkey "$key_file" -in "$work/cert.pem" -name "Metal distribution" \
   -keypbe PBE-SHA1-3DES -certpbe PBE-SHA1-3DES -macalg sha1 -passout "pass:$p12_password" -out "$work/dist.p12")
 keychain="$work/dusk-ios-signing.keychain-db"
 kc_password=$(openssl rand -hex 24)

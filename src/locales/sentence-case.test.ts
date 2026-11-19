@@ -11,10 +11,10 @@ it("every string in the desktop and phone app reads in sentence case: labels, ti
   const offending = entries
     .filter(([key, value]) => entryCase(key, value) !== value)
     .map(([key, value]) => `${key}: "${value}" should read "${entryCase(key, value)}"`);
-  expect(offending, "start with a capital; keep dusk bot and dusk cloud lowercase; add another company's name to src/locales/brand-case.ts").toEqual([]);
+  expect(offending, "start with a capital; keep Metal capitalized and dusk cloud lowercase; add another company's name to src/locales/brand-case.ts").toEqual([]);
 });
 
-it("no string starts lowercase unless it starts with dusk bot, dusk cloud, a placeholder, a number or a lowercase name", () => {
+it("no string starts lowercase unless it starts with dusk cloud, a placeholder, a number or a lowercase name", () => {
   const offending = entries.filter(([key, value]) => !isFragment(key) && !startsRight(value)).map(([key, value]) => `${key}: "${value}"`);
   expect(offending, "a piece filled into the middle of another line goes in FRAGMENT_KEYS in src/locales/brand-case.ts").toEqual([]);
 });
@@ -46,19 +46,19 @@ it("the pieces filled into the middle of another line stay lowercase", () => {
 
 it("sentenceCase capitalises each sentence and keeps dusk, placeholders, code, abbreviations and lowercase names", () => {
   expect(sentenceCase("signed out. try again, e.g. later. i'll wait")).toBe("Signed out. Try again, e.g. later. I'll wait");
-  expect(sentenceCase("dusk bot is ready. dusk cloud keeps it")).toBe("dusk bot is ready. dusk cloud keeps it");
+  expect(sentenceCase("Metal is ready. dusk cloud keeps it")).toBe("Metal is ready. dusk cloud keeps it");
   expect(sentenceCase("{bot} is busy. open `settings.json` or notes.md")).toBe("{bot} is busy. Open `settings.json` or notes.md");
   expect(sentenceCase("your bots run 24/7. close your laptop")).toBe("Your bots run 24/7. Close your laptop");
   expect(sentenceCase("npm install, then iPhone")).toBe("npm install, then iPhone");
   expect(entryCase("settings.nav.x", "usage & billing")).toBe("Usage & billing");
   expect(entryCase("sidebar.nav.x", "Take Over")).toBe("Take over");
-  expect(entryCase("x.title", "talk to dusk bot")).toBe("Talk to dusk bot");
+  expect(entryCase("x.title", "talk to Metal")).toBe("Talk to Metal");
 });
 
 it("a chat button named inside a sentence keeps its capital, the rest of the sentence is cased as usual", () => {
   expect(entryCase("signIn.humanCheck", "{site} wants a quick human check. Tap Take over and I'll carry on from there.")).toBe("{site} wants a quick human check. Tap Take over and I'll carry on from there.");
   expect(entryCase("chat.x", "Press I'm done when you Finish.")).toBe("Press I'm done when you finish.");
-  expect(english["server.notify.humanCheckBody"]).toBe("Open dusk bot, tap Take over and tick the box.");
+  expect(english["server.notify.humanCheckBody"]).toBe("Open Metal, tap Take over and tick the box.");
 });
 
 it("brandCase keeps names, acronyms, placeholders, code and key combos", () => {

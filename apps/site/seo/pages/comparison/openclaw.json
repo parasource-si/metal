@@ -1,9 +1,9 @@
 {
   "path": "/vs/openclaw",
-  "title": "OpenClaw vs dusk bot: setup, safety and daily use",
-  "nav": "openclaw vs dusk bot",
-  "h1": "openclaw vs dusk bot: running it day to day",
-  "description": "A direct look at OpenClaw and dusk bot: installing them, separating agents, limiting actions and keeping scheduled work running.",
+  "title": "OpenClaw vs Metal: setup, safety and daily use",
+  "nav": "openclaw vs Metal",
+  "h1": "openclaw vs Metal: running it day to day",
+  "description": "A direct look at OpenClaw and Metal: installing them, separating agents, limiting actions and keeping scheduled work running.",
   "answer": "**pick the setup you can still manage on a busy monday.** openclaw routes agents through a gateway and chat channels; its desktop installers handle the initial pieces.[^1][^2] dusk puts bots, their jobs and per-bot app access in its own app.[^6][^7] both support separate agents and scheduled work. decide who handles upkeep, where instructions arrive and how much access the job needs.",
   "tags": [
     "openclaw",
@@ -46,7 +46,7 @@
     "intro": "**choose where instructions arrive and who owns the upkeep.** as of 12 november 2026, both support separate agents. their day-to-day setup and controls differ.",
     "cols": [
       "OpenClaw",
-      "dusk bot"
+      "Metal"
     ],
     "rows": [
       {
@@ -119,7 +119,7 @@
       }
     ]
   },
-  "method": "**we compare setup and controls, not a security score.** we make dusk bot. we read openclaw’s docs and github advisories on 12 november 2026 alongside dusk’s controls.\n\nwe did not run identical jobs, test reliability or try to break either product. published flaws need context: affected versions, fixes and what your installation exposes.",
+  "method": "**we compare setup and controls, not a security score.** Metal is based on Dusk Bot. we read openclaw’s docs and github advisories on 12 november 2026 alongside dusk’s controls.\n\nwe did not run identical jobs, test reliability or try to break either product. published flaws need context: affected versions, fixes and what your installation exposes.",
   "sections": [
     {
       "h": "the installer is only the first evening",
@@ -144,7 +144,7 @@
       "a": "**the mit software is free as of 12 november 2026.** you pay for ai usage and any server.[^3] dusk is source-available rather than open source, and work needs a license.[^14]"
     },
     {
-      "q": "does dusk bot ask before every change?",
+      "q": "does Metal ask before every change?",
       "a": "**app edits need their own boundary.**[^11] read-only access blocks changes before they reach the app. ordinary writes do not automatically ask. command approvals and sending use separate settings.[^7][^11]"
     }
   ],
@@ -170,23 +170,23 @@
       "checked": "2026-11-12"
     },
     {
-      "label": "dusk bot: desktop platforms",
+      "label": "Metal: desktop platforms",
       "url": "/docs/getting-started"
     },
     {
-      "label": "dusk bot: separate bots",
+      "label": "Metal: separate bots",
       "url": "/docs/bots"
     },
     {
-      "label": "dusk bot: app access and sending",
+      "label": "Metal: app access and sending",
       "url": "/docs/files-and-apps"
     },
     {
-      "label": "dusk bot: phone pairing",
+      "label": "Metal: phone pairing",
       "url": "/docs/phone"
     },
     {
-      "label": "dusk bot: schedule and missed runs",
+      "label": "Metal: schedule and missed runs",
       "url": "/docs/routines"
     },
     {
@@ -195,24 +195,24 @@
       "checked": "2026-11-12"
     },
     {
-      "label": "dusk bot: approval levels",
+      "label": "Metal: approval levels",
       "url": "/docs/computer"
     },
     {
-      "label": "dusk bot: hosted and own computers",
+      "label": "Metal: hosted and own computers",
       "url": "/docs/dusk-cloud"
     },
     {
-      "label": "dusk bot: separate ai billing",
+      "label": "Metal: separate ai billing",
       "url": "/docs/account-and-billing"
     },
     {
-      "label": "dusk bot: license and work use",
+      "label": "Metal: license and work use",
       "url": "/docs/faq"
     }
   ],
   "type": "comparison",
-  "keyword": "openclaw vs dusk bot",
+  "keyword": "openclaw vs Metal",
   "keywords": [
     "openclaw vs manus",
     "openclaw vs n8n",

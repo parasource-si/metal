@@ -1,5 +1,5 @@
 // Token apps end to end: check a pasted token live, keep it sealed, and add the app as an MCP server bots already know
-// how to use (the vendor's own, or dusk bot's api_request endpoint); sign-ins to dusk bot's own OAuth apps.
+// how to use (the vendor's own, or Metal's api_request endpoint); sign-ins to configured OAuth apps.
 import { randomBytes, timingSafeEqual } from "node:crypto";
 import type { IncomingMessage, ServerResponse } from "node:http";
 
@@ -200,24 +200,24 @@ export function createTokenApps(deps: TokenAppsDeps) {
   async function callback(query: URLSearchParams, posted?: { token?: unknown }): Promise<{ ok: boolean; text: string; page?: true }> {
     const state = query.get("state") ?? "";
     const entry = [...pending.values()].find((one) => one.code?.state === state && !one.result);
-    if (!entry?.code || entry.expiresAt < now()) return { ok: false, text: "This sign-in is over. Go back to dusk bot and start again." };
+    if (!entry?.code || entry.expiresAt < now()) return { ok: false, text: "This sign-in is over. Go back to Metal and start again." };
     const label = entry.connector.label;
     if (entry.connector.flow === "fragment") {
       if (!posted) return { ok: true, text: "", page: true };
       const token = typeof posted.token === "string" && /^[A-Za-z0-9_-]{16,256}$/u.test(posted.token) ? posted.token : null;
       if (!token) { entry.result = { status: "failed", message: "The sign-in was cancelled." }; return { ok: false, text: "The sign-in was cancelled. You can close this tab." }; }
       const result = await finish(entry, { token }, { key: clients[entry.connector.id]!.clientId, token });
-      return result.status === "connected" ? { ok: true, text: `${label} is connected. You can close this tab.` } : { ok: false, text: "The sign-in didn't finish. Go back to dusk bot and try again." };
+      return result.status === "connected" ? { ok: true, text: `${label} is connected. You can close this tab.` } : { ok: false, text: "The sign-in didn't finish. Go back to Metal and try again." };
     }
     const code = query.get("code");
     if (!code) { entry.result = { status: "failed", message: "The sign-in was cancelled." }; return { ok: false, text: "The sign-in was cancelled. You can close this tab." }; }
     try {
       const tokens = await exchangeCode(entry.connector, clients[entry.connector.id]!, code, entry.code.verifier, entry.code.redirect, fetchImpl, now());
       const result = await finish(entry, tokens);
-      return result.status === "connected" ? { ok: true, text: `${label} is connected. You can close this tab.` } : { ok: false, text: "The sign-in didn't finish. Go back to dusk bot and try again." };
+      return result.status === "connected" ? { ok: true, text: `${label} is connected. You can close this tab.` } : { ok: false, text: "The sign-in didn't finish. Go back to Metal and try again." };
     } catch {
       entry.result = { status: "failed", message: "The sign-in didn't finish. Start again." };
-      return { ok: false, text: "The sign-in didn't finish. Go back to dusk bot and try again." };
+      return { ok: false, text: "The sign-in didn't finish. Go back to Metal and try again." };
     }
   }
 
@@ -274,7 +274,7 @@ export function createTokenApps(deps: TokenAppsDeps) {
     return PASS;
   };
 
-  /** dusk bot's own MCP endpoint for an api app. Security: loopback only, and the entry's own 256-bit bearer. */
+  /** Metal's own MCP endpoint for an api app. Security: loopback only, and the entry's own 256-bit bearer. */
   async function mcp(req: IncomingMessage, res: ServerResponse, path: string, method: string, body: () => Promise<unknown>, json: (res: ServerResponse, status: number, body: unknown) => void) {
     const account = store.get(path.slice(APP_TOKENS_MCP_PREFIX.length));
     const presented = /^Bearer ([a-f0-9]{64})$/u.exec(req.headers.authorization ?? "")?.[1];
@@ -325,11 +325,11 @@ export function createTokenApps(deps: TokenAppsDeps) {
         "content-type": "text/html; charset=utf-8", "cache-control": "no-store", "referrer-policy": "no-referrer", "x-content-type-options": "nosniff",
         "content-security-policy": `default-src 'none'; script-src 'nonce-${nonce}'; connect-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'`,
       });
-      res.end(`<!doctype html><meta charset="utf-8"><title>dusk bot</title><p id="m">Finishing sign-in…</p><script nonce="${nonce}">
+      res.end(`<!doctype html><meta charset="utf-8"><title>Metal</title><p id="m">Finishing sign-in…</p><script nonce="${nonce}">
 const token = new URLSearchParams(location.hash.slice(1)).get("token");
 history.replaceState(null, "", location.pathname + location.search);
 fetch(location.pathname + location.search, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ token }) })
-  .then((r) => r.text()).then((t) => { document.getElementById("m").textContent = t; }, () => { document.getElementById("m").textContent = "The sign-in didn't finish. Go back to dusk bot and try again."; });
+  .then((r) => r.text()).then((t) => { document.getElementById("m").textContent = t; }, () => { document.getElementById("m").textContent = "The sign-in didn't finish. Go back to Metal and try again."; });
 </script>`);
       return true;
     }

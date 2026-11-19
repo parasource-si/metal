@@ -124,7 +124,7 @@ test("cloud statuses, progress, errors and destroyed or unpaid desktops map to t
     assert.equal(result?.status ?? null, expected[index]);
     if (result && result.status !== "provisioning") assert.equal(result.progress, null);
   });
-  const labels = ["reserving your machine", "preparing its disk", "installing dusk bot", "waking your bots"];
+  const labels = ["reserving your machine", "preparing its disk", "installing Metal", "waking your bots"];
   SETUP_STEPS.forEach((setupStep, index) => assert.deepEqual(cloudFromWire({ ...cloud, setupStep })!.progress, { step: labels[index], value: (index + 0.5) / 4 }));
   assert.equal(cloudFromWire({ ...cloud, setupStep: null })!.progress, null);
   assert.equal(cloudFromWire({ ...cloud, status: "payment_problem" })!.error, "the last payment did not go through. update your card to wake it.");

@@ -4,7 +4,7 @@
   "title": "AI group chat: three useful rooms to set up",
   "nav": "ai group chat",
   "h1": "ai group chat with a job for everyone",
-  "description": "Set up three practical AI group chats in dusk bot. Choose who answers, hand work over with mentions, and keep each bot's memory and permissions clear.",
+  "description": "Set up three practical AI group chats in Metal. Choose who answers, hand work over with mentions, and keep each bot's memory and permissions clear.",
   "keyword": "ai group chat",
   "keywords": [
     "chatgpt group chat",
@@ -127,19 +127,19 @@
   ],
   "sources": [
     {
-      "label": "dusk bot docs: groups, answer settings and mentions",
+      "label": "Metal docs: groups, answer settings and mentions",
       "url": "/docs/group-chats"
     },
     {
-      "label": "dusk bot docs: learning from groups and about me",
+      "label": "Metal docs: learning from groups and about me",
       "url": "/docs/memory"
     },
     {
-      "label": "dusk bot docs: per-bot app access",
+      "label": "Metal docs: per-bot app access",
       "url": "/docs/files-and-apps"
     },
     {
-      "label": "dusk bot docs: creating bots",
+      "label": "Metal docs: creating bots",
       "url": "/docs/bots"
     }
   ],

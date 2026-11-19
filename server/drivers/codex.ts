@@ -147,7 +147,7 @@ const PROXY_LITERAL_ENV = ["NODE_USE_ENV_PROXY", "NO_PROXY", "no_proxy"];
 const SHELL_ESSENTIALS = new Set(["PATH", "HOME", "USER", "LOGNAME", "SHELL", "TMPDIR", "TERM", "LANG", "TZ"]);
 
 const DENY_TIMEOUT_NOTE =
-  "dusk bot: nobody answered this permission request in time. Skip this action and finish what you can without it.";
+  "Metal: nobody answered this permission request in time. Skip this action and finish what you can without it.";
 
 const renamedMcpServers = new Set<string>();
 function noteRenamedMcpServer(name: string, mountName: string): void {
@@ -562,7 +562,7 @@ export const CodexDriver: ProviderDriver<CodexConfig> = {
         const literalEnvs = new Map<string, Record<string, string>>();
         const scopedServer = (name: string, mountName: string, server: McpServerSpec): StdioMcpSpec | null => {
           if (!canUseMcpServer(turn.toolScope, name)) return null;
-          // Every URL server goes through dusk bot's remote proxy: Codex's own client adds fields
+          // Every URL server goes through Metal's remote proxy: Codex's own client adds fields
           // strict servers refuse (codex-cli 0.160.1 sends elicitation.form/url; rmcp 3.2 can add
           // schemaValidation), and Codex does not speak SSE. A plan turn has no tool_search, so its URL
           // servers use the proxy's tool directory.
@@ -597,7 +597,7 @@ export const CodexDriver: ProviderDriver<CodexConfig> = {
         if (turn.integrations?.composio) mountSelected("composio", "duskbot_connectors", turn.integrations.composio);
         if (turn.integrations?.composioOwn) mountSelected(OWN_APPS_SERVER, `duskbot_${OWN_APPS_SERVER}`, turn.integrations.composioOwn);
         if (turn.integrations?.agents) {
-          // dusk bot's own coordination tools never ask: "auto" quiets only read-only tools.
+          // Metal's own coordination tools never ask: "auto" quiets only read-only tools.
           mountSelected("agents", "agents", turn.integrations.agents, "approve"); if (selectedMcp.has("agents")) appServerArgs.push("-c", `mcp_servers.agents.tool_timeout_sec=${AGENTS_TOOL_TIMEOUT_SECONDS}`);
         }
         if (turn.integrations?.localComputer) {
@@ -789,7 +789,7 @@ export const CodexDriver: ProviderDriver<CodexConfig> = {
       const settle = async (ok: boolean, stopReason: string | null, keep = false) => {
         if (state.settled) return;
         state.settled = true;
-        for (const finish of Array.from(asks.values())) finish("deny", "dusk bot: the turn ended", "system");
+        for (const finish of Array.from(asks.values())) finish("deny", "Metal: the turn ended", "system");
         for (const p of rpcPending.values()) p.reject(new Error("turn settled"));
         rpcPending.clear();
         const complete = () => {
@@ -1346,7 +1346,7 @@ export const CodexDriver: ProviderDriver<CodexConfig> = {
         let initialized = server.initialized as { userAgent?: unknown } | undefined;
         if (initialized === undefined) {
           initialized = await request("initialize", {
-            clientInfo: { name: "duskbot", title: "dusk bot", version: serverVersion() },
+            clientInfo: { name: "duskbot", title: "Metal", version: serverVersion() },
             // Named permission profiles are an experimental app-server field in Codex 0.151.
             capabilities: { experimentalApi: true },
           });

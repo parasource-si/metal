@@ -54,7 +54,7 @@ describe("the Give feedback sheet", () => {
     expect(dialog.getAttribute("aria-labelledby")).toBeTruthy();
     expect(dialog.textContent).toContain("Give feedback");
     expect(dialog.textContent).toContain("What happened, or what would you change?");
-    expect(dialog.textContent).toContain("Goes to the dusk bot team");
+    expect(dialog.textContent).toContain("Goes to the Dusk team");
     expect(dialog.textContent?.toLowerCase()).not.toContain("email");
     expect($('[role="switch"]')).toBeNull();
     expect(sendButton().disabled).toBe(true);
@@ -88,9 +88,9 @@ describe("the Give feedback sheet", () => {
     await mount();
     await type("  It froze  ");
     await choose(picture("a.png"));
-    send.mockRejectedValueOnce(new Error("Couldn't reach dusk bot. Check your connection and try again."));
+    send.mockRejectedValueOnce(new Error("Couldn't reach Metal. Check your connection and try again."));
     await act(async () => { sendButton().click(); });
-    expect($('[role="alert"]')?.textContent).toBe("Couldn't reach dusk bot. Check your connection and try again.");
+    expect($('[role="alert"]')?.textContent).toBe("Couldn't reach Metal. Check your connection and try again.");
     expect(onSent).not.toHaveBeenCalled();
     expect(sendButton().disabled).toBe(false);
     await act(async () => { sendButton().click(); });
@@ -115,7 +115,7 @@ describe("the Give feedback sheet", () => {
     const mountReal = async () => { await act(async () => { root.render(createElement(FeedbackDialog, { onClose, onSent, send: sendFeedback })); }); };
     afterEach(() => { vi.unstubAllGlobals(); });
 
-    it("sends it straight to the dusk bot team instead", async () => {
+    it("sends it straight to the Dusk team instead", async () => {
       const fetcher = vi.fn(async (input: RequestInfo | URL) => (String(input) === "/api/feedback" ? noRoute()
         : new Response(JSON.stringify({ id: "dr-abcdefghjk" }), { status: 201, headers: { "content-type": "application/json" } })));
       vi.stubGlobal("fetch", fetcher);

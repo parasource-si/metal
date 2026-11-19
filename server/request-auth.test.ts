@@ -558,7 +558,7 @@ describe("resolveRequestAuth", () => {
   });
 });
 
-describe("an IPC listener (duskbot serve --tunnel) is remote by construction", () => {
+describe("an IPC listener (metal serve --tunnel) is remote by construction", () => {
   // SAFETY: only headers, method and the socket peer are read; a unix-socket peer has no address
   const overSocket = (headers: Record<string, string>) => ({ headers, method: "GET", socket: {} }) as unknown as IncomingMessage;
 
@@ -697,7 +697,7 @@ describe("loopback trust: owner on one person's machine, service on a shared wor
     expect(desktop.warning).toMatch(/ignored in the desktop app/);
   });
 
-  it("is always service on a dusk bot Cloud home, where a local request is only ever a process on the machine", () => {
+  it("is always service on a Metal Cloud home, where a local request is only ever a process on the machine", () => {
     const pick = (env: NodeJS.ProcessEnv) => resolveLoopbackTrust({ env, desktopManaged: false, cloudHome: true });
     expect(pick({})).toEqual({ trust: "service", reason: "dusk cloud home", localBrowsers: false });
     expect(pick({ DUSK_LOOPBACK_TRUST: "service" })).toEqual({ trust: "service", reason: "dusk cloud home", localBrowsers: false });

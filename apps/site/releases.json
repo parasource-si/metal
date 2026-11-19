@@ -1,28 +1,21 @@
 {
-  "released": true,
-  "version": "0.2.23",
-  "date": "2026-11-19",
-  "base": "https://github.com/DuskBotAI/duskbot-releases/releases/latest/download/",
+  "released": false,
+  "version": "",
+  "date": "",
+  "base": "https://github.com/parasource-si/metal/releases/latest/download/",
   "files": {
-    "mac-arm64": "DuskBot.dmg",
-    "mac-x64": "DuskBot-intel.dmg",
-    "windows": "DuskBot-setup.exe",
-    "linux-deb": "DuskBot-amd64.deb",
-    "linux-appimage": "DuskBot.AppImage",
-    "android": "DuskBot.apk"
+    "mac-arm64": "Metal.dmg",
+    "mac-x64": "Metal-intel.dmg",
+    "windows": "Metal-setup.exe",
+    "linux-deb": "Metal-amd64.deb",
+    "linux-appimage": "Metal.AppImage",
+    "android": "Metal.apk"
   },
   "checksums": "SHA256SUMS",
-  "macNotarized": true,
-  "windowsReady": true,
-  "linuxReady": true,
+  "macNotarized": false,
+  "windowsReady": false,
+  "linuxReady": false,
   "ios": "https://apps.apple.com/app/id6834725640",
   "android": "",
-  "sizes": {
-    "mac-arm64": 174262680,
-    "mac-x64": 185947576,
-    "windows": 223952397,
-    "linux-deb": 288914508,
-    "linux-appimage": 341252094,
-    "android": 23510112
-  }
+  "sizes": {}
 }

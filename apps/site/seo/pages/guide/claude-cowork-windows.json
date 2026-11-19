@@ -4,7 +4,7 @@
   "title": "Claude Cowork on Windows and Linux: current options",
   "nav": "cowork on windows and linux",
   "h1": "does claude cowork work on windows and linux?",
-  "description": "Use Claude Cowork on Windows or Linux beta, understand where new tasks run, and compare dusk bot's Windows and Ubuntu requirements.",
+  "description": "Use Claude Cowork on Windows or Linux beta, understand where new tasks run, and compare Metal's Windows and Ubuntu requirements.",
   "keyword": "claude cowork windows",
   "keywords": [
     "claude cowork for windows",
@@ -56,7 +56,7 @@
       "md": "**look for claude when the cowork label disappears.** as of 12 november 2026, anthropic says cowork is now just claude. the change reaches pro, max and ultra first. claude brings in cowork when a task needs files.[^2]\n\ncowork comes with paid pro, max, ultra, team and enterprise plans at no extra price.[^9] compare tiers in the [pricing guide](/guides/claude-cowork-pricing).\n\nmatch the feature you need to your plan and platform, then download the app.[^4]"
     },
     {
-      "h": "dusk bot has its own system requirements",
+      "h": "Metal has its own system requirements",
       "md": "**dusk gives windows and ubuntu users another way to text their bots.** it's a separate app with its own requirements:[^5]\n\n- macos 12 or later\n- windows 10 or 11, 64-bit; installer needs no admin rights\n- ubuntu 24.04 beta, as .deb or appimage\n\ndusk runs vendors' official command-line apps where your bots live. you sign in yourself to the ai you use.[^5][^6] the [non-developer guide](/guides/claude-code-for-non-developers) explains the text-a-bot setup."
     },
     {
@@ -74,7 +74,7 @@
       "a": "**yes, as a beta.** as of 12 november 2026, claude desktop lists linux beta on all paid plans. downloads name ubuntu and debian.[^1][^8]"
     },
     {
-      "q": "does dusk bot need administrator rights on windows?",
+      "q": "does Metal need administrator rights on windows?",
       "a": "**no. its windows installer needs no admin rights.** dusk supports windows 10 or 11, 64-bit.[^5]"
     }
   ],
@@ -100,15 +100,15 @@
       "checked": "2026-11-12"
     },
     {
-      "label": "dusk bot docs: getting started",
+      "label": "Metal docs: getting started",
       "url": "/docs/getting-started"
     },
     {
-      "label": "dusk bot docs: your own server and ai sign-in",
+      "label": "Metal docs: your own server and ai sign-in",
       "url": "/docs/your-own-server"
     },
     {
-      "label": "dusk bot docs: dusk cloud",
+      "label": "Metal docs: dusk cloud",
       "url": "/docs/dusk-cloud"
     },
     {

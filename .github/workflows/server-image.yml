@@ -1,6 +1,6 @@
 name: Server image
 
-# Publishes the self-hosted server image (deploy/docker/Dockerfile, target `server`) as ghcr.io/<owner>/duskbot for
+# Publishes the self-hosted server image (deploy/docker/Dockerfile, target `server`) as ghcr.io/<owner>/metal for
 # linux/amd64 and linux/arm64: `v<version>` for a release, and `latest` when that release is the newest.
 # deploy/docker-compose.yml pulls it anonymously, so the package must be public; the last step fails until it is.
 # GitHub starts no workflow from an event its own GITHUB_TOKEN caused, so a release the Release workflow publishes
@@ -53,7 +53,7 @@ jobs:
           version=$(node -p 'require("./package.json").version')
           [ "v$version" = "$TAG" ] || { echo "::error::$TAG holds package.json version $version"; exit 1; }
           owner=$(printf '%s' "$GITHUB_REPOSITORY_OWNER" | tr '[:upper:]' '[:lower:]')
-          image="ghcr.io/$owner/duskbot"
+          image="ghcr.io/$owner/metal"
           newest=$(gh api "repos/$GITHUB_REPOSITORY/releases/latest" --jq .tag_name)
           latest=false
           if [ "$newest" = "$TAG" ]; then latest=true; fi
@@ -89,10 +89,10 @@ jobs:
         run: |
           docker buildx build --platform "linux/$ARCH" --provenance=false \
             -f deploy/docker/Dockerfile --target server --build-arg ENGINES="$ENGINES" \
-            -t duskbot-server:built --load .
+            -t metal-server:built --load .
       - name: The server starts and answers its health check
         run: |
-          docker run -d --name server --init --shm-size=512m duskbot-server:built
+          docker run -d --name server --init --shm-size=512m metal-server:built
           for _ in $(seq 1 60); do
             state=$(docker inspect -f '{{.State.Health.Status}}' server)
             [ "$state" = healthy ] && break
@@ -100,7 +100,7 @@ jobs:
           done
           docker logs server 2>&1 | tail -n 40
           [ "$state" = healthy ] || { echo "::error::the server image is $state after three minutes"; exit 1; }
-          docker exec server node dist-server/duskbot.js pair --label "image check" >/dev/null
+          docker exec server node dist-server/metal.js pair --label "image check" >/dev/null
           docker rm -f server >/dev/null
       - name: Push linux/${{ matrix.arch }}
         env:
@@ -110,7 +110,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           echo "$GH_TOKEN" | docker login ghcr.io -u "$GITHUB_ACTOR" --password-stdin >/dev/null
-          docker tag duskbot-server:built "$IMAGE:$TAG-$ARCH"
+          docker tag metal-server:built "$IMAGE:$TAG-$ARCH"
           docker push "$IMAGE:$TAG-$ARCH"
 
   publish:

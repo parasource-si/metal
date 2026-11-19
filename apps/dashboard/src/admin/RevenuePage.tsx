@@ -581,7 +581,7 @@ function Customers({ customers }: { customers: CustomerRow[] }) {
         ) : <Empty>{filtered ? "no customers match these filters." : "no customers yet. the first one lands here the moment they pay."}</Empty>}
       </div>
       {rows.length > 10 && <button type="button" onClick={() => setAll((v) => !v)} className="text-link mx-auto mt-1.5 block h-8 px-3 text-12">{all ? "show fewer" : `show all ${n(rows.length)}`}</button>}
-      <p className="px-3 pt-1 text-12 text-ink-4">lifetime is what they paid, after refunds. gone quiet means they used dusk bot on one day or fewer in the last two weeks.</p>
+      <p className="px-3 pt-1 text-12 text-ink-4">lifetime is what they paid, after refunds. gone quiet means they used Metal on one day or fewer in the last two weeks.</p>
     </section>
   );
 }

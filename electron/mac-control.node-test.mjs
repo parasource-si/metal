@@ -110,7 +110,7 @@ test("a server that refuses this session is asked again only much later", async 
   const waits = [];
   let asked = 0;
   const host = createMacControlHost({
-    fetch: async () => { asked += 1; return Response.json({ error: "Only the owner's own dusk bot app on their Mac can serve this server's bots." }, { status: 403 }); },
+    fetch: async () => { asked += 1; return Response.json({ error: "Only the owner's own Metal app on their Mac can serve this server's bots." }, { status: 403 }); },
     name: () => "Mac", execute: async () => ({ ok: true, result: { text: "" } }), log: () => {},
     wait: async (ms, signal) => { waits.push(ms); if (waits.length > 1) await new Promise((resolve) => signal.addEventListener("abort", resolve, { once: true })); },
   });

@@ -46,9 +46,9 @@ const secret = (overrides: Partial<NonNullable<Message["secret"]>> = {}): NonNul
 /** A real transcript is a chain: each line answers the one before it. Without it every root line reads as an edit of the others. */
 const chained = (list: Message[]): Message[] => list.map((message, index) => ({ ...message, parentId: index ? list[index - 1]!.id : null }));
 
-const dusk = { botId: "gallery-dusk", name: "dusk bot", color: "blue" as const };
+const dusk = { botId: "gallery-dusk", name: "Metal", color: "blue" as const };
 const writer = { botId: "gallery-writer", name: "Writer", color: "green" as const };
-const writerRef = { botId: writer.botId, threadId: "gallery-writer-work", title: "@dusk bot · work" };
+const writerRef = { botId: writer.botId, threadId: "gallery-writer-work", title: "@Metal · work" };
 const askerExchange = (): Message[] => [
   user("Ask Writer what they do and tell me."),
   bot("Asking Writer now."),

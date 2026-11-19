@@ -12,7 +12,7 @@ export interface SlashSkill {
   name: string;
   description: string;
   /** Found in another AI tool's own skills folder (the engine's, or brought in from Claude Code, Codex and the rest),
-   * not made in dusk bot by the person or a bot. */
+   * not made in Metal by the person or a bot. */
   fromTools?: true;
 }
 
@@ -23,7 +23,7 @@ export function skillSlashCommands(skills: readonly SlashSkill[]): ComposerSlash
     .map((skill) => ({ kind: "skill", id: skill.name, label: `/${skill.name}`, description: skill.description, ...(skill.fromTools ? { fromTools: true as const } : {}) }));
 }
 
-/** The / list: dusk bot's commands, then the skills made in dusk bot, then the other tools' skills behind one More row
+/** The / list: Metal's commands, then the skills made in Metal, then the other tools' skills behind one More row
  * until it is opened. A typed search looks through all of them. */
 export function slashMenuRows(
   commands: readonly ComposerSlashCommand[],

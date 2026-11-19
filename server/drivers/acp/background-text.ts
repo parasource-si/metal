@@ -27,7 +27,7 @@ export interface AcpOneShotInput {
   timeoutMs?: number;
 }
 
-const REFUSAL = "dusk bot background text allows no tools, files, terminals or approvals.";
+const REFUSAL = "Metal background text allows no tools, files, terminals or approvals.";
 
 export function runAcpOneShot(input: AcpOneShotInput): Promise<string> {
   const { signal, onUsage } = input.options ?? {};

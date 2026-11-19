@@ -82,11 +82,11 @@
   ],
   "sources": [
     {
-      "label": "dusk bot docs: files and apps",
+      "label": "Metal docs: files and apps",
       "url": "/docs/files-and-apps"
     },
     {
-      "label": "dusk bot docs: routines",
+      "label": "Metal docs: routines",
       "url": "/docs/routines"
     },
     {
@@ -95,7 +95,7 @@
       "checked": "2026-11-12"
     },
     {
-      "label": "dusk bot docs: a bot’s computer",
+      "label": "Metal docs: a bot’s computer",
       "url": "/docs/computer"
     }
   ],

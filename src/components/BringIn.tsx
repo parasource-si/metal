@@ -15,7 +15,7 @@ import { ClaudeMark, CodexMark, CursorMark, GeminiMark, HermesMark } from "./Pro
 import { OpenClawMark } from "./OpenClawMark";
 import { PixelIcon } from "./ui/PixelIcon";
 
-/** The app's own mark, by the find's tool or app name; dusk bot's earlier self is its mascot. */
+/** The app's own mark, by the find's tool or app name; Metal's earlier self is its mascot. */
 function FindMark({ find, size = 18 }: { find: LocalFind; size?: number }) {
   const name = `${find.source ?? ""} ${find.bots?.from.key ?? ""} ${find.app}`.toLowerCase();
   if (/claude/.test(name)) return <ClaudeMark size={size} />;
@@ -24,7 +24,7 @@ function FindMark({ find, size = 18 }: { find: LocalFind; size?: number }) {
   if (/gemini/.test(name)) return <GeminiMark size={size} />;
   if (/codex/.test(name)) return <CodexMark size={size} />;
   if (/cursor/.test(name)) return <CursorMark size={size} />;
-  if (/dusk|openmausbot|opengrokbot/.test(name)) return <MausAvatar color="chrome" size={size + 4} trackPointer={false} animated={false} label="" />;
+  if (/\bmetal\b|dusk|openmausbot|opengrokbot/.test(name)) return <MausAvatar color="chrome" size={size + 4} trackPointer={false} animated={false} label="" />;
   if (/grok/.test(name)) return <GrokBotMark size={size} />;
   return <PixelIcon name="laptop" size={size} />;
 }

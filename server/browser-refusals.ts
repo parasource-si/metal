@@ -6,7 +6,7 @@ export const BROWSER_INTERRUPTED = `The browser engine is stuck. Press Restart i
 export const BROWSER_CLOSING = "The browser is closing. Try again shortly.";
 export const RESTART_BUSY = "The browser is busy. Wait for current work to finish before restarting.";
 export const LAUNCH_CHANGED = "Browser launch settings changed. Close the browser before reconnecting.";
-export const AGENT_CLOSE_FAILED = "The browser could not be closed. Ask the person to press Restart in the Browser panel of dusk bot on their computer, or to restart dusk bot.";
+export const AGENT_CLOSE_FAILED = "The browser could not be closed. Ask the person to press Restart in the Browser panel of Metal on their computer, or to restart Metal.";
 export const LANE_BUSY = "Your previous browser call is still running; wait for it to finish, then call again.";
 export const PERSON_RESTART_STOPPED = "The person restarted your browser from the Browser panel while this call ran, so it stopped. Pages you had open are gone: open the page you need again, and check whether this action already happened before repeating it.";
 

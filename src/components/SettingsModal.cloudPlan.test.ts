@@ -25,7 +25,7 @@ const render = () => renderToStaticMarkup(createElement(SettingsModal));
 
 describe("Settings → Usage & Billing → dusk cloud on a server open in the app's window", () => {
   const reachable = 'data-settings-block="cloudAccount"';
-  it("is not offered on a server that is not a dusk bot Cloud home", () => {
+  it("is not offered on a server that is not a dusk cloud home", () => {
     vi.stubGlobal("window", { duskDesktop: { cloudPlan: plan } });
     const html = render();
     expect(html).not.toContain("CLOUD_PLAN_MARKER"); expect(html).not.toContain(reachable);

@@ -36,7 +36,7 @@ function looksLikeDataDir(dir: string): boolean {
     && ["workspaces", "task-workspaces"].some((name) => statSync(join(dir, name), { throwIfNoEntry: false })?.isDirectory()));
 }
 
-/** Security invariant: the dusk bot data dir that holds `path`, when it is not the running one. */
+/** Security invariant: the Metal data dir that holds `path`, when it is not the running one. */
 export function foreignDataDir(path: string, dataDir: string): string | undefined {
   const full = resolve(path);
   if (inside(full, resolve(dataDir))) return undefined;

@@ -89,5 +89,5 @@ it("no UI text written into a desktop or phone component starts lowercase", () =
     .filter((file) => /\.tsx?$/.test(file) && !SKIP.test(relativeToRoot(file)));
   expect(files.length).toBeGreaterThan(200);
   const offending = files.flatMap(scan);
-  expect(offending, "start UI text with a capital (dusk bot and dusk cloud stay lowercase), or move it into src/locales/en.json").toEqual([]);
+  expect(offending, "start UI text with a capital (dusk cloud stays lowercase), or move it into src/locales/en.json").toEqual([]);
 });

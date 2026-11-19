@@ -24,7 +24,7 @@ test("a port another program answers on is taken; a free one is not", async (t) 
 });
 
 test("port taken by another program: the server starts on the next port and the app connects to it", async (t) => {
-  // another app's server on the first desktop port, answering health checks as if it were dusk bot
+  // another app's server on the first desktop port, answering health checks as if it were Metal
   const other = http.createServer((_req, res) => res.end(JSON.stringify({ app: "duskbot" })));
   const first = await listen(other);
   t.after(() => close(other));

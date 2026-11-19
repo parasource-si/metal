@@ -54,7 +54,7 @@ if (argv[0] === "update" && argv.includes("--models")) {
 }
 
 if (mode === "exit-early") {
-  process.stderr.write("dusk bot Pi MCP configuration could not be read\n");
+  process.stderr.write("Metal Pi MCP configuration could not be read\n");
   process.exit(1);
 }
 

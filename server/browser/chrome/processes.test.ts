@@ -28,7 +28,7 @@ describe("the process sweep", () => {
     expect(userDataDirOf({ args: "/usr/bin/node server.js" })).toBeNull();
   });
 
-  it("kills browsers on dusk bot's profiles that no live server registered, and nothing else", () => {
+  it("kills browsers on Metal's profiles that no live server registered, and nothing else", () => {
     const root = "/data/browser";
     const processes = [
       chrome(10, "/data/browser/profiles/a"),

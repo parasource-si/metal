@@ -149,7 +149,7 @@ EOF
 banner() {
   say ""
   if [ "$UI" != tty ] || [ "$ASCII" = 1 ] || [ "$COLS" -lt 80 ]; then
-    say "  ${ACC}${BOLD}dusk bot${R}  ${DIM}uninstall${R}"
+    say "  ${ACC}${BOLD}Metal${R}  ${DIM}uninstall${R}"
     say ""
     MASCOT=0
     return 0
@@ -201,7 +201,7 @@ banner() {
       for (f = 0; f <= S; f++) { frame(f); if (f < S) system("sleep 0.05") }
     }'
   say ""
-  printf '  %s%-58s%s%s<:3 )~%s\n' "$DIM" "taking dusk bot off this server" "$R" "$ACC" "$R"
+  printf '  %s%-58s%s%s<:3 )~%s\n' "$DIM" "taking Metal off this server" "$R" "$ACC" "$R"
   MASCOT_COL=61 MASCOT=1
   [ "$DEPTH" -gt 0 ] || MASCOT=0
   say ""
@@ -314,10 +314,10 @@ our_paths() {
     [ -e "$_p" ] && printf '%s\n' "$_p"
   done
   for _u in $OUR_UNITS; do [ -e "$UNITS/$_u" ] && printf '%s\n' "$UNITS/$_u"; done
-  cli_ours && printf '%s\n' "$CLI"
+  for _p in "$CLI" "${CLI%/*}/metal"; do cli_ours "$_p" && printf '%s\n' "$_p"; done
   return 0
 }
-cli_ours() { grep -qs "managed by duskbot-link" "$CLI"; }
+cli_ours() { [ ! -L "$1" ] && grep -qs "managed by duskbot-link" "$1"; }
 # packages install.sh added that are still installed (the ones --all takes away)
 our_pkgs() {
   _have=$(dpkg-query -W -f '${db:Status-Abbrev} ${Package}\n' 2>/dev/null | awk '$1 ~ /^ii/ { print $2 }')
@@ -374,9 +374,9 @@ survey() {
 BACKUP_FILE=""
 plan() {
   glyph dot; _d=$G
-  printf '  %sThis takes dusk bot off %s%s%s:%s\n\n' "$BOLD" "$ACC" "$NAME" "$R$BOLD" "$R"
+  printf '  %sThis takes Metal off %s%s%s:%s\n\n' "$BOLD" "$ACC" "$NAME" "$R$BOLD" "$R"
   item() { printf '    %s%s%s %s\n' "$DIM" "$_d" "$R" "$*"; }
-  [ -n "$S_UNITS" ] && item "the dusk bot server and its link to your app ($(count "$S_UNITS") services)"
+  [ -n "$S_UNITS" ] && item "the Metal server and its link to your app ($(count "$S_UNITS") services)"
   _nc=$(count "$S_CONTAINERS") _nv=$(count "$S_VOLUMES")
   if [ "$_nc" -gt 0 ] || [ "$_nv" -gt 0 ]; then item "$(plural "$_nc" "bot computer" "bot computers") and $(plural "$_nv" "saved home" "saved homes") of bot computers"; fi
   if [ -n "$S_IMAGES" ] && [ -n "$S_NETWORKS" ]; then item "the bot computer image and network"
@@ -426,7 +426,7 @@ PHASES="unlink stop computer home packages"
 phase_title() {
   case "$1" in
     unlink) say "Unlinking from your app" ;;
-    stop) say "Stopping dusk bot" ;;
+    stop) say "Stopping Metal" ;;
     computer) say "Clearing the bot computers" ;;
     home) say "Removing your bots' home" ;;
     packages) say "Removing what it installed" ;;
@@ -740,7 +740,7 @@ do_caddy() {
   echo "Caddy no longer serves this server's address"
 }
 
-# 0 only when tailnet https port 443 still proxies to the dusk bot server alone; a status that cannot be read is not ours
+# 0 only when tailnet https port 443 still proxies to the Metal server alone; a status that cannot be read is not ours
 ts_443_ours() {
   _status=$(tailscale serve status --json 2>/dev/null) || return 1
   _js='const s=JSON.parse(process.argv[1]);const w=Object.entries(s.Web??{}).find(([k])=>k.endsWith(":443"));const h=w?.[1].Handlers??{};process.exit(Object.keys(h).join()==="/"&&h["/"].Proxy==="http://127.0.0.1:8799"?0:1)'
@@ -758,7 +758,7 @@ do_files() {
     command -v apparmor_parser >/dev/null 2>&1 && apparmor_parser -R "$BWRAP_PROFILE" >/dev/null 2>&1 || true
     x rm -f "$BWRAP_PROFILE"; removed="$removed $BWRAP_PROFILE"
   fi
-  # the tailnet address this server served dusk bot at
+  # the tailnet address this server served Metal at
   if in_manifest "tailscale-serve 443" && command -v tailscale >/dev/null 2>&1; then
     if ts_443_ours; then x tailscale serve --https=443 off 2>&1 || true
     else echo "tailnet https port 443 serves something else now; leaving it alone"; fi
@@ -766,7 +766,9 @@ do_files() {
   for path in "$OPT" "$LOGS_DIR" "$STATE" "$FENCE" "$LIB" "$ETC" /etc/duskbot-address.json /etc/duskbot-cloudflared; do
     if [ -e "$path" ]; then x rm -rf "$path"; removed="$removed $path"; fi
   done
-  if cli_ours; then x rm -f "$CLI"; removed="$removed $CLI"; fi
+  for path in "$CLI" "${CLI%/*}/metal"; do
+    if cli_ours "$path"; then x rm -f "$path"; removed="$removed $path"; fi
+  done
   # the manifest keeps only what is still installed (packages, apt sources), so a later --all can take those too
   if [ -f "$MANIFEST" ] && [ "$ALL" = 0 ]; then
     grep -E '^(pkg|file) ' "$MANIFEST" > "$TMP/manifest" || true
@@ -866,7 +868,7 @@ finale() {
   glyph sep
   if [ "$LEFT" -eq 0 ]; then
     glyph ok; _ok=$G; glyph sep
-    printf '\n  %s%s %sRemoved dusk bot from %s%s  %s%s %s%s\n' "$OK" "$_ok" "$BOLD" "$NAME" "$R" "$DIM" "$G" "$total" "$R"
+    printf '\n  %s%s %sRemoved Metal from %s%s  %s%s %s%s\n' "$OK" "$_ok" "$BOLD" "$NAME" "$R" "$DIM" "$G" "$total" "$R"
     if [ -f "$BACKUP_FILE" ]; then printf '    %syour bots are saved in %s%s\n' "$DIM" "$BACKUP_FILE" "$R"; fi
     printf '\n  %s%sAll clean. Paste the install line from the app whenever you want it back.%s\n\n' "$ACC" "$BOLD" "$R"
   else
@@ -895,7 +897,7 @@ take_lock() {
   command -v flock >/dev/null 2>&1 && ( : >>"$INSTALL_LOCK" ) 2>/dev/null || return 0
   exec 9>>"$INSTALL_LOCK"
   flock -n 9 && return 0
-  printf '\nSomeone is installing dusk bot on this server right now (another terminal, or one whose connection dropped). Wait for it to finish, then run this again.\n\n' >&2
+  printf '\nSomeone is installing Metal on this server right now (another terminal, or one whose connection dropped). Wait for it to finish, then run this again.\n\n' >&2
   exit 1
 }
 
@@ -918,7 +920,7 @@ main() {
   survey
   if [ "$S_ANY" = 0 ]; then
     glyph ok
-    printf '  %s%s %sNo dusk bot on %s.%s\n' "$OK" "$G" "$BOLD" "$NAME" "$R"
+    printf '  %s%s %sNo Metal on %s.%s\n' "$OK" "$G" "$BOLD" "$NAME" "$R"
     leftovers
     printf '\n  %sPaste the install line from the app to set it up.%s\n\n' "$DIM" "$R"
     return 0

@@ -73,7 +73,7 @@ export function createAlerts(options: AlertsOptions) {
     if (!kinds.has("paid") || amountCents <= 0) return;
     void sink.once("alert|paid|first-ever", null).then(first => {
       if (first) void send(`first payment ever: ${email ?? "an account"}`, { say: "first money in!", accent: "lime", heading: "first payment ever",
-        blocks: [{ t: "total", label: "paid", value: usd(amountCents) }, { t: "p", text: `**${email ?? accountId}** just paid. that's dusk bot's first money in.` }] });
+        blocks: [{ t: "total", label: "paid", value: usd(amountCents) }, { t: "p", text: `**${email ?? accountId}** just paid. that's Metal's first money in.` }] });
     }, () => {});
   }
   /** one email per incident, each behind a mark so a retry, a replay or a restart never sends it twice */
@@ -103,7 +103,7 @@ export function createAlerts(options: AlertsOptions) {
     const fresh: number[] = [];
     for (const cents of reached) if (await sink.once(`alert|mrr|${cents}`, null)) fresh.push(cents);
     if (fresh.length) await send(`mrr passed ${usd(fresh.at(-1)!).replace(/\.00$/, "")} a month`, { say: "a new milestone!", accent: "lime", heading: `mrr passed ${usd(fresh.at(-1)!).replace(/\.00$/, "")} a month`, blocks: [
-      { t: "total", label: "mrr", value: usd(facts.mrr) }, { t: "p", text: `dusk bot now makes ${usd(facts.mrr)} a month in recurring revenue.` }] });
+      { t: "total", label: "mrr", value: usd(facts.mrr) }, { t: "p", text: `Metal now makes ${usd(facts.mrr)} a month in recurring revenue.` }] });
   }
   async function tick() {
     const time = now();
@@ -135,7 +135,7 @@ export function createAlerts(options: AlertsOptions) {
         + (money ? money.newCustomers.length + money.failed + money.recovered + money.churned + money.refunds : 0);
       if (!news) return;
       const day = new Date(from).toLocaleDateString("en-US", { month: "long", day: "numeric", timeZone: "UTC" }).toLowerCase();
-      await send(`dusk bot yesterday: ${visitors} visitors, ${totals.signups} signups`, { say: "here's yesterday", accent: "lav", heading: `yesterday, ${day}`, blocks: [
+      await send(`Metal yesterday: ${visitors} visitors, ${totals.signups} signups`, { say: "here's yesterday", accent: "lav", heading: `yesterday, ${day}`, blocks: [
         { t: "stats", items: [["visitors", String(visitors), top || undefined], ["signups", String(totals.signups), `${totals.accounts.toLocaleString("en-US")} accounts in all`],
           ...(money ? [["mrr", usd(money.mrr), `${money.netNew >= 0 ? "+" : "-"}${usd(Math.abs(money.netNew))} yesterday`] as [string, string, string]] : []),
           ["paid", String(totals.paid), `${joined} joined the waitlist`],

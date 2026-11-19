@@ -1,5 +1,5 @@
 name: Bug report
-description: Something in dusk bot doesn't work as expected
+description: Something in Metal doesn't work as expected
 labels: [bug]
 body:
   - type: textarea

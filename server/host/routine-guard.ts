@@ -150,7 +150,7 @@ export function createRoutineGuard(deps: RoutineGuardDeps) {
       deps.tell(routine.botId, run.threadId, serverLine(language, "server.routine.recheck", { time: clock(at, language) }), true);
     },
 
-    /** Why dusk bot paused it, on the routine a client reads; nothing once it is back on. */
+    /** Why Metal paused it, on the routine a client reads; nothing once it is back on. */
     pausedFor(routine: Pick<Routine, "id" | "enabled">): { pausedFor: RoutinePause } | Record<string, never> {
       const why = pauses[routine.id];
       if (why && routine.enabled) {

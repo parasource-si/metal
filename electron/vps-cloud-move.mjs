@@ -145,7 +145,7 @@ export function installVpsCloudMove({ fetch: fetchImpl, environments, cloud, hom
       json: (route) => vpsSide(chosen(), fetchImpl).json(route),
       freeze: async (origin) => {
         const got = await vpsSide(chosen(), fetchImpl).call("POST", "/api/move/freeze", { cloud: origin });
-        if (got.status === 403 || got.status === 404 || got.status === 405) throw Object.assign(new Error(`Update dusk bot on ${chosen()?.name ?? "your server"} to move its bots straight to My Cloud.`), { code: "local", outdated: true, status: got.status });
+        if (got.status === 403 || got.status === 404 || got.status === 405) throw Object.assign(new Error(`Update Metal on ${chosen()?.name ?? "your server"} to move its bots straight to My Cloud.`), { code: "local", outdated: true, status: got.status });
         return freezeAnswer(got);
       },
       async unfreeze(options) {
@@ -223,7 +223,7 @@ export function installVpsCloudMove({ fetch: fetchImpl, environments, cloud, hom
       catch (error) { log(`vps to cloud: ${error?.message ?? error}`); }
       // a freeze the VPS refused as outdated is written down, so the fallback is taken once
       const kept = parseJournal(journal.read());
-      if (kept && (kept.error ?? "").startsWith("Update dusk bot on ") && !kept.outdated) journal.write({ ...kept, outdated: true });
+      if (kept && /^Update (?:dusk bot|Metal) on /.test(kept.error ?? "") && !kept.outdated) journal.write({ ...kept, outdated: true });
       if (shouldFallBack()) await fallBack(parseJournal(journal.read())?.outdated ? "outdated" : "vps_failing").catch((error) => log(`vps to cloud: the way via this computer did not start (${error?.message ?? error})`));
     })().finally(() => { running = null; });
     return running;
@@ -275,9 +275,9 @@ export function installVpsCloudMove({ fetch: fetchImpl, environments, cloud, hom
         const who = await vpsWho(place, fetchImpl).catch(() => null);
         if (!who?.signedIn) throw new Error(`This app isn't signed in to ${place.name}. Open ${place.name} in this app, then try again.`);
         if (!who.own) throw new Error(`${place.name} has other people on it, so its bots can't move to My Cloud from here.`);
-        if (!who.environmentId) throw new Error(`Update dusk bot on ${place.name} first, then try again.`);
+        if (!who.environmentId) throw new Error(`Update Metal on ${place.name} first, then try again.`);
         const route = who.direct ? "direct" : viaMac?.available(place) ? "via-mac" : null;
-        if (!route) throw new Error(`Update dusk bot on ${place.name} to move its bots straight to My Cloud.`);
+        if (!route) throw new Error(`Update Metal on ${place.name} to move its bots straight to My Cloud.`);
         choice.write({ v: 1, id: place.id, origin: place.origin, environmentId: who.environmentId, name: place.name, at: now(), route, ...(route === "via-mac" ? { why: "outdated" } : {}) });
         say(buying ? "buy" : "chosen");
         onChange();

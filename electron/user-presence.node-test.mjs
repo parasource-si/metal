@@ -56,7 +56,7 @@ test("Windows: Hello verifies, parented to the window, with a full sentence", as
   const { presence, calls } = setup("win32");
   assert.equal(await presence("show a code", { hwnd: "4242" }), true);
   assert.equal(calls.hello[0].hwnd, "4242");
-  assert.equal(calls.hello[0].reason, "dusk bot wants to show a code.");
+  assert.equal(calls.hello[0].reason, "Metal wants to show a code.");
   assert.deepEqual(calls.confirm, []);
 });
 
@@ -166,7 +166,7 @@ test("the IPC handler goes through the guard, words the reason by sender and par
   assert.equal(await handler({ local: false }, "pay $100"), true);
   assert.equal(guarded.length, 2);
   assert.equal(dialogs[0][0], win);
-  assert.deepEqual(dialogs.map(([, options]) => options.detail), ["dusk bot wants to open settings.", `dusk bot wants to ${DEFAULT_PRESENCE_REASON}.`]);
+  assert.deepEqual(dialogs.map(([, options]) => options.detail), ["Metal wants to open settings.", `Metal wants to ${DEFAULT_PRESENCE_REASON}.`]);
   assert.equal(dialogs[0][1].cancelId, 1);
   assert.equal(dialogs[0][1].defaultId, 1, "Enter alone never confirms");
 });

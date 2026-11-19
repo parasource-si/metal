@@ -4,12 +4,12 @@ import type { ConnectorProvider } from "./provider.ts";
 type Row = [id: string, label: string, url: string, domain: string, category: string, description: string];
 
 // vendors' own hosted MCP servers. "oauth" rows sign in with the person's own account and no app registered per vendor:
-// the server's authorization server registers clients dynamically, or takes dusk bot's client id metadata document
+// the server's authorization server registers clients dynamically, or takes Metal's client id metadata document
 // (shared/mcp-client-metadata.ts; railway, mongodb). scripts/probe-remote-mcp.ts checks every row live: discovery,
 // registration, an authorize page that loads and a refused fake token. Last run 2026-11-13, all passing.
 // left out on purpose: no dynamic registration and no metadata document (github, hubspot, slack, box, xero, docusign,
 // asana v2, render, pagerduty, smartsheet, calendly, gamma), refuses unreviewed clients (figma, dropbox: dropbox signs in
-// through dusk bot's own app instead, shared/native-connectors.json), or no OAuth at all (similarweb).
+// through Metal's own app instead, shared/native-connectors.json), or no OAuth at all (similarweb).
 const OAUTH: readonly Row[] = [
   ["linear", "Linear", "https://mcp.linear.app/mcp", "linear.app", "project management", "Issues, projects and cycles in Linear"],
   ["notion", "Notion", "https://mcp.notion.com/mcp", "notion.so", "documents notes", "Search, read and write pages and databases"],
